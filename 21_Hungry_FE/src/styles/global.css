@@ -1,0 +1,8 @@
+/* global.css
+ * 모든 페이지에서 공통적으로 사용되는 스타일을 정의하는 글로벌 CSS 파일입니다.
+ * styles 폴더 내 css 파일을 묶어줍니다. 
+*/
+
+@import './reset.css';
+@import './palette.css';
+@import './font.css';
