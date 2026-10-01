@@ -1,0 +1,52 @@
+name: Frontend CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - "21_Hungry_FE/**"
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "21_Hungry_FE/**"
+
+  merge_group:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: 21_Hungry_FE
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: 21_Hungry_FE/pnpm-lock.yaml
+
+      - name: Prepare pnpm
+        run: corepack prepare pnpm@11.8.0 --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
