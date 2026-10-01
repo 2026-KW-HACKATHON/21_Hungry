@@ -1,0 +1,9 @@
+.app {
+  justify-content: center;
+  height: 100svh;
+  margin: 0px auto;
+  width: 100vw;
+  max-width: 450px;
+  overflow: hidden;
+  font-family: 'Paperozi', sans-serif;
+}
