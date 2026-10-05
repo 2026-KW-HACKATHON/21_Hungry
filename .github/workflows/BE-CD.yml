@@ -55,29 +55,27 @@ jobs:
           DB_URL: jdbc:postgresql://localhost:5432/hungry
           DB_USERNAME: hungry
           DB_PASSWORD: hungry_test
-        run: ./gradlew test
+        run: |
+          chmod +x ./gradlew
+          ./gradlew test
 
       - name: Configure SSH
         env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{ secrets.EC2_SSH_KNOWN_HOSTS }}
         run: |
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh-keyscan -H "$EC2_HOST" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
       - name: Deploy backend
         env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
-          EC2_USER: ${{ secrets.EC2_USER }}
-          EC2_PORT: ${{ secrets.EC2_PORT }}
-          EC2_DEPLOY_PATH: ${{ secrets.EC2_DEPLOY_PATH }}
         run: |
-          port="${EC2_PORT:-22}"
-          ssh -i ~/.ssh/deploy_key -p "$port" "$EC2_USER@$EC2_HOST" \
-            bash -se -- "$EC2_DEPLOY_PATH" <<'REMOTE'
+          ssh -i ~/.ssh/deploy_key "ec2-user@$EC2_HOST" \
+            bash -se -- "/home/ec2-user/21_Hungry" <<'REMOTE'
           set -Eeuo pipefail
 
           deploy_root="$1"
