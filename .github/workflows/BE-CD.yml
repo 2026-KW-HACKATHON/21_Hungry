@@ -55,7 +55,9 @@ jobs:
           DB_URL: jdbc:postgresql://localhost:5432/hungry
           DB_USERNAME: hungry
           DB_PASSWORD: hungry_test
-        run: ./gradlew test
+        run: |
+          chmod +x ./gradlew
+          ./gradlew test
 
       - name: Configure SSH
         env:
