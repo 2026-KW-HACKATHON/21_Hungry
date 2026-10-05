@@ -1,9 +1,8 @@
-import { Icon } from '../../components/icon/Icon'
+
 
 function LoginPage() {
   return (
     <main className="SignupPage">
-      <Icon name='back-button' width={11} height={19} />
       <h1 className="Signup__Title">어떤 분이 이 기기를<br />사용하시나요</h1>
       <div className="Signup__SelectUserType">
         {/* 주돌봄자녀 박스 */}
@@ -22,8 +21,6 @@ function LoginPage() {
           <p className='Signup__UserTypeBox__Description'>자녀에게 안부와 건강기록을 전하고,공유 범위를 정하는 기능이 포함되어 있어요</p>
         </div>
       </div>
-      {/* continue button */}
-
     </main>
   )
 }
