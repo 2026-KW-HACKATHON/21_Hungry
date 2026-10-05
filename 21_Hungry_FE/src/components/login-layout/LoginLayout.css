@@ -19,7 +19,17 @@
 .loginlayout__nextButton {
   width: 92%;
   height: 60px;
+  border-radius: 20px;
   margin: 0 auto;
-  font-family: var(--font-family);
+  color: #FFFFFF;
+  box-shadow: 0 8px 0 #1899D6;
+  font-family: var(--font-extrabold);
   background-color: #1CB0F6;
+  margin-bottom: 14.2%;
+}
+.loginlayout__backButton {
+    width: 11px;
+    height: 19px;
+    flex-shrink: 0;    
+    margin : 9.1% 0 14.8% 5.2%;
 }

@@ -1,5 +1,3 @@
-
-
 function LoginPage() {
   return (
     <main className="SignupPage">

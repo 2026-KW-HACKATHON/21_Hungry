@@ -5,7 +5,7 @@ import './LoginLayout.css'
 function LoginLayout() {
   return (
     <div className='loginlayout__container'>    
-        <Icon name='back-button' width={11} height={19} />
+        <Icon className='loginlayout__backButton' name='back-button' width={11} height={19} />
         <div className='loginlayout__page'>
             <Outlet />
         </div>
