@@ -4,8 +4,10 @@ import './LoginLayout.css'
 
 function LoginLayout() {
   return (
-    <div className='loginlayout__container'>    
-        <Icon className='loginlayout__backButton' name='back-button' width={11} height={19} />
+    <div className='loginlayout__container'>
+        <button className='loginlayout__backButton'>
+            <Icon className='loginlayout__backButton' name='back-button' width={11} height={19} />
+        </button>
         <div className='loginlayout__page'>
             <Outlet />
         </div>
