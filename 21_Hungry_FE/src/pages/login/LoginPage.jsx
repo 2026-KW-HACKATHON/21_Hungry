@@ -1,8 +1,6 @@
 import { Icon } from '../../components/icon/Icon'
-import {useState} from 'react'
 
 function LoginPage() {
-  const [selected, setSelected] = useState(null);
   return (
     <main className="SignupPage">
       <Icon name='back-button' width={11} height={19} />
