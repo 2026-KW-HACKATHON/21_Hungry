@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:54329/hungry}
+    username: ${DB_USERNAME:hungry}
+    password: ${DB_PASSWORD:hungry_local}
+  flyway:
+    locations: classpath:db/migration
+    default-schema: hungry_test
+    schemas: hungry_test
+
+app:
+  cors:
+    allowed-origins: http://localhost:5173

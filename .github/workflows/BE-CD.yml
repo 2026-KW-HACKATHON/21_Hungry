@@ -1,0 +1,90 @@
+name: Backend CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "21_Hungry_BE/**"
+      - ".github/workflows/BE-CD.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: backend-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    services:
+      postgres:
+        image: postgres:18.6-alpine
+        env:
+          POSTGRES_DB: hungry
+          POSTGRES_USER: hungry
+          POSTGRES_PASSWORD: hungry_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U hungry -d hungry"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: gradle
+          cache-dependency-path: 21_Hungry_BE/gradle/wrapper/gradle-wrapper.properties
+
+      - name: Verify backend
+        working-directory: 21_Hungry_BE
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          DB_URL: jdbc:postgresql://localhost:5432/hungry
+          DB_USERNAME: hungry
+          DB_PASSWORD: hungry_test
+        run: ./gradlew test
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.EC2_SSH_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Deploy backend
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_PORT: ${{ secrets.EC2_PORT }}
+          EC2_DEPLOY_PATH: ${{ secrets.EC2_DEPLOY_PATH }}
+        run: |
+          port="${EC2_PORT:-22}"
+          ssh -i ~/.ssh/deploy_key -p "$port" "$EC2_USER@$EC2_HOST" \
+            bash -se -- "$EC2_DEPLOY_PATH" <<'REMOTE'
+          set -Eeuo pipefail
+
+          deploy_root="$1"
+          test -d "$deploy_root/.git"
+          test "$(git -C "$deploy_root" branch --show-current)" = "main"
+
+          git -C "$deploy_root" pull --ff-only origin main
+          bash "$deploy_root/21_Hungry_BE/scripts/deploy.sh" \
+            "$deploy_root/21_Hungry_BE"
+          REMOTE
