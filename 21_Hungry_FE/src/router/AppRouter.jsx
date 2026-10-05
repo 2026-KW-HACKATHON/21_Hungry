@@ -15,10 +15,10 @@ export const AppRouter = createBrowserRouter([
     ]
   },
   {
-    path: '/home',
+    path: '/',
     element: <MainLayout />,
     children: [
-      { path: '', element: <HomePage /> },
+      { path: 'home', element: <HomePage /> },
     ],
   },
 ])
