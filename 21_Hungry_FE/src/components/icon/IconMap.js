@@ -15,6 +15,11 @@ import familyDefault from '../../assets/icon/navi/family.svg?react'
 import saveDefault from '../../assets/icon/navi/save.svg?react'
 import todayDefault from '../../assets/icon/navi/today.svg?react'
 
+import cardEtc from '../../assets/icon/card/etc.svg?react'
+import cardHospital from '../../assets/icon/card/hospital.svg?react'
+import cardDrug from '../../assets/icon/card/drug.svg?react'
+import cardDoctor from '../../assets/icon/card/doctor.svg?react'
+
 export const iconMap = {
   'checkbox-checked': checkboxChecked,
   'checkbox-default': checkboxDefault,
@@ -31,4 +36,9 @@ export const iconMap = {
   'save-active': saveActive,
   'today-default': todayDefault,
   'today-active': todayActive,
+
+  'card-etc': cardEtc,
+  'card-hospital': cardHospital,
+  'card-drug': cardDrug,
+  'card-doctor': cardDoctor,
 }
