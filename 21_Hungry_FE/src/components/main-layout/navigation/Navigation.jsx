@@ -25,7 +25,13 @@ function Navigation() {
       {navigationItems.map((item) => (
         <button key={item.key} onClick={() => navigate(item.path)} className='nav__item'>
           {location.pathname === item.path ? (
-            <Icon name={item.activeIcon} width={54} height={54} />
+            item.path === '/today' ? (
+              <Icon name={item.activeIcon} width={50} />
+            ) : (
+              <Icon name={item.activeIcon} width={54} height={54} />
+            )
+          ) : item.path === '/today' ? (
+            <Icon name={item.defaultIcon} width={50} />
           ) : (
             <div className='nav__item--default'>
               <Icon name={item.defaultIcon} width={36} height={36} />
