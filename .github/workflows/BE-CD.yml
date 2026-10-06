@@ -67,7 +67,19 @@ jobs:
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "$EC2_HOST" > ~/.ssh/known_hosts
+          for attempt in 1 2 3 4 5; do
+            if ssh-keyscan -T 10 -H "$EC2_HOST" > ~/.ssh/known_hosts \
+              && test -s ~/.ssh/known_hosts; then
+              break
+            fi
+
+            if [ "$attempt" -eq 5 ]; then
+              echo "EC2 SSH host key scan failed after 5 attempts." >&2
+              exit 1
+            fi
+
+            sleep 5
+          done
           chmod 600 ~/.ssh/known_hosts
 
       - name: Deploy backend
@@ -77,6 +89,9 @@ jobs:
           ssh \
             -o ServerAliveInterval=30 \
             -o ServerAliveCountMax=20 \
+            -o ConnectTimeout=15 \
+            -o ConnectionAttempts=5 \
+            -o BatchMode=yes \
             -i ~/.ssh/deploy_key \
             "ec2-user@$EC2_HOST" \
             bash -se -- "/home/ec2-user/21_Hungry" <<'REMOTE'
