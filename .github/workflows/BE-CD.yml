@@ -74,7 +74,11 @@ jobs:
         env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
         run: |
-          ssh -i ~/.ssh/deploy_key "ec2-user@$EC2_HOST" \
+          ssh \
+            -o ServerAliveInterval=30 \
+            -o ServerAliveCountMax=20 \
+            -i ~/.ssh/deploy_key \
+            "ec2-user@$EC2_HOST" \
             bash -se -- "/home/ec2-user/21_Hungry" <<'REMOTE'
           set -Eeuo pipefail
 
