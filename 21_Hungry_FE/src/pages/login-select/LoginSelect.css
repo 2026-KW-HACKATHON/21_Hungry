@@ -1,0 +1,24 @@
+.LoginSelect__button{
+  width: 92%;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: auto;
+  color: #FFFFFF;
+  box-shadow: 0 5px 0 #1899D6;
+  font-family: var(--font-extrabold);
+  background-color: #1CB0F6;
+  margin-bottom: 3.4%;
+}
+.LoginSelect__description{
+    font-family: var(--font-extrabold);
+    width: 92%;
+    height:30px;
+    padding: 0;
+    margin: 0 auto 0 auto;
+    margin-bottom: 3.2%;
+    font-size: 14px;
+    color: #BFBFBF;
+    text-align: center;
+}

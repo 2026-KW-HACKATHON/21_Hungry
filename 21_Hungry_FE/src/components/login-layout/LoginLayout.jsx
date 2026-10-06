@@ -11,7 +11,6 @@ function LoginLayout() {
         <div className='loginlayout__page'>
             <Outlet />
         </div>
-        <button className='loginlayout__nextButton'>다음</button>
     </div>
   )
 }
