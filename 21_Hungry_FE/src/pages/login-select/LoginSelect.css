@@ -1,4 +1,108 @@
-.LoginSelect__button{
+.LoginSelectPage{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.LoginSelect__input{
+    width: 92%;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 3.4%;
+    margin-bottom: 1.1%;
+    padding-left: 5.2%;
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #B3B3B3;
+    background-color: #F7F7F7;
+    border: 2px solid #E5E5E5;
+}
+.LoginSelect__allowButton{
+    width: 92%;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-bottom: 1.7%;
+    text-align: center;
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #62D411;
+    box-shadow: 0 5px 0 #66BD0F;
+}
+.Divider{
+    width: 92%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-align: center;
+    margin: 0 auto;
+    gap: 15px;
+    margin-bottom: 1.7%;
+}
+.Divider__line{
+    flex : 1;
+    height: 1px;
+    background-color: #E5E5E5;
+}
+.Divider__text{
+    font-size: 16px;
+    color: #E5E5E5;
+    white-space: nowrap;
+}
+.LoginSelect__socialLogin{
+    width: 92%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-bottom: 1.7%;
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #4D4D4D;
+    gap:2.7%;
+    opacity: 0.25;
+
+}
+.LoginSelect__socialLoginButton--kakao,
+.LoginSelect__socialLoginButton--google
+{
+    width: 48.6%;
+    height: 50px;
+    margin: 0 auto;
+    color: #4D4D4D;
+    flex-shrink: 0;
+    border-radius: 15px;
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    background-color: #FFFFFF;
+    border: 2px solid #E5E5E5;
+    box-shadow: 0 3px 0 #E5E5E5;
+     
+}
+
+.LoginSelect__gotosignup{
+    font-family: var(--font-extrabold);
+    width: 92%;
+    height:30px;
+    padding: 0;
+    margin: 0 auto 0 auto;
+    margin-bottom: 3.2%;
+    font-size: 14px;
+    color: #BFBFBF;
+    text-align: center;
+}
+
+.LoginSelect__loginButton{
   width: 92%;
   height: 55px;
   flex-shrink: 0;
@@ -11,14 +115,4 @@
   background-color: #1CB0F6;
   margin-bottom: 3.4%;
 }
-.LoginSelect__description{
-    font-family: var(--font-extrabold);
-    width: 92%;
-    height:30px;
-    padding: 0;
-    margin: 0 auto 0 auto;
-    margin-bottom: 3.2%;
-    font-size: 14px;
-    color: #BFBFBF;
-    text-align: center;
-}
+
