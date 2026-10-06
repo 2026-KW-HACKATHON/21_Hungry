@@ -3,8 +3,12 @@ import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from '../components/main-layout/MainLayout'
 import LoginLayout from '../components/login-layout/LoginLayout'
 
+import LoginSelect from '../pages/login-select/LoginSelect'
 import LoginPage from '../pages/login/LoginPage'
-import SignupPage from '../pages/signup/SignupPage'
+import SignupRole from '../pages/signup-role/SignupRole'
+import ServiceInfo from '../pages/service_Info/ServiceInfo'
+import SignupSelect from '../pages/signup-select/SiginSelect'
+import SignupMainuser from '../pages/signup-mainuser/SignupMainuser'
 
 import TodayPage from '../pages/today/TodayPage'
 import DocPage from '../pages/doc/DocPage'
@@ -19,10 +23,30 @@ export const AppRouter = createBrowserRouter([
     children: [{ path: '', element: <LoginPage /> }],
   },
   {
-    path : '/signup', 
+    path: '/loginselect',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <LoginSelect /> }],
+  },
+  {
+    path: '/signupselect',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupSelect /> }],
+  },
+  {
+    path: '/serviceinfo',
+    element: "",
+    children: [{ path: '', element: <ServiceInfo /> }],
+  },
+  {
+    path: '/signupmainuser',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupMainuser /> }],
+  },
+  {
+    path : '/signuprole', 
     element:<LoginLayout/>,
     children: [
-      { path: '', element: <SignupPage /> }
+      { path: '', element: <SignupRole /> }
     ]
   },
   {
