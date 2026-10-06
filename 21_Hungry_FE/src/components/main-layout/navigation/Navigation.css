@@ -14,7 +14,7 @@
   padding: 11px 28px 20px;
 
   background-color: #fff;
-  border-top: 2px solid #e6e6e6;
+  border-top: 2px solid var(--color-border);
 }
 
 .nav__item {
