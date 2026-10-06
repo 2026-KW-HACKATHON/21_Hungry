@@ -3,8 +3,27 @@ import './TodayPage.css'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import TitleHeader from '../../components/title-header/TitleHeader'
 import DayCard from './component/DayCard'
+import ReqCard from './component/ReqCard'
 
 function TodayPage() {
+  const reqData = [
+    {
+      id: 1,
+      category: '기타 돌봄',
+      date: '2026년 06월 01일',
+      time: '10:00',
+      family: '가족1',
+      description: '떠넘긴 일정 1',
+    },
+    {
+      id: 2,
+      category: '약 복용',
+      date: '2026년 06월 02일',
+      time: '10:00',
+      family: '가족1',
+      description: '떠넘긴 일정 1',
+    },
+  ]
   const scheduleData = [
     {
       id: 1,
@@ -53,6 +72,9 @@ function TodayPage() {
       />
       <div className='today__content'>
         <div className='today__content--cards'>
+          {reqData.map((schedule) => (
+            <ReqCard key={schedule.id} schedule={schedule} />
+          ))}
           {scheduleData.map((schedule) => (
             <DayCard key={schedule.id} schedule={schedule} />
           ))}
