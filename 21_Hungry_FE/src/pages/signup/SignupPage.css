@@ -2,6 +2,36 @@
     display: flex;
     flex-direction: column;
 }
-.SignupPage__title{
-    
+.Signup__SelectUserType{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Signup__UserTypeBox--MainUser,
+.Signup__UserTypeBox--SubUser,
+.Signup__UserTypeBox--Parent{
+    width: 92%;
+    height: 120px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: 2px solid #E5E5E5;
+    box-shadow: 0 5px 0 #E5E5E5;
+    margin-bottom: 15px;
+}
+
+.Signup__UserTypeBox__Title--MainUser,
+.Signup__UserTypeBox__Title--SubUser,
+.Signup__UserTypeBox__Title--Parent{
+    font-family: var(--font-extraboldfont);
+    font-size: 16px;
+    color: #4D4D4D;
+    margin :20px 0 15px 20px;
+}
+.Signup__UserTypeBox__Description--MainUser,
+.Signup__UserTypeBox__Description--SubUser,
+.Signup__UserTypeBox__Description--Parent{
+    font-family: var(--font-extraboldfont);
+    font-size: 14px;
+    color: #4D4D4D80;
+    margin :0px 0 0px 20px;
 }
