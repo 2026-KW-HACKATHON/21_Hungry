@@ -161,7 +161,7 @@ class Phase3IntegrationTests {
         assertEquals(0,data.get("occurrences").size());
         assertEquals(200,send("GET","/api/v1/task-series/"+data.get("seriesId").asText(),null,token,null).statusCode());
         String recurring=createBody(date,"10:00",30,"반복").replace("\"ONCE\"","\"DAILY\"");
-        assertEquals(400,send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring,token,"unsupported-repeat").statusCode());
+        assertEquals(201,send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring,token,"phase4-repeat").statusCode());
         String medication=createBody(date,"10:00",30,"복약").replace("\"OTHER\"","\"MEDICATION\"");
         assertEquals(400,send("POST","/api/v1/care-groups/"+GROUP+"/task-series",medication,token,"unsupported-med").statusCode());
     }

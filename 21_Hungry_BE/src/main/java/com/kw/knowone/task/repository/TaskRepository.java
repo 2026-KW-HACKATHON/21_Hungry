@@ -40,11 +40,34 @@ public class TaskRepository {
     }
     public Optional<Series> findSeries(UUID id) {
         return jdbc.query("""
-                SELECT s.id,s.group_id,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+                SELECT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
                        r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
                 FROM task_series s JOIN task_series_revision r
                   ON r.series_id=s.id AND r.revision_no=s.current_revision_no WHERE s.id=?
                 """, this::mapSeries, id).stream().findFirst();
+    }
+    public List<Series> findGeneratableSeries() {
+        return jdbc.query("""
+                SELECT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+                       r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
+                FROM task_series s JOIN care_group g ON g.id=s.group_id AND g.status='ACTIVE'
+                JOIN task_series_revision r ON r.series_id=s.id AND r.revision_no=s.current_revision_no
+                WHERE s.kind<>'MEDICATION'
+                ORDER BY s.group_id,s.id
+                """, this::mapSeries);
+    }
+    public List<Occurrence> findSeriesOccurrences(UUID seriesId) {
+        return jdbc.query(OCCURRENCE_SELECT + " WHERE o.series_id=? ORDER BY o.anchor_date,o.id",
+                this::mapOccurrence, seriesId);
+    }
+    public List<Occurrence> findFutureSeriesOccurrences(UUID seriesId, Instant cutoff) {
+        return jdbc.query(OCCURRENCE_SELECT +
+                " WHERE o.series_id=? AND o.starts_at>=? ORDER BY o.anchor_date,o.id",
+                this::mapOccurrence, seriesId, Timestamp.from(cutoff));
+    }
+    public Optional<Occurrence> findBySeriesAnchor(UUID seriesId, LocalDate anchorDate) {
+        return jdbc.query(OCCURRENCE_SELECT + " WHERE o.series_id=? AND o.anchor_date=?",
+                this::mapOccurrence, seriesId, anchorDate).stream().findFirst();
     }
     public List<TaskDtos.Medication> occurrenceMedications(UUID occurrenceId) {
         return jdbc.query("""
@@ -103,6 +126,27 @@ public class TaskRepository {
                 VALUES (?,1,?,?,?,'ONCE',?,?,ARRAY[]::smallint[],?,?,?,?)
                 """, seriesId,groupId,title,description,date,date,time,duration,Timestamp.from(now),actor);
     }
+    public void insertRevision(UUID seriesId, UUID groupId, int revisionNo, String title, String description,
+            String recurrence, LocalDate firstDate, LocalDate lastDate, List<Integer> weekdays,
+            LocalTime time, int duration, UUID actor, Instant effectiveAt) {
+        jdbc.update("""
+                INSERT INTO task_series_revision(series_id,revision_no,group_id,title,description,recurrence,
+                  first_date,last_date,weekdays,local_time,duration_minutes,effective_at,changed_by)
+                VALUES (?,?,?,?,?,?,?, ?,?::smallint[],?,?,?,?)
+                """, seriesId,revisionNo,groupId,title,description,recurrence,firstDate,lastDate,
+                "{"+weekdays.stream().map(String::valueOf).collect(java.util.stream.Collectors.joining(","))+"}",
+                time,duration,Timestamp.from(effectiveAt),actor);
+    }
+    public int advanceSeries(UUID seriesId, long version, int revisionNo) {
+        return jdbc.update("UPDATE task_series SET current_revision_no=?,version=version+1 WHERE id=? AND version=?",
+                revisionNo,seriesId,version);
+    }
+    public int stopSeries(UUID seriesId, long version, LocalDate stopDate) {
+        return jdbc.update("""
+                UPDATE task_series SET stop_from_date=CASE WHEN stop_from_date IS NULL OR stop_from_date>? THEN ? ELSE stop_from_date END,
+                  version=version+1 WHERE id=? AND version=?
+                """,stopDate,stopDate,seriesId,version);
+    }
     public UUID insertOccurrence(UUID groupId, UUID seriesId, LocalDate date, String title, String description,
             Instant starts, Instant ends, UUID assignee) {
         UUID id=UUID.randomUUID(); jdbc.update("""
@@ -111,6 +155,53 @@ public class TaskRepository {
                 VALUES (?,?,?,1,?,?,?,?,?,?,?)
                 """, id,groupId,seriesId,date,title,description,Timestamp.from(starts),Timestamp.from(ends),assignee,
                 assignee == null ? null : "AUTO"); return id;
+    }
+    public UUID insertOccurrenceIfAbsent(UUID groupId, UUID seriesId, int revisionNo, LocalDate date,
+            String title, String description, Instant starts, Instant ends) {
+        UUID id=UUID.randomUUID();
+        return jdbc.query("""
+                INSERT INTO task_occurrence(id,group_id,series_id,revision_no,anchor_date,title,description,starts_at,ends_at)
+                VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT (series_id,anchor_date) DO NOTHING RETURNING id
+                """,(rs,n)->rs.getObject(1,UUID.class),id,groupId,seriesId,revisionNo,date,title,description,
+                Timestamp.from(starts),Timestamp.from(ends)).stream().findFirst().orElse(null);
+    }
+    public int assignAuto(UUID occurrenceId, UUID userId) {
+        return jdbc.update("""
+                UPDATE task_occurrence SET assignee_user_id=?,assignment_origin='AUTO'
+                WHERE id=? AND status='PENDING' AND assignee_user_id IS NULL
+                """,userId,occurrenceId);
+    }
+    public int updateOccurrenceOverride(UUID id,long version,String title,String description,Instant starts,Instant ends,
+            boolean keepAssignee) {
+        return jdbc.update("""
+                UPDATE task_occurrence SET title=?,description=?,starts_at=?,ends_at=?,is_override=true,
+                  assignee_user_id=CASE WHEN ? THEN assignee_user_id ELSE NULL END,
+                  assignment_origin=CASE WHEN ? THEN assignment_origin ELSE NULL END,version=version+1
+                WHERE id=? AND version=? AND status='PENDING'
+                """,title,description,Timestamp.from(starts),Timestamp.from(ends),keepAssignee,keepAssignee,id,version);
+    }
+    public int applySeriesRevision(UUID id,long version,int revisionNo,String title,String description,
+            Instant starts,Instant ends,boolean keepAssignee) {
+        return jdbc.update("""
+                UPDATE task_occurrence SET revision_no=?,title=?,description=?,starts_at=?,ends_at=?,is_override=false,
+                  assignee_user_id=CASE WHEN ? THEN assignee_user_id ELSE NULL END,
+                  assignment_origin=CASE WHEN ? THEN assignment_origin ELSE NULL END,version=version+1
+                WHERE id=? AND version=? AND status='PENDING'
+                """,revisionNo,title,description,Timestamp.from(starts),Timestamp.from(ends),keepAssignee,keepAssignee,id,version);
+    }
+    public int cancelOccurrence(UUID id,long version,String reason,Instant now) {
+        return jdbc.update("""
+                UPDATE task_occurrence SET status='CANCELED',cancel_reason=?,canceled_at=?,version=version+1
+                WHERE id=? AND version=? AND status='PENDING'
+                """,reason,Timestamp.from(now),id,version);
+    }
+    public int reviveRuleChanged(UUID id,long version,int revisionNo,String title,String description,
+            Instant starts,Instant ends) {
+        return jdbc.update("""
+                UPDATE task_occurrence SET revision_no=?,title=?,description=?,starts_at=?,ends_at=?,status='PENDING',
+                  cancel_reason=NULL,canceled_at=NULL,is_override=false,assignee_user_id=NULL,assignment_origin=NULL,
+                  version=version+1 WHERE id=? AND version=? AND status='CANCELED' AND cancel_reason='RULE_CHANGED'
+                """,revisionNo,title,description,Timestamp.from(starts),Timestamp.from(ends),id,version);
     }
     public List<Candidate> candidates(UUID groupId) {
         return jdbc.query("""
@@ -136,11 +227,82 @@ public class TaskRepository {
         return jdbc.query("""
                 SELECT h.id,h.occurrence_id,h.reason,h.previous_assignee_id,prev.display_name,
                        h.requested_by,req.display_name,h.status,h.accepted_by,acc.display_name,
-                       h.closed_at,h.close_reason,h.version
+                       h.closed_at,h.close_reason,h.created_at,h.version
                 FROM handoff_request h LEFT JOIN app_user prev ON prev.id=h.previous_assignee_id
                 LEFT JOIN app_user req ON req.id=h.requested_by LEFT JOIN app_user acc ON acc.id=h.accepted_by
                 WHERE h.occurrence_id=? AND h.status='OPEN'
                 """,this::mapHandoff,occurrenceId).stream().findFirst();
+    }
+    public Optional<Handoff> findHandoff(UUID id) {
+        return jdbc.query("""
+                SELECT h.id,h.occurrence_id,h.reason,h.previous_assignee_id,prev.display_name,
+                       h.requested_by,req.display_name,h.status,h.accepted_by,acc.display_name,
+                       h.closed_at,h.close_reason,h.created_at,h.version
+                FROM handoff_request h LEFT JOIN app_user prev ON prev.id=h.previous_assignee_id
+                LEFT JOIN app_user req ON req.id=h.requested_by LEFT JOIN app_user acc ON acc.id=h.accepted_by
+                WHERE h.id=?
+                """,this::mapHandoff,id).stream().findFirst();
+    }
+    public UUID openHandoff(UUID groupId,UUID occurrenceId,String reason,UUID previous,UUID requestedBy) {
+        UUID id=UUID.randomUUID();
+        int changed=jdbc.update("""
+                INSERT INTO handoff_request(id,group_id,occurrence_id,reason,previous_assignee_id,requested_by,status)
+                SELECT ?,?,?,?,?,?,'OPEN' WHERE NOT EXISTS
+                  (SELECT 1 FROM handoff_request WHERE occurrence_id=? AND status='OPEN')
+                """,id,groupId,occurrenceId,reason,previous,requestedBy,occurrenceId);
+        return changed==1?id:null;
+    }
+    public int releaseAssignee(UUID id,long version) {
+        return jdbc.update("""
+                UPDATE task_occurrence SET assignee_user_id=NULL,assignment_origin=NULL,version=version+1
+                WHERE id=? AND version=? AND status='PENDING' AND assignee_user_id IS NOT NULL
+                """,id,version);
+    }
+    public int acceptHandoff(UUID handoffId,long handoffVersion,UUID occurrenceId,long occurrenceVersion,
+            UUID userId,Instant now) {
+        int task=jdbc.update("""
+                UPDATE task_occurrence SET assignee_user_id=?,assignment_origin='HANDOFF',version=version+1
+                WHERE id=? AND version=? AND status='PENDING' AND assignee_user_id IS NULL
+                """,userId,occurrenceId,occurrenceVersion);
+        if(task!=1)return 0;
+        int handoff=jdbc.update("""
+                UPDATE handoff_request SET status='ACCEPTED',accepted_by=?,closed_at=?,version=version+1
+                WHERE id=? AND version=? AND status='OPEN'
+                """,userId,Timestamp.from(now),handoffId,handoffVersion);
+        if(handoff!=1)throw new IllegalStateException("Concurrent handoff acceptance");
+        return 1;
+    }
+    public int expireOpenHandoff(UUID handoffId,long version,Instant now) {
+        return jdbc.update("""
+                UPDATE handoff_request SET status='EXPIRED',closed_at=?,close_reason='TASK_OVERDUE',version=version+1
+                WHERE id=? AND version=? AND status='OPEN'
+                """,Timestamp.from(now),handoffId,version);
+    }
+    public List<Handoff> listHandoffs(UUID groupId,String status,int fetch,CursorService.Value cursor) {
+        String sql="""
+                SELECT h.id,h.occurrence_id,h.reason,h.previous_assignee_id,prev.display_name,
+                       h.requested_by,req.display_name,h.status,h.accepted_by,acc.display_name,
+                       h.closed_at,h.close_reason,h.created_at,h.version
+                FROM handoff_request h LEFT JOIN app_user prev ON prev.id=h.previous_assignee_id
+                LEFT JOIN app_user req ON req.id=h.requested_by LEFT JOIN app_user acc ON acc.id=h.accepted_by
+                WHERE h.group_id=? AND h.status=?
+                """;
+        List<Object> args=new ArrayList<>(List.of(groupId,status));
+        if(cursor!=null){sql+=" AND (h.created_at,h.id)<(?,?)";args.add(Timestamp.from(cursor.time()));args.add(cursor.id());}
+        sql+=" ORDER BY h.created_at DESC,h.id DESC LIMIT ?";args.add(fetch);
+        return jdbc.query(sql,this::mapHandoff,args.toArray());
+    }
+    public List<Handoff> findOverdueOpenHandoffs(UUID groupId,Instant now) {
+        return jdbc.query("""
+                SELECT h.id,h.occurrence_id,h.reason,h.previous_assignee_id,prev.display_name,
+                       h.requested_by,req.display_name,h.status,h.accepted_by,acc.display_name,
+                       h.closed_at,h.close_reason,h.created_at,h.version
+                FROM handoff_request h JOIN task_occurrence o ON o.id=h.occurrence_id
+                LEFT JOIN app_user prev ON prev.id=h.previous_assignee_id
+                LEFT JOIN app_user req ON req.id=h.requested_by LEFT JOIN app_user acc ON acc.id=h.accepted_by
+                WHERE h.group_id=? AND h.status='OPEN' AND o.status='PENDING' AND o.ends_at<=?
+                ORDER BY h.created_at,h.id
+                """,this::mapHandoff,groupId,Timestamp.from(now));
     }
     public int assign(UUID id,long version,UUID assignee) { return jdbc.update("""
             UPDATE task_occurrence SET assignee_user_id=?,assignment_origin='MANUAL',version=version+1
@@ -159,9 +321,38 @@ public class TaskRepository {
             WHERE occurrence_id=? AND status='OPEN'
             """,Timestamp.from(now),reason,occurrenceId); }
     public void cancelPendingNotifications(UUID occurrenceId) { jdbc.update("""
-            UPDATE notification_event SET status='CANCELED'
-            WHERE occurrence_id=? AND status IN ('PENDING','FAILED')
+            UPDATE notification_event SET status='CANCELED',lease_token=NULL,lease_until=NULL
+            WHERE occurrence_id=? AND status IN ('PENDING','FAILED','RUNNING')
             """,occurrenceId); }
+    public void cancelPendingDeliveries(UUID occurrenceId) { jdbc.update("""
+            UPDATE notification_delivery d SET status='CANCELED',lease_token=NULL,lease_until=NULL
+            FROM notification n JOIN notification_event e ON e.id=n.event_id
+            WHERE d.notification_id=n.id AND e.occurrence_id=? AND d.status IN ('PENDING','FAILED','RUNNING')
+            """,occurrenceId); }
+    public List<Occurrence> futureAssigned(UUID groupId,UUID userId,Instant now) {
+        return jdbc.query(OCCURRENCE_SELECT+" WHERE o.group_id=? AND o.assignee_user_id=? AND o.status='PENDING' AND o.starts_at>=? ORDER BY o.starts_at,o.id",
+                this::mapOccurrence,groupId,userId,Timestamp.from(now));
+    }
+    public List<Occurrence> homeToday(UUID groupId,UUID userId,Instant from,Instant to,int fetch) {
+        return jdbc.query(OCCURRENCE_SELECT+" WHERE o.group_id=? AND o.assignee_user_id=? AND o.status='PENDING' AND o.starts_at>=? AND o.starts_at<? ORDER BY o.starts_at,o.id LIMIT ?",
+                this::mapOccurrence,groupId,userId,Timestamp.from(from),Timestamp.from(to),fetch);
+    }
+    public List<Occurrence> homeUnassigned(UUID groupId,Instant now,int fetch) {
+        return jdbc.query(OCCURRENCE_SELECT+" WHERE o.group_id=? AND o.status='PENDING' AND o.assignee_user_id IS NULL AND o.starts_at>=? ORDER BY o.starts_at,o.id LIMIT ?",
+                this::mapOccurrence,groupId,Timestamp.from(now),fetch);
+    }
+    public List<Occurrence> homeOverdue(UUID groupId,Instant now,int fetch) {
+        return jdbc.query(OCCURRENCE_SELECT+" WHERE o.group_id=? AND o.status='PENDING' AND o.ends_at<=? ORDER BY o.starts_at,o.id LIMIT ?",
+                this::mapOccurrence,groupId,Timestamp.from(now),fetch);
+    }
+    public int reviewEncounterCount(UUID groupId) {
+        return jdbc.queryForObject("""
+                SELECT count(DISTINCT e.id) FROM encounter e
+                JOIN encounter_revision r ON r.encounter_id=e.id AND r.is_current
+                JOIN extracted_item x ON x.revision_id=r.id
+                WHERE e.group_id=? AND e.deleted_at IS NULL AND x.review_state='NEEDS_REVIEW'
+                """,Integer.class,groupId);
+    }
     public int reopen(UUID id,long version,boolean keepAssignee) { return jdbc.update("""
             UPDATE task_occurrence SET status='PENDING',completed_by=NULL,performed_by=NULL,completed_at=NULL,
               assignee_user_id=CASE WHEN ? THEN assignee_user_id ELSE NULL END,
@@ -189,13 +380,13 @@ public class TaskRepository {
             r.getObject("performed_by",UUID.class),r.getString("performed_name"),instant(r,"completed_at"),r.getString("cancel_reason"),
             instant(r,"canceled_at"),r.getLong("version"));}
     private Series mapSeries(ResultSet r,int n)throws SQLException{Array a=r.getArray("weekdays");Object[] raw=a==null?new Object[0]:(Object[])a.getArray();List<Integer> weekdays=java.util.Arrays.stream(raw).map(value->((Number)value).intValue()).toList();return new Series(
-            r.getObject("id",UUID.class),r.getObject("group_id",UUID.class),r.getString("kind"),r.getString("title"),r.getString("description"),
+            r.getObject("id",UUID.class),r.getObject("group_id",UUID.class),r.getObject("created_by",UUID.class),r.getString("kind"),r.getString("title"),r.getString("description"),
             r.getString("recurrence"),r.getObject("first_date",LocalDate.class),r.getObject("last_date",LocalDate.class),weekdays,
             r.getObject("local_time",LocalTime.class),r.getInt("duration_minutes"),r.getObject("stop_from_date",LocalDate.class),
             r.getInt("current_revision_no"),r.getLong("version"));}
     private Handoff mapHandoff(ResultSet r,int n)throws SQLException{return new Handoff(r.getObject(1,UUID.class),r.getObject(2,UUID.class),r.getString(3),
             r.getObject(4,UUID.class),r.getString(5),r.getObject(6,UUID.class),r.getString(7),r.getString(8),r.getObject(9,UUID.class),
-            r.getString(10),instant(r,"closed_at"),r.getString(12),r.getLong(13));}
+            r.getString(10),instant(r,"closed_at"),r.getString(12),r.getTimestamp(13).toInstant(),r.getLong(14));}
     private Audit mapAudit(ResultSet r,int n)throws SQLException{return new Audit(r.getObject(1,UUID.class),r.getString(2),r.getObject(3,UUID.class),
             r.getString(4),r.getString(5),r.getString(6),r.getTimestamp(7).toInstant());}
     private TaskDtos.Medication mapMedication(ResultSet r,int n)throws SQLException{return new TaskDtos.Medication(

@@ -10,6 +10,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
+import java.time.LocalDate;
+import com.kw.knowone.task.dto.TaskDtos;
 
 public final class GroupDtos {
     private GroupDtos() { }
@@ -24,4 +26,9 @@ public final class GroupDtos {
     public record PriorityRequest(@NotEmpty List<@Valid PriorityItem> members) { }
     public record PriorityItem(@NotNull UUID memberId, @Min(1) @Max(99) int priority,
             @PositiveOrZero long expectedVersion) { }
+    public record LeaveRequest(@PositiveOrZero long expectedVersion) { }
+    public record LeaveResponse(String membershipStatus, List<UUID> releasedOccurrenceIds) { }
+    public record HomeTaskList(List<TaskDtos.Task> items, boolean hasMore) { }
+    public record Home(UUID groupId, LocalDate date, HomeTaskList todayMyTasks,
+            HomeTaskList unassignedFutureTasks, HomeTaskList overdueTasks, int reviewEncounterCount) { }
 }

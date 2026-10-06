@@ -26,4 +26,10 @@ public class ScheduleMutationService {
         authorizationCheck.run();
         return idempotencyService.executeLocked(userId, operation, idempotencyKey, request, mutation);
     }
+
+    @Transactional
+    public void executeSystem(Runnable mutation) {
+        jdbcTemplate.queryForList("SELECT id FROM schedule_guard WHERE id = 1 FOR UPDATE");
+        mutation.run();
+    }
 }

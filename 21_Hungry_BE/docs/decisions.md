@@ -105,3 +105,15 @@ U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지�
 | D22 | 가능 시간은 DB의 최종 날짜 구간을 단일 판정 원천으로 사용하며 미등록 날짜는 불가로 처리 | FULL/PARTIAL/custom, 자정 넘는 근무·업무, 인접 구간 병합을 동일 계산기로 PostgreSQL 통합 검증 |
 | D23 | 단발 일정도 `task_series` → `task_series_revision` → `task_occurrence`를 사용하고 별도 상태 모델을 만들지 않음 | 14일 밖 ONCE는 시리즈만 저장하고 발생 배열이 비어 있는 계약 유지 |
 | D24 | 3단계 T03/T04는 일반 ONCE만 PARTIAL로 공개하고 반복·MEDICATION 입력은 오류로 거부 | 미구현 입력을 일반 단발로 변환하거나 처방 데이터 없이 승인하지 않음 |
+
+## 9. 4단계에서 확정한 기술 기준
+
+작성: 2026-10-07, Asia/Seoul.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D25 | 요청 처리와 매일 scheduler가 같은 `TaskGenerationService`를 사용하고 모두 `schedule_guard` 뒤에서 14일 horizon을 생성 | `(series_id,anchor_date)` 충돌 무시와 기존 행 비갱신으로 재실행·동시 실행에도 예외/완료/취소 tombstone 보존 |
+| D26 | 4시간 묶음은 한 생성 배치의 같은 공동체·KST 날짜 신규 업무만 대상으로 하며 `startsAt→seriesId→anchorDate→id` 순으로 고정 | 13/17/21 연쇄 금지, 중간 전체 가능 시간·전 공동체 충돌·최상위 순위/최소 건수 교집합을 PostgreSQL 통합 검증 |
+| D27 | 반복 일괄 수정의 token 발급 시각을 cutoff와 동일하게 사용하고 영향 ID/version·seriesVersion·추가 날짜를 state fingerprint에 포함 | 수 밀리초 cutoff 차이로 정상 저장이 stale이 되는 문제를 제거하고 저장 시 상태·현재 시각을 재검증 |
+| D28 | 경과 OPEN 인계는 수락 트랜잭션 전에 독립 guard 트랜잭션으로 EXPIRED 커밋 | 오류 응답 롤백으로 만료 기록이 사라지지 않으며 미래 이동 시 새 미배정 사건을 별도로 생성 |
+| D29 | 4단계 생성기는 일반 일정만 처리하고 MEDICATION 생성·일괄 수정은 처방 확인 단계까지 명시적으로 거부 | 약 snapshot 없이 일반 반복처럼 생성해 성공으로 보이지 않도록 T03/T04/G08을 필요한 범위에서 PARTIAL 유지 |

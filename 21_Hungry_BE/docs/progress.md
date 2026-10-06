@@ -1,10 +1,10 @@
 # 구현 진행표
 
-갱신: 2026-10-06, Asia/Seoul
+갱신: 2026-10-07, Asia/Seoul
 
 ## 현재 단계
 
-1·2단계 결과를 유지하면서 3단계 가능 시간 V01~V06, 단발 일정 T01~T04/T09/T12/T13/T15와 공통 일정 변경·자동 배정을 구현했다. T03/T04는 ONCE 일반 일정 계약만 지원하므로 PARTIAL이며 반복·처방 일정은 4단계 이후 범위다.
+1~3단계 결과를 유지하면서 4단계 일반 일정 반복·수정·삭제, 4시간 묶음 배정, 인계, 탈퇴, 일정 중심 홈을 구현했다. 일반 일정은 ONCE/DAILY/WEEKLY와 14일 horizon을 지원한다. MEDICATION 생성·일괄 수정은 처방 확인 단계까지, G08의 진료 집계는 진료 기능 구현 전까지 PARTIAL이다.
 
 | 영역 | 상태 | 근거 |
 |---|---|---|
@@ -19,9 +19,9 @@
 | 공동체 G01~G06 | DONE | 실제 group_id ACTIVE 멤버십, 가입 예외 조건, 우선순위 버전 검사 |
 | 공통 멱등·preview 기반 | DONE | guard → 최신 인가 → replay 순서, HMAC preview의 사용자·operation·payload·state·만료 검증 |
 | 가능 시간 V01~V06 | DONE | FULL/PARTIAL/custom/미등록, 근무 제외·자정 분할·병합, preview/save·미래 담당 해제 |
-| 단발 일정 조회·생성 | PARTIAL | T01/T02 DONE, T03/T04는 ONCE 일반 일정만 구현. 반복·MEDICATION 계약은 미구현 |
+| 일반 일정 조회·생성 | PARTIAL | T01/T02 및 일반 ONCE/DAILY/WEEKLY T03/T04 구현. MEDICATION 생성 계약은 처방 단계까지 PARTIAL |
 | 배정·완료·이력 | DONE | T09/T12/T13/T15, 전 공동체 충돌, 대리 완료, 재열기, audit/outbox |
-| 4단계 일정 기능 | NOT_STARTED | 반복·일괄 수정/삭제·4시간 묶음·T10/T11/T14·G07 이후 |
+| 4단계 일정 기능 | PARTIAL | 일반 일정 T05~T08, 4시간 묶음, T10/T11/T14, G07 DONE. G08 일정 집계 DONE·진료 집계 PARTIAL |
 | CI/Docker/배포 초안 | DONE | BE CI, Dockerfile, prod Compose, Nginx 예시 추가; 실제 배포는 미실행 |
 | 외부 HTTPS/CORS | BLOCKED | 실제 API 도메인·인증서·Vercel Origin·배포 자격증명 필요 |
 | 실기기 녹음 | BLOCKED | iPhone/Android, 확정 MIME·코덱, HTTPS Origin 필요 |
@@ -50,6 +50,8 @@
 | `gradlew.bat test --tests com.kw.knowone.Phase3IntegrationTests --no-daemon` | PASS, 3단계 PostgreSQL 통합 테스트 9개 |
 | `gradlew.bat test --no-daemon` | PASS, 최종 전체 25개 테스트 |
 | `gradlew.bat clean test bootJar --no-daemon` | PASS, 전체 회귀·실행 JAR 생성 |
+| `gradlew.bat test --tests com.kw.knowone.Phase4IntegrationTests --tests com.kw.knowone.PreviewTokenServiceTests --no-daemon` | PASS, 4단계 PostgreSQL 통합 9개·Clock 단위 1개(탈퇴/수락 경쟁 포함) |
+| `gradlew.bat clean test bootJar --no-daemon` (4단계 최종) | PASS, 전체 34개 테스트·실행 JAR 생성; 이후 추가한 탈퇴/수락 경쟁 1개도 단독 PASS |
 | 가능 시간 계산 | PASS, FULL/PARTIAL/custom/미등록, 인접 병합, 자정 넘는 근무·업무, null version 경쟁·강제 DB 실패 전체 롤백 |
 | preview/save | PASS, preview 무변경, 위변조·상태 경쟁 409, 미래 부적합 담당만 해제, OPEN AVAILABILITY 사건 |
 | 자동 배정·충돌 | PASS, priority→KST 주간 건수→member ID, 전 공동체 충돌, 맞닿은 구간 비충돌, 동시 생성 직렬화 |
@@ -71,6 +73,8 @@
 | G04 | DONE | 신규·중복·재가입, guard/audit/outbox/idempotency |
 | G05 | DONE | ACTIVE 구성원만 priority/ID 순 정렬 |
 | G06 | DONE | 권한·중첩 ID 소속·expectedVersion·원자 변경·멱등성 |
+| G07 | DONE | CAREGIVER 탈퇴·LEFT 보존·미래 담당 해제·MEMBER_LEFT 인계·미발송 알림 차단·재가입 행 재사용 |
+| G08 | PARTIAL | 일정 3분류를 실제 task_occurrence에서 정렬·limit 집계. 진료 기능 미구현으로 reviewEncounterCount만 현재 revision 후보를 실제 집계 |
 | V01 | DONE | 활동시간·정렬된 근무 구간·user/work config version 조회 |
 | V02 | DONE | 설정 변경 영향·직접 날짜 clipping·담당 해제 preview |
 | V03 | DONE | guard 재검증·원자 저장·미래 부적합 담당 해제·멱등성 |
@@ -79,22 +83,30 @@
 | V06 | DONE | null version 경쟁·전체 원자 저장·담당 해제·멱등성 |
 | T01 | DONE | 범위·상태·담당·미배정·경과·기록 필터, 안정 커서 페이지네이션 |
 | T02 | DONE | 권한 검사 후 Task DTO 상세와 파생 overdue 반환 |
-| T03 | PARTIAL | ONCE 일반 일정·14일 horizon·결정적 자동 배정 구현; 반복·MEDICATION 미구현 |
-| T04 | PARTIAL | 현재 revision 규칙·약 연결 조회 구현; 반복/처방 생성 계약은 다음 단계 |
+| T03 | PARTIAL | 일반 ONCE/DAILY/WEEKLY·요일·종료일·14일 horizon·재실행 중복 방지 구현; MEDICATION 생성 미구현 |
+| T04 | PARTIAL | 현재 revision 일반 반복 규칙·약 연결 조회 구현; MEDICATION 생성/변경은 처방 단계까지 보류 |
+| T05 | DONE | cutoff·영향 버전·예외 덮어쓰기·미생성 미래 반복분·담당 해제 미리보기 |
+| T06 | DONE | 일반 일정 이번만 anchor 유지 수정 및 SERIES_ALL_PENDING 새 revision·RULE_CHANGED 복구·사용자 취소 보존 |
+| T07 | DONE | OCCURRENCE/SERIES_FROM_SELECTED의 anchor 기준 취소 영향·완료 보존·이동 예외 미리보기 |
+| T08 | DONE | 단건 포함 previewToken 필수·USER_ONE/USER_FUTURE tombstone·stopFromDate·인계/outbox/delivery 원자 종료 |
 | T09 | DONE | ACTIVE 구성원·가능 시간·전 공동체 충돌·version·열린 인계 종료 |
+| T10 | DONE | 담당 해제·이전 담당자·USER_REQUEST OPEN·audit/outbox 원자 반영, 경과/중복 거부 |
+| T11 | DONE | 두 version·ACTIVE·가능 시간·전 공동체 충돌 재검증, 동시 수락 한 명 성공, EXPIRED 별도 커밋 |
 | T12 | DONE | 미배정/경과 포함 완료, performedBy/completedBy 분리, 열린 인계 종료 |
 | T13 | DONE | 완료 snapshot audit, 담당 재검증, 부적합 해제·미경과 OPEN 사건 |
+| T14 | DONE | 상태 필터·createdAt/id 역순 커서·현재 Task snapshot·권한 검사 |
 | T15 | DONE | audit 기반 최소 변경 DTO, createdAt/id 역순 커서 |
 
 ## 다음 단계
 
-4단계에서는 반복 생성, 일괄 수정/삭제, 4시간 묶음, 인계 요청/수락/목록과 G07 이후를 구현한다. 현재 범위에는 JWT, refresh token, 프론트, 처방 확인, AI, 푸시 발송, 실제 배포가 포함되지 않았다.
+다음 단계에서는 진료·파일·AI fake 파이프라인과 이후 처방 확인을 구현한다. MEDICATION 생성 전체 계약은 처방 확인 전까지 PARTIAL이다. 현재 구현에는 JWT, refresh token, 프론트, AI 호출, 실제 푸시 발송, 실제 배포가 포함되지 않았다.
 
-## 3단계 미검증·제한
+## 4단계 미검증·제한
 
-- preview 만료는 주입 Clock 단위 테스트 기반 서비스 검증만 유지했고 실제 5분 대기 시험은 수행하지 않았다.
+- preview 만료는 주입 Clock 단위 테스트로 검증했고 실제 5분 대기는 의도적으로 수행하지 않았다.
 - 날짜 범위 전체 롤백은 실제 PostgreSQL 강제 실패로 확인했으나 수백 날짜 부하 한계는 아직 측정하지 않았다.
-- 반복·MEDICATION 생성, 4시간 묶음, T10/T11/T14는 의도적으로 미구현이며 T03/T04 전체 계약 완료로 표시하지 않았다.
+- MEDICATION 생성·일괄 수정은 처방 확인 데이터가 없어 의도적으로 미구현이며 T03/T04 전체 계약 완료로 표시하지 않았다.
+- G08 진료 확인 건수는 현재 revision의 실제 NEEDS_REVIEW 후보를 집계하지만, 진료 생성 파이프라인 자체가 아직 없어 G08 전체를 DONE으로 표시하지 않았다.
 - 외부 AI·파일·실제 Web Push 호출은 수행하지 않았고 notification_event outbox 적재까지만 검증했다.
 
 ## 환경별 DB 주의사항

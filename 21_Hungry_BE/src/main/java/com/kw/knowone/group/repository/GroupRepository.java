@@ -99,6 +99,27 @@ public class GroupRepository {
         return findMemberById(member.id()).orElseThrow();
     }
 
+    public GroupMember leave(GroupMember member, Instant now) {
+        int changed=jdbcTemplate.update("""
+                UPDATE group_member SET status='LEFT',left_at=?,version=version+1
+                WHERE id=? AND version=? AND status='ACTIVE' AND role='CAREGIVER'
+                """,Timestamp.from(now),member.id(),member.version());
+        if(changed!=1)throw new IllegalStateException("Concurrent membership leave");
+        return findMembership(member.groupId(),member.userId()).orElseThrow();
+    }
+
+    public void cancelUndeliveredNotifications(UUID groupId,UUID userId) {
+        jdbcTemplate.update("""
+                UPDATE notification_delivery d SET status='CANCELED',lease_token=NULL,lease_until=NULL
+                FROM notification n WHERE d.notification_id=n.id AND n.group_id=? AND n.user_id=?
+                  AND d.status IN ('PENDING','FAILED','RUNNING')
+                """,groupId,userId);
+        jdbcTemplate.update("""
+                UPDATE notification_event SET status='CANCELED',lease_token=NULL,lease_until=NULL
+                WHERE group_id=? AND target_user_id=? AND status IN ('PENDING','FAILED','RUNNING')
+                """,groupId,userId);
+    }
+
     private CareGroup mapGroup(ResultSet rs, int rowNum) throws SQLException {
         return new CareGroup(rs.getObject(1, UUID.class), rs.getObject(2, UUID.class), rs.getString(3),
                 rs.getString(4), rs.getString(5), rs.getLong(6));

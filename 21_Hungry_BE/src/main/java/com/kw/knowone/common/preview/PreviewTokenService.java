@@ -32,9 +32,13 @@ public class PreviewTokenService {
     }
 
     public String issue(UUID userId, String operation, String payloadFingerprint, String stateFingerprint) {
+        return issue(userId,operation,payloadFingerprint,stateFingerprint,clock.instant());
+    }
+
+    public String issue(UUID userId, String operation, String payloadFingerprint, String stateFingerprint,
+            Instant issuedAt) {
         ensureConfigured();
-        Instant now = clock.instant();
-        Claims claims = new Claims(userId, operation, payloadFingerprint, stateFingerprint, now, now.plus(ttl));
+        Claims claims = new Claims(userId, operation, payloadFingerprint, stateFingerprint, issuedAt, issuedAt.plus(ttl));
         byte[] payload = write(claims);
         return encode(payload) + "." + encode(sign(payload));
     }
