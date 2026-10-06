@@ -1,3 +1,5 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
+
 function TodayPage() {
   return (
     <div className='today__page'>
@@ -10,6 +12,7 @@ function TodayPage() {
         <div className='today__title--date'>--년 --월 --일</div>
       </div>
       <div className='today__content'></div>
+      <BottomButton content='돌봄 일정 추가하기' />
     </div>
   )
 }

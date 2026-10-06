@@ -3,4 +3,8 @@
  * 그림자, border 설정 관련 변수도 추가할 수 있습니다.
 */
 :root {
+  --color-blue: #1cb0f6;
+  --color-blue-shadow: #1899d6;
+
+  --color-border: #e6e6e6;
 }
