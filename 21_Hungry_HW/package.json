@@ -1,0 +1,9 @@
+{
+  "name": "pillbox-local-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ESP32 복용 스케줄 로컬 통신 테스트",
+  "scripts": { "start": "node server.cjs" },
+  "dependencies": { "express": "^5.1.0" },
+  "engines": { "node": ">=18" }
+}

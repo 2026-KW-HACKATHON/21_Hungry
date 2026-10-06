@@ -1,0 +1,40 @@
+import './Navigation.css'
+
+import { useNavigate, useLocation } from 'react-router-dom'
+import { Icon } from '../../icon/Icon'
+
+function Navigation() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const navigationItems = [
+    { key: 'Doc', path: '/doc', defaultIcon: 'save-default', activeIcon: 'save-active' },
+    {
+      key: 'Schedule',
+      path: '/schedule',
+      defaultIcon: 'calendar-default',
+      activeIcon: 'calendar-active',
+    },
+    { key: 'Today', path: '/today', defaultIcon: 'today-default', activeIcon: 'today-active' },
+    { key: 'Family', path: '/family', defaultIcon: 'family-default', activeIcon: 'family-active' },
+    { key: 'Record', path: '/record', defaultIcon: 'doctor-default', activeIcon: 'doctor-active' },
+  ]
+
+  return (
+    <div className='navigation__container'>
+      {navigationItems.map((item) => (
+        <button key={item.key} onClick={() => navigate(item.path)} className='nav__item'>
+          {location.pathname === item.path ? (
+            <Icon name={item.activeIcon} width={54} height={54} />
+          ) : (
+            <div className='nav__item--default'>
+              <Icon name={item.defaultIcon} width={36} height={36} />
+            </div>
+          )}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+export default Navigation

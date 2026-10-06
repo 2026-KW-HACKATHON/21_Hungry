@@ -1,0 +1,27 @@
+.navigation__container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  max-width: 450px;
+  height: 88px;
+  padding: 13px 30px 21px;
+
+  background-color: #fff;
+  border-top: 2px solid #e6e6e6;
+}
+
+.nav__item--default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 54px;
+  height: 54px;
+}

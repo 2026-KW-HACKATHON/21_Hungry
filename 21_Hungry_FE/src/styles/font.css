@@ -4,3 +4,30 @@
  * 전체적으로 사용할 폰트 패밀리, 크기, 색상 등을 설정할 수 있습니다.
  * 필요에 따라 제목, 본문, 버튼 등 다양한 요소에 대한 폰트 스타일을 추가할 수 있습니다.
 */
+
+@font-face {
+  font-family: 'NanumLight';
+  src: url('../assets/font//NanumSquareRoundL.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'NanumRegular';
+  src: url('../assets/font//NanumSquareRoundR.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'NanumBold';
+  src: url('../assets/font//NanumSquareRoundB.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'NanumExtraBold';
+  src: url('../assets/font//NanumSquareRoundEB.ttf') format('woff');
+}
+
+:root {
+  --font-light: 'NanumLight';
+  --font-regular: 'NanumRegular';
+  --font-bold: 'NanumBold';
+  --font-extrabold: 'NanumExtraBold';
+}
