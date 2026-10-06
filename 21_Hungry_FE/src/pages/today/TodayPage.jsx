@@ -1,3 +1,5 @@
+import './TodayPage.css'
+
 import BottomButton from '../../components/bottom-button/BottomButton'
 import TitleHeader from '../../components/title-header/TitleHeader'
 import DayCard from './component/DayCard'
@@ -50,9 +52,11 @@ function TodayPage() {
         subcontent={'--년 --월 --일'}
       />
       <div className='today__content'>
-        {scheduleData.map((schedule) => (
-          <DayCard key={schedule.id} schedule={schedule} />
-        ))}
+        <div className='today__content--cards'>
+          {scheduleData.map((schedule) => (
+            <DayCard key={schedule.id} schedule={schedule} />
+          ))}
+        </div>
       </div>
       <BottomButton content='돌봄 일정 추가하기' />
     </div>
