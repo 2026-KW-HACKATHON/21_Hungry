@@ -1,8 +1,42 @@
 import BottomButton from '../../components/bottom-button/BottomButton'
-import PopupButton from '../../components/popup-button/PopupButton'
 import TitleHeader from '../../components/title-header/TitleHeader'
+import DayCard from './component/DayCard'
 
 function TodayPage() {
+  const scheduleData = [
+    {
+      id: 1,
+      category: '기타 돌봄',
+      date: '2024년 06월 01일',
+      time: '10:00',
+      family: '가족1',
+      description: '돌봄 일정 1',
+    },
+    {
+      id: 2,
+      category: '약 복용',
+      date: '2024년 06월 02일',
+      time: '14:00',
+      family: '가족2',
+      description: '돌봄 일정 2',
+    },
+    {
+      id: 3,
+      category: '병원 내원',
+      date: '2024년 06월 03일',
+      time: '16:00',
+      family: '가족3',
+      description: '돌봄 일정 3',
+    },
+    {
+      id: 4,
+      category: '건강검진',
+      date: '2024년 06월 04일',
+      time: '12:00',
+      family: '가족4',
+      description: '돌봄 일정 4',
+    },
+  ]
   return (
     <div className='today__page'>
       <TitleHeader
@@ -16,7 +50,9 @@ function TodayPage() {
         subcontent={'--년 --월 --일'}
       />
       <div className='today__content'>
-        <PopupButton content='완료된 일정입니다' color='notice' />
+        {scheduleData.map((schedule) => (
+          <DayCard key={schedule.id} schedule={schedule} />
+        ))}
       </div>
       <BottomButton content='돌봄 일정 추가하기' />
     </div>
