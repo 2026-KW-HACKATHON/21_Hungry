@@ -1,2 +1,7 @@
-.root {
+.SignupPage{
+    display: flex;
+    flex-direction: column;
+}
+.SignupPage__title{
+    
 }

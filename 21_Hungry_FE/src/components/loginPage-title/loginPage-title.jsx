@@ -1,6 +1,8 @@
+import "./loginPage-title.css"
+
 function LoginPageTitle({title}) {
   return (
-    <div>{title}</div>
+    <h1 className="LoginPage__Title">{title}</h1>
   )
 }
 
