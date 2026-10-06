@@ -5,6 +5,12 @@
 :root {
   --color-blue: #1cb0f6;
   --color-blue-shadow: #1899d6;
+  --color-green: #62d411;
+  --color-green-shadow: #66bd0f;
+  --color-red: #ff4a4a;
+  --color-red-shadow: #df2020;
+  --color-gray-text: #bfbfbf;
+  --color-gray-button: #e5e5e5;
 
   --color-border: #e6e6e6;
 }
