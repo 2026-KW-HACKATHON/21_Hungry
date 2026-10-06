@@ -1,0 +1,46 @@
+SET CONSTRAINTS ALL DEFERRED;
+TRUNCATE TABLE app_user, care_group, group_member CASCADE;
+
+INSERT INTO app_user (id, login_key, display_name, phone_number, account_type, status)
+VALUES
+  ('00000000-0000-4000-8000-000000000001', 'demo-recipient', '돌봄 대상', '010-0000-0001', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000002', 'demo-caregiver-1', '보호자 1', '010-0000-0002', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000003', 'demo-caregiver-2', '보호자 2', '010-0000-0003', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000004', 'demo-caregiver-3', '보호자 3', '010-0000-0004', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000005', 'demo-recipient-2', '다른 돌봄 대상', '010-0000-0005', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000006', 'demo-outsider', '다른 보호자', '010-0000-0006', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000007', 'demo-disabled', '비활성 계정', '010-0000-0007', 'DEMO', 'DISABLED');
+
+INSERT INTO care_group (id, recipient_user_id, name)
+VALUES
+  ('10000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000001', '우리 가족 공동체'),
+  ('10000000-0000-4000-8000-000000000002', '00000000-0000-4000-8000-000000000005', '다른 가족 공동체');
+
+INSERT INTO group_member (id, group_id, user_id, role, priority, status, left_at)
+VALUES
+  ('20000000-0000-4000-8000-000000000001', '10000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000001', 'RECIPIENT', NULL, 'ACTIVE', NULL),
+  ('20000000-0000-4000-8000-000000000002', '10000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000002', 'CAREGIVER', 1, 'ACTIVE', NULL),
+  ('20000000-0000-4000-8000-000000000003', '10000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000003', 'CAREGIVER', 2, 'LEFT', now()),
+  ('20000000-0000-4000-8000-000000000005', '10000000-0000-4000-8000-000000000002', '00000000-0000-4000-8000-000000000005', 'RECIPIENT', NULL, 'ACTIVE', NULL),
+  ('20000000-0000-4000-8000-000000000006', '10000000-0000-4000-8000-000000000002', '00000000-0000-4000-8000-000000000006', 'CAREGIVER', 1, 'ACTIVE', NULL);
+
+INSERT INTO task_series (id, group_id, kind, created_by, generation_key)
+VALUES ('30000000-0000-4000-8000-000000000001', '10000000-0000-4000-8000-000000000001',
+        'OTHER', '00000000-0000-4000-8000-000000000002', 'phase2-fixture-series');
+
+INSERT INTO task_series_revision
+  (series_id, revision_no, group_id, title, recurrence, first_date, last_date, local_time,
+   duration_minutes, effective_at, changed_by)
+VALUES
+  ('30000000-0000-4000-8000-000000000001', 1, '10000000-0000-4000-8000-000000000001',
+   '기존 일정', 'ONCE', current_date, current_date, '09:00', 30, now(),
+   '00000000-0000-4000-8000-000000000002');
+
+INSERT INTO task_occurrence
+  (id, group_id, series_id, revision_no, anchor_date, title, starts_at, ends_at,
+   assignee_user_id, assignment_origin)
+VALUES
+  ('40000000-0000-4000-8000-000000000001', '10000000-0000-4000-8000-000000000001',
+   '30000000-0000-4000-8000-000000000001', 1, current_date, '기존 일정',
+   now() + interval '1 day', now() + interval '1 day 30 minutes',
+   '00000000-0000-4000-8000-000000000002', 'AUTO');

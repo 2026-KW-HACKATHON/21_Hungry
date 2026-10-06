@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:54329/hungry}
+    url: ${DB_URL:jdbc:postgresql://localhost:54329/hungry?currentSchema=hungry_test}
     username: ${DB_USERNAME:hungry}
     password: ${DB_PASSWORD:hungry_local}
   flyway:
@@ -9,5 +9,9 @@ spring:
     schemas: hungry_test
 
 app:
+  demo:
+    enabled: true
+  preview:
+    signing-secret: test-only-preview-signing-secret-32-bytes
   cors:
     allowed-origins: http://localhost:5173

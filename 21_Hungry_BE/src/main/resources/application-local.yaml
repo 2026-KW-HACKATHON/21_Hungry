@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:54329/hungry}
+    username: ${DB_USERNAME:hungry}
+    password: ${DB_PASSWORD:hungry_local}
+  flyway:
+    locations: classpath:db/migration,classpath:db/demo
+
+app:
+  demo:
+    enabled: true
+  preview:
+    signing-secret: ${PREVIEW_SIGNING_SECRET:local-only-preview-signing-secret-change-me}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
