@@ -67,3 +67,30 @@ Bearer opaque token·4계정·ACTIVE 공동체 인가, Vercel/EC2 분리, 기존
 ## 5. 변경 기록 규칙
 
 결정 변경 시 날짜·이유·영향 API/설정·검증 결과를 기록한다. API 공개 계약 변경은 프론트에 전달하고 기준 문서는 새 버전으로 맞춘다. 이 문서를 이유로 관련 없는 PRD 기능을 변경하지 않는다.
+
+## 6. 1단계에서 확정한 기술 기준
+
+작성: 2026-10-05, Asia/Seoul.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D10 | 기존 `21_Hungry_BE`와 base package `com.kw.knowone`을 유지 | 중복 앱을 만들지 않고 기존 Gradle/Spring Boot 프로젝트 확장 |
+| D11 | Java 21 / Spring Boot 4.1.1 / Gradle 9.7.1 | Spring Boot 4.1.1 공식 요구사항은 Java 17~26, Gradle 8.14+ 또는 9.x. 로컬 컴파일·테스트 통과 |
+| D12 | PostgreSQL 18.6 Alpine | 2026-10-05 기준 지원되는 PostgreSQL 18의 최신 패치. 실제 Docker DB에서 Flyway·앱 실행 검증 |
+| D13 | Boot BOM 해석 버전 유지 | Spring Framework 7.0.9, Security 7.1.1, Flyway 12.4.0, JDBC 42.7.13, Hibernate 7.4.5.Final |
+| D14 | 공개 검증 경로는 `/internal/status`, Actuator liveness/readiness | 60개 업무 API와 구분. 그 외 경로는 기본 보호 |
+| D15 | 시드는 `db/demo` location의 V2로 분리 | local/demo만 포함하고 test/prod에는 미포함. 실제 데이터 환경에 강제 주입하지 않음 |
+
+U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지한다. 공식 확인 URL은 README에 기록했다.
+
+## 7. 2단계에서 확정한 기술 기준
+
+작성: 2026-10-06, Asia/Seoul.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D16 | 인증은 32바이트 난수의 base64url 무패딩 opaque token이며 DB에는 토큰 UTF-8 SHA-256만 저장 | `auth_session`의 32바이트 제약과 실제 PostgreSQL 통합 테스트로 확인. JWT/refresh token은 도입하지 않음 |
+| D17 | 세션, 멱등, preview 기본 TTL은 각각 24시간, 24시간, 5분이며 환경변수로 초 단위 조정 | 기존 D03/D04와 API v1.0을 코드 설정에 연결 |
+| D18 | G04/G06은 `schedule_guard`를 트랜잭션의 첫 DB 잠금으로 획득한 뒤 최신 권한을 재검사하고 멱등 replay를 판정 | 권한 상실 후 replay 차단 및 동시 동일 요청 1회 변경을 PostgreSQL에서 검증 |
+| D19 | G04 가입/재가입과 G06 우선순위 변경은 업무 변경, audit, notification_event, 멱등 성공 저장을 한 트랜잭션에 기록 | 실패 시 전체 롤백되고 replay에서는 부수효과가 재생성되지 않음 |
+| D20 | local/demo V2와 prod migration 경로를 분리하고 demo DB를 prod로 승격하지 않음 | V2 가상 데이터 및 Flyway 이력 혼입을 막기 위해 prod는 새 전용 DB에서 시작 |
