@@ -1,7 +1,16 @@
+import LoginPage_title from "../../components/loginPage-title/loginPage-title";
+
+
 function SignupPage() {
   return (
     <main className="SignupPage">
-      <h1 className="Signup__Title">어떤 분이 이 기기를<br />사용하시나요</h1>
+      <LoginPage_title 
+        title={
+          <>
+            어떤 분이 이 기기를<br />사용하시나요?
+          </>
+        }
+      />
       <div className="Signup__SelectUserType">
         {/* 주돌봄자녀 박스 */}
         <div className='Signup__UserTypeBox--MainUser'>
