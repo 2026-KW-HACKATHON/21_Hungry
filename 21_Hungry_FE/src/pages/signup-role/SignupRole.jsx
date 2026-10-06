@@ -1,7 +1,7 @@
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
-import "./SignupPage.css"
+import "./SignupRole.css"
 
-function SignupPage() {
+function SignupRole() {
   return (
     <main className="SignupPage">
       <LoginPage_title 
@@ -25,11 +25,12 @@ function SignupPage() {
         {/* 부모 박스 */}
         <div className='Signup__UserTypeBox--Parent'>
           <h1 className='Signup__UserTypeBox__Title--Parent'>부모</h1>
-          <p className='Signup__UserTypeBox__Description--Parent'>자녀에게 안부와 건강기록을 전하고<br />,공유 범위를 정하는 기능이 포함되어 있어요</p>
+          <p className='Signup__UserTypeBox__Description--Parent'>자녀에게 안부와 건강기록을 전하고,<br />공유 범위를 정하는 기능이 포함되어 있어요</p>
         </div>
       </div>
+      <button className="Signup__NextButton">다음</button>
     </main>
   )
 }
 
-export default SignupPage
+export default SignupRole;
