@@ -1,0 +1,103 @@
+.SignupMainuserPage{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.SignupMainuser__input{
+    width: 92%;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 3.4%;
+    margin-bottom: 2.5%;
+    padding-left: 5.2%;
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #B3B3B3;
+    background-color: #F7F7F7;
+    border: 2px solid #E5E5E5;
+    
+}
+.SignupMainuser__allowButton{
+    width: 92%;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-bottom: 1.7%;
+    text-align: center;
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #62D411;
+    box-shadow: 0 5px 0 #66BD0F;
+}
+
+.SignupMainuser__nextButton{
+  width: 92%;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: auto;
+  color: #FFFFFF;
+  box-shadow: 0 5px 0 #1899D6;
+  font-family: var(--font-extrabold);
+  background-color: #1CB0F6;
+  margin-bottom: 14.1%;
+}
+.SignupMainuser__checkbox{
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+
+    padding-left: 25px;
+    padding-top: 25px;
+    border-radius: 20px;
+    border: 2px solid #F2F2F2;
+    margin: 0 auto;
+    margin-top: 3.4%;
+    margin-bottom: 1.7%;
+}
+.SignupMainuser__checkbox--Label{
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #404040;
+    margin-bottom: 15px;
+}
+.SignupMainuser__checkbox--Item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.SignupMainuser__checkbox--Text{
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #B3B3B3;
+    margin: 0;
+}
+.SignupMainuser__checkbox--Icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+.SignupMainuser__allowButton {
+    width: 92%;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-bottom: 1.7%;
+    text-align: center;
+    font-family: var(--font-extrabold);
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #62D411;
+    box-shadow: 0 5px 0 #66BD0F;
+}
