@@ -5,6 +5,7 @@ import LoginLayout from '../components/login-layout/LoginLayout'
 
 import LoginPage from '../pages/login/LoginPage'
 import SignupPage from '../pages/signup/SignupPage'
+import ServiceInfo from '../pages/service_Info/ServiceInfo'
 
 import TodayPage from '../pages/today/TodayPage'
 import DocPage from '../pages/doc/DocPage'
@@ -17,6 +18,11 @@ export const AppRouter = createBrowserRouter([
     path: '/login',
     element: <LoginLayout />,
     children: [{ path: '', element: <LoginPage /> }],
+  },
+  {
+    path: '/serviceinfo',
+    element: "",
+    children: [{ path: '', element: <ServiceInfo /> }],
   },
   {
     path : '/signup', 
