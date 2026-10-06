@@ -52,7 +52,7 @@ jobs:
         working-directory: 21_Hungry_BE
         env:
           SPRING_PROFILES_ACTIVE: test
-          DB_URL: jdbc:postgresql://localhost:5432/hungry
+          DB_URL: "jdbc:postgresql://localhost:5432/hungry?currentSchema=hungry_test"
           DB_USERNAME: hungry
           DB_PASSWORD: hungry_test
         run: |
