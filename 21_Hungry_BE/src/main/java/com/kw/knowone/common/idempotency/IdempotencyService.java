@@ -39,6 +39,16 @@ public class IdempotencyService {
         byte[] requestHash = hashRequest(request);
         jdbcTemplate.queryForList("SELECT id FROM schedule_guard WHERE id = 1 FOR UPDATE");
         authorizationCheck.run();
+        return executeLocked(userId, operation, clientKey, requestHash, mutation);
+    }
+
+    public IdempotentResult executeLocked(UUID userId, String operation, String clientKey, Object request,
+            Supplier<MutationResponse> mutation) {
+        return executeLocked(userId, operation, clientKey, hashRequest(request), mutation);
+    }
+
+    private IdempotentResult executeLocked(UUID userId, String operation, String clientKey, byte[] requestHash,
+            Supplier<MutationResponse> mutation) {
         validateKey(clientKey);
         long advisoryKey = ByteBuffer.wrap(AuthService.sha256(userId + ":" + operation + ":" + clientKey)).getLong();
         jdbcTemplate.queryForList("SELECT pg_advisory_xact_lock(?)", advisoryKey);

@@ -34,6 +34,17 @@ public class GroupEventRepository {
                 """, UUID.randomUUID(), groupId, eventType, eventKey, Timestamp.from(dueAt), json(payload));
     }
 
+    public void taskNotification(UUID groupId, String eventType, String eventKey, UUID occurrenceId,
+            UUID handoffId, UUID targetUserId, Long expectedTaskVersion, Object payload, Instant dueAt) {
+        jdbcTemplate.update("""
+                INSERT INTO notification_event
+                  (id, group_id, event_type, event_key, occurrence_id, handoff_id, target_user_id,
+                   expected_task_version, due_at, payload)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CAST(? AS jsonb))
+                """, UUID.randomUUID(), groupId, eventType, eventKey, occurrenceId, handoffId, targetUserId,
+                expectedTaskVersion, Timestamp.from(dueAt), json(payload));
+    }
+
     private String json(Object value) {
         try {
             return objectMapper.writeValueAsString(value);

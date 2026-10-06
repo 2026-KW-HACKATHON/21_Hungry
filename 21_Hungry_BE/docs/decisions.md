@@ -94,3 +94,14 @@ U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지�
 | D18 | G04/G06은 `schedule_guard`를 트랜잭션의 첫 DB 잠금으로 획득한 뒤 최신 권한을 재검사하고 멱등 replay를 판정 | 권한 상실 후 replay 차단 및 동시 동일 요청 1회 변경을 PostgreSQL에서 검증 |
 | D19 | G04 가입/재가입과 G06 우선순위 변경은 업무 변경, audit, notification_event, 멱등 성공 저장을 한 트랜잭션에 기록 | 실패 시 전체 롤백되고 replay에서는 부수효과가 재생성되지 않음 |
 | D20 | local/demo V2와 prod migration 경로를 분리하고 demo DB를 prod로 승격하지 않음 | V2 가상 데이터 및 Flyway 이력 혼입을 막기 위해 prod는 새 전용 DB에서 시작 |
+
+## 8. 3단계에서 확정한 기술 기준
+
+작성: 2026-10-06, Asia/Seoul.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D21 | 모든 일정 관련 명령은 `ScheduleMutationService`에서 `schedule_guard(id=1)`을 첫 SQL로 잠근 뒤 인가·멱등 replay·업무 변경을 수행 | 동시 겹침 일정 생성에서 같은 사용자의 중복 배정을 차단하고 기존 G04/G06도 같은 경로로 통일 |
+| D22 | 가능 시간은 DB의 최종 날짜 구간을 단일 판정 원천으로 사용하며 미등록 날짜는 불가로 처리 | FULL/PARTIAL/custom, 자정 넘는 근무·업무, 인접 구간 병합을 동일 계산기로 PostgreSQL 통합 검증 |
+| D23 | 단발 일정도 `task_series` → `task_series_revision` → `task_occurrence`를 사용하고 별도 상태 모델을 만들지 않음 | 14일 밖 ONCE는 시리즈만 저장하고 발생 배열이 비어 있는 계약 유지 |
+| D24 | 3단계 T03/T04는 일반 ONCE만 PARTIAL로 공개하고 반복·MEDICATION 입력은 오류로 거부 | 미구현 입력을 일반 단발로 변환하거나 처방 데이터 없이 승인하지 않음 |

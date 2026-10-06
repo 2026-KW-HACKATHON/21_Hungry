@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import com.kw.knowone.auth.entity.AppUser;
 import com.kw.knowone.auth.repository.AuthRepository;
 import com.kw.knowone.auth.service.AuthService;
-import com.kw.knowone.common.idempotency.IdempotencyService;
 import com.kw.knowone.common.idempotency.IdempotentResult;
 import com.kw.knowone.common.idempotency.MutationResponse;
+import com.kw.knowone.common.schedule.ScheduleMutationService;
 import com.kw.knowone.common.web.ApiException;
 import com.kw.knowone.common.web.DataResponse;
 import com.kw.knowone.group.dto.GroupDtos;
@@ -37,18 +37,18 @@ public class GroupService {
     private final GroupEventRepository eventRepository;
     private final AuthRepository authRepository;
     private final AuthService authService;
-    private final IdempotencyService idempotencyService;
+    private final ScheduleMutationService scheduleMutations;
     private final RecipientLookupRateLimiter rateLimiter;
     private final Clock clock;
 
     public GroupService(GroupRepository repository, GroupEventRepository eventRepository,
-            AuthRepository authRepository, AuthService authService, IdempotencyService idempotencyService,
+            AuthRepository authRepository, AuthService authService, ScheduleMutationService scheduleMutations,
             RecipientLookupRateLimiter rateLimiter, Clock clock) {
         this.repository = repository;
         this.eventRepository = eventRepository;
         this.authRepository = authRepository;
         this.authService = authService;
-        this.idempotencyService = idempotencyService;
+        this.scheduleMutations = scheduleMutations;
         this.rateLimiter = rateLimiter;
         this.clock = clock;
     }
@@ -82,7 +82,7 @@ public class GroupService {
     public IdempotentResult join(UUID groupId, UUID userId, JoinRequest request, String idempotencyKey,
             UUID requestId) {
         authService.requireDemoMode();
-        return idempotencyService.executeGuarded(userId, "G04:" + groupId, idempotencyKey, request,
+        return scheduleMutations.execute(userId, "G04:" + groupId, idempotencyKey, request,
                 () -> validateJoinAuthorization(groupId, userId, request),
                 () -> doJoin(groupId, userId, requestId));
     }
@@ -90,7 +90,7 @@ public class GroupService {
     public IdempotentResult updatePriorities(UUID groupId, UUID userId, PriorityRequest request,
             String idempotencyKey, UUID requestId) {
         validateNoDuplicateMembers(request.members());
-        return idempotencyService.executeGuarded(userId, "G06:" + groupId, idempotencyKey, request,
+        return scheduleMutations.execute(userId, "G06:" + groupId, idempotencyKey, request,
                 () -> validateGroupMutationAuthorization(groupId, userId),
                 () -> doUpdatePriorities(groupId, userId, request, requestId));
     }
