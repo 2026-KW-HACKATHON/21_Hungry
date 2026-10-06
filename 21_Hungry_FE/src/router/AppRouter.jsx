@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from '../components/main-layout/MainLayout'
 import LoginLayout from '../components/login-layout/LoginLayout'
 
+import LoginSelect from '../pages/login-select/LoginSelect'
 import LoginPage from '../pages/login/LoginPage'
 import SignupPage from '../pages/signup/SignupPage'
 import ServiceInfo from '../pages/service_Info/ServiceInfo'
@@ -18,6 +19,11 @@ export const AppRouter = createBrowserRouter([
     path: '/login',
     element: <LoginLayout />,
     children: [{ path: '', element: <LoginPage /> }],
+  },
+  {
+    path: '/loginselect',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <LoginSelect /> }],
   },
   {
     path: '/serviceinfo',
