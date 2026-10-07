@@ -3,6 +3,8 @@ spring:
     url: ${DB_URL:jdbc:postgresql://localhost:54329/hungry?currentSchema=hungry_test}
     username: ${DB_USERNAME:hungry}
     password: ${DB_PASSWORD:hungry_local}
+    hikari:
+      connection-init-sql: SET TIME ZONE 'Asia/Seoul'
   flyway:
     locations: classpath:db/migration
     default-schema: hungry_test
