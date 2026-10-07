@@ -18,6 +18,7 @@ function RecordPage() {
   const [mode, setMode] = useState('audio')
   const [checked, setChecked] = useState([])
   const [message, setMessage] = useState('')
+  const [manualConsent, setManualConsent] = useState(false)
 
   function selectMode(value) {
     setMode(value)
@@ -28,6 +29,14 @@ function RecordPage() {
     event.preventDefault()
     if (mode === 'audio' && checked.length !== recordingChecks.length) {
       setMessage('녹음 및 기록 전 확인 사항을 모두 체크해 주세요.')
+      return
+    }
+    if (mode === 'text') {
+      if (!manualConsent) {
+        setMessage('의료진의 동의 여부를 확인해 주세요.')
+        return
+      }
+      navigate('/record/write', { state: Object.fromEntries(new FormData(event.currentTarget)) })
       return
     }
     if (mode === 'audio') {
@@ -76,9 +85,13 @@ function RecordPage() {
             ))}
           </section>
         ) : (
-          <section className="recordPage__manual">
-            <label htmlFor="record-notes">진료 내용을 기록해 주세요</label>
-            <textarea id="record-notes" name="notes" placeholder="증상, 진료 내용, 의료진의 안내를 적어 주세요" required />
+          <section className="recordPage__checklist recordPage__checklist--manual" aria-labelledby="manual-check-title">
+            <h2 id="manual-check-title">기록 전 확인해 주세요</h2>
+            <label className="recordPage__check">
+              <input type="checkbox" checked={manualConsent} onChange={(event) => setManualConsent(event.target.checked)} />
+              <Icon name={manualConsent ? 'checkbox-checked' : 'checkbox-default'} width={26} height={26} aria-hidden="true" />
+              <span>의료진의 동의를 받았어요</span>
+            </label>
           </section>
         )}
         {mode === 'audio' && (
