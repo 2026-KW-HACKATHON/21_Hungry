@@ -9,6 +9,7 @@ import SignupRole from '../pages/signup-role/SignupRole'
 import ServiceInfo from '../pages/service_Info/ServiceInfo'
 import SignupSelect from '../pages/signup-select/SiginSelect'
 import SignupMainuser from '../pages/signup-mainuser/SignupMainuser'
+import SignupSubuser from '../pages/signup-subuser/SignupSubuser'
 
 import TodayPage from '../pages/today/TodayPage'
 import DocPage from '../pages/doc/DocPage'
@@ -21,6 +22,11 @@ export const AppRouter = createBrowserRouter([
     path: '/login',
     element: <LoginLayout />,
     children: [{ path: '', element: <LoginPage /> }],
+  },
+    {
+    path: '/signupsubuser',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupSubuser /> }],
   },
   {
     path: '/loginselect',

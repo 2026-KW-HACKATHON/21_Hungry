@@ -6,7 +6,7 @@ function LoginSelect() {
     <div className="LoginSelectPage">
       <LoginPage_title title={
         <>
-            "가입한 휴대전화 번호로 <br/> 로그인해 주세요"
+            가입한 휴대전화 번호로 <br/> 로그인해 주세요
         </> 
       }/>
       <input type="text" placeholder="휴대전화 번호" className="LoginSelect__input"/>
