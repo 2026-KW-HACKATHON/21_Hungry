@@ -14,6 +14,9 @@ import SignupParent from '../pages/signup-parent/SignupParent'
 import SignupParentDone from '../pages/signup-parent-done/SignupParentDone'
 import SignupSelfInfo from '../pages/signup-self-info/SignupSelfInfo'
 import SignupFamilyInfo from '../pages/signup-familyinfo/SignupFamilyInfo'
+import SignupWaiting from '../pages/signup-waiting/SignupWaiting'
+import SignupServiceStart from '../pages/signup-service-start/SignupServiceStart'
+import SignupWaitingDone from '../pages/signup-waiting-done/SignupWaitingDone'
 
 import TodayPage from '../pages/today/TodayPage'
 import DocPage from '../pages/doc/DocPage'
@@ -22,6 +25,21 @@ import FamilyPage from '../pages/family/FamilyPage'
 import RecordPage from '../pages/record/RecordPage'
 
 export const AppRouter = createBrowserRouter([
+  {
+    path: '/signupservicestart',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupServiceStart /> }],
+  },
+  {
+    path: '/signupwaitingdone',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupWaitingDone /> }],
+  },
+  {
+    path: '/signupwaiting',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupWaiting /> }],
+  },
   {
     path: '/login',
     element: <LoginLayout />,
