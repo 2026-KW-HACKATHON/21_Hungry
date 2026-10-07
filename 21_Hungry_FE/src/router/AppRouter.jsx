@@ -13,6 +13,7 @@ import SignupSubuser from '../pages/signup-subuser/SignupSubuser'
 import SignupParent from '../pages/signup-parent/SignupParent'
 import SignupParentDone from '../pages/signup-parent-done/SignupParentDone'
 import SignupSelfInfo from '../pages/signup-self-info/SignupSelfInfo'
+import SignupParentInfo from '../pages/signup-parent-info/SignupParentInfo'
 import SignupFamilyInfo from '../pages/signup-familyinfo/SignupFamilyInfo'
 import SignupWaiting from '../pages/signup-waiting/SignupWaiting'
 import SignupServiceStart from '../pages/signup-service-start/SignupServiceStart'
@@ -25,6 +26,11 @@ import FamilyPage from '../pages/family/FamilyPage'
 import RecordPage from '../pages/record/RecordPage'
 
 export const AppRouter = createBrowserRouter([
+  {
+    path: '/signupparentinfo',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupParentInfo /> }],
+  },
   {
     path: '/signupservicestart',
     element: <LoginLayout />,
