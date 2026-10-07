@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowone.local/schemas/analysis-output-v1.0.json",
+  "title": "Encounter analysis output v1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "summary", "details", "evidence", "items"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "summary": { "type": ["string", "null"] },
+    "details": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["symptoms", "tests", "medicationMentions", "precautions", "followUps"],
+      "properties": {
+        "symptoms": { "$ref": "#/$defs/details" },
+        "tests": { "$ref": "#/$defs/details" },
+        "medicationMentions": { "$ref": "#/$defs/details" },
+        "precautions": { "$ref": "#/$defs/details" },
+        "followUps": { "$ref": "#/$defs/details" }
+      }
+    },
+    "evidence": { "$ref": "#/$defs/evidenceList" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional"],
+        "properties": {
+          "itemKey": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "itemType": { "type": "string", "enum": ["TASK", "MEDICATION"] },
+          "payload": { "anyOf": [{ "$ref": "#/$defs/taskPayload" }, { "$ref": "#/$defs/medicationPayload" }] },
+          "evidence": { "$ref": "#/$defs/evidenceList" },
+          "uncertaintyCodes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "isConditional": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "taskPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays"],
+      "properties": {
+        "schemaVersion": { "type": "integer", "const": 1 },
+        "kind": { "type": ["string", "null"], "enum": ["HOSPITAL", "EXAM", "PICKUP", "OTHER", null] },
+        "title": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "date": { "type": ["string", "null"], "format": "date" },
+        "time": { "type": ["string", "null"], "format": "time" },
+        "durationMinutes": { "type": ["integer", "null"], "minimum": 1, "maximum": 1440 },
+        "durationSource": { "type": ["string", "null"], "enum": ["PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null] },
+        "recurrence": { "type": ["string", "null"], "enum": ["ONCE", "DAILY", "WEEKLY", null] },
+        "lastDate": { "type": ["string", "null"], "format": "date" },
+        "weekdays": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 7 }, "uniqueItems": true }
+      }
+    },
+    "medicationPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans"],
+      "properties": {
+        "schemaVersion": { "type": "integer", "const": 1 },
+        "name": { "type": ["string", "null"] },
+        "doseText": { "type": ["string", "null"] },
+        "frequencyText": { "type": ["string", "null"] },
+        "startsOn": { "type": ["string", "null"], "format": "date" },
+        "endsOn": { "type": ["string", "null"], "format": "date" },
+        "instructions": { "type": ["string", "null"] },
+        "supersedesMedicationId": { "type": "null" },
+        "schedulePlans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes"],
+            "properties": {
+              "recurrence": { "type": "string", "enum": ["ONCE", "DAILY", "WEEKLY"] },
+              "firstDate": { "type": ["string", "null"], "format": "date" },
+              "lastDate": { "type": ["string", "null"], "format": "date" },
+              "weekdays": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 7 }, "uniqueItems": true },
+              "localTime": { "type": ["string", "null"], "format": "time" },
+              "durationMinutes": { "type": "integer", "minimum": 1, "maximum": 1440 }
+            }
+          }
+        }
+      }
+    },
+    "details": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "evidenceIndexes"],
+        "properties": {
+          "text": { "type": ["string", "null"] },
+          "evidenceIndexes": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "uniqueItems": true }
+        }
+      }
+    },
+    "evidenceList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "textVersion", "page", "quote", "occurrenceIndex"],
+      "properties": {
+        "sourceId": { "type": "string", "format": "uuid" },
+        "textVersion": { "type": "integer", "minimum": 1 },
+        "page": { "type": ["integer", "null"], "minimum": 1 },
+        "quote": { "type": "string", "minLength": 1 },
+        "occurrenceIndex": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

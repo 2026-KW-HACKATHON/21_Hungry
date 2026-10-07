@@ -21,6 +21,10 @@ spring:
   jackson:
     deserialization:
       fail-on-unknown-properties: true
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: ${MULTIPART_MAX_REQUEST_BYTES:120MB}
 
 server:
   forward-headers-strategy: framework
@@ -39,6 +43,8 @@ management:
         enabled: true
 
 app:
+  scheduling:
+    enabled: ${SCHEDULING_ENABLED:true}
   timezone: Asia/Seoul
   demo:
     enabled: false
@@ -50,8 +56,44 @@ app:
   preview:
     ttl: "${PREVIEW_TTL_SECONDS:300}s"
     signing-secret: ${PREVIEW_SIGNING_SECRET:}
+  storage:
+    local-root: ${FILE_STORAGE_ROOT:${PRIVATE_FILE_ROOT:./var/private-files}}
+  encounter:
+    document-max-bytes: 10000000
+    document-max-pdf-pages: 10
+    document-max-images: 10
+    audio-max-bytes: ${AUDIO_MAX_BYTES:25000000}
+    audio-max-duration: "${AUDIO_MAX_DURATION_SECONDS:1200}s"
+    audio-retention: PT24H
+    supported-audio-types: ${AUDIO_ALLOWED_MEDIA_TYPES:audio/wav,audio/x-wav}
+    worker-enabled: ${AI_WORKER_ENABLED:false}
+    worker-lease: "${AI_JOB_LEASE_SECONDS:180}s"
+  ai:
+    worker-concurrency: ${AI_WORKER_CONCURRENCY:2}
+    job-max-attempts: ${AI_JOB_MAX_ATTEMPTS:4}
+    max-input-code-points: ${AI_MAX_INPUT_CODE_POINTS:300000}
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+      transcribe-model: ${OPENAI_TRANSCRIBE_MODEL:gpt-transcribe}
+      ocr-model: ${OPENAI_OCR_MODEL:gpt-5.4-mini-2026-03-17}
+      analysis-model: ${OPENAI_ANALYSIS_MODEL:${OPENAI_ANALYZE_MODEL:gpt-5.4-mini-2026-03-17}}
+      timeout: ${OPENAI_TIMEOUT:${AI_CALL_TIMEOUT_SECONDS:90}s}
+      max-output-tokens: ${OPENAI_MAX_OUTPUT_TOKENS:${AI_MAX_OUTPUT_TOKENS:12000}}
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:}
+  notification:
+    event-worker-enabled: ${NOTIFICATION_EVENT_WORKER_ENABLED:false}
+    push-worker-enabled: ${PUSH_WORKER_ENABLED:false}
+    worker-concurrency: ${NOTIFICATION_WORKER_CONCURRENCY:2}
+    lease: "${NOTIFICATION_LEASE_SECONDS:120}s"
+    max-attempts: ${NOTIFICATION_MAX_ATTEMPTS:5}
+    poll-delay: "${NOTIFICATION_POLL_DELAY:2s}"
+    push-timeout: "${PUSH_TIMEOUT_SECONDS:20}s"
+    vapid-public-key: ${VAPID_PUBLIC_KEY:}
+    vapid-private-key: ${VAPID_PRIVATE_KEY:}
+    vapid-subject: ${VAPID_SUBJECT:}
+    allowed-host-suffixes: ${PUSH_ALLOWED_HOST_SUFFIXES:fcm.googleapis.com,updates.push.services.mozilla.com,web.push.apple.com}
 
 logging:
   pattern:

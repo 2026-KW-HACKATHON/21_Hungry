@@ -2,7 +2,12 @@ HELP.md
 .gradle
 build/
 .env
-storage/
+.env.*.local
+/secrets/
+/backups/
+/restore-work/
+/.deploy/
+/storage/
 tmp/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/

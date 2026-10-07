@@ -1,6 +1,6 @@
 # 21 Hungry Backend
 
-가족 돌봄 서비스의 Spring Boot 백엔드입니다. 1단계 기반 위에 2단계 인증 A01~A04와 공동체 G01~G06을 구현했습니다. 나머지 업무 API는 아직 구현하지 않았습니다.
+가족 돌봄 서비스의 Spring Boot 백엔드입니다. 인증·공동체·가능시간·일정·기록/파일·AI 후보 처리·처방 확인·복약 일정·알림함과 Web Push 전송 파이프라인을 구현했습니다. 제품 프론트와 실제 배포는 포함하지 않습니다.
 
 ## 기술 버전
 
@@ -15,6 +15,7 @@
 | Flyway | 12.4.0 |
 | PostgreSQL JDBC | 42.7.13 |
 | Hibernate ORM | 7.4.5.Final |
+| web-push-java | 5.1.2 |
 
 Spring Boot 4.1.1은 Java 17~26과 Gradle 8.14 이상 또는 9.x를 지원한다. 이 프로젝트는 Java 21과 Gradle 9.7.1로 고정했다.
 
@@ -79,11 +80,20 @@ demo DB를 prod DB로 전환하거나 prod 프로필에서 재사용하지 않�
 
 - `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`
 - `CORS_ALLOWED_ORIGINS`: 쉼표로 구분한 정확한 Origin 목록. `*` 금지
-- `FILE_STORAGE_ROOT`, `AUDIO_TEMP_ROOT`: 후속 파일 기능용 비공개 경로
+- `FILE_STORAGE_ROOT`: 비공개 원본과 동일 파일시스템의 임시 staging 경로. 별도 `AUDIO_TEMP_ROOT`는 사용하지 않는다.
+- `SCHEDULING_ENABLED`: 운영 기본 `true`; 통합 테스트와 격리 복원에서는 `false`로 두고 worker를 명시 호출한다.
 - `PREVIEW_SIGNING_SECRET`: 32바이트 이상의 preview HMAC 비밀값. demo/prod에서 반드시 별도 주입
 - `AUTH_SESSION_TTL_SECONDS`, `IDEMPOTENCY_TTL_SECONDS`, `PREVIEW_TTL_SECONDS`: 기본 86400/86400/300초
 
-AI·음성·VAPID 관련 값은 후속 단계 계약을 위한 빈 자리이며 현재 코드에서 사용하지 않는다. 비밀값을 저장소에 커밋하지 않는다.
+실제 AI worker는 기본적으로 꺼져 있다. 서버 런타임에만 `OPENAI_API_KEY`를 주입하고 `AI_WORKER_ENABLED=true`로 켠다. 기본 모델은 `gpt-transcribe`, `gpt-5.4-mini-2026-03-17`이며 `OPENAI_TRANSCRIBE_MODEL`, `OPENAI_OCR_MODEL`, `OPENAI_ANALYSIS_MODEL`로 명시 변경한다. timeout/lease는 기본 90초/180초이고 lease가 timeout보다 최소 15초 길지 않으면 시작을 거부한다. `OPENAI_TIMEOUT`, `AI_JOB_LEASE_SECONDS`, `AI_WORKER_CONCURRENCY`, `AI_JOB_MAX_ATTEMPTS`, `OPENAI_MAX_OUTPUT_TOKENS`를 조정할 수 있다. 기존 `OPENAI_ANALYZE_MODEL`, `AI_CALL_TIMEOUT_SECONDS`, `AI_MAX_OUTPUT_TOKENS`도 하위 호환으로 읽는다. 키와 비밀값을 저장소에 커밋하지 않는다.
+
+유료 실호출은 일반 테스트에 포함하지 않는다. 재현 가능한 가상 이미지/PDF는 `scripts/generate-openai-live-fixtures.ps1`, API smoke는 `scripts/openai-live-api-smoke.ps1`을 별도로 사용한다. 중단 복구 시 `-EncounterId`를 주면 기존 처리 상태를 먼저 확인하고 새 업로드를 만들지 않는다. 실제 AI/Push 실행 순서는 `docs/live-smoke-runbook.md`를 따른다.
+
+알림함/outbox worker와 외부 push worker는 각각 `NOTIFICATION_EVENT_WORKER_ENABLED`, `PUSH_WORKER_ENABLED`로 켠다. 실제 push worker를 켜려면 서버 런타임에 `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`를 모두 주입해야 하며 누락되거나 잘못된 키는 시작 실패다. `NOTIFICATION_LEASE_SECONDS`는 `PUSH_TIMEOUT_SECONDS`보다 10초 넘게 길어야 한다. 허용 endpoint는 `PUSH_ALLOWED_HOST_SUFFIXES`의 HTTPS 443 provider로 제한되고 DNS 결과의 loopback·사설·link-local 주소와 redirect를 거부한다. 기본 목록은 FCM, Mozilla Autopush, Apple Web Push다. N05는 worker 비활성 또는 VAPID 미설정이면 `{enabled:false,applicationServerKey:null}`을 반환한다.
+
+N05 `/api/v1/push/config`도 API v1.0 계약대로 Bearer 인증이 필요하다. 확정 production frontend/API는 `https://knowone-eight.vercel.app` / `https://api.gaebalmani.shop`, VAPID subject는 `mailto:js48765348@gmail.com`이다. 실제 키는 Git 제외 `secrets/vapid.env` 또는 운영 secret 저장소에서만 주입한다.
+
+Web Push payload는 `notificationId`, `eventId`, 일반적인 `title`/`body`, `tag=eventId`, `url=/notifications`만 포함한다. provider의 2xx 수락은 delivery `SENT`일 뿐 기기 표시나 읽음을 의미하지 않는다. 브라우저에서는 보안 컨텍스트에서 사용자 버튼으로 권한을 요청하고 `PushSubscription.toJSON()`을 N06에 등록한 뒤, Service Worker가 `eventId`를 notification tag로 사용하고 `notificationclick`에서 알림 화면을 연 후 인증된 N01 target을 다시 조회해야 한다.
 
 ## 공통 HTTP 계약
 
@@ -101,12 +111,11 @@ AI·음성·VAPID 관련 값은 후속 단계 계약을 위한 빈 자리이며 
 docker build -t 21-hungry-be:local .
 ```
 
-상위 저장소의 `.github/workflows/BE-CI.yml`은 PostgreSQL 18.6 서비스에서 테스트 후 boot JAR을 빌드한다. `Dockerfile`은 Java 21 다단계 빌드이며 `compose.prod.yaml`은 EC2에서 API를 loopback 포트에 띄우는 초안이다. `deploy/nginx-api.conf.example`은 HTTPS reverse proxy 자리표시자이며 실제 도메인·인증서·전체 multipart 크기를 확정한 뒤 사용한다.
+상위 저장소의 `.github/workflows/BE-CD.yml`은 PostgreSQL 18.6 서비스에서 외부 worker를 끈 채 테스트와 boot JAR을 빌드한다. `Dockerfile`은 non-root Java 21 다단계 이미지이며 `compose.prod.yaml`은 고정 이미지 식별자, 내부 PostgreSQL, loopback API, 영속 비공개 파일 volume을 사용한다. 실제 절차는 `docs/deployment-runbook.md`, 백업은 `docs/backup-restore-runbook.md`, 프론트 연결은 `docs/frontend-mobile-checklist.md`, 통합 시연은 `docs/demo-runbook.md`를 따른다.
 
 ## 현재 BLOCKED
 
-- 실제 API 도메인, EC2 사양·자격증명, 인증서가 없어 외부 HTTPS와 배포를 실행하지 않았다.
-- 실제 Vercel production/preview Origin과 개발 포트 최종값이 없어 외부 CORS 시험을 실행하지 않았다.
+- API 도메인과 production Origin은 확정됐지만 EC2 자격증명과 동작 중인 80/443 서비스가 없어 외부 API HTTPS/CORS 시험과 배포를 실행하지 않았다.
 - iPhone/Android 기기, 확정 음성 MIME·코덱이 없어 녹음 기술 시험을 실행하지 않았다.
-- VAPID 키와 실제 기기 구독이 없어 Web Push 시험을 실행하지 않았다.
+- VAPID 키와 실제 브라우저 구독이 없어 push provider 수락 및 실제 기기 표시 시험을 실행하지 않았다. 구현·PostgreSQL fake 전송 검증과 실제 기기 검증은 구분한다.
 - 위 항목은 입력이 확보된 뒤 별도 기술 시험으로 검증한다. 현재 로컬 성공을 외부 연동 성공으로 간주하지 않는다.

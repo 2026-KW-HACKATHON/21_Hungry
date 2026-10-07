@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import com.kw.knowone.auth.entity.AppUser;
 import com.kw.knowone.auth.repository.AuthRepository;
 import com.kw.knowone.auth.service.AuthService;
-import com.kw.knowone.common.idempotency.IdempotencyService;
 import com.kw.knowone.common.idempotency.IdempotentResult;
 import com.kw.knowone.common.idempotency.MutationResponse;
+import com.kw.knowone.common.schedule.ScheduleMutationService;
 import com.kw.knowone.common.web.ApiException;
 import com.kw.knowone.common.web.DataResponse;
 import com.kw.knowone.group.dto.GroupDtos;
@@ -30,6 +30,8 @@ import com.kw.knowone.group.entity.CareGroup;
 import com.kw.knowone.group.entity.GroupMember;
 import com.kw.knowone.group.repository.GroupEventRepository;
 import com.kw.knowone.group.repository.GroupRepository;
+import com.kw.knowone.task.entity.TaskModels.Occurrence;
+import com.kw.knowone.task.repository.TaskRepository;
 
 @Service
 public class GroupService {
@@ -37,20 +39,51 @@ public class GroupService {
     private final GroupEventRepository eventRepository;
     private final AuthRepository authRepository;
     private final AuthService authService;
-    private final IdempotencyService idempotencyService;
+    private final ScheduleMutationService scheduleMutations;
     private final RecipientLookupRateLimiter rateLimiter;
     private final Clock clock;
+    private final TaskRepository tasks;
 
     public GroupService(GroupRepository repository, GroupEventRepository eventRepository,
-            AuthRepository authRepository, AuthService authService, IdempotencyService idempotencyService,
-            RecipientLookupRateLimiter rateLimiter, Clock clock) {
+            AuthRepository authRepository, AuthService authService, ScheduleMutationService scheduleMutations,
+            RecipientLookupRateLimiter rateLimiter, Clock clock, TaskRepository tasks) {
         this.repository = repository;
         this.eventRepository = eventRepository;
         this.authRepository = authRepository;
         this.authService = authService;
-        this.idempotencyService = idempotencyService;
+        this.scheduleMutations = scheduleMutations;
         this.rateLimiter = rateLimiter;
         this.clock = clock;
+        this.tasks = tasks;
+    }
+
+    public IdempotentResult leave(UUID groupId,UUID userId,GroupDtos.LeaveRequest request,String key,UUID requestId){
+        return scheduleMutations.execute(userId,"G07:"+groupId,key,request,
+                ()->validateGroupMutationAuthorization(groupId,userId),()->doLeave(groupId,userId,request,requestId));
+    }
+
+    private MutationResponse doLeave(UUID groupId,UUID userId,GroupDtos.LeaveRequest request,UUID requestId){
+        GroupMember before=requireActiveMembership(groupId,userId);
+        if(!"CAREGIVER".equals(before.role()))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","CAREGIVER만 탈퇴할 수 있습니다.");
+        if(before.version()!=request.expectedVersion())throw new ApiException(HttpStatus.CONFLICT,"VERSION_CONFLICT","멤버십이 변경되었습니다.",Map.of("currentVersion",before.version()));
+        Instant now=clock.instant();List<UUID> released=new java.util.ArrayList<>();
+        for(Occurrence occurrence:tasks.futureAssigned(groupId,userId,now)){
+            if(tasks.releaseAssignee(occurrence.id(),occurrence.version())!=1)throw new IllegalStateException("Concurrent occurrence release");
+            UUID handoff=tasks.openHandoff(groupId,occurrence.id(),"MEMBER_LEFT",userId,userId);
+            tasks.cancelPendingNotifications(occurrence.id());tasks.cancelPendingDeliveries(occurrence.id());
+            eventRepository.audit(groupId,userId,"TASK_RELEASED_MEMBER_LEFT","TASK_OCCURRENCE",occurrence.id(),
+                    Map.of("assigneeUserId",userId,"version",occurrence.version()),Map.of("assigneeUserId","","version",occurrence.version()+1),requestId);
+            if(handoff!=null)eventRepository.taskNotification(groupId,"HANDOFF_OPEN","handoff:"+handoff+":open",
+                    occurrence.id(),handoff,null,occurrence.version()+1,Map.of("schemaVersion",1,"reason","MEMBER_LEFT"),now);
+            eventRepository.syncOccurrenceNotifications(occurrence.id(),now);
+            released.add(occurrence.id());
+        }
+        repository.cancelUndeliveredNotifications(groupId,userId);
+        GroupMember after=repository.leave(before,now);
+        eventRepository.audit(groupId,userId,"GROUP_MEMBER_LEFT","GROUP_MEMBER",after.id(),eventMember(before),eventMember(after),requestId);
+        eventRepository.notification(groupId,"MEMBER_LEFT","member-left:"+after.id()+":"+after.version(),
+                Map.of("schemaVersion",1,"memberId",after.id(),"releasedOccurrenceIds",released),now);
+        return new MutationResponse(200,DataResponse.of(new GroupDtos.LeaveResponse("LEFT",released)));
     }
 
     public Items<Group> groups(UUID userId) {
@@ -82,7 +115,7 @@ public class GroupService {
     public IdempotentResult join(UUID groupId, UUID userId, JoinRequest request, String idempotencyKey,
             UUID requestId) {
         authService.requireDemoMode();
-        return idempotencyService.executeGuarded(userId, "G04:" + groupId, idempotencyKey, request,
+        return scheduleMutations.execute(userId, "G04:" + groupId, idempotencyKey, request,
                 () -> validateJoinAuthorization(groupId, userId, request),
                 () -> doJoin(groupId, userId, requestId));
     }
@@ -90,7 +123,7 @@ public class GroupService {
     public IdempotentResult updatePriorities(UUID groupId, UUID userId, PriorityRequest request,
             String idempotencyKey, UUID requestId) {
         validateNoDuplicateMembers(request.members());
-        return idempotencyService.executeGuarded(userId, "G06:" + groupId, idempotencyKey, request,
+        return scheduleMutations.execute(userId, "G06:" + groupId, idempotencyKey, request,
                 () -> validateGroupMutationAuthorization(groupId, userId),
                 () -> doUpdatePriorities(groupId, userId, request, requestId));
     }

@@ -82,6 +82,13 @@ class ApplicationTests {
     }
 
     @Test
+    void pushConfigurationRequiresAuthentication() throws IOException, InterruptedException {
+        HttpResponse<String> response = send(HttpRequest.newBuilder(uri("/api/v1/push/config")).GET().build());
+        assertEquals(401, response.statusCode());
+        assertTrue(response.body().contains("\"code\":\"UNAUTHORIZED\""));
+    }
+
+    @Test
     void allowedOriginCanPreflightWithoutAuthentication() throws IOException, InterruptedException {
         HttpResponse<String> response = send(HttpRequest.newBuilder(uri("/api/v1/care-groups"))
                 .header("Origin", "http://localhost:5173")

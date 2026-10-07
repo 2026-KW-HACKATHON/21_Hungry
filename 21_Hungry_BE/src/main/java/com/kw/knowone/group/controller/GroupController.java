@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.time.LocalDate;
+import com.kw.knowone.task.service.TaskService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +28,25 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/v1/care-groups")
 public class GroupController {
     private final GroupService groupService;
+    private final TaskService taskService;
 
-    public GroupController(GroupService groupService) {
+    public GroupController(GroupService groupService, TaskService taskService) {
         this.groupService = groupService;
+        this.taskService = taskService;
+    }
+
+    @PostMapping("/{groupId}/memberships/me/leave")
+    ResponseEntity<String> leave(@PathVariable UUID groupId,@Valid @RequestBody GroupDtos.LeaveRequest body,
+            @RequestHeader(value="Idempotency-Key",required=false)String key,
+            @AuthenticationPrincipal AuthenticatedUser principal,HttpServletRequest request){
+        return response(groupService.leave(groupId,principal.userId(),body,key,
+                UUID.fromString(RequestIdFilter.current(request))));
+    }
+
+    @GetMapping("/{groupId}/home")
+    DataResponse<GroupDtos.Home> home(@PathVariable UUID groupId,@RequestParam(required=false)LocalDate date,
+            @RequestParam(required=false)Integer limit,@AuthenticationPrincipal AuthenticatedUser principal){
+        return DataResponse.of(taskService.home(groupId,principal.userId(),date,limit));
     }
 
     @GetMapping

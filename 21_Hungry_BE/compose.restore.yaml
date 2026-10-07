@@ -1,0 +1,48 @@
+services:
+  postgres:
+    image: postgres:18.6-alpine
+    environment:
+      POSTGRES_DB: hungry_restore
+      POSTGRES_USER: restore_user
+      POSTGRES_PASSWORD: ${RESTORE_DB_PASSWORD:?RESTORE_DB_PASSWORD is required}
+    ports:
+      - "127.0.0.1:54339:5432"
+    volumes:
+      - restore-postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U restore_user -d hungry_restore"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    image: ${API_IMAGE:?API_IMAGE to verify is required}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: ${RESTORE_SPRING_PROFILE:-prod}
+      DB_URL: ${RESTORE_DB_URL:-jdbc:postgresql://postgres:5432/hungry_restore}
+      DB_USERNAME: restore_user
+      DB_PASSWORD: ${RESTORE_DB_PASSWORD:?RESTORE_DB_PASSWORD is required}
+      CORS_ALLOWED_ORIGINS: http://localhost:5173
+      PREVIEW_SIGNING_SECRET: ${RESTORE_PREVIEW_SIGNING_SECRET:?RESTORE_PREVIEW_SIGNING_SECRET is required}
+      FILE_STORAGE_ROOT: /data/private-files
+      TEST_PRIVATE_FILE_ROOT: /data/private-files
+      SCHEDULING_ENABLED: "false"
+      AI_WORKER_ENABLED: "false"
+      NOTIFICATION_EVENT_WORKER_ENABLED: "false"
+      PUSH_WORKER_ENABLED: "false"
+    ports:
+      - "127.0.0.1:18080:8080"
+    volumes:
+      - restore-private-files:/data/private-files
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health/readiness || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  restore-postgres-data:
+  restore-private-files:

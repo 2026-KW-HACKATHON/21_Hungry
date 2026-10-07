@@ -9,9 +9,19 @@ spring:
     schemas: hungry_test
 
 app:
+  scheduling:
+    # Integration tests call schedulers/workers explicitly so queue claims are deterministic.
+    enabled: false
+  ai:
+    worker-concurrency: 1
+    job-max-attempts: 2
   demo:
     enabled: true
   preview:
     signing-secret: test-only-preview-signing-secret-32-bytes
   cors:
     allowed-origins: http://localhost:5173
+  storage:
+    local-root: ${TEST_PRIVATE_FILE_ROOT:${java.io.tmpdir}/21-hungry-test-files}
+  encounter:
+    worker-enabled: true
