@@ -11,6 +11,8 @@ import SignupSelect from '../pages/signup-select/SiginSelect'
 import SignupMainuser from '../pages/signup-mainuser/SignupMainuser'
 import SignupSubuser from '../pages/signup-subuser/SignupSubuser'
 import SignupParent from '../pages/signup-parent/SignupParent'
+import SignupParentDone from '../pages/signup-parent-done/SignupParentDone'
+import SignupSelfInfo from '../pages/signup-self-info/SignupSelfInfo'
 
 import TodayPage from '../pages/today/TodayPage'
 import DocPage from '../pages/doc/DocPage'
@@ -23,6 +25,16 @@ export const AppRouter = createBrowserRouter([
     path: '/login',
     element: <LoginLayout />,
     children: [{ path: '', element: <LoginPage /> }],
+  },
+  {
+    path: '/signupselfinfo',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupSelfInfo /> }],
+  },
+  {
+    path: '/signupparentdone',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupParentDone /> }],
   },
   {
     path: '/signupsubuser',
