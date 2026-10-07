@@ -1,0 +1,102 @@
+.familyReq__page {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding-bottom: 88px;
+  display: flex;
+  flex-direction: column;
+}
+
+.familyReq__page > .backHeader__container {
+  height: 229px;
+  flex-shrink: 0;
+}
+
+.familyReq__page .backHeader__title,
+.familyReq__page .backHeader__subtitle {
+  line-height: 1.4;
+}
+
+.familyReq__content {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  padding: 21px 16px 24px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.familyReq__content > * {
+  flex-shrink: 0;
+}
+
+.familyReq__card {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid var(--color-gray-button);
+  border-radius: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.familyReq__card--info {
+  width: calc(100% - 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.familyReq__card--name {
+  min-height: 25px;
+  font-size: 16px;
+  line-height: normal;
+  color: #4d4d4d;
+  display: flex;
+  align-items: center;
+  overflow-wrap: anywhere;
+}
+
+.familyReq__card--role,
+.familyReq__card--date {
+  min-height: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(77, 77, 77, 0.5);
+  display: flex;
+  align-items: center;
+}
+
+.familyReq__card--button {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0px 0px 5px;
+  border: none;
+}
+
+.familyReq__card--button .popupButton:disabled {
+  cursor: default;
+}
+
+.familyReq__notices {
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.familyReq__notice,
+.familyReq__empty {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #d9d9d9;
+}
+
+.familyReq__empty {
+  padding: 0px 10px;
+}

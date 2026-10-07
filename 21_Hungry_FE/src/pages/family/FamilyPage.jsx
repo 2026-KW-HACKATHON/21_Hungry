@@ -1,15 +1,17 @@
 import './FamilyPage.css'
 
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import TitleHeader from '../../components/title-header/TitleHeader'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import PopupButton from '../../components/popup-button/PopupButton'
-import { currentUserId, familyMemberData } from '../../mocks/familyMock'
+import { currentUserId, getFamilyMembers } from '../../mocks/familyMock'
 import { formatDate } from '../../mocks/todayAddMock'
 
 function FamilyPage() {
   const navigate = useNavigate()
+  const [members] = useState(() => getFamilyMembers())
 
   return (
     <div className='family__page'>
@@ -19,7 +21,7 @@ function FamilyPage() {
       />
 
       <div className='family__content'>
-        {familyMemberData.map((member) => {
+        {members.map((member) => {
           const isMe = member.userId === currentUserId
           const relationship = member.role === 'RECIPIENT' ? member.category : null
 
