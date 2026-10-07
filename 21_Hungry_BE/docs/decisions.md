@@ -174,4 +174,5 @@ U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지�
 | D56 | 백업은 API를 중지한 일관성 구간에서 PostgreSQL custom dump와 private volume archive를 함께 만든다 | DB object key와 파일을 같은 시점에 보존한다. 복원은 별도 Compose project에서 모든 scheduler/AI/push worker를 끄고 검증한다. |
 | D57 | provider용 JSON Schema 정리는 루트 metadata와 명시된 불지원 validation keyword에만 적용하고 payload의 실제 속성명은 삭제하지 않는다 | 실호출에서 재귀 `title` 삭제가 `required`와 불일치해 `invalid_json_schema`가 발생했다. TASK `title` 보존 회귀 테스트와 실제 Structured Outputs 성공으로 수정 근거를 확인했다. |
 | D58 | N05는 공개키를 반환하더라도 API v1.0의 `권한: 인증`을 유지한다 | 공개키의 비밀성 여부와 API 인증 계약은 별개다. 익명 permit 목록에서 `/api/v1/push/config`를 제거하고 401 회귀 테스트를 추가했다. |
-| D59 | production frontend/API/VAPID subject를 각각 `https://knowone-eight.vercel.app`, `api.gaebalmani.shop`, `mailto:js48765348@gmail.com`으로 고정 | DNS A는 52.35.249.169로 확인했다. Vercel HTTPS는 200이었고 API 80/443은 연결 불가라 서버 TLS는 아직 미검증이다. |
+| D59 | production frontend/API/VAPID subject를 각각 `https://knowone-eight.vercel.app`, `api.gaebalmani.shop`, `mailto:js48765348@gmail.com`으로 고정 | DNS A는 52.35.249.169로 확인했다. Vercel HTTPS, API HTTP→HTTPS, readiness, production CORS와 Certbot 갱신 dry-run을 실서버에서 확인했다. |
+| D60 | test profile JDBC session timezone을 `Asia/Seoul`로 고정 | 컨테이너 OS의 `TZ`만으로 PostgreSQL JDBC session timezone이 보장되지 않아 UTC 날짜 경계에서 일정 fixture가 달라졌다. UTC PostgreSQL 18.6 격리 환경과 GitHub CI에서 102 tests 통과로 검증했다. |
