@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Navigation from './navigation/Navigation'
+import './MainLayout.css'
 
 function MainLayout() {
   return (
