@@ -46,13 +46,20 @@ public class TaskRepository {
                   ON r.series_id=s.id AND r.revision_no=s.current_revision_no WHERE s.id=?
                 """, this::mapSeries, id).stream().findFirst();
     }
+    public Optional<Series> findMedicationSeries(UUID groupId,String recurrence,List<Integer> weekdays,LocalTime time,int duration){String array="{"+weekdays.stream().map(String::valueOf).collect(java.util.stream.Collectors.joining(","))+"}";return jdbc.query("""
+            SELECT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+                   r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
+            FROM task_series s JOIN task_series_revision r ON r.series_id=s.id AND r.revision_no=s.current_revision_no
+            WHERE s.group_id=? AND s.kind='MEDICATION' AND r.recurrence=? AND r.weekdays=?::smallint[]
+              AND r.local_time=? AND r.duration_minutes=? AND s.stop_from_date IS NULL
+            ORDER BY s.created_at,s.id LIMIT 1
+            """,this::mapSeries,groupId,recurrence,array,time,duration).stream().findFirst();}
     public List<Series> findGeneratableSeries() {
         return jdbc.query("""
                 SELECT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
                        r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
                 FROM task_series s JOIN care_group g ON g.id=s.group_id AND g.status='ACTIVE'
                 JOIN task_series_revision r ON r.series_id=s.id AND r.revision_no=s.current_revision_no
-                WHERE s.kind<>'MEDICATION'
                 ORDER BY s.group_id,s.id
                 """, this::mapSeries);
     }
@@ -113,11 +120,75 @@ public class TaskRepository {
         sql.append(" ORDER BY o.starts_at,o.id LIMIT ?"); args.add(fetch);
         return jdbc.query(sql.toString(), this::mapOccurrence, args.toArray());
     }
+    public List<Occurrence> linkedToEncounter(UUID encounterId,int fetch){return jdbc.query(OCCURRENCE_SELECT+"""
+            WHERE EXISTS(SELECT 1 FROM extracted_item x WHERE x.id=s.source_item_id AND x.encounter_id=?)
+               OR EXISTS(SELECT 1 FROM occurrence_medication om JOIN medication_order m ON m.id=om.medication_id
+                         JOIN extracted_item x ON x.id=m.source_item_id WHERE om.occurrence_id=o.id AND x.encounter_id=?)
+            ORDER BY o.starts_at,o.id LIMIT ?
+            """,this::mapOccurrence,encounterId,encounterId,fetch);}
     public UUID insertSeries(UUID groupId, UUID actor, String kind, String generationKey) {
         UUID id=UUID.randomUUID(); jdbc.update("""
                 INSERT INTO task_series(id,group_id,kind,created_by,generation_key) VALUES (?,?,?,?,?)
                 """, id,groupId,kind,actor,generationKey); return id;
     }
+    public UUID insertSourcedSeries(UUID groupId,UUID actor,String kind,String generationKey,UUID sourceItemId){
+        UUID id=UUID.randomUUID();jdbc.update("""
+                INSERT INTO task_series(id,group_id,kind,created_by,generation_key,source_item_id) VALUES (?,?,?,?,?,?)
+                """,id,groupId,kind,actor,generationKey,sourceItemId);return id;}
+    public void linkSeriesMedication(UUID groupId,UUID seriesId,int revisionNo,UUID medicationId){jdbc.update("""
+            INSERT INTO series_medication(group_id,series_id,revision_no,medication_id) VALUES (?,?,?,?) ON CONFLICT DO NOTHING
+            """,groupId,seriesId,revisionNo,medicationId);}
+    public void copySeriesMedications(UUID groupId,UUID seriesId,int fromRevision,int toRevision){jdbc.update("""
+            INSERT INTO series_medication(group_id,series_id,revision_no,medication_id)
+            SELECT group_id,series_id,?,medication_id FROM series_medication WHERE group_id=? AND series_id=? AND revision_no=?
+            ON CONFLICT DO NOTHING
+            """,toRevision,groupId,seriesId,fromRevision);}
+    public List<UUID> activeSeriesMedicationIds(UUID seriesId,int revisionNo,LocalDate date){return jdbc.query("""
+            SELECT m.id FROM series_medication sm JOIN medication_order m ON m.id=sm.medication_id
+            WHERE sm.series_id=? AND sm.revision_no=? AND m.starts_on<=? AND m.ends_on>=?
+              AND NOT EXISTS(SELECT 1 FROM medication_order newer WHERE newer.supersedes_id=m.id AND newer.starts_on<=?)
+            ORDER BY m.id
+            """,(r,n)->r.getObject(1,UUID.class),seriesId,revisionNo,date,date,date);}
+    public void snapshotOccurrenceMedications(UUID groupId,UUID occurrenceId,List<UUID> medicationIds){for(UUID id:medicationIds)jdbc.update("""
+            INSERT INTO occurrence_medication(group_id,occurrence_id,medication_id) VALUES (?,?,?) ON CONFLICT DO NOTHING
+            """,groupId,occurrenceId,id);}
+    public void refreshFutureMedicationSnapshots(UUID groupId,UUID seriesId,int revisionNo,Instant cutoff){jdbc.update("""
+            UPDATE task_occurrence SET revision_no=? WHERE series_id=? AND status='PENDING' AND starts_at>=? AND is_override=false
+            """,revisionNo,seriesId,Timestamp.from(cutoff));jdbc.update("""
+            DELETE FROM occurrence_medication om USING task_occurrence o
+            WHERE om.occurrence_id=o.id AND o.series_id=? AND o.status='PENDING' AND o.starts_at>=?
+              AND NOT EXISTS(SELECT 1 FROM series_medication sm JOIN medication_order m ON m.id=sm.medication_id
+                WHERE sm.series_id=o.series_id AND sm.revision_no=? AND m.id=om.medication_id AND m.starts_on<=o.anchor_date AND m.ends_on>=o.anchor_date
+                  AND NOT EXISTS(SELECT 1 FROM medication_order newer WHERE newer.supersedes_id=m.id AND newer.starts_on<=o.anchor_date))
+            """,seriesId,Timestamp.from(cutoff),revisionNo);jdbc.update("""
+            INSERT INTO occurrence_medication(group_id,occurrence_id,medication_id)
+            SELECT ?,o.id,m.id FROM task_occurrence o JOIN series_medication sm ON sm.series_id=o.series_id AND sm.revision_no=?
+              JOIN medication_order m ON m.id=sm.medication_id
+            WHERE o.series_id=? AND o.status='PENDING' AND o.starts_at>=? AND m.starts_on<=o.anchor_date AND m.ends_on>=o.anchor_date
+              AND NOT EXISTS(SELECT 1 FROM medication_order newer WHERE newer.supersedes_id=m.id AND newer.starts_on<=o.anchor_date)
+            ON CONFLICT DO NOTHING
+            """,groupId,revisionNo,seriesId,Timestamp.from(cutoff));jdbc.update("""
+            UPDATE task_occurrence o SET status='CANCELED',cancel_reason='RULE_CHANGED',canceled_at=now(),assignee_user_id=NULL,assignment_origin=NULL,version=version+1
+            WHERE o.series_id=? AND o.status='PENDING' AND o.starts_at>=? AND NOT EXISTS(SELECT 1 FROM occurrence_medication om WHERE om.occurrence_id=o.id)
+            """,seriesId,Timestamp.from(cutoff));jdbc.update("UPDATE handoff_request h SET status='CLOSED',closed_at=now(),close_reason='RULE_CHANGED',version=h.version+1 FROM task_occurrence o WHERE o.id=h.occurrence_id AND o.series_id=? AND o.status='CANCELED' AND h.status='OPEN'",seriesId);
+        jdbc.update("UPDATE notification_event e SET status='CANCELED',lease_token=NULL,lease_until=NULL FROM task_occurrence o WHERE o.id=e.occurrence_id AND o.series_id=? AND o.status='CANCELED' AND e.status IN ('PENDING','FAILED','RUNNING')",seriesId);}
+    public List<TaskDtos.Medication> medicationsByIds(UUID groupId,List<UUID> ids){if(ids==null||ids.isEmpty())return List.of();String marks=String.join(",",java.util.Collections.nCopies(ids.size(),"?"));
+        java.util.ArrayList<Object> args=new java.util.ArrayList<>();args.add(groupId);args.addAll(ids);return jdbc.query("""
+                SELECT m.id,m.name,m.dose_text,m.frequency_text,m.starts_on,m.ends_on,m.instructions,
+                       m.confirmed_by,u.display_name,m.confirmed_at,m.supersedes_id
+                FROM medication_order m JOIN app_user u ON u.id=m.confirmed_by WHERE m.group_id=? AND m.id IN (%s) ORDER BY m.id
+                """.formatted(marks),this::mapMedication,args.toArray());}
+    public List<UUID> pendingOccurrenceIdsForMedications(List<UUID> ids,Instant now){if(ids.isEmpty())return List.of();String marks=String.join(",",java.util.Collections.nCopies(ids.size(),"?"));java.util.ArrayList<Object> args=new java.util.ArrayList<>(ids);args.add(Timestamp.from(now));return jdbc.query("""
+            SELECT DISTINCT o.id FROM task_occurrence o JOIN occurrence_medication om ON om.occurrence_id=o.id
+            WHERE om.medication_id IN (%s) AND o.status='PENDING' AND o.starts_at>=? ORDER BY o.id
+            """.formatted(marks),(r,n)->r.getObject(1,UUID.class),args.toArray());}
+    public List<Series> seriesForMedication(UUID medicationId){return jdbc.query("""
+            SELECT DISTINCT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+                   r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
+            FROM task_series s JOIN task_series_revision r ON r.series_id=s.id AND r.revision_no=s.current_revision_no
+            JOIN series_medication sm ON sm.series_id=s.id AND sm.revision_no=s.current_revision_no
+            WHERE sm.medication_id=? ORDER BY s.id
+            """,this::mapSeries,medicationId);}
     public void insertRevision(UUID seriesId, UUID groupId, String title, String description, LocalDate date,
             LocalTime time, int duration, UUID actor, Instant now) {
         jdbc.update("""

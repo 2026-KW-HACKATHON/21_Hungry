@@ -52,12 +52,15 @@ public class TaskGenerationService {
             for(LocalDate date=from;date.isBefore(until);date=date.plusDays(1)){
                 if(series.stopFromDate()!=null&&!date.isBefore(series.stopFromDate()))break;
                 if(!occurs(series,date))continue;
+                List<UUID> medications="MEDICATION".equals(series.kind())
+                        ?repository.activeSeriesMedicationIds(series.id(),series.currentRevisionNo(),date):List.of();
+                if("MEDICATION".equals(series.kind())&&medications.isEmpty())continue;
                 Instant starts=date.atTime(series.localTime()).atZone(KST).toInstant();
                 if(starts.isBefore(now))continue;
                 Instant ends=starts.plus(Duration.ofMinutes(series.durationMinutes()));
                 UUID id=repository.insertOccurrenceIfAbsent(series.groupId(),series.id(),series.currentRevisionNo(),date,
                         series.title(),series.description(),starts,ends);
-                if(id!=null)created.add(repository.findOccurrence(id).orElseThrow());
+                if(id!=null){repository.snapshotOccurrenceMedications(series.groupId(),id,medications);created.add(repository.findOccurrence(id).orElseThrow());}
             }
         }
         List<ScheduleAssignmentService.AssignmentDecision> decisions=assignments.assignNew(created);

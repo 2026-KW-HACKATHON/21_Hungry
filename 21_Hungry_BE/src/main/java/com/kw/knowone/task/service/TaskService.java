@@ -94,11 +94,11 @@ public class TaskService {
         return new com.kw.knowone.group.dto.GroupDtos.Home(groupId,target,homeList(mine,limit),homeList(unassigned,limit),
                 homeList(overdue,limit),repository.reviewEncounterCount(groupId));
     }
+    public TaskDtos.Page<TaskDtos.Task> linkedToEncounter(UUID encounterId,UUID userId,int requestedLimit){UUID groupId=repository.findEncounterGroup(encounterId).orElseThrow(this::notFound);requireMember(groupId,userId);int limit=Math.min(Math.max(requestedLimit,1),100);List<Occurrence> rows=repository.linkedToEncounter(encounterId,limit+1);boolean more=rows.size()>limit;if(more)rows=rows.subList(0,limit);return new TaskDtos.Page<>(rows.stream().map(this::dto).toList(),null,more);}
 
     public TaskDtos.SeriesEditPreview editPreview(UUID occurrenceId,UUID userId,TaskDtos.SeriesEditPreviewRequest request){
         Occurrence selected=requireOccurrence(occurrenceId);requireMember(selected.groupId(),userId);
         Series series=repository.findSeries(selected.seriesId()).orElseThrow(this::notFound);
-        if("MEDICATION".equals(series.kind()))throw validation("MEDICATION 반복 수정은 처방 확인 단계에서 지원합니다.");
         requireVersions(selected,request.expectedVersion(),series,request.expectedSeriesVersion());
         if("ONCE".equals(series.recurrence()))throw invalidState("반복 일정만 일괄 수정할 수 있습니다.");
         Instant cutoff=clock.instant();EditPlan plan=editPlan(series,cutoff,request.patch());
@@ -142,7 +142,6 @@ public class TaskService {
     private MutationResponse updateSeries(UUID occurrenceId,UUID userId,TaskDtos.UpdateRequest request,UUID requestId){
         if(!"SERIES_ALL_PENDING".equals(request.scope())||request.expectedSeriesVersion()==null||request.previewToken()==null)throw validation("일괄 수정 요청이 올바르지 않습니다.");
         Occurrence selected=requireOccurrence(occurrenceId);Series series=repository.findSeries(selected.seriesId()).orElseThrow(this::notFound);
-        if("MEDICATION".equals(series.kind()))throw validation("MEDICATION 반복 수정은 처방 확인 단계에서 지원합니다.");
         requireVersions(selected,request.expectedVersion(),series,request.expectedSeriesVersion());
         String payload=fingerprints.of(editPayload(request.expectedVersion(),request.expectedSeriesVersion(),request.patch()));
         PreviewTokenService.Claims claims=previews.verify(request.previewToken(),userId,"T06:"+occurrenceId,payload);
@@ -151,6 +150,7 @@ public class TaskService {
         Instant now=clock.instant();int revision=series.currentRevisionNo()+1;
         repository.insertRevision(series.id(),series.groupId(),revision,plan.next().title(),plan.next().description(),plan.next().recurrence(),
                 plan.next().firstDate(),plan.next().lastDate(),plan.next().weekdays(),plan.next().localTime(),plan.next().durationMinutes(),userId,claims.issuedAt());
+        if("MEDICATION".equals(series.kind()))repository.copySeriesMedications(series.groupId(),series.id(),series.currentRevisionNo(),revision);
         if(repository.advanceSeries(series.id(),series.version(),revision)!=1)throw versionConflict(series.version());
         List<UUID> updated=new ArrayList<>(),canceled=new ArrayList<>(),released=new ArrayList<>();
         for(Occurrence before:plan.updated()){
@@ -208,6 +208,13 @@ public class TaskService {
     }
     private MutationResponse doCreate(UUID groupId,UUID userId,TaskDtos.CreateRequest request,String key,UUID requestId){
         validateCreate(request); Instant now=clock.instant(); LocalDate today=LocalDate.now(clock); LocalDate horizon=today.plusDays(14);
+        List<UUID> medicationIds=List.of();if("MEDICATION".equals(request.kind())){medicationIds=request.medicationIds().stream().distinct().toList();
+            if(medicationIds.size()!=request.medicationIds().size()||repository.medicationsByIds(groupId,medicationIds).size()!=medicationIds.size())throw validation("같은 공동체의 확정 처방만 사용할 수 있습니다.");
+            var existing=repository.findMedicationSeries(groupId,request.rule().recurrence(),request.rule().weekdays(),request.rule().localTime(),request.rule().durationMinutes());if(existing.isPresent()){Series series=existing.get();List<UUID> linked=repository.seriesMedications(series.id(),series.currentRevisionNo()).stream().map(TaskDtos.Medication::id).toList();
+                if(linked.containsAll(medicationIds))throw new ApiException(HttpStatus.CONFLICT,"DUPLICATE_MEDICATION_CONFLICT","동일 복약 계획에 이미 연결된 처방입니다.");int revision=series.currentRevisionNo()+1;LocalDate first=series.firstDate().isBefore(request.rule().firstDate())?series.firstDate():request.rule().firstDate();LocalDate last=series.lastDate().isAfter(request.rule().lastDate())?series.lastDate():request.rule().lastDate();
+                repository.insertRevision(series.id(),groupId,revision,series.title(),series.description(),series.recurrence(),first,last,series.weekdays(),series.localTime(),series.durationMinutes(),userId,now);repository.copySeriesMedications(groupId,series.id(),series.currentRevisionNo(),revision);for(UUID id:medicationIds)repository.linkSeriesMedication(groupId,series.id(),revision,id);
+                if(repository.advanceSeries(series.id(),series.version(),revision)!=1)throw versionConflict(series.version());repository.refreshFutureMedicationSnapshots(groupId,series.id(),revision,now);generator.generateSeriesLocked(series.id(),requestId);Series after=repository.findSeries(series.id()).orElseThrow();List<TaskDtos.Task> occurrences=repository.pendingOccurrenceIdsForMedications(medicationIds,now).stream().map(this::requireOccurrence).map(this::dto).toList();
+                return new MutationResponse(200,DataResponse.of(new TaskDtos.CreateResponse(series.id(),after.version(),rule(after),occurrences,new TaskDtos.GenerationWindow(today,horizon))));}}
         LocalDate last=request.rule().lastDate();
         if(last!=null&&!last.atTime(request.rule().localTime()).atZone(KST).toInstant().plus(Duration.ofMinutes(request.rule().durationMinutes())).isAfter(now))
             throw new ApiException(HttpStatus.UNPROCESSABLE_ENTITY,"VALIDATION_ERROR","전체가 과거인 일정은 생성할 수 없습니다.");
@@ -215,6 +222,7 @@ public class TaskService {
         repository.insertRevision(seriesId,groupId,1,request.title().trim(),request.description(),request.rule().recurrence(),
                 request.rule().firstDate(),request.rule().lastDate(),request.rule().weekdays(),request.rule().localTime(),
                 request.rule().durationMinutes(),userId,now);
+        if("MEDICATION".equals(request.kind()))for(UUID medicationId:medicationIds)repository.linkSeriesMedication(groupId,seriesId,1,medicationId);
         events.audit(groupId,userId,"TASK_SERIES_CREATED","TASK_SERIES",seriesId,null,
                 Map.of("kind",request.kind(),"recurrence","ONCE","version",0),requestId);
         List<TaskDtos.Task> occurrences=generator.generateSeriesLocked(seriesId,requestId).stream()
@@ -412,11 +420,12 @@ public class TaskService {
     private record DeletePlan(List<Occurrence> cancel,int preservedCompleted,int movedOverrides,boolean affectsUnmaterialized){}
 
     private void validateCreate(TaskDtos.CreateRequest request){
-        if(!GENERAL_KINDS.contains(request.kind())){
-            if("MEDICATION".equals(request.kind()))throw validation("MEDICATION 일정은 처방 확인 단계에서만 생성할 수 있습니다.");
-            throw validation("kind가 올바르지 않습니다.");}
+        if(!GENERAL_KINDS.contains(request.kind())&&!"MEDICATION".equals(request.kind()))throw validation("kind가 올바르지 않습니다.");
         validateRule(request.rule());
-        if(request.medicationIds()!=null&&!request.medicationIds().isEmpty())throw validation("일반 일정에는 medicationIds를 지정할 수 없습니다.");
+        if("MEDICATION".equals(request.kind())){
+            if(request.medicationIds()==null||request.medicationIds().isEmpty())throw validation("MEDICATION에는 확정 처방이 필요합니다.");
+            if(request.rule().lastDate()==null)throw validation("MEDICATION 일정에는 종료일이 필요합니다.");
+        }else if(request.medicationIds()!=null&&!request.medicationIds().isEmpty())throw validation("일반 일정에는 medicationIds를 지정할 수 없습니다.");
     }
     private void validateRule(TaskDtos.Rule rule){
         if(!Set.of("ONCE","DAILY","WEEKLY").contains(rule.recurrence()))throw validation("recurrence가 올바르지 않습니다.");

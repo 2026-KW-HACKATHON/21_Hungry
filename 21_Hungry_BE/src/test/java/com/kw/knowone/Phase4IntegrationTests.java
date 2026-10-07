@@ -3,6 +3,7 @@ package com.kw.knowone;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,6 +12,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.Clock;
 import java.util.UUID;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -24,6 +26,10 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.support.TransactionTemplate;
 import com.kw.knowone.task.service.TaskGenerationService;
+import com.kw.knowone.task.service.ScheduleAssignmentService;
+import com.kw.knowone.task.repository.TaskRepository;
+import com.kw.knowone.group.repository.GroupEventRepository;
+import com.kw.knowone.common.schedule.ScheduleMutationService;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
@@ -41,6 +47,8 @@ class Phase4IntegrationTests {
     @Autowired ObjectMapper json;
     @Autowired TaskGenerationService generator;
     @Autowired TransactionTemplate transaction;
+    @Autowired TaskRepository taskRepository;@Autowired ScheduleAssignmentService assignmentService;
+    @Autowired GroupEventRepository groupEvents;@Autowired ScheduleMutationService scheduleMutations;@Autowired Clock clock;
     final HttpClient client=HttpClient.newHttpClient();
 
     @Test void dailyWeeklyHorizonAndGeneratorRetryAreIdempotent()throws Exception{
@@ -51,8 +59,13 @@ class Phase4IntegrationTests {
         JsonNode weekly=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("WEEKLY",first,first.plusDays(13),"["+weekday+"]","주간"),token,"weekly"));
         assertEquals(2,weekly.get("occurrences").size());UUID weeklyId=UUID.fromString(weekly.get("seriesId").asText());
         int before=count(dailyId)+count(weeklyId);generator.scheduledGenerate();generator.scheduledGenerate();
+        CompletableFuture<Void> firstRun=CompletableFuture.runAsync(generator::scheduledGenerate);
+        CompletableFuture<Void> secondRun=CompletableFuture.runAsync(generator::scheduledGenerate);
+        CompletableFuture.allOf(firstRun,secondRun).join();
+        new TaskGenerationService(taskRepository,assignmentService,groupEvents,scheduleMutations,clock).scheduledGenerate();
         assertEquals(before,count(dailyId)+count(weeklyId));
         assertEquals(0,jdbc.queryForObject("SELECT count(*) FROM (SELECT series_id,anchor_date,count(*) c FROM task_occurrence WHERE series_id IN (?,?) GROUP BY series_id,anchor_date HAVING count(*)>1) d",Integer.class,dailyId,weeklyId));
+        assertEquals(before,jdbc.queryForObject("SELECT count(*) FROM audit_event WHERE event_type='TASK_CREATED' AND entity_id IN (SELECT id FROM task_occurrence WHERE series_id IN (?,?))",Integer.class,dailyId,weeklyId));
     }
 
     @Test void occurrenceAndSeriesEditKeepAnchorThenDeletionUsesAnchorBoundary()throws Exception{
@@ -107,10 +120,15 @@ class Phase4IntegrationTests {
         String token=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
         JsonNode task=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",once(date,"20:00","탈퇴"),token,"leave-create")).get("occurrences").get(0);
         UUID assigned=UUID.fromString(task.get("assignee").get("id").asText());String assignedToken=assigned.equals(CAREGIVER)?token:login("demo-caregiver-3");
+        jdbc.update("INSERT INTO group_member(id,group_id,user_id,role,priority) VALUES (gen_random_uuid(),'10000000-0000-4000-8000-000000000002',?,'CAREGIVER',2)",assigned);
+        jdbc.update("INSERT INTO push_subscription(id,user_id,endpoint,endpoint_hash,p256dh,auth_secret) VALUES (gen_random_uuid(),?,'https://push.example/' || ?::text,decode(repeat('00',32),'hex'),'key','secret')",assigned,assigned);
         long version=jdbc.queryForObject("SELECT version FROM group_member WHERE group_id=? AND user_id=?",Long.class,GROUP,assigned);
         HttpResponse<String> left=send("POST","/api/v1/care-groups/"+GROUP+"/memberships/me/leave","{\"expectedVersion\":"+version+"}",assignedToken,"leave");
         assertEquals(200,left.statusCode(),left.body());assertEquals("LEFT",data(left).get("membershipStatus").asText());
         assertEquals(403,send("GET","/api/v1/care-groups/"+GROUP,null,assignedToken,null).statusCode());
+        assertEquals(200,send("GET","/api/v1/care-groups/10000000-0000-4000-8000-000000000002",null,assignedToken,null).statusCode());
+        assertEquals(200,send("GET","/api/v1/me",null,assignedToken,null).statusCode());
+        assertEquals(1,jdbc.queryForObject("SELECT count(*) FROM push_subscription WHERE user_id=? AND enabled",Integer.class,assigned));
         assertEquals(1,jdbc.queryForObject("SELECT count(*) FROM handoff_request WHERE occurrence_id=?::uuid AND reason='MEMBER_LEFT' AND status='OPEN'",Integer.class,task.get("id").asText()));
     }
 
@@ -125,6 +143,23 @@ class Phase4IntegrationTests {
         assertEquals(200,send("PATCH","/api/v1/tasks/"+firstId,edit,token,"tombstone-edit").statusCode());
         assertEquals("USER_ONE",jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,secondId));
         assertEquals("CANCELED",jdbc.queryForObject("SELECT status FROM task_occurrence WHERE id=?",String.class,secondId));
+    }
+
+    @Test void explicitRuleEditRevivesOnlyRuleChangedAndNeverUserFuture()throws Exception{
+        String token=login("demo-caregiver-1");LocalDate first=LocalDate.now(KST).plusDays(1);
+        JsonNode created=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("DAILY",first,first.plusDays(4),"[]","규칙 복구"),token,"rule-create"));
+        UUID selected=UUID.fromString(created.get("occurrences").get(0).get("id").asText());UUID excluded=UUID.fromString(created.get("occurrences").get(1).get("id").asText());
+        int weekday=first.getDayOfWeek().getValue();JsonNode p1=data(send("POST","/api/v1/tasks/"+selected+"/series-edit-preview","{\"expectedVersion\":0,\"expectedSeriesVersion\":0,\"patch\":{\"recurrence\":\"WEEKLY\",\"weekdays\":["+weekday+"]}}",token,null));
+        assertEquals(200,send("PATCH","/api/v1/tasks/"+selected,"{\"scope\":\"SERIES_ALL_PENDING\",\"expectedVersion\":0,\"expectedSeriesVersion\":0,\"previewToken\":"+quote(p1.get("previewToken").asText())+",\"patch\":{\"recurrence\":\"WEEKLY\",\"weekdays\":["+weekday+"]}}",token,"weekly-rule").statusCode());
+        assertEquals("RULE_CHANGED",jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,excluded));
+        long occurrenceVersion=jdbc.queryForObject("SELECT version FROM task_occurrence WHERE id=?",Long.class,selected);long seriesVersion=jdbc.queryForObject("SELECT version FROM task_series WHERE id=(SELECT series_id FROM task_occurrence WHERE id=?)",Long.class,selected);
+        JsonNode p2=data(send("POST","/api/v1/tasks/"+selected+"/series-edit-preview","{\"expectedVersion\":"+occurrenceVersion+",\"expectedSeriesVersion\":"+seriesVersion+",\"patch\":{\"recurrence\":\"DAILY\",\"weekdays\":[]}}",token,null));
+        assertEquals(200,send("PATCH","/api/v1/tasks/"+selected,"{\"scope\":\"SERIES_ALL_PENDING\",\"expectedVersion\":"+occurrenceVersion+",\"expectedSeriesVersion\":"+seriesVersion+",\"previewToken\":"+quote(p2.get("previewToken").asText())+",\"patch\":{\"recurrence\":\"DAILY\",\"weekdays\":[]}}",token,"daily-rule").statusCode());
+        assertEquals("PENDING",jdbc.queryForObject("SELECT status FROM task_occurrence WHERE id=?",String.class,excluded));assertNull(jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,excluded));
+
+        JsonNode future=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("DAILY",first,first.plusDays(3),"[]","사용자 미래 취소"),token,"future-create"));UUID boundary=UUID.fromString(future.get("occurrences").get(1).get("id").asText());UUID keptCanceled=UUID.fromString(future.get("occurrences").get(2).get("id").asText());
+        JsonNode dp=data(send("POST","/api/v1/tasks/"+boundary+"/deletion-preview","{\"scope\":\"SERIES_FROM_SELECTED\",\"expectedVersion\":0,\"expectedSeriesVersion\":0}",token,null));assertEquals(200,send("DELETE","/api/v1/tasks/"+boundary,"{\"scope\":\"SERIES_FROM_SELECTED\",\"expectedVersion\":0,\"expectedSeriesVersion\":0,\"previewToken\":"+quote(dp.get("previewToken").asText())+"}",token,"future-delete").statusCode());
+        assertEquals("USER_FUTURE",jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,keptCanceled));generator.scheduledGenerate();assertEquals("CANCELED",jdbc.queryForObject("SELECT status FROM task_occurrence WHERE id=?",String.class,keptCanceled));assertEquals("USER_FUTURE",jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,keptCanceled));
     }
 
     @Test void overdueOpenHandoffExpiresAndFutureMoveCreatesNewIncident()throws Exception{

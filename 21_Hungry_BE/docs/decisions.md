@@ -50,9 +50,9 @@ Bearer opaque token·4계정·ACTIVE 공동체 인가, Vercel/EC2 분리, 기존
 | CORS_ALLOWED_ORIGINS | 정확한 Origin 목록 | 서버 설정, 실제 값 미정 |
 | FILE_STORAGE_ROOT, AUDIO_TEMP_ROOT | 비공개 영속/임시 저장 경로 | 서버 설정 |
 | OPENAI_API_KEY | 공급자 인증 | 서버 비밀 |
-| OPENAI_TRANSCRIBE_MODEL, OPENAI_OCR_MODEL, OPENAI_ANALYZE_MODEL | 명시적 모델 선택 | 서버 설정, 미정 |
-| AI_CALL_TIMEOUT_SECONDS, AI_JOB_LEASE_SECONDS, AI_WORKER_CONCURRENCY | timeout·lease·처리량 | 시험 후 값 결정 |
-| AI_MAX_OUTPUT_TOKENS | 모델 출력 상한 | 모델 지원 확인 후 |
+| OPENAI_TRANSCRIBE_MODEL, OPENAI_OCR_MODEL, OPENAI_ANALYSIS_MODEL | 명시적 모델 선택 | 서버 설정. 6단계 기본값은 아래 D38 참조 |
+| OPENAI_TIMEOUT(또는 기존 AI_CALL_TIMEOUT_SECONDS), AI_JOB_LEASE_SECONDS, AI_WORKER_CONCURRENCY, AI_JOB_MAX_ATTEMPTS | timeout·lease·처리량·DB 재시도 상한 | 6단계 안전 기본값은 아래 D40 참조 |
+| OPENAI_MAX_OUTPUT_TOKENS(또는 기존 AI_MAX_OUTPUT_TOKENS) | 모델 출력 상한 | 기본 12000, 실호출 측정 전 잠정 |
 | AUDIO_ALLOWED_MEDIA_TYPES, AUDIO_MAX_BYTES, AUDIO_MAX_DURATION_SECONDS | 음성 실제 정책 | U05/U06 후 고정 |
 | MULTIPART_MAX_REQUEST_BYTES | 전체 요청 한도 | 파일당 10MB와 구별 |
 | PREVIEW_SIGNING_SECRET | preview 무결성 | 서버 비밀, 인증 토큰과 무관 |
@@ -117,3 +117,32 @@ U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지�
 | D27 | 반복 일괄 수정의 token 발급 시각을 cutoff와 동일하게 사용하고 영향 ID/version·seriesVersion·추가 날짜를 state fingerprint에 포함 | 수 밀리초 cutoff 차이로 정상 저장이 stale이 되는 문제를 제거하고 저장 시 상태·현재 시각을 재검증 |
 | D28 | 경과 OPEN 인계는 수락 트랜잭션 전에 독립 guard 트랜잭션으로 EXPIRED 커밋 | 오류 응답 롤백으로 만료 기록이 사라지지 않으며 미래 이동 시 새 미배정 사건을 별도로 생성 |
 | D29 | 4단계 생성기는 일반 일정만 처리하고 MEDICATION 생성·일괄 수정은 처방 확인 단계까지 명시적으로 거부 | 약 snapshot 없이 일반 반복처럼 생성해 성공으로 보이지 않도록 T03/T04/G08을 필요한 범위에서 PARTIAL 유지 |
+
+## 10. 5단계에서 확정한 기술 기준
+
+작성: 2026-10-07, Asia/Seoul.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D30 | 기존 28개 테이블과 적용된 V1/V2를 수정하지 않고 encounter/file_asset/source/job/revision 구조를 그대로 사용 | DB v1.2가 5단계에 필요한 상태·lease·dedup·파기 필드를 이미 포함하며 새 migration이 필요하지 않음 |
+| D31 | `StoragePort` 뒤의 로컬 비공개 저장소는 서버 생성 key만 사용하고 임시 저장→검증→승격→DB 등록, DB 실패/replay 시 객체 보상 삭제를 수행 | 파일시스템과 DB의 비원자성을 명시적으로 보상하고 원본 filename·경로 이탈·공개 정적 제공을 차단 |
+| D32 | 문서는 PDFBox와 ImageIO/TwelveMonkeys의 실제 parser/decoder를 통과해야 하며 signature와 수신 byte 수를 함께 검사 | 확장자·클라이언트 MIME/pageCount를 신뢰하지 않고 10,000,000 bytes·10페이지·10장 정책을 적용. WEBP 실제 decode도 자동 검증 |
+| D33 | 음성 자동 검증 지원은 우선 WAV parser로 제한하고 25,000,000 bytes·1200초·24시간 만료를 설정화 | U05/U06은 실기기 시험 전 미정이므로 WAV를 최종 모바일 지원 형식으로 확정하지 않음 |
+| D34 | 실제 AI adapter는 미연결 상태로 두고 test 프로필에만 fake를 등록한다. prod/demo에서 worker가 꺼져 있으면 작업을 `FAILED/AI_NOT_CONFIGURED`로 명시 | fake 성공을 실제 처리처럼 저장하거나 처리 불가능한 작업을 영구 QUEUED로 숨기지 않음 |
+| D35 | processing worker는 짧은 SKIP LOCKED claim 트랜잭션과 외부 처리, lease/inputVersion/source 상태를 재검증하는 결과 트랜잭션으로 분리 | 만료 lease 재소유 후 이전 worker 쓰기와 입력 변경 후 stale 결과를 차단 |
+| D36 | 기록 삭제는 202 접수와 실제 객체 파기를 구분하고, 즉시 접근 차단 후 공유 약 업무는 다른 약 연결을 유지하며 단독 미래 업무만 RECORD_DELETED 취소 | soft delete만으로 파기 완료로 표시하지 않고 원본 삭제 확인 뒤 key 제거·민감 텍스트/요약/후보 redaction 수행 |
+| D37 | ANALYZE dedup key는 `(encounterId,inputVersion,ANALYZE)`로 고정하고 E10 멱등 operation은 sourceId 기반으로 60자 안에 유지 | 여러 준비 경로에서 동일 요약 작업/현재 revision이 중복되지 않으며 적용된 DB 컬럼 길이를 변경하지 않고 소스 제거 replay를 지원 |
+
+## 11. 6단계에서 확정한 기술 기준
+
+작성: 2026-10-07, Asia/Seoul. 공식 문서 확인일도 2026-10-07이다.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D38 | 파일 전사는 `v1/audio/transcriptions`의 `gpt-transcribe`, OCR·분석은 Responses API의 고정 snapshot `gpt-5.4-mini-2026-03-17`을 기본값으로 사용 | [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text), [gpt-transcribe](https://developers.openai.com/api/docs/models/gpt-transcribe), [GPT-5.4 mini](https://developers.openai.com/api/docs/models/gpt-5.4-mini)를 확인했다. 후자는 이미지 입력·Structured Outputs·400K context를 지원한다. 한국어 약명·숫자 fixture의 서버 검증은 통과했으나 API 키가 없어 모델 정확도·지연·사용량 평가는 BLOCKED이며 기본 모델은 잠정값이다. |
+| D39 | JDK `HttpClient`로 공식 REST 계약을 직접 호출하고 OpenAI Java SDK를 추가하지 않는다 | [공식 Java SDK](https://developers.openai.com/api/reference/java)는 4.78.0과 설정 가능한 timeout을 확인했다. 현재 adapter는 SDK 내부 재시도가 없어 DB 작업 재시도와 중첩되지 않으며 `Retry-After`를 존중한다. SDK를 사용하지 않으므로 SDK 호환성 검증 완료로 주장하지 않는다. |
+| D40 | 기본 provider timeout 90초, lease 180초, concurrency 2, 작업 최대 시도 4회이며 활성화 시 lease가 timeout보다 최소 15초 길지 않으면 시작을 거부한다 | claim한 작업은 고정 크기 executor에서 병렬 처리한다. 429/일시 장애만 제한 재시도하고 provider 입력 한도·refusal·incomplete·schema/의미 오류는 같은 입력으로 자동 재호출하지 않는다. 외부 호출은 DB 트랜잭션과 schedule guard 밖이다. |
+| D41 | Responses 요청은 `store=false`, 신뢰 프롬프트는 developer message, 원문과 파일은 user content로 분리한다 | [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [File inputs](https://developers.openai.com/api/docs/guides/file-inputs), [Images and vision](https://developers.openai.com/api/docs/guides/images-vision), [Data controls](https://developers.openai.com/api/docs/guides/your-data)를 확인했다. `store=false`는 Responses 상태 저장을 끄지만 조직의 abuse monitoring/보존 설정까지 자동 보장한다는 뜻은 아니다. |
+| D42 | 분석 계약 1.0의 schema/prompt를 버전 관리하고 모델 출력 뒤 서버가 exact-field, null·날짜·근거 quote·source·Unicode codepoint offset·교차 소스 충돌을 다시 판정 | 모델은 DB ID·담당자·확인자·reviewState/application key를 정하지 않는다. `supersedesMedicationId`는 schema에서 null만 허용한다. 공급자 요청에서는 공식 subset 밖의 schema metadata/`uniqueItems`만 제거하고 해당 유일성은 서버가 검증한다. 실제 변경 관계는 R02가 같은 공동체의 확정 처방으로 매핑한다. |
+| D43 | 일반 TASK만 명확·미래·비조건부·근거 유효 시 자동 적용하고 MEDICATION은 항상 R02 사용자 확인 뒤 처방·시리즈·발생·배정에 반영 | R02는 guard 뒤 version/현재 revision/충돌 해소를 재검증하고 처방·snapshot·audit·outbox·멱등 성공을 한 트랜잭션에 기록한다. 확인은 사용자 확인이지 의료진 검증이 아니다. |
+| D44 | 음성 서버 지원은 계속 실제 WAV parser를 통과한 `audio/wav`, `audio/x-wav`로 제한 | OpenAI 전사 API 자체의 지원 컨테이너가 더 넓어도 MIME만 확장하지 않는다. iPhone/Android 출력과 변환 경로는 실기기 표본이 없어 BLOCKED다. |

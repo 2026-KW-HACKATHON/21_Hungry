@@ -1,0 +1,11 @@
+{
+  "fixtureVersion": "1.0",
+  "occurredOn": "2026-10-07",
+  "source": "가상 A약은 0.5정, 가상 B약은 1.5mg입니다. 하루 두 번 복용하되 시각은 정하지 않았습니다. 증상이 계속되면 다음 주에 검사할 수 있습니다.",
+  "expectations": {
+    "preserve": ["0.5정", "1.5mg"],
+    "unknownMedicationTimes": true,
+    "conditionalTask": true,
+    "inventedTimesAllowed": false
+  }
+}

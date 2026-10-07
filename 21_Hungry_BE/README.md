@@ -1,6 +1,6 @@
 # 21 Hungry Backend
 
-가족 돌봄 서비스의 Spring Boot 백엔드입니다. 1단계 기반 위에 2단계 인증 A01~A04와 공동체 G01~G06을 구현했습니다. 나머지 업무 API는 아직 구현하지 않았습니다.
+가족 돌봄 서비스의 Spring Boot 백엔드입니다. 인증·공동체·가능시간·일정·기록/파일·AI 후보 처리·처방 확인과 복약 일정을 구현했습니다. 실제 Web Push 발송·프론트·배포는 포함하지 않습니다.
 
 ## 기술 버전
 
@@ -79,11 +79,13 @@ demo DB를 prod DB로 전환하거나 prod 프로필에서 재사용하지 않�
 
 - `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`
 - `CORS_ALLOWED_ORIGINS`: 쉼표로 구분한 정확한 Origin 목록. `*` 금지
-- `FILE_STORAGE_ROOT`, `AUDIO_TEMP_ROOT`: 후속 파일 기능용 비공개 경로
+- `FILE_STORAGE_ROOT`, `AUDIO_TEMP_ROOT`: 비공개 파일 경로
 - `PREVIEW_SIGNING_SECRET`: 32바이트 이상의 preview HMAC 비밀값. demo/prod에서 반드시 별도 주입
 - `AUTH_SESSION_TTL_SECONDS`, `IDEMPOTENCY_TTL_SECONDS`, `PREVIEW_TTL_SECONDS`: 기본 86400/86400/300초
 
-AI·음성·VAPID 관련 값은 후속 단계 계약을 위한 빈 자리이며 현재 코드에서 사용하지 않는다. 비밀값을 저장소에 커밋하지 않는다.
+실제 AI worker는 기본적으로 꺼져 있다. 서버 런타임에만 `OPENAI_API_KEY`를 주입하고 `AI_WORKER_ENABLED=true`로 켠다. 기본 모델은 `gpt-transcribe`, `gpt-5.4-mini-2026-03-17`이며 `OPENAI_TRANSCRIBE_MODEL`, `OPENAI_OCR_MODEL`, `OPENAI_ANALYSIS_MODEL`로 명시 변경한다. timeout/lease는 기본 90초/180초이고 lease가 timeout보다 최소 15초 길지 않으면 시작을 거부한다. `OPENAI_TIMEOUT`, `AI_JOB_LEASE_SECONDS`, `AI_WORKER_CONCURRENCY`, `AI_JOB_MAX_ATTEMPTS`, `OPENAI_MAX_OUTPUT_TOKENS`를 조정할 수 있다. 기존 `OPENAI_ANALYZE_MODEL`, `AI_CALL_TIMEOUT_SECONDS`, `AI_MAX_OUTPUT_TOKENS`도 하위 호환으로 읽는다. 키와 비밀값을 저장소에 커밋하지 않는다.
+
+유료 실호출은 일반 테스트에 포함하지 않는다. 가상 파일 smoke는 `scripts/openai-live-api-smoke.ps1`을 별도로 사용하며, 중단 복구 시 `-EncounterId`를 주면 기존 처리 상태를 먼저 확인하고 새 업로드를 만들지 않는다.
 
 ## 공통 HTTP 계약
 
