@@ -177,7 +177,14 @@ public class EncounterRepository {
                     ON CONFLICT (revision_id,item_key) DO UPDATE SET payload=EXCLUDED.payload,evidence=EXCLUDED.evidence,
                       review_state=EXCLUDED.review_state,review_reasons=EXCLUDED.review_reasons,version=extracted_item.version+1
                     """,UUID.randomUUID(),job.groupId(),job.encounterId(),revisionId,item.itemKey(),item.itemType(),item.payloadJson(),item.evidenceJson(),state,array);
-        }return true;}
+        }
+        boolean review=result.items().stream().anyMatch(item->"NEEDS_REVIEW".equals(item.reviewState()));
+        jdbc.update("""
+            INSERT INTO notification_event(id,group_id,event_type,event_key,encounter_id,due_at,payload)
+            VALUES (gen_random_uuid(),?,?,?, ?,now(),jsonb_build_object('schemaVersion',1,'revisionId',?::text))
+            ON CONFLICT (event_key) DO NOTHING
+            """,job.groupId(),review?"RECORD_REVIEW_REQUIRED":"RECORD_READY","record:"+revisionId+":ready",job.encounterId(),revisionId);
+        return true;}
     public void recordProvider(Job job,String provider,String model,String promptVersion){jdbc.update("""
             UPDATE processing_job SET provider=?,model=?,prompt_version=? WHERE id=? AND status='RUNNING' AND lease_token=?
             """,provider,model,promptVersion,job.id(),job.leaseToken());}

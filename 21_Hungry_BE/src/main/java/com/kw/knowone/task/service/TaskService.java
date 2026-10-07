@@ -135,7 +135,8 @@ public class TaskService {
         UUID handoff=null;if(!keep&&before.assigneeUserId()!=null)handoff=repository.openHandoff(before.groupId(),before.id(),"AVAILABILITY",before.assigneeUserId(),userId);
         if(before.assigneeUserId()==null&&repository.findOpenHandoff(before.id()).isEmpty())handoff=repository.openNoCandidate(before.groupId(),before.id());
         Occurrence after=requireOccurrence(before.id());events.audit(before.groupId(),userId,"TASK_OCCURRENCE_UPDATED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
-        if(handoff!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff-open:"+handoff,before.id(),handoff,null,after.version(),Map.of("schemaVersion",1,"reason",!keep?"AVAILABILITY":"NO_CANDIDATE"),now);
+        if(handoff!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+handoff+":open",before.id(),handoff,null,after.version(),Map.of("schemaVersion",1,"reason",!keep?"AVAILABILITY":"NO_CANDIDATE"),now);
+        events.syncOccurrenceNotifications(after.id(),now);
         return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));
     }
 
@@ -160,8 +161,8 @@ public class TaskService {
             if(repository.applySeriesRevision(before.id(),before.version(),revision,plan.next().title(),plan.next().description(),starts,ends,keep)!=1)throw versionConflict(before.version());
             repository.cancelPendingNotifications(before.id());repository.cancelPendingDeliveries(before.id());
             if(!keep&&before.assigneeUserId()!=null){UUID h=repository.openHandoff(before.groupId(),before.id(),"AVAILABILITY",before.assigneeUserId(),userId);released.add(before.id());
-                if(h!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff-open:"+h,before.id(),h,null,before.version()+1,Map.of("schemaVersion",1,"reason","AVAILABILITY"),now);}
-            events.audit(before.groupId(),userId,"TASK_SERIES_OCCURRENCE_UPDATED","TASK_OCCURRENCE",before.id(),event(before),event(requireOccurrence(before.id())),requestId);updated.add(before.id());
+                if(h!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+h+":open",before.id(),h,null,before.version()+1,Map.of("schemaVersion",1,"reason","AVAILABILITY"),now);}
+            events.audit(before.groupId(),userId,"TASK_SERIES_OCCURRENCE_UPDATED","TASK_OCCURRENCE",before.id(),event(before),event(requireOccurrence(before.id())),requestId);events.syncOccurrenceNotifications(before.id(),now);updated.add(before.id());
         }
         for(Occurrence before:plan.canceled()){cancel(before,userId,"RULE_CHANGED",requestId,now);canceled.add(before.id());}
         List<Occurrence> revivedValues=new ArrayList<>();for(Occurrence before:plan.revived()){
@@ -171,8 +172,8 @@ public class TaskService {
             revivedValues.add(requireOccurrence(before.id()));updated.add(before.id());
         }
         assignments.assignNew(revivedValues);for(Occurrence revived:revivedValues){Occurrence assigned=requireOccurrence(revived.id());UUID h=null;if(assigned.assigneeUserId()==null)h=repository.openNoCandidate(assigned.groupId(),assigned.id());
-            if(h!=null)events.taskNotification(assigned.groupId(),"HANDOFF_OPEN","handoff-open:"+h,assigned.id(),h,null,assigned.version(),Map.of("schemaVersion",1,"reason","NO_CANDIDATE"),now);
-            else events.taskNotification(assigned.groupId(),"TASK_ASSIGNED","task-assigned:"+assigned.id()+":"+assigned.version(),assigned.id(),null,assigned.assigneeUserId(),assigned.version(),Map.of("schemaVersion",1),now);}
+            if(h!=null)events.taskNotification(assigned.groupId(),"HANDOFF_OPEN","handoff:"+h+":open",assigned.id(),h,null,assigned.version(),Map.of("schemaVersion",1,"reason","NO_CANDIDATE"),now);
+            else events.taskNotification(assigned.groupId(),"TASK_ASSIGNED","task:"+assigned.id()+":assignment:"+assigned.version(),assigned.id(),null,assigned.assigneeUserId(),assigned.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(assigned.id(),now);}
         List<UUID> created=generator.generateSeriesLocked(series.id(),requestId);
         Series after=repository.findSeries(series.id()).orElseThrow();
         events.audit(series.groupId(),userId,"TASK_SERIES_UPDATED","TASK_SERIES",series.id(),Map.of("version",series.version(),"revisionNo",series.currentRevisionNo()),Map.of("version",after.version(),"revisionNo",after.currentRevisionNo()),requestId);
@@ -240,7 +241,7 @@ public class TaskService {
             if(repository.assign(before.id(),before.version(),target.userId())!=1)throw versionConflict(before.version());
             Instant now=clock.instant();repository.acceptOpenHandoff(before.id(),target.userId(),now);repository.cancelPendingNotifications(before.id());
             Occurrence after=requireOccurrence(before.id());events.audit(before.groupId(),userId,"TASK_ASSIGNED_MANUAL","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
-            events.taskNotification(before.groupId(),"TASK_ASSIGNED","task-assigned:"+before.id()+":"+after.version(),before.id(),null,target.userId(),after.version(),Map.of("schemaVersion",1),now);
+            events.taskNotification(before.groupId(),"TASK_ASSIGNED","task:"+before.id()+":assignment:"+after.version(),before.id(),null,target.userId(),after.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(after.id(),now);
             return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));});
     }
 
@@ -249,7 +250,7 @@ public class TaskService {
             Occurrence before=requireOccurrence(occurrenceId);requireMutablePending(before,request.expectedVersion(),false);
             if(groups.findActiveMembership(before.groupId(),request.performedByUserId()).isEmpty())throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","수행자는 ACTIVE 구성원이어야 합니다.");
             Instant now=clock.instant();if(repository.complete(before.id(),before.version(),userId,request.performedByUserId(),now)!=1)throw versionConflict(before.version());
-            repository.closeOpenHandoff(before.id(),"TASK_COMPLETED",now);repository.cancelPendingNotifications(before.id());Occurrence after=requireOccurrence(before.id());
+            repository.closeOpenHandoff(before.id(),"TASK_COMPLETED",now);repository.cancelPendingNotifications(before.id());repository.cancelPendingDeliveries(before.id());Occurrence after=requireOccurrence(before.id());
             events.audit(before.groupId(),userId,"TASK_COMPLETED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
             events.taskNotification(before.groupId(),"TASK_COMPLETED","task-completed:"+before.id()+":"+after.version(),before.id(),null,null,after.version(),Map.of("schemaVersion",1),now);
             return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));});
@@ -264,8 +265,8 @@ public class TaskService {
             if(repository.reopen(before.id(),before.version(),keep)!=1)throw versionConflict(before.version());
             Instant now=clock.instant();repository.cancelPendingNotifications(before.id());UUID handoff=null;if(!keep&&before.endsAt().isAfter(now))handoff=repository.openNoCandidate(before.groupId(),before.id());
             Occurrence after=requireOccurrence(before.id());events.audit(before.groupId(),userId,"TASK_REOPENED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
-            if(handoff!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff-open:"+handoff,before.id(),handoff,null,after.version(),Map.of("schemaVersion",1,"reason","NO_CANDIDATE"),now);
-            else events.taskNotification(before.groupId(),"TASK_REOPENED","task-reopened:"+before.id()+":"+after.version(),before.id(),null,after.assigneeUserId(),after.version(),Map.of("schemaVersion",1),now);
+            if(handoff!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+handoff+":open",before.id(),handoff,null,after.version(),Map.of("schemaVersion",1,"reason","NO_CANDIDATE"),now);
+            else events.taskNotification(before.groupId(),"TASK_REOPENED","task-reopened:"+before.id()+":"+after.version(),before.id(),null,after.assigneeUserId(),after.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(after.id(),now);
             return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));});
     }
 
@@ -280,7 +281,8 @@ public class TaskService {
             repository.cancelPendingNotifications(before.id());repository.cancelPendingDeliveries(before.id());
             Occurrence after=requireOccurrence(before.id());Handoff handoff=repository.findHandoff(id).orElseThrow();
             events.audit(before.groupId(),userId,"HANDOFF_REQUESTED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
-            events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff-open:"+id,before.id(),id,null,after.version(),Map.of("schemaVersion",1,"reason","USER_REQUEST"),now);
+            events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+id+":open",before.id(),id,null,after.version(),Map.of("schemaVersion",1,"reason","USER_REQUEST"),now);
+            events.syncOccurrenceNotifications(after.id(),now);
             return new MutationResponse(201,DataResponse.of(new TaskDtos.HandoffResponse(dto(after),handoffDto(handoff))));});
     }
 
@@ -302,7 +304,7 @@ public class TaskService {
             repository.cancelPendingNotifications(occurrence.id());repository.cancelPendingDeliveries(occurrence.id());
             Handoff afterHandoff=repository.findHandoff(before.id()).orElseThrow();Occurrence after=requireOccurrence(occurrence.id());
             events.audit(occurrence.groupId(),userId,"HANDOFF_ACCEPTED","TASK_OCCURRENCE",occurrence.id(),event(occurrence),event(after),requestId);
-            events.taskNotification(occurrence.groupId(),"HANDOFF_ACCEPTED","handoff-accepted:"+before.id()+":"+afterHandoff.version(),occurrence.id(),before.id(),null,after.version(),Map.of("schemaVersion",1,"acceptedBy",userId),now);
+            events.taskNotification(occurrence.groupId(),"HANDOFF_ACCEPTED","handoff:"+before.id()+":accepted",occurrence.id(),before.id(),null,after.version(),Map.of("schemaVersion",1,"acceptedBy",userId),now);events.syncOccurrenceNotifications(after.id(),now);
             return new MutationResponse(200,DataResponse.of(new TaskDtos.HandoffResponse(dto(after),handoffDto(afterHandoff))));});
     }
 

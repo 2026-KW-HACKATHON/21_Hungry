@@ -160,7 +160,37 @@
 - 날짜 범위 전체 롤백은 실제 PostgreSQL 강제 실패로 확인했으나 수백 날짜 부하 한계는 아직 측정하지 않았다.
 - MEDICATION 생성·처방 확인·미래 변경은 6단계에서 구현했고 과거/시작/완료 occurrence snapshot을 보존한다.
 - G08 진료 확인 건수는 현재 revision의 실제 NEEDS_REVIEW 후보와 R02/R03 전이를 집계한다.
-- 외부 AI·파일·실제 Web Push 호출은 수행하지 않았고 notification_event outbox 적재까지만 검증했다.
+- 외부 AI·파일 실호출은 수행하지 않았다. 7단계에서 Web Push 전송 코드까지 연결했지만 VAPID/브라우저 구독이 없어 실제 provider 호출은 수행하지 않았다.
+
+## 7단계 알림함·outbox·Web Push
+
+갱신: 2026-10-07, Asia/Seoul.
+
+| 영역 | 상태 | 근거 |
+|---|---|---|
+| N01~N08 | CODE DONE | 본인/ACTIVE 공동체 알림함, cursor·unreadCount, 최초 readAt, DAILY/ONCE version, 공개 VAPID config, 구독 등록·계정 전환·목록·해제 구현 |
+| outbox 확장 | CODE DONE | V1 `notification_event`를 SKIP LOCKED claim하고 수신자별 `notification`, 활성 기기별 `notification_delivery`를 한 트랜잭션에서 unique 제약과 함께 생성 |
+| 예약·digest | CODE DONE | 시작 30분 전/시작/경과 event_key, task version 변경 시 구예약 취소·미래 예약 재생성, 09:00 KST DAILY digest와 당일 최초 OPEN 알림 제외 구현 |
+| Web Push | CODE DONE / LIVE BLOCKED | web-push-java 5.1.2 암호화/VAPID + redirect 없는 JDK HttpClient, HTTPS/provider allowlist/DNS 사설주소 차단, 404/410·429·timeout·lease fencing 구현. VAPID/브라우저 구독 부재로 외부 provider 호출 안 함 |
+| DB migration | NOT NEEDED | DB 설계 v1.2의 기존 28개 테이블·부분 unique·composite FK로 계약 충족. V1/V2 변경 없음 |
+| AI worker lease 재검토 | VERIFIED | claim 한 번에 provider 호출 1회이고 backoff는 DB 재예약이다. 90초 call timeout/180초 lease 검증을 유지하며 앱 내부 다중 provider retry는 없음. OpenAI 실호출은 키 부재로 계속 BLOCKED |
+
+N01~N08은 모두 코드 및 PostgreSQL 자동 테스트 완료다. 실제 push provider 2xx 수락, Service Worker 표시, notificationclick, iPhone/Android 실기기는 VAPID 키·HTTPS origin·브라우저 구독이 없어 BLOCKED이며 DONE으로 간주하지 않는다.
+
+7단계 집중 테스트는 `gradlew.bat test --tests com.kw.knowone.Phase7IntegrationTests`로 실행한다. 설정 version 경쟁, 악성 endpoint/키, 계정 전환과 과거 FK, outbox/delivery 중복 방지, readAt, 탈퇴 필터, 404/410, 429, 최대 시도, lease fencing, task version 예약, DAILY 중복 제외, KST 09:00 경계를 실제 PostgreSQL에서 검증한다.
+
+최종 `gradlew.bat test bootJar`는 12 suites / 89 tests / failures 0 / errors 0 / skipped 0으로 통과했고, 기존 PostgreSQL 18.6 컨테이너는 healthy였다.
+
+| API | 상태 |
+|---|---|
+| N01 | CODE DONE / PostgreSQL TESTED |
+| N02 | CODE DONE / PostgreSQL TESTED |
+| N03 | CODE DONE / PostgreSQL TESTED |
+| N04 | CODE DONE / PostgreSQL TESTED |
+| N05 | CODE DONE / LIVE CONFIG BLOCKED |
+| N06 | CODE DONE / PostgreSQL TESTED |
+| N07 | CODE DONE / PostgreSQL TESTED |
+| N08 | CODE DONE / PostgreSQL TESTED |
 
 ## 환경별 DB 주의사항
 

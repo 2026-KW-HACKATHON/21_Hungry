@@ -73,8 +73,9 @@ public class GroupService {
             tasks.cancelPendingNotifications(occurrence.id());tasks.cancelPendingDeliveries(occurrence.id());
             eventRepository.audit(groupId,userId,"TASK_RELEASED_MEMBER_LEFT","TASK_OCCURRENCE",occurrence.id(),
                     Map.of("assigneeUserId",userId,"version",occurrence.version()),Map.of("assigneeUserId","","version",occurrence.version()+1),requestId);
-            if(handoff!=null)eventRepository.taskNotification(groupId,"HANDOFF_OPEN","handoff-open:"+handoff,
+            if(handoff!=null)eventRepository.taskNotification(groupId,"HANDOFF_OPEN","handoff:"+handoff+":open",
                     occurrence.id(),handoff,null,occurrence.version()+1,Map.of("schemaVersion",1,"reason","MEMBER_LEFT"),now);
+            eventRepository.syncOccurrenceNotifications(occurrence.id(),now);
             released.add(occurrence.id());
         }
         repository.cancelUndeliveredNotifications(groupId,userId);

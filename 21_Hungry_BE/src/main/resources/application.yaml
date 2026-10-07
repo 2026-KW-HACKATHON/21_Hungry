@@ -80,6 +80,18 @@ app:
       max-output-tokens: ${OPENAI_MAX_OUTPUT_TOKENS:${AI_MAX_OUTPUT_TOKENS:12000}}
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:}
+  notification:
+    event-worker-enabled: ${NOTIFICATION_EVENT_WORKER_ENABLED:false}
+    push-worker-enabled: ${PUSH_WORKER_ENABLED:false}
+    worker-concurrency: ${NOTIFICATION_WORKER_CONCURRENCY:2}
+    lease: "${NOTIFICATION_LEASE_SECONDS:120}s"
+    max-attempts: ${NOTIFICATION_MAX_ATTEMPTS:5}
+    poll-delay: "${NOTIFICATION_POLL_DELAY:2s}"
+    push-timeout: "${PUSH_TIMEOUT_SECONDS:20}s"
+    vapid-public-key: ${VAPID_PUBLIC_KEY:}
+    vapid-private-key: ${VAPID_PRIVATE_KEY:}
+    vapid-subject: ${VAPID_SUBJECT:}
+    allowed-host-suffixes: ${PUSH_ALLOWED_HOST_SUFFIXES:fcm.googleapis.com,updates.push.services.mozilla.com,web.push.apple.com}
 
 logging:
   pattern:

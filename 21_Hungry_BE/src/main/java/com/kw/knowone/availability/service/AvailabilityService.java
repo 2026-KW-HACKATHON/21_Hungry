@@ -240,8 +240,9 @@ public class AvailabilityService {
                     occurrence.id(), Map.of("assigneeUserId", userId, "version", occurrence.version()),
                     Map.of("assigneeUserId", "", "version", occurrence.version() + 1), requestId);
             if (handoff != null) events.taskNotification(occurrence.groupId(), "HANDOFF_OPEN",
-                    "handoff-open:" + handoff, occurrence.id(), handoff, null, occurrence.version() + 1,
+                    "handoff:" + handoff + ":open", occurrence.id(), handoff, null, occurrence.version() + 1,
                     Map.of("schemaVersion", 1, "reason", "AVAILABILITY"), now);
+            events.syncOccurrenceNotifications(occurrence.id(), now);
         }
     }
 

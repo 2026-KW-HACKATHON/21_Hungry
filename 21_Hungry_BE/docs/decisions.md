@@ -146,3 +146,18 @@ U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지�
 | D42 | 분석 계약 1.0의 schema/prompt를 버전 관리하고 모델 출력 뒤 서버가 exact-field, null·날짜·근거 quote·source·Unicode codepoint offset·교차 소스 충돌을 다시 판정 | 모델은 DB ID·담당자·확인자·reviewState/application key를 정하지 않는다. `supersedesMedicationId`는 schema에서 null만 허용한다. 공급자 요청에서는 공식 subset 밖의 schema metadata/`uniqueItems`만 제거하고 해당 유일성은 서버가 검증한다. 실제 변경 관계는 R02가 같은 공동체의 확정 처방으로 매핑한다. |
 | D43 | 일반 TASK만 명확·미래·비조건부·근거 유효 시 자동 적용하고 MEDICATION은 항상 R02 사용자 확인 뒤 처방·시리즈·발생·배정에 반영 | R02는 guard 뒤 version/현재 revision/충돌 해소를 재검증하고 처방·snapshot·audit·outbox·멱등 성공을 한 트랜잭션에 기록한다. 확인은 사용자 확인이지 의료진 검증이 아니다. |
 | D44 | 음성 서버 지원은 계속 실제 WAV parser를 통과한 `audio/wav`, `audio/x-wav`로 제한 | OpenAI 전사 API 자체의 지원 컨테이너가 더 넓어도 MIME만 확장하지 않는다. iPhone/Android 출력과 변환 경로는 실기기 표본이 없어 BLOCKED다. |
+
+## 12. 7단계에서 확정한 기술 결정
+
+작성 및 공식 문서 확인: 2026-10-07, Asia/Seoul.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D45 | V1의 `notification_event` → `notification` → `notification_delivery`를 그대로 사용하고 migration을 추가하지 않음 | 기존 unique event_key, `(event_id,user_id)`, `(notification_id,subscription_id)`, 활성 endpoint 부분 unique와 소유자 composite FK가 재처리·계정 전환 계약을 충족한다. 적용된 V1/V2는 변경하지 않았다. |
+| D46 | outbox와 delivery는 각각 짧은 SKIP LOCKED claim, lease_token fencing, 잠금 밖 외부 HTTP로 처리 | 만료 lease는 새 token으로 회수하고 이전 worker의 결과 UPDATE는 token 조건으로 차단한다. 알림함 생성 성공과 기기별 delivery 성공은 분리한다. |
+| D47 | Java Web Push는 Maven Central 공개 버전 `nl.martijndwars:web-push:5.1.2`의 RFC 8291 payload 암호화/VAPID 생성과 JDK HttpClient를 조합 | [webpush-java](https://github.com/web-push-libs/webpush-java), [Maven Central](https://central.sonatype.com/artifact/nl.martijndwars/web-push/5.1.2), [RFC 8030](https://datatracker.ietf.org/doc/html/rfc8030), [RFC 8291](https://datatracker.ietf.org/doc/html/rfc8291), [RFC 8292](https://datatracker.ietf.org/doc/html/rfc8292)를 확인했다. JDK client는 redirect NEVER와 호출 timeout을 강제한다. jose4j 0.9.6, Bouncy Castle 1.81을 명시해 library의 오래된 runtime metadata 의존성을 대체한다. |
+| D48 | push endpoint는 등록 시와 전송 직전 모두 HTTPS/443, 명시 provider host suffix, DNS 공인 주소를 검사 | localhost, 사설/link-local/multicast/metadata 경로와 userinfo·redirect를 거부한다. DNS 검증과 실제 connect 사이 rebinding 경쟁은 완전히 제거할 수 없으므로 provider allowlist와 no-redirect를 함께 사용하며 이 잔여 한계를 기록한다. |
+| D49 | N05 비활성 응답은 `enabled=false, applicationServerKey=null` | push worker가 꺼졌거나 VAPID 3종 중 하나라도 없으면 브라우저가 구독을 시도하지 않는다. private key와 subject는 API에 노출하지 않는다. worker 활성인데 설정이 누락·오류면 서버 시작을 실패시킨다. |
+| D50 | 404/410은 해당 subscription 비활성 및 그 기기의 대기 delivery 취소, 429는 Retry-After 최대 1시간 반영, 408/5xx/transport timeout은 제한 exponential backoff | 다른 기기는 독립 delivery라 유지한다. provider 2xx만 SENT이며 기기 표시·읽음은 별도다. 응답 유실 후 재시도에 따른 외부 중복 가능성은 Web Push의 exactly-once 보장이 없어 `eventId` tag로 표시 중복을 줄인다. |
+| D51 | 시작 예약은 `task:{id}:v{version}:30m\|now\|overdue`, digest는 `digest:{groupId}:{userId}:{KST date}`를 key로 사용 | 업무 version 변경 트랜잭션에서 구 event/delivery를 취소하고 아직 지나지 않은 새 시각만 생성한다. DAILY는 09:00 KST 이후 한 번 생성하며 당일 같은 OPEN의 최초 inbox가 있으면 제외한다. |
+| D52 | AI worker lease 설정은 변경하지 않음 | 현재 claim 안 provider 호출은 1회이고 재시도/backoff는 DB `available_at` 재예약이다. 앱 내부 다중 호출 retry가 없어 기본 90초 timeout/180초 lease와 15초 최소 margin 검증이 현재 구조에 맞다. [OpenAI rate-limit 지침](https://developers.openai.com/api/docs/guides/rate-limits)의 Retry-After·bounded retry·attempt timeout/total deadline 구분을 재확인했다. 키 부재로 live AI 상태는 BLOCKED를 유지한다. |

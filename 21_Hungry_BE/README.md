@@ -1,6 +1,6 @@
 # 21 Hungry Backend
 
-가족 돌봄 서비스의 Spring Boot 백엔드입니다. 인증·공동체·가능시간·일정·기록/파일·AI 후보 처리·처방 확인과 복약 일정을 구현했습니다. 실제 Web Push 발송·프론트·배포는 포함하지 않습니다.
+가족 돌봄 서비스의 Spring Boot 백엔드입니다. 인증·공동체·가능시간·일정·기록/파일·AI 후보 처리·처방 확인·복약 일정·알림함과 Web Push 전송 파이프라인을 구현했습니다. 제품 프론트와 실제 배포는 포함하지 않습니다.
 
 ## 기술 버전
 
@@ -15,6 +15,7 @@
 | Flyway | 12.4.0 |
 | PostgreSQL JDBC | 42.7.13 |
 | Hibernate ORM | 7.4.5.Final |
+| web-push-java | 5.1.2 |
 
 Spring Boot 4.1.1은 Java 17~26과 Gradle 8.14 이상 또는 9.x를 지원한다. 이 프로젝트는 Java 21과 Gradle 9.7.1로 고정했다.
 
@@ -87,6 +88,10 @@ demo DB를 prod DB로 전환하거나 prod 프로필에서 재사용하지 않�
 
 유료 실호출은 일반 테스트에 포함하지 않는다. 가상 파일 smoke는 `scripts/openai-live-api-smoke.ps1`을 별도로 사용하며, 중단 복구 시 `-EncounterId`를 주면 기존 처리 상태를 먼저 확인하고 새 업로드를 만들지 않는다.
 
+알림함/outbox worker와 외부 push worker는 각각 `NOTIFICATION_EVENT_WORKER_ENABLED`, `PUSH_WORKER_ENABLED`로 켠다. 실제 push worker를 켜려면 서버 런타임에 `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`를 모두 주입해야 하며 누락되거나 잘못된 키는 시작 실패다. `NOTIFICATION_LEASE_SECONDS`는 `PUSH_TIMEOUT_SECONDS`보다 10초 넘게 길어야 한다. 허용 endpoint는 `PUSH_ALLOWED_HOST_SUFFIXES`의 HTTPS 443 provider로 제한되고 DNS 결과의 loopback·사설·link-local 주소와 redirect를 거부한다. 기본 목록은 FCM, Mozilla Autopush, Apple Web Push다. N05는 worker 비활성 또는 VAPID 미설정이면 `{enabled:false,applicationServerKey:null}`을 반환한다.
+
+Web Push payload는 `notificationId`, `eventId`, 일반적인 `title`/`body`, `tag=eventId`, `url=/notifications`만 포함한다. provider의 2xx 수락은 delivery `SENT`일 뿐 기기 표시나 읽음을 의미하지 않는다. 브라우저에서는 보안 컨텍스트에서 사용자 버튼으로 권한을 요청하고 `PushSubscription.toJSON()`을 N06에 등록한 뒤, Service Worker가 `eventId`를 notification tag로 사용하고 `notificationclick`에서 알림 화면을 연 후 인증된 N01 target을 다시 조회해야 한다.
+
 ## 공통 HTTP 계약
 
 - JSON 오류는 `error.code`, `error.message`, `error.requestId`, `error.details`를 항상 반환한다.
@@ -110,5 +115,5 @@ docker build -t 21-hungry-be:local .
 - 실제 API 도메인, EC2 사양·자격증명, 인증서가 없어 외부 HTTPS와 배포를 실행하지 않았다.
 - 실제 Vercel production/preview Origin과 개발 포트 최종값이 없어 외부 CORS 시험을 실행하지 않았다.
 - iPhone/Android 기기, 확정 음성 MIME·코덱이 없어 녹음 기술 시험을 실행하지 않았다.
-- VAPID 키와 실제 기기 구독이 없어 Web Push 시험을 실행하지 않았다.
+- VAPID 키와 실제 브라우저 구독이 없어 push provider 수락 및 실제 기기 표시 시험을 실행하지 않았다. 구현·PostgreSQL fake 전송 검증과 실제 기기 검증은 구분한다.
 - 위 항목은 입력이 확보된 뒤 별도 기술 시험으로 검증한다. 현재 로컬 성공을 외부 연동 성공으로 간주하지 않는다.
