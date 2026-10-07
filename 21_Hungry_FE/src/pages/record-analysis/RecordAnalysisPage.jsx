@@ -16,7 +16,6 @@ function RecordAnalysisPage() {
   const { state } = useLocation()
   const record = state ?? {}
   const [sharedWith, setSharedWith] = useState(record.sharedWith ?? previewMembers.map((member) => member.id))
-  const [message, setMessage] = useState('')
 
   return (
     <main className="recordAnalysisPage">
@@ -58,7 +57,6 @@ function RecordAnalysisPage() {
           ))}
         </section>
         <p className="recordAnalysisPage__notice">저장된 기록은 의료 문서 보관함 탭에서 조회할 수 있어요</p>
-        <p className="recordAnalysisPage__message" role="status">{message}</p>
       </div>
       <BottomButton content="저장하기" onClick={() => 0} />
     </main>
