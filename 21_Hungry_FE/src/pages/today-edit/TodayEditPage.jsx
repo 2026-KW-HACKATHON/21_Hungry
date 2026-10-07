@@ -1,30 +1,67 @@
 import './TodayEditPage.css'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 
 import BackHeader from '../../components/back-header/BackHeader'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import PopupButton from '../../components/popup-button/PopupButton'
 import CardInfo from '../../components/card-info/CardInfo'
 import { Icon } from '../../components/icon/Icon'
+import {
+  familyData,
+  formatDate,
+  getTodaySchedule,
+  isValidTime,
+  parseDateInput,
+  toScheduleCard,
+  updateTodaySchedule,
+} from '../../mocks/todayAddMock'
 
 function TodayEditPage() {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const [schedule] = useState(() => getTodaySchedule(searchParams.get('id')))
   const [selectedFamilyId, setSelectedFamilyId] = useState(null)
+  const [date, setDate] = useState(() => (schedule ? formatDate(schedule.date) : ''))
+  const [time, setTime] = useState(() => schedule?.localTime ?? '')
+  const [isSaving, setIsSaving] = useState(false)
+  const dateRef = useRef(null)
+  const timeRef = useRef(null)
+  const savingRef = useRef(false)
 
-  const schedule = {
-    id: 1,
-    category: '기타 돌봄',
-    date: '2024년 06월 01일',
-    time: '10:00',
-    family: '가족1',
-    description: '돌봄 일정 1',
+  if (!schedule) return <Navigate to='/today' replace />
+
+  const card = toScheduleCard(schedule)
+
+  const handleSave = async () => {
+    if (savingRef.current) return
+
+    const parsedDate = parseDateInput(date)
+    dateRef.current.setCustomValidity(
+      parsedDate ? '' : '실제 날짜를 2026년 10월 08일 형식으로 입력해 주세요.',
+    )
+    timeRef.current.setCustomValidity(
+      isValidTime(time) ? '' : '시간을 00:00부터 23:59 사이의 24시간제로 입력해 주세요.',
+    )
+    if (!dateRef.current.reportValidity() || !timeRef.current.reportValidity()) return
+
+    savingRef.current = true
+    setIsSaving(true)
+    try {
+      await updateTodaySchedule(schedule.id, {
+        date: parsedDate,
+        localTime: time.trim(),
+        assigneeUserId: selectedFamilyId ?? schedule.assigneeUserId,
+      })
+      navigate('/today')
+    } catch {
+      window.alert('일정을 저장하지 못했어요. 다시 시도해 주세요.')
+    } finally {
+      savingRef.current = false
+      setIsSaving(false)
+    }
   }
-
-  const family = [
-    { id: 1, name: '부모1', category: '어머니', role: true },
-    { id: 2, name: '자녀1', category: '나', role: false },
-    { id: 3, name: '자녀2', category: null, role: false },
-  ]
 
   return (
     <div className='todayEdit__page'>
@@ -37,19 +74,19 @@ function TodayEditPage() {
         <div className='todayEdit__card--container'>
           <CardInfo
             className='todayEdit__card'
-            category={schedule.category}
+            category={card.category}
             label1={'날짜'}
             label2={'시간'}
             label3={'담당 가족'}
-            value1={schedule.date}
-            value2={schedule.time}
-            value3={schedule.family}
+            value1={card.date}
+            value2={card.time}
+            value3={card.family}
           />
         </div>
 
         <div className='todayEdit__description'>
           <div className='todayEdit__description--title'>상세 설명</div>
-          <div className='todayEdit__description--description'>{schedule.description}</div>
+          <div className='todayEdit__description--description'>{card.description}</div>
         </div>
 
         <div className='todayEdit__notice'>
@@ -58,13 +95,57 @@ function TodayEditPage() {
 
         <div className='todayEdit__inputs'>
           <div className='todayEdit__input'>
-            <input className='todayEdit__input--input' placeholder='날짜' />
-            <Icon name='input-cancel' width={24} height={24} />
+            <input
+              ref={dateRef}
+              className='todayEdit__input--input'
+              placeholder='날짜'
+              aria-label='날짜'
+              required
+              value={date}
+              onChange={(event) => {
+                event.target.setCustomValidity('')
+                setDate(event.target.value)
+              }}
+            />
+            <button
+              type='button'
+              aria-label='날짜 지우기'
+              disabled={!date}
+              onClick={() => {
+                setDate('')
+                dateRef.current.setCustomValidity('')
+                dateRef.current.focus()
+              }}
+            >
+              <Icon name='input-cancel' width={24} height={24} />
+            </button>
           </div>
 
           <div className='todayEdit__input'>
-            <input className='todayEdit__input--input' placeholder='시간' />
-            <Icon name='input-cancel' width={24} height={24} />
+            <input
+              ref={timeRef}
+              className='todayEdit__input--input'
+              placeholder='시간'
+              aria-label='시간'
+              required
+              value={time}
+              onChange={(event) => {
+                event.target.setCustomValidity('')
+                setTime(event.target.value)
+              }}
+            />
+            <button
+              type='button'
+              aria-label='시간 지우기'
+              disabled={!time}
+              onClick={() => {
+                setTime('')
+                timeRef.current.setCustomValidity('')
+                timeRef.current.focus()
+              }}
+            >
+              <Icon name='input-cancel' width={24} height={24} />
+            </button>
           </div>
         </div>
 
@@ -72,29 +153,29 @@ function TodayEditPage() {
 
         <div className='todayEdit__family'>
           <div className='todayEdit__family--title'>담당 가족</div>
-
           <div className='todayEdit__family--items'>
-            {family.map((family) => {
+            {familyData.map((family) => {
               const checkboxIcon =
-                selectedFamilyId === family.id
+                selectedFamilyId === family.userId
                   ? 'check-suggest'
-                  : family.role
+                  : schedule.assigneeUserId === family.userId
                     ? 'check-confirm'
                     : 'check-none'
 
               return (
-                <div
+                <button
+                  type='button'
                   className='todayEdit__family--item'
-                  key={family.id}
-                  onClick={() => setSelectedFamilyId(family.id)}
+                  key={family.userId}
+                  aria-pressed={selectedFamilyId === family.userId}
+                  onClick={() => setSelectedFamilyId(family.userId)}
                 >
-                  <div className='todayEdit__family--family'>
+                  <span className='todayEdit__family--family'>
                     {family.name}
                     {family.category !== null && `(${family.category})`}
-                  </div>
-
+                  </span>
                   <Icon name={checkboxIcon} width={50} height={50} />
-                </div>
+                </button>
               )
             })}
           </div>
@@ -111,7 +192,7 @@ function TodayEditPage() {
         </div>
       </div>
 
-      <BottomButton content={'변경사항 저장하기'} />
+      <BottomButton content='변경사항 저장하기' onClick={handleSave} disabled={isSaving} />
     </div>
   )
 }

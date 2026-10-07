@@ -11,6 +11,8 @@
   height: 90px;
   padding: 14px 16px 16px;
 
+  border-top: 2px solid #e6e6e6;
+
   background-color: #fff;
 }
 
@@ -35,8 +37,8 @@
 }
 
 .bottomButton__button:disabled {
-  background-color: #E5E5E5;
-  box-shadow: 0px 5px 0px #CCCCCC;
+  background-color: #e5e5e5;
+  box-shadow: 0px 5px 0px #cccccc;
   color: #888888;
   cursor: not-allowed;
 }

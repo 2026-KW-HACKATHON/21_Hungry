@@ -9,7 +9,7 @@ function DayCard({ schedule }) {
   const navigate = useNavigate()
 
   const handleEdit = () => {
-    navigate('/todayedit')
+    navigate(`/todayedit?id=${encodeURIComponent(schedule.id)}`)
   }
 
   return (
