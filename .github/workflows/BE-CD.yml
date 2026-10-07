@@ -28,6 +28,7 @@ jobs:
           POSTGRES_DB: hungry
           POSTGRES_USER: hungry
           POSTGRES_PASSWORD: hungry_test
+          TZ: Asia/Seoul
         ports:
           - 5432:5432
         options: >-
