@@ -2,7 +2,7 @@ import './TodayEditPage.css'
 
 import { useState } from 'react'
 
-import BackHeader from '../../components/back-header/backHeader'
+import BackHeader from '../../components/back-header/BackHeader'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import PopupButton from '../../components/popup-button/PopupButton'
 import CardInfo from '../../components/card-info/CardInfo'
