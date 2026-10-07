@@ -25,8 +25,10 @@ function LoginSelect() {
           Google로 로그인
         </button>
       </div>
-      <BottomButton content="로그인하기" />
-      <button className="LoginSelect__gotosignup">KnowOne이 처음이신가요?</button>
+      <div className="LoginSelect__footer">
+        <BottomButton content="로그인하기" />
+        <button className="LoginSelect__gotosignup">KnowOne이 처음이신가요?</button>
+      </div>
     </div>
   )
 }
