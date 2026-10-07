@@ -1,6 +1,6 @@
 # 21 Hungry Backend
 
-가족 돌봄 서비스의 Spring Boot 백엔드입니다. 인증·공동체·가능시간·일정·기록/파일·AI 후보 처리·처방 확인·복약 일정·알림함과 Web Push 전송 파이프라인을 구현했습니다. 제품 프론트와 실제 배포는 포함하지 않습니다.
+가족 돌봄 서비스의 Spring Boot 백엔드입니다. 인증·공동체·가능시간·일정·기록/파일·AI 후보 처리·처방 확인·복약 일정·알림함과 Web Push 전송 파이프라인을 구현했습니다. production API는 `https://api.gaebalmani.shop`에 배포되어 있으며 제품 프론트는 `https://knowone-eight.vercel.app`에서 별도로 운영합니다.
 
 ## 기술 버전
 
@@ -104,7 +104,7 @@ Web Push payload는 `notificationId`, `eventId`, 일반적인 `title`/`body`, `t
 - preflight `OPTIONS`는 토큰 없이 처리하지만 실제 보호 요청은 인증이 필요하다.
 - 인증 Cookie와 CSRF Cookie 흐름은 사용하지 않는다.
 
-## 빌드와 배포 초안
+## 빌드와 배포
 
 ```powershell
 .\gradlew.bat --no-daemon clean test bootJar
@@ -115,7 +115,6 @@ docker build -t 21-hungry-be:local .
 
 ## 현재 BLOCKED
 
-- API 도메인과 production Origin은 확정됐지만 EC2 자격증명과 동작 중인 80/443 서비스가 없어 외부 API HTTPS/CORS 시험과 배포를 실행하지 않았다.
 - iPhone/Android 기기, 확정 음성 MIME·코덱이 없어 녹음 기술 시험을 실행하지 않았다.
-- VAPID 키와 실제 브라우저 구독이 없어 push provider 수락 및 실제 기기 표시 시험을 실행하지 않았다. 구현·PostgreSQL fake 전송 검증과 실제 기기 검증은 구분한다.
-- 위 항목은 입력이 확보된 뒤 별도 기술 시험으로 검증한다. 현재 로컬 성공을 외부 연동 성공으로 간주하지 않는다.
+- 운영 VAPID와 HTTPS는 연결됐지만 실제 사용자 브라우저 구독이 없어 push provider 수락, 기기 표시와 notificationclick 시험을 실행하지 않았다. 구현·PostgreSQL fake 전송 검증과 실제 기기 검증은 구분한다.
+- 위 항목은 실제 기기와 로그인 세션이 확보된 뒤 별도 기술 시험으로 검증한다. provider 수락, 기기 표시, 클릭과 읽음은 각각 별도 결과로 기록한다.

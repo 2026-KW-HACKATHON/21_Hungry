@@ -26,12 +26,12 @@
 | 4단계 일정 기능 | DONE | 일반 일정 T05~T08, 4시간 묶음, T10/T11/T14, G07과 실제 current revision 기반 G08 집계 검증 |
 | 5단계 기록·파일·작업 | DONE | E01~E15, PostgreSQL·임시 저장소·파기·작업 fencing 전체 회귀 완료 |
 | 6단계 AI·후보·처방 | LIVE VERIFIED | 실제 OpenAI adapter, schema/prompt 1.0, 서버 의미·근거 검증, TASK 자동 적용, R01~R04와 복약 일정 연결 완료. 합성 WAV/JPEG/PDF와 실제 provider로 확인 |
-| 비공개 파일 저장소 | PARTIAL | 서버 생성 object key, 경로 이탈 방지, 임시→검증→승격, 실패 보상·고아 임시 파일 청소와 삭제 재시도 검증. 운영 영속 볼륨 미검증 |
+| 비공개 파일 저장소 | DONE | 서버 생성 object key, 경로 이탈 방지, 임시→검증→승격, 실패 보상·고아 임시 파일 청소와 삭제 재시도 검증. 운영 `/data/private-files` named volume mount와 재시작 독립성을 확인 |
 | AI 작업 워커 | LIVE VERIFIED | SKIP LOCKED, lease 회수/fencing, stale OBSOLETE, 고정 동시성, timeout/lease 시작 검증, 제한 재시도 자동 검증과 실제 provider 작업 완료 확인 |
-| CI/Docker/배포 초안 | DONE | BE CI, Dockerfile, prod Compose, Nginx 예시 추가; 실제 배포는 미실행 |
-| 외부 HTTPS/CORS | BLOCKED | 실제 API 도메인·인증서·Vercel Origin·배포 자격증명 필요 |
+| CI/Docker/운영 배포 | LIVE VERIFIED | main CD의 test/bootJar, 고정 SHA image build, EC2 readiness 배포 성공. 직전 이미지 복구와 current/previous image 상태 파일을 유지 |
+| 외부 HTTPS/CORS | LIVE VERIFIED | DNS A, Nginx 80/443, HTTP 301, HTTPS readiness 200, production Origin OPTIONS 200, 인증 오류 CORS, Certbot 갱신 dry-run 확인 |
 | 실기기 녹음 | BLOCKED | iPhone/Android, 확정 MIME·코덱, HTTPS Origin 필요 |
-| 실제 Web Push | BLOCKED | VAPID 키, 실제 기기 구독, HTTPS Origin 필요 |
+| 실제 Web Push | PARTIAL / DEVICE BLOCKED | 운영 VAPID·worker·HTTPS·CORS 연결 완료. 실제 사용자 PushSubscription, provider 수락, 기기 표시와 click은 미검증 |
 
 ## 실행한 검증
 
@@ -207,12 +207,12 @@ N01~N08은 모두 코드 및 PostgreSQL 자동 테스트 완료다. 실제 push 
 |---|---|---|
 | Phase 5 worker 경합 | FIXED / REGRESSION TESTED | test 프로필의 자동 scheduling을 끄고 worker를 활성 상태로 유지해 test가 `runOnce`/claim을 통제한다. 자동 poller 부재→QUEUED→명시 처리→후속 ANALYZE QUEUED를 10회 반복 검증했다. lease 만료 회수/fencing 테스트는 유지했다. |
 | 설정 전달 | DONE | `.env` 자동 로딩을 가정하지 않고 IntelliJ/PowerShell/Compose 전달법, 전체 AI/알림/VAPID/CORS/DB/storage 계약을 문서화했다. `FILE_STORAGE_ROOT` 이름 불일치를 호환 수정했다. |
-| VAPID 도구 | DONE | P-256 생성, base64url 길이/공개점-개인 scalar 짝 검증, 기존 파일 비덮어쓰기, Git 제외 local secret 저장을 구현했다. 임시 키 생성/재검증 후 삭제 PASS. 실제 subject/키는 미제공. |
+| VAPID 도구 | DONE | P-256 생성, base64url 길이/공개점-개인 scalar 짝 검증, 기존 파일 비덮어쓰기, Git 제외 local secret 저장을 구현했다. 운영 subject로 생성·짝 검증한 키를 mode 600 EC2 `.env`에 연결했고 private key는 출력하지 않았다. |
 | 실제 OpenAI | LIVE VERIFIED / 일부 경계 자동 테스트 | Git 제외 `secrets/openai.env`의 키를 프로세스에만 주입해 완전 합성 WAV·JPEG·2-page PDF를 호출했다. 전사/OCR/Structured Outputs/E03/R02/복약 일정/명확한 TASK 자동 적용과 page·quote·codepoint 근거를 확인했다. refusal/incomplete/입력 한도는 실제 과금 호출 대신 adapter 자동 테스트로 확인했다. |
-| 실제 Web Push | BLOCKED | VAPID와 브라우저 PushSubscription 없음. provider 수락/기기 표시/click은 실행하지 않았으며 N05/N06/N08 smoke page를 준비했다. |
+| 실제 Web Push | PARTIAL / DEVICE BLOCKED | 운영 VAPID와 push worker를 연결했고 N05 익명 401 및 production Origin preflight 200을 확인했다. 실제 사용자 로그인·브라우저 PushSubscription이 없어 provider 수락/기기 표시/click은 아직 실행하지 않았으며 N05/N06/N08 smoke page를 준비했다. |
 | 프론트 연결 | PARTIAL | 제품 프론트는 골격 단계로 담당자 파일은 수정하지 않았다. API/header/file Blob/PWA cache/logout 계약을 체크리스트로 제공했다. |
 | 모바일 녹음 | BLOCKED | 저장소 내 iPhone/Android 표본 0개. WAV 외 컨테이너·코덱 지원 또는 변환을 구현하지 않았다. 표본 수집/ffprobe 절차를 기록했다. |
-| 운영 배포 | READY WITH EXTERNAL SETTINGS | prod Compose 설정 전달·내부 DB·loopback API·persistent private volume·non-root·고정 image·readiness rollback·Nginx 제한을 보완했다. 운영 배포/재시작은 미실행. |
+| 운영 배포 | LIVE VERIFIED | PR #112/#114/#115를 main에 병합하고 Backend CD로 고정 SHA image를 배포했다. PostgreSQL/private-file volume, non-root API, loopback 8080, worker 설정, readiness, production CORS를 확인했다. Nginx 80/443, HTTP 301, HTTPS 200, Certbot 갱신 dry-run도 통과했다. |
 | 백업·복원 | REHEARSED | API/worker가 없는 write-stop 상태에서 PostgreSQL custom dump와 private archive를 만들고 별도 `hungry-restore` project에 복원했다. worker 4종 false, readiness/auth/공동체·진료 조회/E09 파일 SHA-256 일치를 확인하고 임시 volume·backup을 정리했다. |
 
 세부 산출물은 `live-smoke-runbook.md`, `frontend-mobile-checklist.md`, `deployment-runbook.md`, `backup-restore-runbook.md`에 있다. 적용된 V1/V2는 수정하지 않았다.
@@ -224,7 +224,7 @@ N01~N08은 모두 코드 및 PostgreSQL 자동 테스트 완료다. 실제 push 
 | `gradlew.bat test --tests com.kw.knowone.Phase5IntegrationTests` | PASS, 경합 회귀 10회 포함 21 tests |
 | Phase 7 집중 테스트 3회 `--rerun-tasks` | PASS, 매회 9 tests; DB `now()`와 application Clock 혼용을 제거하고 due/claim 시각 명시 |
 | `gradlew.bat test --tests com.kw.knowone.ProductionContextTests` | PASS, prod profile의 실제 OpenAI adapter 생성 확인 |
-| `gradlew.bat clean test bootJar` | PASS, 13 suites / 101 tests / 실패·오류·skip 0 |
+| `gradlew.bat clean test bootJar` | PASS, 14 suites / 102 tests / 실패·오류·skip 0. UTC PostgreSQL 격리 컨테이너에서도 test JDBC session을 Asia/Seoul로 고정해 동일 결과 확인 |
 | local/prod/restore `docker compose config --quiet` | PASS |
 | `docker build -t 21-hungry-api:phase8-validation .` | PASS, non-root image 생성 |
 | VAPID 임시 생성→짝 검증→비덮어쓰기→삭제 | PASS, private key 출력 없음 |
