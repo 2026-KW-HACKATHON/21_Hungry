@@ -25,6 +25,16 @@ import checkConfirm from '../../assets/icon/family/check-confirm.svg?react'
 import checkNone from '../../assets/icon/family/check-none.svg?react'
 import checkSuggest from '../../assets/icon/family/check-suggest.svg?react'
 
+import monthPrev from '../../assets/icon/calendar/month-prev.svg?react'
+import monthNext from '../../assets/icon/calendar/month-next.svg?react'
+import availabilityUnavailable from '../../assets/icon/calendar/availability-unavailable.svg?react'
+import availabilityFull from '../../assets/icon/calendar/availability-full.svg?react'
+import availabilityPartial from '../../assets/icon/calendar/availability-partial.svg?react'
+import availabilityUnavailableSelected from '../../assets/icon/calendar/availability-unavailable-selected.svg?react'
+import availabilityFullSelected from '../../assets/icon/calendar/availability-full-selected.svg?react'
+import availabilityPartialSelected from '../../assets/icon/calendar/availability-partial-selected.svg?react'
+import availabilityPartialDay from '../../assets/icon/calendar/availability-partial-day.svg?react'
+
 export const iconMap = {
   'checkbox-checked': checkboxChecked,
   'checkbox-default': checkboxDefault,
@@ -51,4 +61,14 @@ export const iconMap = {
   'check-confirm': checkConfirm,
   'check-none': checkNone,
   'check-suggest': checkSuggest,
+
+  'month-prev': monthPrev,
+  'month-next': monthNext,
+  'availability-unavailable': availabilityUnavailable,
+  'availability-full': availabilityFull,
+  'availability-partial': availabilityPartial,
+  'availability-unavailable-selected': availabilityUnavailableSelected,
+  'availability-full-selected': availabilityFullSelected,
+  'availability-partial-selected': availabilityPartialSelected,
+  'availability-partial-day': availabilityPartialDay,
 }
