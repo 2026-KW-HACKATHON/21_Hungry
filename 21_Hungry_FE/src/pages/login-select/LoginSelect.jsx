@@ -1,8 +1,11 @@
 import BottomButton from '../../components/bottom-button/BottomButton'
 import "./LoginSelect.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
- 
+import { useNavigate } from 'react-router-dom' 
+
+
 function LoginSelect() {
+  const navigate = useNavigate()
   return (
     <div className="LoginSelectPage">
       <LoginPage_title title={
@@ -27,7 +30,7 @@ function LoginSelect() {
       </div>
       <div className="LoginSelect__footer">
         <BottomButton content="로그인하기" />
-        <button className="LoginSelect__gotosignup">KnowOne이 처음이신가요?</button>
+        <button className="LoginSelect__gotosignup" onClick={() => navigate('/signupselect')}>KnowOne이 처음이신가요?</button>
       </div>
     </div>
   )

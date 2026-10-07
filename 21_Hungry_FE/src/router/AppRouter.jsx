@@ -24,6 +24,10 @@ import DocPage from '../pages/doc/DocPage'
 import SchdulePage from '../pages/schedule/SchedulePage'
 import FamilyPage from '../pages/family/FamilyPage'
 import RecordPage from '../pages/record/RecordPage'
+import RecordAudioPage from '../pages/record-audio/RecordAudioPage'
+import RecordAudioAnalysisPage from '../pages/record-audio-analysis/RecordAudioAnalysisPage'
+import RecordWritePage from '../pages/record-write/RecordWritePage'
+import RecordAnalysisPage from '../pages/record-analysis/RecordAnalysisPage'
 
 export const AppRouter = createBrowserRouter([
   {
@@ -113,6 +117,10 @@ export const AppRouter = createBrowserRouter([
       { path: 'schedule', element: <SchdulePage /> },
       { path: 'family', element: <FamilyPage /> },
       { path: 'record', element: <RecordPage /> },
+      { path: 'record/audio', element: <RecordAudioPage /> },
+      { path: 'record/audio/analysis', element: <RecordAudioAnalysisPage /> },
+      { path: 'record/write', element: <RecordWritePage /> },
+      { path: 'record/analysis', element: <RecordAnalysisPage /> },
     ],
   },
 ])

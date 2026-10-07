@@ -24,7 +24,7 @@ function Navigation() {
     <div className='navigation__container'>
       {navigationItems.map((item) => (
         <button key={item.key} onClick={() => navigate(item.path)} className='nav__item'>
-          {location.pathname === item.path ? (
+          {(location.pathname === item.path || (item.key === 'Record' && location.pathname.startsWith('/record/'))) ? (
             item.path === '/today' ? (
               <Icon className='nav__item' name={item.activeIcon} width={50} />
             ) : (
