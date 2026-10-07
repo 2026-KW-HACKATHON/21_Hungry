@@ -1,7 +1,9 @@
 import "./SignupFamilyInfo.css"
 import BottomButton from "../../components/bottom-button/BottomButton"
+import { useNavigate } from 'react-router-dom' 
 
 function SignupFamilyInfo() {
+  const navigate = useNavigate()
   return (
     <main className="SignupFamilyInfoPage">
       <h1 className="SignupFamilyInfoPage__title">
@@ -31,7 +33,7 @@ function SignupFamilyInfo() {
             <p className="relationship">아버지/어머니</p>
         </div>
       </div>
-      <BottomButton content={"주돌봄자녀에게 요청 보내기"}/>
+      <BottomButton onClick={() => navigate('/signupwaiting')} content={"주돌봄자녀에게 요청 보내기"}/>
     </main>
   )
 }

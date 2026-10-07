@@ -59,3 +59,10 @@
     outline: 2px solid var(--color-blue);
     outline-offset: 5px;
 }
+
+.SignupPage .bottomButton__button:disabled {
+    background-color: #1cb0f6;
+    box-shadow: 0px 5px 0px #1899d6;
+    opacity: 0.5;
+    color: #FFFFFF;
+}

@@ -2,8 +2,10 @@ import { useState } from 'react'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import LoginPageTitle from '../../components/loginPage-title/loginPage-title'
 import './SignupParentInfo.css'
+import { useNavigate } from 'react-router-dom' 
 
 function SignupParentInfo() {
+  const navigate = useNavigate()
   const [relationship, setRelationship] = useState('father')
   const [name, setName] = useState('')
   const [age, setAge] = useState('')
@@ -48,7 +50,7 @@ function SignupParentInfo() {
         onChange={(event) => setAge(event.target.value.replace(/[^0-9]/g, ''))}
       />
       <div className="SignupParentInfo__footer" data-complete={isComplete}>
-        <BottomButton content="다음" />
+        <BottomButton onClick={()=>navigate('/signupservicestart')} content="다음" />
       </div>
     </main>
   )
