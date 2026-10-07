@@ -25,8 +25,10 @@ function SignupSelect() {
           Google로 로그인
         </button>
       </div>
-      <BottomButton content="회원가입하기" />
-      <button className="SignupSelect__gotosignup">KnowOne을 이용해 보셨나요?</button>
+      <div className="SignupSelect__footer">
+        <BottomButton content="회원가입하기" />
+        <button className="SignupSelect__gotosignup">KnowOne을 이용해 보셨나요?</button>
+      </div>
     </div>
   )
 }
