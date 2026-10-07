@@ -17,9 +17,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.node.ObjectNode;
@@ -31,10 +34,12 @@ import com.kw.knowone.encounter.processing.AiProcessingPort.TextResult;
 @Profile("!test")
 public class OpenAiProcessingAdapter implements AiProcessingPort {
     private static final String PROVIDER="OPENAI",PROMPT_VERSION="1.0";
+    private static final Logger log=LoggerFactory.getLogger(OpenAiProcessingAdapter.class);
     private final ObjectMapper json;private final AnalysisOutputValidator validator;private final HttpClient http;
     private final Duration timeout;private final String baseUrl,key,transcribeModel,ocrModel,analysisModel,analysisPrompt,ocrPrompt;
     private final JsonNode analysisSchema,ocrSchema;private final int maxOutputTokens;
 
+    @Autowired
     public OpenAiProcessingAdapter(ObjectMapper json,AnalysisOutputValidator validator,
             @Value("${app.ai.openai.base-url:https://api.openai.com/v1}")String baseUrl,
             @Value("${app.ai.openai.api-key:}")String key,
@@ -93,15 +98,20 @@ public class OpenAiProcessingAdapter implements AiProcessingPort {
         body.put("text",Map.of("format",Map.of("type","json_schema","name",name,"strict",true,"schema",providerSchema(schema))));
         body.put("max_output_tokens",maxOutputTokens);body.put("store",false);return body;
     }
-    private JsonNode providerSchema(JsonNode schema){JsonNode copy=schema.deepCopy();stripProviderUnsupportedKeywords(copy);return copy;}
-    private void stripProviderUnsupportedKeywords(JsonNode value){if(value instanceof ObjectNode object){object.remove("$schema");object.remove("$id");object.remove("title");object.remove("uniqueItems");object.forEach(this::stripProviderUnsupportedKeywords);}else if(value.isArray())value.forEach(this::stripProviderUnsupportedKeywords);}
+    private JsonNode providerSchema(JsonNode schema){JsonNode copy=schema.deepCopy();if(copy instanceof ObjectNode root){root.remove("$schema");root.remove("$id");root.remove("title");}stripProviderUnsupportedKeywords(copy);return copy;}
+    private void stripProviderUnsupportedKeywords(JsonNode value){if(value instanceof ObjectNode object){object.remove(List.of(
+                "uniqueItems","format","minLength","maxLength","pattern",
+                "minimum","maximum","multipleOf","minItems","maxItems"));object.forEach(this::stripProviderUnsupportedKeywords);
+        }else if(value.isArray())value.forEach(this::stripProviderUnsupportedKeywords);}
     private JsonNode sendJson(String path,Object body){return send(baseRequest(path).header("Content-Type","application/json")
             .POST(HttpRequest.BodyPublishers.ofString(json.writeValueAsString(body),StandardCharsets.UTF_8)).build());}
     private HttpRequest.Builder baseRequest(String path){return HttpRequest.newBuilder(URI.create(baseUrl+path)).timeout(timeout)
             .header("Authorization","Bearer "+key).header("Accept","application/json");}
     private JsonNode send(HttpRequest request){try{HttpResponse<String> response=http.send(request,HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));int status=response.statusCode();
         if(status==429)throw new AiProviderException("AI_RATE_LIMITED",true,retryAfter(response));if(status==408||status>=500)throw new AiProviderException(status==408?"AI_TIMEOUT":"AI_PROVIDER_UNAVAILABLE",true);
-        if(status<200||status>=300){String providerCode=safeProviderCode(response.body());
+        if(status<200||status>=300){ProviderError provider=safeProviderError(response.body());String providerCode=provider.code();
+            log.warn("OpenAI request rejected status={} requestId={} providerType={} providerCode={} providerParam={} schemaDetail={}",status,
+                    response.headers().firstValue("x-request-id").orElse("-"),provider.type(),provider.code(),provider.param(),provider.schemaDetail());
             if(status==413||isInputLimit(providerCode))throw new AiProviderException("AI_INPUT_LIMIT_EXCEEDED",false);
             throw new AiProviderException(status==401||status==403?"AI_NOT_CONFIGURED":"AI_PROVIDER_REJECTED",false);}return json.readTree(response.body());
     }catch(java.net.http.HttpTimeoutException e){throw new AiProviderException("AI_TIMEOUT",true,e);}catch(InterruptedException e){Thread.currentThread().interrupt();throw new AiProviderException("AI_PROVIDER_UNAVAILABLE",true,e);}
@@ -118,9 +128,14 @@ public class OpenAiProcessingAdapter implements AiProcessingPort {
         out.write(bytes);write(out,"\r\n--"+boundary+"--\r\n");return out.toByteArray();}catch(IOException e){throw new IllegalStateException(e);}}
     private void write(ByteArrayOutputStream out,String value)throws IOException{out.write(value.getBytes(StandardCharsets.UTF_8));}
     private long longValue(JsonNode root,String parent,String child){JsonNode node=root.path(parent).path(child);return node.isNumber()?node.asLong():0;}
-    private String safeProviderCode(String body){try{JsonNode value=json.readTree(body);return value.path("error").path("code").asText("");}catch(RuntimeException ignored){return "";}}
+    private ProviderError safeProviderError(String body){try{JsonNode error=json.readTree(body).path("error");String code=safe(error.path("code").asText(""),120);
+        String detail="invalid_json_schema".equals(code)?safe(error.path("message").asText(""),300):"";
+        return new ProviderError(safe(error.path("type").asText(""),120),code,safe(error.path("param").asText(""),120),detail);
+    }catch(RuntimeException ignored){return new ProviderError("","","","");}}
+    private String safe(String value,int limit){if(value==null)return "";String sanitized=value.replaceAll("[^A-Za-z0-9_.,:()'\\[\\]/$#=-]","_");return sanitized.substring(0,Math.min(limit,sanitized.length()));}
     private boolean isInputLimit(String code){String value=code==null?"":code.toLowerCase(java.util.Locale.ROOT);return value.contains("context_length")||value.contains("file_too_large")||value.contains("image_too_large")||value.contains("invalid_image");}
     private Duration retryAfter(HttpResponse<?> response){String value=response.headers().firstValue("Retry-After").orElse(null);if(value==null)return null;try{return Duration.ofSeconds(Math.max(1,Long.parseLong(value)));}catch(NumberFormatException ignored){try{return Duration.between(ZonedDateTime.now(),ZonedDateTime.parse(value,DateTimeFormatter.RFC_1123_DATE_TIME)).isNegative()?Duration.ofSeconds(1):Duration.between(ZonedDateTime.now(),ZonedDateTime.parse(value,DateTimeFormatter.RFC_1123_DATE_TIME));}catch(RuntimeException invalid){return null;}}}
     private void configured(){if(key==null||key.isBlank())throw new AiProviderException("AI_NOT_CONFIGURED",false);}
     private String resource(String path){try{return new ClassPathResource(path).getContentAsString(StandardCharsets.UTF_8);}catch(IOException e){throw new IllegalStateException("Missing AI resource: "+path,e);}}
+    private record ProviderError(String type,String code,String param,String schemaDetail){ }
 }

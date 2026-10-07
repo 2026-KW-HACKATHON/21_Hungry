@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.node.ArrayNode;
@@ -23,6 +25,7 @@ import com.kw.knowone.encounter.processing.AiProcessingPort.SourceText;
 
 @Component
 public class AnalysisOutputValidator {
+    private static final Logger log=LoggerFactory.getLogger(AnalysisOutputValidator.class);
     private static final Set<String> ROOT_FIELDS=Set.of("schemaVersion","summary","details","evidence","items");
     private static final Set<String> ITEM_FIELDS=Set.of("itemKey","itemType","payload","evidence","uncertaintyCodes","isConditional");
     private static final Set<String> DETAIL_FIELDS=Set.of("symptoms","tests","medicationMentions","precautions","followUps");
@@ -95,12 +98,13 @@ public class AnalysisOutputValidator {
             require(value.isObject()&&hasExactly(value,EVIDENCE_FIELDS)&&value.get("textVersion").isIntegralNumber()&&value.get("occurrenceIndex").isIntegralNumber()&&(value.get("page").isNull()||value.get("page").isIntegralNumber()),"AI_SCHEMA_INVALID");
             String sourceId=text(value,"sourceId"),quote=text(value,"quote");int version=value.path("textVersion").asInt(-1);
             int occurrence=value.path("occurrenceIndex").asInt(-1);SourceText source=sources.get(sourceId);
-            require(source!=null&&source.textVersion()==version&&quote!=null&&!quote.isEmpty()&&occurrence>=0,"AI_EVIDENCE_INVALID");
+            if(source==null||source.textVersion()!=version||quote==null||quote.isEmpty()||occurrence<0){
+                evidenceInvalid("source_metadata",source,version,null,quote,occurrence);}
             Integer page=value.has("page")&&!value.get("page").isNull()?value.get("page").asInt():null;
             String pageText=source.text();int pageBase=0;
-            if(page!=null){require(page>=1&&"DOCUMENT".equals(source.sourceType()),"AI_EVIDENCE_INVALID");String[] pages=source.text().split("\\f",-1);require(page<=pages.length,"AI_EVIDENCE_INVALID");
+            if(page!=null){if(page<1||!"DOCUMENT".equals(source.sourceType()))evidenceInvalid("page_type",source,version,page,quote,occurrence);String[] pages=source.text().split("\\f",-1);if(page>pages.length)evidenceInvalid("page_range",source,version,page,quote,occurrence);
                 pageText=pages[page-1];for(int i=0;i<page-1;i++)pageBase+=pages[i].length()+1;}
-            int charIndex=nthIndex(pageText,quote,occurrence);require(charIndex>=0,"AI_EVIDENCE_INVALID");
+            int charIndex=nthIndex(pageText,quote,occurrence);if(charIndex<0)evidenceInvalid("quote_not_found",source,version,page,quote,occurrence);
             int absolute=pageBase+charIndex;int start=source.text().codePointCount(0,absolute);int end=start+quote.codePointCount(0,quote.length());
             ObjectNode enriched=(ObjectNode)value.deepCopy();enriched.put("start",start);enriched.put("end",end);result.add(enriched);
         }return result;
@@ -137,5 +141,11 @@ public class AnalysisOutputValidator {
     private boolean blank(JsonNode node,String key){String value=text(node,key);return value==null||value.isBlank();}
     private String text(JsonNode node,String key){JsonNode value=node==null?null:node.get(key);return value==null||value.isNull()||!value.isTextual()?null:value.asText();}
     private int nthIndex(String text,String quote,int occurrence){int from=0,index=-1;for(int i=0;i<=occurrence;i++){index=text.indexOf(quote,from);if(index<0)return -1;from=index+quote.length();}return index;}
+    private void evidenceInvalid(String reason,SourceText source,int version,Integer page,String quote,int occurrence){
+        log.warn("AI evidence rejected reason={} sourceType={} mediaType={} expectedVersion={} suppliedVersion={} page={} pageCount={} quoteCodePoints={} occurrence={}",
+                reason,source==null?"missing":source.sourceType(),source==null?"missing":source.mediaType(),source==null?-1:source.textVersion(),version,page,
+                source==null?0:source.text().split("\\f",-1).length,quote==null?0:quote.codePointCount(0,quote.length()),occurrence);
+        throw new AiProviderException("AI_EVIDENCE_INVALID",false);
+    }
     private void require(boolean value,String code){if(!value)throw new AiProviderException(code,false);}
 }

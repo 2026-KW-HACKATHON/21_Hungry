@@ -3,8 +3,10 @@ package com.kw.knowone;
 import static org.junit.jupiter.api.Assertions.*;
 import java.awt.image.BufferedImage;import java.io.ByteArrayInputStream;import java.io.ByteArrayOutputStream;import java.net.URI;import java.net.http.HttpClient;import java.net.http.HttpRequest;import java.net.http.HttpResponse;import java.nio.charset.StandardCharsets;import java.nio.file.Files;import java.nio.file.Path;import java.util.List;import java.util.UUID;import java.util.concurrent.CompletableFuture;
 import javax.imageio.ImageIO;import javax.sound.sampled.AudioFileFormat;import javax.sound.sampled.AudioFormat;import javax.sound.sampled.AudioInputStream;import javax.sound.sampled.AudioSystem;
-import org.junit.jupiter.api.Test;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.beans.factory.annotation.Value;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.http.HttpHeaders;import org.springframework.jdbc.core.JdbcTemplate;import org.springframework.mock.web.MockMultipartFile;import org.springframework.test.context.ActiveProfiles;import org.springframework.test.context.DynamicPropertyRegistry;import org.springframework.test.context.DynamicPropertySource;import org.springframework.test.context.jdbc.Sql;
+import org.junit.jupiter.api.Test;import org.junit.jupiter.api.RepeatedTest;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.beans.factory.annotation.Value;import org.springframework.boot.test.context.SpringBootTest;import org.springframework.http.HttpHeaders;import org.springframework.jdbc.core.JdbcTemplate;import org.springframework.mock.web.MockMultipartFile;import org.springframework.test.context.ActiveProfiles;import org.springframework.test.context.DynamicPropertyRegistry;import org.springframework.test.context.DynamicPropertySource;import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
+import org.springframework.context.ApplicationContext;
 import com.kw.knowone.common.web.ApiException;import com.kw.knowone.encounter.dto.EncounterDtos;import com.kw.knowone.encounter.entity.EncounterModels.Job;import com.kw.knowone.encounter.repository.EncounterRepository;import com.kw.knowone.encounter.service.EncounterProcessingWorker;import com.kw.knowone.encounter.service.EncounterService;import com.kw.knowone.encounter.service.FileDeletionWorker;import com.kw.knowone.encounter.service.ProcessingJobTransactions;import tools.jackson.databind.JsonNode;import tools.jackson.databind.ObjectMapper;
 
 @ActiveProfiles("test") @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -13,7 +15,17 @@ class Phase5IntegrationTests {
     static final UUID GROUP=UUID.fromString("10000000-0000-4000-8000-000000000001"),CAREGIVER=UUID.fromString("00000000-0000-4000-8000-000000000002"),OUTSIDER=UUID.fromString("00000000-0000-4000-8000-000000000006");
     static final Path FILE_ROOT;static{try{FILE_ROOT=Files.createTempDirectory("phase5-private-");}catch(Exception e){throw new ExceptionInInitializerError(e);}}
     @DynamicPropertySource static void properties(DynamicPropertyRegistry r){r.add("app.storage.local-root",()->FILE_ROOT.toString());r.add("app.encounter.worker-enabled",()->"true");r.add("app.encounter.worker-delay",()->"3600000");r.add("app.encounter.delete-worker-delay",()->"3600000");}
-    @Value("${local.server.port}")int port;@Autowired EncounterService service;@Autowired EncounterRepository repository;@Autowired EncounterProcessingWorker worker;@Autowired ProcessingJobTransactions jobs;@Autowired FileDeletionWorker deletionWorker;@Autowired JdbcTemplate jdbc;@Autowired ObjectMapper json;@Autowired TransactionTemplate transaction;final HttpClient client=HttpClient.newHttpClient();
+    @Value("${local.server.port}")int port;@Autowired EncounterService service;@Autowired EncounterRepository repository;@Autowired EncounterProcessingWorker worker;@Autowired ProcessingJobTransactions jobs;@Autowired FileDeletionWorker deletionWorker;@Autowired JdbcTemplate jdbc;@Autowired ObjectMapper json;@Autowired TransactionTemplate transaction;@Autowired ApplicationContext context;final HttpClient client=HttpClient.newHttpClient();
+
+    @RepeatedTest(10) void automaticPollingIsDisabledAndManualClaimOwnsTheQueuedJob()throws Exception{
+        assertTrue(context.getBeansOfType(ScheduledAnnotationBeanPostProcessor.class).isEmpty());
+        UUID id=UUID.fromString(create(login("demo-caregiver-1"),"DOCUMENT","명시적 claim").get("id").asText());
+        service.uploadDocuments(id,CAREGIVER,new EncounterDtos.UploadMetadata(0L,1),List.of(image("controlled.png")),"controlled-upload");
+        assertEquals(1,repository.jobs(id,2).size());
+        assertEquals("QUEUED",repository.jobs(id,2).getFirst().status());
+        assertEquals(1,worker.runOnce(1));
+        assertEquals(List.of("SUCCEEDED","QUEUED"),repository.jobs(id,2).stream().map(Job::status).toList());
+    }
 
     @Test void encounterCrudUsesRealRowsAndMetadataDoesNotChangeInputVersion()throws Exception{
         String token=login("demo-caregiver-1");JsonNode created=create(token,"VISIT","진료");UUID id=UUID.fromString(created.get("id").asText());

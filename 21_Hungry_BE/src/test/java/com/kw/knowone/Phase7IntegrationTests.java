@@ -15,6 +15,7 @@ import java.security.MessageDigest;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
+import java.sql.Timestamp;
 import java.util.Base64;
 import java.util.HexFormat;
 import java.util.UUID;
@@ -74,15 +75,15 @@ class Phase7IntegrationTests {
         jdbc.update("UPDATE task_occurrence SET starts_at=starts_at+interval '1 hour',ends_at=ends_at+interval '1 hour',version=version+1 WHERE id=?",TASK);events.syncOccurrenceNotifications(TASK,now);
         assertEquals(3,jdbc.queryForObject("SELECT count(*) FROM notification_event WHERE occurrence_id=? AND expected_task_version=0 AND status='CANCELED'",Integer.class,TASK));assertEquals(3,jdbc.queryForObject("SELECT count(*) FROM notification_event WHERE occurrence_id=? AND expected_task_version=1 AND status='PENDING'",Integer.class,TASK));}
 
-    @Test void dailyDigestExcludesHandoffAlreadyNotifiedToday(){jdbc.update("UPDATE task_occurrence SET assignee_user_id=NULL,assignment_origin=NULL,version=version+1 WHERE id=?",TASK);UUID handoff=UUID.randomUUID();jdbc.update("INSERT INTO handoff_request(id,group_id,occurrence_id,reason,status) VALUES (?,?,?,'NO_CANDIDATE','OPEN')",handoff,GROUP,TASK);
-        jdbc.update("INSERT INTO notification_event(id,group_id,event_type,event_key,occurrence_id,handoff_id,expected_task_version,due_at) VALUES (gen_random_uuid(),?,'HANDOFF_OPEN',?,?,?,1,now())",GROUP,"handoff:"+handoff+":open",TASK,handoff);
-        workers.expand(workers.claimEvents(1,clock.instant(),Duration.ofMinutes(2)).getFirst(),clock.instant());events.createDailyDigests(clock.instant());assertEquals(0,jdbc.queryForObject("SELECT count(*) FROM notification_event WHERE event_type='DAILY_DIGEST' AND target_user_id=?",Integer.class,USER));}
+    @Test void dailyDigestExcludesHandoffAlreadyNotifiedToday(){Instant now=clock.instant();jdbc.update("UPDATE task_occurrence SET assignee_user_id=NULL,assignment_origin=NULL,version=version+1 WHERE id=?",TASK);UUID handoff=UUID.randomUUID();jdbc.update("INSERT INTO handoff_request(id,group_id,occurrence_id,reason,status) VALUES (?,?,?,'NO_CANDIDATE','OPEN')",handoff,GROUP,TASK);
+        jdbc.update("INSERT INTO notification_event(id,group_id,event_type,event_key,occurrence_id,handoff_id,expected_task_version,due_at) VALUES (gen_random_uuid(),?,'HANDOFF_OPEN',?,?,?,1,?)",GROUP,"handoff:"+handoff+":open",TASK,handoff,Timestamp.from(now));
+        workers.expand(workers.claimEvents(1,now,Duration.ofMinutes(2)).getFirst(),now);events.createDailyDigests(now);assertEquals(0,jdbc.queryForObject("SELECT count(*) FROM notification_event WHERE event_type='DAILY_DIGEST' AND target_user_id=?",Integer.class,USER));}
 
     @Test void kstDigestBoundaryAndRetryPoliciesAreDeterministic()throws Exception{assertFalse(NotificationScheduleService.digestWindow(Instant.parse("2026-10-06T23:59:59Z")));assertTrue(NotificationScheduleService.digestWindow(Instant.parse("2026-10-07T00:00:00Z")));
         subscription(USER,"retry");event("TASK_ASSIGNED","task:"+TASK+":assignment:0",USER,0L);workers.expand(workers.claimEvents(1,clock.instant(),Duration.ofMinutes(2)).getFirst(),clock.instant());var claim=workers.claimDeliveries(1,clock.instant(),Duration.ofMinutes(2)).getFirst();workers.deliveryFailure(claim,clock.instant(),429,120L,3,false);
         assertEquals("FAILED",jdbc.queryForObject("SELECT status FROM notification_delivery WHERE id=?",String.class,claim.id()));assertTrue(jdbc.queryForObject("SELECT next_attempt_at FROM notification_delivery WHERE id=?",Instant.class,claim.id()).isAfter(clock.instant().plusSeconds(100)));
         jdbc.update("UPDATE notification_delivery SET next_attempt_at=now()-interval '1 second',attempt_count=2 WHERE id=?",claim.id());var last=workers.claimDeliveries(1,clock.instant(),Duration.ofMinutes(2)).getFirst();workers.deliveryFailure(last,clock.instant(),0,null,3,false);assertTrue(jdbc.queryForObject("SELECT next_attempt_at='infinity' FROM notification_delivery WHERE id=?",Boolean.class,last.id()));}
 
-    private void event(String type,String key,UUID target,Long version){jdbc.update("INSERT INTO notification_event(id,group_id,event_type,event_key,occurrence_id,target_user_id,expected_task_version,due_at) VALUES (gen_random_uuid(),?,?,?,?,?,?,now())",GROUP,type,key,TASK,target,version);}
+    private void event(String type,String key,UUID target,Long version){jdbc.update("INSERT INTO notification_event(id,group_id,event_type,event_key,occurrence_id,target_user_id,expected_task_version,due_at) VALUES (gen_random_uuid(),?,?,?,?,?,?,?)",GROUP,type,key,TASK,target,version,Timestamp.from(clock.instant()));}
     private UUID subscription(UUID user,String marker)throws Exception{UUID id=UUID.randomUUID();String endpoint="https://fcm.googleapis.com/push/"+marker;byte[] hash=MessageDigest.getInstance("SHA-256").digest(endpoint.getBytes(StandardCharsets.UTF_8));jdbc.update("INSERT INTO push_subscription(id,user_id,endpoint,endpoint_hash,p256dh,auth_secret) VALUES (?,?,?,?,?,?)",id,user,endpoint,hash,"key","auth");return id;}
 }

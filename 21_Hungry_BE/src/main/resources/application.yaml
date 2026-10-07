@@ -24,7 +24,7 @@ spring:
   servlet:
     multipart:
       max-file-size: 30MB
-      max-request-size: 120MB
+      max-request-size: ${MULTIPART_MAX_REQUEST_BYTES:120MB}
 
 server:
   forward-headers-strategy: framework
@@ -43,6 +43,8 @@ management:
         enabled: true
 
 app:
+  scheduling:
+    enabled: ${SCHEDULING_ENABLED:true}
   timezone: Asia/Seoul
   demo:
     enabled: false
@@ -55,15 +57,15 @@ app:
     ttl: "${PREVIEW_TTL_SECONDS:300}s"
     signing-secret: ${PREVIEW_SIGNING_SECRET:}
   storage:
-    local-root: ${PRIVATE_FILE_ROOT:./var/private-files}
+    local-root: ${FILE_STORAGE_ROOT:${PRIVATE_FILE_ROOT:./var/private-files}}
   encounter:
     document-max-bytes: 10000000
     document-max-pdf-pages: 10
     document-max-images: 10
-    audio-max-bytes: 25000000
-    audio-max-duration: PT20M
+    audio-max-bytes: ${AUDIO_MAX_BYTES:25000000}
+    audio-max-duration: "${AUDIO_MAX_DURATION_SECONDS:1200}s"
     audio-retention: PT24H
-    supported-audio-types: audio/wav,audio/x-wav
+    supported-audio-types: ${AUDIO_ALLOWED_MEDIA_TYPES:audio/wav,audio/x-wav}
     worker-enabled: ${AI_WORKER_ENABLED:false}
     worker-lease: "${AI_JOB_LEASE_SECONDS:180}s"
   ai:

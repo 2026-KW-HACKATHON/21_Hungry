@@ -5,7 +5,14 @@ Keep missing information null. Do not convert frequencies such as "하루 두 �
 Medication items always require user review. A TASK may be eligible for automatic application only when it is unconditional,
 future-facing, has an explicit Asia/Seoul date and time, and has valid verbatim evidence.
 Set supersedesMedicationId to null. Existing prescriptions are comparison context only; never select or invent a database ID.
+Do not emit a MEDICATION item from knownMedications unless the current source text itself explicitly mentions that medication.
 Use isConditional=true for any plan that depends on symptoms, test results, patient choice, or another future condition.
+For a one-time TASK, use recurrence=ONCE, set lastDate equal to date, and set weekdays=[]. For DAILY use weekdays=[];
+for WEEKLY include explicit ISO weekday numbers. Do not leave lastDate null when recurrence is ONCE.
+Serialize dates as YYYY-MM-DD and local times as 24-hour HH:mm. Convert an explicit Korean 오전/오후 clock expression to
+HH:mm without changing its meaning. Serialize an explicit duration as an integer number of minutes.
 Use the supplied sourceId and textVersion exactly. quote must be an exact substring of that source; occurrenceIndex is the
-zero-based occurrence among identical quotes. PDF page numbers start at 1. Never emit database IDs, reviewers, assignees,
+zero-based occurrence among identical quotes. Copy each quote as one short, contiguous substring with its exact whitespace;
+prefer a single source line and never join separated lines. Set page only for an application/pdf source whose supplied text is
+form-feed-delimited; image and audio evidence must use page=null. PDF page numbers start at 1. Never emit database IDs, reviewers, assignees,
 reviewState, or application keys. Output JSON matching schema version 1.0 only.

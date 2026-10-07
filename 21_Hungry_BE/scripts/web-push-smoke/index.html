@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>21 Hungry Web Push smoke</title>
+<style>body{font:16px system-ui;max-width:760px;margin:2rem auto;padding:0 1rem}label{display:block;margin:.8rem 0}input{width:100%;padding:.5rem}button{margin:.3rem;padding:.6rem}pre{white-space:pre-wrap;background:#f4f4f4;padding:1rem}</style></head>
+<body><h1>Web Push opt-in smoke</h1>
+<p>토큰과 구독 키는 메모리에만 두며 화면 로그·URL·브라우저 저장소에 기록하지 않습니다.</p>
+<label>API base URL <input id="base" value="http://localhost:18082"></label>
+<label>Local demo login key <input id="loginKey" value="demo-caregiver-1" autocomplete="off"></label>
+<button id="login">로컬 demo 로그인(A02)</button>
+<label>Bearer token <input id="token" type="password" autocomplete="off"></label>
+<button id="subscribe">권한 요청 및 현재 기기 구독(N05/N06)</button>
+<button id="inbox">알림함 재조회(N01)</button>
+<button id="unsubscribe">현재 기기 해제(N08)</button>
+<button id="clear">계정 전환/로그아웃 정리</button>
+<pre id="status">대기 중</pre><script type="module" src="smoke.js"></script></body></html>

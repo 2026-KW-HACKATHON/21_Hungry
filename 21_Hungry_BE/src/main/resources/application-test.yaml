@@ -9,6 +9,9 @@ spring:
     schemas: hungry_test
 
 app:
+  scheduling:
+    # Integration tests call schedulers/workers explicitly so queue claims are deterministic.
+    enabled: false
   ai:
     worker-concurrency: 1
     job-max-attempts: 2

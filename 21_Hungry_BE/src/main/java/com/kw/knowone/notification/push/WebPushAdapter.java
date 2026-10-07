@@ -5,6 +5,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.security.Security;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -12,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import nl.martijndwars.webpush.AbstractPushService;
 import nl.martijndwars.webpush.Encoding;
 import nl.martijndwars.webpush.Notification;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +24,8 @@ public class WebPushAdapter implements PushPort {
     public WebPushAdapter(PushProperties properties,Clock clock) {
         this.properties=properties;this.clock=clock;
         if(properties.pushWorkerEnabled()&&!properties.configured())throw new IllegalStateException("PUSH_WORKER_ENABLED requires VAPID public/private key and subject");
-        try {this.crypto=properties.configured()?new ExposedPushService(properties.vapidPublicKey(),properties.vapidPrivateKey(),properties.vapidSubject()):null;}
+        try {if(properties.configured()&&Security.getProvider(BouncyCastleProvider.PROVIDER_NAME)==null)Security.addProvider(new BouncyCastleProvider());
+            this.crypto=properties.configured()?new ExposedPushService(properties.vapidPublicKey(),properties.vapidPrivateKey(),properties.vapidSubject()):null;}
         catch(Exception e){throw new IllegalStateException("Invalid VAPID configuration",e);}
         this.http=HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NEVER).connectTimeout(properties.pushTimeout()).build();
     }

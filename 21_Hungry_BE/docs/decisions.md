@@ -47,7 +47,7 @@ Bearer opaque token·4계정·ACTIVE 공동체 인가, Vercel/EC2 분리, 기존
 |---|---|---|
 | SPRING_PROFILES_ACTIVE | local/test/prod | 비밀 아님 |
 | DB_URL, DB_USERNAME, DB_PASSWORD | DB 연결 | 서버 전용, PASSWORD 비밀 |
-| CORS_ALLOWED_ORIGINS | 정확한 Origin 목록 | 서버 설정, 실제 값 미정 |
+| CORS_ALLOWED_ORIGINS | 정확한 Origin 목록 | `https://knowone-eight.vercel.app` |
 | FILE_STORAGE_ROOT, AUDIO_TEMP_ROOT | 비공개 영속/임시 저장 경로 | 서버 설정 |
 | OPENAI_API_KEY | 공급자 인증 | 서버 비밀 |
 | OPENAI_TRANSCRIBE_MODEL, OPENAI_OCR_MODEL, OPENAI_ANALYSIS_MODEL | 명시적 모델 선택 | 서버 설정. 6단계 기본값은 아래 D38 참조 |
@@ -59,7 +59,7 @@ Bearer opaque token·4계정·ACTIVE 공동체 인가, Vercel/EC2 분리, 기존
 | AUTH_SESSION_TTL_SECONDS | 86400 기본 | 서버 설정 |
 | IDEMPOTENCY_TTL_SECONDS, PREVIEW_TTL_SECONDS | 86400 / 300 기본 | 서버 설정 |
 | VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_SUBJECT | 실제 Web Push | PRIVATE만 비밀 |
-| FRONTEND_ORIGIN | 푸시 클릭의 허용 프론트 주소 | 실제 Origin 미정 |
+| FRONTEND_ORIGIN | 푸시 클릭의 허용 프론트 주소 | `https://knowone-eight.vercel.app` |
 | 프론트 API Origin 변수 | API Origin만, /api/v1은 경로 | 변수명 팀 결정; Vite면 VITE_API_BASE_URL 예시 |
 
 일괄 비밀 값 예시 파일은 실제 구현 단계에서 생성하며 값은 비워 둔다. 현재 문서에 키·비밀번호를 요구하거나 넣지 않는다.
@@ -139,11 +139,11 @@ U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지�
 
 | ID | 결정 | 근거·검증 |
 |---|---|---|
-| D38 | 파일 전사는 `v1/audio/transcriptions`의 `gpt-transcribe`, OCR·분석은 Responses API의 고정 snapshot `gpt-5.4-mini-2026-03-17`을 기본값으로 사용 | [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text), [gpt-transcribe](https://developers.openai.com/api/docs/models/gpt-transcribe), [GPT-5.4 mini](https://developers.openai.com/api/docs/models/gpt-5.4-mini)를 확인했다. 후자는 이미지 입력·Structured Outputs·400K context를 지원한다. 한국어 약명·숫자 fixture의 서버 검증은 통과했으나 API 키가 없어 모델 정확도·지연·사용량 평가는 BLOCKED이며 기본 모델은 잠정값이다. |
+| D38 | 파일 전사는 `v1/audio/transcriptions`의 `gpt-transcribe`, OCR·분석은 Responses API의 고정 snapshot `gpt-5.4-mini-2026-03-17`을 기본값으로 사용 | [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text), [gpt-transcribe](https://developers.openai.com/api/docs/models/gpt-transcribe), [GPT-5.4 mini](https://developers.openai.com/api/docs/models/gpt-5.4-mini)를 확인했다. 2026-10-08 완전 합성 한국어 WAV·JPEG·PDF 실호출에서 모델 접근, 전사/OCR/Structured Outputs를 확인했다. 개별 token·지연과 품질 한계는 progress에 기록하며 임의 의료 입력 정확도를 보장하지 않는다. |
 | D39 | JDK `HttpClient`로 공식 REST 계약을 직접 호출하고 OpenAI Java SDK를 추가하지 않는다 | [공식 Java SDK](https://developers.openai.com/api/reference/java)는 4.78.0과 설정 가능한 timeout을 확인했다. 현재 adapter는 SDK 내부 재시도가 없어 DB 작업 재시도와 중첩되지 않으며 `Retry-After`를 존중한다. SDK를 사용하지 않으므로 SDK 호환성 검증 완료로 주장하지 않는다. |
 | D40 | 기본 provider timeout 90초, lease 180초, concurrency 2, 작업 최대 시도 4회이며 활성화 시 lease가 timeout보다 최소 15초 길지 않으면 시작을 거부한다 | claim한 작업은 고정 크기 executor에서 병렬 처리한다. 429/일시 장애만 제한 재시도하고 provider 입력 한도·refusal·incomplete·schema/의미 오류는 같은 입력으로 자동 재호출하지 않는다. 외부 호출은 DB 트랜잭션과 schedule guard 밖이다. |
 | D41 | Responses 요청은 `store=false`, 신뢰 프롬프트는 developer message, 원문과 파일은 user content로 분리한다 | [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [File inputs](https://developers.openai.com/api/docs/guides/file-inputs), [Images and vision](https://developers.openai.com/api/docs/guides/images-vision), [Data controls](https://developers.openai.com/api/docs/guides/your-data)를 확인했다. `store=false`는 Responses 상태 저장을 끄지만 조직의 abuse monitoring/보존 설정까지 자동 보장한다는 뜻은 아니다. |
-| D42 | 분석 계약 1.0의 schema/prompt를 버전 관리하고 모델 출력 뒤 서버가 exact-field, null·날짜·근거 quote·source·Unicode codepoint offset·교차 소스 충돌을 다시 판정 | 모델은 DB ID·담당자·확인자·reviewState/application key를 정하지 않는다. `supersedesMedicationId`는 schema에서 null만 허용한다. 공급자 요청에서는 공식 subset 밖의 schema metadata/`uniqueItems`만 제거하고 해당 유일성은 서버가 검증한다. 실제 변경 관계는 R02가 같은 공동체의 확정 처방으로 매핑한다. |
+| D42 | 분석 계약 1.0의 schema/prompt를 버전 관리하고 모델 출력 뒤 서버가 exact-field, null·날짜·근거 quote·source·Unicode codepoint offset·교차 소스 충돌을 다시 판정 | 모델은 DB ID·담당자·확인자·reviewState/application key를 정하지 않는다. `supersedesMedicationId`는 schema에서 null만 허용한다. 공급자 요청에서는 루트 metadata와 provider subset 밖 `uniqueItems`/format/길이·범위 제약만 제거하고 해당 검증은 서버가 유지한다. 실제 payload 속성 `title`은 보존한다. 실제 변경 관계는 R02가 같은 공동체의 확정 처방으로 매핑한다. |
 | D43 | 일반 TASK만 명확·미래·비조건부·근거 유효 시 자동 적용하고 MEDICATION은 항상 R02 사용자 확인 뒤 처방·시리즈·발생·배정에 반영 | R02는 guard 뒤 version/현재 revision/충돌 해소를 재검증하고 처방·snapshot·audit·outbox·멱등 성공을 한 트랜잭션에 기록한다. 확인은 사용자 확인이지 의료진 검증이 아니다. |
 | D44 | 음성 서버 지원은 계속 실제 WAV parser를 통과한 `audio/wav`, `audio/x-wav`로 제한 | OpenAI 전사 API 자체의 지원 컨테이너가 더 넓어도 MIME만 확장하지 않는다. iPhone/Android 출력과 변환 경로는 실기기 표본이 없어 BLOCKED다. |
 
@@ -160,4 +160,18 @@ U01과 U02는 위 결정으로 해소했다. U03~U13은 기존 상태를 유지�
 | D49 | N05 비활성 응답은 `enabled=false, applicationServerKey=null` | push worker가 꺼졌거나 VAPID 3종 중 하나라도 없으면 브라우저가 구독을 시도하지 않는다. private key와 subject는 API에 노출하지 않는다. worker 활성인데 설정이 누락·오류면 서버 시작을 실패시킨다. |
 | D50 | 404/410은 해당 subscription 비활성 및 그 기기의 대기 delivery 취소, 429는 Retry-After 최대 1시간 반영, 408/5xx/transport timeout은 제한 exponential backoff | 다른 기기는 독립 delivery라 유지한다. provider 2xx만 SENT이며 기기 표시·읽음은 별도다. 응답 유실 후 재시도에 따른 외부 중복 가능성은 Web Push의 exactly-once 보장이 없어 `eventId` tag로 표시 중복을 줄인다. |
 | D51 | 시작 예약은 `task:{id}:v{version}:30m\|now\|overdue`, digest는 `digest:{groupId}:{userId}:{KST date}`를 key로 사용 | 업무 version 변경 트랜잭션에서 구 event/delivery를 취소하고 아직 지나지 않은 새 시각만 생성한다. DAILY는 09:00 KST 이후 한 번 생성하며 당일 같은 OPEN의 최초 inbox가 있으면 제외한다. |
-| D52 | AI worker lease 설정은 변경하지 않음 | 현재 claim 안 provider 호출은 1회이고 재시도/backoff는 DB `available_at` 재예약이다. 앱 내부 다중 호출 retry가 없어 기본 90초 timeout/180초 lease와 15초 최소 margin 검증이 현재 구조에 맞다. [OpenAI rate-limit 지침](https://developers.openai.com/api/docs/guides/rate-limits)의 Retry-After·bounded retry·attempt timeout/total deadline 구분을 재확인했다. 키 부재로 live AI 상태는 BLOCKED를 유지한다. |
+| D52 | AI worker lease 설정은 변경하지 않음 | 현재 claim 안 provider 호출은 1회이고 재시도/backoff는 DB `available_at` 재예약이다. 앱 내부 다중 호출 retry가 없어 기본 90초 timeout/180초 lease와 15초 최소 margin 검증이 현재 구조에 맞다. [OpenAI rate-limit 지침](https://developers.openai.com/api/docs/guides/rate-limits)의 Retry-After·bounded retry·attempt timeout/total deadline 구분을 재확인했다. live 성공 호출의 최대 관찰 지연은 9,534ms로 margin 안이었다. |
+
+## 13. 8단계에서 확정한 기술 결정
+
+작성: 2026-10-08, Asia/Seoul.
+
+| ID | 결정 | 근거·검증 |
+|---|---|---|
+| D53 | `@EnableScheduling`은 `app.scheduling.enabled` 조건부 구성으로 분리하고 test/restore에서 끈다 | Phase 5가 직접 claim하는 큐를 테스트 컨텍스트의 최초 scheduled poll이 먼저 claim할 수 있었다. worker 자체는 활성으로 유지해 명시 `runOnce`와 lease/fencing assertion을 그대로 검증한다. |
+| D54 | 운영 파일 저장소는 API 이미지 밖 named volume `/data/private-files` 하나를 사용한다 | staging과 승격 대상이 같은 파일시스템이어야 atomic move가 유지된다. 기존 문서의 별도 `AUDIO_TEMP_ROOT`는 실제 코드가 읽지 않아 제거했다. |
+| D55 | 배포 이미지는 commit SHA tag로 고정하고 readiness 실패 시 직전 image ID로 API만 복구한다 | source 재빌드 결과가 바뀌는 배포를 피하고 DB/파일 volume을 보존한다. DB migration 호환성은 이미지 롤백과 별도로 판단한다. |
+| D56 | 백업은 API를 중지한 일관성 구간에서 PostgreSQL custom dump와 private volume archive를 함께 만든다 | DB object key와 파일을 같은 시점에 보존한다. 복원은 별도 Compose project에서 모든 scheduler/AI/push worker를 끄고 검증한다. |
+| D57 | provider용 JSON Schema 정리는 루트 metadata와 명시된 불지원 validation keyword에만 적용하고 payload의 실제 속성명은 삭제하지 않는다 | 실호출에서 재귀 `title` 삭제가 `required`와 불일치해 `invalid_json_schema`가 발생했다. TASK `title` 보존 회귀 테스트와 실제 Structured Outputs 성공으로 수정 근거를 확인했다. |
+| D58 | N05는 공개키를 반환하더라도 API v1.0의 `권한: 인증`을 유지한다 | 공개키의 비밀성 여부와 API 인증 계약은 별개다. 익명 permit 목록에서 `/api/v1/push/config`를 제거하고 401 회귀 테스트를 추가했다. |
+| D59 | production frontend/API/VAPID subject를 각각 `https://knowone-eight.vercel.app`, `api.gaebalmani.shop`, `mailto:js48765348@gmail.com`으로 고정 | DNS A는 52.35.249.169로 확인했다. Vercel HTTPS는 200이었고 API 80/443은 연결 불가라 서버 TLS는 아직 미검증이다. |
