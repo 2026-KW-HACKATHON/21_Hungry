@@ -1,3 +1,4 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import "./LoginSelect.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
  
@@ -24,7 +25,7 @@ function LoginSelect() {
           Google로 로그인
         </button>
       </div>
-      <button className="LoginSelect__loginButton">로그인하기</button>
+      <BottomButton content="로그인하기" />
       <button className="LoginSelect__gotosignup">KnowOne이 처음이신가요?</button>
     </div>
   )

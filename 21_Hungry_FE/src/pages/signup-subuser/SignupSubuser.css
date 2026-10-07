@@ -22,27 +22,12 @@
   border: 2px solid #E5E5E5;
 }
 
-.SignupSubuser__nextButton {
-  width: 92%;
-  height: 55px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  margin: 0 auto;
-  margin-top: auto;
-  color: #FFFFFF;
-  box-shadow: 0 5px 0 #1899D6;
-  font-family: var(--font-extrabold);
-  background-color: #1CB0F6;
-  margin-bottom: 14.1%;
-}
 
 .SignupSubuser__checkbox {
   display: flex;
   flex-direction: column;
   width: 92%;
-
-  padding-left: 25px;
-  padding-top: 25px;
+  padding: 25px;
   border-radius: 20px;
   border: 2px solid #F2F2F2;
   margin: 0 auto;

@@ -1,3 +1,4 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SignupSubuser.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
 import { Icon } from "../../components/icon/Icon";
@@ -50,9 +51,7 @@ function SignupSubuser() {
         </div>
       </div>
 
-      <button className="SignupSubuser__nextButton">
-        다음
-      </button>
+      <BottomButton content="다음" />
     </div>
   )
 }

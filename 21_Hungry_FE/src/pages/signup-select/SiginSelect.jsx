@@ -1,3 +1,4 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SiginSelect.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
  
@@ -24,7 +25,7 @@ function SignupSelect() {
           Google로 로그인
         </button>
       </div>
-      <button className="SignupSelect__loginButton">회원가입하기</button>
+      <BottomButton content="회원가입하기" />
       <button className="SignupSelect__gotosignup">KnowOne을 이용해 보셨나요?</button>
     </div>
   )

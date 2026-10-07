@@ -1,0 +1,92 @@
+.SignupFamilyInfoPage {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  height: 100%;
+  width: 100%;
+}
+
+.SignupFamilyInfoPage__title {
+  font-family: var(--font-extrabold);
+  padding: 0;
+  margin: 0;
+  margin-top: 0;
+  margin-left: 5.2%;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.SignupFamilyInfoPage__SubTitle {
+  font-family: var(--font-extrabold);
+  padding: 0;
+  margin: 0;
+  margin-left: 5.2%;
+  font-size: 14px;
+  color: #BFBFBF;
+}
+
+.SignupFamilyInfoPage__button {
+  width: 92%;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: auto;
+  color: #FFFFFF;
+  box-shadow: 0 5px 0 #1899D6;
+  font-family: var(--font-extrabold);
+  background-color: #1CB0F6;
+  margin-bottom: 3.4%;
+}
+
+.SignupFamilyInfoPage__description {
+  font-family: var(--font-extrabold);
+  width: 92%;
+  height: 30px;
+  padding: 0;
+  margin: 0 auto 0 auto;
+  margin-bottom: 3.2%;
+  font-size: 14px;
+  color: #BFBFBF;
+  text-align: center;
+}
+.SignupFamilyInfoPage__Container {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid #F2F2F2;
+  margin: 0 auto;
+  margin-top: 3.4%;
+  margin-bottom: 1.7%;
+}
+.SignupFamilyInfoPage__inContainer{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.mainuser,
+.name,
+.relationship{
+  margin: 0;
+  margin-left: auto;
+  font-family: var(--font-extrabold);
+  color: #666666;
+  font-size: 16px;
+}
+.label{
+  margin: 0;
+  
+  font-family: var(--font-extrabold);
+  color: #B3B3B3;
+  font-size: 16px;
+}
+.age{
+    margin: 0;
+  margin-left: auto;
+  font-family: var(--font-extrabold);
+  color: #666666;
+  font-size: 16px;
+}

@@ -1,3 +1,4 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SignupParentDone.css"
 
 function SignupParentDone() {
@@ -6,7 +7,7 @@ function SignupParentDone() {
       <h1 className="SignupParentPageDone__title">
         모든설정을 완료했어요
       </h1>
-      <button className="SignupParentDone__NextButton">다음</button>
+      <BottomButton content="다음" />
     </main>
   )
 }
