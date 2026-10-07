@@ -45,6 +45,12 @@ button,
 textarea,
 select {
   font: inherit;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+input:focus {
+  outline: none;
 }
 
 /* button 기본 스타일 제거 */

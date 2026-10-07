@@ -1,17 +1,10 @@
 import './ReqCard.css'
-import CardIcon from '../../../components/card-icon/CardIcon'
+import CardInfo from '../../../components/card-info/CardInfo'
 import PopupButton from '../../../components/popup-button/PopupButton'
 
 /* schedule : { id, category, date, time, family, description } */
 
 function ReqCard({ schedule }) {
-  const categoryIconMap = {
-    '기타 돌봄': 'card-etc',
-    '약 복용': 'card-drug',
-    '병원 내원': 'card-hospital',
-    건강검진: 'card-doctor',
-  }
-
   return (
     <div className='reqCard__container'>
       <div className='reqCard__title'>
@@ -25,24 +18,15 @@ function ReqCard({ schedule }) {
         </div>
       </div>
       <div className='reqCard__info'>
-        <CardIcon
-          name={categoryIconMap[schedule.category] || 'card-etc'}
-          content={schedule.category}
+        <CardInfo
+          category={schedule.category}
+          label1={'날짜'}
+          label2={'시간'}
+          label3={'담당 가족'}
+          value1={schedule.date}
+          value2={schedule.time}
+          value3={schedule.family}
         />
-        <div className='reqCard__info--details'>
-          <div className='reqCard__info--detail'>
-            <p className='reqCard__info--label'>날짜</p>
-            <p className='reqCard__info--value'>{schedule.date}</p>
-          </div>
-          <div className='reqCard__info--detail'>
-            <p className='reqCard__info--label'>시간</p>
-            <p className='reqCard__info--value'>{schedule.time}</p>
-          </div>
-          <div className='reqCard__info--detail'>
-            <p className='reqCard__info--label'>담당 가족</p>
-            <p className='reqCard__info--value'>{schedule.family}</p>
-          </div>
-        </div>
       </div>
       <div className='reqCard__description'>
         <p>{schedule.description}</p>

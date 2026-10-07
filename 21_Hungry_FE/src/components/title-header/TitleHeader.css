@@ -7,10 +7,12 @@
 }
 
 .titleHeader__title {
+  white-space: pre-line;
   font-size: 24px;
 }
 
 .titleHeader__subtitle {
+  white-space: pre-line;
   font-size: 14px;
   color: #bfbfbf;
 }
