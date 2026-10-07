@@ -1,10 +1,26 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
 import "./SignupRole.css"
 
+// 각 역할의 다음 페이지 경로를 입력해 주세요. 예: '/signupmainuser'
+const ROLE_ROUTES = {
+  MainUser: '/signupmainuser', // 주돌봄자녀 이동 경로
+  SubUser: '/signupsubuser', // 공동돌봄자녀 이동 경로
+  Parent: '/signupparent', // 부모 이동 경로
+}
+
 function SignupRole() {
+  const navigate = useNavigate()
   const [selectedRole, setSelectedRole] = useState(null)
+  const handleNext = () => {
+    if (!selectedRole) return
+
+    const nextPath = ROLE_ROUTES[selectedRole]
+    if (nextPath) navigate(nextPath)
+  }
+
   return (
     <main className="SignupPage">
       <LoginPage_title 
@@ -46,7 +62,7 @@ function SignupRole() {
           <span className='Signup__UserTypeBox__Description--Parent'>자녀에게 안부와 건강기록을 전하고,<br />공유 범위를 정하는 기능이 포함되어 있어요</span>
         </button>
       </div>
-      <BottomButton content="다음" />
+      <BottomButton content="다음" disabled={!selectedRole} onClick={handleNext} />
     </main>
   )
 }

@@ -1,8 +1,10 @@
 import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SiginSelect.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
- 
+import { useNavigate } from 'react-router-dom'
+
 function SignupSelect() {
+  const navigate = useNavigate()
   return (
     <div className="SignupSelectPage">
       <LoginPage_title title={
@@ -26,8 +28,8 @@ function SignupSelect() {
         </button>
       </div>
       <div className="SignupSelect__footer">
-        <BottomButton content="회원가입하기" />
-        <button className="SignupSelect__gotosignup">KnowOne을 이용해 보셨나요?</button>
+        <BottomButton onClick={() => navigate('/signuprole')} content="회원가입하기" />
+        <button className="SignupSelect__gotosignup" onClick={() => navigate('/loginselect')}>KnowOne을 이용해 보셨나요?</button>
       </div>
     </div>
   )

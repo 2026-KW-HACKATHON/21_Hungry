@@ -1,8 +1,13 @@
+import { useState } from 'react'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SignupSelfInfo.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
+import { useNavigate } from 'react-router-dom' 
 
 function SignupSelfInfo() {
+  const [name, setName] = useState('')
+  const canProceed = name.trim().length > 0
+  const navigate = useNavigate()
   return (
     <div className="SignupSelfInfoPage">
       <LoginPage_title
@@ -17,9 +22,12 @@ function SignupSelfInfo() {
       <input
         type="text"
         placeholder="이름"
+        aria-label="이름"
+        value={name}
+        onChange={(event) => setName(event.target.value)}
         className="SignupSelfInfo__input"
       />
-      <BottomButton content="다음" />
+      <BottomButton onClick={()=>navigate('/signupparentinfo')} content="다음" disabled={!canProceed} />
     </div>
   )
 }

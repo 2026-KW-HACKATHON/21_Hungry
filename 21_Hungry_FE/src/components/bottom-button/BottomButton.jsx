@@ -1,11 +1,11 @@
 import './BottomButton.css'
 
-function BottomButton({ content, onClick }) {
+function BottomButton({ content, onClick, disabled = false }) {
   return (
     <div className='bottomButton__container'>
-      <div className='bottomButton__button' onClick={onClick}>
+      <button type='button' className='bottomButton__button' onClick={onClick} disabled={disabled}>
         {content}
-      </div>
+      </button>
     </div>
   )
 }

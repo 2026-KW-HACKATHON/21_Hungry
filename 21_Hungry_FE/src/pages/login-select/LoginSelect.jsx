@@ -3,7 +3,6 @@ import "./LoginSelect.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
 import { useNavigate } from 'react-router-dom' 
 
-
 function LoginSelect() {
   const navigate = useNavigate()
   return (

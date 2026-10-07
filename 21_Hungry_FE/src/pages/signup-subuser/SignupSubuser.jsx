@@ -1,9 +1,16 @@
+import { useState } from 'react'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SignupSubuser.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
 import { Icon } from "../../components/icon/Icon";
-
+import { useNavigate } from 'react-router-dom' 
+        
+      
 function SignupSubuser() {
+  const [purposeConfirmed, setPurposeConfirmed] = useState(false)
+  const [privacyAgreed, setPrivacyAgreed] = useState(false)
+  const canProceed = purposeConfirmed && privacyAgreed
+  const navigate = useNavigate()
   return (
     <div className="SignupSubuserPage">
       <LoginPage_title
@@ -26,32 +33,34 @@ function SignupSubuser() {
           연결 전 함께 확인해요
         </p>
 
-        <div className="SignupSubuser__checkbox--Item">
+        <label className="SignupSubuser__checkbox--Item">
+          <input type="checkbox" className="SignupSubuser__checkbox--Input" checked={purposeConfirmed} onChange={(event) => setPurposeConfirmed(event.target.checked)} />
           <Icon
             className="SignupSubuser__checkbox--Icon"
-            name="checkbox-default"
+            aria-hidden="true" name={purposeConfirmed ? 'checkbox-checked' : 'checkbox-default'}
             width={26}
             height={26}
           />
-          <p className="SignupSubuser__checkbox--Text">
+          <span className="SignupSubuser__checkbox--Text">
             부모님께 연결 목적을 설명했어요
-          </p>
-        </div>
+          </span>
+        </label>
 
-        <div className="SignupSubuser__checkbox--Item">
+        <label className="SignupSubuser__checkbox--Item">
+          <input type="checkbox" className="SignupSubuser__checkbox--Input" checked={privacyAgreed} onChange={(event) => setPrivacyAgreed(event.target.checked)} />
           <Icon
             className="SignupSubuser__checkbox--Icon"
-            name="checkbox-default"
+            aria-hidden="true" name={privacyAgreed ? 'checkbox-checked' : 'checkbox-default'}
             width={26}
             height={26}
           />
-          <p className="SignupSubuser__checkbox--Text">
+          <span className="SignupSubuser__checkbox--Text">
             필수 개인정보 수집·이용에 동의해요
-          </p>
-        </div>
+          </span>
+        </label>
       </div>
 
-      <BottomButton content="다음" />
+      <BottomButton disabled={!canProceed} onClick={() => navigate('/signupfamilyinfo')} content="다음" />
     </div>
   )
 }

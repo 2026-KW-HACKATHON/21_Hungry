@@ -4,7 +4,6 @@ import MainLayout from '../components/main-layout/MainLayout'
 import LoginLayout from '../components/login-layout/LoginLayout'
 
 import LoginSelect from '../pages/login-select/LoginSelect'
-import LoginPage from '../pages/login/LoginPage'
 import SignupRole from '../pages/signup-role/SignupRole'
 import ServiceInfo from '../pages/service_Info/ServiceInfo'
 import SignupSelect from '../pages/signup-select/SiginSelect'
@@ -50,12 +49,6 @@ export const AppRouter = createBrowserRouter([
     element: <LoginLayout />,
     children: [{ path: '', element: <SignupWaiting /> }],
   },
-  {
-    path: '/login',
-    element: <LoginLayout />,
-    children: [{ path: '', element: <LoginPage /> }],
-  },
-
   {
     path: '/signupselfinfo',
     element: <LoginLayout />,
