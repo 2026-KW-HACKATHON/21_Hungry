@@ -1,0 +1,27 @@
+.cardInfo__info {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.cardInfo__info--details {
+  justify-content: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cardInfo__info--detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.cardInfo__info--label {
+  color: #b3b3b3;
+}
+
+.cardInfo__info--value {
+  color: #666666;
+}

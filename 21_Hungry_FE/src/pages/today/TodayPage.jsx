@@ -61,13 +61,7 @@ function TodayPage() {
   return (
     <div className='today__page'>
       <TitleHeader
-        content={
-          <p>
-            부모1 님을 위한
-            <br />
-            돌봄 일정 n개가 있어요
-          </p>
-        }
+        content={`부모1 님을 위한\n돌봄 일정 n개가 있어요`}
         subcontent={'--년 --월 --일'}
       />
       <div className='today__content'>

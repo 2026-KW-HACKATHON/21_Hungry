@@ -19,6 +19,8 @@ import SignupServiceStart from '../pages/signup-service-start/SignupServiceStart
 import SignupWaitingDone from '../pages/signup-waiting-done/SignupWaitingDone'
 
 import TodayPage from '../pages/today/TodayPage'
+import TodayEditPage from '../pages/today-edit/TodayEditPage'
+
 import DocPage from '../pages/doc/DocPage'
 import SchdulePage from '../pages/schedule/SchedulePage'
 import FamilyPage from '../pages/family/FamilyPage'
@@ -86,7 +88,7 @@ export const AppRouter = createBrowserRouter([
   },
   {
     path: '/serviceinfo',
-    element: "",
+    element: '',
     children: [{ path: '', element: <ServiceInfo /> }],
   },
   {
@@ -95,17 +97,16 @@ export const AppRouter = createBrowserRouter([
     children: [{ path: '', element: <SignupMainuser /> }],
   },
   {
-    path : '/signuprole', 
-    element:<LoginLayout/>,
-    children: [
-      { path: '', element: <SignupRole /> }
-    ]
+    path: '/signuprole',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <SignupRole /> }],
   },
   {
     path: '/',
     element: <MainLayout />,
     children: [
       { path: 'today', element: <TodayPage /> },
+      { path: 'todayedit', element: <TodayEditPage /> },
       { path: 'doc', element: <DocPage /> },
       { path: 'schedule', element: <SchdulePage /> },
       { path: 'family', element: <FamilyPage /> },
