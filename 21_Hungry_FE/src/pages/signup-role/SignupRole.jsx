@@ -1,3 +1,4 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
 import "./SignupRole.css"
 
@@ -28,7 +29,7 @@ function SignupRole() {
           <p className='Signup__UserTypeBox__Description--Parent'>자녀에게 안부와 건강기록을 전하고,<br />공유 범위를 정하는 기능이 포함되어 있어요</p>
         </div>
       </div>
-      <button className="Signup__NextButton">다음</button>
+      <BottomButton content="다음" />
     </main>
   )
 }

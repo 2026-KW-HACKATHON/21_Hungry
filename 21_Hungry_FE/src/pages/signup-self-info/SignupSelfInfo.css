@@ -22,19 +22,6 @@
   border: 2px solid #E5E5E5;
 }
 
-.SignupSelfInfo__nextButton {
-  width: 92%;
-  height: 55px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  margin: 0 auto;
-  margin-top: auto;
-  color: #FFFFFF;
-  box-shadow: 0 5px 0 #1899D6;
-  font-family: var(--font-extrabold);
-  background-color: #1CB0F6;
-  margin-bottom: 14.1%;
-}
 
 .SignupSelfInfo__checkbox {
   display: flex;
@@ -89,17 +76,4 @@
   color: #FFFFFF;
   background-color: #62D411;
   box-shadow: 0 5px 0 #66BD0F;
-}
-.SignupSelfInfo__nextButton{
-    width: 92%;
-  height: 55px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  margin: 0 auto;
-  margin-top: auto;
-  color: #FFFFFF;
-  box-shadow: 0 5px 0 #1899D6;
-  font-family: var(--font-extrabold);
-  background-color: #1CB0F6;
-  margin-bottom: 14.1%;
 }

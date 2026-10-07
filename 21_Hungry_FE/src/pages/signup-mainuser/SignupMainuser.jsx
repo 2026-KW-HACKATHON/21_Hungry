@@ -1,3 +1,4 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SignupMainuser.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
 import { Icon } from "../../components/icon/Icon";
@@ -23,7 +24,7 @@ function SignupMainuser() {
           <p className="SignupMainuser__checkbox--Text">필수 개인정보 수집·이용에 동의해요</p>
         </div>
       </div>
-      <button className="SignupMainuser__nextButton">다음</button>
+      <BottomButton content="다음" />
     </div>
   )
 }

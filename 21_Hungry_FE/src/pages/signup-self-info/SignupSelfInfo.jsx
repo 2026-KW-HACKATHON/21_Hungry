@@ -1,3 +1,4 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SignupSelfInfo.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
 
@@ -18,7 +19,7 @@ function SignupSelfInfo() {
         placeholder="이름"
         className="SignupSelfInfo__input"
       />
-      <button className="SignupSelfInfo__nextButton">다음</button>
+      <BottomButton content="다음" />
     </div>
   )
 }
