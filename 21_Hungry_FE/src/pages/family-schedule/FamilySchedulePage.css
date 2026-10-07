@@ -1,0 +1,282 @@
+.familySchedule__page {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding-bottom: 88px;
+  display: flex;
+  flex-direction: column;
+}
+
+.familySchedule__page > .backHeader__container {
+  height: 189px;
+  flex-shrink: 0;
+}
+
+.familySchedule__page .backHeader__title {
+  line-height: 1.4;
+}
+
+.familySchedule__page .backHeader__subtitle {
+  display: none;
+}
+
+.familySchedule__content {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  padding: 11px 16px 24px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.familySchedule__content > * {
+  flex-shrink: 0;
+}
+
+.familySchedule__month {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.familySchedule__month--title {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.familySchedule__month--buttons {
+  position: relative;
+  width: 52px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.familySchedule__month--buttons > button {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 44px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.familySchedule__month--previous {
+  left: -9px;
+}
+
+.familySchedule__month--next {
+  right: -9px;
+}
+
+.familySchedule__month--buttons > button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.familySchedule__filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12.5px;
+}
+
+.familySchedule__filter {
+  position: relative;
+  height: 92px;
+  min-width: 0;
+  color: #4d4d4d;
+  font-size: 16px;
+}
+
+.familySchedule__filter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 89px;
+  border: 2px solid var(--color-gray-button);
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0px 3px 0px var(--color-gray-button);
+}
+
+.familySchedule__filter--selected::before {
+  top: 2px;
+  height: 90px;
+  border: none;
+  background-color: var(--color-gray-button);
+  box-shadow: none;
+}
+
+.familySchedule__filter--icon {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.familySchedule__filter--partial {
+  top: 12px;
+  left: calc(50% + 0.5px);
+}
+
+.familySchedule__filter--label {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.familySchedule__filter--selected .familySchedule__filter--icon {
+  top: 17px;
+}
+
+.familySchedule__filter--selected .familySchedule__filter--partial {
+  top: 14px;
+}
+
+.familySchedule__filter--selected .familySchedule__filter--label {
+  top: 57px;
+  opacity: 0.5;
+}
+
+.familySchedule__calendar {
+  padding: 13px;
+  border: 2px solid #f2f2f2;
+  border-radius: 20px;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #bfbfbf;
+}
+
+.familySchedule__weekdays,
+.familySchedule__week {
+  --calendar-cell-width: min(40px, calc(100% / 7));
+  display: flex;
+  justify-content: space-between;
+}
+
+.familySchedule__weekdays {
+  height: 40px;
+}
+
+.familySchedule__week {
+  position: relative;
+  height: 50px;
+}
+
+.familySchedule__weekday,
+.familySchedule__day {
+  position: relative;
+  width: var(--calendar-cell-width);
+  min-width: 0;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.familySchedule__weekday {
+  align-items: center;
+}
+
+.familySchedule__day {
+  align-items: center;
+}
+
+.familySchedule__ranges {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.familySchedule__range {
+  position: absolute;
+  top: 8px;
+  left: calc(
+    var(--calendar-cell-width) / 2 + (100% - var(--calendar-cell-width)) * var(--start-column) / 6 -
+      17px
+  );
+  width: calc(
+    (100% - var(--calendar-cell-width)) * (var(--end-column) - var(--start-column)) / 6 + 34px
+  );
+  height: 34px;
+  border-radius: 17px;
+}
+
+.familySchedule__range--full {
+  background-color: #e2fbd0;
+}
+
+.familySchedule__range--unavailable {
+  background-color: #ffe5e5;
+}
+
+.familySchedule__range--start,
+.familySchedule__range--end {
+  position: absolute;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.familySchedule__range--start {
+  left: 0;
+}
+
+.familySchedule__range--end {
+  right: 0;
+}
+
+.familySchedule__range--full > span {
+  background-color: var(--color-green);
+}
+
+.familySchedule__range--unavailable > span {
+  background-color: var(--color-red);
+}
+
+.familySchedule__day--partial-icon {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.familySchedule__day--number {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.familySchedule__day--full {
+  color: var(--color-green);
+}
+
+.familySchedule__day--unavailable {
+  color: var(--color-red);
+}
+
+.familySchedule__day--number.familySchedule__day--partial {
+  color: #806100;
+}
+
+.familySchedule__day--endpoint {
+  color: #fff;
+}
