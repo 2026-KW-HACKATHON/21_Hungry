@@ -1,0 +1,43 @@
+.recordAnalysisPage {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 200px;
+  background-color: #fff;
+}
+
+.recordAnalysisPage__header { padding: 80px 21px 38px; }
+.recordAnalysisPage__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: -6px 0 21px -10px;
+}
+.recordAnalysisPage__header h1 { margin: 0; color: #000; font-size: 24px; }
+.recordAnalysisPage__content { padding: 0 16px; }
+.recordAnalysisPage__details,
+.recordAnalysisPage__sharing {
+  margin: 0;
+  padding: 22px 20px;
+  border: 2px solid #F2F2F2;
+  border-radius: 20px;
+}
+.recordAnalysisPage__details > div { display: flex; gap: 16px; justify-content: space-between; }
+.recordAnalysisPage__details > div + div { margin-top: 14px; }
+.recordAnalysisPage__details dt { flex-shrink: 0; color: #B3B3B3; font-size: 16px; }
+.recordAnalysisPage__details dd { margin: 0; color: #666; font-size: 16px; text-align: right; overflow-wrap: anywhere; }
+.recordAnalysisPage__memo { margin: 16px 0; padding: 24px; border-radius: 20px; background-color: #F7F7F7; }
+.recordAnalysisPage__memo h2,
+.recordAnalysisPage__sharing h2 { margin: 0 0 16px; color: #404040; font-size: 16px; }
+.recordAnalysisPage__memo p { color: #999; font-size: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.recordAnalysisPage__member { position: relative; display: flex; align-items: center; gap: 14px; color: #B3B3B3; font-size: 16px; cursor: pointer; }
+.recordAnalysisPage__member + .recordAnalysisPage__member { margin-top: 12px; }
+.recordAnalysisPage__member svg { flex-shrink: 0; }
+.recordAnalysisPage__member input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.recordAnalysisPage__member input:focus-visible + svg { outline: 2px solid var(--color-blue); outline-offset: 3px; border-radius: 6px; }
+.recordAnalysisPage__dot { margin: 0 10px; color: #D5D5D5; }
+.recordAnalysisPage__notice { margin: 16px 10px 0; color: #D5D5D5; font-size: 14px; }
+.recordAnalysisPage__message { margin: 12px 10px 0; color: #666; font-size: 14px; }
+.recordAnalysisPage .bottomButton__container { border-top: 2px solid var(--color-border); }

@@ -1,0 +1,50 @@
+.SignupServiceStartPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.SignupServiceStartPage__title {
+  font-family: var(--font-extrabold);
+  padding: 0;
+  margin: 0 5.2% 10px;
+  font-size: 24px;
+  color: #000000;
+}
+
+.SignupServiceStartPage__subtitle {
+  font-family: var(--font-extrabold);
+  padding: 0;
+  margin: 0 5.2%;
+  font-size: 14px;
+  color: #BFBFBF;
+}
+
+.SignupServiceStartPage__footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  padding: 24px 4% max(28px, env(safe-area-inset-bottom));
+}
+
+.SignupServiceStartPage__footer .bottomButton__container {
+  position: static;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  padding: 0;
+}
+
+.SignupServiceStartPage__bottomsubtitle {
+  font-family: var(--font-extrabold);
+  margin: 20px 0 0;
+  padding: 0;
+  font-size: 14px;
+  color: #BFBFBF;
+  text-align: center;
+}

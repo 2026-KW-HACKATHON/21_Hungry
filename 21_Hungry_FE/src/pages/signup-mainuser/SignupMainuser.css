@@ -38,19 +38,6 @@
     box-shadow: 0 5px 0 #66BD0F;
 }
 
-.SignupMainuser__nextButton{
-  width: 92%;
-  height: 55px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  margin: 0 auto;
-  margin-top: auto;
-  color: #FFFFFF;
-  box-shadow: 0 5px 0 #1899D6;
-  font-family: var(--font-extrabold);
-  background-color: #1CB0F6;
-  margin-bottom: 14.1%;
-}
 .SignupMainuser__checkbox{
     display: flex;
     flex-direction: column;
@@ -100,4 +87,25 @@
     color: #FFFFFF;
     background-color: #62D411;
     box-shadow: 0 5px 0 #66BD0F;
+}
+.SignupMainuser__checkbox--Item {
+  position: relative;
+  cursor: pointer;
+}
+.SignupMainuser__checkbox--Input {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  opacity: 0;
+}
+.SignupMainuser__checkbox--Input:focus-visible + svg {
+  outline: 2px solid #1cb0f6;
+  outline-offset: 3px;
+}
+.SignupMainuserPage .bottomButton__button:disabled {
+  background-color: #1cb0f6;
+  box-shadow: 0px 5px 0px #1899d6;
+  opacity: 0.5;
+  color: #FFFFFF;
 }

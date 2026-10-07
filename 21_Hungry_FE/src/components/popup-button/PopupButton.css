@@ -1,0 +1,42 @@
+/*color options : green, blue, red, gray, notice */
+
+.popupButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 15px;
+  box-sizing: border-box;
+
+  height: 45px;
+  color: #fff;
+}
+
+.popupButton--green {
+  background-color: var(--color-green);
+  box-shadow: 0px 5px 0px var(--color-green-shadow);
+}
+
+.popupButton--blue {
+  background-color: var(--color-blue);
+  box-shadow: 0px 5px 0px var(--color-blue-shadow);
+}
+
+.popupButton--red {
+  background-color: var(--color-red);
+  box-shadow: 0px 5px 0px var(--color-red-shadow);
+}
+
+.popupButton--gray {
+  height: 50px;
+  border: 2px solid var(--color-gray-button);
+  color: var(--color-gray-text);
+}
+
+.popupButton--notice {
+  height: 50px;
+  border: 2px solid #ffb2b2;
+  background-color: #fff0f0;
+  color: #ff6666;
+}

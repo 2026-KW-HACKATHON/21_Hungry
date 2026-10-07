@@ -1,12 +1,15 @@
+import BottomButton from '../../components/bottom-button/BottomButton'
 import "./LoginSelect.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
- 
+import { useNavigate } from 'react-router-dom' 
+
 function LoginSelect() {
+  const navigate = useNavigate()
   return (
     <div className="LoginSelectPage">
       <LoginPage_title title={
         <>
-            "가입한 휴대전화 번호로 <br/> 로그인해 주세요"
+            가입한 휴대전화 번호로 <br/> 로그인해 주세요
         </> 
       }/>
       <input type="text" placeholder="휴대전화 번호" className="LoginSelect__input"/>
@@ -24,8 +27,10 @@ function LoginSelect() {
           Google로 로그인
         </button>
       </div>
-      <button className="LoginSelect__loginButton">로그인하기</button>
-      <button className="LoginSelect__gotosignup">KnowOne이 처음이신가요?</button>
+      <div className="LoginSelect__footer">
+        <BottomButton content="로그인하기" />
+        <button className="LoginSelect__gotosignup" onClick={() => navigate('/signupselect')}>KnowOne이 처음이신가요?</button>
+      </div>
     </div>
   )
 }

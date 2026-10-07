@@ -11,10 +11,16 @@
   width: 100%;
   max-width: 450px;
   height: 88px;
-  padding: 13px 30px 21px;
+  padding: 11px 28px 20px;
 
   background-color: #fff;
-  border-top: 2px solid #e6e6e6;
+  border-top: 2px solid var(--color-border);
+}
+
+.nav__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav__item--default {

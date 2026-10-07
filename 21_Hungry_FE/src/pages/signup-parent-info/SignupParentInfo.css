@@ -1,0 +1,102 @@
+.SignupParentInfoPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.SignupParentInfo__relationship {
+  display: flex;
+  flex-shrink: 0;
+  gap: 12px;
+  width: 92%;
+  margin: 20px auto 20px;
+  padding: 0;
+  border: 0;
+}
+
+.SignupParentInfo__label,
+.SignupParentInfo__option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.SignupParentInfo__option {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.SignupParentInfo__option span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  border: 2px solid #E5E5E5;
+  border-radius: 15px;
+  box-shadow: 0 4px 0 #E5E5E5;
+  background-color: #fff;
+  color: #4D4D4D;
+  font-size: 16px;
+}
+
+.SignupParentInfo__option input:checked + span {
+  border-color: #A7EF73;
+  box-shadow: 0 4px 0 #A7EF73;
+  background-color: #D5FFB5;
+  color: #58A700;
+}
+
+.SignupParentInfo__option input:focus-visible + span {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 5px;
+}
+
+.SignupParentInfo__input {
+  flex-shrink: 0;
+  width: 92%;
+  height: 50px;
+  margin: 0 auto 10px;
+  padding: 0 5.2%;
+  border: 2px solid #E5E5E5;
+  border-radius: 15px;
+  background-color: #F7F7F7;
+  color: #4D4D4D;
+  font-size: 16px;
+}
+
+.SignupParentInfo__input::placeholder {
+  color: #B3B3B3;
+  opacity: 1;
+}
+
+.SignupParentInfo__footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  padding: 24px 4% max(64px, env(safe-area-inset-bottom));
+}
+
+.SignupParentInfo__footer .bottomButton__container {
+  position: static;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  padding: 0;
+}
+
+.SignupParentInfo__footer[data-complete='false'] .bottomButton__button {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}

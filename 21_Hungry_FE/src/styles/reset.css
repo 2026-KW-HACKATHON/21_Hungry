@@ -8,11 +8,13 @@
 *,
 *::before,
 *::after {
+  font-family: var(--font-extrabold);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   user-select: none;
   -webkit-user-drag: none;
+  scrollbar-width: none;
 }
 
 /* html, body 기본 설정 */

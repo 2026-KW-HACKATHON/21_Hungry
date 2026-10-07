@@ -1,0 +1,99 @@
+.SignupSubuserPage {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  height: 100%;
+  width: 100%;
+}
+
+.SignupSubuser__input {
+  width: 92%;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 3.4%;
+  margin-bottom: 2.5%;
+  padding-left: 5.2%;
+  font-family: var(--font-extrabold);
+  font-size: 16px;
+  color: #B3B3B3;
+  background-color: #F7F7F7;
+  border: 2px solid #E5E5E5;
+}
+
+
+.SignupSubuser__checkbox {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px solid #F2F2F2;
+  margin: 0 auto;
+  margin-top: 3.4%;
+  margin-bottom: 1.7%;
+}
+
+.SignupSubuser__checkbox--Label {
+  font-family: var(--font-extrabold);
+  font-size: 16px;
+  color: #404040;
+  margin-bottom: 15px;
+}
+
+.SignupSubuser__checkbox--Item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.SignupSubuser__checkbox--Text {
+  font-family: var(--font-extrabold);
+  font-size: 16px;
+  color: #B3B3B3;
+  margin: 0;
+}
+
+.SignupSubuser__checkbox--Icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.SignupSubuser__allowButton {
+  width: 92%;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-bottom: 1.7%;
+  text-align: center;
+  font-family: var(--font-extrabold);
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #62D411;
+  box-shadow: 0 5px 0 #66BD0F;
+}
+.SignupSubuser__checkbox--Item {
+  position: relative;
+  cursor: pointer;
+}
+.SignupSubuser__checkbox--Input {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  opacity: 0;
+}
+.SignupSubuser__checkbox--Input:focus-visible + svg {
+  outline: 2px solid #1cb0f6;
+  outline-offset: 3px;
+}
+.SignupSubuserPage .bottomButton__button:disabled {
+  background-color: #1cb0f6;
+  box-shadow: 0px 5px 0px #1899d6;
+  opacity: 0.5;
+  color: #FFFFFF;
+}
