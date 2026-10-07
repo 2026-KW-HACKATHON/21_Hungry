@@ -20,10 +20,13 @@ import SignupWaitingDone from '../pages/signup-waiting-done/SignupWaitingDone'
 
 import TodayPage from '../pages/today/TodayPage'
 import TodayEditPage from '../pages/today-edit/TodayEditPage'
+import TodayAddPage from '../pages/today-add/TodayAddPage'
 
 import DocPage from '../pages/doc/DocPage'
 import SchdulePage from '../pages/schedule/SchedulePage'
 import FamilyPage from '../pages/family/FamilyPage'
+import FamilyReqPage from '../pages/family-req/FamilyReqPage'
+import FamilySchedulePage from '../pages/family-schedule/FamilySchedulePage'
 import RecordPage from '../pages/record/RecordPage'
 import RecordAudioPage from '../pages/record-audio/RecordAudioPage'
 import RecordAudioAnalysisPage from '../pages/record-audio-analysis/RecordAudioAnalysisPage'
@@ -56,7 +59,7 @@ export const AppRouter = createBrowserRouter([
     element: <LoginLayout />,
     children: [{ path: '', element: <SignupSelfInfo /> }],
   },
-    {
+  {
     path: '/signupfamilyinfo',
     element: <LoginLayout />,
     children: [{ path: '', element: <SignupFamilyInfo /> }],
@@ -107,9 +110,12 @@ export const AppRouter = createBrowserRouter([
     children: [
       { path: 'today', element: <TodayPage /> },
       { path: 'todayedit', element: <TodayEditPage /> },
+      { path: 'todayadd', element: <TodayAddPage /> },
       { path: 'doc', element: <DocPage /> },
       { path: 'schedule', element: <SchdulePage /> },
       { path: 'family', element: <FamilyPage /> },
+      { path: 'familyreq', element: <FamilyReqPage /> },
+      { path: 'familyschedule', element: <FamilySchedulePage /> },
       { path: 'record', element: <RecordPage /> },
       { path: 'record/audio', element: <RecordAudioPage /> },
       { path: 'record/audio/analysis', element: <RecordAudioAnalysisPage /> },
