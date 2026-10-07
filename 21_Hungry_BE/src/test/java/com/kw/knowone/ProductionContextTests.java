@@ -21,15 +21,21 @@ class ProductionContextTests {
 
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry values) {
-        values.add("spring.datasource.url",()->"jdbc:postgresql://localhost:54329/hungry?currentSchema=hungry_test");
-        values.add("spring.datasource.username",()->"hungry");
-        values.add("spring.datasource.password",()->"hungry_local");
+        values.add("spring.datasource.url",()->environment("DB_URL",
+                "jdbc:postgresql://localhost:54329/hungry?currentSchema=hungry_test"));
+        values.add("spring.datasource.username",()->environment("DB_USERNAME","hungry"));
+        values.add("spring.datasource.password",()->environment("DB_PASSWORD","hungry_local"));
         values.add("spring.flyway.default-schema",()->"hungry_test");
         values.add("spring.flyway.schemas",()->"hungry_test");
         values.add("app.storage.local-root",()->STORAGE.toString());
         values.add("app.preview.signing-secret",()->"production-context-test-secret-32-bytes");
         values.add("app.cors.allowed-origins",()->"https://frontend.example");
         values.add("app.scheduling.enabled",()->"false");
+    }
+
+    private static String environment(String name,String fallback) {
+        String value=System.getenv(name);
+        return value==null||value.isBlank()?fallback:value;
     }
 
     @Autowired AiProcessingPort adapter;
