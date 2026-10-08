@@ -35,6 +35,17 @@ public class AuthController {
         return DataResponse.of(authService.login(request.loginKey()));
     }
 
+    @PostMapping("/auth/signup")
+    ResponseEntity<DataResponse<AuthService.SignupResult>> signup(@Valid @RequestBody SignupRequest request) {
+        return ResponseEntity.status(201).body(DataResponse.of(
+                authService.signup(request.phoneNumber(), request.accountRole(), request.displayName())));
+    }
+
+    @PostMapping("/auth/login")
+    DataResponse<AuthService.LoginResult> phoneLogin(@Valid @RequestBody PhoneLoginRequest request) {
+        return DataResponse.of(authService.loginByPhone(request.phoneNumber()));
+    }
+
     @GetMapping("/me")
     DataResponse<AuthService.MeResult> me(@AuthenticationPrincipal AuthenticatedUser principal) {
         return DataResponse.of(authService.me(principal.userId()));
@@ -48,4 +59,7 @@ public class AuthController {
 
     public record DemoAccountsResponse(List<DemoAccount> items) { }
     public record DemoLoginRequest(@NotBlank @Size(max = 50) String loginKey) { }
+    public record SignupRequest(@NotBlank @Size(max = 20) String phoneNumber, @NotBlank String accountRole,
+            @Size(max = 50) String displayName) { }
+    public record PhoneLoginRequest(@NotBlank @Size(max = 20) String phoneNumber) { }
 }

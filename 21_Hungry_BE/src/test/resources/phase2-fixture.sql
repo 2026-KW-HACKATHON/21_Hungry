@@ -1,15 +1,15 @@
 SET CONSTRAINTS ALL DEFERRED;
 TRUNCATE TABLE app_user, care_group, group_member CASCADE;
 
-INSERT INTO app_user (id, login_key, display_name, phone_number, account_type, status)
+INSERT INTO app_user (id, login_key, display_name, phone_number, account_role, account_type, status)
 VALUES
-  ('00000000-0000-4000-8000-000000000001', 'demo-recipient', '돌봄 대상', '010-0000-0001', 'DEMO', 'ACTIVE'),
-  ('00000000-0000-4000-8000-000000000002', 'demo-caregiver-1', '보호자 1', '010-0000-0002', 'DEMO', 'ACTIVE'),
-  ('00000000-0000-4000-8000-000000000003', 'demo-caregiver-2', '보호자 2', '010-0000-0003', 'DEMO', 'ACTIVE'),
-  ('00000000-0000-4000-8000-000000000004', 'demo-caregiver-3', '보호자 3', '010-0000-0004', 'DEMO', 'ACTIVE'),
-  ('00000000-0000-4000-8000-000000000005', 'demo-recipient-2', '다른 돌봄 대상', '010-0000-0005', 'DEMO', 'ACTIVE'),
-  ('00000000-0000-4000-8000-000000000006', 'demo-outsider', '다른 보호자', '010-0000-0006', 'DEMO', 'ACTIVE'),
-  ('00000000-0000-4000-8000-000000000007', 'demo-disabled', '비활성 계정', '010-0000-0007', 'DEMO', 'DISABLED');
+  ('00000000-0000-4000-8000-000000000001', 'demo-recipient', '돌봄 대상', '01000000001', 'PARENT', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000002', 'demo-caregiver-1', '보호자 1', '01000000002', 'CHILD', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000003', 'demo-caregiver-2', '보호자 2', '01000000003', 'CHILD', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000004', 'demo-caregiver-3', '보호자 3', '01000000004', 'CHILD', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000005', 'demo-recipient-2', '다른 돌봄 대상', '01000000005', 'PARENT', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000006', 'demo-outsider', '다른 보호자', '01000000006', 'CHILD', 'DEMO', 'ACTIVE'),
+  ('00000000-0000-4000-8000-000000000007', 'demo-disabled', '비활성 계정', '01000000007', 'CHILD', 'DEMO', 'DISABLED');
 
 INSERT INTO care_group (id, recipient_user_id, name)
 VALUES

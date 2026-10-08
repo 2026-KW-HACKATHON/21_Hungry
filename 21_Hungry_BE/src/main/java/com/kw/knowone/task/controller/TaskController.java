@@ -86,6 +86,10 @@ public class TaskController {
     ResponseEntity<String> acceptHandoff(@PathVariable UUID handoffId,@Valid @RequestBody TaskDtos.HandoffAcceptRequest body,
             @RequestHeader(value="Idempotency-Key",required=false)String key,@AuthenticationPrincipal AuthenticatedUser user,
             HttpServletRequest request){return response(service.acceptHandoff(handoffId,user.userId(),body,key,requestId(request)));}
+    @PostMapping("/handoffs/{handoffId}/decline")
+    ResponseEntity<String> declineHandoff(@PathVariable UUID handoffId,@Valid @RequestBody TaskDtos.HandoffDeclineRequest body,
+            @RequestHeader(value="Idempotency-Key",required=false)String key,@AuthenticationPrincipal AuthenticatedUser user,
+            HttpServletRequest request){return response(service.declineHandoff(handoffId,user.userId(),body,key,requestId(request)));}
     @GetMapping("/care-groups/{groupId}/handoffs")
     DataResponse<TaskDtos.Page<TaskDtos.HandoffItem>> handoffs(@PathVariable UUID groupId,
             @RequestParam(defaultValue="OPEN")String status,@RequestParam(required=false)Integer limit,

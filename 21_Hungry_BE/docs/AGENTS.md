@@ -7,10 +7,11 @@
 1. `docs/progress.md`: 현재 단계와 다음 작업.
 2. `docs/decisions.md`: 원문 차이의 처리 및 이번 개발의 기본값.
 3. `docs/implementation-plan.md`: 단계 범위와 완료 기준.
-4. `docs/requirements/family-care-PRD-v0.14.md`: 제품·업무 요구사항.
-5. `docs/requirements/family-care-DB-design-v1.2.md`: 28개 테이블·무결성·트랜잭션 설계.
-6. `docs/requirements/family-care-API-spec-v1.0.md`: HTTP·DTO·오류·검증 계약.
-7. AI 작업 시 `docs/ai/processing-contract-v1.0.md`.
+4. `docs/family-care-PRD-v0.15.md`: 제품·업무 요구사항.
+5. `docs/family-care-DB-design-v1.3.md`: 30개 목표 테이블·무결성·트랜잭션 설계.
+6. `docs/family-care-API-spec-v1.2.md`: HTTP·DTO·오류·검증 계약. v1.1을 대체하며 E06 녹음 계약을 정정한다.
+7. `docs/remaining-work-20261008.md`: 신규 계약의 구현 순서와 집중 회귀 시나리오.
+8. AI 작업 시 `docs/processing-contract-v1.0.md`.
 
 각 문서는 담당 영역의 기준이다. 단순한 문서 우선순위로 의미 충돌을 숨기지 않는다. decisions.md에 명시된 좁은 차이만 해당 결정을 적용한다. 새로운 업무 정책 충돌은 기록하고 해당 부분만 보류한다. 독립적으로 진행 가능한 일은 계속한다. 기준 원문은 보존하고 변경 필요 시 새 버전과 변경 사유를 남긴다.
 

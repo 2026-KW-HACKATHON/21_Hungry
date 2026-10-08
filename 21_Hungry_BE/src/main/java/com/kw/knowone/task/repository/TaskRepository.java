@@ -127,13 +127,14 @@ public class TaskRepository {
             ORDER BY o.starts_at,o.id LIMIT ?
             """,this::mapOccurrence,encounterId,encounterId,fetch);}
     public UUID insertSeries(UUID groupId, UUID actor, String kind, String generationKey) {
+        String origin=generationKey.startsWith("manual:")?"MANUAL":generationKey.startsWith("review:")?"REVIEW":"AI";
         UUID id=UUID.randomUUID(); jdbc.update("""
-                INSERT INTO task_series(id,group_id,kind,created_by,generation_key) VALUES (?,?,?,?,?)
-                """, id,groupId,kind,actor,generationKey); return id;
+                INSERT INTO task_series(id,group_id,kind,created_by,generation_key,creation_origin) VALUES (?,?,?,?,?,?)
+                """, id,groupId,kind,actor,generationKey,origin); return id;
     }
     public UUID insertSourcedSeries(UUID groupId,UUID actor,String kind,String generationKey,UUID sourceItemId){
         UUID id=UUID.randomUUID();jdbc.update("""
-                INSERT INTO task_series(id,group_id,kind,created_by,generation_key,source_item_id) VALUES (?,?,?,?,?,?)
+                INSERT INTO task_series(id,group_id,kind,created_by,generation_key,source_item_id,creation_origin) VALUES (?,?,?,?,?,?,'AI')
                 """,id,groupId,kind,actor,generationKey,sourceItemId);return id;}
     public void linkSeriesMedication(UUID groupId,UUID seriesId,int revisionNo,UUID medicationId){jdbc.update("""
             INSERT INTO series_medication(group_id,series_id,revision_no,medication_id) VALUES (?,?,?,?) ON CONFLICT DO NOTHING
@@ -314,6 +315,14 @@ public class TaskRepository {
                 WHERE h.id=?
                 """,this::mapHandoff,id).stream().findFirst();
     }
+    public boolean hasDeclined(UUID handoffId,UUID userId){return Boolean.TRUE.equals(jdbc.queryForObject(
+            "SELECT EXISTS(SELECT 1 FROM handoff_response WHERE handoff_id=? AND user_id=?)",Boolean.class,handoffId,userId));}
+    public Instant declineHandoff(UUID groupId,UUID handoffId,UUID userId,Instant now){
+        jdbc.update("INSERT INTO handoff_response(group_id,handoff_id,user_id,response,responded_at) VALUES (?,?,?,'DECLINED',?) ON CONFLICT (handoff_id,user_id) DO NOTHING",
+                groupId,handoffId,userId,Timestamp.from(now));
+        return jdbc.queryForObject("SELECT responded_at FROM handoff_response WHERE handoff_id=? AND user_id=?",
+                (r,n)->r.getTimestamp(1).toInstant(),handoffId,userId);
+    }
     public UUID openHandoff(UUID groupId,UUID occurrenceId,String reason,UUID previous,UUID requestedBy) {
         UUID id=UUID.randomUUID();
         int changed=jdbc.update("""
@@ -400,6 +409,14 @@ public class TaskRepository {
             FROM notification n JOIN notification_event e ON e.id=n.event_id
             WHERE d.notification_id=n.id AND e.occurrence_id=? AND d.status IN ('PENDING','FAILED','RUNNING')
             """,occurrenceId); }
+    public void cancelPendingNotificationsForUser(UUID occurrenceId,UUID userId){
+        jdbc.update("UPDATE notification_event SET status='CANCELED',lease_token=NULL,lease_until=NULL WHERE occurrence_id=? AND target_user_id=? AND status IN ('PENDING','FAILED','RUNNING')",occurrenceId,userId);
+        jdbc.update("""
+                UPDATE notification_delivery d SET status='CANCELED',lease_token=NULL,lease_until=NULL
+                FROM notification n JOIN notification_event e ON e.id=n.event_id
+                WHERE d.notification_id=n.id AND e.occurrence_id=? AND n.user_id=? AND d.status IN ('PENDING','FAILED','RUNNING')
+                """,occurrenceId,userId);
+    }
     public List<Occurrence> futureAssigned(UUID groupId,UUID userId,Instant now) {
         return jdbc.query(OCCURRENCE_SELECT+" WHERE o.group_id=? AND o.assignee_user_id=? AND o.status='PENDING' AND o.starts_at>=? ORDER BY o.starts_at,o.id",
                 this::mapOccurrence,groupId,userId,Timestamp.from(now));

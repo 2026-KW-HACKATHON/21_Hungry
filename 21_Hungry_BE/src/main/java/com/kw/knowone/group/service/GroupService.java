@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.kw.knowone.auth.entity.AppUser;
 import com.kw.knowone.auth.repository.AuthRepository;
 import com.kw.knowone.auth.service.AuthService;
@@ -66,6 +67,11 @@ public class GroupService {
         GroupMember before=requireActiveMembership(groupId,userId);
         if(!"CAREGIVER".equals(before.role()))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","CAREGIVER만 탈퇴할 수 있습니다.");
         if(before.version()!=request.expectedVersion())throw new ApiException(HttpStatus.CONFLICT,"VERSION_CONFLICT","멤버십이 변경되었습니다.",Map.of("currentVersion",before.version()));
+        List<GroupMember> otherChildren=repository.findActiveMembers(groupId).stream()
+                .filter(m->"CAREGIVER".equals(m.role())&&!m.id().equals(before.id())).toList();
+        if(Integer.valueOf(1).equals(before.priority())&&!otherChildren.isEmpty()
+                &&otherChildren.stream().noneMatch(m->Integer.valueOf(1).equals(m.priority())))
+            throw new ApiException(HttpStatus.CONFLICT,"LAST_PRIMARY_CAREGIVER","마지막 주돌봄자녀는 탈퇴할 수 없습니다.");
         Instant now=clock.instant();List<UUID> released=new java.util.ArrayList<>();
         for(Occurrence occurrence:tasks.futureAssigned(groupId,userId,now)){
             if(tasks.releaseAssignee(occurrence.id(),occurrence.version())!=1)throw new IllegalStateException("Concurrent occurrence release");
@@ -97,14 +103,107 @@ public class GroupService {
     }
 
     public RecipientLookup lookup(UUID userId, String phoneNumber) {
-        authService.requireDemoMode();
-        requireDemoUser(userId);
+        AppUser caller=authRepository.findActiveById(userId).orElseThrow(() ->
+                new ApiException(HttpStatus.UNAUTHORIZED,"UNAUTHORIZED","인증 정보가 올바르지 않습니다."));
+        if(!"CHILD".equals(caller.accountRole()))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","자녀 계정만 부모를 조회할 수 있습니다.");
+        if(repository.hasCurrentMembership(userId))throw new ApiException(HttpStatus.CONFLICT,"GROUP_ALREADY_CONNECTED","이미 연결된 공동체가 있습니다.");
         rateLimiter.consume(userId);
-        CareGroup group = repository.findDemoRecipientByPhone(phoneNumber)
+        String normalized=phoneNumber.replaceAll("[-\\s]","");
+        if(!normalized.matches("^010[0-9]{8}$"))throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","전화번호 형식을 확인해 주세요.");
+        CareGroup group = repository.findDemoRecipientByPhone(normalized)
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "RESOURCE_NOT_FOUND",
                         "등록된 돌봄 대상을 찾을 수 없습니다."));
-        return new RecipientLookup(group.recipientUserId(), group.recipientDisplayName(), group.id());
+        boolean completed=group.parentProfileCompletedAt()!=null;
+        String joinMode=repository.activeCaregiverCount(group.id())==0?"FIRST_JOIN":"APPROVAL_REQUIRED";
+        return new RecipientLookup(group.recipientUserId(),group.id(),group.recipientDisplayName(),
+                group.parentRelation(),completed,joinMode,group.version());
     }
+
+    public IdempotentResult joinV11(UUID groupId,UUID userId,GroupDtos.JoinV11Request request,String key,UUID requestId){
+        return scheduleMutations.execute(userId,"G04V11:"+groupId,key,request,
+                ()->validateJoinV11(groupId,userId,request),()->doJoinV11(groupId,userId,request,requestId));
+    }
+
+    private void validateJoinV11(UUID groupId,UUID userId,GroupDtos.JoinV11Request request){
+        AppUser user=authRepository.findActiveById(userId).orElseThrow(this::unauthorized);
+        if(!"CHILD".equals(user.accountRole()))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","자녀 계정만 연결할 수 있습니다.");
+        CareGroup group=requireGroup(groupId);
+        if(!group.recipientUserId().equals(request.recipientUserId()))throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","부모 정보가 일치하지 않습니다.");
+    }
+
+    private MutationResponse doJoinV11(UUID groupId,UUID userId,GroupDtos.JoinV11Request request,UUID requestId){
+        GroupMember existing=repository.findMembership(groupId,userId).orElse(null);
+        if(existing!=null && ("ACTIVE".equals(existing.status())||"PENDING".equals(existing.status()))){
+            var row=repository.findLatestJoinForUser(userId).orElseThrow();
+            return new MutationResponse(200,DataResponse.of(new GroupDtos.JoinResult(toJoin(row),toMember(existing),
+                    "ACTIVE".equals(existing.status())?"READY":"WAITING_APPROVAL")));
+        }
+        if(repository.hasCurrentMembership(userId))throw new ApiException(HttpStatus.CONFLICT,"GROUP_ALREADY_CONNECTED","이미 연결된 공동체가 있습니다.");
+        CareGroup group=requireGroup(groupId);Instant now=clock.instant();boolean first=repository.activeCaregiverCount(groupId)==0;
+        if(first && group.parentProfileCompletedAt()==null){
+            var profile=request.parentProfile();
+            if(profile==null)throw new ApiException(HttpStatus.UNPROCESSABLE_ENTITY,"PARENT_PROFILE_REQUIRED","최초 부모 정보가 필요합니다.");
+            if(!Set.of("MOTHER","FATHER").contains(profile.relation())||profile.birthYear()>java.time.Year.now(clock).getValue())
+                throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","부모 정보를 확인해 주세요.");
+            repository.completeParentProfile(group,userId,profile.relation(),profile.name().trim(),profile.birthYear(),now);
+        }else if(group.parentProfileCompletedAt()!=null && request.parentProfile()!=null){
+            throw new ApiException(HttpStatus.CONFLICT,"PARENT_PROFILE_IMMUTABLE","완료된 부모 정보는 변경할 수 없습니다.");
+        }
+        GroupMember member=first?repository.insertCaregiver(UUID.randomUUID(),groupId,userId,1)
+                :repository.insertPendingCaregiver(UUID.randomUUID(),groupId,userId);
+        var row=repository.insertJoinRequest(UUID.randomUUID(),groupId,userId,first?"APPROVED":"PENDING",
+                first?"FIRST_JOIN":null,first?userId:null,now);
+        eventRepository.audit(groupId,userId,first?"GROUP_MEMBER_JOINED":"GROUP_JOIN_REQUESTED","GROUP_MEMBER",member.id(),null,eventMember(member),requestId);
+        return new MutationResponse(first?201:202,DataResponse.of(new GroupDtos.JoinResult(toJoin(row),toMember(member),first?"READY":"WAITING_APPROVAL")));
+    }
+
+    public GroupDtos.CurrentJoin currentJoin(UUID userId){
+        var row=repository.findLatestJoinForUser(userId).orElse(null);
+        return row==null?new GroupDtos.CurrentJoin(null,null):new GroupDtos.CurrentJoin(toJoin(row),
+                repository.findMembership(row.groupId(),userId).map(this::toMember).orElse(null));
+    }
+
+    public GroupDtos.Items<GroupDtos.PendingJoin> pendingJoins(UUID groupId,UUID actor){
+        requirePrimary(groupId,actor);
+        return new GroupDtos.Items<>(repository.findPendingJoins(groupId).stream().map(r->{
+            GroupMember m=repository.findMembership(groupId,r.userId()).orElseThrow();
+            return new GroupDtos.PendingJoin(r.id(),new UserRef(r.userId(),m.displayName()),r.createdAt(),r.version());
+        }).toList());
+    }
+
+    @Transactional
+    public GroupDtos.JoinRequestView decideJoin(UUID groupId,UUID requestId,UUID actor,GroupDtos.JoinDecisionRequest body){
+        requirePrimary(groupId,actor);
+        if(!Set.of("APPROVE","REJECT").contains(body.decision()))throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","결정을 확인해 주세요.");
+        var row=repository.findJoinRequest(requestId).orElseThrow(()->new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","신청을 찾을 수 없습니다."));
+        if(!row.groupId().equals(groupId))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","다른 공동체의 신청입니다.");
+        if(!"PENDING".equals(row.status()))throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
+        if(row.version()!=body.expectedVersion())throw new ApiException(HttpStatus.CONFLICT,"VERSION_CONFLICT","신청이 변경되었습니다.");
+        var changed=repository.decideJoin(row,actor,body.decision(),clock.instant());
+        if(changed==null)throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
+        return toJoin(changed);
+    }
+
+    @Transactional
+    public GroupDtos.JoinRequestView cancelJoin(UUID requestId,UUID actor,GroupDtos.CancelJoinRequest body){
+        var row=repository.findJoinRequest(requestId).orElseThrow(()->new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","신청을 찾을 수 없습니다."));
+        if(!row.userId().equals(actor))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","본인의 신청만 취소할 수 있습니다.");
+        if(!"PENDING".equals(row.status()))throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
+        if(row.version()!=body.expectedVersion())throw new ApiException(HttpStatus.CONFLICT,"VERSION_CONFLICT","신청이 변경되었습니다.");
+        var changed=repository.cancelJoin(row,clock.instant());
+        if(changed==null)throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
+        return toJoin(changed);
+    }
+
+    private void requirePrimary(UUID groupId,UUID actor){
+        GroupMember member=requireActiveMembership(groupId,actor);
+        if(!"CAREGIVER".equals(member.role())||!Integer.valueOf(1).equals(member.priority()))
+            throw new ApiException(HttpStatus.FORBIDDEN,"PRIMARY_CAREGIVER_REQUIRED","주돌봄자녀 권한이 필요합니다.");
+    }
+
+    private GroupDtos.JoinRequestView toJoin(GroupRepository.JoinRow r){return new GroupDtos.JoinRequestView(r.id(),r.groupId(),r.status(),r.version(),r.createdAt(),r.decidedAt(),r.membershipStatus(),r.priority());}
+
+    private ApiException unauthorized(){return new ApiException(HttpStatus.UNAUTHORIZED,"UNAUTHORIZED","인증 정보가 올바르지 않습니다.");}
 
     public Items<Member> members(UUID groupId, UUID userId) {
         requireGroup(groupId);
@@ -173,6 +272,10 @@ public class GroupService {
 
     private MutationResponse doUpdatePriorities(UUID groupId, UUID userId, PriorityRequest request, UUID requestId) {
         List<GroupMember> targets = request.members().stream().map(item -> validatedTarget(groupId, item)).toList();
+        Map<UUID,Integer> requestedPriorities=request.members().stream().collect(java.util.stream.Collectors.toMap(PriorityItem::memberId,PriorityItem::priority));
+        List<GroupMember> caregivers=repository.findActiveMembers(groupId).stream().filter(m->"CAREGIVER".equals(m.role())).toList();
+        if(!caregivers.isEmpty()&&caregivers.stream().noneMatch(m->requestedPriorities.getOrDefault(m.id(),m.priority())==1))
+            throw new ApiException(HttpStatus.CONFLICT,"LAST_PRIMARY_CAREGIVER","주돌봄자녀가 최소 한 명 필요합니다.");
         java.util.ArrayList<Member> updated = new java.util.ArrayList<>();
         Instant now = clock.instant();
         for (int index = 0; index < targets.size(); index++) {
@@ -233,8 +336,10 @@ public class GroupService {
     }
 
     private Group toGroup(CareGroup group, GroupMember membership) {
+        GroupDtos.ParentProfile profile=group.parentProfileCompletedAt()==null?null:new GroupDtos.ParentProfile(
+                group.parentRelation(),group.recipientDisplayName(),group.parentBirthYear(),group.parentProfileCompletedAt());
         return new Group(group.id(), group.name(),
-                new UserRef(group.recipientUserId(), group.recipientDisplayName()), group.status(),
+                new UserRef(group.recipientUserId(), group.recipientDisplayName()),profile, group.status(),
                 toMember(membership), group.version());
     }
 

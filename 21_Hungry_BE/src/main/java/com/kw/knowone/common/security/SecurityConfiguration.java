@@ -39,7 +39,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/internal/status", "/actuator/health/liveness", "/actuator/health/readiness",
-                                "/api/v1/auth/demo-accounts", "/api/v1/auth/demo-login").permitAll()
+                                "/api/v1/auth/demo-accounts", "/api/v1/auth/demo-login",
+                                "/api/v1/auth/signup", "/api/v1/auth/login").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint((request, response, exception) -> errorWriter.write(response,

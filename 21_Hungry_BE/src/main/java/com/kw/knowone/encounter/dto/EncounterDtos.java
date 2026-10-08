@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,7 +19,11 @@ public final class EncounterDtos {
     public record CreateRequest(@NotBlank String recordType,@NotBlank @Size(max=150)String title,LocalDate occurredOn,
             @Size(max=150)String hospitalName){ }
     public record UpdateRequest(@NotNull Long expectedVersion,JsonNode title,JsonNode occurredOn,JsonNode hospitalName){ }
-    public record UploadMetadata(@NotNull Long expectedVersion,@NotNull Integer expectedInputVersion){ }
+    public record DocumentMetadata(@NotBlank String documentType){ }
+    public record UploadMetadata(@NotNull Long expectedVersion,@NotNull Integer expectedInputVersion,
+            List<@Valid DocumentMetadata> documents){
+        public UploadMetadata(Long expectedVersion,Integer expectedInputVersion){this(expectedVersion,expectedInputVersion,List.of());}
+    }
     public record TextUpdate(@NotNull Integer expectedInputVersion,@NotNull Integer expectedTextVersion,@NotBlank String text){ }
     public record VersionRequest(@NotNull Long expectedVersion,@NotNull Integer expectedInputVersion){ }
     public record RetryRequest(@NotNull Integer expectedInputVersion){ }
@@ -30,7 +35,7 @@ public final class EncounterDtos {
             boolean hasReviewItems,boolean isSummaryStale){ }
     public record FileRef(UUID id,String originalName,String mediaType,long byteSize,String state,Integer pageCount){ }
     public record Source(UUID id,UUID encounterId,String sourceType,String status,int textVersion,Instant removedAt,
-            FileRef file,String contentPath){ }
+            FileRef file,String contentPath,String documentType){ }
     public record JobError(String code,String message,boolean retryable,String userAction){ }
     public record Job(UUID id,UUID encounterId,UUID sourceId,String jobType,int inputVersion,String status,int attemptCount,
             JobError error,boolean canRetry){ }

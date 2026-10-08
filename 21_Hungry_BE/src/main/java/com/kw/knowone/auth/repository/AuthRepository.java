@@ -22,7 +22,7 @@ public class AuthRepository {
 
     public List<AppUser> findActiveDemoUsers() {
         return jdbcTemplate.query("""
-                SELECT id, login_key, display_name, phone_number, account_type, status, timezone,
+                SELECT id, login_key, display_name, phone_number, account_role, account_type, status, timezone,
                        active_start_minute, active_end_minute, version
                 FROM app_user
                 WHERE account_type = 'DEMO' AND status = 'ACTIVE'
@@ -32,7 +32,7 @@ public class AuthRepository {
 
     public Optional<AppUser> findActiveDemoByLoginKey(String loginKey) {
         return jdbcTemplate.query("""
-                SELECT id, login_key, display_name, phone_number, account_type, status, timezone,
+                SELECT id, login_key, display_name, phone_number, account_role, account_type, status, timezone,
                        active_start_minute, active_end_minute, version
                 FROM app_user
                 WHERE login_key = ? AND account_type = 'DEMO' AND status = 'ACTIVE'
@@ -41,10 +41,53 @@ public class AuthRepository {
 
     public Optional<AppUser> findActiveById(UUID userId) {
         return jdbcTemplate.query("""
-                SELECT id, login_key, display_name, phone_number, account_type, status, timezone,
+                SELECT id, login_key, display_name, phone_number, account_role, account_type, status, timezone,
                        active_start_minute, active_end_minute, version
                 FROM app_user WHERE id = ? AND status = 'ACTIVE'
                 """, this::mapUser, userId).stream().findFirst();
+    }
+
+    public Optional<AppUser> findActiveByPhoneNumber(String phoneNumber) {
+        return jdbcTemplate.query("""
+                SELECT id, login_key, display_name, phone_number, account_role, account_type, status, timezone,
+                       active_start_minute, active_end_minute, version
+                FROM app_user WHERE phone_number = ? AND status = 'ACTIVE'
+                """, this::mapUser, phoneNumber).stream().findFirst();
+    }
+
+    public int insertUser(UUID id, String phoneNumber, String accountRole, String displayName, Instant now) {
+        return jdbcTemplate.update("""
+                INSERT INTO app_user(id, phone_number, account_role, display_name, account_type, created_at, updated_at)
+                VALUES (?, ?, ?, ?, 'REAL', ?, ?)
+                ON CONFLICT (phone_number) DO NOTHING
+                """, id, phoneNumber, accountRole, displayName, Timestamp.from(now), Timestamp.from(now));
+    }
+
+    public UUID createParentGroup(UUID userId, Instant now) {
+        UUID groupId = UUID.randomUUID();
+        jdbcTemplate.update("""
+                INSERT INTO care_group(id, recipient_user_id, name, created_at, updated_at)
+                VALUES (?, ?, '가족 돌봄 공동체', ?, ?)
+                """, groupId, userId, Timestamp.from(now), Timestamp.from(now));
+        jdbcTemplate.update("""
+                INSERT INTO group_member(id, group_id, user_id, role, priority, status, joined_at, updated_at)
+                VALUES (?, ?, ?, 'RECIPIENT', NULL, 'ACTIVE', ?, ?)
+                """, UUID.randomUUID(), groupId, userId, Timestamp.from(now), Timestamp.from(now));
+        return groupId;
+    }
+
+    public Optional<MembershipSummary> findCurrentMembership(UUID userId) {
+        return jdbcTemplate.query("""
+                SELECT m.group_id,m.status,m.priority,
+                       (SELECT r.id FROM group_join_request r
+                        WHERE r.group_id=m.group_id AND r.user_id=m.user_id
+                        ORDER BY r.created_at DESC,r.id DESC LIMIT 1) join_request_id,
+                       g.parent_profile_completed_at
+                FROM group_member m JOIN care_group g ON g.id=m.group_id
+                WHERE m.user_id=? AND m.status IN ('ACTIVE','PENDING')
+                """, (rs,n) -> new MembershipSummary(rs.getObject(1,UUID.class), rs.getString(2),
+                        rs.getObject(3,Integer.class), rs.getObject(4,UUID.class), rs.getTimestamp(5)!=null), userId)
+                .stream().findFirst();
     }
 
     public void createSession(UUID id, UUID userId, byte[] tokenHash, Instant expiresAt, Instant now) {
@@ -77,8 +120,11 @@ public class AuthRepository {
     private AppUser mapUser(ResultSet rs, int rowNum) throws SQLException {
         return new AppUser(
                 rs.getObject("id", UUID.class), rs.getString("login_key"), rs.getString("display_name"),
-                rs.getString("phone_number"), rs.getString("account_type"), rs.getString("status"),
+                rs.getString("phone_number"), rs.getString("account_role"), rs.getString("account_type"), rs.getString("status"),
                 rs.getString("timezone"), rs.getInt("active_start_minute"), rs.getInt("active_end_minute"),
                 rs.getLong("version"));
     }
+
+    public record MembershipSummary(UUID groupId, String status, Integer priority, UUID joinRequestId,
+            boolean parentProfileCompleted) { }
 }
