@@ -7,16 +7,6 @@
   flex-direction: column;
 }
 
-.todayAdd__page > .backHeader__container {
-  height: 229px;
-  flex-shrink: 0;
-}
-
-.todayAdd__page .backHeader__title,
-.todayAdd__page .backHeader__subtitle {
-  line-height: 1.4;
-}
-
 .todayAdd__content {
   padding: 21px 16px 24px;
   width: 100%;

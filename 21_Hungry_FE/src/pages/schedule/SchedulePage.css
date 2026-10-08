@@ -7,15 +7,6 @@
   flex-direction: column;
 }
 
-.schedule__page > .titleHeader__container {
-  height: 159px;
-  flex-shrink: 0;
-}
-
-.schedule__page .titleHeader__title {
-  line-height: 1.4;
-}
-
 .schedule__page .titleHeader__subtitle {
   display: none;
 }

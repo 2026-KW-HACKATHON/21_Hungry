@@ -7,19 +7,6 @@
   flex-direction: column;
 }
 
-.scheduleEdit__page > .backHeader__container {
-  height: 189px;
-  flex-shrink: 0;
-}
-
-.scheduleEdit__page .backHeader__title {
-  line-height: 1.4;
-}
-
-.scheduleEdit__page .backHeader__subtitle {
-  display: none;
-}
-
 .scheduleEdit__content {
   width: 100%;
   min-height: 0;

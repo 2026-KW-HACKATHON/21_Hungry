@@ -7,16 +7,6 @@
   flex-direction: column;
 }
 
-.familyReq__page > .backHeader__container {
-  height: 229px;
-  flex-shrink: 0;
-}
-
-.familyReq__page .backHeader__title,
-.familyReq__page .backHeader__subtitle {
-  line-height: 1.4;
-}
-
 .familyReq__content {
   width: 100%;
   min-height: 0;
