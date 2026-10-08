@@ -15,33 +15,16 @@ const recordingChecks = [
 
 function RecordPage() {
   const navigate = useNavigate()
-  const [mode, setMode] = useState('audio')
   const [checked, setChecked] = useState([])
   const [message, setMessage] = useState('')
-  const [manualConsent, setManualConsent] = useState(false)
-
-  function selectMode(value) {
-    setMode(value)
-    setMessage('')
-  }
 
   function startRecord(event) {
     event.preventDefault()
-    if (mode === 'audio' && checked.length !== recordingChecks.length) {
+    if (checked.length !== recordingChecks.length) {
       setMessage('녹음 및 기록 전 확인 사항을 모두 체크해 주세요.')
       return
     }
-    if (mode === 'text') {
-      if (!manualConsent) {
-        setMessage('의료진의 동의 여부를 확인해 주세요.')
-        return
-      }
-      navigate('/record/write', { state: Object.fromEntries(new FormData(event.currentTarget)) })
-      return
-    }
-    if (mode === 'audio') {
-      navigate('/record/audio', { state: Object.fromEntries(new FormData(event.currentTarget)) })
-    }
+    navigate('/record/audio', { state: Object.fromEntries(new FormData(event.currentTarget)) })
   }
 
   return (
@@ -63,42 +46,25 @@ function RecordPage() {
             </select>
           </div>
         </div>
-        <div className="recordPage__modes" role="group" aria-label="기록 방식">
-          <button type="button" aria-pressed={mode === 'audio'} onClick={() => selectMode('audio')}>진료 녹음하기</button>
-          <button type="button" aria-pressed={mode === 'text'} onClick={() => selectMode('text')}>직접 기록하기</button>
-        </div>
-        {mode === 'audio' ? (
-          <section className="recordPage__checklist" aria-labelledby="record-check-title">
-            <h2 id="record-check-title">녹음 및 기록 전 확인해 주세요</h2>
-            {recordingChecks.map((label, index) => (
-              <label className="recordPage__check" key={label}>
-                <input
-                  type="checkbox"
-                  checked={checked.includes(index)}
-                  onChange={(event) => setChecked((previous) => event.target.checked
-                    ? [...previous, index]
-                    : previous.filter((item) => item !== index))}
-                />
-                <Icon name={checked.includes(index) ? 'checkbox-checked' : 'checkbox-default'} width={26} height={28} aria-hidden="true" />
-                <span>{label}</span>
-              </label>
-            ))}
-          </section>
-        ) : (
-          <section className="recordPage__checklist recordPage__checklist--manual" aria-labelledby="manual-check-title">
-            <h2 id="manual-check-title">기록 전 확인해 주세요</h2>
-            <label className="recordPage__check">
-              <input type="checkbox" checked={manualConsent} onChange={(event) => setManualConsent(event.target.checked)} />
-              <Icon name={manualConsent ? 'checkbox-checked' : 'checkbox-default'} width={26} height={26} aria-hidden="true" />
-              <span>의료진의 동의를 받았어요</span>
+        <section className="recordPage__checklist" aria-labelledby="record-check-title">
+          <h2 id="record-check-title">녹음 및 기록 전 확인해 주세요</h2>
+          {recordingChecks.map((label, index) => (
+            <label className="recordPage__check" key={label}>
+              <input
+                type="checkbox"
+                checked={checked.includes(index)}
+                onChange={(event) => setChecked((previous) => event.target.checked
+                  ? [...previous, index]
+                  : previous.filter((item) => item !== index))}
+              />
+              <Icon name={checked.includes(index) ? 'checkbox-checked' : 'checkbox-default'} width={26} height={28} aria-hidden="true" />
+              <span>{label}</span>
             </label>
-          </section>
-        )}
-        {mode === 'audio' && (
-          <p className="recordPage__notice">
-            내가 직접 참여한 진료 대화만 녹음할 수 있어요. 공개되지 않은 다른 사람들 사이의 대화를 몰래 녹음하는 건 통신비밀보호법 제14조로 금지되어 있어요.
-          </p>
-        )}
+          ))}
+        </section>
+        <p className="recordPage__notice">
+          내가 직접 참여한 진료 대화만 녹음할 수 있어요. 공개되지 않은 다른 사람들 사이의 대화를 몰래 녹음하는 건 통신비밀보호법 제14조로 금지되어 있어요.
+        </p>
         <div className="recordPage__start">
           <PopupButton content="기록 시작하기" color="green" />
         </div>
