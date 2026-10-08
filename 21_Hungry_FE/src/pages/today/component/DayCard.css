@@ -2,51 +2,27 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-
   width: 100%;
   padding: 20px;
-
   border: 2px solid #f2f2f2;
   border-radius: 20px;
 }
 
-.dayCard__info {
-  display: flex;
-  width: 100%;
-  gap: 20px;
-}
-
-.dayCard__info--details {
-  justify-content: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.dayCard__info--detail {
-  display: flex;
-  justify-content: space-between;
-  font-size: 16px;
-}
-
-.dayCard__info--label {
-  color: #b3b3b3;
-}
-
-.dayCard__info--value {
-  color: #666666;
-}
-
 .dayCard__description {
+  width: 100%;
   color: #999999;
   border-radius: 20px;
   background-color: #f7f7f7;
   padding: 25px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .dayCard__buttons {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+  padding-bottom: 5px;
 }
