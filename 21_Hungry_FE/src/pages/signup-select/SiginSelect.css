@@ -1,10 +1,10 @@
+
 .SignupSelectPage{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     height: 100%;
     width: 100%;
-    
 }
 
 .SignupSelect__input{
@@ -22,6 +22,7 @@
     background-color: #F7F7F7;
     border: 2px solid #E5E5E5;
 }
+
 .SignupSelect__allowButton{
     width: 92%;
     height: 45px;
@@ -36,6 +37,7 @@
     background-color: #62D411;
     box-shadow: 0 5px 0 #66BD0F;
 }
+
 .Divider{
     width: 92%;
     height: 30px;
@@ -47,16 +49,19 @@
     gap: 15px;
     margin-bottom: 1.7%;
 }
+
 .Divider__line{
     flex : 1;
     height: 1px;
     background-color: #E5E5E5;
 }
+
 .Divider__text{
     font-size: 16px;
     color: #E5E5E5;
     white-space: nowrap;
 }
+
 .SignupSelect__socialLogin{
     width: 92%;
     height: 50px;
@@ -71,11 +76,10 @@
     color: #4D4D4D;
     gap:2.7%;
     opacity: 0.25;
-
 }
+
 .SignupSelect__socialLoginButton--kakao,
-.SignupSelect__socialLoginButton--google
-{
+.SignupSelect__socialLoginButton--google{
     width: 48.6%;
     height: 50px;
     margin: 0 auto;
@@ -87,7 +91,6 @@
     background-color: #FFFFFF;
     border: 2px solid #E5E5E5;
     box-shadow: 0 3px 0 #E5E5E5;
-     
 }
 
 .SignupSelect__footer {
@@ -117,4 +120,9 @@
   font-size: 14px;
   color: #BFBFBF;
   text-align: center;
+}
+
+.LoginSelect__footer,
+.SignupSelect__footer {
+  padding-bottom: 115px;
 }

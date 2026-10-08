@@ -1,13 +1,50 @@
+
 import { useState } from 'react'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import "./SignupSelfInfo.css";
 import LoginPage_title from "../../components/loginPage-title/loginPage-title";
-import { useNavigate } from 'react-router-dom' 
+import { signup, login, recipientLookup } from '../../api/authApi'
+import { messageOf } from '../../api/http'
+import { useNavigate } from 'react-router-dom'
 
 function SignupSelfInfo() {
   const [name, setName] = useState('')
   const canProceed = name.trim().length > 0
   const navigate = useNavigate()
+  const [busy,setBusy] = useState(false)
+  const [error,setError] = useState('')
+
+  const next = async () => {
+    if (busy) return
+    setBusy(true)
+    setError('')
+    try {
+      const phoneNumber = sessionStorage.getItem('signup_phone')
+      await signup({
+        phoneNumber,
+        accountRole:'CHILD',
+        displayName:name.trim()
+      })
+      await login(phoneNumber)
+
+      const result = await recipientLookup(
+        sessionStorage.getItem('signup_parent_phone')
+      )
+
+      sessionStorage.setItem('signup_parent_lookup', JSON.stringify(result))
+
+      navigate(
+        result.parentProfileCompleted
+          ? '/signupfamilyinfo'
+          : '/signupparentinfo'
+      )
+    } catch(e) {
+      setError(messageOf(e))
+    } finally {
+      setBusy(false)
+    }
+  }
+
   return (
     <div className="SignupSelfInfoPage">
       <LoginPage_title
@@ -27,7 +64,14 @@ function SignupSelfInfo() {
         onChange={(event) => setName(event.target.value)}
         className="SignupSelfInfo__input"
       />
-      <BottomButton onClick={()=>navigate('/signupparentinfo')} content="다음" disabled={!canProceed} />
+
+      {error && <p role="alert" style={{color:"#d33"}}>{error}</p>}
+
+      <BottomButton
+        onClick={next}
+        content={busy ? "가입 중..." : "다음"}
+        disabled={!canProceed || busy}
+      />
     </div>
   )
 }
