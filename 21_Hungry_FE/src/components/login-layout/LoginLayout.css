@@ -29,9 +29,9 @@
   background-color: #1CB0F6;
   margin-bottom: 14.2%;
 }
-/* 녹음 화면의 헤더(80px)와 버튼 여백(-6px, -10px)에 맞춘 위치 */
+/* FamilyPage의 상단 50px 기준. 뒤로가기 버튼과 제목 사이 간격은 유지합니다. */
 .loginlayout__header {
-  padding: 80px 21px 0;
+  padding: 50px 21px 0;
 }
 
 .loginlayout__backButton {
