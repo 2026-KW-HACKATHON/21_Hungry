@@ -1,0 +1,217 @@
+.docEdit__page {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding-bottom: 178px;
+  display: flex;
+  flex-direction: column;
+}
+
+.docEdit__content {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  padding: 0 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+.docEdit__content > * {
+  flex-shrink: 0;
+}
+
+.docEdit__card,
+.docEdit__preview {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid #f2f2f2;
+  border-radius: 20px;
+}
+
+.docEdit__card .cardInfo__info {
+  min-height: 118px;
+  align-items: center;
+}
+
+.docEdit__card .cardIcon__container {
+  width: 115px;
+  height: 115px;
+  flex-shrink: 0;
+  padding: 0;
+  position: relative;
+  display: block;
+}
+
+.docEdit__card .cardIcon__container > svg {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.docEdit__card .cardIcon__content {
+  position: absolute;
+  top: 78px;
+  left: 5px;
+  right: 6px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+
+.docEdit__card .cardInfo__info--details {
+  min-width: 0;
+  min-height: 100px;
+}
+
+.docEdit__card .cardInfo__info--detail {
+  min-height: 30px;
+  align-items: center;
+  gap: 8px;
+}
+
+.docEdit__card .cardInfo__info--label {
+  flex-shrink: 0;
+}
+
+.docEdit__card .cardInfo__info--value {
+  min-width: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.docEdit__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.docEdit__input {
+  position: relative;
+  height: 50px;
+  padding: 0 13px 0 20px;
+  border: 2px solid #e5e5e5;
+  border-radius: 15px;
+  background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docEdit__input > input {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  color: #666666;
+  font-size: 16px;
+  user-select: text;
+}
+
+.docEdit__input > input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.docEdit__input > input::placeholder {
+  color: #b3b3b3;
+}
+
+.docEdit__inputPlaceholder {
+  position: absolute;
+  left: 20px;
+  color: #b3b3b3;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.docEdit__input > input[data-empty='true'] {
+  opacity: 0;
+}
+
+.docEdit__input > button {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.docEdit__previewArea {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+
+.docEdit__previewArea > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.docEdit__pdf {
+  position: absolute;
+  inset: 0;
+}
+
+.docEdit__pdf .react-pdf__Page {
+  width: 100%;
+  height: 100%;
+  min-height: 0 !important;
+  background-color: transparent !important;
+}
+
+.docEdit__pdf .react-pdf__Page__canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+.docEdit__previewArea > p {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #999999;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.docEdit__error {
+  color: var(--color-red);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.docEdit__card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.docEdit__fileButton {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.docEdit__notice {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #d9d9d9;
+  font-size: 14px;
+  line-height: 1.4;
+}
