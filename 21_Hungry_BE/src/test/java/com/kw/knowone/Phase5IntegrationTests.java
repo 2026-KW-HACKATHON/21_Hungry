@@ -37,10 +37,10 @@ class Phase5IntegrationTests {
 
     @Test void imageLimitIsLockedAndBatchFailureLeavesNoPartialRows()throws Exception{
         UUID id=UUID.fromString(create(login("demo-caregiver-1"),"DOCUMENT","문서").get("id").asText());List<MockMultipartFile> nine=java.util.stream.IntStream.range(0,9).mapToObj(i->image("p"+i+".png")).toList();
-        service.uploadDocuments(id,CAREGIVER,new EncounterDtos.UploadMetadata(0L,1),new java.util.ArrayList<>(nine),"nine");assertEquals(9,repository.activeImageCount(id));
+        service.uploadDocuments(id,CAREGIVER,documentMetadata(0L,1,9),new java.util.ArrayList<>(nine),"nine");assertEquals(9,repository.activeImageCount(id));
         var meta=new EncounterDtos.UploadMetadata(1L,2);CompletableFuture<Integer> a=CompletableFuture.supplyAsync(()->uploadStatus(id,meta,image("a.png"),"a"));CompletableFuture<Integer> b=CompletableFuture.supplyAsync(()->uploadStatus(id,meta,image("b.png"),"b"));
         assertEquals(List.of(202,409),java.util.stream.Stream.of(a.join(),b.join()).sorted().toList());assertEquals(10,repository.activeImageCount(id));assertEquals(10,jdbc.queryForObject("SELECT count(*) FROM encounter_source WHERE encounter_id=?",Integer.class,id));
-        assertThrows(ApiException.class,()->service.uploadDocuments(id,CAREGIVER,new EncounterDtos.UploadMetadata(2L,3),List.of(image("ok.png"),new MockMultipartFile("files","bad.png","image/png","bad".getBytes())),"partial"));assertEquals(10,repository.activeImageCount(id));
+        assertThrows(ApiException.class,()->service.uploadDocuments(id,CAREGIVER,documentMetadata(2L,3,2),List.of(image("ok.png"),new MockMultipartFile("files","bad.png","image/png","bad".getBytes())),"partial"));assertEquals(10,repository.activeImageCount(id));
     }
 
     @Test void fakeWorkerCreatesTextAndSummaryAndStaleLeaseCannotWrite()throws Exception{
@@ -64,7 +64,7 @@ class Phase5IntegrationTests {
     }
 
     @Test void partialSourceFailureBlocksAnalysisUntilRetrySucceeds()throws Exception{
-        UUID id=UUID.fromString(create(login("demo-caregiver-1"),"DOCUMENT","부분 실패").get("id").asText());service.uploadDocuments(id,CAREGIVER,new EncounterDtos.UploadMetadata(0L,1),List.of(image("one.png"),image("two.png")),"two-files");List<Job> claimed=jobs.claim(2);assertEquals(2,claimed.size());
+        UUID id=UUID.fromString(create(login("demo-caregiver-1"),"DOCUMENT","부분 실패").get("id").asText());service.uploadDocuments(id,CAREGIVER,documentMetadata(0L,1,2),List.of(image("one.png"),image("two.png")),"two-files");List<Job> claimed=jobs.claim(2);assertEquals(2,claimed.size());
         jobs.completeText(claimed.get(0),"준비됨");jobs.fail(claimed.get(1),"AI_PROVIDER_UNAVAILABLE");assertEquals("FAILED",repository.activeSource(claimed.get(1).sourceId()).orElseThrow().status());assertEquals("FAILED",service.detail(id,CAREGIVER).processingState());assertEquals(0,jdbc.queryForObject("SELECT count(*) FROM processing_job WHERE encounter_id=? AND job_type='ANALYZE'",Integer.class,id));
         assertTrue(service.job(claimed.get(1).id(),CAREGIVER).canRetry());service.retry(claimed.get(1).id(),CAREGIVER,new EncounterDtos.RetryRequest(2),"retry-source");assertEquals("PENDING",repository.activeSource(claimed.get(1).sourceId()).orElseThrow().status());assertEquals(1,worker.runOnce(10));assertEquals(1,worker.runOnce(10));assertNotNull(service.detail(id,CAREGIVER).summary());
     }
@@ -98,6 +98,7 @@ class Phase5IntegrationTests {
     }
 
     private int uploadStatus(UUID id,EncounterDtos.UploadMetadata meta,MockMultipartFile file,String key){try{return service.uploadDocuments(id,CAREGIVER,meta,List.of(file),key).status();}catch(ApiException e){return e.status().value();}}
+    private EncounterDtos.UploadMetadata documentMetadata(long version,int inputVersion,int count){return new EncounterDtos.UploadMetadata(version,inputVersion,java.util.stream.IntStream.range(0,count).mapToObj(i->new EncounterDtos.DocumentMetadata("DIAGNOSIS")).toList());}
     private long countStoredObjects()throws Exception{Path objects=FILE_ROOT.resolve("objects");if(!Files.exists(objects))return 0;try(var paths=Files.walk(objects)){return paths.filter(Files::isRegularFile).count();}}
     private long countTemporaryObjects()throws Exception{Path tmp=FILE_ROOT.resolve("tmp");if(!Files.exists(tmp))return 0;try(var paths=Files.list(tmp)){return paths.filter(Files::isRegularFile).count();}}
     private MockMultipartFile image(String name){try{ByteArrayOutputStream out=new ByteArrayOutputStream();ImageIO.write(new BufferedImage(2,2,BufferedImage.TYPE_INT_RGB),"png",out);return new MockMultipartFile("files",name,"image/png",out.toByteArray());}catch(Exception e){throw new RuntimeException(e);}}
@@ -107,7 +108,8 @@ class Phase5IntegrationTests {
         UUID shared=taskWithMedications(currentMedication,otherMedication,"공유 업무"),sole=taskWithMedications(currentMedication,null,"단독 업무");return new UUID[]{shared,sole};});}
     private UUID taskWithMedications(UUID first,UUID second,String title){UUID series=UUID.randomUUID(),occurrence=UUID.randomUUID();jdbc.update("INSERT INTO task_series(id,group_id,kind,created_by,generation_key) VALUES (?,?,'MEDICATION',?,?)",series,GROUP,CAREGIVER,"phase5:"+series);jdbc.update("INSERT INTO task_series_revision(series_id,revision_no,group_id,title,recurrence,first_date,last_date,local_time,duration_minutes,effective_at,changed_by) VALUES (?,1,?,?,'ONCE',current_date+2,current_date+2,'08:00',30,now(),?)",series,GROUP,title,CAREGIVER);jdbc.update("INSERT INTO task_occurrence(id,group_id,series_id,revision_no,anchor_date,title,starts_at,ends_at) VALUES (?,?,?,1,current_date+2,?,now()+interval '2 day',now()+interval '2 day 30 minute')",occurrence,GROUP,series,title);jdbc.update("INSERT INTO occurrence_medication(group_id,occurrence_id,medication_id) VALUES (?,?,?)",GROUP,occurrence,first);if(second!=null)jdbc.update("INSERT INTO occurrence_medication(group_id,occurrence_id,medication_id) VALUES (?,?,?)",GROUP,occurrence,second);return occurrence;}
     private JsonNode create(String token,String type,String title)throws Exception{return data(send("POST","/api/v1/care-groups/"+GROUP+"/encounters","{\"recordType\":\""+type+"\",\"title\":\""+title+"\"}",token,"create-"+UUID.randomUUID()));}
-    private String login(String key)throws Exception{return data(send("POST","/api/v1/auth/demo-login","{\"loginKey\":\""+key+"\"}",null,null)).get("accessToken").asText();}
+    private String login(String key)throws Exception{return data(send("POST","/api/v1/auth/login","{\"phoneNumber\":\""+phone(key)+"\"}",null,null)).get("accessToken").asText();}
+    private String phone(String key){return switch(key){case "demo-recipient"->"01000000001";case "demo-caregiver-1"->"01000000002";case "demo-caregiver-2"->"01000000003";case "demo-caregiver-3"->"01000000004";case "demo-recipient-2"->"01000000005";case "demo-outsider"->"01000000006";default->throw new IllegalArgumentException(key);};}
     private JsonNode data(HttpResponse<String> r)throws Exception{assertTrue(r.statusCode()>=200&&r.statusCode()<300,r.body());return json.readTree(r.body()).get("data");}
     private HttpResponse<String> send(String method,String path,String body,String token,String key)throws Exception{HttpRequest.Builder b=HttpRequest.newBuilder(URI.create("http://localhost:"+port+path)).header("Content-Type","application/json");if(token!=null)b.header(HttpHeaders.AUTHORIZATION,"Bearer "+token);if(key!=null)b.header("Idempotency-Key",key);return client.send(b.method(method,body==null?HttpRequest.BodyPublishers.noBody():HttpRequest.BodyPublishers.ofString(body,StandardCharsets.UTF_8)).build(),HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));}
 }

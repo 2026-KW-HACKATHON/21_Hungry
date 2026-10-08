@@ -74,9 +74,7 @@ public class TaskGenerationService {
             if(value.assigneeUserId()==null)handoff=repository.openNoCandidate(value.groupId(),value.id());
             events.audit(value.groupId(),repository.findSeries(value.seriesId()).orElseThrow().createdBy(),"TASK_CREATED",
                     "TASK_OCCURRENCE",value.id(),null,event(value),requestId);
-            if(handoff!=null)events.taskNotification(value.groupId(),"HANDOFF_OPEN","handoff:"+handoff+":open",
-                    value.id(),handoff,null,value.version(),Map.of("schemaVersion",1,"reason","NO_CANDIDATE"),now);
-            else events.taskNotification(value.groupId(),"TASK_ASSIGNED","task:"+value.id()+":assignment:"+value.version(),
+            if(handoff==null)events.taskNotification(value.groupId(),"TASK_ASSIGNED","task:"+value.id()+":assignment:"+value.version(),
                     value.id(),null,value.assigneeUserId(),value.version(),Map.of("schemaVersion",1),now);
             events.syncOccurrenceNotifications(value.id(),now);
         }

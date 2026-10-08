@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import com.kw.knowone.group.entity.CareGroup;
 import com.kw.knowone.group.entity.GroupMember;
+import com.kw.knowone.common.web.CursorService;
 
 @Repository
 public class GroupRepository {
@@ -81,6 +82,15 @@ public class GroupRepository {
                 VALUES (?, ?, ?, 'CAREGIVER', ?)
                 """, id, groupId, userId, priority);
         return findMembership(groupId, userId).orElseThrow();
+    }
+
+    public GroupMember reopenCaregiver(GroupMember member,int priority,String status,Instant now){
+        int changed=jdbcTemplate.update("""
+                UPDATE group_member SET priority=?,status=?,joined_at=?,left_at=NULL,version=version+1
+                WHERE id=? AND version=? AND role='CAREGIVER' AND status='LEFT'
+                """,priority,status,"ACTIVE".equals(status)?Timestamp.from(now):null,member.id(),member.version());
+        if(changed!=1)throw new IllegalStateException("Concurrent membership reopen");
+        return findMembership(member.groupId(),member.userId()).orElseThrow();
     }
 
     public GroupMember reactivate(GroupMember member, Instant now) {
@@ -155,12 +165,16 @@ public class GroupRepository {
                 """,this::mapJoin,userId).stream().findFirst();
     }
 
-    public List<JoinRow> findPendingJoins(UUID groupId) {
-        return jdbcTemplate.query("""
+    public List<JoinRow> findPendingJoins(UUID groupId,CursorService.Value cursor,int fetch) {
+        String sql="""
                 SELECT r.id,r.group_id,r.user_id,r.status,r.version,r.created_at,r.decided_at,m.status membership_status,m.priority
                 FROM group_join_request r JOIN group_member m ON m.group_id=r.group_id AND m.user_id=r.user_id
-                WHERE r.group_id=? AND r.status='PENDING' ORDER BY r.created_at,r.id
-                """,this::mapJoin,groupId);
+                WHERE r.group_id=? AND r.status='PENDING'
+                """;
+        List<Object> args=new java.util.ArrayList<>();args.add(groupId);
+        if(cursor!=null){sql+=" AND (r.created_at,r.id)>(?,?)";args.add(Timestamp.from(cursor.time()));args.add(cursor.id());}
+        sql+=" ORDER BY r.created_at,r.id LIMIT ?";args.add(fetch);
+        return jdbcTemplate.query(sql,this::mapJoin,args.toArray());
     }
 
     public JoinRow decideJoin(JoinRow row, UUID actor, String decision, Instant now) {

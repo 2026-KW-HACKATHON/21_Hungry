@@ -85,17 +85,13 @@ public class GroupEventRepository {
             'digest:'||m.group_id||':'||m.user_id||':'||to_char(? AT TIME ZONE 'Asia/Seoul','YYYY-MM-DD'),
             m.user_id,?,jsonb_build_object('schemaVersion',1)
           FROM group_member m JOIN care_group g ON g.id=m.group_id AND g.status='ACTIVE'
-          LEFT JOIN notification_preference p ON p.user_id=m.user_id
-          WHERE m.status='ACTIVE' AND COALESCE(p.handoff_repeat,'DAILY')='DAILY'
+          WHERE m.status='ACTIVE'
             AND EXISTS (
               SELECT 1 FROM handoff_request h JOIN task_occurrence o ON o.id=h.occurrence_id
-              WHERE h.group_id=m.group_id AND h.status='OPEN' AND o.status='PENDING' AND o.starts_at>?
-                AND NOT EXISTS (
-                  SELECT 1 FROM notification n JOIN notification_event e ON e.id=n.event_id
-                  WHERE n.user_id=m.user_id AND e.handoff_id=h.id AND e.event_type='HANDOFF_OPEN'
-                    AND (n.created_at AT TIME ZONE 'Asia/Seoul')::date=(? AT TIME ZONE 'Asia/Seoul')::date))
+              WHERE h.group_id=m.group_id AND h.status='OPEN' AND o.status='PENDING' AND o.assignee_user_id IS NULL
+                AND NOT EXISTS (SELECT 1 FROM handoff_response r WHERE r.handoff_id=h.id AND r.user_id=m.user_id))
           ON CONFLICT (event_key) DO NOTHING
-          """,Timestamp.from(now),Timestamp.from(now),Timestamp.from(now),Timestamp.from(now));
+          """,Timestamp.from(now),Timestamp.from(now));
     }
 
     private String json(Object value) {

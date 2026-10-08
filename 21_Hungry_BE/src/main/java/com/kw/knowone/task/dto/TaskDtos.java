@@ -37,9 +37,7 @@ public final class TaskDtos {
             @Min(1) @Max(1440) int durationMinutes) { }
     public record CreateRequest(@NotBlank @Size(max=16) String kind, @NotBlank @Size(max=150) String title,
             String description, @NotNull @Valid Rule rule, List<UUID> medicationIds) { }
-    public record GenerationWindow(LocalDate fromDate, LocalDate toDateExclusive) { }
-    public record CreateResponse(UUID seriesId, long seriesVersion, Rule rule, List<Task> occurrences,
-            GenerationWindow generationWindow) { }
+    public record CreateResponse(UUID seriesId, long seriesVersion, Rule rule, List<Task> occurrences) { }
     public record Series(UUID id, UUID groupId, String kind, String title, String description, Rule rule,
             List<Medication> medications, LocalDate stopFromDate, int currentRevisionNo, long version) { }
     public record AssignmentRequest(@Min(0) long expectedVersion, @NotNull UUID assigneeUserId) { }
@@ -66,7 +64,7 @@ public final class TaskDtos {
             long seriesVersion) { }
     public record HandoffRequest(@Min(0) long expectedVersion) { }
     public record HandoffAcceptRequest(@Min(0) long expectedVersion,
-            @Min(0) long expectedOccurrenceVersion) { }
+            @Min(0) long expectedTaskVersion) { }
     public record HandoffResponse(Task occurrence, Handoff handoff) { }
     public record HandoffDeclineRequest(@Min(0) long expectedVersion,@Min(0) long expectedTaskVersion) { }
     public record HandoffDeclineResponse(Task occurrence,UUID handoffId,String response,OffsetDateTime respondedAt) { }
@@ -76,4 +74,6 @@ public final class TaskDtos {
     public record OccurrenceResponse(Task occurrence) { }
     public record Change(String field, Object before, Object after) { }
     public record History(UUID id, String eventType, UserRef actor, OffsetDateTime createdAt, List<Change> changes) { }
+    public record CalendarDay(LocalDate date,long totalCount,long completedCount,long unassignedPendingCount,String indicator) { }
+    public record Calendar(String month,List<CalendarDay> days,String timezone) { }
 }

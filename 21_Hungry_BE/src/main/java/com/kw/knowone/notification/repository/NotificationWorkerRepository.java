@@ -89,17 +89,16 @@ public class NotificationWorkerRepository {
           AND (e.event_type NOT IN ('RECORD_READY','RECORD_REVIEW_REQUIRED') OR EXISTS(
             SELECT 1 FROM encounter_revision er WHERE er.encounter_id=e.encounter_id AND er.is_current
               AND er.id::text=e.payload->>'revisionId'))
-          AND (e.event_type<>'DAILY_DIGEST' OR (COALESCE((SELECT p.handoff_repeat FROM notification_preference p WHERE p.user_id=d.user_id),'DAILY')='DAILY'
-            AND EXISTS(SELECT 1 FROM handoff_request dh JOIN task_occurrence doo ON doo.id=dh.occurrence_id
-              WHERE dh.group_id=e.group_id AND dh.status='OPEN' AND doo.status='PENDING' AND doo.starts_at>now()
-                AND NOT EXISTS(SELECT 1 FROM notification dn JOIN notification_event de ON de.id=dn.event_id
-                  WHERE dn.user_id=d.user_id AND de.handoff_id=dh.id AND de.event_type='HANDOFF_OPEN'
-                    AND (dn.created_at AT TIME ZONE 'Asia/Seoul')::date=(now() AT TIME ZONE 'Asia/Seoul')::date))))
+          AND (e.event_type<>'DAILY_DIGEST' OR EXISTS(
+            SELECT 1 FROM handoff_request dh JOIN task_occurrence doo ON doo.id=dh.occurrence_id
+            WHERE dh.group_id=e.group_id AND dh.status='OPEN' AND doo.status='PENDING' AND doo.assignee_user_id IS NULL
+              AND NOT EXISTS(SELECT 1 FROM handoff_response r WHERE r.handoff_id=dh.id AND r.user_id=d.user_id)))
           AND (e.occurrence_id IS NULL OR
             CASE WHEN e.event_type IN ('DUE_30M','DUE_NOW','TASK_ASSIGNED','TASK_REOPENED')
                  THEN o.status='PENDING' AND o.version=e.expected_task_version AND o.assignee_user_id=d.user_id
                  WHEN e.event_type='OVERDUE' THEN o.status='PENDING' AND o.version=e.expected_task_version
                  WHEN e.event_type='HANDOFF_OPEN' THEN o.status='PENDING' AND h.status='OPEN' AND o.version=e.expected_task_version
+                   AND NOT EXISTS(SELECT 1 FROM handoff_response hr WHERE hr.handoff_id=h.id AND hr.user_id=d.user_id)
                  WHEN e.event_type='HANDOFF_ACCEPTED' THEN h.status='ACCEPTED'
                  WHEN e.event_type='TASK_COMPLETED' THEN o.status='COMPLETED'
                  ELSE true END)
@@ -145,18 +144,22 @@ public class NotificationWorkerRepository {
          WHEN ne.event_type='TASK_COMPLETED' THEN o.status='COMPLETED'
          WHEN ne.event_type IN ('DUE_30M','DUE_NOW','TASK_ASSIGNED','TASK_REOPENED','OVERDUE') THEN o.status='PENDING' AND o.version=ne.expected_task_version
          ELSE true END)
-       AND (ne.event_type<>'DAILY_DIGEST' OR (COALESCE((SELECT p.handoff_repeat FROM notification_preference p WHERE p.user_id=ne.target_user_id),'DAILY')='DAILY' AND EXISTS(
+       AND (ne.event_type<>'DAILY_DIGEST' OR EXISTS(
          SELECT 1 FROM handoff_request dh JOIN task_occurrence doo ON doo.id=dh.occurrence_id
-         WHERE dh.group_id=ne.group_id AND dh.status='OPEN' AND doo.status='PENDING' AND doo.starts_at>now()
-           AND NOT EXISTS(SELECT 1 FROM notification dn JOIN notification_event de ON de.id=dn.event_id
-             WHERE dn.user_id=ne.target_user_id AND de.handoff_id=dh.id AND de.event_type='HANDOFF_OPEN'
-               AND (dn.created_at AT TIME ZONE 'Asia/Seoul')::date=(now() AT TIME ZONE 'Asia/Seoul')::date))))
+         WHERE dh.group_id=ne.group_id AND dh.status='OPEN' AND doo.status='PENDING' AND doo.assignee_user_id IS NULL
+           AND NOT EXISTS(SELECT 1 FROM handoff_response r WHERE r.handoff_id=dh.id AND r.user_id=ne.target_user_id)))
       """,Integer.class,e.id());return value!=null&&value==1;}
     private List<UUID> recipients(EventClaim e){if(e.targetUserId()!=null)return List.of(e.targetUserId());
         if(List.of("DUE_30M","DUE_NOW","TASK_ASSIGNED","TASK_REOPENED").contains(e.type()))return jdbc.query("""
             SELECT o.assignee_user_id FROM task_occurrence o JOIN group_member m ON m.group_id=o.group_id AND m.user_id=o.assignee_user_id AND m.status='ACTIVE'
             WHERE o.id=? AND o.assignee_user_id IS NOT NULL
             """,(rs,n)->rs.getObject(1,UUID.class),e.occurrenceId());
+        if("HANDOFF_OPEN".equals(e.type()))return jdbc.query("""
+            SELECT m.user_id FROM group_member m
+            WHERE m.group_id=? AND m.status='ACTIVE'
+              AND NOT EXISTS(SELECT 1 FROM handoff_response r WHERE r.handoff_id=? AND r.user_id=m.user_id)
+            ORDER BY m.user_id
+            """,(rs,n)->rs.getObject(1,UUID.class),e.groupId(),e.handoffId());
         return jdbc.query("SELECT user_id FROM group_member WHERE group_id=? AND status='ACTIVE' ORDER BY user_id",
                 (rs,n)->rs.getObject(1,UUID.class),e.groupId());}
     private void cancelEvent(EventClaim e){jdbc.update("UPDATE notification_event SET status='CANCELED',lease_token=NULL,lease_until=NULL WHERE id=? AND lease_token=?",e.id(),e.leaseToken());}

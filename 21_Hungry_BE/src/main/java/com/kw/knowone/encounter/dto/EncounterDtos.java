@@ -22,7 +22,8 @@ public final class EncounterDtos {
     public record DocumentMetadata(@NotBlank String documentType){ }
     public record UploadMetadata(@NotNull Long expectedVersion,@NotNull Integer expectedInputVersion,
             List<@Valid DocumentMetadata> documents){
-        public UploadMetadata(Long expectedVersion,Integer expectedInputVersion){this(expectedVersion,expectedInputVersion,List.of());}
+        public UploadMetadata(Long expectedVersion,Integer expectedInputVersion){this(expectedVersion,expectedInputVersion,
+                List.of(new DocumentMetadata("DIAGNOSIS")));}
     }
     public record TextUpdate(@NotNull Integer expectedInputVersion,@NotNull Integer expectedTextVersion,@NotBlank String text){ }
     public record VersionRequest(@NotNull Long expectedVersion,@NotNull Integer expectedInputVersion){ }
