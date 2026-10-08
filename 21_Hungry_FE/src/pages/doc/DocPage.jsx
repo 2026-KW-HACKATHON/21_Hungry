@@ -1,198 +1,150 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { getAccessToken } from '../../api/http'
-import { getRecordGroup, listRecords } from '../../api/recordApi'
-import { recordStateLabels, todayInSeoul } from '../../api/recordModel'
+import { getAccessToken, messageOf } from '../../api/http'
+import {
+  categoriesOf,
+  documentTypes,
+  filterDocuments,
+  formatDocumentDate,
+  getDocumentsForMonth,
+  moveMonth,
+} from '../../api/docApi'
+import { todayInSeoul } from '../../api/recordModel'
 
 import CardInfo from '../../components/card-info/CardInfo'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import PopupButton from '../../components/popup-button/PopupButton'
+import { Icon } from '../../components/icon/Icon'
 
 import './DocPage.css'
 
-function RecordList({ filters, query, accessToken }) {
+function DocumentList({ month, query, type, accessToken }) {
   const navigate = useNavigate()
-
-  const [result, setResult] = useState({
+  const [loaded, setLoaded] = useState({
     items: [],
-    hasMore: false,
-    nextCursor: null,
+    status: 'LOADING',
+    error: '',
   })
-  const [group, setGroup] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
-  const [refresh, setRefresh] = useState(0)
-
-  const controllerRef = useRef(null)
-  const loadingRef = useRef(false)
-  const filterKey = JSON.stringify(filters)
+  const [attempt, setAttempt] = useState(0)
+  const retryRef = useRef(false)
 
   useEffect(() => {
     const controller = new AbortController()
-    controllerRef.current = controller
 
-    async function load() {
-      try {
-        const active = await getRecordGroup(accessToken, controller.signal)
-
-        const data = await listRecords(
-          active.id,
-          accessToken,
-          {
-            ...JSON.parse(filterKey),
-            limit: 20,
-          },
-          controller.signal,
-        )
-
+    getDocumentsForMonth(month, accessToken, controller.signal)
+      .then((items) => {
         if (!controller.signal.aborted) {
-          setGroup(active)
-          setResult(data)
-          setError('')
+          setLoaded({ items, status: 'READY', error: '' })
         }
-      } catch (error) {
+      })
+      .catch((error) => {
         if (!controller.signal.aborted) {
-          setError(error.message)
+          setLoaded({
+            items: [],
+            status: 'FAILED',
+            error: error.message || messageOf(error),
+          })
         }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false)
-        }
-      }
-    }
-
-    load()
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) retryRef.current = false
+      })
 
     return () => controller.abort()
-  }, [filterKey, accessToken, refresh])
+  }, [month, accessToken, attempt])
 
-  async function more() {
-    if (loadingRef.current || !result.hasMore || !result.nextCursor) {
-      return
-    }
+  const handleRetry = () => {
+    if (retryRef.current || loaded.status === 'LOADING') return
 
-    loadingRef.current = true
-    setLoading(true)
-
-    try {
-      const data = await listRecords(
-        group.id,
-        accessToken,
-        {
-          ...filters,
-          limit: 20,
-          cursor: result.nextCursor,
-        },
-        controllerRef.current.signal,
-      )
-
-      if (!controllerRef.current.signal.aborted) {
-        setResult((previous) => ({
-          ...data,
-          items: [
-            ...new Map([...previous.items, ...data.items].map((item) => [item.id, item])).values(),
-          ],
-        }))
-        setError('')
-      }
-    } catch (error) {
-      if (!controllerRef.current.signal.aborted) {
-        setError(error.message)
-      }
-    } finally {
-      loadingRef.current = false
-
-      if (!controllerRef.current.signal.aborted) {
-        setLoading(false)
-      }
-    }
+    retryRef.current = true
+    setLoaded({ items: [], status: 'LOADING', error: '' })
+    setAttempt((value) => value + 1)
   }
 
-  const documents = result.items.filter((item) =>
-    `${item.title} ${item.hospitalName || ''}`
-      .toLocaleLowerCase()
-      .includes(query.trim().toLocaleLowerCase()),
-  )
+  const documents = filterDocuments(loaded.items, query, type)
+
+  if (loaded.status === 'LOADING') {
+    return (
+      <p className='doc__status' role='status'>
+        기록을 불러오는 중이에요.
+      </p>
+    )
+  }
+
+  if (loaded.status === 'FAILED') {
+    return (
+      <div className='doc__feedback'>
+        <p className='doc__error' role='alert'>
+          {loaded.error}
+        </p>
+
+        <PopupButton content='목록 다시 조회' color='gray' onClick={handleRetry} />
+      </div>
+    )
+  }
 
   return (
-    <>
-      {group && <p>돌봄 대상: {group.recipient?.displayName || '부모 정보 입력 전'}</p>}
+    <div className='doc__cards'>
+      {documents.map((document) => {
+        const visit = document.recordType === 'VISIT'
+        const categories = categoriesOf(document)
+        const notices = [
+          document.processingState === 'FAILED' ? '처리 실패' : '',
+          document.hasReviewItems || document.processingState === 'NEEDS_REVIEW'
+            ? '확인할 내용 있음'
+            : '',
+          document.isSummaryStale ? '이전 분석 결과' : '',
+        ].filter(Boolean)
 
-      {error && (
-        <div>
-          <p role='alert' className='doc__error'>
-            {error}
-          </p>
+        return (
+          <article className='doc__card' key={document.id} aria-label={document.title}>
+            {(categories.length ? categories : ['문서 기록']).map((category) => (
+              <CardInfo
+                key={category}
+                category={category}
+                label1='등록일'
+                value1={formatDocumentDate(document.occurredOn)}
+                label2='발급기관'
+                value2={document.hospitalName || '-'}
+                label3='등록인'
+                value3={document.createdBy?.displayName || '-'}
+              />
+            ))}
 
-          <button
-            onClick={() => {
-              setLoading(true)
-              setRefresh((value) => value + 1)
-            }}
-          >
-            목록 다시 조회
-          </button>
-        </div>
-      )}
-
-      {loading && <p role='status'>기록을 불러오는 중이에요.</p>}
-
-      {query && <p>현재 불러온 기록에서 검색해요. 더 보기를 누르면 검색 범위가 늘어나요.</p>}
-
-      <div className='doc__cards'>
-        {documents.map((document) => (
-          <article
-            className={`doc__card doc__card--${
-              document.recordType === 'VISIT' ? 'visit' : 'other'
-            }`}
-            key={document.id}
-          >
-            <h2>{document.title}</h2>
-
-            <CardInfo
-              category={document.recordType === 'VISIT' ? '진료 기록' : '문서 기록'}
-              label1='진료일'
-              value1={document.occurredOn || '미상'}
-              label2='발급기관'
-              value2={document.hospitalName || '-'}
-              label3='등록인'
-              value3={document.createdBy?.displayName || '부모 정보 입력 전'}
-            />
-
-            <p>
-              {recordStateLabels[document.processingState] || '상태 확인 중'}
-              {document.isSummaryStale ? ' · 이전 분석 결과' : ''}
-              {document.hasReviewItems ? ' · 확인할 내용 있음' : ''}
-            </p>
+            {notices.length > 0 && <p className='doc__notice'>{notices.join(' · ')}</p>}
 
             <div className='doc__card--buttons'>
-              <PopupButton
-                content='기록 열람하기'
-                color='green'
-                onClick={() =>
-                  navigate(
-                    `${
-                      document.recordType === 'VISIT' ? '/doc-record' : '/doc-search'
-                    }?encounterId=${encodeURIComponent(document.id)}`,
-                  )
-                }
-              />
+              <div className='doc__card--button'>
+                <PopupButton
+                  content='문서 열람하기'
+                  color='green'
+                  onClick={() =>
+                    navigate(
+                      `${visit ? '/doc-record' : '/doc-search'}?encounterId=${encodeURIComponent(document.id)}`,
+                    )
+                  }
+                />
+              </div>
+
+              {!visit && (
+                <div className='doc__card--button'>
+                  <PopupButton
+                    content='수정하기'
+                    color='gray'
+                    onClick={() =>
+                      navigate(`/doc-edit?encounterId=${encodeURIComponent(document.id)}`)
+                    }
+                  />
+                </div>
+              )}
             </div>
           </article>
-        ))}
-      </div>
+        )
+      })}
 
-      {!loading && !error && documents.length === 0 && (
-        <p className='doc__empty'>조건에 맞는 기록이 없어요.</p>
-      )}
-
-      {result.hasMore && (
-        <button className='doc__filter' disabled={loading} onClick={more}>
-          기록 더 보기
-        </button>
-      )}
-    </>
+      {documents.length === 0 && <p className='doc__empty'>조건에 맞는 기록이 없어요.</p>}
+    </div>
   )
 }
 
@@ -200,24 +152,13 @@ export default function DocPage() {
   const navigate = useNavigate()
   const { state } = useLocation()
   const accessToken = getAccessToken()
+  const searchRef = useRef(null)
 
   const [query, setQuery] = useState('')
   const [type, setType] = useState('')
-  const [month, setMonth] = useState(todayInSeoul().slice(0, 7))
-  const [allDates, setAllDates] = useState(true)
+  const [month, setMonth] = useState(() => todayInSeoul().slice(0, 7))
 
-  const filters = {
-    recordType: type,
-  }
-
-  if (!allDates && month) {
-    const [year, number] = month.split('-').map(Number)
-
-    filters.fromDate = `${month}-01`
-    filters.toDateExclusive = `${number === 12 ? year + 1 : year}-${String(
-      number === 12 ? 1 : number + 1,
-    ).padStart(2, '0')}-01`
-  }
+  const [year, number] = month.split('-').map(Number)
 
   return (
     <div className='doc__page'>
@@ -226,25 +167,39 @@ export default function DocPage() {
 
         <div className='doc__controls'>
           <div className='doc__search'>
+            <Icon name='doc-search' width={21} height={21} aria-hidden='true' />
+
             <input
-              aria-label='기록 이름 또는 병원 검색'
-              placeholder='기록 이름 또는 병원 검색'
+              ref={searchRef}
+              type='search'
+              aria-label='문서 이름 또는 병원 검색'
+              placeholder='문서 이름 또는 병원 검색'
               value={query}
               onChange={(event) => setQuery(event.target.value)}
             />
+
+            {query && (
+              <button
+                type='button'
+                aria-label='검색어 지우기'
+                onClick={() => {
+                  setQuery('')
+                  searchRef.current.focus()
+                }}
+              >
+                <Icon name='input-cancel' width={24} height={24} aria-hidden='true' />
+              </button>
+            )}
           </div>
 
-          <div className='doc__filters'>
-            {[
-              ['', '전체'],
-              ['VISIT', '진료 기록'],
-              ['DOCUMENT', '문서 기록'],
-            ].map(([value, label]) => (
+          <div className='doc__filters' role='group' aria-label='문서 종류 필터'>
+            {documentTypes.map(({ value, label }) => (
               <button
+                type='button'
                 key={value}
-                className={`doc__filter${type === value ? ' doc__filter--selected' : ''}`}
+                className={`doc__filter${value === 'VISIT' ? ' doc__filter--visit' : ''}${value === 'LEGACY_UNCLASSIFIED' ? ' doc__filter--other' : ''}${type === value ? ' doc__filter--selected' : ''}`}
                 aria-pressed={type === value}
-                onClick={() => setType(value)}
+                onClick={() => setType((previous) => (previous === value ? '' : value))}
               >
                 {label}
               </button>
@@ -255,42 +210,57 @@ export default function DocPage() {
 
       <div className='doc__content'>
         <div className='doc__month'>
-          <label>
-            <input
-              type='checkbox'
-              checked={allDates}
-              onChange={(event) => setAllDates(event.target.checked)}
-            />{' '}
-            전체 날짜 (진료일 미상 포함)
-          </label>
+          <h2 className='doc__month--title'>
+            {year}년 {number}월
+          </h2>
+
+          <div className='doc__month--buttons'>
+            <button
+              type='button'
+              className='doc__month--previous'
+              aria-label='이전 달'
+              disabled={month === '0001-01'}
+              onClick={() => setMonth((previous) => moveMonth(previous, -1))}
+            >
+              <Icon name='month-prev' width={9} height={15} aria-hidden='true' />
+            </button>
+
+            <button
+              type='button'
+              className='doc__month--next'
+              aria-label='다음 달'
+              disabled={month === '9999-12'}
+              onClick={() => setMonth((previous) => moveMonth(previous, 1))}
+            >
+              <Icon name='month-next' width={9} height={15} aria-hidden='true' />
+            </button>
+          </div>
         </div>
 
-        {!allDates && (
-          <label>
-            진료월{' '}
-            <input
-              type='month'
-              aria-label='진료월'
-              value={month}
-              onChange={(event) => setMonth(event.target.value)}
-            />
-          </label>
+        {state?.message && (
+          <p className='doc__status' role='status'>
+            {state.message}
+          </p>
         )}
 
-        {state?.message && <p role='status'>{state.message}</p>}
-
         {accessToken ? (
-          <RecordList
-            key={JSON.stringify(filters)}
-            filters={filters}
+          <DocumentList
+            key={`${accessToken}:${month}`}
+            month={month}
             query={query}
+            type={type}
             accessToken={accessToken}
           />
         ) : (
-          <>
-            <p>로그인 후 가족의 기록을 볼 수 있어요.</p>
-            <button onClick={() => navigate('/loginselect')}>로그인하기</button>
-          </>
+          <div className='doc__feedback'>
+            <p className='doc__status'>로그인 후 가족의 기록을 볼 수 있어요.</p>
+
+            <PopupButton
+              content='로그인하기'
+              color='gray'
+              onClick={() => navigate('/loginselect')}
+            />
+          </div>
         )}
       </div>
 

@@ -7,16 +7,35 @@ import { Document, Page, pdfjs } from 'react-pdf'
 import BackHeader from '../../components/back-header/BackHeader'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import CardInfo from '../../components/card-info/CardInfo'
+import PopupButton from '../../components/popup-button/PopupButton'
 import { Icon } from '../../components/icon/Icon'
-import { getAccessToken } from '../../api/http'
-import { getRecordGroup, requestRecordApi, createDocumentUploadAttempt, uploadDocumentAttempt } from '../../api/recordApi'
+import { getAccessToken, messageOf } from '../../api/http'
+import {
+  getRecordGroup,
+  requestRecordApi,
+  createDocumentUploadAttempt,
+  uploadDocumentAttempt,
+} from '../../api/recordApi'
 
 const documentTypeData = [
   { type: 'PRESCRIPTION', category: '처방전' },
   { type: 'DIAGNOSIS', category: '진단서' },
   { type: 'MEDICINE_BAG', category: '약 봉투' },
 ]
+
 const formatDate = (date) => date.split('-').join('.')
+
+function validateDocumentFile(file) {
+  if (file.size === 0 || file.size > 10000000) {
+    return '파일은 내용이 있는 10MB 이하의 파일이어야 해요.'
+  }
+
+  const supported = file.type
+    ? ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'].includes(file.type)
+    : /\.(jpe?g|png|webp|pdf)$/i.test(file.name)
+
+  return supported ? '' : 'JPG, PNG, WEBP 이미지 또는 PDF 파일을 선택해 주세요.'
+}
 
 const pdfAssetUrl = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/`
 
@@ -43,10 +62,10 @@ function DocumentPreview({ file, onReady }) {
   const [preview, setPreview] = useState({ status: 'LOADING', url: '', error: '' })
   const [numPages, setNumPages] = useState(0)
   const isPdf = file.type === 'application/pdf' || (!file.type && /\.pdf$/i.test(file.name))
-  const invalidFile = file.size === 0 || file.size > 10000000
+  const fileError = validateDocumentFile(file)
 
   useEffect(() => {
-    if (isPdf || invalidFile) return undefined
+    if (isPdf || fileError) return undefined
 
     let active = true
     const image = new Image()
@@ -74,20 +93,20 @@ function DocumentPreview({ file, onReady }) {
       image.onerror = null
       URL.revokeObjectURL(url)
     }
-  }, [file, isPdf, invalidFile, onReady])
+  }, [file, isPdf, fileError, onReady])
 
   const handleFailure = (message) => {
     setPreview({ status: 'FAILED', url: '', error: message })
     onReady(false)
   }
 
-  const error = invalidFile ? '파일은 내용이 있는 10MB 이하의 파일이어야 해요.' : preview.error
+  const error = fileError || preview.error
 
   return (
     <div className='docAdd__preview'>
       <div className='docAdd__previewArea' aria-busy={!error && preview.status === 'LOADING'}>
         {preview.url && <img src={preview.url} alt='첨부한 의료 문서 미리보기' />}
-        {isPdf && !invalidFile && (
+        {isPdf && !fileError && (
           <Document
             className='docAdd__pdf'
             file={file}
@@ -141,15 +160,25 @@ function DocumentPreview({ file, onReady }) {
   )
 }
 
-function DocAddPage() {
+function DocumentForm({ file, type, accessToken }) {
   const navigate = useNavigate()
-  const { state } = useLocation()
   const formRef = useRef(null)
   const dateRef = useRef(null)
   const hospitalRef = useRef(null)
   const savingRef = useRef(false)
   const attemptRef = useRef(null)
-  const [context, setContext] = useState(null)
+  const activeRef = useRef(false)
+  const readControllerRef = useRef(null)
+  const contextRetryRef = useRef(false)
+  const refreshUploadRef = useRef(false)
+
+  const [context, setContext] = useState({
+    status: accessToken ? 'LOADING' : 'SIGNED_OUT',
+    group: null,
+    user: null,
+    error: '',
+  })
+  const [contextAttempt, setContextAttempt] = useState(0)
   const [locked, setLocked] = useState(false)
   const [createdEncounterId, setCreatedEncounterId] = useState(null)
   const [registeredOn, setRegisteredOn] = useState('')
@@ -158,41 +187,140 @@ function DocAddPage() {
   const [isSaving, setIsSaving] = useState(false)
   const [error, setError] = useState('')
 
-  const file = state?.file
-  const type = documentTypeData.find(
-    (item) => item.type === state?.documentType && item.type !== 'VISIT',
-  )
-  const accessToken = getAccessToken()
   useEffect(() => {
-    if (!accessToken) return
-    const controller = new AbortController()
-    Promise.all([getRecordGroup(accessToken, controller.signal), requestRecordApi('/me', accessToken, { signal: controller.signal })])
-      .then(([group, user]) => { if (!controller.signal.aborted) setContext({ group, user }) })
-      .catch((error) => { if (!controller.signal.aborted) setError(error.message) })
-    return () => controller.abort()
-  }, [accessToken])
+    activeRef.current = true
 
-  if (!(file instanceof File) || !type) return <Navigate to='/doc-select' replace />
+    return () => {
+      activeRef.current = false
+      readControllerRef.current?.abort()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!accessToken) return undefined
+
+    const controller = new AbortController()
+    const isActive = () => !controller.signal.aborted && getAccessToken() === accessToken
+
+    Promise.all([
+      getRecordGroup(accessToken, controller.signal),
+      requestRecordApi('/me', accessToken, { signal: controller.signal }),
+    ])
+      .then(([group, user]) => {
+        if (isActive()) {
+          setContext({ status: 'READY', group, user, error: '' })
+        }
+      })
+      .catch((loadError) => {
+        if (isActive()) {
+          setContext({
+            status: 'FAILED',
+            group: null,
+            user: null,
+            error: loadError.message || messageOf(loadError),
+          })
+        }
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) contextRetryRef.current = false
+      })
+
+    return () => controller.abort()
+  }, [accessToken, contextAttempt])
+
+  const isActive = () => activeRef.current && getAccessToken() === accessToken
+
+  const handleContextRetry = () => {
+    if (contextRetryRef.current || context.status === 'LOADING') return
+
+    contextRetryRef.current = true
+    setContext({ status: 'LOADING', group: null, user: null, error: '' })
+    setContextAttempt((value) => value + 1)
+  }
 
   const handleSave = async (event) => {
     event.preventDefault()
+
     if (savingRef.current || !isPreviewReady) return
-    if (!accessToken || !context) { setError('로그인과 가족 연결 상태를 확인해 주세요.'); return }
+
+    if (!accessToken || getAccessToken() !== accessToken || context.status !== 'READY') {
+      setError('로그인과 가족 연결 상태를 확인해 주세요.')
+      return
+    }
+
+    const fileError = validateDocumentFile(file)
+    if (fileError) {
+      setError(fileError)
+      return
+    }
+
     if (!formRef.current.reportValidity()) return
 
     savingRef.current = true
     setIsSaving(true)
     setError('')
+
     try {
-      if (!attemptRef.current) attemptRef.current = createDocumentUploadAttempt(accessToken, context.group.id, file, type.type, registeredOn, hospitalName)
+      if (!attemptRef.current) {
+        attemptRef.current = createDocumentUploadAttempt(
+          accessToken,
+          context.group.id,
+          file,
+          type.type,
+          registeredOn,
+          hospitalName,
+        )
+      }
+
       setLocked(true)
-      const result = await uploadDocumentAttempt(attemptRef.current)
-      navigate(`/doc-record?encounterId=${encodeURIComponent(result.encounterId)}`, { replace: true })
-    } catch (error) {
+      const attempt = attemptRef.current
+
+      if (refreshUploadRef.current && attempt.encounter) {
+        const controller = new AbortController()
+        readControllerRef.current = controller
+
+        const latest = await requestRecordApi(
+          `/encounters/${encodeURIComponent(attempt.encounter.id)}`,
+          accessToken,
+          { signal: controller.signal },
+        )
+
+        if (!isActive()) return
+
+        attempt.encounter = latest
+        attempt.formData = null
+        attempt.uploadKey = crypto.randomUUID()
+        refreshUploadRef.current = false
+      }
+
+      await uploadDocumentAttempt(attempt)
+
+      if (isActive()) {
+        navigate('/doc', {
+          replace: true,
+        })
+      }
+    } catch (saveError) {
+      if (!isActive()) return
+
+      const versionConflict =
+        saveError.apiCode === 'VERSION_CONFLICT' ||
+        saveError.response?.data?.error?.code === 'VERSION_CONFLICT'
+
+      if (versionConflict && attemptRef.current?.encounter) {
+        refreshUploadRef.current = true
+      }
+
       setCreatedEncounterId(attemptRef.current?.encounter?.id || null)
-      setError(error.message || '문서를 저장하지 못했어요. 다시 시도해 주세요.')
+      setError(
+        versionConflict
+          ? '기록이 변경됐어요. 다시 저장하면 최신 상태를 조회하고 파일 업로드를 재시도해요.'
+          : saveError.message || messageOf(saveError),
+      )
+    } finally {
       savingRef.current = false
-      setIsSaving(false)
+
+      if (isActive()) setIsSaving(false)
     }
   }
 
@@ -211,7 +339,7 @@ function DocAddPage() {
             label2='발급기관'
             value2={hospitalName.trim() || '-'}
             label3='등록인'
-            value3={context?.user.displayName || '부모 정보 입력 전'}
+            value3={context.user?.displayName || '부모 정보 입력 전'}
           />
         </div>
         <div className='docAdd__inputs'>
@@ -278,25 +406,64 @@ function DocAddPage() {
             )}
           </div>
         </div>
-        <DocumentPreview
-          key={`${file.name}-${file.size}-${file.lastModified}`}
-          file={file}
-          onReady={setIsPreviewReady}
-        />
+        <DocumentPreview file={file} onReady={setIsPreviewReady} />
+        {context.status === 'LOADING' && (
+          <p role='status'>로그인과 가족 정보를 불러오는 중이에요.</p>
+        )}
+        {context.status === 'FAILED' && (
+          <>
+            <p className='docAdd__error' role='alert'>
+              {context.error}
+            </p>
+            <PopupButton content='다시 조회하기' color='gray' onClick={handleContextRetry} />
+          </>
+        )}
         {error && (
           <p className='docAdd__error' role='alert'>
             {error}
           </p>
         )}
-        {createdEncounterId && error && <button type="button" onClick={() => navigate(`/doc-record?encounterId=${encodeURIComponent(createdEncounterId)}`)}>생성된 기록에서 상태 확인·삭제</button>}
-        {!accessToken && <button type="button" onClick={() => navigate('/loginselect')}>로그인하기</button>}
+        {createdEncounterId && error && (
+          <button
+            type='button'
+            disabled={isSaving}
+            onClick={() =>
+              navigate(`/doc-search?encounterId=${encodeURIComponent(createdEncounterId)}`)
+            }
+          >
+            생성된 기록에서 상태 확인·삭제
+          </button>
+        )}
+        {!accessToken && (
+          <button type='button' onClick={() => navigate('/loginselect')}>
+            로그인하기
+          </button>
+        )}
       </form>
       <BottomButton
         content={isSaving ? '저장 중...' : '의료 문서 저장하기'}
-        disabled={isSaving || !isPreviewReady || !registeredOn || !context}
+        disabled={isSaving || !isPreviewReady || !registeredOn || context.status !== 'READY'}
         onClick={() => formRef.current.requestSubmit()}
       />
     </div>
+  )
+}
+
+function DocAddPage() {
+  const location = useLocation()
+  const accessToken = getAccessToken()
+  const file = location.state?.file
+  const type = documentTypeData.find((item) => item.type === location.state?.documentType)
+
+  if (!(file instanceof File) || !type) return <Navigate to='/doc-select' replace />
+
+  return (
+    <DocumentForm
+      key={`${location.key}:${accessToken || 'signed-out'}`}
+      file={file}
+      type={type}
+      accessToken={accessToken}
+    />
   )
 }
 

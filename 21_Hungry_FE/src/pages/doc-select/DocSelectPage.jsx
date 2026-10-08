@@ -198,21 +198,27 @@ function CameraScreen({ onClose, onCapture }) {
 function DocSelectPage() {
   const navigate = useNavigate()
   const fileInput = useRef(null)
+  const navigatingRef = useRef(false)
   const [selectedType, setSelectedType] = useState('')
   const [error, setError] = useState('')
   const [isCameraOpen, setIsCameraOpen] = useState(false)
 
   const handleType = (type) => {
+    if (navigatingRef.current) return
+
     setSelectedType(type)
     setError('')
   }
 
   const handleOpenCamera = () => {
+    if (!selectedType || navigatingRef.current) return
+
     setError('')
     setIsCameraOpen(true)
   }
 
   const handleSelectedFile = (file, source) => {
+    if (navigatingRef.current) return ''
     if (!selectedType) return '문서 종류를 먼저 선택해 주세요.'
     if (file.size === 0) return '내용이 없는 파일은 선택할 수 없어요.'
     if (file.size > 10000000) return '파일은 10MB 이하로 선택해 주세요.'
@@ -228,10 +234,17 @@ function DocSelectPage() {
         : 'JPG, PNG, WEBP 이미지 또는 PDF 파일을 선택해 주세요.'
     }
 
-    navigate('/doc-add', {
-      state: { documentType: selectedType, file, source },
-    })
-    return ''
+    navigatingRef.current = true
+
+    try {
+      navigate('/doc-add', {
+        state: { documentType: selectedType, file, source },
+      })
+      return ''
+    } catch {
+      navigatingRef.current = false
+      return '문서 저장 화면으로 이동하지 못했어요. 다시 선택해 주세요.'
+    }
   }
 
   const handleFile = (event) => {

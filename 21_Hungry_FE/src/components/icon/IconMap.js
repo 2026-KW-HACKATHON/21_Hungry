@@ -36,6 +36,7 @@ import availabilityPartialSelected from '../../assets/icon/calendar/availability
 import availabilityPartialDay from '../../assets/icon/calendar/availability-partial-day.svg?react'
 import availabilityRemove from '../../assets/icon/calendar/availability-remove.svg?react'
 
+import docVisit from '../../assets/icon/doc/doc-visit.svg?react'
 import docDiagnosis from '../../assets/icon/doc/doc-diagnosis.svg?react'
 import docOther from '../../assets/icon/doc/doc-other.svg?react'
 import docSearch from '../../assets/icon/doc/doc-search.svg?react'
@@ -80,6 +81,7 @@ export const iconMap = {
   'availability-partial-day': availabilityPartialDay,
   'availability-remove': availabilityRemove,
 
+  'doc-visit': docVisit,
   'doc-diagnosis': docDiagnosis,
   'doc-other': docOther,
   'doc-search': docSearch,
