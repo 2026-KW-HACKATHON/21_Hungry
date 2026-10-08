@@ -7,19 +7,6 @@
   flex-direction: column;
 }
 
-.familySchedule__page > .backHeader__container {
-  height: 189px;
-  flex-shrink: 0;
-}
-
-.familySchedule__page .backHeader__title {
-  line-height: 1.4;
-}
-
-.familySchedule__page .backHeader__subtitle {
-  display: none;
-}
-
 .familySchedule__content {
   width: 100%;
   min-height: 0;

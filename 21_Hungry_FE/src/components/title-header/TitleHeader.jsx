@@ -3,8 +3,8 @@ import './TitleHeader.css'
 function TitleHeader({ content, subcontent }) {
   return (
     <div className='titleHeader__container'>
-      <p className='titleHeader__title'>{content}</p>
-      <p className='titleHeader__subtitle'>{subcontent}</p>
+      <div className='titleHeader__title'>{content}</div>
+      <div className='titleHeader__subtitle'>{subcontent}</div>
     </div>
   )
 }

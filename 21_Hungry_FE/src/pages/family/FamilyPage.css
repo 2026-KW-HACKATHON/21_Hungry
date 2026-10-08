@@ -7,16 +7,6 @@
   flex-direction: column;
 }
 
-.family__page > .titleHeader__container {
-  height: 209px;
-  flex-shrink: 0;
-}
-
-.family__page .titleHeader__title,
-.family__page .titleHeader__subtitle {
-  line-height: 1.4;
-}
-
 .family__content {
   width: 100%;
   min-height: 0;
