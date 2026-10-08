@@ -1,0 +1,329 @@
+{
+  "id" : "resp_0859a5bbf5e1da4d016ac7bf9f1ac087d0b62db82c5634d601",
+  "object" : "response",
+  "created_at" : 1791475615,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791475620,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_0859a5bbf5e1da4d016ac7bf9fd08087d095b69142996f5a0a",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"summary\":\"왼팔을 움직일 수 없고 왼쪽 얼굴 따끔거림, 삼키기 어려움, 말이 느리고 어려워짐. 뇌졸중 가능성으로 응급 병원 이송. 도착 전까지 현관문을 열어 두고 복도에서 대기. 구급차 요청 완료.\",\"details\":{\"symptoms\":[{\"text\":\"한 시간쯤 전부터 왼팔을 움직일 수 없음.\",\"evidenceIndexes\":[0]},{\"text\":\"왼쪽 얼굴 따끔거림. 삼키기 어려움. 말하기가 전보다 힘들고 느려짐.\",\"evidenceIndexes\":[1]}],\"tests\":[{\"text\":\"뇌졸중 가능성 언급. 가까운 응급실에서 뇌졸중 담당 의사가 진찰하고 치료를 판단할 예정.\",\"evidenceIndexes\":[2]}],\"medicationMentions\":[],\"precautions\":[{\"text\":\"응급으로 병원에 가야 함.\",\"evidenceIndexes\":[3]},{\"text\":\"도착할 때까지 현관문 잠금을 풀어 두고 복도에 앉아 있어야 함.\",\"evidenceIndexes\":[4]},{\"text\":\"문을 열어 두고 구급대원이 쉽게 들어올 수 있게 기다리기.\",\"evidenceIndexes\":[5]}],\"followUps\":[{\"text\":\"구급차 요청 완료. 가까운 응급실로 이동 예정.\",\"evidenceIndexes\":[6]}]},\"evidence\":[{\"sourceId\":\"777b2508-3766-313e-8c31-501619d67be7\",\"textVersion\":1,\"page\":null,\"quote\":\"[018] 환자: 한 시간쯤 전에 일어났는데 왼팔을 움직일 수가 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"777b2508-3766-313e-8c31-501619d67be7\",\"textVersion\":1,\"page\":null,\"quote\":\"[035] 환자: 아니요, 그런데 왼쪽 얼굴이 따끔거려요.\\n[036] 의사: 얼마나 됐나요?\\n[037] 환자: 일어났을 때부터요. 똑같이 한 시간 정도 됐어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"777b2508-3766-313e-8c31-501619d67be7\",\"textVersion\":1,\"page\":null,\"quote\":\"[051] 의사: 뇌졸중일 수도 있습니다.\\n[052] 환자: 아, 그렇군요.\\n[053] 의사: 응급으로 병원에 가셔야 합니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"777b2508-3766-313e-8c31-501619d67be7\",\"textVersion\":1,\"page\":null,\"quote\":\"[055] 의사: 지금 옆에 있는 동료에게 집 주소로 구급차를 불러 달라고 하겠습니다. 현관문 잠금을 풀어 두고 복도에 앉아 계세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"777b2508-3766-313e-8c31-501619d67be7\",\"textVersion\":1,\"page\":null,\"quote\":\"[090] 의사: 문을 열어 두고 구급대원이 쉽게 들어올 수 있게 기다리는 것 외에는 없습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"777b2508-3766-313e-8c31-501619d67be7\",\"textVersion\":1,\"page\":null,\"quote\":\"[086] 의사: 구급차가 오고 있습니다. 아마 가까운 응급실로 가서 뇌졸중 담당 의사가 진찰하고 치료를 판단할 겁니다.\",\"occurrenceIndex\":0}],\"items\":[{\"itemKey\":\"item1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"응급실 이송\",\"description\":\"구급차로 가까운 응급실 이동. 뇌졸중 담당 의사 진찰 예정.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"777b2508-3766-313e-8c31-501619d67be7\",\"textVersion\":1,\"page\":null,\"quote\":\"[086] 의사: 구급차가 오고 있습니다. 아마 가까운 응급실로 가서 뇌졸중 담당 의사가 진찰하고 치료를 판단할 겁니다.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[\"LAST_DATE_MISSING\"],\"isConditional\":true}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "evidence", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "summary" : {
+            "type" : [ "string", "null" ]
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "evidence" : {
+            "$ref" : "#/$defs/evidenceList"
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "evidence" : {
+                  "$ref" : "#/$defs/evidenceList"
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "text", "evidenceIndexes" ],
+              "properties" : {
+                "text" : {
+                  "type" : [ "string", "null" ]
+                },
+                "evidenceIndexes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "integer"
+                  }
+                }
+              }
+            }
+          },
+          "evidenceList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/evidence"
+            }
+          },
+          "evidence" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "sourceId", "textVersion", "page", "quote", "occurrenceIndex" ],
+            "properties" : {
+              "sourceId" : {
+                "type" : "string"
+              },
+              "textVersion" : {
+                "type" : "integer"
+              },
+              "page" : {
+                "type" : [ "integer", "null" ]
+              },
+              "quote" : {
+                "type" : "string"
+              },
+              "occurrenceIndex" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 4598,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 1034,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5632
+  },
+  "user" : null,
+  "metadata" : { }
+}

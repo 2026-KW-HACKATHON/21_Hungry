@@ -1,3 +1,13 @@
 /gradlew text eol=lf
 *.bat text eol=crlf
 *.jar binary
+
+# Frozen AI evaluation artifacts are byte-hashed: retain original LF/CRLF on every platform.
+/eval-results/** -text
+/src/test/resources/ai/eval/** -text
+/src/main/resources/ai/analysis-prompt-v*.txt -text
+/src/main/resources/ai/analysis-verifier-v*.txt -text
+/src/main/resources/ai/analysis-semantic-facts.schema.json -text
+/src/main/java/com/kw/knowone/encounter/processing/SemanticAnalysis*.java -text
+/src/main/java/com/kw/knowone/encounter/processing/UtteranceEvidence.java -text
+/docs/ai-summary-evals/v1.8.1-rubric.md -text

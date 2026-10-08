@@ -1,0 +1,293 @@
+{
+  "id" : "resp_0467986a092f4d0a016ac8036243c887d0b4fabf0138ee1e73",
+  "object" : "response",
+  "created_at" : 1791492962,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791493030,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-6.1-sol",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "rs_0467986a092f4d0a016ac80363862087d0bef9795395cf07d2",
+    "type" : "reasoning",
+    "content" : [ ],
+    "encrypted_content" : "gAAAAABqyAOmzGb-OLDMxE2BubeXUsm2Cf9CasMDBIt3aIPmgAFYVDPk40Ho1cB5qj0FHiwWUHimycWIozmoZpMNUPiE8DWc0HP9LPPQWOPoAi9R_6l1HvWrx1_xJNLaHzv8pBr1xSsgWLDz_AfWR2KaKngmbyBxFqH4GqkYa8JFfpl_MgrQlzY6NuqJ48Vo0WzM0dligUG_MWGTIt69tmDcCMup9e0Xa9Wblo_2zJygPo7fajHLQX6vSO75L42ftEYS31Km8Ba1gBsswmYWFdi4-iAq4w7XYtfZaExBxcF_rNtnhJWew06i9Z8fH8Ym0VmIbWZP_DzzQ_QhnQZt58svXBzPpYdopjBXXnvWDdW9hmWJP8l_TZy5aaf7yuZD2tKgv1k7D8Q68-9VxGrPFxYQjQ7jbWJu2RfqO23KtluwAQ5EwTqNsV1bL9FHE685oAambqNt93zJ1Qlc3m-DignvQa4LStSh6YVPZis-s_h95nqPyHfMlb8zlwnXca6Yo8PHyD44LGOmRPxhwqA1-CiE3G9aJxmh8-fIrhCKG92v3ZwPFb9S1NXtHXXKMwHZvp-eC8uqnkQVN08PlF4n1IgL-FHspWhg06QSh85261M7oxI4DHxQNwx8BFtKyDYN4B3nkISKl63YAk4hsWyLEP5XPkqVoSkmnCbK7gLNobvWE4X56r4eJ2TF9iVNxwVc0IRy-_JVZXS0aqO3w8H2UXSULQe_f-Rcd4Yt4lLJRshp9IN1251j4p5-9hNuX05o3jtkQtNtE6axTDt9hIHhSGUfkFhJkcpayoAKfboJs6-Kusn7MTELMEfe7FVWRaKIUtkgkVQ8lvrUfrODmNa9rk5CaVh6Xbyr6MnZCo84dBLpMooVqoJoarzGMfJGNJS5Dun-JOp7gAPi0jOFCRbqySzYIBAFswxHf0qhsE6DsIw_unCsT9S8zXN1kDL0hWYPYKYfAQU5Ysxi5Ikh5J2irrS5aEfL546dhsljxPDo9haXV-XWPTCCqasnt6szE6NnLJ0TzB5vO8kf6gK0IMZPsTPcGhEZ0sRGJ-zHDUSyp69zwtDCde9zjdFkVcAQxZ8cgCIUHDjiynclhRGY3QO-0JUo5RiTDhaF19uK_B8isKGhTijY3MzyVZgFqfgect5PcpRi1KEPllJJP-8WZPwnfdJXwvj2HSNDeAWt_eVaMlSYHg8n2ajYuDVhuGOXMGFW6HDPSJxUhasmtkuKUoqA3JBzCApdAQCaABAABARVtNPfHxlJQSW-Fn8QkGkAaY2F0m0nl2YVMS8T5CcQPX8uJH9S8D5Z85Y3Gr1RkxVRpcJU4fFf79xLZNMWneb1o9OTvqH9VaxKK1vk3cQgMqc3rqQuJ9YXtAE3QFdIp2LeKoV6PeYllaWEuy5qjWPcXjHpaRC11n5w1Zim0utJxIUFiYTIX8McI0VaaeS9JMl68uXEnvFHVX6-oeTFIJH3hWQ8dmFftFyFVsFlRsv89NLzjr45IX86-FgGPVcr7NJ-rcf-UKAZx6d7dt-5n2MvzFeFbaKPkcitMoq3NlpBARcUohZgcupGasIWOLKzzcq2izDQNLKGkgmH7pXPPI1zuBzJrXl1kNkpZuEzlq6Jgrgbaq2LzExdEIBgaA==",
+    "summary" : [ ]
+  }, {
+    "id" : "msg_0467986a092f4d0a016ac803665ee887d0bc5430e18533643a",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\n  \"schemaVersion\": \"1.8.1\",\n  \"facts\": [\n    {\n      \"factId\": \"f1\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0017\"], \"answerIds\": [\"sf424b818ff64v1u0018\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"몸이 뜨겁고 심한 두통이 있다는 질문에 동의했으며, 증상이 오락가락하고 업무에 지장을 준다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f2\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0019\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"식욕이 줄어드는 것 같다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f3\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0020\", \"sf424b818ff64v1u0022\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"가끔 팔이 따끔거리며, 특히 아침에 엘리베이터에 들어갈 때 같은 상황에서 느낀다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f4\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0026\", \"sf424b818ff64v1u0028\"], \"answerIds\": [\"sf424b818ff64v1u0027\", \"sf424b818ff64v1u0029\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"여러 증상은 서로 다른 때에 무작위로, 한 번에 하나씩 나타난다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f5\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0030\", \"sf424b818ff64v1u0034\"], \"answerIds\": [\"sf424b818ff64v1u0033\", \"sf424b818ff64v1u0035\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"두통이 올 것을 미리 잘 알지 못하며, 주로 직장에서 회의하거나 노트북을 사용할 때 생긴다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f6\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0042\"], \"questionIds\": [\"sf424b818ff64v1u0036\"], \"answerIds\": [\"sf424b818ff64v1u0037\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"두통 위치를 처음에는 전반적이라고 설명했으나, 이후 주로 앞쪽에 머무르고 다른 곳으로 퍼지지 않는다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f7\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0043\"], \"answerIds\": [\"sf424b818ff64v1u0044\"], \"correctionIds\": [\"sf424b818ff64v1u0045\"]},\n      \"kind\": \"SYMPTOM\", \"text\": \"두통 때 메스꺼움이 있다는 답을 정정하여, 꼭 그렇지는 않지만 조금 메스꺼울지도 모르겠다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f8\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0051\"], \"answerIds\": [\"sf424b818ff64v1u0053\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"이번 증상들이 시작되기 전에는 평소 두통이 없었다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f9\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0058\"], \"questionIds\": [\"sf424b818ff64v1u0051\"], \"answerIds\": [\"sf424b818ff64v1u0053\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"증상은 대략 직장을 바꿨을 때 시작됐다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f10\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0076\", \"sf424b818ff64v1u0079\"], \"answerIds\": [\"sf424b818ff64v1u0078\", \"sf424b818ff64v1u0080\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"스트레스는 10점 중 7~8점 정도이며, 평소에도 로펌 업무의 압박으로 그 정도라고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f11\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0084\", \"sf424b818ff64v1u0086\", \"sf424b818ff64v1u0088\"], \"answerIds\": [\"sf424b818ff64v1u0085\", \"sf424b818ff64v1u0087\", \"sf424b818ff64v1u0089\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"의도하지 않게 체중이 5파운드 줄었다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f12\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0090\", \"sf424b818ff64v1u0092\"], \"answerIds\": [\"sf424b818ff64v1u0091\", \"sf424b818ff64v1u0093\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"옷이 헐렁해지는 느낌은 없으며, 주변에서 살이 빠졌다고 말한 적도 없다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f13\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0094\", \"sf424b818ff64v1u0096\", \"sf424b818ff64v1u0102\"], \"answerIds\": [\"sf424b818ff64v1u0095\", \"sf424b818ff64v1u0097\", \"sf424b818ff64v1u0103\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"양손에 따끔거림이 있으며, 이런 느낌은 처음이라고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f14\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0094\", \"sf424b818ff64v1u0098\"], \"answerIds\": [\"sf424b818ff64v1u0095\", \"sf424b818ff64v1u0099\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"다리에는 따끔거림이 없다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f15\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0109\"], \"questionIds\": [\"sf424b818ff64v1u0112\", \"sf424b818ff64v1u0114\"], \"answerIds\": [\"sf424b818ff64v1u0113\", \"sf424b818ff64v1u0115\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"때때로 숨이 차며 책상에 앉아 있을 때도 느끼지만, 운동할 때는 숨이 차지 않는다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f16\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0024\"], \"questionIds\": [\"sf424b818ff64v1u0117\", \"sf424b818ff64v1u0119\"], \"answerIds\": [\"sf424b818ff64v1u0118\", \"sf424b818ff64v1u0120\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"심장이 빨리 뛰는 느낌이 하루 한 번쯤, 어쩌면 더 자주 있다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f17\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0121\"], \"questionIds\": [\"sf424b818ff64v1u0122\"], \"answerIds\": [\"sf424b818ff64v1u0123\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"직장을 바꾼 뒤부터 성욕이 줄었다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f18\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0125\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\", \"text\": \"환자는 기존 질환으로 갑상선기능항진증이 있다고 말했다. 이는 환자가 보고한 병력이다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f19\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0125\"], \"questionIds\": [\"sf424b818ff64v1u0126\", \"sf424b818ff64v1u0128\"], \"answerIds\": [\"sf424b818ff64v1u0127\", \"sf424b818ff64v1u0129\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\", \"text\": \"갑상선 질환 관련 약으로 Thyroxine을 잊지 않고 복용하고 있다고 했다. 용량과 복용 빈도는 언급되지 않았다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": \"Thyroxine\", \"doseText\": null, \"frequencyText\": null, \"courseDurationText\": null, \"instructions\": null, \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f20\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0132\", \"sf424b818ff64v1u0134\"], \"answerIds\": [\"sf424b818ff64v1u0133\", \"sf424b818ff64v1u0135\"], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\", \"text\": \"술은 일주일에 한 번 와인 두어 잔을 마시며, 담배는 피우지 않는다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f21\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"sf424b818ff64v1u0136\", \"sf424b818ff64v1u0138\"], \"answerIds\": [\"sf424b818ff64v1u0137\", \"sf424b818ff64v1u0139\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\", \"text\": \"기호 목적 약물은 사용하지 않으며, 코카인이나 마리화나를 사용한 적도 없다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f22\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0144\", \"sf424b818ff64v1u0154\", \"sf424b818ff64v1u0156\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\", \"text\": \"진료 예약을 잡거나 앱에서 예약하여 진료소 의사에게 대면 진료를 받도록 권했다. 예약 일시는 언급되지 않았다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"FUTURE\", \"medication\": null,\n      \"task\": {\"kind\": \"HOSPITAL\", \"title\": \"진료소 대면 진료 예약 및 방문\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f23\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0144\", \"sf424b818ff64v1u0146\", \"sf424b818ff64v1u0148\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"TEST\", \"text\": \"진료소 진료에서 심장과 호흡 상태 및 기능을 확인하는 진찰을 할 수 있다고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f24\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0150\", \"sf424b818ff64v1u0152\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"TEST\", \"text\": \"아마 Thyroxine 관련 혈액검사도 할 수 있으며, 그다음에 판단하겠다고 했다. 검사 시행은 확정되지 않았고 검사 관련 약명 발음도 불명확하다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": [\"UNCLEAR_SOURCE\"]\n    },\n    {\n      \"factId\": \"f25\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0154\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\", \"text\": \"약을 주기 전에 직접 만나 진찰하는 것이 좋겠다고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f26\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0160\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\", \"text\": \"환자가 같은 설명을 전부 다시 하지 않도록 오늘 상담 내용을 동료에게 전달하겠다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"CLINICIAN_ONLY\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f27\",\n      \"support\": {\"statementIds\": [\"sf424b818ff64v1u0105\", \"sf424b818ff64v1u0109\", \"sf424b818ff64v1u0111\"], \"questionIds\": [\"sf424b818ff64v1u0106\"], \"answerIds\": [\"sf424b818ff64v1u0107\", \"sf424b818ff64v1u0108\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\", \"text\": \"몸이 뜨겁다는 기록을 다시 확인했을 때 답변은 불명확했고, 환자는 때때로 숨이 찬 느낌을 설명하며 그 증상을 말한 것인지도 모르겠다고 했다. 열감에 대한 명확한 재확인이나 부정은 없었다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\", \"alternativeGroup\": null, \"actionStatus\": \"NONE\", \"medication\": null, \"task\": null, \"uncertaintyCodes\": [\"UNCLEAR_SOURCE\"]\n    }\n  ],\n  \"summaryFactIds\": [\"f1\", \"f27\", \"f2\", \"f11\", \"f13\", \"f15\", \"f16\", \"f17\", \"f18\", \"f19\", \"f22\", \"f23\", \"f24\", \"f25\"]\n}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "all_turns",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "sf424b818ff64v1u0001", "sf424b818ff64v1u0002", "sf424b818ff64v1u0003", "sf424b818ff64v1u0004", "sf424b818ff64v1u0005", "sf424b818ff64v1u0006", "sf424b818ff64v1u0007", "sf424b818ff64v1u0008", "sf424b818ff64v1u0009", "sf424b818ff64v1u0010", "sf424b818ff64v1u0011", "sf424b818ff64v1u0012", "sf424b818ff64v1u0013", "sf424b818ff64v1u0014", "sf424b818ff64v1u0015", "sf424b818ff64v1u0016", "sf424b818ff64v1u0017", "sf424b818ff64v1u0018", "sf424b818ff64v1u0019", "sf424b818ff64v1u0020", "sf424b818ff64v1u0021", "sf424b818ff64v1u0022", "sf424b818ff64v1u0023", "sf424b818ff64v1u0024", "sf424b818ff64v1u0025", "sf424b818ff64v1u0026", "sf424b818ff64v1u0027", "sf424b818ff64v1u0028", "sf424b818ff64v1u0029", "sf424b818ff64v1u0030", "sf424b818ff64v1u0031", "sf424b818ff64v1u0032", "sf424b818ff64v1u0033", "sf424b818ff64v1u0034", "sf424b818ff64v1u0035", "sf424b818ff64v1u0036", "sf424b818ff64v1u0037", "sf424b818ff64v1u0038", "sf424b818ff64v1u0039", "sf424b818ff64v1u0040", "sf424b818ff64v1u0041", "sf424b818ff64v1u0042", "sf424b818ff64v1u0043", "sf424b818ff64v1u0044", "sf424b818ff64v1u0045", "sf424b818ff64v1u0046", "sf424b818ff64v1u0047", "sf424b818ff64v1u0048", "sf424b818ff64v1u0049", "sf424b818ff64v1u0050", "sf424b818ff64v1u0051", "sf424b818ff64v1u0052", "sf424b818ff64v1u0053", "sf424b818ff64v1u0054", "sf424b818ff64v1u0055", "sf424b818ff64v1u0056", "sf424b818ff64v1u0057", "sf424b818ff64v1u0058", "sf424b818ff64v1u0059", "sf424b818ff64v1u0060", "sf424b818ff64v1u0061", "sf424b818ff64v1u0062", "sf424b818ff64v1u0063", "sf424b818ff64v1u0064", "sf424b818ff64v1u0065", "sf424b818ff64v1u0066", "sf424b818ff64v1u0067", "sf424b818ff64v1u0068", "sf424b818ff64v1u0069", "sf424b818ff64v1u0070", "sf424b818ff64v1u0071", "sf424b818ff64v1u0072", "sf424b818ff64v1u0073", "sf424b818ff64v1u0074", "sf424b818ff64v1u0075", "sf424b818ff64v1u0076", "sf424b818ff64v1u0077", "sf424b818ff64v1u0078", "sf424b818ff64v1u0079", "sf424b818ff64v1u0080", "sf424b818ff64v1u0081", "sf424b818ff64v1u0082", "sf424b818ff64v1u0083", "sf424b818ff64v1u0084", "sf424b818ff64v1u0085", "sf424b818ff64v1u0086", "sf424b818ff64v1u0087", "sf424b818ff64v1u0088", "sf424b818ff64v1u0089", "sf424b818ff64v1u0090", "sf424b818ff64v1u0091", "sf424b818ff64v1u0092", "sf424b818ff64v1u0093", "sf424b818ff64v1u0094", "sf424b818ff64v1u0095", "sf424b818ff64v1u0096", "sf424b818ff64v1u0097", "sf424b818ff64v1u0098", "sf424b818ff64v1u0099", "sf424b818ff64v1u0100", "sf424b818ff64v1u0101", "sf424b818ff64v1u0102", "sf424b818ff64v1u0103", "sf424b818ff64v1u0104", "sf424b818ff64v1u0105", "sf424b818ff64v1u0106", "sf424b818ff64v1u0107", "sf424b818ff64v1u0108", "sf424b818ff64v1u0109", "sf424b818ff64v1u0110", "sf424b818ff64v1u0111", "sf424b818ff64v1u0112", "sf424b818ff64v1u0113", "sf424b818ff64v1u0114", "sf424b818ff64v1u0115", "sf424b818ff64v1u0116", "sf424b818ff64v1u0117", "sf424b818ff64v1u0118", "sf424b818ff64v1u0119", "sf424b818ff64v1u0120", "sf424b818ff64v1u0121", "sf424b818ff64v1u0122", "sf424b818ff64v1u0123", "sf424b818ff64v1u0124", "sf424b818ff64v1u0125", "sf424b818ff64v1u0126", "sf424b818ff64v1u0127", "sf424b818ff64v1u0128", "sf424b818ff64v1u0129", "sf424b818ff64v1u0130", "sf424b818ff64v1u0131", "sf424b818ff64v1u0132", "sf424b818ff64v1u0133", "sf424b818ff64v1u0134", "sf424b818ff64v1u0135", "sf424b818ff64v1u0136", "sf424b818ff64v1u0137", "sf424b818ff64v1u0138", "sf424b818ff64v1u0139", "sf424b818ff64v1u0140", "sf424b818ff64v1u0141", "sf424b818ff64v1u0142", "sf424b818ff64v1u0143", "sf424b818ff64v1u0144", "sf424b818ff64v1u0145", "sf424b818ff64v1u0146", "sf424b818ff64v1u0147", "sf424b818ff64v1u0148", "sf424b818ff64v1u0149", "sf424b818ff64v1u0150", "sf424b818ff64v1u0151", "sf424b818ff64v1u0152", "sf424b818ff64v1u0153", "sf424b818ff64v1u0154", "sf424b818ff64v1u0155", "sf424b818ff64v1u0156", "sf424b818ff64v1u0157", "sf424b818ff64v1u0158", "sf424b818ff64v1u0159", "sf424b818ff64v1u0160", "sf424b818ff64v1u0161", "sf424b818ff64v1u0162", "sf424b818ff64v1u0163", "sf424b818ff64v1u0164", "sf424b818ff64v1u0165", "sf424b818ff64v1u0166" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 22436,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 22433,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 5096,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 87
+    },
+    "total_tokens" : 27532
+  },
+  "user" : null,
+  "metadata" : { }
+}

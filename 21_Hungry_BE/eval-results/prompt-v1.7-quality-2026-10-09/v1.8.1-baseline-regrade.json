@@ -1,0 +1,379 @@
+{
+  "rubric": "v1.8.1-rubric.md",
+  "reviewStatus": "AI source comparison, not clinician validated",
+  "oldOverallPass": 5,
+  "recheckedOverallPass": 4,
+  "changedCase": "D07_MULTIPLE_MEDICATIONS",
+  "policy": "Historical grouped issues are preserved as groups, not mislabelled atomic counts. Current A/B/C atomic error units are in manual-review.json. Same source-first candidate/meaning rubric; MINOR style alone is not a fail.",
+  "rows": [
+    {
+      "caseId": "D01_DOCTOR_CONDITIONAL_RETURN",
+      "requestSha256": "ed68dfecffeecd0d300c312ff3190e5c943c18ec00d7d5d1d545e32461affe21",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "요약에는 사흘 뒤에도 아프면 재방문이 있으나 TASK 후보 없음."
+      ],
+      "sourceTurns": [
+        "001"
+      ]
+    },
+    {
+      "caseId": "D02_PATIENT_CLINICIAN_MIX",
+      "requestSha256": "33c0dd945381f0711ecb4538c8460ac6378e8305d24ed37e5d344d8186db2425",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "환자의 폐렴 추측을 증상 필드에 그대로 기록. 의료진의 확진으로 바꾸지는 않았지만 추측/증상 구분 실패 지속."
+      ],
+      "sourceTurns": [
+        "001",
+        "002"
+      ]
+    },
+    {
+      "caseId": "D10_EXPLICIT_CORRECTION",
+      "requestSha256": "2f62444343ec31fb3b71faac695788f8fb9a997fa2e23ea6ee7d1d9fdfc279eb",
+      "oldVerdict": "PASS_LIMITED",
+      "recheckedVerdict": "PASS_LIMITED",
+      "changed": false,
+      "reason": [],
+      "sourceTurns": []
+    },
+    {
+      "caseId": "D04_D14_UNCERTAIN_CONDITIONAL",
+      "requestSha256": "8d20f1cd9a389b58dedad0f621577cbb2f69e97f877f6f72750f53a4f5b1b55e",
+      "oldVerdict": "PASS_LIMITED",
+      "recheckedVerdict": "PASS_LIMITED",
+      "changed": false,
+      "reason": [],
+      "sourceTurns": []
+    },
+    {
+      "caseId": "D07_MULTIPLE_MEDICATIONS",
+      "requestSha256": "2059cf047a7025c0432cfd7ddc66b4d6fe876b9bcdbfb34c3a67293e16b0286e",
+      "oldVerdict": "PASS_LIMITED",
+      "recheckedVerdict": "FAIL",
+      "changed": true,
+      "reason": [
+        "기존 약 중단하지 말라는 명시지속 지시의 확인후보 없음; 이전 PASS 판정 보완"
+      ],
+      "sourceTurns": [
+        "001"
+      ]
+    },
+    {
+      "caseId": "D11_DOCUMENT_CONFLICT",
+      "requestSha256": "199d6a40ca61886fa722f8b3003ecdca1e2c99a094c9262576cf10862f3e8726",
+      "oldVerdict": "PASS_LIMITED",
+      "recheckedVerdict": "PASS_LIMITED",
+      "changed": false,
+      "reason": [],
+      "sourceTurns": []
+    },
+    {
+      "caseId": "H01_NOVEL_MIXED_CORRECTION",
+      "requestSha256": "5331a859dd2674e2ae157ccde95791bd0972c3514c45e3bfce9f6a6fa72a53e5",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "시각 없는 저녁 복용을 DAILY 알림으로 출력하고 durationMinutes=1440 생성. v1.6 오류 지속; 수치 범위는 적법해도 근거 없는 시간.",
+        "4일 기간은 요약/상세에 있으나 약 후보에서 빠짐."
+      ],
+      "sourceTurns": [
+        "002"
+      ]
+    },
+    {
+      "caseId": "H02_NOVEL_PLAIN_NEGATION",
+      "requestSha256": "fd7ba05c8f8950be6803cac4829de1716f2f31345e34a8e9917683ba9f33d930",
+      "oldVerdict": "PASS_LIMITED",
+      "recheckedVerdict": "PASS_LIMITED",
+      "changed": false,
+      "reason": [],
+      "sourceTurns": []
+    },
+    {
+      "caseId": "day3_consultation06",
+      "requestSha256": "bf42a6bafc1588398a6cc59630f2592d8c87650e285accf1fa4a3de5720d6968",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "입술 따끔거림의 질문 021/답 022가 선택되지 않고 020만 연결됨.",
+        "020과 단답 022만 선택, 따끔거림을 특정하는 질문 021 없음."
+      ],
+      "sourceTurns": [
+        "019",
+        "020",
+        "021",
+        "022"
+      ]
+    },
+    {
+      "caseId": "day3_consultation08",
+      "requestSha256": "cbf1e320b275940fec8a6a9b43385d28f54d2afccc1f25fbdd5d5504bad36537",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "쌕쌕거림 없음은 단답 033만 연결, 질문 032 누락.",
+        "숨참/쌕쌕거림/3주 지속/상태 악화라는 별도 연락 조건을 '등으로 상태가 나빠지면'으로 결합. precautions에는 원래 OR 조건이 있어 출력 내부 불일치.",
+        "실제 조건부 연락이 보고서에는 있으나 TASK로 추출되지 않음."
+      ],
+      "sourceTurns": [
+        "032",
+        "033",
+        "068",
+        "069",
+        "073"
+      ]
+    },
+    {
+      "caseId": "day3_consultation02",
+      "requestSha256": "484826f90fb8b7638caf71c3ca1b7d1411d1be0aa037e3548e2d8e364d50dce3",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "원문은 수막염 배제가 필요하고 초기인지 모른다고 했는데 '수막염보다는'이라는 상대적 판단을 추가.",
+        "저림/컵을 들 능력 부정에서 034/038만 인용, 질문 033/037 누락.",
+        "유리컵 압박 시 발진 소실을 단답 065로 지지하고 질문 064 누락."
+      ],
+      "sourceTurns": [
+        "077",
+        "078",
+        "033",
+        "034",
+        "037",
+        "038",
+        "064",
+        "065",
+        "066"
+      ]
+    },
+    {
+      "caseId": "day2_consultation09",
+      "requestSha256": "828e4fe09309e3b70943345cc177ceaa6f3de7dd73b62d005a8ed8d167403a3f",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "삼킴 어려움은 044 단답만 연결, 질문 043 빠짐.",
+        "과거 동일 증상/수면/손 색/차가움/얼굴 비대칭의 여러 부정에 질문 없이 단답만 연결.",
+        "'일어난 뒤 약 1시간부터'는 기상 1시간 후 발생으로 읽힘. 원문은 약 1시간 전에 기상했고 그때부터 발생.",
+        "세 기존 약을 하나의 약 이름으로 합쳐 단일 후보로 출력."
+      ],
+      "sourceTurns": [
+        "043",
+        "044",
+        "026",
+        "027",
+        "028",
+        "029",
+        "030",
+        "031",
+        "032",
+        "033",
+        "039",
+        "041",
+        "018",
+        "037",
+        "064"
+      ]
+    },
+    {
+      "caseId": "day3_consultation04",
+      "requestSha256": "4d2dbc342255a7cb641e0345c742be0b572f2bc6a1857fd36a86b303f08aab7a",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "075의2~4시간/094의2시간 안내가 다름; 후반을 무조건 정정으로 단정하지 말고 불일치를 드러내야 함. 후보는2~4만 유지",
+        "필요 시 Salbutamol인데 false 지속.",
+        "가래 부정의 029만 선택하고 질문 028 없음.",
+        "미래 진료/조건부 응급실 후보가 둘 다 없음."
+      ],
+      "sourceTurns": [
+        "074",
+        "075",
+        "094",
+        "028",
+        "029",
+        "072",
+        "084",
+        "093"
+      ]
+    },
+    {
+      "caseId": "day3_consultation05",
+      "requestSha256": "fe97de02def19071127e2d586f8d9b330c55ecc5f54e9ee60cd64b7828d65ff8",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "약 10일분을 말한 원문에서 시각 없는 DAILY/durationMinutes=10 출력. 분 단위 값은 원문에 없음.",
+        "팔다리 힘 빠짐/갑작스런 두통/심한 구토 조건을 '악화 시'로 일반화. 상세와 TASK에는 올바른 조건이 있으나 summary에는 없음.",
+        "약 10일분이 요약/상세에만 있고 후보 instructions에는 없음."
+      ],
+      "sourceTurns": [
+        "084",
+        "077",
+        "079"
+      ]
+    },
+    {
+      "caseId": "day2_consultation01",
+      "requestSha256": "80f0e8396e1dc38307c9808df85408850ba01a362207a22106a6d427bf3b6c76",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "이명/간헐 경과를 말하면서 012/014/020/022/048만 인용. 이명 발화 018 및 경과 027이 빠짐.",
+        "원문 074의 5분 기다린 뒤 연락 조건이 출력 전반에서 계속 빠짐."
+      ],
+      "sourceTurns": [
+        "018",
+        "025",
+        "027",
+        "074"
+      ]
+    },
+    {
+      "caseId": "day2_consultation03",
+      "requestSha256": "f2ca517d8e410a25a22a3f826f1c89babb98d489654541d8c47da09d18ae8704",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "귀 분비물/통증/발열 부정을 038/040/042만으로 연결, 질문 037/039/041 없음.",
+        "오래전 처방/이름 기억 못함을 기록하지만 선택한 050/055에는 없고 057/059가 필요.",
+        "이전 잘못 연결했던 여러 부정을 이번에는 아예 누락; 근거 오류 해결로 집계하지 않음."
+      ],
+      "sourceTurns": [
+        "037",
+        "038",
+        "039",
+        "040",
+        "041",
+        "042",
+        "055",
+        "057",
+        "059",
+        "027",
+        "028",
+        "029",
+        "030",
+        "031",
+        "032",
+        "033",
+        "034"
+      ]
+    },
+    {
+      "caseId": "day5_consultation12",
+      "requestSha256": "4bdd821f5706a7ff0bc768bf2fb47011ba38d67a35d505148bce56a229ec4195",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "022/023은 짧은 시간 동안 점점 심해졌다는 뜻인데 '짧은 시간 동안 지속됐다'로 증상 지속 시간을 변경.",
+        "여러 신경/시각 증상 부정에 질문 없는 025/029/036/038/040만 연결. 질문 024/027/030 등이 필요.",
+        "약을 써 본 뒤 전화하는 원문의 순서를 '다시 전화해 ... 약국에서 ... 써 본 뒤 연락'으로 중복·혼재."
+      ],
+      "sourceTurns": [
+        "022",
+        "023",
+        "024",
+        "025",
+        "027",
+        "029",
+        "030",
+        "031",
+        "037",
+        "038",
+        "039",
+        "040",
+        "094",
+        "095"
+      ]
+    },
+    {
+      "caseId": "day1_consultation12",
+      "requestSha256": "2f3be4b34fed97adf49caba1974e8d97cbd518a6ae662ae2473b884a650e39ad",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "3일 설사와 탈수감까지 말하지만 진료 판단 082만 선택. 013/028/031 필요.",
+        "혈변/복통 부정의 답 026/028은 선택하지만 질문 025/027이 빠짐.",
+        "보통3~5일 경과 정보 누락"
+      ],
+      "sourceTurns": [
+        "013",
+        "028",
+        "031",
+        "082",
+        "025",
+        "026",
+        "027"
+      ]
+    },
+    {
+      "caseId": "day1_consultation01",
+      "requestSha256": "867b401a6f926e3d1277ca3eb5ac140eff37a9825a4bcb87bc0db66ceed2361c",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "Dioralyte instructions에는 구토와 설사 시라는 조건이 있으나 isConditional=false.",
+        "증상 지속 조건을 말하면서 검사 제안 097만 연결, 앞 조건 093/095 누락.",
+        "조건부 3~4일 재진/추가 검사가 보고서에만 있고 TASK 없음."
+      ],
+      "sourceTurns": [
+        "084",
+        "086",
+        "093",
+        "095",
+        "097"
+      ]
+    },
+    {
+      "caseId": "day1_consultation02",
+      "requestSha256": "2b443d0f35bcd7f7bbd3028e72dfe199a5a469462215f14b559c0123c4ebf7d0",
+      "oldVerdict": "FAIL",
+      "recheckedVerdict": "FAIL",
+      "changed": false,
+      "reason": [
+        "시각이 없는데 DAILY, durationMinutes=10. 7~10일 사용 기간은 10분 알림 근거가 아님. /items/1에도 동일 오류.",
+        "보습제의 목욕/샤워 사용 설명을 스테로이드에까지 적용하는 오류 지속.",
+        "Fexofenadine 제안을 기존 일반약 Loratadine/Piriton과 묶어 모두 처방 없이 살 수 있는 약으로 표현.",
+        "Loratadine 또는 Piriton, 이후 Fexofenadine 제안이라는 대안 관계 없이 3개 독립 약 후보로 출력. 동시 복용을 명시한 것은 아니지만 선택 관계 소실로 동시 처방 오인 위험.",
+        "가슴/손/팔꿈치 안쪽을 주장하면서 099/101/071/074만 인용. 101은 등이라고 하며 환자 정정 051 미선택.",
+        "나흘을 주장하나 선택 006/009/010에는 없음; 정정 042/043 필요.",
+        "진단 TASK를 제거했지만 실제 일기/조건부 재진 TASK도 없음."
+      ],
+      "sourceTurns": [
+        "108",
+        "125",
+        "105",
+        "112",
+        "113",
+        "121",
+        "122",
+        "117",
+        "119",
+        "051",
+        "099",
+        "101",
+        "041",
+        "042",
+        "043",
+        "115"
+      ]
+    }
+  ]
+}

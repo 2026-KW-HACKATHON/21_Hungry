@@ -1,0 +1,39 @@
+﻿{
+    "version":  "1.0.0",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "selectedBeforeEvaluation":  true,
+    "cases":  [
+                  {
+                      "id":  "day1_consultation03",
+                      "set":  "v18-holdout",
+                      "utterances":  141,
+                      "englishFile":  "day1_consultation03.en.json",
+                      "translationFile":  "day1_consultation03.ko.json",
+                      "note":  "original/day1_consultation03.note.json"
+                  },
+                  {
+                      "id":  "day2_consultation04",
+                      "set":  "v18-holdout",
+                      "utterances":  153,
+                      "englishFile":  "day2_consultation04.en.json",
+                      "translationFile":  "day2_consultation04.ko.json",
+                      "note":  "original/day2_consultation04.note.json"
+                  },
+                  {
+                      "id":  "day4_consultation01",
+                      "set":  "v18-holdout",
+                      "utterances":  140,
+                      "englishFile":  "day4_consultation01.en.json",
+                      "translationFile":  "day4_consultation01.ko.json",
+                      "note":  "original/day4_consultation01.note.json"
+                  },
+                  {
+                      "id":  "day5_consultation01",
+                      "set":  "v18-holdout",
+                      "utterances":  113,
+                      "englishFile":  "day5_consultation01.en.json",
+                      "translationFile":  "day5_consultation01.ko.json",
+                      "note":  "original/day5_consultation01.note.json"
+                  }
+              ]
+}

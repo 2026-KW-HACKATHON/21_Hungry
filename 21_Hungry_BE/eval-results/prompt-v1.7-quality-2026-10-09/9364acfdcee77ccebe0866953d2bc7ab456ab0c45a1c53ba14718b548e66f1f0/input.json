@@ -1,0 +1,13 @@
+{
+  "occurredOn" : "2026-10-07",
+  "analyzedAt" : "2026-10-09T00:00:00Z",
+  "timezone" : "Asia/Seoul",
+  "sources" : [ {
+    "sourceId" : "fc96c6c1-8009-3f75-bdf8-f69ceb22523f",
+    "textVersion" : 1,
+    "sourceType" : "AUDIO",
+    "mediaType" : "audio/wav",
+    "text" : "의사: 열이 나고 기운도 없을 때만 가상 약 R을 반 정 드세요. 둘 중 하나만 있을 때 먹으라는 뜻은 아닙니다."
+  } ],
+  "knownMedications" : [ ]
+}

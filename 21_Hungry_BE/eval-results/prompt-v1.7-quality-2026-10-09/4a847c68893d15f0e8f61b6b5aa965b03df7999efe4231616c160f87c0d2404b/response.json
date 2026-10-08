@@ -1,0 +1,293 @@
+{
+  "id" : "resp_064aa015064524f8016ac8007f788c87d0861002b7453d6209",
+  "object" : "response",
+  "created_at" : 1791492223,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791492236,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-6.1-sol",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "rs_064aa015064524f8016ac800805f2087d09951ffe359881418",
+    "type" : "reasoning",
+    "content" : [ ],
+    "encrypted_content" : "gAAAAABqyACMJhdej-ODZWNOpexhVV53yU7UDRWkYj6hPilNkj9gy9rpjF0u2sdxcWXuwHu4uxuqku3gevNDk0_bYJR8LTP1mriFBb6ixVrAIRMSAwXKaQ1hJtG7Y5q528I2HtHV0xXn_c4Jy-CKDFJ7GLkGGm-E1E3Z_mJ4YEv68ChVko4MEAz08TmwvVkhov7NDP9FpOvkIs-WxJx7PHfPmlRfu7-Sw1QzgAgXw-ruIjRxdAYUWdkTFvcHQ36fvNVTn3aB1n-6kBq9I6nIlGiFXiTp3f9sEXhVyLgGojVMqiKa5Ib9WQldlRtngBpHC7LTA51FBsd60hYkdQ9xloaT01rGoXFeI-prJeZG_aqpGVJ-jM3Z7b6g6lGTUUTnHjaMMDE8GwL9r8ZdTOstvL_QKhg13JwMOP6SdWBvSng-NHDa7ga2XwadhsOh8NkeuQg1M7YIcqPWYZ1GB57tXwyFAJzSMj7Rnyj9dYURO-Nw-01BmgqEpAy6la_ySIbbJdimde0yLcy_fvhUXJrBEx5y0KIUozdObNw8wenZmBnX7eDFujgCf9ffyyJ2oRTrfu3W3Fadma9RnoeOav0-jhQiKdRwgRo9-ZknyU7iB66rDZqop_EHMUm_i4eYrX03zoGvDLw-WmFqqW3hT115kRiL8oLeLpWgONz67uqnKRU-MMhRevvn6lQeo5q77SC67BQ3qKiVqltgnzQ1dz32_kjC59cjaIQ6FyZA2dTDez2NQRt8KrFIFT3G8wvI2B7apsvR04h3RVbZd9Fk-TMMdNsk0iDIR-0MSeDLBvh5cQ5DDiDzRblGoU0z9cnHhL752Jsc4PClT6VAgl7U94ZcPmRs9655oj8LmL2cBcG8ojG4cZODKgDwK5aT4f0o2pUkgP27efPGsMKWFtk9OSvwZJC6Ofz-7v3nDLX96fbVGtldT6g6DwOO0geNN7dDQxjhmJvkMTGA_2kBJTQnM8yzQ_4vbR_gA5UFAunGIJwnQHmhl8WdWnoTNgIsetlZxOnt6iKj2uJWv9yW-0ha9dgF4pjq1Htjv1CAqK5NoBe3CbmV5C2JemL4Br0hFNJIumaqtvTAm_DkZU8QJWSRtnaJwE5tYlRaSXC3kLpFWdRseYL5v7gVSrMVyYyBNFrqOc_HyRHyPYYy0XMFnES_fd3ksiMSQrTA56N-LZ-5PaAg_RSgE8ZT5kw_qUt-oKQz_NoztIar-5iEbAVjDr1kZdzOEG3M_kUOsdeHZMeS-Gr9gn5dPN1AqSRnMyf8_XpKwZWpoa3JoQIN4ef4hFBLDMf_zheSmRKrnAJyWea8JqInkIBydoj8fSu_qjnBopdpvPT-iWx59WxH6NjHu8sApE3dfPaeZ71MSTXQWeA4EDmIEuGRYmaJohPJvBfw_9tc4hEdtKy_ZGg6wcdAGvv3E2I9oVRQZ4Gwpl4hY48jxSWGsZF8N19VQQHxRl3vbWwXmQd0veA_czTk7B3NeykBW6JdZ1uuXxj5wWEbAChdD5HhhBIt_gl7zOwvHOI=",
+    "summary" : [ ]
+  }, {
+    "id" : "msg_064aa015064524f8016ac80081fb2487d0a88a2e300af7314b",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\n  \"schemaVersion\": \"1.8.1\",\n  \"facts\": [\n    {\n      \"factId\": \"f1\",\n      \"support\": {\n        \"statementIds\": [\n          \"s4fab68aa35d8v1u0001\",\n          \"s4fab68aa35d8v1u0002\"\n        ],\n        \"questionIds\": [],\n        \"answerIds\": [],\n        \"correctionIds\": []\n      },\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"환자는 폐렴 같다고 생각하지만, 의사는 검사 전에는 폐렴 여부를 알 수 없다고 설명함.\",\n      \"condition\": {\n        \"operator\": \"NONE\",\n        \"clauses\": []\n      },\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    }\n  ],\n  \"summaryFactIds\": [\n    \"f1\"\n  ]\n}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "all_turns",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s4fab68aa35d8v1u0001", "s4fab68aa35d8v1u0002" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 2593,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 2590,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 275,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 42
+    },
+    "total_tokens" : 2868
+  },
+  "user" : null,
+  "metadata" : { }
+}

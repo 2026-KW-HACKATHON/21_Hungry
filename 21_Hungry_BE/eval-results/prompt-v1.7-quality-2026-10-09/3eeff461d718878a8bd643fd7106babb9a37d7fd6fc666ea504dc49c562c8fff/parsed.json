@@ -1,0 +1,11 @@
+{
+  "summary" : "검사 전에는 폐렴 여부를 알 수 없다고 안내함.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"폐렴 같다고 느낌.\",\"evidenceIndexes\":[1]}],\"tests\":[{\"text\":\"검사 전에는 알 수 없다고 설명함.\",\"evidenceIndexes\":[0]}],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"739cc480-b6ea-30dc-a213-10531b5eb4cc\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 검사 전에는 알 수 없습니다.\",\"occurrenceIndex\":0,\"start\":12,\"end\":32},{\"sourceId\":\"739cc480-b6ea-30dc-a213-10531b5eb4cc\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 폐렴 같아요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":11}]",
+  "items" : [ ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.6",
+  "inputTokens" : 1923,
+  "outputTokens" : 151
+}

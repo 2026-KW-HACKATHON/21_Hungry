@@ -1,0 +1,23 @@
+﻿{
+    "version":  "1.0.0",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "selectedBeforeEvaluation":  true,
+    "cases":  [
+                  {
+                      "id":  "day1_consultation01",
+                      "set":  "new-holdout",
+                      "utterances":  109,
+                      "englishFile":  "day1_consultation01.en.json",
+                      "translationFile":  "day1_consultation01.ko.json",
+                      "note":  "original/day1_consultation01.note.json"
+                  },
+                  {
+                      "id":  "day1_consultation02",
+                      "set":  "new-holdout",
+                      "utterances":  130,
+                      "englishFile":  "day1_consultation02.en.json",
+                      "translationFile":  "day1_consultation02.ko.json",
+                      "note":  "original/day1_consultation02.note.json"
+                  }
+              ]
+}

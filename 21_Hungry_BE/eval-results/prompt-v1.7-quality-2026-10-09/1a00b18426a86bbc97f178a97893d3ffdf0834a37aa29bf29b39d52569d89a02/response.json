@@ -1,0 +1,287 @@
+{
+  "id" : "resp_08dd8dc736499e25016ac7ee7bd8fc87d092061036d0dbc50f",
+  "object" : "response",
+  "created_at" : 1791487611,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791487617,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_08dd8dc736499e25016ac7ee7ce9c487d0a1e23971ef3063fb",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"s71c55c29c708v1u0013\",\"s71c55c29c708v1u0017\",\"s71c55c29c708v1u0015\",\"s71c55c29c708v1u0021\",\"s71c55c29c708v1u0023\",\"s71c55c29c708v1u0026\",\"s71c55c29c708v1u0028\",\"s71c55c29c708v1u0031\",\"s71c55c29c708v1u0033\",\"s71c55c29c708v1u0035\",\"s71c55c29c708v1u0038\",\"s71c55c29c708v1u0040\",\"s71c55c29c708v1u0042\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"약 3일째 설사가 있고, 하루 5~6번의 묽고 물 같은 변을 본다. 구토는 멈췄고, 혈변은 없다고 한다. 설사와 함께 탈수된 느낌, 식욕 저하, 기운 없음이 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"APPROXIMATE_DURATION\",\"PATIENT_REPORT\",\"NEGATED\"]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[\"s71c55c29c708v1u0082\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"설명상 위장염(gastroenteritis)일 가능성이 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"CLINICIAN_GUESS\"]},{\"factId\":\"f3\",\"support\":{\"statementIds\":[\"s71c55c29c708v1u0085\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"PRECAUTION\",\"text\":\"물을 충분히 마시라고 권했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f4\",\"support\":{\"statementIds\":[\"s71c55c29c708v1u0087\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"Dioralyte를 약국에서 구할 수 있으며, 잃은 미네랄과 비타민을 보충하는 데 도움이 되는 수분 보충 음료라고 설명했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"EXAMPLE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"Dioralyte\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"약국에서 구할 수 있는 수분 보충 음료로 설명됨\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f5\",\"support\":{\"statementIds\":[\"s71c55c29c708v1u0090\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"열이 나고 기운이 없으면 Paracetamol을 복용해도 된다고 했다.\",\"condition\":{\"operator\":\"ALL\",\"clauses\":[\"열이 나고 기운이 없으면\"]},\"medicationRole\":\"CONDITIONAL\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"Paracetamol\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"열이 나고 기운이 없을 때만 복용\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f6\",\"support\":{\"statementIds\":[\"s71c55c29c708v1u0092\",\"s71c55c29c708v1u0093\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"나아질 때까지 앞으로 하루 이틀 더 일을 쉬고, 설사가 멎은 뒤 24~48시간이 지나야 일터로 돌아갈 수 있다고 권했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"일 쉬기 및 복귀 시점 지키기\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f7\",\"support\":{\"statementIds\":[\"s71c55c29c708v1u0095\",\"s71c55c29c708v1u0099\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"앞으로 며칠 경과를 보고, 다음 주에도 낫지 않으면 다시 진료받으러 오라고 했다. 환자는 안 나으면 다시 전화하겠다고 했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"EXAM\",\"title\":\"다음 주에도 호전 없으면 다시 진료\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]}],\"summaryFactIds\":[\"f2\",\"f3\",\"f5\",\"f6\",\"f7\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s71c55c29c708v1u0001", "s71c55c29c708v1u0002", "s71c55c29c708v1u0003", "s71c55c29c708v1u0004", "s71c55c29c708v1u0005", "s71c55c29c708v1u0006", "s71c55c29c708v1u0007", "s71c55c29c708v1u0008", "s71c55c29c708v1u0009", "s71c55c29c708v1u0010", "s71c55c29c708v1u0011", "s71c55c29c708v1u0012", "s71c55c29c708v1u0013", "s71c55c29c708v1u0014", "s71c55c29c708v1u0015", "s71c55c29c708v1u0016", "s71c55c29c708v1u0017", "s71c55c29c708v1u0018", "s71c55c29c708v1u0019", "s71c55c29c708v1u0020", "s71c55c29c708v1u0021", "s71c55c29c708v1u0022", "s71c55c29c708v1u0023", "s71c55c29c708v1u0024", "s71c55c29c708v1u0025", "s71c55c29c708v1u0026", "s71c55c29c708v1u0027", "s71c55c29c708v1u0028", "s71c55c29c708v1u0029", "s71c55c29c708v1u0030", "s71c55c29c708v1u0031", "s71c55c29c708v1u0032", "s71c55c29c708v1u0033", "s71c55c29c708v1u0034", "s71c55c29c708v1u0035", "s71c55c29c708v1u0036", "s71c55c29c708v1u0037", "s71c55c29c708v1u0038", "s71c55c29c708v1u0039", "s71c55c29c708v1u0040", "s71c55c29c708v1u0041", "s71c55c29c708v1u0042", "s71c55c29c708v1u0043", "s71c55c29c708v1u0044", "s71c55c29c708v1u0045", "s71c55c29c708v1u0046", "s71c55c29c708v1u0047", "s71c55c29c708v1u0048", "s71c55c29c708v1u0049", "s71c55c29c708v1u0050", "s71c55c29c708v1u0051", "s71c55c29c708v1u0052", "s71c55c29c708v1u0053", "s71c55c29c708v1u0054", "s71c55c29c708v1u0055", "s71c55c29c708v1u0056", "s71c55c29c708v1u0057", "s71c55c29c708v1u0058", "s71c55c29c708v1u0059", "s71c55c29c708v1u0060", "s71c55c29c708v1u0061", "s71c55c29c708v1u0062", "s71c55c29c708v1u0063", "s71c55c29c708v1u0064", "s71c55c29c708v1u0065", "s71c55c29c708v1u0066", "s71c55c29c708v1u0067", "s71c55c29c708v1u0068", "s71c55c29c708v1u0069", "s71c55c29c708v1u0070", "s71c55c29c708v1u0071", "s71c55c29c708v1u0072", "s71c55c29c708v1u0073", "s71c55c29c708v1u0074", "s71c55c29c708v1u0075", "s71c55c29c708v1u0076", "s71c55c29c708v1u0077", "s71c55c29c708v1u0078", "s71c55c29c708v1u0079", "s71c55c29c708v1u0080", "s71c55c29c708v1u0081", "s71c55c29c708v1u0082", "s71c55c29c708v1u0083", "s71c55c29c708v1u0084", "s71c55c29c708v1u0085", "s71c55c29c708v1u0086", "s71c55c29c708v1u0087", "s71c55c29c708v1u0088", "s71c55c29c708v1u0089", "s71c55c29c708v1u0090", "s71c55c29c708v1u0091", "s71c55c29c708v1u0092", "s71c55c29c708v1u0093", "s71c55c29c708v1u0094", "s71c55c29c708v1u0095", "s71c55c29c708v1u0096", "s71c55c29c708v1u0097", "s71c55c29c708v1u0098", "s71c55c29c708v1u0099", "s71c55c29c708v1u0100", "s71c55c29c708v1u0101", "s71c55c29c708v1u0102", "s71c55c29c708v1u0103", "s71c55c29c708v1u0104" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 12975,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1339,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 14314
+  },
+  "user" : null,
+  "metadata" : { }
+}

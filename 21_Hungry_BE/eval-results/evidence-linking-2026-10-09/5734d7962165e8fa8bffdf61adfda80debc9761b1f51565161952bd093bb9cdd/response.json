@@ -1,0 +1,319 @@
+{
+  "id" : "resp_08c801f711b69e77016ac7d2cce9e487d09f6f5ee51cf0dbe0",
+  "object" : "response",
+  "created_at" : 1791480524,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791480529,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_08c801f711b69e77016ac7d2cd746087d0865479b305163c38",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"summary\":[{\"utteranceIds\":[\"s7121299c0f76v1u0018\",\"s7121299c0f76v1u0022\",\"s7121299c0f76v1u0035\",\"s7121299c0f76v1u0046\",\"s7121299c0f76v1u0051\"],\"text\":\"오른쪽이 아닌 왼팔 움직임 저하와 왼쪽 얼굴 저림, 삼킴 곤란, 말 느려짐이 약 1시간 전부터 시작돼 뇌졸중 가능성이 언급됐다.\"},{\"utteranceIds\":[\"s7121299c0f76v1u0053\",\"s7121299c0f76v1u0055\",\"s7121299c0f76v1u0086\",\"s7121299c0f76v1u0090\"],\"text\":\"응급으로 병원 이송이 필요해 구급차를 요청했고, 문을 열어 두고 복도에서 기다리라고 안내했다.\"},{\"utteranceIds\":[\"s7121299c0f76v1u0062\",\"s7121299c0f76v1u0064\",\"s7121299c0f76v1u0066\"],\"text\":\"기저질환은 제2형 당뇨병과 고혈압이며, 복용약은 메트포르민·로사르탄·암로디핀이고 페니실린 알레르기가 의심된다고 했다.\"},{\"utteranceIds\":[\"s7121299c0f76v1u0074\",\"s7121299c0f76v1u0076\",\"s7121299c0f76v1u0078\",\"s7121299c0f76v1u0080\"],\"text\":\"혼자 살고, 예전에는 담배를 피웠으며, 주말과 주중에 맥주를 몇 잔씩 마신다고 했다.\"},{\"utteranceIds\":[\"s7121299c0f76v1u0085\",\"s7121299c0f76v1u0086\"],\"text\":\"구급차 도착 시 가까운 응급실에서 뇌졸중 담당 의사가 진찰하고 치료를 판단할 예정이라고 안내했다.\"}],\"details\":{\"symptoms\":[{\"utteranceIds\":[\"s7121299c0f76v1u0014\",\"s7121299c0f76v1u0018\",\"s7121299c0f76v1u0022\",\"s7121299c0f76v1u0035\",\"s7121299c0f76v1u0037\",\"s7121299c0f76v1u0042\",\"s7121299c0f76v1u0044\",\"s7121299c0f76v1u0046\",\"s7121299c0f76v1u0085\"],\"text\":\"오늘 아침 깨어난 뒤 약 1시간째 왼팔을 움직일 수 없고 통증은 없으며, 왼쪽 얼굴이 따끔거리고 물 마실 때 삼키기 힘들고 말하기가 전보다 힘들고 느리다.\"}],\"tests\":[{\"utteranceIds\":[\"s7121299c0f76v1u0051\"],\"text\":\"뇌졸중 가능성이 언급됐다.\"}],\"medicationMentions\":[{\"utteranceIds\":[\"s7121299c0f76v1u0062\",\"s7121299c0f76v1u0064\"],\"text\":\"복용 중인 약은 메트포르민, 로사르탄, 암로디핀이다.\"}],\"precautions\":[{\"utteranceIds\":[\"s7121299c0f76v1u0055\",\"s7121299c0f76v1u0090\"],\"text\":\"현관문 잠금을 풀어 두고 복도에 앉아, 구급대원이 쉽게 들어올 수 있게 기다리라고 했다.\"}],\"followUps\":[{\"utteranceIds\":[\"s7121299c0f76v1u0053\",\"s7121299c0f76v1u0055\"],\"text\":\"응급으로 병원에 가기 위해 구급차를 부르도록 했고, 동료가 집 주소로 구급차를 요청했다.\"},{\"utteranceIds\":[\"s7121299c0f76v1u0086\"],\"text\":\"응급실 도착 후 뇌졸중 담당 의사가 진찰하고 치료를 판단할 예정이라고 했다.\"}]},\"items\":[{\"utteranceIds\":[\"s7121299c0f76v1u0053\",\"s7121299c0f76v1u0055\"],\"itemKey\":\"emergency_ambulance_call\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"응급실 이송\",\"description\":\"응급으로 병원에 가기 위해 집 주소로 구급차를 요청함.\",\"date\":\"2026-10-07\",\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":\"2026-10-07\",\"weekdays\":[]},\"uncertaintyCodes\":[],\"isConditional\":false},{\"utteranceIds\":[\"s7121299c0f76v1u0090\"],\"itemKey\":\"open_door_wait_for_ambulance\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"구급대원 맞이 준비\",\"description\":\"문을 열어 두고 복도에서 구급대원이 쉽게 들어올 수 있게 기다리기.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[],\"isConditional\":false}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_utterance_ids",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "summary" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "utteranceIds", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "utteranceIds" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/$defs/utteranceId"
+                  }
+                },
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ],
+                "minimum" : 1,
+                "maximum" : 1440
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer",
+                  "minimum" : 1,
+                  "maximum" : 7
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer",
+                        "minimum" : 1,
+                        "maximum" : 7
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer",
+                      "minimum" : 1,
+                      "maximum" : 1440
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s7121299c0f76v1u0001", "s7121299c0f76v1u0002", "s7121299c0f76v1u0003", "s7121299c0f76v1u0004", "s7121299c0f76v1u0005", "s7121299c0f76v1u0006", "s7121299c0f76v1u0007", "s7121299c0f76v1u0008", "s7121299c0f76v1u0009", "s7121299c0f76v1u0010", "s7121299c0f76v1u0011", "s7121299c0f76v1u0012", "s7121299c0f76v1u0013", "s7121299c0f76v1u0014", "s7121299c0f76v1u0015", "s7121299c0f76v1u0016", "s7121299c0f76v1u0017", "s7121299c0f76v1u0018", "s7121299c0f76v1u0019", "s7121299c0f76v1u0020", "s7121299c0f76v1u0021", "s7121299c0f76v1u0022", "s7121299c0f76v1u0023", "s7121299c0f76v1u0024", "s7121299c0f76v1u0025", "s7121299c0f76v1u0026", "s7121299c0f76v1u0027", "s7121299c0f76v1u0028", "s7121299c0f76v1u0029", "s7121299c0f76v1u0030", "s7121299c0f76v1u0031", "s7121299c0f76v1u0032", "s7121299c0f76v1u0033", "s7121299c0f76v1u0034", "s7121299c0f76v1u0035", "s7121299c0f76v1u0036", "s7121299c0f76v1u0037", "s7121299c0f76v1u0038", "s7121299c0f76v1u0039", "s7121299c0f76v1u0040", "s7121299c0f76v1u0041", "s7121299c0f76v1u0042", "s7121299c0f76v1u0043", "s7121299c0f76v1u0044", "s7121299c0f76v1u0045", "s7121299c0f76v1u0046", "s7121299c0f76v1u0047", "s7121299c0f76v1u0048", "s7121299c0f76v1u0049", "s7121299c0f76v1u0050", "s7121299c0f76v1u0051", "s7121299c0f76v1u0052", "s7121299c0f76v1u0053", "s7121299c0f76v1u0054", "s7121299c0f76v1u0055", "s7121299c0f76v1u0056", "s7121299c0f76v1u0057", "s7121299c0f76v1u0058", "s7121299c0f76v1u0059", "s7121299c0f76v1u0060", "s7121299c0f76v1u0061", "s7121299c0f76v1u0062", "s7121299c0f76v1u0063", "s7121299c0f76v1u0064", "s7121299c0f76v1u0065", "s7121299c0f76v1u0066", "s7121299c0f76v1u0067", "s7121299c0f76v1u0068", "s7121299c0f76v1u0069", "s7121299c0f76v1u0070", "s7121299c0f76v1u0071", "s7121299c0f76v1u0072", "s7121299c0f76v1u0073", "s7121299c0f76v1u0074", "s7121299c0f76v1u0075", "s7121299c0f76v1u0076", "s7121299c0f76v1u0077", "s7121299c0f76v1u0078", "s7121299c0f76v1u0079", "s7121299c0f76v1u0080", "s7121299c0f76v1u0081", "s7121299c0f76v1u0082", "s7121299c0f76v1u0083", "s7121299c0f76v1u0084", "s7121299c0f76v1u0085", "s7121299c0f76v1u0086", "s7121299c0f76v1u0087", "s7121299c0f76v1u0088", "s7121299c0f76v1u0089", "s7121299c0f76v1u0090", "s7121299c0f76v1u0091", "s7121299c0f76v1u0092", "s7121299c0f76v1u0093", "s7121299c0f76v1u0094", "s7121299c0f76v1u0095", "s7121299c0f76v1u0096", "s7121299c0f76v1u0097" ]
+          },
+          "claim" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "text", "utteranceIds" ],
+            "properties" : {
+              "utteranceIds" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/$defs/utteranceId"
+                }
+              },
+              "text" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 10864,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1287,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 12151
+  },
+  "user" : null,
+  "metadata" : { }
+}

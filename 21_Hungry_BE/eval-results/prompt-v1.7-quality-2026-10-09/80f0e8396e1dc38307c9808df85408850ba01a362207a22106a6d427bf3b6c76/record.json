@@ -1,0 +1,37 @@
+{
+  "caseId" : "day2_consultation01",
+  "set" : "reviewed-development",
+  "promptVersion" : "1.7",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "guidelineSha256" : "07efcc9bf3c251552a112c1b40bb8184f06135297f5c7cff9a629a3cab46bc03",
+  "promptSha256" : "59344f18ad2056e0ba427032ae719a2ee59c4d9277131a84d1fa30b705cee68a",
+  "requestSha256" : "80f0e8396e1dc38307c9808df85408850ba01a362207a22106a6d427bf3b6c76",
+  "inputSha256" : "13b69e1bf719f6c67df47c4782f1dd4aa4ef6249456b9a43f44af6ebd1321ce9",
+  "requestLayout" : "utterance-id-v2",
+  "startedAt" : "2026-10-08T18:35:17.211177600Z",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "reservedUsd" : 0.16512,
+  "chargedUsd" : 0.013713,
+  "rateSource" : "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+  "pricingCheckedOn" : "2026-10-09",
+  "reviewStatus" : "unreviewed; not clinician validated",
+  "campaignBudgetUsd" : 3.0,
+  "resolverSha256" : "cd93fadeffc4a26586b6c26cb4c9dcfaae4c077fff1e472a69d2e33bf2e65d91",
+  "usage" : {
+    "input_tokens" : 10256,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1338,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 11594
+  },
+  "responseModel" : "gpt-5.4-mini-2026-03-17",
+  "serviceTier" : "default",
+  "providerStatus" : "completed",
+  "estimatedUsd" : 0.013713,
+  "elapsedMillis" : 7684
+}

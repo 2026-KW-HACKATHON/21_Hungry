@@ -1,0 +1,11 @@
+{
+  "summary" : "검사 전이라 원인은 아직 확실하지 않음.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[{\"text\":\"검사 전에는 원인을 알 수 없음.\",\"evidenceIndexes\":[0]}],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"739cc480-b6ea-30dc-a213-10531b5eb4cc\",\"textVersion\":1,\"page\":null,\"quote\":\"검사 전에는 알 수 없습니다\",\"occurrenceIndex\":0,\"start\":16,\"end\":31}]",
+  "items" : [ ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.1",
+  "inputTokens" : 2393,
+  "outputTokens" : 131
+}

@@ -1,0 +1,2909 @@
+{
+  "review": "AI developer inspection, not clinician validation; no core validator change after freeze",
+  "jsonGenerationFailures": 0,
+  "truncationFailures": 0,
+  "communicationFailures": 0,
+  "failedResponses": 14,
+  "isolatedFacts": [
+    {
+      "id": "day3_consultation05",
+      "model": "gpt-5.4-2026-03-05",
+      "path": "/facts/22",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f23",
+        "support": {
+          "statementIds": [
+            "s16d1fd758b58v1u0082"
+          ],
+          "questionIds": [],
+          "answerIds": [
+            "s16d1fd758b58v1u0083"
+          ],
+          "correctionIds": []
+        },
+        "kind": "FOLLOW_UP",
+        "text": "처방전을 Lloyd 약국으로 보낸다고 했다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "CLINICIAN_ONLY",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s16d1fd758b58v1u0082",
+          "s16d1fd758b58v1u0083"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s16d1fd758b58v1u0082",
+          "speaker": "CLINICIAN",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[082] 의사: 처방전을 약국으로 보낼게요. 시스템에는 Lloyd 약국으로 보이는데 맞나요? <UNIN/>",
+          "start": 3056,
+          "end": 3116
+        },
+        {
+          "id": "s16d1fd758b58v1u0083",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[083] 환자: 네.",
+          "start": 3117,
+          "end": 3129
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/22/support",
+          "reason": "questionIds/answerIds 한쪽만 존재",
+          "owner": "INTERNAL_RELATION_CONSTRAINT; acknowledgement may not need a question"
+        },
+        {
+          "path": "/facts/22/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s16d1fd758b58v1u0083"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation08",
+      "model": "gpt-5.4-2026-03-05",
+      "path": "/facts/8",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f9",
+        "support": {
+          "statementIds": [
+            "s246c8d9f5bb8v1u0035",
+            "s246c8d9f5bb8v1u0038",
+            "s246c8d9f5bb8v1u0039"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "MEDICATION",
+        "text": "증상 때문에 paracetamol을 복용했다. ibuprofen은 복용하지 않았다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "HISTORICAL",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": {
+          "name": "paracetamol",
+          "doseText": null,
+          "frequencyText": null,
+          "courseDurationText": null,
+          "instructions": "증상 때문에 복용함. ibuprofen은 복용하지 않음.",
+          "startsOn": null,
+          "endsOn": null,
+          "clockTimes": [],
+          "scheduleRecurrence": null,
+          "weekdays": []
+        },
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s246c8d9f5bb8v1u0035",
+          "s246c8d9f5bb8v1u0038",
+          "s246c8d9f5bb8v1u0039"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s246c8d9f5bb8v1u0035",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[035] 환자: 진통제 같은 걸 먹었어요. 평소 약에 추가해서요.",
+          "start": 1055,
+          "end": 1092
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0038",
+          "speaker": "CLINICIAN",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[038] 의사: paracetamol이군요. ibuprofen도 먹었나요?",
+          "start": 1191,
+          "end": 1233
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0039",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[039] 환자: <UNSURE>아니요</UNSURE>.",
+          "start": 1234,
+          "end": 1265
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/8/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s246c8d9f5bb8v1u0039"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation03",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/0",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f1",
+        "support": {
+          "statementIds": [
+            "sc7d1c4933903v1u0004",
+            "sc7d1c4933903v1u0005",
+            "sc7d1c4933903v1u0007",
+            "sc7d1c4933903v1u0010",
+            "sc7d1c4933903v1u0011",
+            "sc7d1c4933903v1u0019",
+            "sc7d1c4933903v1u0021",
+            "sc7d1c4933903v1u0023",
+            "sc7d1c4933903v1u0041",
+            "sc7d1c4933903v1u0042",
+            "sc7d1c4933903v1u0039",
+            "sc7d1c4933903v1u0048",
+            "sc7d1c4933903v1u0052",
+            "sc7d1c4933903v1u0054"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "정오부터 시작된 왼쪽 욱신거리는 심한 두통이 있고, 시야 흐림·지그재그 선이 보인 전조·메스꺼움·구토 2회·빛에 민감함이 동반됨",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sc7d1c4933903v1u0004",
+          "sc7d1c4933903v1u0005",
+          "sc7d1c4933903v1u0007",
+          "sc7d1c4933903v1u0010",
+          "sc7d1c4933903v1u0011",
+          "sc7d1c4933903v1u0019",
+          "sc7d1c4933903v1u0021",
+          "sc7d1c4933903v1u0023",
+          "sc7d1c4933903v1u0041",
+          "sc7d1c4933903v1u0042",
+          "sc7d1c4933903v1u0039",
+          "sc7d1c4933903v1u0048",
+          "sc7d1c4933903v1u0052",
+          "sc7d1c4933903v1u0054"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sc7d1c4933903v1u0004",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[004] 환자: 정오부터 머리가 너무 아파요.",
+          "start": 89,
+          "end": 115
+        },
+        {
+          "id": "sc7d1c4933903v1u0005",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[005] 환자: 왼쪽이요. 너무 힘들고 <UNIN/> 토할 것 같아요.",
+          "start": 116,
+          "end": 156
+        },
+        {
+          "id": "sc7d1c4933903v1u0007",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[007] 환자: 두통이 시작되기 몇 분 전에 시야에 지그재그 선이 보였어요.",
+          "start": 197,
+          "end": 240
+        },
+        {
+          "id": "sc7d1c4933903v1u0010",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[010] 환자: 시야가 흐려졌어요. 음, 그냥요.",
+          "start": 284,
+          "end": 312
+        },
+        {
+          "id": "sc7d1c4933903v1u0011",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[011] 환자: 통증이 정말 심해요. 너무 아파요.",
+          "start": 313,
+          "end": 342
+        },
+        {
+          "id": "sc7d1c4933903v1u0019",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[019] 환자: 왼쪽이 욱신거리는 것 같아요.",
+          "start": 592,
+          "end": 618
+        },
+        {
+          "id": "sc7d1c4933903v1u0021",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[021] 환자: 아니요. 그런데 움직이면 더 아파요.",
+          "start": 642,
+          "end": 672
+        },
+        {
+          "id": "sc7d1c4933903v1u0023",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[023] 환자: 앞으로 숙이거나 머리나 목을 움직이면 더 아파요.",
+          "start": 694,
+          "end": 731
+        },
+        {
+          "id": "sc7d1c4933903v1u0041",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[041] 환자: 네.",
+          "start": 1437,
+          "end": 1449
+        },
+        {
+          "id": "sc7d1c4933903v1u0042",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[042] 환자: 두 번 토했어요.",
+          "start": 1450,
+          "end": 1469
+        },
+        {
+          "id": "sc7d1c4933903v1u0039",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[039] 환자: 네, 지금 <UNIN/> 선글라스를 쓰고 있어요. 빛 때문에 눈이 정말 아파요.",
+          "start": 1351,
+          "end": 1405
+        },
+        {
+          "id": "sc7d1c4933903v1u0048",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[048] 환자: 두통이 잘 생기는 편은 아니에요. 그런데 몇 주 전에 비슷한 두통이 있었어요.",
+          "start": 1604,
+          "end": 1657
+        },
+        {
+          "id": "sc7d1c4933903v1u0052",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[052] 환자: 며칠이요.",
+          "start": 1737,
+          "end": 1752
+        },
+        {
+          "id": "sc7d1c4933903v1u0054",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[054] 환자: 진통제를 먹고 누워 쉬어야 했어요.",
+          "start": 1778,
+          "end": 1807
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/0/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "sc7d1c4933903v1u0041"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation03",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/2",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f3",
+        "support": {
+          "statementIds": [
+            "sc7d1c4933903v1u0044",
+            "sc7d1c4933903v1u0046",
+            "sc7d1c4933903v1u0066",
+            "sc7d1c4933903v1u0068",
+            "sc7d1c4933903v1u0070",
+            "sc7d1c4933903v1u0072",
+            "sc7d1c4933903v1u0074",
+            "sc7d1c4933903v1u0076",
+            "sc7d1c4933903v1u0078",
+            "sc7d1c4933903v1u0088",
+            "sc7d1c4933903v1u0113",
+            "sc7d1c4933903v1u0114"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "발열, 피부 발진, 말하기 문제, 팔다리 저림/힘빠짐, 균형 문제, 최근 머리 외상은 없다고 함",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sc7d1c4933903v1u0044",
+          "sc7d1c4933903v1u0046",
+          "sc7d1c4933903v1u0066",
+          "sc7d1c4933903v1u0068",
+          "sc7d1c4933903v1u0070",
+          "sc7d1c4933903v1u0072",
+          "sc7d1c4933903v1u0074",
+          "sc7d1c4933903v1u0076",
+          "sc7d1c4933903v1u0078",
+          "sc7d1c4933903v1u0088",
+          "sc7d1c4933903v1u0113",
+          "sc7d1c4933903v1u0114"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sc7d1c4933903v1u0044",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[044] 환자: 아니요, 열감은 없어요.",
+          "start": 1510,
+          "end": 1533
+        },
+        {
+          "id": "sc7d1c4933903v1u0046",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[046] 환자: 그런 건 못 봤어요.",
+          "start": 1558,
+          "end": 1579
+        },
+        {
+          "id": "sc7d1c4933903v1u0066",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[066] 환자: 아니요.",
+          "start": 2272,
+          "end": 2286
+        },
+        {
+          "id": "sc7d1c4933903v1u0068",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[068] 환자: 아니요.",
+          "start": 2329,
+          "end": 2343
+        },
+        {
+          "id": "sc7d1c4933903v1u0070",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[070] 환자: 아니요.",
+          "start": 2378,
+          "end": 2392
+        },
+        {
+          "id": "sc7d1c4933903v1u0072",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[072] 환자: 아니요.",
+          "start": 2430,
+          "end": 2444
+        },
+        {
+          "id": "sc7d1c4933903v1u0074",
+          "speaker": "CLINICIAN",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[074] 의사: 숨은 괜찮나요? 숨차지는 않고요?",
+          "start": 2475,
+          "end": 2503
+        },
+        {
+          "id": "sc7d1c4933903v1u0076",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[076] 환자: 아니요, <UNSURE>없어요</UNSURE>.",
+          "start": 2531,
+          "end": 2567
+        },
+        {
+          "id": "sc7d1c4933903v1u0078",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[078] 환자: 아니요.",
+          "start": 2599,
+          "end": 2613
+        },
+        {
+          "id": "sc7d1c4933903v1u0088",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[088] 환자: 없어요.",
+          "start": 2957,
+          "end": 2971
+        },
+        {
+          "id": "sc7d1c4933903v1u0113",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[113] 환자: 아니요.",
+          "start": 3666,
+          "end": 3680
+        },
+        {
+          "id": "sc7d1c4933903v1u0114",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[114] 환자: 아니요.",
+          "start": 3681,
+          "end": 3695
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/2/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "sc7d1c4933903v1u0066",
+            "sc7d1c4933903v1u0068",
+            "sc7d1c4933903v1u0070",
+            "sc7d1c4933903v1u0072",
+            "sc7d1c4933903v1u0076",
+            "sc7d1c4933903v1u0078",
+            "sc7d1c4933903v1u0113",
+            "sc7d1c4933903v1u0114"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation03",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/5",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f6",
+        "support": {
+          "statementIds": [
+            "sc7d1c4933903v1u0099",
+            "sc7d1c4933903v1u0101",
+            "sc7d1c4933903v1u0103",
+            "sc7d1c4933903v1u0105",
+            "sc7d1c4933903v1u0107",
+            "sc7d1c4933903v1u0109",
+            "sc7d1c4933903v1u0111"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "최근 직장 스트레스가 매우 심하지만 우울감은 없고, 스트레스 해소를 따로 하지 않으며 운동은 하지 않고 혼자 살면서 생활은 괜찮다고 함",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sc7d1c4933903v1u0099",
+          "sc7d1c4933903v1u0101",
+          "sc7d1c4933903v1u0103",
+          "sc7d1c4933903v1u0105",
+          "sc7d1c4933903v1u0107",
+          "sc7d1c4933903v1u0109",
+          "sc7d1c4933903v1u0111"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sc7d1c4933903v1u0099",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[099] 환자: 네, 정말 심해요.",
+          "start": 3261,
+          "end": 3281
+        },
+        {
+          "id": "sc7d1c4933903v1u0101",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[101] 환자: <UNIN/> 직장에서 문제가 있고 관리자가 성과를 내라고 압박해요. <UNIN/> 좋지 않은 시기예요.",
+          "start": 3312,
+          "end": 3380
+        },
+        {
+          "id": "sc7d1c4933903v1u0103",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[103] 환자: 우울하지는 않고 조금 스트레스를 받아요.",
+          "start": 3410,
+          "end": 3442
+        },
+        {
+          "id": "sc7d1c4933903v1u0105",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[105] 환자: 특별히 안 해요.",
+          "start": 3473,
+          "end": 3492
+        },
+        {
+          "id": "sc7d1c4933903v1u0107",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[107] 환자: 아니요.",
+          "start": 3515,
+          "end": 3529
+        },
+        {
+          "id": "sc7d1c4933903v1u0109",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[109] 환자: 혼자 살아요.",
+          "start": 3556,
+          "end": 3573
+        },
+        {
+          "id": "sc7d1c4933903v1u0111",
+          "speaker": "PATIENT",
+          "sourceId": "013d725a-0e50-3bc5-975c-b4bf6624c573",
+          "textVersion": 1,
+          "quote": "[111] 환자: 괜찮아요.",
+          "start": 3604,
+          "end": 3619
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/5/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "sc7d1c4933903v1u0107"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation04",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/2",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f3",
+        "support": {
+          "statementIds": [
+            "s43ec7b664b29v1u0037",
+            "s43ec7b664b29v1u0040",
+            "s43ec7b664b29v1u0048",
+            "s43ec7b664b29v1u0054",
+            "s43ec7b664b29v1u0059",
+            "s43ec7b664b29v1u0066",
+            "s43ec7b664b29v1u0068"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "ASSESSMENT",
+        "text": "천식은 최근 2~3일 전까지는 대체로 잘 조절되었고, 마지막 천식 발작은 3~4년 전이며 마지막 천식 점검은 2년 전쯤이었다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [
+          "UNCERTAIN"
+        ],
+        "utteranceIds": [
+          "s43ec7b664b29v1u0037",
+          "s43ec7b664b29v1u0040",
+          "s43ec7b664b29v1u0048",
+          "s43ec7b664b29v1u0054",
+          "s43ec7b664b29v1u0059",
+          "s43ec7b664b29v1u0066",
+          "s43ec7b664b29v1u0068"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s43ec7b664b29v1u0037",
+          "speaker": "PATIENT",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[037] 환자: 아니요.",
+          "start": 1536,
+          "end": 1550
+        },
+        {
+          "id": "s43ec7b664b29v1u0040",
+          "speaker": "PATIENT",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[040] 환자: 3~4년 전쯤이요.",
+          "start": 1620,
+          "end": 1640
+        },
+        {
+          "id": "s43ec7b664b29v1u0048",
+          "speaker": "PATIENT",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[048] 환자: 2년 전쯤이요.",
+          "start": 1878,
+          "end": 1896
+        },
+        {
+          "id": "s43ec7b664b29v1u0054",
+          "speaker": "PATIENT",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[054] 환자: 가끔만요. 증상이 생긴 뒤로는 안 했어요.",
+          "start": 2073,
+          "end": 2106
+        },
+        {
+          "id": "s43ec7b664b29v1u0059",
+          "speaker": "CLINICIAN",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[059] 의사: 380 정도라고 보면 될까요? <UNSURE>3</UNSURE> <UNIN/>. 네.",
+          "start": 2228,
+          "end": 2285
+        },
+        {
+          "id": "s43ec7b664b29v1u0066",
+          "speaker": "PATIENT",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[066] 환자: 죄송해요, 꽃가루 알레르기가 있어요.",
+          "start": 2420,
+          "end": 2450
+        },
+        {
+          "id": "s43ec7b664b29v1u0068",
+          "speaker": "PATIENT",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[068] 환자: 없어요. <INAUDIBLE_SPEECH/>",
+          "start": 2494,
+          "end": 2528
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/2/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s43ec7b664b29v1u0037"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation04",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/6",
+      "code": "AI_SEMANTIC_INVALID",
+      "fact": {
+        "factId": "f7",
+        "support": {
+          "statementIds": [
+            "s43ec7b664b29v1u0079",
+            "s43ec7b664b29v1u0080",
+            "s43ec7b664b29v1u0094"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "MEDICATION",
+        "text": "갈색 Clenil 흡입기를 하루 두 번, 한 번에 4번으로 늘리라고 했다.",
+        "condition": {
+          "operator": "ALL",
+          "clauses": [
+            "현재 하루 두 번, 한 번에 3번 흡입하고 있는 경우"
+          ]
+        },
+        "medicationRole": "PRESCRIBED",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": {
+          "name": "Clenil",
+          "doseText": "한 번에 4번 흡입",
+          "frequencyText": "하루 두 번",
+          "courseDurationText": null,
+          "instructions": "현재 하루 두 번, 한 번에 3번 흡입하고 있다면 한 번에 4번으로 늘린다. 저희 진료를 기다리는 동안 그렇게 한다.",
+          "startsOn": null,
+          "endsOn": null,
+          "clockTimes": [],
+          "scheduleRecurrence": "DAILY",
+          "weekdays": []
+        },
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s43ec7b664b29v1u0079",
+          "s43ec7b664b29v1u0080",
+          "s43ec7b664b29v1u0094"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s43ec7b664b29v1u0079",
+          "speaker": "CLINICIAN",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[079] 의사: 용량을 늘릴 수 있습니다. 하루 두 번, 한 번에 3번 흡입하고 있다면 하루 두 번, 한 번에 4번으로 늘리세요.",
+          "start": 2929,
+          "end": 3002
+        },
+        {
+          "id": "s43ec7b664b29v1u0080",
+          "speaker": "CLINICIAN",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[080] 의사: 저희 진료를 기다리는 동안 그렇게 하세요.",
+          "start": 3003,
+          "end": 3036
+        },
+        {
+          "id": "s43ec7b664b29v1u0094",
+          "speaker": "CLINICIAN",
+          "sourceId": "d67e634d-9277-36e3-8195-94aa41911a3d",
+          "textVersion": 1,
+          "quote": "[094] 의사: 그동안 갈색 흡입기는 한 번에 4번, 하루 두 번으로 늘리고 Salbutamol은 최대 2시간마다 쓰세요. 진료 전에 숨쉬기가 나빠지면 <UNSURE>응급실로 가세요</UNSURE>.",
+          "start": 3670,
+          "end": 3782
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/6/medication/scheduleRecurrence",
+          "reason": "명시 clockTimes 없이 DAILY",
+          "owner": "MODEL_TIME_EXTRACTION; definite structural contradiction"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation02",
+      "model": "gpt-5.4-2026-03-05",
+      "path": "/facts/0",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f1",
+        "support": {
+          "statementIds": [
+            "sb31ffd444135v1u0006",
+            "sb31ffd444135v1u0009",
+            "sb31ffd444135v1u0033",
+            "sb31ffd444135v1u0034"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "피부가 아프고 빨갛고 매우 가렵다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sb31ffd444135v1u0006",
+          "sb31ffd444135v1u0009",
+          "sb31ffd444135v1u0033",
+          "sb31ffd444135v1u0034"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sb31ffd444135v1u0006",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[006] 환자: 네, 며칠 됐는데 피부가 아프고 빨개요. 정말 가렵고 너무 불편해서 빨리 해결할 방법을 찾고 싶어요.",
+          "start": 151,
+          "end": 217
+        },
+        {
+          "id": "sb31ffd444135v1u0009",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[009] 환자: 주로 가슴, 손, 팔이요. 정말 너무 불편하고 계속 아주 가려워요. 그리고,",
+          "start": 269,
+          "end": 321
+        },
+        {
+          "id": "sb31ffd444135v1u0033",
+          "speaker": "CLINICIAN",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[033] 의사: 그렇군요. <UNIN/> 알겠습니다. <UNIN/> 가려움과 함께 꽤 아프다고도 하셨죠.",
+          "start": 1350,
+          "end": 1409
+        },
+        {
+          "id": "sb31ffd444135v1u0034",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[034] 환자: 네.",
+          "start": 1410,
+          "end": 1422
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/0/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "sb31ffd444135v1u0034"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation02",
+      "model": "gpt-5.4-2026-03-05",
+      "path": "/facts/16",
+      "code": "AI_SEMANTIC_INVALID",
+      "fact": {
+        "factId": "f17",
+        "support": {
+          "statementIds": [],
+          "questionIds": [
+            "sb31ffd444135v1u0078"
+          ],
+          "answerIds": [
+            "sb31ffd444135v1u0079"
+          ],
+          "correctionIds": []
+        },
+        "kind": "MEDICATION",
+        "text": "현재 정기적으로 복용하는 약은 없다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sb31ffd444135v1u0078",
+          "sb31ffd444135v1u0079"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sb31ffd444135v1u0078",
+          "speaker": "CLINICIAN",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[078] 의사: 지금은 없군요. 현재 정기적으로 드시는 약이 있나요?",
+          "start": 3029,
+          "end": 3068
+        },
+        {
+          "id": "sb31ffd444135v1u0079",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[079] 환자: 아니요.",
+          "start": 3069,
+          "end": 3083
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/16/medicationRole",
+          "reason": "MEDICATION에는 role!=NONE 및 medication object 필수. 복용약 없음을 표현할 역할이 없음",
+          "owner": "SCHEMA_DESIGN_AND_POSTPROCESS"
+        }
+      ]
+    },
+    {
+      "id": "day5_consultation12",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/1",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f2",
+        "support": {
+          "statementIds": [
+            "s3013ca528b16v1u0025",
+            "s3013ca528b16v1u0029",
+            "s3013ca528b16v1u0032",
+            "s3013ca528b16v1u0036",
+            "s3013ca528b16v1u0038",
+            "s3013ca528b16v1u0040",
+            "s3013ca528b16v1u0042",
+            "s3013ca528b16v1u0052",
+            "s3013ca528b16v1u0054",
+            "s3013ca528b16v1u0056",
+            "s3013ca528b16v1u0058",
+            "s3013ca528b16v1u0062",
+            "s3013ca528b16v1u0074",
+            "s3013ca528b16v1u0082"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "두통과 함께 메스꺼움, 구토, 따끔거림, 감각 둔함, 힘 빠짐, 흐린 시야, 눈 주변 통증, 이상한 빛이 보이거나 빛을 볼 때의 문제, 고열, 오한, 땀, 발진은 없다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s3013ca528b16v1u0025",
+          "s3013ca528b16v1u0029",
+          "s3013ca528b16v1u0032",
+          "s3013ca528b16v1u0036",
+          "s3013ca528b16v1u0038",
+          "s3013ca528b16v1u0040",
+          "s3013ca528b16v1u0042",
+          "s3013ca528b16v1u0052",
+          "s3013ca528b16v1u0054",
+          "s3013ca528b16v1u0056",
+          "s3013ca528b16v1u0058",
+          "s3013ca528b16v1u0062",
+          "s3013ca528b16v1u0074",
+          "s3013ca528b16v1u0082"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s3013ca528b16v1u0025",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[025] 환자: 아니요, 없어요.",
+          "start": 773,
+          "end": 792
+        },
+        {
+          "id": "s3013ca528b16v1u0029",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[029] 환자: 없어요.",
+          "start": 879,
+          "end": 893
+        },
+        {
+          "id": "s3013ca528b16v1u0032",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[032] 환자: 없어요.",
+          "start": 975,
+          "end": 989
+        },
+        {
+          "id": "s3013ca528b16v1u0036",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[036] 환자: 아니요, 그런 건 없어요. <INAUDIBLE_SPEECH/>",
+          "start": 1068,
+          "end": 1112
+        },
+        {
+          "id": "s3013ca528b16v1u0038",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[038] 환자: 아니요, 열 없어요. <UNIN/>",
+          "start": 1142,
+          "end": 1171
+        },
+        {
+          "id": "s3013ca528b16v1u0040",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[040] 환자: 아니요.",
+          "start": 1199,
+          "end": 1213
+        },
+        {
+          "id": "s3013ca528b16v1u0042",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[042] 환자: 별로 없었어요.",
+          "start": 1237,
+          "end": 1255
+        },
+        {
+          "id": "s3013ca528b16v1u0052",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[052] 환자: 아니요, 시간과는 상관없었어요.",
+          "start": 1475,
+          "end": 1502
+        },
+        {
+          "id": "s3013ca528b16v1u0054",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[054] 환자: 아니요.",
+          "start": 1544,
+          "end": 1558
+        },
+        {
+          "id": "s3013ca528b16v1u0056",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[056] 환자: 없어요.",
+          "start": 1581,
+          "end": 1595
+        },
+        {
+          "id": "s3013ca528b16v1u0058",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[058] 환자: 없어요.",
+          "start": 1621,
+          "end": 1635
+        },
+        {
+          "id": "s3013ca528b16v1u0062",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[062] 환자: 없어요.",
+          "start": 1773,
+          "end": 1787
+        },
+        {
+          "id": "s3013ca528b16v1u0074",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[074] 환자: 아니요, 하지만 일이나 평소 하던 걸 하기가 정말 힘들어요. <UNIN/>",
+          "start": 2044,
+          "end": 2095
+        },
+        {
+          "id": "s3013ca528b16v1u0082",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[082] 환자: 생각나는 건 없어요.",
+          "start": 2299,
+          "end": 2320
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/1/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s3013ca528b16v1u0025",
+            "s3013ca528b16v1u0040",
+            "s3013ca528b16v1u0054"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day5_consultation12",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/2",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f3",
+        "support": {
+          "statementIds": [
+            "s3013ca528b16v1u0034",
+            "s3013ca528b16v1u0050"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "식사와 물은 평소대로 섭취하고 있고, 어젯밤은 잘 잤다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s3013ca528b16v1u0034",
+          "s3013ca528b16v1u0050"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s3013ca528b16v1u0034",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[034] 환자: 네, 평소대로요.",
+          "start": 1015,
+          "end": 1034
+        },
+        {
+          "id": "s3013ca528b16v1u0050",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[050] 환자: 네.",
+          "start": 1431,
+          "end": 1443
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/2/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s3013ca528b16v1u0050"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day5_consultation12",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/4",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f5",
+        "support": {
+          "statementIds": [
+            "s3013ca528b16v1u0056",
+            "s3013ca528b16v1u0058",
+            "s3013ca528b16v1u0062",
+            "s3013ca528b16v1u0076",
+            "s3013ca528b16v1u0078",
+            "s3013ca528b16v1u0080"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "ASSESSMENT",
+        "text": "다른 질환, 약을 먹는 질환, 위 문제, 천식, 흡연, 정기적인 음주, 다른 약물 사용은 없다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s3013ca528b16v1u0056",
+          "s3013ca528b16v1u0058",
+          "s3013ca528b16v1u0062",
+          "s3013ca528b16v1u0076",
+          "s3013ca528b16v1u0078",
+          "s3013ca528b16v1u0080"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s3013ca528b16v1u0056",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[056] 환자: 없어요.",
+          "start": 1581,
+          "end": 1595
+        },
+        {
+          "id": "s3013ca528b16v1u0058",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[058] 환자: 없어요.",
+          "start": 1621,
+          "end": 1635
+        },
+        {
+          "id": "s3013ca528b16v1u0062",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[062] 환자: 없어요.",
+          "start": 1773,
+          "end": 1787
+        },
+        {
+          "id": "s3013ca528b16v1u0076",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[076] 환자: 아니요.",
+          "start": 2120,
+          "end": 2134
+        },
+        {
+          "id": "s3013ca528b16v1u0078",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[078] 환자: 아니요.",
+          "start": 2160,
+          "end": 2174
+        },
+        {
+          "id": "s3013ca528b16v1u0080",
+          "speaker": "PATIENT",
+          "sourceId": "cb9bac77-27b2-314d-a0cf-e36ff4f937d7",
+          "textVersion": 1,
+          "quote": "[080] 환자: 아니요.",
+          "start": 2194,
+          "end": 2208
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/4/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s3013ca528b16v1u0076",
+            "s3013ca528b16v1u0078",
+            "s3013ca528b16v1u0080"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "T02_EXPLICIT_CLOCK",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/0",
+      "code": "AI_SEMANTIC_INVALID",
+      "fact": {
+        "factId": "fact1",
+        "support": {
+          "statementIds": [
+            "s35cee3c6426bv1u0001"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "MEDICATION",
+        "text": "가상 약 P를 2026년 10월 10일부터 10월 12일까지 매일 오후 8시에 1알씩 복용하세요.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "PRESCRIBED",
+        "alternativeGroup": null,
+        "actionStatus": "FUTURE",
+        "medication": {
+          "name": "가상 약 P",
+          "doseText": "1알",
+          "frequencyText": "매일",
+          "courseDurationText": "2026년 10월 10일부터 10월 12일까지",
+          "instructions": "오후 8시에 복용",
+          "startsOn": "2026-10-10",
+          "endsOn": "2026-10-12",
+          "clockTimes": [
+            "20:00"
+          ],
+          "scheduleRecurrence": "DAILY",
+          "weekdays": []
+        },
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s35cee3c6426bv1u0001"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s35cee3c6426bv1u0001",
+          "speaker": "CLINICIAN",
+          "sourceId": "347caa6b-b947-31ac-ab3b-8d5e9b3bad26",
+          "textVersion": 1,
+          "quote": "의사: 가상 약 P는 2026년 10월 10일부터 10월 12일까지 매일 오후 8시에 한 알씩 드세요.",
+          "start": 0,
+          "end": 57
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/0/actionStatus",
+          "reason": "FUTURE에는 FOLLOW_UP/PRECAUTION 및 task object 필수",
+          "owner": "MODEL_FIELD_CLASSIFICATION_AND_POSTPROCESS"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation06",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/3",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f4",
+        "support": {
+          "statementIds": [
+            "s97cb05c5daa7v1u0026",
+            "s97cb05c5daa7v1u0030"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "ASSESSMENT",
+        "text": "이런 일은 이전에 없었음",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s97cb05c5daa7v1u0026",
+          "s97cb05c5daa7v1u0030"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s97cb05c5daa7v1u0026",
+          "speaker": "PATIENT",
+          "sourceId": "9aeb83b0-41d5-3f13-94e0-dbeb94b6089c",
+          "textVersion": 1,
+          "quote": "[026] 환자: 아니요.",
+          "start": 831,
+          "end": 845
+        },
+        {
+          "id": "s97cb05c5daa7v1u0030",
+          "speaker": "PATIENT",
+          "sourceId": "9aeb83b0-41d5-3f13-94e0-dbeb94b6089c",
+          "textVersion": 1,
+          "quote": "[030] 환자: 특별히 없고 습진이 조금 있어요. penicillin 알레르기가 있어요.",
+          "start": 962,
+          "end": 1012
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/3/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s97cb05c5daa7v1u0026"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation06",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/7",
+      "code": "AI_SEMANTIC_INVALID",
+      "fact": {
+        "factId": "f8",
+        "support": {
+          "statementIds": [
+            "s97cb05c5daa7v1u0039"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "ASSESSMENT",
+        "text": "즉시 진료를 받아야 함",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "FUTURE",
+        "medication": null,
+        "task": {
+          "kind": "HOSPITAL",
+          "title": "즉시 병원 진료",
+          "date": null,
+          "time": null,
+          "recurrence": "ONCE",
+          "lastDate": null,
+          "weekdays": []
+        },
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s97cb05c5daa7v1u0039"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s97cb05c5daa7v1u0039",
+          "speaker": "CLINICIAN",
+          "sourceId": "9aeb83b0-41d5-3f13-94e0-dbeb94b6089c",
+          "textVersion": 1,
+          "quote": "[039] 의사: 말씀을 들어 보니 즉시 <UNIN/> 진료를 받아야 합니다. 집에 항히스타민제가 있나요?",
+          "start": 1260,
+          "end": 1319
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/7/actionStatus",
+          "reason": "FUTURE에는 FOLLOW_UP/PRECAUTION 및 task object 필수",
+          "owner": "MODEL_FIELD_CLASSIFICATION_AND_POSTPROCESS"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation08",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/0",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f1",
+        "support": {
+          "statementIds": [
+            "s246c8d9f5bb8v1u0015",
+            "s246c8d9f5bb8v1u0017",
+            "s246c8d9f5bb8v1u0020",
+            "s246c8d9f5bb8v1u0026",
+            "s246c8d9f5bb8v1u0031",
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "며칠째 기침과 콧물이 있고, 기침은 마른기침이며 거칠게 콜록거리는 양상이다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s246c8d9f5bb8v1u0015",
+          "s246c8d9f5bb8v1u0017",
+          "s246c8d9f5bb8v1u0020",
+          "s246c8d9f5bb8v1u0026",
+          "s246c8d9f5bb8v1u0031",
+          "s246c8d9f5bb8v1u0033"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s246c8d9f5bb8v1u0015",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[015] 환자: 네, 며칠 됐어요. 기침하고 <INAUDIBLE_SPEECH/> 콧물도 나고요. <INAUDIBLE_SPEECH/>",
+          "start": 395,
+          "end": 469
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0017",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[017] 환자: 조금 더 됐고 5일쯤이에요. 오늘이 무슨 요일이죠? <UNIN/> 주말 시작 무렵부터였어요.",
+          "start": 518,
+          "end": 579
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0020",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[020] 환자: 기침, 콧물, 근육통이 있고 가끔 <UNIN/> 두통과 추위, 오한 같은 느낌도 있어요.",
+          "start": 643,
+          "end": 702
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0026",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[026] 환자: 아니요, 마른기침이에요. <UNIN/> 거의 거칠게 콜록거리는 기침이에요. <UNIN/>",
+          "start": 792,
+          "end": 851
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0031",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[031] 환자: 아니요. 숨은 잘 쉬어요. <UNIN/>",
+          "start": 944,
+          "end": 976
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0033",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[033] 환자: 네, 없어요.",
+          "start": 1014,
+          "end": 1031
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/0/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation08",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/1",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f2",
+        "support": {
+          "statementIds": [
+            "s246c8d9f5bb8v1u0020",
+            "s246c8d9f5bb8v1u0031",
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "기침과 함께 근육통, 가끔 두통, 추위, 오한 같은 느낌이 있다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s246c8d9f5bb8v1u0020",
+          "s246c8d9f5bb8v1u0031",
+          "s246c8d9f5bb8v1u0033"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s246c8d9f5bb8v1u0020",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[020] 환자: 기침, 콧물, 근육통이 있고 가끔 <UNIN/> 두통과 추위, 오한 같은 느낌도 있어요.",
+          "start": 643,
+          "end": 702
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0031",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[031] 환자: 아니요. 숨은 잘 쉬어요. <UNIN/>",
+          "start": 944,
+          "end": 976
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0033",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[033] 환자: 네, 없어요.",
+          "start": 1014,
+          "end": 1031
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/1/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation08",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/2",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f3",
+        "support": {
+          "statementIds": [
+            "s246c8d9f5bb8v1u0031",
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "숨은 잘 쉬고, 숨참은 없다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s246c8d9f5bb8v1u0031",
+          "s246c8d9f5bb8v1u0033"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s246c8d9f5bb8v1u0031",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[031] 환자: 아니요. 숨은 잘 쉬어요. <UNIN/>",
+          "start": 944,
+          "end": 976
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0033",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[033] 환자: 네, 없어요.",
+          "start": 1014,
+          "end": 1031
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/2/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation08",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/3",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f4",
+        "support": {
+          "statementIds": [
+            "s246c8d9f5bb8v1u0025",
+            "s246c8d9f5bb8v1u0026",
+            "s246c8d9f5bb8v1u0029",
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "기침할 때 가래는 없고, 피가 나오지 않는다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [
+          "CONFLICT"
+        ],
+        "utteranceIds": [
+          "s246c8d9f5bb8v1u0025",
+          "s246c8d9f5bb8v1u0026",
+          "s246c8d9f5bb8v1u0029",
+          "s246c8d9f5bb8v1u0033"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s246c8d9f5bb8v1u0025",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[025] 환자: 네.",
+          "start": 779,
+          "end": 791
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0026",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[026] 환자: 아니요, 마른기침이에요. <UNIN/> 거의 거칠게 콜록거리는 기침이에요. <UNIN/>",
+          "start": 792,
+          "end": 851
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0029",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[029] 환자: <INAUDIBLE_SPEECH/>",
+          "start": 888,
+          "end": 917
+        },
+        {
+          "id": "s246c8d9f5bb8v1u0033",
+          "speaker": "PATIENT",
+          "sourceId": "d18102e5-9a83-30f8-addd-e400f6952180",
+          "textVersion": 1,
+          "quote": "[033] 환자: 네, 없어요.",
+          "start": 1014,
+          "end": 1031
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/3/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s246c8d9f5bb8v1u0025",
+            "s246c8d9f5bb8v1u0033"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation05",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/0",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f1",
+        "support": {
+          "statementIds": [
+            "s16d1fd758b58v1u0003",
+            "s16d1fd758b58v1u0018",
+            "s16d1fd758b58v1u0020",
+            "s16d1fd758b58v1u0021",
+            "s16d1fd758b58v1u0024",
+            "s16d1fd758b58v1u0030",
+            "s16d1fd758b58v1u0035",
+            "s16d1fd758b58v1u0037",
+            "s16d1fd758b58v1u0048",
+            "s16d1fd758b58v1u0051",
+            "s16d1fd758b58v1u0053",
+            "s16d1fd758b58v1u0055",
+            "s16d1fd758b58v1u0058",
+            "s16d1fd758b58v1u0061"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "지난 2시간 동안 지속되는 어지럼(방이 빙빙 도는 느낌)과 메스꺼움이 있으며, 똑바로 걷기 어렵고 귀에서 가벼운 윙윙거림이 있다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s16d1fd758b58v1u0003",
+          "s16d1fd758b58v1u0018",
+          "s16d1fd758b58v1u0020",
+          "s16d1fd758b58v1u0021",
+          "s16d1fd758b58v1u0024",
+          "s16d1fd758b58v1u0030",
+          "s16d1fd758b58v1u0035",
+          "s16d1fd758b58v1u0037",
+          "s16d1fd758b58v1u0048",
+          "s16d1fd758b58v1u0051",
+          "s16d1fd758b58v1u0053",
+          "s16d1fd758b58v1u0055",
+          "s16d1fd758b58v1u0058",
+          "s16d1fd758b58v1u0061"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s16d1fd758b58v1u0003",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[003] 환자: 괜찮아요, 감사합니다. 사실 몸이 별로 안 좋아요.",
+          "start": 67,
+          "end": 105
+        },
+        {
+          "id": "s16d1fd758b58v1u0018",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[018] 환자: 네, 정말 메스꺼워요. 어지러워서 그런 것 같아요. 방이 빙빙 도는 것 같아요.",
+          "start": 579,
+          "end": 633
+        },
+        {
+          "id": "s16d1fd758b58v1u0020",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[020] 환자: 제대로 걸을 수가 없어요. 걸을 수는 있는데 똑바로 걷지를 못하겠어요.",
+          "start": 664,
+          "end": 713
+        },
+        {
+          "id": "s16d1fd758b58v1u0021",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[021] 환자: 귀에서 윙윙 소리도 조금 나고 뭔가 이상해요.",
+          "start": 714,
+          "end": 749
+        },
+        {
+          "id": "s16d1fd758b58v1u0024",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[024] 환자: 아마 두 시간 전쯤이요. 한 달 전에도 비슷한 일이 있었어요.",
+          "start": 834,
+          "end": 878
+        },
+        {
+          "id": "s16d1fd758b58v1u0030",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[030] 환자: 갑자기 머리가 멍하고 어지럽고 조금 떨렸어요.",
+          "start": 1092,
+          "end": 1127
+        },
+        {
+          "id": "s16d1fd758b58v1u0035",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[035] 환자: 네, 내내 그래요.",
+          "start": 1258,
+          "end": 1278
+        },
+        {
+          "id": "s16d1fd758b58v1u0037",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[037] 환자: 네.",
+          "start": 1313,
+          "end": 1325
+        },
+        {
+          "id": "s16d1fd758b58v1u0048",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[048] 환자: 방이 조금 움직이는 것 같아서요.",
+          "start": 1591,
+          "end": 1619
+        },
+        {
+          "id": "s16d1fd758b58v1u0051",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[051] 환자: <INAUDIBLE_SPEECH/> 다리나 팔은 잘 움직여요. 그냥 <UNIN/> 안정적이지 않고 방이 <UNIN/> 빙빙 돌아요.",
+          "start": 1739,
+          "end": 1822
+        },
+        {
+          "id": "s16d1fd758b58v1u0053",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[053] 환자: 아니에요.",
+          "start": 1853,
+          "end": 1868
+        },
+        {
+          "id": "s16d1fd758b58v1u0055",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[055] 환자: 5~10분 정도였던 것 같아요.",
+          "start": 1910,
+          "end": 1937
+        },
+        {
+          "id": "s16d1fd758b58v1u0058",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[058] 환자: 귀에서 윙윙 소리만 조금 나고 다른 소리는 다 들려요.",
+          "start": 1994,
+          "end": 2034
+        },
+        {
+          "id": "s16d1fd758b58v1u0061",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[061] 환자: 아니요, 그런데 지금 많이 메스꺼워요.",
+          "start": 2089,
+          "end": 2120
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/0/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s16d1fd758b58v1u0037"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation05",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/1",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f2",
+        "support": {
+          "statementIds": [
+            "s16d1fd758b58v1u0044",
+            "s16d1fd758b58v1u0046",
+            "s16d1fd758b58v1u0053",
+            "s16d1fd758b58v1u0057",
+            "s16d1fd758b58v1u0066",
+            "s16d1fd758b58v1u0068"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "귀통증, 귀 분비물, 발열, 팔다리 힘 빠짐, 청력 저하/먹먹함은 없다고 했다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s16d1fd758b58v1u0044",
+          "s16d1fd758b58v1u0046",
+          "s16d1fd758b58v1u0053",
+          "s16d1fd758b58v1u0057",
+          "s16d1fd758b58v1u0066",
+          "s16d1fd758b58v1u0068"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s16d1fd758b58v1u0044",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[044] 환자: 아니요, 없어요.",
+          "start": 1489,
+          "end": 1508
+        },
+        {
+          "id": "s16d1fd758b58v1u0046",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[046] 환자: 없는 것 같아요.",
+          "start": 1527,
+          "end": 1546
+        },
+        {
+          "id": "s16d1fd758b58v1u0053",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[053] 환자: 아니에요.",
+          "start": 1853,
+          "end": 1868
+        },
+        {
+          "id": "s16d1fd758b58v1u0057",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[057] 환자: 아니요.",
+          "start": 1979,
+          "end": 1993
+        },
+        {
+          "id": "s16d1fd758b58v1u0066",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[066] 환자: 아니요.",
+          "start": 2332,
+          "end": 2346
+        },
+        {
+          "id": "s16d1fd758b58v1u0068",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[068] 환자: 아니요.",
+          "start": 2368,
+          "end": 2382
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/1/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s16d1fd758b58v1u0044",
+            "s16d1fd758b58v1u0057",
+            "s16d1fd758b58v1u0066",
+            "s16d1fd758b58v1u0068"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day3_consultation05",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/6",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f7",
+        "support": {
+          "statementIds": [
+            "s16d1fd758b58v1u0077",
+            "s16d1fd758b58v1u0079"
+          ],
+          "questionIds": [],
+          "answerIds": [
+            "s16d1fd758b58v1u0078",
+            "s16d1fd758b58v1u0080"
+          ],
+          "correctionIds": []
+        },
+        "kind": "PRECAUTION",
+        "text": "대기 중 팔다리 힘 빠짐이나 갑작스러운 두통이 생기거나 심하게 토하기 시작하면 응급실에 가야 한다.",
+        "condition": {
+          "operator": "ANY",
+          "clauses": [
+            "팔다리 힘 빠짐이 생기면",
+            "갑작스러운 두통이 생기면",
+            "심하게 토하기 시작하면"
+          ]
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "FUTURE",
+        "medication": null,
+        "task": {
+          "kind": "HOSPITAL",
+          "title": "응급실 방문",
+          "date": null,
+          "time": null,
+          "recurrence": "ONCE",
+          "lastDate": null,
+          "weekdays": []
+        },
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s16d1fd758b58v1u0077",
+          "s16d1fd758b58v1u0079",
+          "s16d1fd758b58v1u0078",
+          "s16d1fd758b58v1u0080"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s16d1fd758b58v1u0077",
+          "speaker": "CLINICIAN",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[077] 의사: 진료를 기다리는 동안 팔다리에 힘이 빠지거나 갑자기 두통이 생긴다면요.",
+          "start": 2862,
+          "end": 2911
+        },
+        {
+          "id": "s16d1fd758b58v1u0079",
+          "speaker": "CLINICIAN",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[079] 의사: 그런 증상 중 하나가 생기거나 심하게 토하기 시작하면 <UNIN/> 응급실에 가셔야 합니다.",
+          "start": 2925,
+          "end": 2986
+        },
+        {
+          "id": "s16d1fd758b58v1u0078",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[078] 환자: 네.",
+          "start": 2912,
+          "end": 2924
+        },
+        {
+          "id": "s16d1fd758b58v1u0080",
+          "speaker": "PATIENT",
+          "sourceId": "b09ea115-34eb-380a-9042-498e1ef9668a",
+          "textVersion": 1,
+          "quote": "[080] 환자: 네.",
+          "start": 2987,
+          "end": 2999
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/6/support",
+          "reason": "questionIds/answerIds 한쪽만 존재",
+          "owner": "INTERNAL_RELATION_CONSTRAINT; acknowledgement may not need a question"
+        },
+        {
+          "path": "/facts/6/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s16d1fd758b58v1u0078",
+            "s16d1fd758b58v1u0080"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day2_consultation03",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/4",
+      "code": "AI_SEMANTIC_INVALID",
+      "fact": {
+        "factId": "f5",
+        "support": {
+          "statementIds": [
+            "s340d128d5e7dv1u0055",
+            "s340d128d5e7dv1u0061"
+          ],
+          "questionIds": [
+            "s340d128d5e7dv1u0054",
+            "s340d128d5e7dv1u0060"
+          ],
+          "answerIds": [
+            "s340d128d5e7dv1u0055",
+            "s340d128d5e7dv1u0061"
+          ],
+          "correctionIds": []
+        },
+        "kind": "MEDICATION",
+        "text": "다른 정기 복용 약은 없다고 했다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s340d128d5e7dv1u0055",
+          "s340d128d5e7dv1u0061",
+          "s340d128d5e7dv1u0054",
+          "s340d128d5e7dv1u0060"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s340d128d5e7dv1u0055",
+          "speaker": "PATIENT",
+          "sourceId": "63c82b48-bdfe-3cb7-aab2-a7a2d9b982c8",
+          "textVersion": 1,
+          "quote": "[055] 환자: 아니요, 코 스프레이는 필요할 때만 써요. 가끔 Rennies 같은 것도 먹는데 <UNIN/> 약국에서 사요.",
+          "start": 1962,
+          "end": 2033
+        },
+        {
+          "id": "s340d128d5e7dv1u0061",
+          "speaker": "PATIENT",
+          "sourceId": "63c82b48-bdfe-3cb7-aab2-a7a2d9b982c8",
+          "textVersion": 1,
+          "quote": "[061] 환자: 없어요.",
+          "start": 2201,
+          "end": 2215
+        },
+        {
+          "id": "s340d128d5e7dv1u0054",
+          "speaker": "CLINICIAN",
+          "sourceId": "63c82b48-bdfe-3cb7-aab2-a7a2d9b982c8",
+          "textVersion": 1,
+          "quote": "[054] 의사: 정기적으로 쓰는 약이 있나요? 코 스프레이를 말씀하셨는데요.",
+          "start": 1918,
+          "end": 1961
+        },
+        {
+          "id": "s340d128d5e7dv1u0060",
+          "speaker": "CLINICIAN",
+          "sourceId": "63c82b48-bdfe-3cb7-aab2-a7a2d9b982c8",
+          "textVersion": 1,
+          "quote": "[060] 의사: <INAUDIBLE_SPEECH/> 괜찮습니다. 다른 약은 없나요?",
+          "start": 2153,
+          "end": 2200
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/4/medicationRole",
+          "reason": "MEDICATION에는 role!=NONE 및 medication object 필수. 복용약 없음을 표현할 역할이 없음",
+          "owner": "SCHEMA_DESIGN_AND_POSTPROCESS"
+        }
+      ]
+    },
+    {
+      "id": "R01_CORRECTED_DOSE",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/0",
+      "code": "AI_SEMANTIC_INVALID",
+      "fact": {
+        "factId": "f1",
+        "support": {
+          "statementIds": [
+            "s865816c4df69v1u0001"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "MEDICATION",
+        "text": "가상 약 Q를 한 번에 반 알씩 하루 한 번, 나흘 동안만 복용합니다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "PRESCRIBED",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": {
+          "name": "가상 약 Q",
+          "doseText": "한 번에 반 알씩",
+          "frequencyText": "하루 한 번",
+          "courseDurationText": "나흘 동안",
+          "instructions": "나흘 동안만 드세요.",
+          "startsOn": null,
+          "endsOn": null,
+          "clockTimes": [],
+          "scheduleRecurrence": "DAILY",
+          "weekdays": []
+        },
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s865816c4df69v1u0001"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s865816c4df69v1u0001",
+          "speaker": "CLINICIAN",
+          "sourceId": "df063fdd-7d53-3bf3-80e9-98d7c2eb3ea5",
+          "textVersion": 1,
+          "quote": "의사: 가상 약 Q는 두 알씩, 아니 제가 잘못 말했네요. 한 번에 반 알씩 하루 한 번입니다. 나흘 동안만 드세요.",
+          "start": 0,
+          "end": 65
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/0/medication/scheduleRecurrence",
+          "reason": "명시 clockTimes 없이 DAILY",
+          "owner": "MODEL_TIME_EXTRACTION; definite structural contradiction"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation02",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/1",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f2",
+        "support": {
+          "statementIds": [
+            "sb31ffd444135v1u0036",
+            "sb31ffd444135v1u0040",
+            "sb31ffd444135v1u0056",
+            "sb31ffd444135v1u0058",
+            "sb31ffd444135v1u0061",
+            "sb31ffd444135v1u0063"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "피부에서 분비물이나 피/고름은 없고, 열, 기침, 호흡곤란은 없습니다. 소변은 잘 보는 편입니다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sb31ffd444135v1u0036",
+          "sb31ffd444135v1u0040",
+          "sb31ffd444135v1u0056",
+          "sb31ffd444135v1u0058",
+          "sb31ffd444135v1u0061",
+          "sb31ffd444135v1u0063"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sb31ffd444135v1u0036",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[036] 환자: <UNIN/>. 네.",
+          "start": 1459,
+          "end": 1480
+        },
+        {
+          "id": "sb31ffd444135v1u0040",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[040] 환자: 네, 없어요.",
+          "start": 1594,
+          "end": 1611
+        },
+        {
+          "id": "sb31ffd444135v1u0056",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[056] 환자: 얼굴에는 없어요.",
+          "start": 2220,
+          "end": 2239
+        },
+        {
+          "id": "sb31ffd444135v1u0058",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[058] 환자: 아니요. <UNIN/> 그냥 아주 가려울 뿐 다른 것은 없어요.",
+          "start": 2293,
+          "end": 2338
+        },
+        {
+          "id": "sb31ffd444135v1u0061",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[061] 환자: 없어요.",
+          "start": 2407,
+          "end": 2421
+        },
+        {
+          "id": "sb31ffd444135v1u0063",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[063] 환자: 그런 것 같아요.",
+          "start": 2443,
+          "end": 2462
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/1/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "sb31ffd444135v1u0040"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation02",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/3",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f4",
+        "support": {
+          "statementIds": [
+            "sb31ffd444135v1u0077",
+            "sb31ffd444135v1u0079",
+            "sb31ffd444135v1u0087"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "ASSESSMENT",
+        "text": "예전 천식은 현재는 없습니다. 정기 복용 약은 없고, 알레르기도 없습니다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sb31ffd444135v1u0077",
+          "sb31ffd444135v1u0079",
+          "sb31ffd444135v1u0087"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sb31ffd444135v1u0077",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[077] 환자: 아니요. 예전에 천식이 있었지만 지금은 없어요.",
+          "start": 2992,
+          "end": 3028
+        },
+        {
+          "id": "sb31ffd444135v1u0079",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[079] 환자: 아니요.",
+          "start": 3069,
+          "end": 3083
+        },
+        {
+          "id": "sb31ffd444135v1u0087",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[087] 환자: 아, 알레르기요. 없어요.",
+          "start": 3320,
+          "end": 3344
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/3/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "sb31ffd444135v1u0079"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day1_consultation02",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/4",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f5",
+        "support": {
+          "statementIds": [
+            "sb31ffd444135v1u0089",
+            "sb31ffd444135v1u0091",
+            "sb31ffd444135v1u0094",
+            "sb31ffd444135v1u0097"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "ASSESSMENT",
+        "text": "환자는 룸메이트들과 함께 살며, 제약회사에서 일하고, 담배는 피우지 않으며, 술은 가끔 마십니다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "sb31ffd444135v1u0089",
+          "sb31ffd444135v1u0091",
+          "sb31ffd444135v1u0094",
+          "sb31ffd444135v1u0097"
+        ]
+      },
+      "sources": [
+        {
+          "id": "sb31ffd444135v1u0089",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[089] 환자: 몇 명의 룸메이트와 살아요. 저는 서른한 살이고 정규직으로 일해요. 돈을 아끼려고 몇 명과 함께 살아요.",
+          "start": 3378,
+          "end": 3446
+        },
+        {
+          "id": "sb31ffd444135v1u0091",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[091] 환자: 제약회사에서 일해요.",
+          "start": 3469,
+          "end": 3490
+        },
+        {
+          "id": "sb31ffd444135v1u0094",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[094] 환자: 아니요.",
+          "start": 3629,
+          "end": 3643
+        },
+        {
+          "id": "sb31ffd444135v1u0097",
+          "speaker": "PATIENT",
+          "sourceId": "367b4a72-bfa2-3457-93de-b5e56bf70d62",
+          "textVersion": 1,
+          "quote": "[097] 환자: 가끔 <UNIN/> 사람들과 어울리는 것을 좋아해서 일주일에 맥주 몇 잔 정도요. 심하지는 않아요. 젊었을 때는 더 많이 마셨지만 오래전이에요. <UNIN/>",
+          "start": 3696,
+          "end": 3794
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/4/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "sb31ffd444135v1u0094"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day5_consultation01",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/1",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f2",
+        "support": {
+          "statementIds": [
+            "s44dc49cda434v1u0018",
+            "s44dc49cda434v1u0022",
+            "s44dc49cda434v1u0024",
+            "s44dc49cda434v1u0026",
+            "s44dc49cda434v1u0039",
+            "s44dc49cda434v1u0043"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "SYMPTOM",
+        "text": "두통과 함께 빛에 민감하지만, 시력 문제, 이상한 냄새나 맛, 메스꺼움/구토, 피부 변화, 팔다리의 힘 빠짐·저림·감각 둔화는 없다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s44dc49cda434v1u0018",
+          "s44dc49cda434v1u0022",
+          "s44dc49cda434v1u0024",
+          "s44dc49cda434v1u0026",
+          "s44dc49cda434v1u0039",
+          "s44dc49cda434v1u0043"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s44dc49cda434v1u0018",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[018] 환자: 욱신거리고 꽤 심해요. 심해졌다 약해졌다 하고, 빛에 많이 민감해요. 많이 아파요.",
+          "start": 616,
+          "end": 672
+        },
+        {
+          "id": "s44dc49cda434v1u0022",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[022] 환자: 아니요, 전혀 없어요.",
+          "start": 792,
+          "end": 814
+        },
+        {
+          "id": "s44dc49cda434v1u0024",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[024] 환자: 아니요.",
+          "start": 842,
+          "end": 856
+        },
+        {
+          "id": "s44dc49cda434v1u0026",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[026] 환자: 아니요, 그런 점은 괜찮아요.",
+          "start": 880,
+          "end": 906
+        },
+        {
+          "id": "s44dc49cda434v1u0039",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[039] 환자: 아니요, 피부는 괜찮아요.",
+          "start": 1313,
+          "end": 1337
+        },
+        {
+          "id": "s44dc49cda434v1u0043",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[043] 환자: 아니요, 전혀요.",
+          "start": 1469,
+          "end": 1488
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/1/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s44dc49cda434v1u0024"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    },
+    {
+      "id": "day5_consultation01",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "path": "/facts/3",
+      "code": "AI_EVIDENCE_INVALID",
+      "fact": {
+        "factId": "f4",
+        "support": {
+          "statementIds": [
+            "s44dc49cda434v1u0030",
+            "s44dc49cda434v1u0088"
+          ],
+          "questionIds": [],
+          "answerIds": [],
+          "correctionIds": []
+        },
+        "kind": "ASSESSMENT",
+        "text": "이번 두통은 새로 생긴 것으로, 과거에 정기적인 두통 병력은 없다.",
+        "condition": {
+          "operator": "NONE",
+          "clauses": []
+        },
+        "medicationRole": "NONE",
+        "alternativeGroup": null,
+        "actionStatus": "NONE",
+        "medication": null,
+        "task": null,
+        "uncertaintyCodes": [],
+        "utteranceIds": [
+          "s44dc49cda434v1u0030",
+          "s44dc49cda434v1u0088"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s44dc49cda434v1u0030",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[030] 환자: 아니요, 별로요. 전에는 이런 적이 없어요.",
+          "start": 996,
+          "end": 1030
+        },
+        {
+          "id": "s44dc49cda434v1u0088",
+          "speaker": "PATIENT",
+          "sourceId": "d6a036e5-4dac-367f-a09d-0ef450426c6d",
+          "textVersion": 1,
+          "quote": "[088] 환자: 네.",
+          "start": 2935,
+          "end": 2947
+        }
+      ],
+      "reasons": [
+        {
+          "path": "/facts/3/support/statementIds",
+          "reason": "질문 없는 단답을 독립 statement로 사용",
+          "turnIds": [
+            "s44dc49cda434v1u0088"
+          ],
+          "owner": "MODEL_EVIDENCE_ROLE; whole-fact rejection may be overbroad if other statements suffice"
+        }
+      ]
+    }
+  ]
+}

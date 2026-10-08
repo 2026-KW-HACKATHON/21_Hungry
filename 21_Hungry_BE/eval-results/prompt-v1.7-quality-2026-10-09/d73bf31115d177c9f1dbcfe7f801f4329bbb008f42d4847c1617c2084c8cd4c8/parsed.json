@@ -1,0 +1,18 @@
+{
+  "summary" : "염증 가능성이 있으나 결과를 더 봐야 함. 계속 불편하면 검사를 고려하기로 함.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[{\"text\":\"계속 불편하면 검사를 고려하기로 함.\",\"evidenceIndexes\":[0]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"5cac8780-b804-39c6-9ef6-5741b9b7f8b1\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 염증일 가능성이 있지만 결과를 더 봐야 합니다. 계속 불편하면 검사를 고려합시다.\",\"occurrenceIndex\":0,\"start\":0,\"end\":49}]",
+  "items" : [ {
+    "itemKey" : "followup_1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"EXAM\",\"title\":\"검사 고려\",\"description\":\"계속 불편하면 검사 고려\",\"date\":null,\"time\":null,\"durationMinutes\":120,\"durationSource\":\"PLANNING_DEFAULT\",\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"5cac8780-b804-39c6-9ef6-5741b9b7f8b1\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 염증일 가능성이 있지만 결과를 더 봐야 합니다. 계속 불편하면 검사를 고려합시다.\",\"occurrenceIndex\":0,\"start\":0,\"end\":49}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_SCHEDULE", "UNCERTAIN" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8-prompt",
+  "inputTokens" : 1767,
+  "outputTokens" : 250
+}

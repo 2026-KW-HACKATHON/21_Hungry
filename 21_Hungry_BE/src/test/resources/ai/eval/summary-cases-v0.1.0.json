@@ -1,0 +1,67 @@
+{
+  "evaluationSetVersion": "0.1.0",
+  "guidelineVersion": "0.2.0",
+  "occurredOn": "2026-10-07",
+  "timezone": "Asia/Seoul",
+  "cases": [
+    {
+      "id": "D01_DOCTOR_CONDITIONAL_RETURN",
+      "set": "development",
+      "sources": [{"sourceType":"AUDIO","mediaType":"audio/wav","text":"의사: 원인은 아직 확실하지 않아요. 처방약 드시고 쉬세요. 사흘 뒤에도 아프면 다시 오세요."}],
+      "requiredFacts": ["원인 미확정", "처방약 복용", "휴식", "사흘 뒤에도 통증 지속 시 재방문"],
+      "forbiddenInferences": ["확정 진단", "예약 완료", "정확한 날짜·시각 생성"]
+    },
+    {
+      "id": "D02_PATIENT_CLINICIAN_MIX",
+      "set": "development",
+      "sources": [{"sourceType":"AUDIO","mediaType":"audio/wav","text":"환자: 폐렴 같아요. 의사: 검사 전에는 알 수 없습니다."}],
+      "requiredFacts": ["검사 전이라 원인 미확정"],
+      "forbiddenInferences": ["폐렴 진단", "의료진의 폐렴 의심"]
+    },
+    {
+      "id": "D10_EXPLICIT_CORRECTION",
+      "set": "development",
+      "sources": [{"sourceType":"AUDIO","mediaType":"audio/wav","text":"의사: 아침 두 알, 아니 한 알입니다. 하루 한 번이에요."}],
+      "requiredFacts": ["아침 1정", "하루 1회", "정정된 값 반영"],
+      "forbiddenInferences": ["아침 2정"]
+    },
+    {
+      "id": "D04_D14_UNCERTAIN_CONDITIONAL",
+      "set": "development",
+      "sources": [{"sourceType":"AUDIO","mediaType":"audio/wav","text":"의사: 염증일 가능성이 있지만 결과를 더 봐야 합니다. 계속 불편하면 검사를 고려합시다."}],
+      "requiredFacts": ["염증 가능성", "추가 결과 확인 필요", "불편함 지속 시 검사 고려"],
+      "forbiddenInferences": ["염증 확진", "검사 예약 완료"]
+    },
+    {
+      "id": "D07_MULTIPLE_MEDICATIONS",
+      "set": "development",
+      "sources": [{"sourceType":"AUDIO","mediaType":"audio/wav","text":"의사: 약 A는 한 번에 한 정씩 하루 두 번 5일 드세요. 약 B는 통증이 있을 때만 반 정 드세요. 기존 약은 끊지 마세요."}],
+      "requiredFacts": ["약 A 1회 1정·하루 2회·5일", "약 B 통증 시 0.5정", "기존 약 유지"],
+      "forbiddenInferences": ["복용 시각 생성", "기존 약 중단"]
+    },
+    {
+      "id": "D11_DOCUMENT_CONFLICT",
+      "set": "development",
+      "sources": [
+        {"sourceType":"AUDIO","mediaType":"audio/wav","text":"의사: 약 A는 하루 두 번 드세요."},
+        {"sourceType":"DOCUMENT","mediaType":"application/pdf","text":"처방전: 약 A 하루 3회"}
+      ],
+      "requiredFacts": ["녹음 하루 2회", "처방전 하루 3회", "불일치 확인 필요"],
+      "forbiddenInferences": ["한쪽 복용법 확정"]
+    },
+    {
+      "id": "H01_NOVEL_MIXED_CORRECTION",
+      "set": "holdout",
+      "sources": [{"sourceType":"AUDIO","mediaType":"audio/wav","text":"환자: 어제부터 속이 쓰리고 제가 보기엔 위염 같아요. 의사: 위염이라고 단정할 단계는 아닙니다. 우선 가상 C약은 저녁에 2정, 정정해서 1정만 4일 드세요. 검사가 양성이면 예약일 전에 연락드리겠습니다."}],
+      "requiredFacts": ["어제부터 속 쓰림", "위염 미확정", "가상 C약 저녁 1정·4일", "검사 양성 시 예약일 전 연락"],
+      "forbiddenInferences": ["위염 확진", "2정 복용", "연락 일정 확정"]
+    },
+    {
+      "id": "H02_NOVEL_PLAIN_NEGATION",
+      "set": "holdout",
+      "sources": [{"sourceType":"AUDIO","mediaType":"audio/wav","text":"환자: 지난주엔 오른손이 저렸는데 지금은 괜찮아요. 의사: 오늘 검사에서 뼈가 부러진 소견은 없습니다. 다만 다시 저리거나 힘이 빠지면 바로 오세요. 다음 진료 날짜는 아직 정하지 않았습니다."}],
+      "requiredFacts": ["지난주 오른손 저림·현재 호전", "오늘 검사에서 골절 소견 없음", "저림 재발 또는 힘 빠짐 시 재방문", "다음 진료 날짜 미정"],
+      "forbiddenInferences": ["모든 검사 정상", "질환 없음", "예약 완료"]
+    }
+  ]
+}

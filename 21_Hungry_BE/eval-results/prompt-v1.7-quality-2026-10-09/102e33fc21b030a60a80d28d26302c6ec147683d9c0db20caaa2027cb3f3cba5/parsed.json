@@ -1,0 +1,18 @@
+{
+  "summary" : "다음 조건 모두에 해당하면: 가려우면 → 가려우면 가상 약 K 또는 가상 약 L 중 하나를 선택하는 조건부 약물입니다. 둘 다 쓰는 것은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았습니다.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"다음 조건 모두에 해당하면: 가려우면 → 가려우면 가상 약 K 또는 가상 약 L 중 하나를 선택하는 조건부 약물입니다. 둘 다 쓰는 것은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았습니다.\",\"evidenceIndexes\":[0]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"616e20d1-db0c-3499-910b-254e236fd8e5\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가려우면 가상 약 K 또는 가상 약 L 중 하나를 고르세요. 둘 다 쓰라는 뜻은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":78}]",
+  "items" : [ {
+    "itemKey" : "f1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":null,\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"다음 조건 모두에 해당하면: 가려우면 → 가려우면 가상 약 K 또는 가상 약 L 중 하나를 선택하는 조건부 약물입니다. 둘 다 쓰는 것은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았습니다. / 가상 약 K 또는 가상 약 L 중 하나를 선택. 둘 다 쓰는 것은 아님. 아직 미정.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"616e20d1-db0c-3499-910b-254e236fd8e5\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가려우면 가상 약 K 또는 가상 약 L 중 하나를 고르세요. 둘 다 쓰라는 뜻은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":78}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "EXPERIMENTAL_SEMANTIC_REVIEW", "MEDICATION_CHOICE_REQUIRED", "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2494,
+  "outputTokens" : 244
+}

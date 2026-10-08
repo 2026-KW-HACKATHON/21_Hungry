@@ -1,0 +1,287 @@
+{
+  "id" : "resp_07bacf7d8b8b2f1b016ac8019ba8e487d09cc551f68812ee1b",
+  "object" : "response",
+  "created_at" : 1791492507,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791492547,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-6.1-sol",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_07bacf7d8b8b2f1b016ac8019d58d887d0aa002917338146ee",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8.1\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0012\"],\"questionIds\":[\"s5bb533f54674v1u0013\",\"s5bb533f54674v1u0019\"],\"answerIds\":[\"s5bb533f54674v1u0014\",\"s5bb533f54674v1u0020\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"약 6주 동안 왼쪽 귀의 청력이 이전보다 나빠진 느낌이 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[],\"questionIds\":[\"s5bb533f54674v1u0015\"],\"answerIds\":[\"s5bb533f54674v1u0016\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"약 1년 전에도 비슷한 청력 문제가 있었으나 며칠만 지속되었다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f3\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0018\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"가끔 왼쪽 귀에서만 삐 소리가 나며, 메스껍거나 조금 어지러웠던 적이 몇 번 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f4\",\"support\":{\"statementIds\":[],\"questionIds\":[\"s5bb533f54674v1u0021\"],\"answerIds\":[\"s5bb533f54674v1u0022\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"오른쪽 귀는 괜찮은 것 같다고 한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f5\",\"support\":{\"statementIds\":[],\"questionIds\":[\"s5bb533f54674v1u0025\"],\"answerIds\":[\"s5bb533f54674v1u0027\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"귀 증상은 왔다 갔다 한다. TV나 음악과 귀 소리의 관계를 언급했으나 유발인지 완화인지 불명확하다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"UNCLEAR_SOURCE\"]},{\"factId\":\"f6\",\"support\":{\"statementIds\":[],\"questionIds\":[\"s5bb533f54674v1u0028\"],\"answerIds\":[\"s5bb533f54674v1u0029\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"귀 통증은 없다고 답했으나 왼쪽 귀를 지칭하는 부분은 불확실하다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"UNCLEAR_SOURCE\"]},{\"factId\":\"f7\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0030\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"의사는 귀에서 진물이 나오지 않는다고 확인했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f8\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0048\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"어지럼은 심하지 않고, 메스꺼우면서 방이 빙빙 도는 어지럼이 아니라 균형이 조금 안 맞는 느낌이다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f9\",\"support\":{\"statementIds\":[],\"questionIds\":[\"s5bb533f54674v1u0050\"],\"answerIds\":[\"s5bb533f54674v1u0052\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"가슴 통증은 없다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f10\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0037\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"PRECAUTION\",\"text\":\"면봉으로 귀지를 빼려 하면 귀지를 안으로 밀어 넣게 되므로 그러지 않는 것이 맞다고 안내했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f11\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0038\",\"s5bb533f54674v1u0040\",\"s5bb533f54674v1u0041\",\"s5bb533f54674v1u0056\",\"s5bb533f54674v1u0057\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"귀지 등으로 막힌 것이 원인인지 먼저 귀 안과 고막을 직접 확인해야 한다. 고막 안쪽이나 귀의 균형을 담당하는 부분에 문제가 있을 가능성도 있으나 아직 확인되지 않았다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f12\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0042\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"의사는 현재 응급은 아니라고 판단했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f13\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0042\",\"s5bb533f54674v1u0043\",\"s5bb533f54674v1u0044\",\"s5bb533f54674v1u0070\",\"s5bb533f54674v1u0071\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"앞으로 4~5일 안에 진료소에서 대면 진료를 받아 귀를 확인하도록 권했다. 다른 의사가 진료 기록을 보고 귀를 확인할 예정이며, 예약이 확정된 것은 아니다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"HOSPITAL\",\"title\":\"4~5일 내 대면 귀 진료 받기\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f14\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0043\",\"s5bb533f54674v1u0044\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"의사는 행정팀에 메시지를 보내 4~5일 안에 진료소 예약을 잡아 달라고 요청하겠다고 했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"CLINICIAN_ONLY\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f15\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0059\",\"s5bb533f54674v1u0061\",\"s5bb533f54674v1u0063\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"귀에서 소리가 나는 증상을 이명이라고 설명했다. 이명은 완전히 이해되지 않은 부분이 있고 여러 요인이 유발할 수 있어 특정 원인을 말하기 어렵다고 했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f16\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0065\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"의사는 이번 진료 기록에 이명 안내 자료 링크를 첨부하겠다고 했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"CLINICIAN_ONLY\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f17\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0064\",\"s5bb533f54674v1u0065\",\"s5bb533f54674v1u0069\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"대면 진료를 기다리는 동안 진료 기록에 제공될 이명 안내 자료 링크를 읽어 보도록 권했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"이명 안내 자료 읽기\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f18\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0074\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"진료 후 약 5분 기다린 다음, 이번 진료 기록에 남길 번호로 지원팀에 전화하여 예약을 잡도록 안내했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"5분 후 지원팀에 전화해 진료 예약하기\",\"date\":\"2026-10-07\",\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f19\",\"support\":{\"statementIds\":[\"s5bb533f54674v1u0076\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"다른 화상 진료를 예약하여 의료진과 상담하도록 안내했다.\",\"condition\":{\"operator\":\"ALL\",\"clauses\":[\"대면 진료 전에 문제가 생기면\"]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"HOSPITAL\",\"title\":\"문제 발생 시 화상 진료 예약 및 상담\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]}],\"summaryFactIds\":[\"f1\",\"f3\",\"f8\",\"f11\",\"f12\",\"f15\",\"f13\",\"f18\",\"f17\",\"f19\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "all_turns",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s5bb533f54674v1u0001", "s5bb533f54674v1u0002", "s5bb533f54674v1u0003", "s5bb533f54674v1u0004", "s5bb533f54674v1u0005", "s5bb533f54674v1u0006", "s5bb533f54674v1u0007", "s5bb533f54674v1u0008", "s5bb533f54674v1u0009", "s5bb533f54674v1u0010", "s5bb533f54674v1u0011", "s5bb533f54674v1u0012", "s5bb533f54674v1u0013", "s5bb533f54674v1u0014", "s5bb533f54674v1u0015", "s5bb533f54674v1u0016", "s5bb533f54674v1u0017", "s5bb533f54674v1u0018", "s5bb533f54674v1u0019", "s5bb533f54674v1u0020", "s5bb533f54674v1u0021", "s5bb533f54674v1u0022", "s5bb533f54674v1u0023", "s5bb533f54674v1u0024", "s5bb533f54674v1u0025", "s5bb533f54674v1u0026", "s5bb533f54674v1u0027", "s5bb533f54674v1u0028", "s5bb533f54674v1u0029", "s5bb533f54674v1u0030", "s5bb533f54674v1u0031", "s5bb533f54674v1u0032", "s5bb533f54674v1u0033", "s5bb533f54674v1u0034", "s5bb533f54674v1u0035", "s5bb533f54674v1u0036", "s5bb533f54674v1u0037", "s5bb533f54674v1u0038", "s5bb533f54674v1u0039", "s5bb533f54674v1u0040", "s5bb533f54674v1u0041", "s5bb533f54674v1u0042", "s5bb533f54674v1u0043", "s5bb533f54674v1u0044", "s5bb533f54674v1u0045", "s5bb533f54674v1u0046", "s5bb533f54674v1u0047", "s5bb533f54674v1u0048", "s5bb533f54674v1u0049", "s5bb533f54674v1u0050", "s5bb533f54674v1u0051", "s5bb533f54674v1u0052", "s5bb533f54674v1u0053", "s5bb533f54674v1u0054", "s5bb533f54674v1u0055", "s5bb533f54674v1u0056", "s5bb533f54674v1u0057", "s5bb533f54674v1u0058", "s5bb533f54674v1u0059", "s5bb533f54674v1u0060", "s5bb533f54674v1u0061", "s5bb533f54674v1u0062", "s5bb533f54674v1u0063", "s5bb533f54674v1u0064", "s5bb533f54674v1u0065", "s5bb533f54674v1u0066", "s5bb533f54674v1u0067", "s5bb533f54674v1u0068", "s5bb533f54674v1u0069", "s5bb533f54674v1u0070", "s5bb533f54674v1u0071", "s5bb533f54674v1u0072", "s5bb533f54674v1u0073", "s5bb533f54674v1u0074", "s5bb533f54674v1u0075", "s5bb533f54674v1u0076", "s5bb533f54674v1u0077", "s5bb533f54674v1u0078", "s5bb533f54674v1u0079" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 10416,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 10413,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 2745,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 13161
+  },
+  "user" : null,
+  "metadata" : { }
+}

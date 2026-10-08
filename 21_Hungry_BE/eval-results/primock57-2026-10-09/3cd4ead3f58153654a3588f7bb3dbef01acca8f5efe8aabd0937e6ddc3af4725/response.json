@@ -1,0 +1,329 @@
+{
+  "id" : "resp_0c87010ef6c69997016ac7bf21096c87d0816091021d9fb279",
+  "object" : "response",
+  "created_at" : 1791475489,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791475497,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_0c87010ef6c69997016ac7bf2196b887d09f24b2a8864c6298",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"summary\":\"최근 2~3일간 천식이 가볍게 악화된 상태로 보임. 갈색 Clenil을 하루 2번 1회 4번으로 늘리고, 파란 Salbutamol 흡입기는 필요 시 사용. 숨쉬기가 더 나빠지면 응급실. 며칠 안에 주치의 진료 권고, 대면 진료 및 최대호기유속 측정 예정.\",\"details\":{\"symptoms\":[{\"text\":\"2~3일 전부터 친구와 달릴 때 숨이 참. 빨리 걸을 때도 숨이 참. 쌕쌕거림과 기침이 있음. 전반적으로 조금 숨이 참.\",\"evidenceIndexes\":[0,1,2,3]},{\"text\":\"가래는 거의 없음.\",\"evidenceIndexes\":[4]}],\"tests\":[{\"text\":\"평소 최대호기유속은 약 380 정도로 언급됨.\",\"evidenceIndexes\":[5]}],\"medicationMentions\":[{\"text\":\"파란 흡입기 Salbutamol: 증상 있을 때 사용. 최대 2~4시간마다 사용 가능.\",\"evidenceIndexes\":[6,7,8]},{\"text\":\"갈색 Clenil 흡입기: 하루 2번, 1회 4번으로 늘림. 진료를 기다리는 동안 그렇게 사용.\",\"evidenceIndexes\":[9,10,11]}],\"precautions\":[{\"text\":\"파란 흡입기를 너무 자주 써야 하면 천식이 상당히 안 좋다는 뜻.\",\"evidenceIndexes\":[7]},{\"text\":\"숨쉬기가 훨씬 나빠지면 응급실로 가야 함. 예약 진료까지 기다리지 말 것.\",\"evidenceIndexes\":[12]},{\"text\":\"진료 전에 숨쉬기가 나빠지면 응급실로 가야 함.\",\"evidenceIndexes\":[13]}],\"followUps\":[{\"text\":\"앞으로 며칠 안에 주주치의에게 진료를 받는 것이 좋음.\",\"evidenceIndexes\":[14]},{\"text\":\"지원팀에 연락해서 예약. 대면 진료 권장.\",\"evidenceIndexes\":[15]},{\"text\":\"진료에서 가슴 진찰과 최대호기유속 재측정 예정. 결과에 따라 항생제나 스테로이드가 필요할 수도 있음.\",\"evidenceIndexes\":[16,17]}]},\"evidence\":[{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"2~3일 전에 친구랑 달렸어요. 보통 달리면서 이야기할 수 있는데 숨이 찼어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"지금은 빨리 걸으면 확실히 그래요. 파란 흡입기를 썼지만 소용이 없었어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"쌕쌕거리고 기침도 나고 전반적으로 조금 숨이 차요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"별로 \",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"380 정도라고 보면 될까요?\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"증상이 있을 때마다 쓰는 것 같아요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"파란색이에요. 전체적으로 \",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"Salbutamol\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"그동안 파란 흡입기는 필요할 때 쓰세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"갈색 \",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"하루 두 번, 한 번에 3번 흡입하고 있다면 하루 두 번, 한 번에 4번으로 늘리세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"저희 진료를 기다리는 동안 그렇게 하세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"숨쉬기가 훨씬 나빠진다면 \",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"앞으로 며칠 안에 저희 주치의 한 분에게 진료를 받으시면 좋겠습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"지원팀에 연락해서 예약하세요. 대면 진료를 권합니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"진료에서 가슴을 진찰할 겁니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"최대호기유속도 재고, 결과에 따라 항생제나 스테로이드가 필요할 수도 있습니다.\",\"occurrenceIndex\":0}],\"items\":[{\"itemKey\":\"task-1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"주치의 진료 예약\",\"description\":\"앞으로 며칠 안에 주치의 진료를 받음. 대면 진료 권장.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"앞으로 며칠 안에 저희 주치의 한 분에게 진료를 받으시면 좋겠습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"지원팀에 연락해서 예약하세요. 대면 진료를 권합니다.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":false},{\"itemKey\":\"task-2\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"가슴 진찰 및 최대호기유속 재측정\",\"description\":\"진료 시 가슴을 진찰하고 최대호기유속을 다시 측정함. 결과에 따라 항생제나 스테로이드가 필요할 수 있음.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"진료에서 가슴을 진찰할 겁니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"d67e634d-9277-36e3-8195-94aa41911a3d\",\"textVersion\":1,\"page\":null,\"quote\":\"최대호기유속도 재고, 결과에 따라 항생제나 스테로이드가 필요할 수도 있습니다.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":false}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "evidence", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "summary" : {
+            "type" : [ "string", "null" ]
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "evidence" : {
+            "$ref" : "#/$defs/evidenceList"
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "evidence" : {
+                  "$ref" : "#/$defs/evidenceList"
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "text", "evidenceIndexes" ],
+              "properties" : {
+                "text" : {
+                  "type" : [ "string", "null" ]
+                },
+                "evidenceIndexes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "integer"
+                  }
+                }
+              }
+            }
+          },
+          "evidenceList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/evidence"
+            }
+          },
+          "evidence" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "sourceId", "textVersion", "page", "quote", "occurrenceIndex" ],
+            "properties" : {
+              "sourceId" : {
+                "type" : "string"
+              },
+              "textVersion" : {
+                "type" : "integer"
+              },
+              "page" : {
+                "type" : [ "integer", "null" ]
+              },
+              "quote" : {
+                "type" : "string"
+              },
+              "occurrenceIndex" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 4763,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 2041,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6804
+  },
+  "user" : null,
+  "metadata" : { }
+}

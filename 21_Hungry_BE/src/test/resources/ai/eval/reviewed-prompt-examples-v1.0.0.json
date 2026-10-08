@@ -1,0 +1,117 @@
+{
+  "version": "1.0.0",
+  "guidelineVersion": "0.5.0",
+  "promptVersion": "1.7",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "Codex AI; not human developer approval or clinician validation",
+  "dataset": "PriMock57",
+  "mockConsultations": true,
+  "creator": "Babylon Health and PriMock57 contributors",
+  "commit": "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+  "sourceUrl": "https://github.com/babylonhealth/primock57/tree/cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+  "license": "CC-BY-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "localLicense": "src/test/resources/ai/eval/primock57/original/LICENSE.md",
+  "savedResultsRoot": "eval-results/evidence-linking-2026-10-09",
+  "scope": "Two short edited claim/evidence examples, not whole-case gold summaries; full English and Korean conversations reviewed; original notes only checked for contradictions, not extra facts.",
+  "examples": [
+    {
+      "id": "A",
+      "caseId": "day1_consultation12",
+      "turnIds": [
+        "090"
+      ],
+      "savedRequest": "42100266c8d8fe2f307df7145d38a2e7294e3b669797d87e60dd7d47dc129b8e",
+      "savedPrompt": "1.5",
+      "savedClaimPath": "/details/medicationMentions/2",
+      "savedText": "열이 나고 기운이 없으면 Paracetamol을 복용해도 된다고 함.",
+      "summary": "열이 나고 기운이 없으면 Paracetamol 복용 가능.",
+      "changes": [
+        "문장 종결의 전달 화법만 줄임. 약명 및 AND 조건 유지."
+      ],
+      "englishFile": "src/test/resources/ai/eval/primock57/day1_consultation12.en.json",
+      "translationFile": "src/test/resources/ai/eval/primock57/day1_consultation12.ko.json",
+      "englishSha256": "a67a0cef6a8174c439be5a9b65a29bf16072ee7b546745596945fb7f14d3d512",
+      "translationSha256": "6d2984e95c68db5689a226fc973b90f6c394529e3214df6f56d968b4d261725b",
+      "turns": [
+        {
+          "id": "090",
+          "speaker": "doctor",
+          "en": "Um, you can take some Paracetamol if you're feeling feverish and weak.",
+          "ko": "열이 나고 기운이 없으면 Paracetamol을 드셔도 됩니다."
+        }
+      ],
+      "reviewStatus": "AI_SOURCE_COMPARED_EXCERPT_ONLY_NOT_CLINICIAN_VALIDATED",
+      "parentResponseQuality": "FAIL; only the listed claim and source excerpt were reviewed for reuse",
+      "currentSet": "development; prompt example contamination",
+      "forbidden": [
+        "AND를 OR로 변경",
+        "정기 처방 또는 용량·시각·기간 추가"
+      ]
+    },
+    {
+      "id": "B",
+      "caseId": "day5_consultation12",
+      "turnIds": [
+        "083",
+        "084",
+        "085",
+        "086"
+      ],
+      "supportingTurnIds": [
+        "083",
+        "084",
+        "086"
+      ],
+      "savedRequest": "14b888cebcc60c5ee8ccbf113d8c51a524725d7f3073bd82f8a35ea8c193d8d8",
+      "savedPrompt": "1.6",
+      "savedClaimPath": "/summary/3",
+      "savedText": "이부프로펜 대신 더 강한 진통제를 규칙적으로 음식과 함께 쓰고, 파라세타몰은 함께 복용해도 된다고 안내함.",
+      "summary": "이름이 확인되지 않은 더 강한 진통제를 Ibuprofen 대신 음식과 함께 규칙적으로 복용. Ibuprofen과 함께 먹지 않으며, Paracetamol은 함께 복용 가능.",
+      "changes": [
+        "저장 요약의 전달 화법 제거 및 약명을 기존 번역의 철자로 표기.",
+        "전체 전사에 새 약 이름이 없음을 대조해 불명확함 명시.",
+        "원문 084에 명시된 Ibuprofen 동시 복용 금지를 요약에도 보강."
+      ],
+      "englishFile": "src/test/resources/ai/eval/primock57/day5_consultation12.en.json",
+      "translationFile": "src/test/resources/ai/eval/primock57/day5_consultation12.ko.json",
+      "englishSha256": "b8ddec2daf8ad6a57077221258cd795e1f5c89a91f210cc1a9df28576538ccb9",
+      "translationSha256": "f9ccec4bcc7e3438cd3c7601359ac0b27b0913fe89b54a50a08b30b0513e1635",
+      "turns": [
+        {
+          "id": "083",
+          "speaker": "doctor",
+          "en": "OK. So, what we would suggest is, trying a slightly stronger, pain relief.",
+          "ko": "조금 더 강한 진통제를 써 보시길 권합니다."
+        },
+        {
+          "id": "084",
+          "speaker": "doctor",
+          "en": "Uh, so, similar to Ibuprofen, but taking instead of Ibuprofen not at the same time, and taking that regularly with food.",
+          "ko": "Ibuprofen과 비슷하지만 Ibuprofen 대신 드세요. 같이 먹지는 말고, 규칙적으로 음식과 함께 드세요."
+        },
+        {
+          "id": "085",
+          "speaker": "patient",
+          "en": "OK.",
+          "ko": "네."
+        },
+        {
+          "id": "086",
+          "speaker": "doctor",
+          "en": "Um, hopefully that will settle it down. You can take Paracetamol along with that.",
+          "ko": "그러면 가라앉기를 바랍니다. Paracetamol은 함께 드셔도 됩니다."
+        }
+      ],
+      "reviewStatus": "AI_SOURCE_COMPARED_EXCERPT_ONLY_NOT_CLINICIAN_VALIDATED",
+      "parentResponseQuality": "FAIL; only the listed claim and source excerpt were reviewed for reuse",
+      "currentSet": "development; prompt example contamination",
+      "forbidden": [
+        "Ibuprofen을 새 약 이름으로 식별",
+        "note에만 있는 Naproxen 약명 복원",
+        "Ibuprofen 병용 허용",
+        "용량·시각·기간 추정"
+      ]
+    }
+  ]
+}

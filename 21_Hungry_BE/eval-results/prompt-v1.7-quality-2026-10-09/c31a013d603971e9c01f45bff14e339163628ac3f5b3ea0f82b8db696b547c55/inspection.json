@@ -1,0 +1,188 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s241411eda144v1u0001" ],
+        "answerIds" : [ "s241411eda144v1u0002" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "TEST",
+      "text" : "환자는 검사에서 출혈이 확인됐다는 말을 듣지 않았다고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s241411eda144v1u0003" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "TEST",
+      "text" : "검사 결과는 아직 나오지 않았으며, 앞선 질문만으로 출혈이 없다는 뜻은 아니다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s241411eda144v1u0004", "s241411eda144v1u0005" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "기존에 복용하던 가상 Y약은 그대로 유지한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "CONTINUE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : "가상 Y약",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "기존에 복용하던 약을 그대로 유지한다.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "s241411eda144v1u0005" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "새 약을 추가하는 것은 아니다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f5",
+      "support" : {
+        "statementIds" : [ "s241411eda144v1u0005" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "의사가 가족에게 전화하겠다고 했다.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "검사 결과가 양성이면" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "CLINICIAN_ONLY",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f6",
+      "support" : {
+        "statementIds" : [ "s241411eda144v1u0005", "s241411eda144v1u0006" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "PRECAUTION",
+      "text" : "바로 의료진에게 연락한다.",
+      "condition" : {
+        "operator" : "ANY",
+        "clauses" : [ "검사 결과에 따른 의사의 가족 연락 전에 어지러움이 심해지면", "검사 결과에 따른 의사의 가족 연락 전에 검은 변이 나오면" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "의료진에게 바로 연락",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f7",
+      "support" : {
+        "statementIds" : [ "s241411eda144v1u0006" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "연락할 필요는 없다.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "호전되면" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f8",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s241411eda144v1u0007" ],
+        "answerIds" : [ "s241411eda144v1u0008" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "검사 결과를 묻기 위해 매일 연락할 필요는 없으며, 매일 연락하는 일정은 만들지 않는다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f2", "f3", "f4", "f5", "f6", "f7", "f8" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

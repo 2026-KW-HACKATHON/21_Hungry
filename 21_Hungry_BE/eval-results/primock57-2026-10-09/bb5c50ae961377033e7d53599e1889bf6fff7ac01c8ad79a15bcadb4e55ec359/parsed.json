@@ -1,0 +1,60 @@
+{
+  "summary" : "단순한 바이러스 감염으로 보임. Night Nurse, Day Nurse 사용 가능. 숨참, 쌕쌕거림, 증상이 3주 넘게 지속되거나 상태가 안 좋아지면 연락 필요. 현재 처방전은 필요 없음.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"5일째 기침과 콧물\",\"evidenceIndexes\":[0]},{\"text\":\"근육통\",\"evidenceIndexes\":[1]},{\"text\":\"가끔 두통과 추위, 오한 같은 느낌\",\"evidenceIndexes\":[2]},{\"text\":\"가래가 나옴\",\"evidenceIndexes\":[3]},{\"text\":\"마른기침처럼 거칠게 콜록거리는 기침\",\"evidenceIndexes\":[4]},{\"text\":\"숨은 잘 쉬고 쌕쌕거리거나 그렁거리는 소리는 없음\",\"evidenceIndexes\":[5]}],\"tests\":[{\"text\":\"입안을 봄. 목 뒤가 약간 빨갛고 편도는 커져 있지 않음. 목 주변에 만져지는 멍울 없음\",\"evidenceIndexes\":[6]}],\"medicationMentions\":[{\"text\":\"진통제 복용. 이름은 paracetamol로 확인됨. ibuprofen은 아님\",\"evidenceIndexes\":[7,8]},{\"text\":\"평소 약 metformin 복용, 당뇨가 있음\",\"evidenceIndexes\":[9]},{\"text\":\"평소 약 lisinopril 복용, 혈압이 조금 높음\",\"evidenceIndexes\":[10]},{\"text\":\"Night Nurse, Day Nurse 사용 가능. 현재 약과 함께 써도 됨\",\"evidenceIndexes\":[11]}],\"precautions\":[{\"text\":\"숨이 차거나 쌕쌕거림이 생기면 연락\",\"evidenceIndexes\":[12]},{\"text\":\"증상이 3주 넘게 지속되거나 상태가 안 좋아지면 연락\",\"evidenceIndexes\":[13]}],\"followUps\":[{\"text\":\"현재는 흉부 진찰이 필요해 보이지 않음\",\"evidenceIndexes\":[14]},{\"text\":\"처방전은 필요 없음\",\"evidenceIndexes\":[15]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"기침하고 <INAUDIBLE_SPEECH/> 콧물도 나고요.\",\"occurrenceIndex\":0,\"start\":416,\"end\":449},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"기침, 콧물, 근육통이 있고 가끔 <UNIN/> 두통과 추위, 오한 같은 느낌도 있어요.\",\"occurrenceIndex\":0,\"start\":653,\"end\":702},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"기침, 콧물, 근육통이 있고 가끔 <UNIN/> 두통과 추위, 오한 같은 느낌도 있어요.\",\"occurrenceIndex\":0,\"start\":653,\"end\":702},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"기침할 때 가래가 나오나요?\",\"occurrenceIndex\":0,\"start\":763,\"end\":778},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"아니요, 마른기침이에요.\",\"occurrenceIndex\":0,\"start\":802,\"end\":815},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"숨은 잘 쉬어요.\",\"occurrenceIndex\":0,\"start\":959,\"end\":968},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"입안을 보니 <UNIN/>\",\"occurrenceIndex\":0,\"start\":2000,\"end\":2014},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"paracetamol이군요.\",\"occurrenceIndex\":0,\"start\":1201,\"end\":1216},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"아니요.\",\"occurrenceIndex\":0,\"start\":954,\"end\":958},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"metformin\",\"occurrenceIndex\":0,\"start\":1336,\"end\":1345},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"lisinopril\",\"occurrenceIndex\":0,\"start\":1378,\"end\":1388},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"Night Nurse, Day Nurse를 쓰셔도 됩니다.\",\"occurrenceIndex\":0,\"start\":2278,\"end\":2310},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"숨이 차거나 증상이 3주 넘게 지속되는 등 변화가 있거나,\",\"occurrenceIndex\":0,\"start\":2400,\"end\":2432},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"상태가 <UNSURE>안 좋아지면</UNSURE> 연락 주세요.\",\"occurrenceIndex\":0,\"start\":2443,\"end\":2478},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"그때는 특히 가슴을 진찰해야 할 수도 있지만 지금은 필요해 보이지 않아요.\",\"occurrenceIndex\":0,\"start\":2479,\"end\":2520},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"네, 필요 없어요\",\"occurrenceIndex\":0,\"start\":2754,\"end\":2763}]",
+  "items" : [ {
+    "itemKey" : "med-1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"paracetamol\",\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"진통제로 복용함\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"paracetamol이군요.\",\"occurrenceIndex\":0,\"start\":1201,\"end\":1216}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME", "NAME_FROM_CONTEXT" ]
+  }, {
+    "itemKey" : "med-2",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"metformin\",\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"당뇨로 평소 복용\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"metformin\",\"occurrenceIndex\":0,\"start\":1336,\"end\":1345}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME", "NO_DOSE_OR_FREQ" ]
+  }, {
+    "itemKey" : "med-3",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"lisinopril\",\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"혈압 때문에 평소 복용\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"lisinopril\",\"occurrenceIndex\":0,\"start\":1378,\"end\":1388}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME", "NO_DOSE_OR_FREQ" ]
+  }, {
+    "itemKey" : "med-4",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"Night Nurse, Day Nurse\",\"doseText\":null,\"frequencyText\":\"사용 가능\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"현재 약과 함께 써도 됨\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"Night Nurse, Day Nurse를 쓰셔도 됩니다.\",\"occurrenceIndex\":0,\"start\":2278,\"end\":2310}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  }, {
+    "itemKey" : "task-1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"연락 필요\",\"description\":\"숨이 차거나 쌕쌕거림이 생기거나 증상이 3주 넘게 지속되거나 상태가 안 좋아지면 연락.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"숨이 차거나 증상이 3주 넘게 지속되는 등 변화가 있거나,\",\"occurrenceIndex\":0,\"start\":2400,\"end\":2432},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"상태가 <UNSURE>안 좋아지면</UNSURE> 연락 주세요.\",\"occurrenceIndex\":0,\"start\":2443,\"end\":2478}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "NO_EXACT_DATE_TIME", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  }, {
+    "itemKey" : "task-2",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"현재 흉부 진찰 불필요\",\"description\":\"지금은 특히 가슴을 진찰해야 할 필요가 없어 보임.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"그때는 특히 가슴을 진찰해야 할 수도 있지만 지금은 필요해 보이지 않아요.\",\"occurrenceIndex\":0,\"start\":2479,\"end\":2520}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  }, {
+    "itemKey" : "task-3",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"처방전 불필요\",\"description\":\"지금은 처방전이 필요 없음.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"네, 필요 없어요\",\"occurrenceIndex\":0,\"start\":2754,\"end\":2763}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.1",
+  "inputTokens" : 4120,
+  "outputTokens" : 2481
+}

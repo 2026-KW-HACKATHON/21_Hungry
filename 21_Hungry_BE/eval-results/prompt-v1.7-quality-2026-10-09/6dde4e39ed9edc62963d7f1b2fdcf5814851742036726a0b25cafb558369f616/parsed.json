@@ -1,0 +1,32 @@
+{
+  "summary" : "약 A는 한 번에 한 정씩 하루 두 번 5일 복용하세요. 약 B는 통증이 있을 때만 반 정 복용하세요. 기존 약은 끊지 마세요.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"약 A는 한 번에 한 정씩 하루 두 번 5일 복용하세요.\",\"evidenceIndexes\":[0]},{\"text\":\"약 B는 통증이 있을 때만 반 정 복용하세요.\",\"evidenceIndexes\":[0]},{\"text\":\"기존 약은 끊지 마세요.\",\"evidenceIndexes\":[0]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"31359311-ce37-30b3-8bb0-b9540d974b43\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 약 A는 한 번에 한 정씩 하루 두 번 5일 드세요. 약 B는 통증이 있을 때만 반 정 드세요. 기존 약은 끊지 마세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":71}]",
+  "items" : [ {
+    "itemKey" : "f1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"약 A\",\"doseText\":\"한 번에 한 정씩\",\"frequencyText\":\"하루 두 번\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"약 A는 한 번에 한 정씩 하루 두 번 5일 복용하세요. / 5일 / 복용하세요.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"31359311-ce37-30b3-8bb0-b9540d974b43\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 약 A는 한 번에 한 정씩 하루 두 번 5일 드세요. 약 B는 통증이 있을 때만 반 정 드세요. 기존 약은 끊지 마세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":71}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  }, {
+    "itemKey" : "f2",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"약 B\",\"doseText\":\"반 정\",\"frequencyText\":\"통증이 있을 때만\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"약 B는 통증이 있을 때만 반 정 복용하세요. / 복용하세요.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"31359311-ce37-30b3-8bb0-b9540d974b43\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 약 A는 한 번에 한 정씩 하루 두 번 5일 드세요. 약 B는 통증이 있을 때만 반 정 드세요. 기존 약은 끊지 마세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":71}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  }, {
+    "itemKey" : "f3",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":null,\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"기존 약은 끊지 마세요.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"31359311-ce37-30b3-8bb0-b9540d974b43\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 약 A는 한 번에 한 정씩 하루 두 번 5일 드세요. 약 B는 통증이 있을 때만 반 정 드세요. 기존 약은 끊지 마세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":71}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2496,
+  "outputTokens" : 533
+}

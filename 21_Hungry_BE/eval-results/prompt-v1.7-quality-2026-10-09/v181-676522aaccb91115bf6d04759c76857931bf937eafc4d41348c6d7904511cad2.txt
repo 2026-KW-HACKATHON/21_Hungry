@@ -1,0 +1,327 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "facts",
+    "summaryFactIds"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.8"
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "factId",
+          "support",
+          "kind",
+          "text",
+          "condition",
+          "medicationRole",
+          "alternativeGroup",
+          "actionStatus",
+          "medication",
+          "task",
+          "uncertaintyCodes"
+        ],
+        "properties": {
+          "factId": {
+            "type": "string"
+          },
+          "support": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "statementIds",
+              "questionIds",
+              "answerIds",
+              "correctionIds"
+            ],
+            "properties": {
+              "statementIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/utteranceId"
+                }
+              },
+              "questionIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/utteranceId"
+                }
+              },
+              "answerIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/utteranceId"
+                }
+              },
+              "correctionIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/utteranceId"
+                }
+              }
+            }
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "SYMPTOM",
+              "ASSESSMENT",
+              "TEST",
+              "MEDICATION",
+              "PRECAUTION",
+              "FOLLOW_UP"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "condition": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "operator",
+              "clauses"
+            ],
+            "properties": {
+              "operator": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "ALL",
+                  "ANY",
+                  "COMPLEX"
+                ]
+              },
+              "clauses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "medicationRole": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "PRESCRIBED",
+              "CONDITIONAL",
+              "ALTERNATIVE",
+              "EXAMPLE",
+              "HISTORICAL",
+              "CONTINUE",
+              "STOP",
+              "SUPERSEDED"
+            ]
+          },
+          "alternativeGroup": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "actionStatus": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "FUTURE",
+              "IN_PROGRESS",
+              "COMPLETED",
+              "CLINICIAN_ONLY"
+            ]
+          },
+          "medication": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "doseText",
+                  "frequencyText",
+                  "courseDurationText",
+                  "instructions",
+                  "startsOn",
+                  "endsOn",
+                  "clockTimes",
+                  "scheduleRecurrence",
+                  "weekdays"
+                ],
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "doseText": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "frequencyText": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "courseDurationText": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "instructions": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "startsOn": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "endsOn": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "clockTimes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "scheduleRecurrence": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "ONCE",
+                      "DAILY",
+                      "WEEKLY",
+                      null
+                    ]
+                  },
+                  "weekdays": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 7
+                    }
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "task": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "title",
+                  "date",
+                  "time",
+                  "recurrence",
+                  "lastDate",
+                  "weekdays"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "HOSPITAL",
+                      "EXAM",
+                      "OTHER"
+                    ]
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "time": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "recurrence": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "enum": [
+                      "ONCE",
+                      "DAILY",
+                      "WEEKLY",
+                      null
+                    ]
+                  },
+                  "lastDate": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "weekdays": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 7
+                    }
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "uncertaintyCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "summaryFactIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "utteranceId": {
+      "type": "string"
+    }
+  },
+  "title": "Experimental semantic facts; server compiles existing analysis contract"
+}

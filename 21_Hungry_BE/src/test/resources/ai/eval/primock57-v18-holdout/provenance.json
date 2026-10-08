@@ -1,0 +1,115 @@
+{
+  "source": "https://github.com/babylonhealth/primock57",
+  "commit": "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+  "license": "CC-BY-4.0",
+  "attribution": "Babylon Health; Papadopoulos Korfiatis, Moramarco et al., PriMock57 (2022)",
+  "mockConsultations": true,
+  "modifications": "TextGrid chronological whole-turn collation; AI Korean translation with explicit ambiguity annotations. Originals unchanged. No audio.",
+  "review": "AI source comparison, not clinician validated",
+  "files": [
+    {
+      "path": "day1_consultation03.en.json",
+      "sha256": "7f67012d9243e110a59409422869dcdb723899b300ad05ab196fdc0b4182e2c0"
+    },
+    {
+      "path": "day1_consultation03.ko.json",
+      "sha256": "55f96facafddb3d96a781e87d1d7a5317180cfcf3eec5e37fea2b3ccaceb08d8"
+    },
+    {
+      "path": "day2_consultation04.en.json",
+      "sha256": "8b0f5154aa8d726a4077f9295173dd670df007f9ed14ac0bf961b25b286a8f4a"
+    },
+    {
+      "path": "day2_consultation04.ko.json",
+      "sha256": "8e6b131f0eadd9609534252e4532d2645f44fbfccd25bc603df0e6a429a9e51a"
+    },
+    {
+      "path": "day4_consultation01.en.json",
+      "sha256": "ddfb34d27ce72762b082afea3c1fba763dc1c75a528fc055a1dc9d4c504cc302"
+    },
+    {
+      "path": "day4_consultation01.ko.json",
+      "sha256": "d601a2201fb0983e094618d29401576d57ace12a1542807e40d77469b31a56ac"
+    },
+    {
+      "path": "day5_consultation01.en.json",
+      "sha256": "29b4322d86b1bedaec1bf46ea39176987c376f09b032702a364b14e48ab52a97"
+    },
+    {
+      "path": "day5_consultation01.ko.json",
+      "sha256": "bfd3b62cde28113c822a3934ef389d32ffc2d100920cbc9d8de453a4a1d1d2e3"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "95ff3f73cdabee1cab6cb6fb730765f670939fd195c718f12d16ea9dabbff7fb"
+    },
+    {
+      "path": "README.md",
+      "sha256": "52f17400b3fd45da6fc764fe40511eda51369408671b3258a71b5d2675e00679"
+    },
+    {
+      "path": "original/day1_consultation03.note.json",
+      "sha256": "06dcd4e4357cd79472bc59b022406a68975b800cba53274192d0eeefec0493ed"
+    },
+    {
+      "path": "original/day1_consultation03_doctor.TextGrid",
+      "sha256": "a4a10a7817ea6ff09baa7c5dcf582008d4d67d82154492622e3ba39af7ef8589"
+    },
+    {
+      "path": "original/day1_consultation03_patient.TextGrid",
+      "sha256": "db2982dfa60856dc104919f3e7a71716bd58c243e81311d41cd6010cb7f39f90"
+    },
+    {
+      "path": "original/day2_consultation04.note.json",
+      "sha256": "a20a57a21a93e970911168c0d709b20bcdae6dcd28bab02daf8adc12fc260fcf"
+    },
+    {
+      "path": "original/day2_consultation04_doctor.TextGrid",
+      "sha256": "fa10303b37a97184e29b987f70d514dc00a1824c0ae85b26d08fc80eb0103929"
+    },
+    {
+      "path": "original/day2_consultation04_patient.TextGrid",
+      "sha256": "1b34136477b0fa6cc1bd4eb6336ef26a3adae95e89afc428d8d40576f8356ba7"
+    },
+    {
+      "path": "original/day4_consultation01.note.json",
+      "sha256": "f1e6e88cdeb8895216de2c39526316760a403320471b1a5ae3d79146c046e893"
+    },
+    {
+      "path": "original/day4_consultation01_doctor.TextGrid",
+      "sha256": "5876bd0ea1ed20ca79c418f8c4e730914d9a85a790ac40388c9f5b9bb1a1d158"
+    },
+    {
+      "path": "original/day4_consultation01_patient.TextGrid",
+      "sha256": "3ee459bab3f69e84dd9cc007843d5c7b67c1cdd52456d54dd40c09d60c09df38"
+    },
+    {
+      "path": "original/day5_consultation01.note.json",
+      "sha256": "036d800c74f702ff1379d2d3d54fd209e5c77d681aa60020a5cb756a3214fc64"
+    },
+    {
+      "path": "original/day5_consultation01_doctor.TextGrid",
+      "sha256": "a91469ed0dcc5de451fb369e3cb5674d3839b1b87994f05d2a255f99ad5d2aae"
+    },
+    {
+      "path": "original/day5_consultation01_patient.TextGrid",
+      "sha256": "6ac43091e009c3a36b034a644a102a36f88880478966ef25b405c5c32bf72493"
+    },
+    {
+      "path": "original/LICENSE.md",
+      "sha256": "c4077139f0479418e8ce544f45f409fd3192a315f23071b4d41083e4a28357a1"
+    },
+    {
+      "path": "original/notes-README.md",
+      "sha256": "469b6568e6f492e8f147ae6a042883775d7b6bb393cf2028891f155a24833413"
+    },
+    {
+      "path": "original/README.md",
+      "sha256": "531d01051c5efe52aea2cf68432478bc73cf8b4e57041fc2a871fb4551808941"
+    },
+    {
+      "path": "original/transcripts-README.md",
+      "sha256": "41d059c4562bfa4629edbfac5e9c7befe3f664d7e0017e69491a74dbd1a89604"
+    }
+  ]
+}

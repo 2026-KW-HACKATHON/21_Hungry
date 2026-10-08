@@ -1,0 +1,786 @@
+﻿{
+    "id":  "day3_consultation04",
+    "set":  "development",
+    "dataset":  "PriMock57",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "license":  "CC-BY-4.0",
+    "mockConsultation":  true,
+    "turns":  [
+                  {
+                      "speaker":  "patient",
+                      "start":  2.05072041769165,
+                      "end":  2.79709824790401,
+                      "interval":  2,
+                      "en":  "Hi.",
+                      "id":  "001"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  2.77034651198958,
+                      "end":  12.7131095816159,
+                      "interval":  2,
+                      "en":  "Hi, hello. I\u0027m Doctor Jacob and welcome to Babylon. Hello. Hi. So just before we start, is it alright if you could confirm your name for me please?",
+                      "id":  "002"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  6.17390431246548,
+                      "end":  7.7753511722476,
+                      "interval":  4,
+                      "en":  "\u003cUNIN/\u003e Hi there.",
+                      "id":  "003"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  12.9347547567649,
+                      "end":  14.7608383955018,
+                      "interval":  6,
+                      "en":  "\u003cUNSURE\u003eget to\u003c/UNSURE\u003e my name \u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "004"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  13.0906939626856,
+                      "end":  17.5251231101512,
+                      "interval":  4,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e. And your date of birth?",
+                      "id":  "005"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  16.565182991114,
+                      "end":  18.6811205381796,
+                      "interval":  8,
+                      "en":  "Fourteenth November nineteen ninety six.",
+                      "id":  "006"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  18.8818376723008,
+                      "end":  20.6867702352281,
+                      "interval":  6,
+                      "en":  "And your address for me please?",
+                      "id":  "007"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  20.6811165219138,
+                      "end":  24.2028455243737,
+                      "interval":  10,
+                      "en":  "And twenty eight Great Road SW nineteen one EZ.",
+                      "id":  "008"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  24.2101460200321,
+                      "end":  30.0286891510218,
+                      "interval":  8,
+                      "en":  "That\u0027s correct. And just to confirm that you\u0027re in a secure location, and we can have a confidential conversation.",
+                      "id":  "009"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  30.623113610121,
+                      "end":  31.4419549174155,
+                      "interval":  12,
+                      "en":  "Thank you.",
+                      "id":  "010"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  31.4028451425333,
+                      "end":  39.4211226612304,
+                      "interval":  10,
+                      "en":  "OK. So you\u0027ve mentioned in \u003cUNIN/\u003e in our notes that you\u0027ve got some tightness. If you\u0027d like to tell me a bit more about it please.",
+                      "id":  "011"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  39.8767076660475,
+                      "end":  59.3693870174206,
+                      "interval":  14,
+                      "en":  "Yeah \u003cUNIN/\u003e about two to three days ago, I was running with a friend. And usually I can talk to her whilst I run, but I found myself actually short of breath. I\u0027m \u003cUNSURE\u003enot really sure of that\u003c/UNSURE\u003e when I\u0027m walking. Um, but definitely um, if I\u0027m walking briskly now. Um, and I\u0027ve used my blue inhaler but to no avail. It hasn\u0027t really helped me.",
+                      "id":  "012"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  59.296744955971,
+                      "end":  61.5682701156033,
+                      "interval":  12,
+                      "en":  "\u003cUNIN/\u003e. \u003cUNSURE\u003eOK\u003c/UNSURE\u003e.",
+                      "id":  "013"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  60.6519945780411,
+                      "end":  66.8041477985843,
+                      "interval":  16,
+                      "en":  "Um, ohh yeah, so I\u0027m having, I\u0027m just wheezing a bit, and coughing and just generally a bit short of breath",
+                      "id":  "014"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  67.0233993691472,
+                      "end":  74.1443643591833,
+                      "interval":  14,
+                      "en":  "Wheezing and coughing, OK. And you\u0027ve mentioned you\u0027re using the blue inhaler. So, how often are you using the blue inhaler?",
+                      "id":  "015"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  74.8548441186807,
+                      "end":  78.0504874742708,
+                      "interval":  18,
+                      "en":  "Um, I think I\u0027m just using that as and when I have symptoms.",
+                      "id":  "016"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  77.8548464594729,
+                      "end":  84.2503402726106,
+                      "interval":  16,
+                      "en":  "Yeah. So, um, at the moment you are having shortness of breath. So, are you using it every day at the moment?",
+                      "id":  "017"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  84.9562608564687,
+                      "end":  89.1374075003766,
+                      "interval":  20,
+                      "en":  "Um, yeah, and morning or evening to kinda prevent it as well.",
+                      "id":  "018"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  89.1944683205237,
+                      "end":  93.2734238382635,
+                      "interval":  18,
+                      "en":  "OK, and um what, which colour? What\u0027s the name of your preventor?",
+                      "id":  "019"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  94.0069571765651,
+                      "end":  105.108365881821,
+                      "interval":  22,
+                      "en":  "Um, it\u0027s blue. Um, I think, in totality, I\u0027m \u003cINAUDIBLE_SPEECH/\u003e Salbutamol, Flanel \u003cUNSURE\u003eBactroban\u003c/UNSURE\u003e and Hydrocortisone that I\u0027m taking as well.",
+                      "id":  "020"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  101.622211987733,
+                      "end":  102.276719590536,
+                      "interval":  20,
+                      "en":  "Yeah.",
+                      "id":  "021"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  105.304189215053,
+                      "end":  108.784936380352,
+                      "interval":  22,
+                      "en":  "OK. So could you repeat that? \u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "022"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  109.941683819469,
+                      "end":  112.427185099654,
+                      "interval":  24,
+                      "en":  "Er, Cetraben and Hydrocortisone.",
+                      "id":  "023"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  112.957318309311,
+                      "end":  116.278266175446,
+                      "interval":  24,
+                      "en":  "And hydrocortisone. So you\u0027d have eczema also, yeah?",
+                      "id":  "024"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  117.912674331041,
+                      "end":  118.912674331041,
+                      "interval":  26,
+                      "en":  "What\u0027s that, sorry?",
+                      "id":  "025"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  118.832330609043,
+                      "end":  120.990868101915,
+                      "interval":  26,
+                      "en":  "You do have a history of eczema, \u003cUNIN/\u003e?",
+                      "id":  "026"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  121.753246648928,
+                      "end":  130.985097645464,
+                      "interval":  28,
+                      "en":  "Em, my brother is asthmatic and my sister has eczema. Em, and I\u0027ve got a few issues, um, that I think could be \u003cUNSURE\u003eeczema\u003c/UNSURE\u003e as well.",
+                      "id":  "027"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  131.042777870078,
+                      "end":  141.323319488287,
+                      "interval":  28,
+                      "en":  "OK, right. So coming back to your, um, you know your shortness of breath. You\u0027ve mentioned you\u0027re wheezy, and you\u0027re coughing. Are you bringing up any phlegm at all?",
+                      "id":  "028"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  141.608247401978,
+                      "end":  145.73142326422,
+                      "interval":  30,
+                      "en":  "Um, no I don\u0027t, um, I\u0027m not covering up much \u003cUNIN/\u003e.",
+                      "id":  "029"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  145.499461018716,
+                      "end":  147.52702735834,
+                      "interval":  30,
+                      "en":  "OK, no sputum, OK.",
+                      "id":  "030"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  148.380488082057,
+                      "end":  156.892265187741,
+                      "interval":  32,
+                      "en":  "Right \u003cUNIN/\u003e. And um, how are you using your, um, your \u003cUNIN/\u003e? So are you using it every day?",
+                      "id":  "031"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  157.600944826548,
+                      "end":  162.65889954315,
+                      "interval":  32,
+                      "en":  "Um, I think I\u0027m using that every day and the Salbutamol just like as and when",
+                      "id":  "032"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  162.560337916181,
+                      "end":  165.725302724084,
+                      "interval":  34,
+                      "en":  "So, how are you using the \u003cUNIN/\u003e? Is it twice a day?",
+                      "id":  "033"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  166.376279933732,
+                      "end":  168.680622521211,
+                      "interval":  34,
+                      "en":  "Um, yes \u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "034"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  167.562235071369,
+                      "end":  168.189367951223,
+                      "interval":  36,
+                      "en":  "\u003cUNSURE\u003etwice\u003c/UNSURE\u003e",
+                      "id":  "035"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  168.728829025659,
+                      "end":  175.426875915852,
+                      "interval":  38,
+                      "en":  "OK. And have you ever been admitted in hospital because your \u003cUNIN/\u003e was so bad?",
+                      "id":  "036"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  177.325519353381,
+                      "end":  179.202327426076,
+                      "interval":  36,
+                      "en":  "Um, no, I haven\u0027t.",
+                      "id":  "037"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  179.259334742756,
+                      "end":  180.192187298296,
+                      "interval":  40,
+                      "en":  "OK.",
+                      "id":  "038"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  180.805767390663,
+                      "end":  183.955409899211,
+                      "interval":  42,
+                      "en":  "\u003cUNSURE\u003eRighty-ho\u003c/UNSURE\u003e. When was the last time you had an asthma attack?",
+                      "id":  "039"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  185.347234298911,
+                      "end":  187.637084190974,
+                      "interval":  38,
+                      "en":  "Um, about three to four years ago.",
+                      "id":  "040"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  187.888587782437,
+                      "end":  192.261361378554,
+                      "interval":  44,
+                      "en":  "Three to four years ago. And what, what did the GP do at that time?",
+                      "id":  "041"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  193.412427330689,
+                      "end":  199.318204729153,
+                      "interval":  40,
+                      "en":  "Um, just, um, encourage me to carry on using my inhalers as a preventative.",
+                      "id":  "042"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  199.192620176037,
+                      "end":  204.028170127928,
+                      "interval":  46,
+                      "en":  "OK. So you didn\u0027t have any \u003cUNIN/\u003e oral steroids or antibiotics?",
+                      "id":  "043"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  204.07181284201,
+                      "end":  205.455869270546,
+                      "interval":  42,
+                      "en":  "Not that I can remember.",
+                      "id":  "044"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  205.243996677189,
+                      "end":  211.64483322763,
+                      "interval":  48,
+                      "en":  "OK. Um, OK. Right, \u003cUNIN/\u003e have you ever had oral steroids in the past?",
+                      "id":  "045"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  213.158740900648,
+                      "end":  214.267436116271,
+                      "interval":  44,
+                      "en":  "Um, no.",
+                      "id":  "046"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  214.61022625602,
+                      "end":  218.527149369498,
+                      "interval":  50,
+                      "en":  "When was the last time you had an asthma review with our nurse?",
+                      "id":  "047"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  219.600752045786,
+                      "end":  221.238430644109,
+                      "interval":  46,
+                      "en":  "Uh, about two years ago.",
+                      "id":  "048"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  220.913018773883,
+                      "end":  222.86265559063,
+                      "interval":  52,
+                      "en":  "OK. Two years ago.",
+                      "id":  "049"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  223.86265559063,
+                      "end":  228.200772885862,
+                      "interval":  54,
+                      "en":  "OK. But, your asthma was pretty under control till, till now, isn\u0027t it?",
+                      "id":  "050"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  228.912316883378,
+                      "end":  231.89781615543,
+                      "interval":  48,
+                      "en":  "Uh, yes, just in the last \u003cUNSURE\u003etwo to three days\u003c/UNSURE\u003e \u003cUNIN/\u003e.",
+                      "id":  "051"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  229.571932524088,
+                      "end":  237.689652493404,
+                      "interval":  56,
+                      "en":  "Yes. So do you do a peak flow meter \u003cUNSURE\u003eat home\u003c/UNSURE\u003e? Peak flow reading? Where you blow into, you know",
+                      "id":  "052"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  238.755263236118,
+                      "end":  239.995425341906,
+                      "interval":  58,
+                      "en":  "Do you do that? No?",
+                      "id":  "053"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  241.868794618204,
+                      "end":  246.673127165018,
+                      "interval":  50,
+                      "en":  "Um, just every now and then. I haven\u0027t done overlap since I\u0027ve has symptoms.",
+                      "id":  "054"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  246.442000144056,
+                      "end":  252.704295065626,
+                      "interval":  60,
+                      "en":  "OK. So, what was \u003cUNIN/\u003e what\u0027s your peak flow reading when you\u0027re good?",
+                      "id":  "055"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  254.103468328901,
+                      "end":  257.662970271502,
+                      "interval":  62,
+                      "en":  "Like normally \u003cUNIN/\u003e peak flow reading.",
+                      "id":  "056"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  254.803533309905,
+                      "end":  255.673099051157,
+                      "interval":  52,
+                      "en":  "Um",
+                      "id":  "057"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  258.274541894674,
+                      "end":  263.491916260857,
+                      "interval":  54,
+                      "en":  "Um, I think \u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "058"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  264.343519661001,
+                      "end":  270.367788266419,
+                      "interval":  64,
+                      "en":  "OK. Let\u0027s see it\u0027s about, um, three eighty, yeah? Yeah? \u003cUNSURE\u003e three \u003c/UNSURE\u003e \u003cUNIN/\u003e. OK.",
+                      "id":  "059"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  268.694797931623,
+                      "end":  269.332480546212,
+                      "interval":  56,
+                      "en":  "Yeah.",
+                      "id":  "060"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  270.367788266419,
+                      "end":  276.840576,
+                      "interval":  65,
+                      "en":  "Right. So that\u0027s your normal, yeah? Righty-ho, OK. So what we need",
+                      "id":  "061"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  273.933915357197,
+                      "end":  274.745510316783,
+                      "interval":  58,
+                      "en":  "Mm-hmm.",
+                      "id":  "062"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  278.708449027063,
+                      "end":  281.211448947572,
+                      "interval":  67,
+                      "en":  "OK. Do you have any allergies at all?",
+                      "id":  "063"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  282.564323510216,
+                      "end":  284.528087755409,
+                      "interval":  60,
+                      "en":  "Erm, I have a fever.",
+                      "id":  "064"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  284.71831646958,
+                      "end":  286.461002518001,
+                      "interval":  69,
+                      "en":  "Sorry, could you repeat that please?",
+                      "id":  "065"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  287.245472162257,
+                      "end":  288.962860585371,
+                      "interval":  62,
+                      "en":  "Sorry, I have hay fever.",
+                      "id":  "066"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  288.906122083607,
+                      "end":  292.704121463215,
+                      "interval":  71,
+                      "en":  "\u003cUNIN/\u003e OK. \u003cUNIN/\u003e Now any \u003cUNIN/\u003e allergies to medication?",
+                      "id":  "067"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  293.817917566143,
+                      "end":  295.274437471761,
+                      "interval":  64,
+                      "en":  "Ohh no \u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "068"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  295.699704582293,
+                      "end":  298.518108733581,
+                      "interval":  73,
+                      "en":  "OK. So you\u0027re not allergic to anything? OK.",
+                      "id":  "069"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  298.854385454679,
+                      "end":  304.077268,
+                      "interval":  75,
+                      "en":  "So no allergies. OK, excellent. Righty-ho.",
+                      "id":  "070"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  304.077268,
+                      "end":  313.71475,
+                      "interval":  76,
+                      "en":  "So what we need to do \u003cUNSURE\u003ethat\u003c/UNSURE\u003e obviously we \u003cUNIN/\u003e you haven\u0027t had an asthma check for sometime and it looks like you can be having a small, small exacerbation.",
+                      "id":  "071"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  313.71475,
+                      "end":  319.675898,
+                      "interval":  77,
+                      "en":  "So what, I would like you to be seen by one of our GP\u0027s in the next few days.",
+                      "id":  "072"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  314.416648566043,
+                      "end":  314.934038327911,
+                      "interval":  66,
+                      "en":  "Mm-hmm.",
+                      "id":  "073"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  319.675898,
+                      "end":  324.948671872404,
+                      "interval":  78,
+                      "en":  "In the interim, what I\u0027d like you to do is you can use your blue inhaler as and when.",
+                      "id":  "074"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  324.948671872404,
+                      "end":  338.927041701279,
+                      "interval":  79,
+                      "en":  "OK. \u003cUNSURE\u003eYou can\u003c/UNSURE\u003e use it maximum about every two to four, four hours, but if you\u0027re using it that often that means pretty much that, you know, your asthma is really bad. You can use it, but that\u0027s not ideal.",
+                      "id":  "075"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  325.643888749435,
+                      "end":  326.223600582359,
+                      "interval":  68,
+                      "en":  "Mm-hmm.",
+                      "id":  "076"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  338.927041701279,
+                      "end":  343.212056255152,
+                      "interval":  80,
+                      "en":  "But \u003cUNIN/\u003e uh, the brown \u003cUNIN/\u003e your Clenil. The brown inhaler.",
+                      "id":  "077"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  339.064132737587,
+                      "end":  339.549642050304,
+                      "interval":  70,
+                      "en":  "Yeah.",
+                      "id":  "078"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  343.212056255152,
+                      "end":  351.065661,
+                      "interval":  81,
+                      "en":  "You can up the dose. If you\u0027re using just three puffs twice a day, you can increase it to four puffs twice a day.",
+                      "id":  "079"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  351.065661,
+                      "end":  356.04148,
+                      "interval":  82,
+                      "en":  "Yeah. And while, this is to do while you\u0027re waiting to see us.",
+                      "id":  "080"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  351.469892062855,
+                      "end":  352.223516240775,
+                      "interval":  72,
+                      "en":  "Mm-hmm.",
+                      "id":  "081"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  356.04148,
+                      "end":  368.831269642284,
+                      "interval":  83,
+                      "en":  "Now, \u003cUNSURE\u003eI\u0027ve\u003c/UNSURE\u003e mentioned, you know, you\u0027re doing \u003cUNIN/\u003e you know, increase the, uh, Clenil to four puffs twice a day and you\u0027re using the asthma, you know, the blue inhalers every two to four hours.",
+                      "id":  "082"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  356.82495105176,
+                      "end":  357.477126361765,
+                      "interval":  74,
+                      "en":  "OK.",
+                      "id":  "083"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  368.831269642284,
+                      "end":  375.674788782358,
+                      "interval":  84,
+                      "en":  "And your breathing is getting really worse, then you would need to take yourself to \u003cUNSURE\u003eA and E\u003c/UNSURE\u003e. You shouldn\u0027t wait for our appointment.",
+                      "id":  "084"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  375.674788782358,
+                      "end":  381.525075,
+                      "interval":  85,
+                      "en":  "OK. So, when \u003cUNSURE\u003eyou\u0027d opt to sneeze\u003c/UNSURE\u003e you, what we\u0027re going to do is we\u0027re gonna examine your chest, yeah.",
+                      "id":  "085"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  376.96255936543,
+                      "end":  377.440822330438,
+                      "interval":  76,
+                      "en":  "\u003cUNSURE\u003eYeah\u003c/UNSURE\u003e.",
+                      "id":  "086"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  381.525075,
+                      "end":  388.739816580827,
+                      "interval":  86,
+                      "en":  "Make you do the \u003cUNSURE\u003epeak flow reading\u003c/UNSURE\u003e. So depending on what we find, you might need some antibiotics and some steroids.",
+                      "id":  "087"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  382.643704001205,
+                      "end":  383.143706009338,
+                      "interval":  78,
+                      "en":  "Yeah.",
+                      "id":  "088"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  388.739816580827,
+                      "end":  396.689431467021,
+                      "interval":  87,
+                      "en":  "But anyway, while you\u0027re at home, we\u0027re going to \u003cUNIN/\u003e by increasing your Clenil, we are increasing your steroid intake anyway.",
+                      "id":  "089"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  397.114668407049,
+                      "end":  397.803075455595,
+                      "interval":  80,
+                      "en":  "OK.",
+                      "id":  "090"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  398.005977072603,
+                      "end":  403.755517734331,
+                      "interval":  89,
+                      "en":  "So, yeah. So, any questions you wanted to ask me? \u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "091"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  402.571176263869,
+                      "end":  404.46247703198,
+                      "interval":  82,
+                      "en":  "No, that\u0027s \u003cINAUDIBLE_SPEECH/\u003e \u003cUNSURE\u003ethanks\u003c/UNSURE\u003e.",
+                      "id":  "092"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  404.620289775562,
+                      "end":  411.283008,
+                      "interval":  91,
+                      "en":  "Yeah. So, book an \u003cUNIN/\u003e call support, book an appointment to see and I will recommend that \u003cUNSURE\u003emeet her\u003c/UNSURE\u003e face to face.",
+                      "id":  "093"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  411.283008,
+                      "end":  425.55815792526,
+                      "interval":  92,
+                      "en":  "In the interim, increase your brown inhaler to four puffs twice a day, and your salbutamol inhalers up to every two hourly. But, if you breathing\u0027s getting worse and you\u0027ve not seen us, do take your \u003cUNSURE\u003epuffs to A and E\u003c/UNSURE\u003e.",
+                      "id":  "094"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  425.55815792526,
+                      "end":  426.604090392647,
+                      "interval":  93,
+                      "en":  "All right?",
+                      "id":  "095"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  426.411668256439,
+                      "end":  431.10730558763,
+                      "interval":  84,
+                      "en":  "Great, OK. Thank you so much for your time. Thank you. \u003cUNIN/\u003e",
+                      "id":  "096"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  428.603818392381,
+                      "end":  431.924709619057,
+                      "interval":  95,
+                      "en":  "\u003cUNIN/\u003e You\u0027re welcome. You take care then, bye, bye now, bye. Bye.",
+                      "id":  "097"
+                  }
+              ]
+}

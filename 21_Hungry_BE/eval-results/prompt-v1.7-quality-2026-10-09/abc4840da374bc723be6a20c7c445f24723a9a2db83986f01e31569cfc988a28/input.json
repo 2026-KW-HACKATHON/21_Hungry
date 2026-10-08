@@ -1,0 +1,13 @@
+{
+  "occurredOn" : "2026-10-07",
+  "analyzedAt" : "2026-10-09T00:00:00Z",
+  "timezone" : "Asia/Seoul",
+  "sources" : [ {
+    "sourceId" : "df063fdd-7d53-3bf3-80e9-98d7c2eb3ea5",
+    "textVersion" : 1,
+    "sourceType" : "AUDIO",
+    "mediaType" : "audio/wav",
+    "text" : "의사: 가상 약 Q는 두 알씩, 아니 제가 잘못 말했네요. 한 번에 반 알씩 하루 한 번입니다. 나흘 동안만 드세요."
+  } ],
+  "knownMedications" : [ ]
+}

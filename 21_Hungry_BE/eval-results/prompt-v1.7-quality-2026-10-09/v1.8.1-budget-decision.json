@@ -1,0 +1,29 @@
+{
+  "initialChargedUsd": 1.11464775,
+  "guidelineVersionDuringCalls": "0.6.0",
+  "guidelineVersionAfterReport": "0.6.1",
+  "authorizedAdditionalUsd": 1.88535225,
+  "campaignCapUsd": 3.0,
+  "newCalls": 38,
+  "newChargedUsd": 1.72628075,
+  "ledgerChargedUsd": 2.84092850,
+  "remainingUsd": 0.15907150,
+  "retries": 0,
+  "decision": "STOP_API_CALLS; no lowering output tokens or bypassing reservation; further improvements require a separate decision",
+  "unrun": [
+    {"candidate": "A", "set": "remaining-original14", "reason": "Pilot did not justify expansion"},
+    {"candidate": "C", "set": "remaining-original14", "reason": "Improved pilot but budget reserved for new final inputs; not a completed 20-case C comparison"},
+    {"candidate": "C", "caseId": "F181_01_CORRECTION_AND_CHOICE", "nextReservationUsdRounded": 0.183488, "remainingAtCheckUsd": 0.177614, "reason": "Dry-run next-call upper bound exceeds remaining budget"},
+    {"candidate": "C", "caseId": "F181_02_QA_NEGATION_AND_ACTOR", "nextReservationUsdRounded": 0.181478, "remainingAtCheckUsd": 0.1590715, "reason": "Dry-run next-call upper bound exceeds remaining budget"}
+  ],
+  "reservationPolicyHistory": [
+    "Initial A/B/C screen used 2x byte-bound standard pricing reservation from plan-r2 predecessor; immutable plan retained.",
+    "After explicit default service tier confirmed, runner uses UTF8 request bytes+4096 at max standard input/cache-write rate plus full 12000 output tokens. No requested priority/regional/tool charges. Per-call reservationPolicy recorded; cap unchanged."
+  ],
+  "pricing": {
+    "miniPerMillion": {"input": 0.75, "cached": 0.075, "output": 4.5},
+    "solPerMillion": {"input": 2.0, "cacheWrite": 2.5, "cached": 0.1, "output": 10.0},
+    "solCostPolicy": "All uncached input charged conservatively at cache-write 2.5 rather than ordinary 2.0; actual billing not claimed",
+    "officialPages": ["https://developers.openai.com/api/docs/models/gpt-5.4-mini", "https://developers.openai.com/api/docs/models/gpt-6.1-sol"]
+  }
+}

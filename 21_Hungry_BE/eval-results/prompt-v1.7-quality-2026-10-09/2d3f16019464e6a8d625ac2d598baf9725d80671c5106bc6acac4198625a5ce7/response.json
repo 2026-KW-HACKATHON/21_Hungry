@@ -1,0 +1,293 @@
+{
+  "id" : "resp_046f9d58774355e1016ac80147f31c87d0b06f6bfdf0ae7565",
+  "object" : "response",
+  "created_at" : 1791492423,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791492506,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-6.1-sol",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "rs_046f9d58774355e1016ac80148c99487d091102cbbca4c5444",
+    "type" : "reasoning",
+    "content" : [ ],
+    "encrypted_content" : "gAAAAABqyAGapUEtKOzne7f-ImSGVxWjpqkGDgg-4-U2s8r_uPUAmNnDGCLPA2Dr8aJ0EP9CaI445TNrDgGFyTxC7n1qoKS1A2tL1pfZP0VvC2y-WklzFESxvzn8nAlnDNqagmg-EIvV5aUEqJOh-_feH0BBQ0vpzZDOtGxVir8rauDeAuLlswl6lYzoVZVIUrxHgjq7rgJ1nogPW2uTqgQk_xs1MJXpaoig1ExI3398URS30hnrRvt2ImyGQDcpxpgjxPww-KOItKc8DkZVvXMpfvdDf0R6KViU4sCaxB4LBP9DQsA-90eU8DfB-Z0W9r-Q0hSrCrti6n1jixUdSpFmt03PUELGXVRu1K00HufKrN5XzyPJT5GxPwowv-sucsAHjHws0VliUUL0eDzzzbByHiC7jc2wWVFg52HX7PFVHqVbgaQ9DFUG0OgIUcCCFnmJIF3qsx8Dyaib2utC88Z8NxloEZeySAQjK5TD5EC5oZa_Pn7a2xc9ftzuyeO1QVO3OGJb_JlW0S23Npb8c2oq2o1mKxj7KgwdgucJckgLjG1xS-Nn4u0bsUUQgn9vLx5YOzDN6AkrZ9Vhg5_DhK_5CfNQYQMuKKXMJOpcGuCT_h7iZu8lTbU32CNAqOQ0XnGBtxEjL3M4vlrJ0YKWWNioFnkUfVu_IG7_MnnTpQJ6Ss0loPm2JxJCLgmJ83JRkEekw2Kg0XVQs5VYo00DRy55XanpLHaWZyHqpNUO1xI27BtS75ZufY0FU1blOGvV9QnSEiUZ6teUYJ3C9GWa2LU76alhJamdiKM9Sc1Y9p0HQnHCvIm-Zg2UPP91WeGU24sQjAbREa8z9dIUq2tgBAgEW0mSNX7k0bTb_OYObQHIKxWQ_d48fslC4GbJ5yx0n3wOBjPe-FIJDiVPQOhl6VjSyXFGx44GWp7SDcezgAHIpNY1xnYtZ4wIQex3oBSd08qGAP7miWpw1EsCt2Obhpp7qK4_lTi_jpbvBQ28z8Jtl8izbzsTCxko4amABI4qsbk_AE4iT6dAm4vOiwhS2I9TRXfdYX3u9Bwih8uV0WdxthzsSEpOiQkOOGRK6wUjyAKJOvWA5Q9r6iuvPDuSCNW-8pC8KwvMxB-KAauvSMnXihjCSJPXV1Q6L5i9XMufNiIjbCkv3NISKGAQK3osuqv0RneEwYdyde-MZIpcPwLHEjwSQQw-IX20lRIR3u7c7UuEp3hiG60D1TkLAQ47koT-LTADVDd9QoQi152ZrOedeuADLJSItbvtQTCBqMllvBMpDNZGOxLCP9JNRdDpR9JkUhmuelo9tNoTREdg2CHgIO2-ICTWnOM4f8200cpr5e5yKOCJH4hnL3wQh5BD-_VdpMxhPwgWv8APNK9uz5A_Zd3pfNUT6ocnVYz-BOIVSFg3QK0ZTsLLPNB6lRXi0fb1T1AzSSIS2sMywcbwIe67lM4HW4f93AFao_Z90ZY8r3aDE2vx9Sx6IHJfflkvAwLunzhR7Dgo_MunbYE9IJGCLBxtU-WehLVFZ3fyJ-UvleiYLRazIkMxlLBfZgVQkOTU0eXmM74eoFO8nOZocjt1YQxq8TH-ANNIsiLTp4oJ2VOUjZI7SYbB4p_n8CLWmXm_vQcJcSe5aw==",
+    "summary" : [ ]
+  }, {
+    "id" : "msg_046f9d58774355e1016ac8014b57bc87d0851ddc36de914e16",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\n  \"schemaVersion\": \"1.8.1\",\n  \"facts\": [\n    {\n      \"factId\": \"f1\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0012\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"2~3일 전 달리면서 평소와 달리 숨이 찼고, 현재는 빨리 걸으면 확실히 숨이 찬다. 일반적으로 걸을 때의 증상은 불확실하다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f2\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0014\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"쌕쌕거림과 기침이 있고 전반적으로 조금 숨이 차다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f3\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0028\"], \"answerIds\": [\"s43ec7b664b29v1u0029\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"가래는 별로 나오지 않는다고 답했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f4\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0012\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"파란 흡입기를 사용했지만 이번 증상에 효과가 없었다고 보고했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": null, \"doseText\": null, \"frequencyText\": null, \"courseDurationText\": null, \"instructions\": \"파란 흡입기 사용 후 효과가 없었다고 보고함.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f5\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0020\"], \"questionIds\": [\"s43ec7b664b29v1u0022\"], \"answerIds\": [\"s43ec7b664b29v1u0023\"], \"correctionIds\": [\"s43ec7b664b29v1u0023\"]},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"사용 중인 약으로 Cetraben과 Hydrocortisone을 다시 확인했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": \"Cetraben 및 Hydrocortisone\", \"doseText\": null, \"frequencyText\": null, \"courseDurationText\": null, \"instructions\": null, \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f6\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0031\", \"s43ec7b664b29v1u0033\"], \"answerIds\": [\"s43ec7b664b29v1u0032\", \"s43ec7b664b29v1u0034\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"이름이 불명확한 약은 매일 하루 두 번 사용한다고 답했다. 해당 약 이름은 녹음에서 확인되지 않는다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": null, \"doseText\": null, \"frequencyText\": \"매일 하루 두 번\", \"courseDurationText\": null, \"instructions\": \"지칭된 약 이름은 불명확함.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": [\"UNCLEAR_MEDICATION_NAME\"]\n    },\n    {\n      \"factId\": \"f7\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0032\"], \"questionIds\": [\"s43ec7b664b29v1u0015\", \"s43ec7b664b29v1u0017\"], \"answerIds\": [\"s43ec7b664b29v1u0016\", \"s43ec7b664b29v1u0018\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"처음에는 파란 흡입기를 증상 때마다, 매일 예방 목적으로 아침이나 저녁에도 사용한다고 답했으나, 이후 Salbutamol은 필요할 때만 쓰는 것 같다고 설명했다. 사용 빈도 설명에 차이가 있다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": \"Salbutamol\", \"doseText\": null, \"frequencyText\": \"필요할 때 사용한다고 설명; 앞서 매일 아침이나 저녁에도 사용한다고 답함\", \"courseDurationText\": null, \"instructions\": \"실제 사용 빈도 확인 필요.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": [\"CONFLICT\"]\n    },\n    {\n      \"factId\": \"f8\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0027\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"가족력으로 형제에게 천식, 자매에게 습진이 있다고 보고했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f9\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0036\"], \"answerIds\": [\"s43ec7b664b29v1u0037\"], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"증상이 심해 입원한 적이 있는지 묻는 질문에 없다고 답했다. 질문의 질환명 일부는 들리지 않는다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": [\"UNCLEAR_SOURCE\"]\n    },\n    {\n      \"factId\": \"f10\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0039\"], \"answerIds\": [\"s43ec7b664b29v1u0040\"], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"마지막 천식 발작은 약 3~4년 전이었다고 답했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f11\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0041\"], \"answerIds\": [\"s43ec7b664b29v1u0042\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"3~4년 전 발작 당시 주치의는 예방을 위해 흡입기를 계속 사용하도록 했다고 보고했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": null, \"doseText\": null, \"frequencyText\": null, \"courseDurationText\": null, \"instructions\": \"과거 예방용 흡입기 지속 사용 지시.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f12\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0043\"], \"answerIds\": [\"s43ec7b664b29v1u0044\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"당시 먹는 스테로이드나 항생제를 사용한 기억은 없다고 답했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f13\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0045\"], \"answerIds\": [\"s43ec7b664b29v1u0046\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"과거 먹는 스테로이드를 사용한 적은 없다고 답했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f14\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0047\"], \"answerIds\": [\"s43ec7b664b29v1u0048\"], \"correctionIds\": []},\n      \"kind\": \"TEST\",\n      \"text\": \"마지막 간호사 천식 점검은 약 2년 전이었다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"COMPLETED\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f15\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0050\"], \"answerIds\": [\"s43ec7b664b29v1u0051\"], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"최근 약 2~3일 전까지는 천식이 잘 조절됐다고 답했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": [\"UNCLEAR_TIMING\"]\n    },\n    {\n      \"factId\": \"f16\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0052\", \"s43ec7b664b29v1u0053\"], \"answerIds\": [\"s43ec7b664b29v1u0054\"], \"correctionIds\": []},\n      \"kind\": \"TEST\",\n      \"text\": \"최대호기유속계는 가끔 사용하지만 이번 증상이 생긴 뒤로는 측정하지 않았다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f17\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0056\", \"s43ec7b664b29v1u0059\"], \"answerIds\": [\"s43ec7b664b29v1u0060\"], \"correctionIds\": []},\n      \"kind\": \"TEST\",\n      \"text\": \"평소 최대호기유속은 약 380으로 확인했다. 단위는 언급되지 않았다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f18\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0064\"], \"questionIds\": [\"s43ec7b664b29v1u0063\"], \"answerIds\": [], \"correctionIds\": [\"s43ec7b664b29v1u0066\"]},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"처음의 '열이 있다'는 말을 정정하여 꽃가루 알레르기가 있다고 밝혔다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f19\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s43ec7b664b29v1u0067\"], \"answerIds\": [\"s43ec7b664b29v1u0068\"], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"약물 알레르기는 없다고 답했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f20\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0071\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"의사는 가벼운 천식 악화일 수 있다고 평가했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f21\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0072\", \"s43ec7b664b29v1u0093\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"앞으로 며칠 안에 주치의 대면 진료를 받도록 권고했다. 예약은 아직 확정되지 않았다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"HOSPITAL\", \"title\": \"며칠 안에 주치의 대면 진료\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f22\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0093\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"지원팀에 연락하여 대면 진료를 예약한다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"OTHER\", \"title\": \"지원팀에 진료 예약 연락\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f23\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0074\", \"s43ec7b664b29v1u0075\", \"s43ec7b664b29v1u0094\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"진료를 기다리는 동안 Salbutamol 파란 흡입기는 필요할 때 사용한다. 처음에는 최대 2~4시간마다 사용할 수 있다고 설명했고, 마지막 안내에서는 최대 2시간마다 사용하도록 했다. 1회 흡입 횟수는 명시되지 않았다.\",\n      \"condition\": {\"operator\": \"ALL\", \"clauses\": [\"증상으로 흡입기가 필요할 때\"]},\n      \"medicationRole\": \"CONDITIONAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": {\"name\": \"Salbutamol\", \"doseText\": null, \"frequencyText\": \"필요 시, 최대 2시간마다; 앞선 설명은 2~4시간마다\", \"courseDurationText\": \"진료를 기다리는 동안\", \"instructions\": \"파란 흡입기. 1회 흡입 횟수는 명시되지 않음.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f24\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0074\", \"s43ec7b664b29v1u0075\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"의사는 파란 흡입기를 2~4시간마다 써야 할 정도라면 천식 상태가 상당히 좋지 않다는 뜻이며 바람직한 상태가 아니라고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f25\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0077\", \"s43ec7b664b29v1u0079\", \"s43ec7b664b29v1u0080\", \"s43ec7b664b29v1u0094\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"진료를 기다리는 동안 갈색 Clenil 흡입기를 1회 4번 흡입, 하루 두 번으로 늘리도록 안내했다. 앞서 1회 3번씩 하루 두 번 사용 중이라면 4번으로 늘리라고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"PRESCRIBED\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": {\"name\": \"Clenil\", \"doseText\": \"1회 4번 흡입\", \"frequencyText\": \"하루 두 번\", \"courseDurationText\": \"진료를 기다리는 동안\", \"instructions\": \"갈색 흡입기 증량. 앞선 안내에서는 1회 3번씩 하루 두 번 사용 중일 경우 4번으로 증량한다고 설명함.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f26\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0082\", \"s43ec7b664b29v1u0084\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"예약 진료까지 기다리지 말고 응급실로 간다.\",\n      \"condition\": {\"operator\": \"ALL\", \"clauses\": [\"Clenil을 1회 4번, 하루 두 번으로 늘리고 파란 흡입기를 2~4시간마다 사용하는 중인데도 숨쉬기가 훨씬 나빠질 때\"]},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"HOSPITAL\", \"title\": \"악화 시 응급실 방문\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": [\"UNCLEAR_DESTINATION_TRANSCRIPTION\"]\n    },\n    {\n      \"factId\": \"f27\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0094\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"응급실로 간다.\",\n      \"condition\": {\"operator\": \"ALL\", \"clauses\": [\"진료 전에 숨쉬기가 나빠질 때\"]},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"HOSPITAL\", \"title\": \"진료 전 호흡 악화 시 응급실 방문\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": [\"UNCLEAR_DESTINATION_TRANSCRIPTION\"]\n    },\n    {\n      \"factId\": \"f28\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0085\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"TEST\",\n      \"text\": \"대면 진료에서 가슴 진찰을 받을 예정이다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"EXAM\", \"title\": \"진료 시 가슴 진찰\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f29\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0085\", \"s43ec7b664b29v1u0087\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"TEST\",\n      \"text\": \"진료에서 최대호기유속도 측정할 예정이다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"EXAM\", \"title\": \"진료 시 최대호기유속 측정\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": [\"UNCLEAR_TEST_TRANSCRIPTION\"]\n    },\n    {\n      \"factId\": \"f30\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0087\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"진료 결과에 따라 항생제나 스테로이드가 필요할 수도 있다고 설명했다. 이번 상담에서 해당 약을 처방하거나 선택한 것은 아니다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"EXAMPLE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": null, \"doseText\": null, \"frequencyText\": null, \"courseDurationText\": null, \"instructions\": \"진료 결과에 따라 항생제나 스테로이드가 필요할 가능성에 대한 설명이며 현재 처방은 아님.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f31\",\n      \"support\": {\"statementIds\": [\"s43ec7b664b29v1u0089\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"Clenil을 늘리면 스테로이드 사용량도 늘어나는 것이라고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    }\n  ],\n  \"summaryFactIds\": [\"f1\", \"f2\", \"f4\", \"f20\", \"f21\", \"f22\", \"f23\", \"f25\", \"f24\", \"f27\", \"f28\", \"f29\", \"f30\"]\n}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "all_turns",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s43ec7b664b29v1u0001", "s43ec7b664b29v1u0002", "s43ec7b664b29v1u0003", "s43ec7b664b29v1u0004", "s43ec7b664b29v1u0005", "s43ec7b664b29v1u0006", "s43ec7b664b29v1u0007", "s43ec7b664b29v1u0008", "s43ec7b664b29v1u0009", "s43ec7b664b29v1u0010", "s43ec7b664b29v1u0011", "s43ec7b664b29v1u0012", "s43ec7b664b29v1u0013", "s43ec7b664b29v1u0014", "s43ec7b664b29v1u0015", "s43ec7b664b29v1u0016", "s43ec7b664b29v1u0017", "s43ec7b664b29v1u0018", "s43ec7b664b29v1u0019", "s43ec7b664b29v1u0020", "s43ec7b664b29v1u0021", "s43ec7b664b29v1u0022", "s43ec7b664b29v1u0023", "s43ec7b664b29v1u0024", "s43ec7b664b29v1u0025", "s43ec7b664b29v1u0026", "s43ec7b664b29v1u0027", "s43ec7b664b29v1u0028", "s43ec7b664b29v1u0029", "s43ec7b664b29v1u0030", "s43ec7b664b29v1u0031", "s43ec7b664b29v1u0032", "s43ec7b664b29v1u0033", "s43ec7b664b29v1u0034", "s43ec7b664b29v1u0035", "s43ec7b664b29v1u0036", "s43ec7b664b29v1u0037", "s43ec7b664b29v1u0038", "s43ec7b664b29v1u0039", "s43ec7b664b29v1u0040", "s43ec7b664b29v1u0041", "s43ec7b664b29v1u0042", "s43ec7b664b29v1u0043", "s43ec7b664b29v1u0044", "s43ec7b664b29v1u0045", "s43ec7b664b29v1u0046", "s43ec7b664b29v1u0047", "s43ec7b664b29v1u0048", "s43ec7b664b29v1u0049", "s43ec7b664b29v1u0050", "s43ec7b664b29v1u0051", "s43ec7b664b29v1u0052", "s43ec7b664b29v1u0053", "s43ec7b664b29v1u0054", "s43ec7b664b29v1u0055", "s43ec7b664b29v1u0056", "s43ec7b664b29v1u0057", "s43ec7b664b29v1u0058", "s43ec7b664b29v1u0059", "s43ec7b664b29v1u0060", "s43ec7b664b29v1u0061", "s43ec7b664b29v1u0062", "s43ec7b664b29v1u0063", "s43ec7b664b29v1u0064", "s43ec7b664b29v1u0065", "s43ec7b664b29v1u0066", "s43ec7b664b29v1u0067", "s43ec7b664b29v1u0068", "s43ec7b664b29v1u0069", "s43ec7b664b29v1u0070", "s43ec7b664b29v1u0071", "s43ec7b664b29v1u0072", "s43ec7b664b29v1u0073", "s43ec7b664b29v1u0074", "s43ec7b664b29v1u0075", "s43ec7b664b29v1u0076", "s43ec7b664b29v1u0077", "s43ec7b664b29v1u0078", "s43ec7b664b29v1u0079", "s43ec7b664b29v1u0080", "s43ec7b664b29v1u0081", "s43ec7b664b29v1u0082", "s43ec7b664b29v1u0083", "s43ec7b664b29v1u0084", "s43ec7b664b29v1u0085", "s43ec7b664b29v1u0086", "s43ec7b664b29v1u0087", "s43ec7b664b29v1u0088", "s43ec7b664b29v1u0089", "s43ec7b664b29v1u0090", "s43ec7b664b29v1u0091", "s43ec7b664b29v1u0092", "s43ec7b664b29v1u0093", "s43ec7b664b29v1u0094", "s43ec7b664b29v1u0095", "s43ec7b664b29v1u0096", "s43ec7b664b29v1u0097" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 12506,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 12503,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 6527,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 79
+    },
+    "total_tokens" : 19033
+  },
+  "user" : null,
+  "metadata" : { }
+}

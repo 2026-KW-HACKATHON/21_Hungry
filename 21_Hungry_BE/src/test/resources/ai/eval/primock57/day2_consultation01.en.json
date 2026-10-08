@@ -1,0 +1,642 @@
+﻿{
+    "id":  "day2_consultation01",
+    "set":  "holdout",
+    "dataset":  "PriMock57",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "license":  "CC-BY-4.0",
+    "mockConsultation":  true,
+    "turns":  [
+                  {
+                      "speaker":  "doctor",
+                      "start":  1.31252134112288,
+                      "end":  3.3125896327161,
+                      "interval":  2,
+                      "en":  "Hi, there. Good morning!",
+                      "id":  "001"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  3.83836970657372,
+                      "end":  4.33332171608018,
+                      "interval":  2,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "002"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  4.87512804673728,
+                      "end":  7.30022536225762,
+                      "interval":  4,
+                      "en":  "Uh, I\u0027m Dr. Dean Mesa from Babylon.",
+                      "id":  "003"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  8.7272442121968,
+                      "end":  9.7272442121968,
+                      "interval":  4,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "004"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  9.27529194656101,
+                      "end":  11.312862799089,
+                      "interval":  6,
+                      "en":  "\u003cUNIN/\u003e Can you hear me OK?",
+                      "id":  "005"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  11.5151190773667,
+                      "end":  12.723548503736355,
+                      "interval":  6,
+                      "en":  "Yep. Can you find",
+                      "id":  "006"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  12.7050934679692,
+                      "end":  19.4904958339521,
+                      "interval":  8,
+                      "en":  "Yeah, OK, great. Well, nice to see you this morning. Um, before we start your appointment, could I confirm your full name and date of birth please?",
+                      "id":  "007"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  19.378865335135636,
+                      "end":  25.321210112848366,
+                      "interval":  8,
+                      "en":  "Uh yeah, uh Jack Smith, uh thirty first \u003cUNIN/\u003e October nineteen ninety.",
+                      "id":  "008"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  25.1188177267385,
+                      "end":  29.6605370831701,
+                      "interval":  10,
+                      "en":  "That\u0027s perfect, thank you, John. Um, are you in a private place where you\u0027re OK to speak at the moment?",
+                      "id":  "009"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  29.8382800877637,
+                      "end":  30.792137142016031,
+                      "interval":  10,
+                      "en":  "\u003cUNSURE\u003eI am, yes\u003c/UNSURE\u003e",
+                      "id":  "010"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  30.6605370831701,
+                      "end":  36.1176545555654,
+                      "interval":  12,
+                      "en":  "OK, great. So, um, tell me what\u0027s been going on. \u003cUNIN/\u003e You\u0027ve been saying there\u0027s a problem with your hearing. Is that right?",
+                      "id":  "011"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  36.279128750202709,
+                      "end":  41.2725815290059,
+                      "interval":  12,
+                      "en":  "Yeah, so I just feel I can\u0027t really hear as well as I used to, like my hearing is kind of deteriorating in some way.",
+                      "id":  "012"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  41.4636527557957,
+                      "end":  43.7476976785911,
+                      "interval":  14,
+                      "en":  "Right, OK. How long has this been going on for?",
+                      "id":  "013"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  43.924717417516767,
+                      "end":  45.301753472477337,
+                      "interval":  14,
+                      "en":  "Uh about six weeks.",
+                      "id":  "014"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  45.4020667257848,
+                      "end":  50.0196163640447,
+                      "interval":  16,
+                      "en":  "Six weeks, OK. Um, and before that have you had any hearing problem at all?",
+                      "id":  "015"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  50.586594548271954,
+                      "end":  56.7931185095011,
+                      "interval":  16,
+                      "en":  "Um I had something maybe, about a year ago, but it only lasted a couple of days, it wasn\u0027t anything as long as this.",
+                      "id":  "016"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  56.6496594870704,
+                      "end":  64.2674294737848,
+                      "interval":  18,
+                      "en":  "Right, OK, OK. And, um, in this six week period, have you had anything else happen? Have you had any other ear symptoms at all?",
+                      "id":  "017"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  65.1007706146053,
+                      "end":  74.412914277610625,
+                      "interval":  18,
+                      "en":  "Um, I \u003cUNIN/\u003e occasionally get like a ringing in my left ear, uh just on the one side and um there\u0027s actually been a few times when I felt kind of a bit sick or a bit dizzy as well.",
+                      "id":  "018"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  74.3545166197209,
+                      "end":  80.9475199853582,
+                      "interval":  20,
+                      "en":  "Right, OK. Uh, uh, um,  just to clarify, the difficulty you\u0027ve got in hearing, is that both ears or just the left ear?",
+                      "id":  "019"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  80.9996913129876,
+                      "end":  82.1714076297554,
+                      "interval":  20,
+                      "en":  "Uh just the left ear, yeah.",
+                      "id":  "020"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  82.1944517012804,
+                      "end":  84.058712707008,
+                      "interval":  22,
+                      "en":  "Alright, so your right ear is fine.",
+                      "id":  "021"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  84.3633208873202,
+                      "end":  85.3633208873202,
+                      "interval":  22,
+                      "en":  "It seems be yeah.",
+                      "id":  "022"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  85.7254283399979,
+                      "end":  91.7991987439649,
+                      "interval":  24,
+                      "en":  "OK. So you\u0027ve had ringing, difficulty hearing in your left ear, and feeling slightly sick.",
+                      "id":  "023"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  90.3633009720291,
+                      "end":  90.8279501021059,
+                      "interval":  24,
+                      "en":  "Mh-mm.",
+                      "id":  "024"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  91.7991987439649,
+                      "end":  97.0224074444679,
+                      "interval":  25,
+                      "en":  "Um, that\u0027s been, on and off for the six weeks, or is it continuous there throughout that six weeks?",
+                      "id":  "025"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  92.023963164289441,
+                      "end":  92.805524168456259,
+                      "interval":  26,
+                      "en":  "Yeah.",
+                      "id":  "026"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  97.234369858734851,
+                      "end":  104.85514706559914,
+                      "interval":  28,
+                      "en":  "Uh it\u0027s kind of on and off. Like some things trigger it as well. So, for example, if I\u0027m watching TV or listen to music or something that\u0027ll \u003cUNSURE\u003esolve\u003c/UNSURE\u003e the ringing in the ear.",
+                      "id":  "027"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  104.788336460736,
+                      "end":  110.56646516383,
+                      "interval":  27,
+                      "en":  "Right, OK. Um, and, um, have you had any pain from the ear at all?",
+                      "id":  "028"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  110.858178299194,
+                      "end":  112.050096535581,
+                      "interval":  30,
+                      "en":  "Uh no my \u003cUNSURE\u003eleft ear\u003c/UNSURE\u003e.",
+                      "id":  "029"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  112.270220554208,
+                      "end":  118.97434319201,
+                      "interval":  29,
+                      "en":  "OK. Any discharge coming out of the ear? No, OK. Um,  have, have you been experiencing any fever?",
+                      "id":  "030"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  114.585442426682,
+                      "end":  114.92888003904,
+                      "interval":  32,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "031"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  119.58440769131398,
+                      "end":  123.15725799607654,
+                      "interval":  34,
+                      "en":  "Uh, not specifically apart from the dizziness \u003cUNIN/\u003e so much.",
+                      "id":  "032"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  123.344961114348,
+                      "end":  127.135289504269,
+                      "interval":  31,
+                      "en":  "Right, OK. And, um, has your ear been itchy at all?",
+                      "id":  "033"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  127.504589938798,
+                      "end":  127.827825631536,
+                      "interval":  36,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "034"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  128.159982675861,
+                      "end":  133.147929888004,
+                      "interval":  33,
+                      "en":  "OK. Now, do you use cotton ball buds to try and \u003cUNIN/\u003e clean out wax from your ears?",
+                      "id":  "035"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  133.342954666549,
+                      "end":  134.8098975260236,
+                      "interval":  38,
+                      "en":  "Uh \u003cUNSURE\u003enah I\u0027ll do it\u003c/UNSURE\u003e.",
+                      "id":  "036"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  134.752912592013,
+                      "end":  143.765846773688,
+                      "interval":  35,
+                      "en":  "No, OK. Well, you\u0027re right, you should, you shouldn\u0027t be doing that. \u003cUNIN/\u003e Doesn\u0027t clean up wax, it pushes it back in. Alright, um, the first thing that we need to do is we need to get someone to have a look inside your ear.",
+                      "id":  "037"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  143.765846773688,
+                      "end":  152.630621925809,
+                      "interval":  36,
+                      "en":  "\u0027K. I\u0027m just exclude the simple things. Simple things \u003cUNIN/\u003e might be wax. You know. Someone might have impacted wax, blocking the tube going into the eardrum, which can",
+                      "id":  "038"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  144.080284902087,
+                      "end":  144.504530192924,
+                      "interval":  40,
+                      "en":  "OK.",
+                      "id":  "039"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  152.630621925809,
+                      "end":  160.606442900611,
+                      "interval":  37,
+                      "en":  "lead to muffled hearing. Um, if that\u0027s the case, that that\u0027s something that\u0027s easy fixable. But, um, so we need to exclude that first.",
+                      "id":  "040"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  160.606442900611,
+                      "end":  167.841468727646,
+                      "interval":  38,
+                      "en":  "and then after that, we can consider other potential possibilities. Um, and for that we need to have a look inside the ear drum.",
+                      "id":  "041"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  167.841468727646,
+                      "end":  175.953102146205,
+                      "interval":  39,
+                      "en":  "So, um, what I think we could do is, um, maybe if we book you in for a face-to-face appointment in one of our clinics. It\u0027s not an emergency.",
+                      "id":  "042"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  175.953102146205,
+                      "end":  182.817730399356,
+                      "interval":  40,
+                      "en":  "It can be done within the next four, five days or so, OK? And then, um, what I\u0027ll do, I\u0027ll send a message to our admin team.",
+                      "id":  "043"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  182.817730399356,
+                      "end":  190.91303634661469,
+                      "interval":  41,
+                      "en":  "I\u0027ll ask them to slot you into the clinic, one of our clinics in that time frame. You can come in and one of the GPs will just have a quick look in the ear and figure out",
+                      "id":  "044"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  190.91303634661469,
+                      "end":  200.127496786531,
+                      "interval":  42,
+                      "en":  "whether there\u0027s physical blockage or whether there\u0027s something else going on, OK? Um, can I just double check, the dizziness that you\u0027ve been getting, um, how severe is it?",
+                      "id":  "045"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  194.201257436312,
+                      "end":  194.615401767339,
+                      "interval":  42,
+                      "en":  "OK.",
+                      "id":  "046"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  198.403266674864,
+                      "end":  198.827511965701,
+                      "interval":  44,
+                      "en":  "Yeah.",
+                      "id":  "047"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  200.97920401321525,
+                      "end":  211.544630323974,
+                      "interval":  46,
+                      "en":  "Uh nothing major it\u0027s just kind of uh it\u0027s, it\u0027s not the kind of dizziness you get with nausea, like uh not, not proper room spinning or anything like that but just, just a little bit kind of off balance.",
+                      "id":  "048"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  206.967431868091,
+                      "end":  207.708153566373,
+                      "interval":  44,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "049"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  211.7948000154,
+                      "end":  215.770327192262,
+                      "interval":  46,
+                      "en":  "Right, right, OK. Have, have you had any chest pain with it?",
+                      "id":  "050"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  212.312308248347,
+                      "end":  214.069880234087,
+                      "interval":  48,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "051"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  216.251692531842,
+                      "end":  216.65573590306,
+                      "interval":  50,
+                      "en":  "No.",
+                      "id":  "052"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  216.58512840532,
+                      "end":  219.066718700854,
+                      "interval":  48,
+                      "en":  "No. Any palpitations, heart beating fast?",
+                      "id":  "053"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  219.372899070738,
+                      "end":  220.372899070738,
+                      "interval":  52,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "054"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  220.128451629834,
+                      "end":  228.709255308645,
+                      "interval":  50,
+                      "en":  "OK, fine, alright. Um, so \u003cUNIN/\u003e let\u0027s get your ear checked out. I think that will be the, the most sensible thing to do. And then after that, we can, we\u0027ll be a step closer to figuring out which way we \u003cUNIN/\u003e",
+                      "id":  "055"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  228.709255308645,
+                      "end":  235.401031360651,
+                      "interval":  51,
+                      "en":  "\u003cUNIN/\u003e It might be that there\u0027s a problem inside the drum or the balance system within the ear. But, we just need to exclude whether there\u0027s \u003cUNIN/\u003e",
+                      "id":  "056"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  235.401031360651,
+                      "end":  240.351938815406,
+                      "interval":  52,
+                      "en":  "physical blockage first and trying to deal with that if that\u0027s the case, OK? Um, but",
+                      "id":  "057"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  239.069780657632,
+                      "end":  246.281870940702,
+                      "interval":  54,
+                      "en":  "\u003cUNIN/\u003e \u003cUNSURE\u003eis that the\u003c/UNSURE\u003e sort of thing that can cause uh like this uh ringing I\u0027ve got in my ear, \u0027cause it seems \u003cUNIN/\u003e .",
+                      "id":  "058"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  244.969488453666,
+                      "end":  250.562418369818,
+                      "interval":  54,
+                      "en":  "\u003cUNIN/\u003e The ringing that you got, that you\u0027ve got, it\u0027s something called Tinnitus. OK? Um",
+                      "id":  "059"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  249.372769621346,
+                      "end":  249.786913952373,
+                      "interval":  56,
+                      "en":  "Right.",
+                      "id":  "060"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  250.562418369818,
+                      "end":  256.686251475204,
+                      "interval":  55,
+                      "en":  "and Tinnitus is something actually that medicine doctors, we don\u0027t really understand it fully. We haven\u0027t",
+                      "id":  "061"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  255.807090977879,
+                      "end":  256.251538188336,
+                      "interval":  58,
+                      "en":  "OK.",
+                      "id":  "062"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  256.686251475204,
+                      "end":  264.8173156290128,
+                      "interval":  56,
+                      "en":  "Uh, \u003cUNIN/\u003e people can\u0027t give you a specific cause for why some patients get Tinnitus and some patients don\u0027t. It can be triggered by a wide range of different things, and in fact",
+                      "id":  "063"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  264.8173156290128,
+                      "end":  271.88603767629041,
+                      "interval":  57,
+                      "en":  "I\u0027m glad that you\u0027ve mentioned that. What I might do, in the time between now and when you come for the appointment, I\u0027m going to, uh, put",
+                      "id":  "064"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  271.88603767629041,
+                      "end":  279.53599961973981,
+                      "interval":  58,
+                      "en":  "paste the link for a leaflet about Tinnitus, um, in the notes for this appointment. I\u0027d really appreciate it if you could start reading about it.",
+                      "id":  "065"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  275.413063926484,
+                      "end":  275.877713056561,
+                      "interval":  60,
+                      "en":  "OK.",
+                      "id":  "066"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  279.473659727698,
+                      "end":  279.938308857775,
+                      "interval":  62,
+                      "en":  "Sure.",
+                      "id":  "067"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  279.53599961973981,
+                      "end":  286.354777802703,
+                      "interval":  59,
+                      "en":  "OK. And often that, that, uh, awareness of what it is and what the treatment options are, and there are limited options",
+                      "id":  "068"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  286.354777802703,
+                      "end":  294.74288085911218,
+                      "interval":  60,
+                      "en":  "um that helps us in terms of conversation about what we do next, if your ear is clear, OK? So, um, I\u0027m going to paste a link to that, um, and you can read about that and",
+                      "id":  "069"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  294.74288085911218,
+                      "end":  298.849401272007,
+                      "interval":  61,
+                      "en":  "what we\u0027ll do is we\u0027ll see you in about four, five days time. It won\u0027t be with me, it\u0027ll be another GP",
+                      "id":  "070"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  298.849401272007,
+                      "end":  304.676916318285,
+                      "interval":  62,
+                      "en":  "but they\u0027ll have my notes and they\u0027ll know exactly what, what my question is, which is just to check your ears. Is that OK?",
+                      "id":  "071"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  302.705877248046,
+                      "end":  303.150324458503,
+                      "interval":  64,
+                      "en":  "OK.",
+                      "id":  "072"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  304.80721926589564,
+                      "end":  305.715978207856,
+                      "interval":  66,
+                      "en":  "Yeah it sounds great.",
+                      "id":  "073"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  305.849768519431,
+                      "end":  313.479885091941,
+                      "interval":  64,
+                      "en":  "Alright, great. So, um, bear with me five minutes and then you can ring the support team, I\u0027ll leave the number in the notes for this appointment. Ring them, and then they\u0027ll slot you in, OK?",
+                      "id":  "074"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  313.726044315907,
+                      "end":  314.604832798188,
+                      "interval":  68,
+                      "en":  "OK brilliant.",
+                      "id":  "075"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  314.66759843272916,
+                      "end":  322.67732671727981,
+                      "interval":  66,
+                      "en":  "Alright. \u003cUNIN/\u003e If there\u0027s any problem, any issues \u003cUNIN/\u003e between now and when the clinic appointment is, just book another appointment \u003cUNSURE\u003eand\u003c/UNSURE\u003e you can speak to \u003cUNSURE\u003eone of\u003c/UNSURE\u003e us over video, OK?",
+                      "id":  "076"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  323.039139218253,
+                      "end":  323.50378834833,
+                      "interval":  70,
+                      "en":  "OK.",
+                      "id":  "077"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  323.974262670179,
+                      "end":  327.147261770294,
+                      "interval":  68,
+                      "en":  "Alright then. Take care. Nice to see you this morning. OK. Bye bye.",
+                      "id":  "078"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  325.483581449888,
+                      "end":  327.01304976774281,
+                      "interval":  72,
+                      "en":  "Thank you. See you later.",
+                      "id":  "079"
+                  }
+              ]
+}

@@ -1,0 +1,329 @@
+{
+  "id" : "resp_0e20c9e2e2df1a25016ac7c085f4cc87d087f16a68c498c5c1",
+  "object" : "response",
+  "created_at" : 1791475845,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791475851,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_0e20c9e2e2df1a25016ac7c086955087d089ed5886471a4af7",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"evidence\":[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"약 15분 전에 정원을 가꾸다가 말벌에 쏘여서\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"숨을 상당히 얕게 쉬고 있어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"입술에는 확실히 뭔가 느껴져요.\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"조금 답답해요. 네, 조금요.\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"네, 얼룩처럼 조금 생겼어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"즉시\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아내분이 직접 데려가시는 대신\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차를 불러 주세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아나필락시스 반응이 생길 가능성을 걱정하는 겁니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차가 오는 동안 아내분이 환자분께 항히스타민제를 주시도록 부탁하겠습니다.\",\"occurrenceIndex\":0}],\"summary\":\"말벌 쏘인 뒤 숨이 얕고 답답하며 입술 이상감과 발진이 있어 즉시 병원 진료가 필요함. 아나필락시스 가능성을 걱정해 구급차를 부르도록 안내함. 구급차 오는 동안 집에 있는 항히스타민제 복용. 아내가 직접 데려가지 말고 구급차 이용.\",\"details\":{\"symptoms\":[{\"text\":\"약 15분 전 말벌에 쏘임.\",\"evidenceIndexes\":[0]},{\"text\":\"숨을 상당히 얕게 쉼.\",\"evidenceIndexes\":[1]},{\"text\":\"입술에 따끔거리는 느낌.\",\"evidenceIndexes\":[2]},{\"text\":\"조금 답답함.\",\"evidenceIndexes\":[3]},{\"text\":\"얼룩처럼 발진이 조금 생김.\",\"evidenceIndexes\":[4]}],\"tests\":[],\"medicationMentions\":[],\"precautions\":[{\"text\":\"즉시 진료 필요.\",\"evidenceIndexes\":[5]},{\"text\":\"아내가 직접 데려가지 말고 구급차를 부르기.\",\"evidenceIndexes\":[6,7]},{\"text\":\"호흡 문제가 아주 빠르게 악화될 수 있음.\",\"evidenceIndexes\":[7]},{\"text\":\"구급차가 오는 동안 집에 있는 항히스타민제 복용.\",\"evidenceIndexes\":[9]}],\"followUps\":[{\"text\":\"빨리 처치받을 수 있도록 구급차를 부름.\",\"evidenceIndexes\":[7,8]},{\"text\":\"병원에 가기.\",\"evidenceIndexes\":[6,7]}]},\"items\":[{\"itemKey\":\"task-1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"즉시 병원 진료\",\"description\":\"숨쉬기 어렵고 발진이 있어 아나필락시스 가능성을 고려해 즉시 진료가 필요함.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"즉시\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아나필락시스 반응이 생길 가능성을 걱정하는 겁니다.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":false},{\"itemKey\":\"task-2\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"구급차 이용\",\"description\":\"아내가 직접 데려가지 말고 구급차를 부르기.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아내분이 직접 데려가시는 대신\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차를 불러 주세요.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":false},{\"itemKey\":\"task-3\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"병원으로 이동\",\"description\":\"빨리 처치받기 위해 병원에 가기.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차가 오는 동안 아내분이 환자분께 항히스타민제를 주시도록 부탁하겠습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"병원에 가세요.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":false}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "evidence", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "evidence" : {
+            "$ref" : "#/$defs/evidenceList"
+          },
+          "summary" : {
+            "type" : [ "string", "null" ]
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "evidence" : {
+                  "$ref" : "#/$defs/evidenceList"
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "text", "evidenceIndexes" ],
+              "properties" : {
+                "text" : {
+                  "type" : [ "string", "null" ]
+                },
+                "evidenceIndexes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "integer"
+                  }
+                }
+              }
+            }
+          },
+          "evidenceList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/evidence"
+            }
+          },
+          "evidence" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "sourceId", "textVersion", "page", "quote", "occurrenceIndex" ],
+            "properties" : {
+              "sourceId" : {
+                "type" : "string"
+              },
+              "textVersion" : {
+                "type" : "integer"
+              },
+              "page" : {
+                "type" : [ "integer", "null" ]
+              },
+              "quote" : {
+                "type" : "string"
+              },
+              "occurrenceIndex" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 3598,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1633,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5231
+  },
+  "user" : null,
+  "metadata" : { }
+}

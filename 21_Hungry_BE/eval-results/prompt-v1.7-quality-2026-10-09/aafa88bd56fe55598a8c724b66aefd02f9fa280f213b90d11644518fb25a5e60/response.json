@@ -1,0 +1,293 @@
+{
+  "id" : "resp_0c8db5e05bcb651d016ac7fdad0d8c87d0812833cfe7a36954",
+  "object" : "response",
+  "created_at" : 1791491501,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791491504,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "rs_0c8db5e05bcb651d016ac7fdadec3487d0b35f62b94c1b704e",
+    "type" : "reasoning",
+    "content" : [ ],
+    "encrypted_content" : "gAAAAABqx_2wrviW-j5ec7633kWu3SSRlIRMBdIAFduKmuKjTGXyhugFvFE2BG9uPevC_JhPfFQXbMzUoosTCSTlSAemEhF5bDMm-Crc1Fd0xyLTAW23mVDvABB7QPtIRALRYnWx_ASsxJubKQoTBJ0lYMpDu5GevrqmDJLgamLWBZE7Sn68ur-r2rIOxWO3_aZ5-4qWskfx46Ji1P0uxbhKOsrCt0raYa9KRDHWguOGkze6UFh96KzkerfT1SYduxLHCOJylkW1u_82xG5fD0oTCnaexVx7N-5cmjQK2Ts1mgyCqcWd3eGg3FKNsT6qHppR544_DduBuxdmx28QLVs7w_zrok1sLmD3LRy_Jh1BLiHoXlIgZv1uTPQHm2AgOttGOy2qdl0qVZ7D5hgZxAfqhex8vvzp1ruwZnqm5xwYZJbqSeekdpV5SnQeaxDB3GuSqZWRJ6azvNcjHh2YRZldkZhNf0hjdZwQsQT6Jvy5JzUDftZDo-VBrgiwwEQdZhqHWwWo1_bTjXu0v6k9n2SqKvKBOnW-SNDt19RxLq_pmIaln2xpTPxcJoHGWoqKRHZaIwHYXxP5AG-95IxfFuyjvAMhs8TAjXe_NEr6cwuzhoi2Q7s5F2RgARmEL7fPQw9-IPMsTvGsCsafAsxosgKbj45tYIuUTKkotsL9IcJNgRRay8ikKSrmSD_53fTwCT1VqdwO96HUow5x5kAFcufRmYDQ-K4_0gBHiGrZbaf8pbMNaMYd9CcJCr9LSmCjge8UCtYdAbZK09BASWMXey-Ur_xJgnTKJISDdtKDUxo-t3KW4lG-ZaIvqY6JqkdnW8SvuAO25nI_PAR6TiYCMY2LuHmvTsr2ASkWKLWD29ejm3e4c4uP_5pJnhqWVQCpSBTlBi6IxH_eWwsUftjrG7-GSuZ3KLv_N54LRlyf3_JoV4N4eTS8s0_l0rctJ2uCOQz7Wm_C-cJTs6YAB-eC8BvipFBMBDX73aKcSHq_Zr9sdPYFYwGBid5oOyO8uoo8-u6DjDjAmg9yw2hzx22yi5eA95AhhIVochBANSAWc7ql15412R-a_BsQQSNHIrpC2as_9hxqNxI5codNhYZTF8RV4MxeGlAkg1n5PGGc_1YVxFind10WZRVijysHC8le1zSz0wMC2m2P6WUd11FrPgSHnUjeqsd2_bPByCy6QNs-FgcB2o274B8QldWl4LfwrZy9Ls2WJiCvoMHfYV27GJ-Kg_mCypXyb5sOV6-KyXl2HoS7_1d-oBgzjJOt5jAD066iSYpkJ53vYUwgWCyppgbRX60BXMjwSe-TBa-aT1KjPok-mzwn_2xoXf0YG2E_jh5au1vCxQgCDI32alSVmP9LKg-jJN3OHaqbWkQB85nVbrcLxZD2H9mF6eSpBagfvmo5IS-uwZVKYLayx8vQWq6vrkQGmKnoohx2UiHNQAqs6KBhqXN2qEFff1d1KSgk8_bk1mi2y3rOFI6-_jLVw9FIVQ3x_k-MceqVVDRLRZcuQ83dUTGoQzq7v5AQMhTJy10Hfwd5hLugVi5k7JO6uZHoHzNEmTP4_HWSr4A0F17eR2IwopxNJC0TNg0-0pMAZsW-BRTfPgsg9YnboWoJoqMYo8J6ZJLwhL_EimH5mIabliOPZdbhOBTBrE7LKW1gFgJurwymqfWnt7jN0mv3bICzu8QCWzWhN3T_G_09CUeCCLrfsN3DKv_WqF2EPcUQTTvy9sJjeyagOiJt5S0fhPQCiwGDWCTiiBvU3oqCHTkZgf6h3tKhzCpYFguS_JaHiU4_ShnYlIZ829R1QKwzMr44S9KAUqHe14sNcn2piWOk7HViLoIvBkXcn8R606Ag9qo0nq9gnZFk4zH87FjmWTt3ftxjAoAF7wejR_rfSwhGdvyMub-meXfhBW5EPqNRTx8Fc-Bu3Jmm8Xaw8XnCWVKvdFGQZSnxqXevBkh813XivlbvjPywzpw=",
+    "summary" : [ ]
+  }, {
+    "id" : "msg_0c8db5e05bcb651d016ac7fdaecd2c87d0999688528d0648c3",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8.1\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"s19214be7f700v1u0001\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"약 A를 하루 두 번 드세요.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"PRESCRIBED\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"약 A\",\"doseText\":null,\"frequencyText\":\"하루 두 번\",\"courseDurationText\":null,\"instructions\":null,\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[\"sf5d4d4f4b80fv1u0001\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"처방전에는 약 A가 하루 3회로 적혀 있습니다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"HISTORICAL\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"약 A\",\"doseText\":null,\"frequencyText\":\"하루 3회\",\"courseDurationText\":null,\"instructions\":\"처방전 기록\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[\"CONFLICT\"]}],\"summaryFactIds\":[\"f1\",\"f2\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s19214be7f700v1u0001", "sf5d4d4f4b80fv1u0001" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 2608,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 471,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 111
+    },
+    "total_tokens" : 3079
+  },
+  "user" : null,
+  "metadata" : { }
+}

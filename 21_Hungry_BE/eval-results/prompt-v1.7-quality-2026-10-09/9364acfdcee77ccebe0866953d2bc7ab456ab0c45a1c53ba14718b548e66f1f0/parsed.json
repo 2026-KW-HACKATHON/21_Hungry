@@ -1,0 +1,18 @@
+{
+  "summary" : "다음 조건 모두에 해당하면: 열이 남; 기운도 없음 → 열이 나고 기운도 없을 때만 가상 약 R을 반 정 드세요. 둘 중 하나만 있을 때 먹으라는 뜻은 아닙니다.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"다음 조건 모두에 해당하면: 열이 남; 기운도 없음 → 열이 나고 기운도 없을 때만 가상 약 R을 반 정 드세요. 둘 중 하나만 있을 때 먹으라는 뜻은 아닙니다.\",\"evidenceIndexes\":[0]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"fc96c6c1-8009-3f75-bdf8-f69ceb22523f\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 열이 나고 기운도 없을 때만 가상 약 R을 반 정 드세요. 둘 중 하나만 있을 때 먹으라는 뜻은 아닙니다.\",\"occurrenceIndex\":0,\"start\":0,\"end\":63}]",
+  "items" : [ {
+    "itemKey" : "f1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"가상 약 R\",\"doseText\":\"반 정\",\"frequencyText\":\"해당 조건일 때만\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"다음 조건 모두에 해당하면: 열이 남; 기운도 없음 → 열이 나고 기운도 없을 때만 가상 약 R을 반 정 드세요. 둘 중 하나만 있을 때 먹으라는 뜻은 아닙니다. / 열과 기운 없음이 모두 있을 때만 복용; 둘 중 하나만 있을 때는 복용 아님\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"fc96c6c1-8009-3f75-bdf8-f69ceb22523f\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 열이 나고 기운도 없을 때만 가상 약 R을 반 정 드세요. 둘 중 하나만 있을 때 먹으라는 뜻은 아닙니다.\",\"occurrenceIndex\":0,\"start\":0,\"end\":63}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2489,
+  "outputTokens" : 247
+}

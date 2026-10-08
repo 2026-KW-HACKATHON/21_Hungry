@@ -1,0 +1,25 @@
+{
+  "summary" : "가려우면 가상 약 K 또는 가상 약 L 중 하나를 선택하도록 했고, 둘 다 쓰는 것은 아님. 아직 어떤 약으로 할지는 정하지 않았음.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"가려움이 언급됨.\",\"evidenceIndexes\":[0]}],\"tests\":[],\"medicationMentions\":[{\"text\":\"가려우면 가상 약 K 또는 가상 약 L 중 하나를 고르며, 둘 다 함께 쓰는 것은 아님. 아직 어떤 약으로 할지는 정해지지 않음.\",\"evidenceIndexes\":[0]}],\"precautions\":[{\"text\":\"두 약을 함께 쓰지 말라는 안내.\",\"evidenceIndexes\":[0]}],\"followUps\":[{\"text\":\"가려울 때 사용할 약은 아직 결정되지 않음.\",\"evidenceIndexes\":[0]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"616e20d1-db0c-3499-910b-254e236fd8e5\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가려우면 가상 약 K 또는 가상 약 L 중 하나를 고르세요. 둘 다 쓰라는 뜻은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":78}]",
+  "items" : [ {
+    "itemKey" : "medication_1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"가상 약 K\",\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"가려우면 가상 약 K 또는 가상 약 L 중 하나를 선택. 둘 다 쓰지 않음. 아직 어떤 약으로 할지는 정하지 않음.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"616e20d1-db0c-3499-910b-254e236fd8e5\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가려우면 가상 약 K 또는 가상 약 L 중 하나를 고르세요. 둘 다 쓰라는 뜻은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":78}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME" ]
+  }, {
+    "itemKey" : "medication_2",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"가상 약 L\",\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"가려우면 가상 약 K 또는 가상 약 L 중 하나를 선택. 둘 다 쓰지 않음. 아직 어떤 약으로 할지는 정하지 않음.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"616e20d1-db0c-3499-910b-254e236fd8e5\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가려우면 가상 약 K 또는 가상 약 L 중 하나를 고르세요. 둘 다 쓰라는 뜻은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":78}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.7",
+  "inputTokens" : 2387,
+  "outputTokens" : 561
+}

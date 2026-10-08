@@ -1,0 +1,71 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s19214be7f700v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "의사의 구두 지시는 약 A를 하루 두 번 복용하는 것이며, 처방전의 하루 3회와 달라 확인이 필요하다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : "약 A",
+        "doseText" : null,
+        "frequencyText" : "하루 두 번",
+        "courseDurationText" : null,
+        "instructions" : "구두 지시와 처방전의 복용 횟수가 상충함.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "CONFLICT" ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "sf5d4d4f4b80fv1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "처방전에는 약 A 하루 3회로 기재되어 있으며, 의사의 구두 지시인 하루 두 번과 달라 확인이 필요하다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : "약 A",
+        "doseText" : null,
+        "frequencyText" : "하루 3회",
+        "courseDurationText" : null,
+        "instructions" : "처방전과 구두 지시의 복용 횟수가 상충함.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "CONFLICT" ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

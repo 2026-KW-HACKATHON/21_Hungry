@@ -1,0 +1,461 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0015" ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0016" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0017" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "기침과 콧물이 약 5일 전, 주말 시작 무렵부터 있었다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0020" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "근육통이 있고, 가끔 두통과 추위·오한 같은 느낌이 있다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0024" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0025" ],
+        "correctionIds" : [ "s246c8d9f5bb8v1u0026" ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "처음 가래가 있다고 답했으나, 곧 가래 없는 거칠게 콜록거리는 마른기침이라고 정정했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0030" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0031" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "숨이 차지 않고 숨은 잘 쉰다고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f5",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0032" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0033" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "가슴에서 쌕쌕거리거나 그렁거리는 소리는 없다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f6",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0035", "s246c8d9f5bb8v1u0038" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "평소 약에 추가해 진통제를 복용했으며, 의사는 이를 paracetamol로 확인했다. 용량과 복용 횟수는 언급되지 않았다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "paracetamol",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : null,
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f7",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0038" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0039" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "ibuprofen은 복용하지 않았다고 답했으나, 답변 음성이 불확실하다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCLEAR_AUDIO" ]
+    }, {
+      "factId" : "f8",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0041" ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0044" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0045" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "환자는 당뇨가 있으며, 유병 기간은 아마 5~6년 정도라고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f9",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0041" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "당뇨로 평소 metformin을 복용한다고 했으며, 약 이름의 음성은 불확실하다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "metformin",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "평소 당뇨 치료를 위해 복용 중이라고 보고함.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCLEAR_AUDIO" ]
+    }, {
+      "factId" : "f10",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0041", "s246c8d9f5bb8v1u0042" ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0040" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0043" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "혈압이 조금 높아 평소 lisinopril을 복용한다고 했다. 환자가 말한 약 이름과 '조금'이라는 표현의 음성은 불확실하며, 의사는 'Lisonopril'로 되짚었다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "lisinopril",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "혈압이 높아 평소 복용 중이라고 보고함.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCLEAR_AUDIO" ]
+    }, {
+      "factId" : "f11",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0047", "s246c8d9f5bb8v1u0049" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0048", "s246c8d9f5bb8v1u0050" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "TEST",
+      "text" : "집에서 혈당을 확인하며, 최근 혈당은 문제 없이 평소와 다르지 않다고 했다. 구체적인 수치는 제시하지 않았다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f12",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0051", "s246c8d9f5bb8v1u0053" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0052", "s246c8d9f5bb8v1u0054" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "TEST",
+      "text" : "진료 당일 아침 혈압을 측정했고 정상 범위였다고 했으나, 정확한 수치는 기억하지 못했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "COMPLETED",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f13",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0061" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "TEST",
+      "text" : "의사가 입안을 관찰했을 때 목 뒤가 약간 빨갛고 편도는 커져 있지 않았다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "COMPLETED",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f14",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0061" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0063" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "목 주변에 만져지는 멍울은 없었다고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f15",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0064" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "의사는 감기와 기침 양상으로 보아 단순한 바이러스 감염 같다고 판단했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f16",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0066", "s246c8d9f5bb8v1u0073" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "의사는 Night Nurse, Day Nurse 사용을 권고하고 현재 약과 함께 써도 괜찮다고 설명했다. 어느 제품을 선택할지 또는 두 제품을 어떻게 구분해 사용할지는 명시하지 않았다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "ALTERNATIVE",
+      "alternativeGroup" : "nurse-products",
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "언급된 제품은 Night Nurse, Day Nurse이며 선택·구분 사용 방법은 명시되지 않음. 의사는 현재 복용 약과 함께 사용할 수 있다고 설명함.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCLEAR_MEDICATION_SELECTION" ]
+    }, {
+      "factId" : "f17",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0068", "s246c8d9f5bb8v1u0069", "s246c8d9f5bb8v1u0073" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "의료진에게 연락한다.",
+      "condition" : {
+        "operator" : "ANY",
+        "clauses" : [ "숨이 차는 경우", "쌕쌕거림이 생기는 경우", "증상이 3주 넘게 지속되는 경우", "그 밖의 증상 변화가 있는 경우", "상태가 안 좋아지는 경우" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "증상 변화 시 의료진에게 연락",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f18",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0068", "s246c8d9f5bb8v1u0069" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "의사는 현재 흉부 진찰은 필요해 보이지 않지만, 숨참이나 3주 넘는 증상 등의 변화 또는 상태 악화로 연락하게 되면 특히 흉부 진찰이 필요할 수도 있다고 설명했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f19",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0074" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0075" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "의사는 현재 처방전은 필요하지 않다고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f20",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0028" ],
+        "answerIds" : [ "s246c8d9f5bb8v1u0029" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "기침할 때 피가 나오는지에 대한 답변은 들리지 않아 여부를 확인할 수 없다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCLEAR_AUDIO" ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2", "f3", "f4", "f5", "f15", "f16", "f17", "f18", "f19" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

@@ -1,0 +1,25 @@
+{
+  "summary" : "다음 조건 중 하나라도 해당하면: 숨이 참; 손끝이 파래짐 → 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지 마세요. 다음 조건 모두에 해당하면: 숨이 참 없음; 손끝이 파래짐 없음 → 그런 증상이 없으면 예정된 진료를 기다리세요.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[],\"precautions\":[{\"text\":\"다음 조건 중 하나라도 해당하면: 숨이 참; 손끝이 파래짐 → 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지 마세요.\",\"evidenceIndexes\":[0]}],\"followUps\":[{\"text\":\"다음 조건 모두에 해당하면: 숨이 참 없음; 손끝이 파래짐 없음 → 그런 증상이 없으면 예정된 진료를 기다리세요.\",\"evidenceIndexes\":[0]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"f1ee0933-c78f-33f3-a161-559dc1e4423d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지는 마세요. 그런 증상이 없으면 예정된 진료를 기다리세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":75}]",
+  "items" : [ {
+    "itemKey" : "f1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"즉시 내원\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"weekdays\":[],\"lastDate\":null,\"description\":\"다음 조건 중 하나라도 해당하면: 숨이 참; 손끝이 파래짐 → 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지 마세요.\",\"durationMinutes\":null,\"durationSource\":null}",
+    "evidenceJson" : "[{\"sourceId\":\"f1ee0933-c78f-33f3-a161-559dc1e4423d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지는 마세요. 그런 증상이 없으면 예정된 진료를 기다리세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":75}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  }, {
+    "itemKey" : "f2",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"예정된 진료 대기\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"weekdays\":[],\"lastDate\":null,\"description\":\"다음 조건 모두에 해당하면: 숨이 참 없음; 손끝이 파래짐 없음 → 그런 증상이 없으면 예정된 진료를 기다리세요.\",\"durationMinutes\":null,\"durationSource\":null}",
+    "evidenceJson" : "[{\"sourceId\":\"f1ee0933-c78f-33f3-a161-559dc1e4423d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지는 마세요. 그런 증상이 없으면 예정된 진료를 기다리세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":75}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2496,
+  "outputTokens" : 354
+}

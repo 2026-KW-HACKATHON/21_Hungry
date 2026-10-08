@@ -79,6 +79,10 @@ app:
       transcribe-model: ${OPENAI_TRANSCRIBE_MODEL:gpt-transcribe}
       ocr-model: ${OPENAI_OCR_MODEL:gpt-5.4-mini-2026-03-17}
       analysis-model: ${OPENAI_ANALYSIS_MODEL:${OPENAI_ANALYZE_MODEL:gpt-5.4-mini-2026-03-17}}
+      # Experimental ID protocols are NOT quality-approved; keep legacy until an explicit promotion.
+      analysis-protocol: ${OPENAI_ANALYSIS_PROTOCOL:legacy}
+      # Empty keeps the existing protocol default. Candidate 1.7 requires utterance-id-v2 and explicit opt-in.
+      analysis-prompt-version: ${OPENAI_ANALYSIS_PROMPT_VERSION:}
       timeout: ${OPENAI_TIMEOUT:${AI_CALL_TIMEOUT_SECONDS:90}s}
       max-output-tokens: ${OPENAI_MAX_OUTPUT_TOKENS:${AI_MAX_OUTPUT_TOKENS:12000}}
   cors:

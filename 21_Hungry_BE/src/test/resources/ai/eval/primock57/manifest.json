@@ -1,0 +1,87 @@
+﻿{
+    "version":  "1.0.0",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "selectedBeforeEvaluation":  true,
+    "cases":  [
+                  {
+                      "id":  "day3_consultation06",
+                      "set":  "development",
+                      "utterances":  54,
+                      "englishFile":  "day3_consultation06.en.json",
+                      "translationFile":  "day3_consultation06.ko.json",
+                      "note":  "original/day3_consultation06.note.json"
+                  },
+                  {
+                      "id":  "day3_consultation08",
+                      "set":  "development",
+                      "utterances":  77,
+                      "englishFile":  "day3_consultation08.en.json",
+                      "translationFile":  "day3_consultation08.ko.json",
+                      "note":  "original/day3_consultation08.note.json"
+                  },
+                  {
+                      "id":  "day3_consultation02",
+                      "set":  "development",
+                      "utterances":  81,
+                      "englishFile":  "day3_consultation02.en.json",
+                      "translationFile":  "day3_consultation02.ko.json",
+                      "note":  "original/day3_consultation02.note.json"
+                  },
+                  {
+                      "id":  "day2_consultation09",
+                      "set":  "development",
+                      "utterances":  97,
+                      "englishFile":  "day2_consultation09.en.json",
+                      "translationFile":  "day2_consultation09.ko.json",
+                      "note":  "original/day2_consultation09.note.json"
+                  },
+                  {
+                      "id":  "day3_consultation04",
+                      "set":  "development",
+                      "utterances":  97,
+                      "englishFile":  "day3_consultation04.en.json",
+                      "translationFile":  "day3_consultation04.ko.json",
+                      "note":  "original/day3_consultation04.note.json"
+                  },
+                  {
+                      "id":  "day3_consultation05",
+                      "set":  "development",
+                      "utterances":  95,
+                      "englishFile":  "day3_consultation05.en.json",
+                      "translationFile":  "day3_consultation05.ko.json",
+                      "note":  "original/day3_consultation05.note.json"
+                  },
+                  {
+                      "id":  "day2_consultation01",
+                      "set":  "holdout",
+                      "utterances":  79,
+                      "englishFile":  "day2_consultation01.en.json",
+                      "translationFile":  "day2_consultation01.ko.json",
+                      "note":  "original/day2_consultation01.note.json"
+                  },
+                  {
+                      "id":  "day2_consultation03",
+                      "set":  "holdout",
+                      "utterances":  111,
+                      "englishFile":  "day2_consultation03.en.json",
+                      "translationFile":  "day2_consultation03.ko.json",
+                      "note":  "original/day2_consultation03.note.json"
+                  },
+                  {
+                      "id":  "day5_consultation12",
+                      "set":  "holdout",
+                      "utterances":  101,
+                      "englishFile":  "day5_consultation12.en.json",
+                      "translationFile":  "day5_consultation12.ko.json",
+                      "note":  "original/day5_consultation12.note.json"
+                  },
+                  {
+                      "id":  "day1_consultation12",
+                      "set":  "holdout",
+                      "utterances":  104,
+                      "englishFile":  "day1_consultation12.en.json",
+                      "translationFile":  "day1_consultation12.ko.json",
+                      "note":  "original/day1_consultation12.note.json"
+                  }
+              ]
+}

@@ -1,0 +1,293 @@
+{
+  "id" : "resp_04c351667fdddfe3016ac7fdc8b4b887d0b4fce0b4b9547938",
+  "object" : "response",
+  "created_at" : 1791491528,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791491536,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "rs_04c351667fdddfe3016ac7fdc93ff487d093f567fc770ee5d1",
+    "type" : "reasoning",
+    "content" : [ ],
+    "encrypted_content" : "gAAAAABqx_3Q6i1Yu586Zf4u9aXNuOgttCEV0jtsLNJlLNealcCmW5A3ZO48OrGLRvIXCXaekcFkw8RykvFPOZ4-P6VttRK68EduHoPmt1QbGEno1lX28HA-nTVHyzIskM2tQZ7-Az9f3KrQ9Rd2FE1k9-8iec431XynKRvrwqhoMlLWqqIjJimAVJGHhQRFS6ybkOKS3dVXnQqeCUbyVsneVBa1fKCCb0NVquCeGWgIUCgMZsB5ZCyiECUbu26Lal-r1TnlkbuU1ci1n7e2Hlsl3fMdjD605Lj9_sTLmZqZSN1bI4DDFVrCswh8B-tvNggTGoxt8wZ3rJNklQIl1YMciC5BbX8H229d-vhiRexXhMvNSYhtRVb0rxtlzi0nFcuK9DN-pGhmeNALn6k_bmA2zFwCxhnnCtCcVhtrzrO8baRKxudRdSOI1N369PFYg8he5YxNG9OO8GG2LoYkfQgKiu4HYB9Qd7kYJSLsQlFPUz__YsZ2gjUQDyTWWVNA9nebr5UfNTJM7ZnZtdKZcgYuzcHXrdCFv1Qw5FSquBOmaUMtyO2k_oVWQVo78g6MmRsnfBGPyhJlBJ6vQyVeKv-MuKogjRkC73t6cfb_B9_P3K5lg9bY38H_sFuepfJfl-Xm4lw_93Xp8zlS3lyl_aceMtFGQm_yVp7jj0tydrsfud2Y_nd1hxhijF5AQCaAirm1J8rOhoYdvuD7TOGAvhL2u2dT7yqtU0G7cMBzkRAZ79wC8X2Cp0VHiTHkMWzfT8_3vZF7AD8rUE69GVMd3-dgDTPAT5AkLwTHI4y-GLtEbcWqmJoJCF9-HM3lYGmmZ5sEWKwQ25GVJXnWnsqeKqXLEIIIcf39fTGkiXWIXtSXOz4fERhLJYVm7-NeWVdG5uucbufQLW1oXkap8Tzf-RpZB8JdueowDOF3HZOXNtOzyhLpRoJllqKhlpCVpM25yo1WxZMY2GVxSc-KeQnUafcpsQ9AMswDyZbUtyThrDo_Y0mnU7PheEJYSLt2zxlFqQDwjpU0kq1Mw4MI7SfXF98IozvpGppYoUu0hLf1-y22kxfzMyzy92ywQCcGS7IkaNb1iBq2ZbDxqo9y34Q2Q4V-EA9czZK0iDgd1D5bLTELOVdX1uk2Hhb-hCHviLI1YZ-GGee6djHnUKFbYjdR2bi5qfKBdRVqtqJicWnsBXN4-qL02qb147QQq0XHLBEZtxquDFuvOarx4iG0Z8TloKnB2f2gcqssBzdDa5R3TrSJZ4EabMMmBwRIHv7lf11bjzPKbG120RElZENtLtugaJCaxmVF5CJi396AqABu-02uIZns50wKYaxr1Ibf0MSj-HwjKFYluzIEAPcfRHuZWQkjj5r94Yjkb-eL3hQFP7PImoIMn6ltA6Lv052DOf8KYl2ThWUMekKBbMOjPpxaOYkXPPL2ssm7croAKT13FQKUHzJovr2_fH6Zkwk8lcq0O5qp62PQ7Uef9aN8ajxGbEgbGIbNpSkdrVM0fMqupMiv6dvZf8ToHUmgVcJ8ulEZq_fieUPOqiiJ",
+    "summary" : [ ]
+  }, {
+    "id" : "msg_04c351667fdddfe3016ac7fdc9ac3487d0b043c869b2ddc864",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8.1\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0006\",\"sb31ffd444135v1u0009\",\"sb31ffd444135v1u0010\",\"sb31ffd444135v1u0027\",\"sb31ffd444135v1u0031\",\"sb31ffd444135v1u0033\",\"sb31ffd444135v1u0049\",\"sb31ffd444135v1u0051\",\"sb31ffd444135v1u0056\",\"sb31ffd444135v1u0058\"] ,\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"나흘 전부터 가슴, 손, 팔꿈치 안쪽에 피부가 아주 가렵고 아프며 빨개졌고, 피부가 건조하고 일부 갈라져 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0014\",\"sb31ffd444135v1u0019\",\"sb31ffd444135v1u0068\",\"sb31ffd444135v1u0074\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"과거 습진 병력이 있으며, 이번 증상은 습진 재악화로 보인다고 의사가 판단했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"UNCERTAIN_ASSESSMENT\"]},{\"factId\":\"f3\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0104\",\"sb31ffd444135v1u0105\",\"sb31ffd444135v1u0108\",\"sb31ffd444135v1u0110\",\"sb31ffd444135v1u0124\",\"sb31ffd444135v1u0125\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"더 강한 스테로이드 크림을 처방받아 7~10일 동안 규칙적으로 사용한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"PRESCRIBED\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":{\"name\":null,\"doseText\":null,\"frequencyText\":\"규칙적으로\",\"courseDurationText\":\"처음 7~10일\",\"instructions\":\"목욕이나 샤워할 때 사용하는 약이며, 효과를 판단하기 전에 7~10일 사용한다.\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f4\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0105\",\"sb31ffd444135v1u0108\",\"sb31ffd444135v1u0124\",\"sb31ffd444135v1u0125\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"보습제를 처방받아 7~10일 동안 규칙적으로 사용한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"PRESCRIBED\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":{\"name\":null,\"doseText\":null,\"frequencyText\":\"규칙적으로\",\"courseDurationText\":\"처음 7~10일\",\"instructions\":\"피부 보습을 돕기 위한 약이며, 스테로이드와 함께 사용한다.\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f5\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0112\",\"sb31ffd444135v1u0113\",\"sb31ffd444135v1u0121\",\"sb31ffd444135v1u0122\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"필요하면 로라타딘 또는 피리톤 같은 처방 없이 살 수 있는 항히스타민제를 써 볼 수 있으며, 의사는 오늘 더 강한 펙소페나딘을 줄 수도 있다고 했다.\",\"condition\":{\"operator\":\"ANY\",\"clauses\":[\"Loratadine이나 Piriton 같은 처방 없이 살 수 있는 항히스타민제를 써 보는 경우\",\"오늘 더 강한 것으로 펙소페나딘을 받는 경우\"]},\"medicationRole\":\"ALTERNATIVE\",\"alternativeGroup\":\"antihistamine_choice\",\"actionStatus\":\"FUTURE\",\"medication\":{\"name\":null,\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"가려움에 도움이 될 수 있는 항히스타민제 선택지로 로라타딘이나 피리톤이 언급되었고, 오늘 펙소페나딘을 줄 수도 있다고 했다.\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f6\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0115\",\"sb31ffd444135v1u0116\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"입는 옷, 샤워 젤, 비누 같은 유발 요인을 일기로 남겨 보라고 권고했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"유발 요인 기록\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f7\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0125\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"증상이 좋아지지 않으면 다음 주에 다시 오라고 했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"HOSPITAL\",\"title\":\"다음 주 재내원\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]}],\"summaryFactIds\":[\"f1\",\"f2\",\"f3\",\"f4\",\"f5\",\"f7\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "sb31ffd444135v1u0001", "sb31ffd444135v1u0002", "sb31ffd444135v1u0003", "sb31ffd444135v1u0004", "sb31ffd444135v1u0005", "sb31ffd444135v1u0006", "sb31ffd444135v1u0007", "sb31ffd444135v1u0008", "sb31ffd444135v1u0009", "sb31ffd444135v1u0010", "sb31ffd444135v1u0011", "sb31ffd444135v1u0012", "sb31ffd444135v1u0013", "sb31ffd444135v1u0014", "sb31ffd444135v1u0015", "sb31ffd444135v1u0016", "sb31ffd444135v1u0017", "sb31ffd444135v1u0018", "sb31ffd444135v1u0019", "sb31ffd444135v1u0020", "sb31ffd444135v1u0021", "sb31ffd444135v1u0022", "sb31ffd444135v1u0023", "sb31ffd444135v1u0024", "sb31ffd444135v1u0025", "sb31ffd444135v1u0026", "sb31ffd444135v1u0027", "sb31ffd444135v1u0028", "sb31ffd444135v1u0029", "sb31ffd444135v1u0030", "sb31ffd444135v1u0031", "sb31ffd444135v1u0032", "sb31ffd444135v1u0033", "sb31ffd444135v1u0034", "sb31ffd444135v1u0035", "sb31ffd444135v1u0036", "sb31ffd444135v1u0037", "sb31ffd444135v1u0038", "sb31ffd444135v1u0039", "sb31ffd444135v1u0040", "sb31ffd444135v1u0041", "sb31ffd444135v1u0042", "sb31ffd444135v1u0043", "sb31ffd444135v1u0044", "sb31ffd444135v1u0045", "sb31ffd444135v1u0046", "sb31ffd444135v1u0047", "sb31ffd444135v1u0048", "sb31ffd444135v1u0049", "sb31ffd444135v1u0050", "sb31ffd444135v1u0051", "sb31ffd444135v1u0052", "sb31ffd444135v1u0053", "sb31ffd444135v1u0054", "sb31ffd444135v1u0055", "sb31ffd444135v1u0056", "sb31ffd444135v1u0057", "sb31ffd444135v1u0058", "sb31ffd444135v1u0059", "sb31ffd444135v1u0060", "sb31ffd444135v1u0061", "sb31ffd444135v1u0062", "sb31ffd444135v1u0063", "sb31ffd444135v1u0064", "sb31ffd444135v1u0065", "sb31ffd444135v1u0066", "sb31ffd444135v1u0067", "sb31ffd444135v1u0068", "sb31ffd444135v1u0069", "sb31ffd444135v1u0070", "sb31ffd444135v1u0071", "sb31ffd444135v1u0072", "sb31ffd444135v1u0073", "sb31ffd444135v1u0074", "sb31ffd444135v1u0075", "sb31ffd444135v1u0076", "sb31ffd444135v1u0077", "sb31ffd444135v1u0078", "sb31ffd444135v1u0079", "sb31ffd444135v1u0080", "sb31ffd444135v1u0081", "sb31ffd444135v1u0082", "sb31ffd444135v1u0083", "sb31ffd444135v1u0084", "sb31ffd444135v1u0085", "sb31ffd444135v1u0086", "sb31ffd444135v1u0087", "sb31ffd444135v1u0088", "sb31ffd444135v1u0089", "sb31ffd444135v1u0090", "sb31ffd444135v1u0091", "sb31ffd444135v1u0092", "sb31ffd444135v1u0093", "sb31ffd444135v1u0094", "sb31ffd444135v1u0095", "sb31ffd444135v1u0096", "sb31ffd444135v1u0097", "sb31ffd444135v1u0098", "sb31ffd444135v1u0099", "sb31ffd444135v1u0100", "sb31ffd444135v1u0101", "sb31ffd444135v1u0102", "sb31ffd444135v1u0103", "sb31ffd444135v1u0104", "sb31ffd444135v1u0105", "sb31ffd444135v1u0106", "sb31ffd444135v1u0107", "sb31ffd444135v1u0108", "sb31ffd444135v1u0109", "sb31ffd444135v1u0110", "sb31ffd444135v1u0111", "sb31ffd444135v1u0112", "sb31ffd444135v1u0113", "sb31ffd444135v1u0114", "sb31ffd444135v1u0115", "sb31ffd444135v1u0116", "sb31ffd444135v1u0117", "sb31ffd444135v1u0118", "sb31ffd444135v1u0119", "sb31ffd444135v1u0120", "sb31ffd444135v1u0121", "sb31ffd444135v1u0122", "sb31ffd444135v1u0123", "sb31ffd444135v1u0124", "sb31ffd444135v1u0125", "sb31ffd444135v1u0126", "sb31ffd444135v1u0127", "sb31ffd444135v1u0128", "sb31ffd444135v1u0129", "sb31ffd444135v1u0130" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 15002,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1564,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 52
+    },
+    "total_tokens" : 16566
+  },
+  "user" : null,
+  "metadata" : { }
+}

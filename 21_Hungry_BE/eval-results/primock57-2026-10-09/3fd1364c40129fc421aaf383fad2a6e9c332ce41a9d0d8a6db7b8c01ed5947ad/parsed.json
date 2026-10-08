@@ -1,0 +1,18 @@
+{
+  "summary" : "원인은 아직 확실하지 않음. 처방약 복용하고 휴식. 사흘 뒤에도 아프면 재방문.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[],\"precautions\":[{\"text\":\"휴식.\",\"evidenceIndexes\":[1]}],\"followUps\":[{\"text\":\"사흘 뒤에도 아프면 다시 오기.\",\"evidenceIndexes\":[2]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 원인은 아직 확실하지 않아요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":20},{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"처방약 드시고 쉬세요.\",\"occurrenceIndex\":0,\"start\":21,\"end\":33},{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"사흘 뒤에도 아프면 다시 오세요.\",\"occurrenceIndex\":0,\"start\":34,\"end\":52}]",
+  "items" : [ {
+    "itemKey" : "followup-1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"사흘 뒤에도 아프면 재방문\",\"description\":\"사흘 뒤에도 아프면 다시 오기\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"사흘 뒤에도 아프면 다시 오세요.\",\"occurrenceIndex\":0,\"start\":34,\"end\":52}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.3",
+  "inputTokens" : 3130,
+  "outputTokens" : 433
+}

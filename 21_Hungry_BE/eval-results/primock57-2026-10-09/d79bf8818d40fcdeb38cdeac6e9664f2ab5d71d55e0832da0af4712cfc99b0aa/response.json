@@ -1,0 +1,329 @@
+{
+  "id" : "resp_06960ad1e35fa005016ac7c27e045c87d0bcb4364c8ef3cf61",
+  "object" : "response",
+  "created_at" : 1791476350,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791476363,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_06960ad1e35fa005016ac7c27eeacc87d09488059fd2dd4756",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"evidence\":[{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[011] 환자: 계속 머리가 아파요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[013] 환자: 어제 시작됐어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[016] 환자: 왼쪽 뒤쪽, 이쯤이요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[022] 환자: 꽤 세게 욱신거렸어요. 점점 심해졌는데 <UNSURE>뒤에</UNSURE>.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[025] 환자: 아니요, 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[029] 환자: 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[032] 환자: 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[034] 환자: 네, 평소대로요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[036] 환자: 아니요, 그런 건 없어요. <INAUDIBLE_SPEECH/>\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[038] 환자: 아니요, 열 없어요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[040] 환자: 아니요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[044] 환자: 8 정도요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[046] 환자: 어제 Nurofen을 좀 먹었어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[048] 환자: 별로요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[052] 환자: 아니요, 시간과는 상관없었어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[054] 환자: 아니요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[060] 환자: 없어요. 어제 먹은 Nurofen, Ibuprofen만요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[064] 환자: 어머니가 고혈압이 있고 편두통도 있어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[074] 환자: 아니요, 하지만 일이나 평소 하던 걸 하기가 정말 힘들어요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[082] 환자: 생각나는 건 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[083] 의사: 조금 더 강한 진통제를 써 보시길 권합니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[084] 의사: Ibuprofen과 비슷하지만 Ibuprofen 대신 드세요. 같이 먹지는 말고, 규칙적으로 음식과 함께 드세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[086] 의사: 그러면 가라앉기를 바랍니다. Paracetamol은 함께 드셔도 됩니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[088] 의사: 쉬고 물을 충분히 드세요. 하지만 통증이 심해지거나 열, 발진, <UNSURE>구토</UNSURE>, 목이 뻣뻣함 같은 새 증상이 생기면요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[089] 의사: 또는 같은 증상이 <UNSURE>반복</UNSURE>되면 다시 상담해서 다음 계획을 정해야 합니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[094] 의사: 가라앉을 거라고 생각하지만 <UNIN/> 앞으로 하루 이틀 안에 더 심해지거나 가라앉지 않으면요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[095] 의사: 약국에서 처방약을 받아 써 보신 뒤 꼭 다시 전화해 주세요.\",\"occurrenceIndex\":0}],\"summary\":\"왼쪽 뒤쪽 머리의 새 두통. 어제 시작했고 통증은 8 정도로 꽤 심했으며, 이부프로펜 효과는 별로였음. 다른 신경학적 증상, 열, 발진, 구토는 없었고 식사와 물 섭취는 평소와 같음. 이부프로펜 대신 더 강한 진통제와 필요 시 Paracetamol 복용, 휴식과 수분 섭취 권고. 통증이 심해지거나 열·발진·구토·목 뻣뻣함이 생기거나 같은 증상이 반복되면 다시 상담. 약국에서 약을 받아 써 본 뒤 하루 이틀 안에 호전이 없거나 악화되면 다시 전화.\",\"details\":{\"symptoms\":[{\"text\":\"어제 시작한 왼쪽 뒤쪽 머리 통증. 꽤 세게 욱신거렸고 점점 심해졌음. 통증 정도 8/10. 일이나 평소 하던 일을 하기 힘들었음.\",\"evidenceIndexes\":[0,1,2,3,13]},{\"text\":\"메스꺼움, 구토, 따끔거림, 감각 둔함, 힘 빠짐 없음. 흐리게 보임, 눈 주변 통증, 이상한 빛, 빛 볼 때 문제 없음. 고열, 오한, 땀, 발진 없음. 하루 중 시간과의 관련, 눕기/서기/숙이기/기침·재채기와의 관련 없음.\",\"evidenceIndexes\":[4,5,6,7,8,9,10,11,12,14,15]}],\"tests\":[{\"text\":\"별도 검사 언급 없음.\",\"evidenceIndexes\":[0]}],\"medicationMentions\":[{\"text\":\"어제 Nurofen 복용. 효과는 별로였음.\",\"evidenceIndexes\":[14,15]},{\"text\":\"Ibuprofen 대신 더 강한 진통제 사용 권고. 같이 먹지 말고 규칙적으로 음식과 함께 복용.\",\"evidenceIndexes\":[16,17]},{\"text\":\"Paracetamol은 함께 복용 가능.\",\"evidenceIndexes\":[18]}],\"precautions\":[{\"text\":\"쉬고 물을 충분히 마시기.\",\"evidenceIndexes\":[19]},{\"text\":\"통증이 심해지거나 열, 발진, 구토, 목이 뻣뻣함 같은 새 증상이 생기면 다시 상담.\",\"evidenceIndexes\":[19,20]},{\"text\":\"같은 증상이 반복되면 다시 상담.\",\"evidenceIndexes\":[20]}],\"followUps\":[{\"text\":\"약국에서 처방약을 받아 써 본 뒤, 하루 이틀 안에 더 심해지거나 가라앉지 않으면 다시 전화.\",\"evidenceIndexes\":[21,22]}]},\"items\":[{\"itemKey\":\"task_1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"약국에서 처방약 받아 사용 후 재연락\",\"description\":\"약국에서 처방약을 받아 써 본 뒤, 하루 이틀 안에 더 심해지거나 가라앉지 않으면 다시 전화.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[095] 의사: 약국에서 처방약을 받아 써 보신 뒤 꼭 다시 전화해 주세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"cb9bac77-27b2-314d-a0cf-e36ff4f937d7\",\"textVersion\":1,\"page\":null,\"quote\":\"[094] 의사: 가라앉을 거라고 생각하지만 <UNIN/> 앞으로 하루 이틀 안에 더 심해지거나 가라앉지 않으면요.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[\"DATE_UNSPECIFIED\"],\"isConditional\":true}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "evidence", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "evidence" : {
+            "$ref" : "#/$defs/evidenceList"
+          },
+          "summary" : {
+            "type" : [ "string", "null" ]
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "evidence" : {
+                  "$ref" : "#/$defs/evidenceList"
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "text", "evidenceIndexes" ],
+              "properties" : {
+                "text" : {
+                  "type" : [ "string", "null" ]
+                },
+                "evidenceIndexes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "integer"
+                  }
+                }
+              }
+            }
+          },
+          "evidenceList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/evidence"
+            }
+          },
+          "evidence" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "sourceId", "textVersion", "page", "quote", "occurrenceIndex" ],
+            "properties" : {
+              "sourceId" : {
+                "type" : "string"
+              },
+              "textVersion" : {
+                "type" : "integer"
+              },
+              "page" : {
+                "type" : [ "integer", "null" ]
+              },
+              "quote" : {
+                "type" : "string"
+              },
+              "occurrenceIndex" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 4965,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 2630,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7595
+  },
+  "user" : null,
+  "metadata" : { }
+}

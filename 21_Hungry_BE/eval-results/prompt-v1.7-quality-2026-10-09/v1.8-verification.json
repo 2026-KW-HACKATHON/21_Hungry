@@ -1,0 +1,110 @@
+{
+  "suites": [
+    {
+      "name": "com.kw.knowone.AiContractResourceTests",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.AnalysisOutputValidatorTests",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.OpenAiProcessingAdapterTests",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.ReviewedPromptExamplesTests",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.SemanticAnalysisTests",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.SemanticCampaignTests",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.SummaryComparisonTests",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.SummaryEvaluationTests",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.UtteranceEvidenceTests",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.FileValidationServiceTests",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.notification.push.WebPushAdapterTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.PreviewTokenServiceTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "totalTests": 79,
+  "formatRecords": 114,
+  "totalNewCallsInLedger": 94,
+  "reused": 20,
+  "chargedUsd": 1.11464775,
+  "inputTokens": 640042,
+  "outputTokens": 95604,
+  "cache": 0,
+  "reasoning": 0,
+  "bootJarSha256": "eb47ee844b2f038eda3f7422ce129d7b4492a4e79700628f40fc28c8c26cfd1f",
+  "promptSha256": "5d0d4e267c14d5ff00dc4aaf4596de0e6ce3c77ae746baa7e713fcc2cee76177",
+  "guidelineSha256": "c7dcfd6ecf7258e4490ed88ac21b3c0c1749d1f078ae7ab0bb7a2523397db36a",
+  "executedOn": "2026-10-09",
+  "meaningApproved": false,
+  "bootJar": "SUCCESS (built then final UP-TO-DATE; runtime core unchanged since build)",
+  "databaseIntegration": "NOT_EXECUTED",
+  "uiE2E": "NOT_EXECUTED",
+  "newCallsThisPhase": 74,
+  "newCostThisPhaseUsd": 0.904302,
+  "retries": 0,
+  "commitPushDeploy": "NOT_EXECUTED",
+  "localReplay": "114 saved responses via same service parser, no API calls"
+}

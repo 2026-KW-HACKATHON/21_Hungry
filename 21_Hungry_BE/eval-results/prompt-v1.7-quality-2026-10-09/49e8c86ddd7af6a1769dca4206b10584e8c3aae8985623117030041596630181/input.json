@@ -1,0 +1,13 @@
+{
+  "occurredOn" : "2026-10-07",
+  "analyzedAt" : "2026-10-09T00:00:00Z",
+  "timezone" : "Asia/Seoul",
+  "sources" : [ {
+    "sourceId" : "f1ee0933-c78f-33f3-a161-559dc1e4423d",
+    "textVersion" : 1,
+    "sourceType" : "AUDIO",
+    "mediaType" : "audio/wav",
+    "text" : "의사: 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지는 마세요. 그런 증상이 없으면 예정된 진료를 기다리세요."
+  } ],
+  "knownMedications" : [ ]
+}

@@ -1,0 +1,11 @@
+{
+  "summary" : "왼쪽 손목만 통증이 있음.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"오른쪽 손목 통증은 없고, 왼쪽 손목만 아픔.\",\"evidenceIndexes\":[2,3,0,1]}],\"tests\":[],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"5c8d3714-d289-3eec-91ad-b825c09f0c19\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 왼쪽은요?\",\"occurrenceIndex\":0,\"start\":27,\"end\":36},{\"sourceId\":\"5c8d3714-d289-3eec-91ad-b825c09f0c19\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 왼쪽만 아파요.\",\"occurrenceIndex\":0,\"start\":37,\"end\":49},{\"sourceId\":\"5c8d3714-d289-3eec-91ad-b825c09f0c19\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 오른쪽 손목도 아픈가요?\",\"occurrenceIndex\":0,\"start\":0,\"end\":17},{\"sourceId\":\"5c8d3714-d289-3eec-91ad-b825c09f0c19\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 아니요.\",\"occurrenceIndex\":0,\"start\":18,\"end\":26}]",
+  "items" : [ ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.7",
+  "inputTokens" : 2608,
+  "outputTokens" : 172
+}

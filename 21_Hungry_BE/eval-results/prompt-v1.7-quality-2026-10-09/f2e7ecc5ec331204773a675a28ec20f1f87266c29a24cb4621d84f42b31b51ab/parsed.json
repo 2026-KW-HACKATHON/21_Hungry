@@ -1,0 +1,18 @@
+{
+  "summary" : "아침 한 알, 하루 한 번입니다.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"아침 한 알, 하루 한 번입니다.\",\"evidenceIndexes\":[0]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"846d394c-5de0-3f69-b523-4ec1604d1b41\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 아침 두 알, 아니 한 알입니다. 하루 한 번이에요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":33}]",
+  "items" : [ {
+    "itemKey" : "f1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":null,\"doseText\":\"한 알\",\"frequencyText\":\"하루 한 번\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"아침 한 알, 하루 한 번입니다. / 아침에 복용\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"846d394c-5de0-3f69-b523-4ec1604d1b41\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 아침 두 알, 아니 한 알입니다. 하루 한 번이에요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":33}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_ENDSON", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2470,
+  "outputTokens" : 191
+}

@@ -1,0 +1,18 @@
+{
+  "summary" : "지난주에는 오른손이 저렸으나 지금은 괜찮다고 합니다. 오늘 검사에서 뼈가 부러진 소견은 없습니다. 다음 조건 중 하나라도 해당하면: 오른손이 다시 저리면; 오른손에 힘이 빠지면 → 바로 내원하세요. 다음 진료 날짜는 아직 정하지 않았습니다.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"지난주에는 오른손이 저렸으나 지금은 괜찮다고 합니다.\",\"evidenceIndexes\":[0]}],\"tests\":[{\"text\":\"오늘 검사에서 뼈가 부러진 소견은 없습니다.\",\"evidenceIndexes\":[1]}],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[{\"text\":\"다음 조건 중 하나라도 해당하면: 오른손이 다시 저리면; 오른손에 힘이 빠지면 → 바로 내원하세요.\",\"evidenceIndexes\":[1]},{\"text\":\"다음 진료 날짜는 아직 정하지 않았습니다.\",\"evidenceIndexes\":[1]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"2f7aa51c-3c21-3847-abb0-9943a40e4df1\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 지난주엔 오른손이 저렸는데 지금은 괜찮아요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":28},{\"sourceId\":\"2f7aa51c-3c21-3847-abb0-9943a40e4df1\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 오늘 검사에서 뼈가 부러진 소견은 없습니다. 다만 다시 저리거나 힘이 빠지면 바로 오세요. 다음 진료 날짜는 아직 정하지 않았습니다.\",\"occurrenceIndex\":0,\"start\":29,\"end\":107}]",
+  "items" : [ {
+    "itemKey" : "f3",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"증상 발생 시 바로 내원\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"weekdays\":[],\"lastDate\":null,\"description\":\"다음 조건 중 하나라도 해당하면: 오른손이 다시 저리면; 오른손에 힘이 빠지면 → 바로 내원하세요.\",\"durationMinutes\":120,\"durationSource\":\"PLANNING_DEFAULT\"}",
+    "evidenceJson" : "[{\"sourceId\":\"2f7aa51c-3c21-3847-abb0-9943a40e4df1\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 오늘 검사에서 뼈가 부러진 소견은 없습니다. 다만 다시 저리거나 힘이 빠지면 바로 오세요. 다음 진료 날짜는 아직 정하지 않았습니다.\",\"occurrenceIndex\":0,\"start\":29,\"end\":107}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_SCHEDULE" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-6.1-sol",
+  "promptVersion" : "1.8.1",
+  "inputTokens" : 2650,
+  "outputTokens" : 511
+}

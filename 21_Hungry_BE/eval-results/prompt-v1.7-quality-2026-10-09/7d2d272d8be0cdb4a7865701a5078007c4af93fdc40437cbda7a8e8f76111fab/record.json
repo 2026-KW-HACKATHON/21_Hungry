@@ -1,0 +1,38 @@
+{
+  "caseId" : "day3_consultation05",
+  "set" : "screen",
+  "candidate" : "A",
+  "promptVersion" : "1.8.1",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "requestSha256" : "7d2d272d8be0cdb4a7865701a5078007c4af93fdc40437cbda7a8e8f76111fab",
+  "inputSha256" : "8e9c07163915de8acdcc595e25e887d1abbd384636013d6343137e03ee0ec930",
+  "requestLayout" : "semantic-facts-v2",
+  "startedAt" : "2026-10-08T20:31:56.409922Z",
+  "status" : "FAILED",
+  "reservedUsd" : 0.172491,
+  "chargedUsd" : 0.01595925,
+  "campaignBudgetUsd" : 3.0,
+  "retries" : 0,
+  "rateSource" : "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+  "costMethod" : "standard usage estimate",
+  "reviewStatus" : "UNREVIEWED; not clinician validated",
+  "pricingCheckedOn" : "2026-10-09",
+  "usage" : {
+    "input_tokens" : 11919,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1560,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 106
+    },
+    "total_tokens" : 13479
+  },
+  "providerStatus" : "completed",
+  "responseModel" : "gpt-5.4-mini-2026-03-17",
+  "serviceTier" : "default",
+  "estimatedUsd" : 0.01595925,
+  "errorCode" : "AI_SEMANTIC_INVALID",
+  "elapsedMillis" : 9064
+}

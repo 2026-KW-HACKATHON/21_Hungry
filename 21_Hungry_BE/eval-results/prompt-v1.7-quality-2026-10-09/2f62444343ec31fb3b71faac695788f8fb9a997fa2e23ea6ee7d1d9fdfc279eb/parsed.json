@@ -1,0 +1,18 @@
+{
+  "summary" : "복용량이 아침 2알이 아니라 1알로 정정됨. 하루 1번 복용 지시가 있음.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"약 복용량은 아침 1알, 하루 1번으로 정정됨.\",\"evidenceIndexes\":[0]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"846d394c-5de0-3f69-b523-4ec1604d1b41\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 아침 두 알, 아니 한 알입니다. 하루 한 번이에요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":33}]",
+  "items" : [ {
+    "itemKey" : "medication-1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":null,\"doseText\":\"아침 1알\",\"frequencyText\":\"하루 1번\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"아침 2알이 아니라 1알로 정정됨.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"846d394c-5de0-3f69-b523-4ec1604d1b41\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 아침 두 알, 아니 한 알입니다. 하루 한 번이에요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":33}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_ENDSON", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.7",
+  "inputTokens" : 2363,
+  "outputTokens" : 284
+}

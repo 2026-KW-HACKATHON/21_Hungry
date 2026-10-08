@@ -1,0 +1,18 @@
+{
+  "summary" : "이름이 안 들린 이 약을 1정씩 하루 2번 6일 사용한다. 열이 있을 때 해열제를 쓰는 것처럼 증상을 줄이자는 설명이다.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"지난달에는 가상 약 M을 복용한 지난 치료가 있었다.\",\"evidenceIndexes\":[1,0]},{\"text\":\"이름이 안 들린 이 약을 1정씩 하루 2번 6일 사용한다.\",\"evidenceIndexes\":[0]}],\"precautions\":[{\"text\":\"열이 있을 때 해열제를 쓰는 것처럼 증상을 줄이자는 설명이다.\",\"evidenceIndexes\":[0]}],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"a6cb712e-0320-38ff-9987-0bab6dba9740\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 그건 지난 치료이고요. 열이 있을 때 해열제를 쓰는 것처럼 증상을 줄이자는 설명입니다. 이번에는 이름이 안 들린 이 약을 1정씩 하루 2번, 6일 쓰세요.\",\"occurrenceIndex\":0,\"start\":24,\"end\":114},{\"sourceId\":\"a6cb712e-0320-38ff-9987-0bab6dba9740\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 지난달에는 가상 약 M을 먹었어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":23}]",
+  "items" : [ {
+    "itemKey" : "fact2",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":null,\"doseText\":\"1정\",\"frequencyText\":\"하루 2번\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"이름이 안 들린 이 약을 1정씩 하루 2번 6일 사용한다. / 6일 / 증상을 줄이자는 설명으로 사용\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"a6cb712e-0320-38ff-9987-0bab6dba9740\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 그건 지난 치료이고요. 열이 있을 때 해열제를 쓰는 것처럼 증상을 줄이자는 설명입니다. 이번에는 이름이 안 들린 이 약을 1정씩 하루 2번, 6일 쓰세요.\",\"occurrenceIndex\":0,\"start\":24,\"end\":114}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_ENDSON", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2601,
+  "outputTokens" : 497
+}

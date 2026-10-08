@@ -1,0 +1,174 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s359969f02aafv1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "환자는 예전에 가상 U약을 복용한 적이 있다고 말했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "가상 U약",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : null,
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s359969f02aafv1u0001" ],
+        "answerIds" : [ "s359969f02aafv1u0002" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "의사는 예전에 복용한 가상 U약을 다시 복용하라는 뜻은 아니라고 설명했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s359969f02aafv1u0002" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ "s359969f02aafv1u0002" ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "가상 V약은 1회 0.5정씩 하루 한 번, 엿새 동안 복용한다. 의사가 1회 2정을 0.5정으로 정정했으며, 복용 시각은 아직 정하지 않았다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : "가상 V약",
+        "doseText" : "1회 0.5정",
+        "frequencyText" : "하루 한 번",
+        "courseDurationText" : "엿새",
+        "instructions" : "복용 시각은 아직 정하지 않음.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "s359969f02aafv1u0002", "s359969f02aafv1u0003" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "나중에 가상 W약 또는 가상 X약 중 하나로 바꾸는 방법을 검토할 수 있다. 현재 함께 처방하는 것은 아니다.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "가상 V약이 맞지 않는 경우" ]
+      },
+      "medicationRole" : "ALTERNATIVE",
+      "alternativeGroup" : "a1",
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "가상 V약이 맞지 않으면 나중에 가상 W약 또는 가상 X약 중 하나로 변경하는 방법을 검토할 수 있음. 선택된 약은 없으며 현재 함께 처방하는 것은 아님.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f5",
+      "support" : {
+        "statementIds" : [ "s359969f02aafv1u0005" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "즉시 병원에 온다.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "숨이 차는 증상이 생김", "입술이 붓는 증상도 함께 생김" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "HOSPITAL",
+        "title" : "숨참과 입술 부종이 함께 생기면 즉시 내원",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f6",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s359969f02aafv1u0004" ],
+        "answerIds" : [ "s359969f02aafv1u0005" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "다음 주 수요일에 무조건 재방문해야 하는 것은 아니며, 날짜를 정해 예약한 것도 아니다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f2", "f3", "f4", "f5", "f6" ]
+  },
+  "failures" : [ {
+    "factId" : "f1",
+    "path" : "/facts/0/support",
+    "code" : "AI_ANSWER_CONTEXT_MISSING"
+  } ],
+  "repairs" : [ ]
+}

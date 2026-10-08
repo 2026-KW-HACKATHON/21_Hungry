@@ -1,6 +1,8 @@
 HELP.md
 .gradle
 build/
+/eval-results/**/*.lock
+/eval-results/**/*.tmp
 .env
 .env.*.local
 /secrets/

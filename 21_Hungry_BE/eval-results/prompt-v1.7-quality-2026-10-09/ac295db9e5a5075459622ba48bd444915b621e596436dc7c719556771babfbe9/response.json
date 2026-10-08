@@ -1,0 +1,319 @@
+{
+  "id" : "resp_07de13404773ae06016ac7ed61d0b087d09d63cf55897073a1",
+  "object" : "response",
+  "created_at" : 1791487329,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791487337,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_07de13404773ae06016ac7ed62599887d0a3393922f302294a",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"summary\":[{\"utteranceIds\":[\"s251d066cf3afv1u0003\",\"s251d066cf3afv1u0005\",\"s251d066cf3afv1u0008\",\"s251d066cf3afv1u0010\",\"s251d066cf3afv1u0013\",\"s251d066cf3afv1u0015\",\"s251d066cf3afv1u0017\",\"s251d066cf3afv1u0019\",\"s251d066cf3afv1u0024\",\"s251d066cf3afv1u0030\",\"s251d066cf3afv1u0032\",\"s251d066cf3afv1u0034\",\"s251d066cf3afv1u0038\",\"s251d066cf3afv1u0041\",\"s251d066cf3afv1u0044\",\"s251d066cf3afv1u0046\",\"s251d066cf3afv1u0048\",\"s251d066cf3afv1u0050\",\"s251d066cf3afv1u0072\",\"s251d066cf3afv1u0076\",\"s251d066cf3afv1u0078\",\"s251d066cf3afv1u0081\",\"s251d066cf3afv1u0084\",\"s251d066cf3afv1u0086\",\"s251d066cf3afv1u0088\",\"s251d066cf3afv1u0090\",\"s251d066cf3afv1u0093\",\"s251d066cf3afv1u0097\"],\"text\":\"지난 3일간 물 같은 설사와 잦은 배변이 있었고, 왼쪽 아랫배의 간헐적 경련성 통증과 처음 시작 시 구토/열감, 현재는 구토 중단과 무열 상태였다. 식욕이 떨어졌지만 수분은 유지했고, 최근 중국 음식점에서 포장 음식을 먹은 뒤 증상이 시작된 점으로 보아 위장염 가능성을 설명받았다. 천식은 흡입기로 조절 중이며, 현재는 보존적 치료와 수분 보충, 필요 시 Dioralyte, 초기에 paracetamol을 권고받았고, 2–3일 쉬며 증상이 3–4일 내 호전되지 않으면 재평가 및 필요 시 대변검사 등 추가 검사를 하기로 했다.\"}],\"details\":{\"symptoms\":[{\"utteranceIds\":[\"s251d066cf3afv1u0003\",\"s251d066cf3afv1u0005\",\"s251d066cf3afv1u0008\",\"s251d066cf3afv1u0010\"],\"text\":\"지난 3일간 설사와 묽고 물 같은 변이 있었고, 하루 6–7회 정도 화장실을 갔다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0013\",\"s251d066cf3afv1u0015\",\"s251d066cf3afv1u0017\",\"s251d066cf3afv1u0019\",\"s251d066cf3afv1u0021\"],\"text\":\"왼쪽 아랫배에 간헐적인 경련성 통증이 있었고, 통증은 배에 국한되었다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0024\",\"s251d066cf3afv1u0030\",\"s251d066cf3afv1u0032\"],\"text\":\"증상 시작 무렵 열감이 있었으나 현재는 열이 없고, 구토는 처음에는 있었지만 지금은 멈췄다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0034\",\"s251d066cf3afv1u0038\"],\"text\":\"입맛이 없어 덜 먹었지만 물 같은 것은 마셔도 토하지 않고 유지할 수 있었고, 수프나 가벼운 액체 음식을 먹었다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0041\",\"s251d066cf3afv1u0044\"],\"text\":\"약 4일 전 포장 음식을 먹었고, 친구들과 중국 음식점에서 먹었다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0046\"],\"text\":\"같은 증상이 있는 가족은 없었고, 아이 한 명은 토했지만 설사는 없었다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0048\",\"s251d066cf3afv1u0050\"],\"text\":\"천식 외에는 건강 상태가 괜찮고, 흡입기를 사용하며 천식은 조절되고 있다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0061\",\"s251d066cf3afv1u0064\"],\"text\":\"환자는 회계사로 일하고 있으며, 지난 3일 동안 출근했다가 꽤 힘들었다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0069\",\"s251d066cf3afv1u0071\"],\"text\":\"흡연하지 않고 음주도 하지 않는다.\"}],\"tests\":[{\"utteranceIds\":[\"s251d066cf3afv1u0097\"],\"text\":\"증상이 계속되면 대변 검체를 채취하는 등 추가 검사가 필요할 수 있다고 설명받았다.\"}],\"medicationMentions\":[{\"utteranceIds\":[\"s251d066cf3afv1u0048\",\"s251d066cf3afv1u0050\",\"s251d066cf3afv1u0054\"],\"text\":\"천식 때문에 흡입기를 사용 중이며 다른 약은 없다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0081\"],\"text\":\"항생제는 필요하지 않을 것 같고, 보존적 관리와 수분 섭취를 권고받았다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0084\",\"s251d066cf3afv1u0086\"],\"text\":\"Dioralyte 같은 것을 약국에서 구할 수 있으며, 구토와 설사가 있는 처음 며칠 동안 사용을 권했다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0088\"],\"text\":\"열감과 무기력이 있으면 처음 며칠 동안 paracetamol을 두 정씩 하루 최대 네 번 복용할 수 있다고 했다.\"}],\"precautions\":[{\"utteranceIds\":[\"s251d066cf3afv1u0081\",\"s251d066cf3afv1u0084\",\"s251d066cf3afv1u0086\"],\"text\":\"수분을 잘 유지하고, 필요하면 Dioralyte를 사용하며, 구토·설사가 있는 초기 며칠 동안에만 해당 권고를 따르라고 했다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0088\"],\"text\":\"열감이 있고 힘이 없을 때만 paracetamol을 고려하라고 했다.\"},{\"utteranceIds\":[\"s251d066cf3afv1u0090\"],\"text\":\"앞으로 2–3일 정도 쉬면서 휴식하라고 권고받았다.\"}],\"followUps\":[{\"utteranceIds\":[\"s251d066cf3afv1u0093\",\"s251d066cf3afv1u0095\",\"s251d066cf3afv1u0097\"],\"text\":\"3–4일 내 증상이 좋아지지 않으면 다시 진료를 보며, 계속되면 다른 원인을 고려하고 대변 검사 등 추가 검사가 필요할 수 있다.\"}]},\"items\":[{\"utteranceIds\":[\"s251d066cf3afv1u0081\"],\"itemKey\":\"t1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"휴식\",\"description\":\"앞으로 이틀에서 사흘 동안 쉬면서 휴식하라고 권고함.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[],\"isConditional\":false},{\"utteranceIds\":[\"s251d066cf3afv1u0093\",\"s251d066cf3afv1u0097\"],\"itemKey\":\"t2\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"EXAM\",\"title\":\"대변 검사 가능\",\"description\":\"사흘에서 나흘 동안 증상이 좋아지지 않으면 다시 진료를 보고, 필요 시 대변 검체를 채취해 검사할 수 있음.\",\"date\":null,\"time\":null,\"durationMinutes\":120,\"durationSource\":\"PLANNING_DEFAULT\",\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[],\"isConditional\":true}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_utterance_ids",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "summary" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "utteranceIds", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "utteranceIds" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/$defs/utteranceId"
+                  }
+                },
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ],
+                "minimum" : 1,
+                "maximum" : 1440
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer",
+                  "minimum" : 1,
+                  "maximum" : 7
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer",
+                        "minimum" : 1,
+                        "maximum" : 7
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer",
+                      "minimum" : 1,
+                      "maximum" : 1440
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s251d066cf3afv1u0001", "s251d066cf3afv1u0002", "s251d066cf3afv1u0003", "s251d066cf3afv1u0004", "s251d066cf3afv1u0005", "s251d066cf3afv1u0006", "s251d066cf3afv1u0007", "s251d066cf3afv1u0008", "s251d066cf3afv1u0009", "s251d066cf3afv1u0010", "s251d066cf3afv1u0011", "s251d066cf3afv1u0012", "s251d066cf3afv1u0013", "s251d066cf3afv1u0014", "s251d066cf3afv1u0015", "s251d066cf3afv1u0016", "s251d066cf3afv1u0017", "s251d066cf3afv1u0018", "s251d066cf3afv1u0019", "s251d066cf3afv1u0020", "s251d066cf3afv1u0021", "s251d066cf3afv1u0022", "s251d066cf3afv1u0023", "s251d066cf3afv1u0024", "s251d066cf3afv1u0025", "s251d066cf3afv1u0026", "s251d066cf3afv1u0027", "s251d066cf3afv1u0028", "s251d066cf3afv1u0029", "s251d066cf3afv1u0030", "s251d066cf3afv1u0031", "s251d066cf3afv1u0032", "s251d066cf3afv1u0033", "s251d066cf3afv1u0034", "s251d066cf3afv1u0035", "s251d066cf3afv1u0036", "s251d066cf3afv1u0037", "s251d066cf3afv1u0038", "s251d066cf3afv1u0039", "s251d066cf3afv1u0040", "s251d066cf3afv1u0041", "s251d066cf3afv1u0042", "s251d066cf3afv1u0043", "s251d066cf3afv1u0044", "s251d066cf3afv1u0045", "s251d066cf3afv1u0046", "s251d066cf3afv1u0047", "s251d066cf3afv1u0048", "s251d066cf3afv1u0049", "s251d066cf3afv1u0050", "s251d066cf3afv1u0051", "s251d066cf3afv1u0052", "s251d066cf3afv1u0053", "s251d066cf3afv1u0054", "s251d066cf3afv1u0055", "s251d066cf3afv1u0056", "s251d066cf3afv1u0057", "s251d066cf3afv1u0058", "s251d066cf3afv1u0059", "s251d066cf3afv1u0060", "s251d066cf3afv1u0061", "s251d066cf3afv1u0062", "s251d066cf3afv1u0063", "s251d066cf3afv1u0064", "s251d066cf3afv1u0065", "s251d066cf3afv1u0066", "s251d066cf3afv1u0067", "s251d066cf3afv1u0068", "s251d066cf3afv1u0069", "s251d066cf3afv1u0070", "s251d066cf3afv1u0071", "s251d066cf3afv1u0072", "s251d066cf3afv1u0073", "s251d066cf3afv1u0074", "s251d066cf3afv1u0075", "s251d066cf3afv1u0076", "s251d066cf3afv1u0077", "s251d066cf3afv1u0078", "s251d066cf3afv1u0079", "s251d066cf3afv1u0080", "s251d066cf3afv1u0081", "s251d066cf3afv1u0082", "s251d066cf3afv1u0083", "s251d066cf3afv1u0084", "s251d066cf3afv1u0085", "s251d066cf3afv1u0086", "s251d066cf3afv1u0087", "s251d066cf3afv1u0088", "s251d066cf3afv1u0089", "s251d066cf3afv1u0090", "s251d066cf3afv1u0091", "s251d066cf3afv1u0092", "s251d066cf3afv1u0093", "s251d066cf3afv1u0094", "s251d066cf3afv1u0095", "s251d066cf3afv1u0096", "s251d066cf3afv1u0097", "s251d066cf3afv1u0098", "s251d066cf3afv1u0099", "s251d066cf3afv1u0100", "s251d066cf3afv1u0101", "s251d066cf3afv1u0102", "s251d066cf3afv1u0103", "s251d066cf3afv1u0104", "s251d066cf3afv1u0105", "s251d066cf3afv1u0106", "s251d066cf3afv1u0107", "s251d066cf3afv1u0108", "s251d066cf3afv1u0109" ]
+          },
+          "claim" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "text", "utteranceIds" ],
+            "properties" : {
+              "utteranceIds" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/$defs/utteranceId"
+                }
+              },
+              "text" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 13060,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1930,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 14990
+  },
+  "user" : null,
+  "metadata" : { }
+}

@@ -1,0 +1,329 @@
+{
+  "id" : "resp_08a4e77e303bb5fe016ac7c1a039bc87d0aa67883bf1745b3b",
+  "object" : "response",
+  "created_at" : 1791476128,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791476137,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_08a4e77e303bb5fe016ac7c1a0c36c87d0b7f38055023bb066",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"evidence\":[{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[018] 환자: 네, 정말 메스꺼워요. 어지러워서 그런 것 같아요. 방이 빙빙 도는 것 같아요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[020] 환자: 제대로 걸을 수가 없어요. 걸을 수는 있는데 똑바로 걷지를 못하겠어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[021] 환자: 귀에서 윙윙 소리도 조금 나고 뭔가 이상해요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[024] 환자: 아마 두 시간 전쯤이요. 한 달 전에도 비슷한 일이 있었어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[035] 환자: 네, 내내 그래요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[040] 환자: 아니요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[044] 환자: 아니요, 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[064] 환자: 조기 난소 기능 부전이 있었고 호르몬 대체요법을 받았어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[071] 의사: 오늘 이야기로 보면 지금 증상의 가장 흔한 진단으로 생각할 수 있는 건 labyrinthitis, 미로염이라는 것입니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[074] 의사: 일상생활을 조금 더 할 수 있도록 약을 시작하겠습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[075] 의사: 다만 의사에게 귀 안을 보여 주고 확인했으면 합니다. 열이 나면 Paracetamol을 주듯 증상을 덜어 드리려는 겁니다. 진료도 받으러 올 수 있게요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[076] 의사: 대면 진료에서 혈압도 재고 걷는 모습 등을 확인하고 싶습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[077] 의사: 진료를 기다리는 동안 팔다리에 힘이 빠지거나 갑자기 두통이 생긴다면요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[079] 의사: 그런 증상 중 하나가 생기거나 심하게 토하기 시작하면 응급실에 가셔야 합니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[081] 의사: 그렇지 않으면 예약 진료에서 진찰을 받고 다음 단계를 정하겠습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[084] 의사: 처방전을 보내겠습니다. 약 이름은 <UNIN/>이고, 한 번에 한 알씩 하루 세 번입니다. <UNIN/> 열흘 정도 분량을 드릴게요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[089] 의사: 크게 상관없습니다. 아침에 일어나자마자 증상이 생기면 메스꺼워서 먹기 힘들 수 있으니 그냥 약을 드셔도 됩니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[092] 의사: 지원팀에 꼭 전화해서 예약하세요.\",\"occurrenceIndex\":0}],\"summary\":\"미로염이 가장 흔한 진단으로 설명되었고, 증상 완화를 위한 약을 시작했습니다. 약은 한 번에 한 알씩 하루 세 번, 열흘 정도입니다. 귀 안을 확인하는 대면 진료와 혈압·보행 확인이 필요합니다. 진료를 기다리는 동안 팔다리 힘 빠짐, 갑작스런 두통, 심한 구토가 생기면 응급실로 가야 합니다.\",\"details\":{\"symptoms\":[{\"text\":\"약 2시간 전부터 계속된 회전성 어지럼과 메스꺼움이 있으며, 똑바로 걷기 어렵다.\",\"evidenceIndexes\":[0,1,2,3,4]},{\"text\":\"귀에서 약간의 윙윙거림이 있고, 한 달 전에도 비슷한 증상이 5~10분 정도 있었지만 이번에는 더 오래 간다.\",\"evidenceIndexes\":[2,3,4]}],\"tests\":[{\"text\":\"귀 안 확인이 필요하고, 대면 진료에서 혈압과 걷는 모습을 확인할 계획이다.\",\"evidenceIndexes\":[11,12,16]},{\"text\":\"바이러스성으로 아팠던 최근 병력은 없고, 귀 통증이나 진물, 청력 저하나 먹먹함은 없다.\",\"evidenceIndexes\":[5,6,7,8]}],\"medicationMentions\":[{\"text\":\"이름이 가려진 약을 한 번에 한 알씩 하루 세 번, 약 열흘분 복용한다.\",\"evidenceIndexes\":[19]},{\"text\":\"음식과 함께 먹을 필요는 없고, 아침에 증상이 심해 메스꺼우면 그냥 복용해도 된다.\",\"evidenceIndexes\":[20]}],\"precautions\":[{\"text\":\"진료를 기다리는 동안 팔다리에 힘이 빠지거나 갑자기 두통이 생기면 응급실로 가야 한다.\",\"evidenceIndexes\":[13,14]},{\"text\":\"심하게 토하기 시작해도 응급실로 가야 한다.\",\"evidenceIndexes\":[14]}],\"followUps\":[{\"text\":\"지원팀에 전화해 예약하고, 그렇지 않으면 예약 진료에서 진찰받아 다음 단계를 정한다.\",\"evidenceIndexes\":[15,17]}]},\"items\":[{\"itemKey\":\"task-1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"EXAM\",\"title\":\"대면 진료\",\"description\":\"귀 안 확인, 혈압 측정, 보행 상태 확인\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[075] 의사: 다만 의사에게 귀 안을 보여 주고 확인했으면 합니다. 열이 나면 Paracetamol을 주듯 증상을 덜어 드리려는 겁니다. 진료도 받으러 올 수 있게요.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[076] 의사: 대면 진료에서 혈압도 재고 걷는 모습 등을 확인하고 싶습니다.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":false},{\"itemKey\":\"task-2\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"예약 진료\",\"description\":\"진찰 후 다음 단계 결정\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[081] 의사: 그렇지 않으면 예약 진료에서 진찰을 받고 다음 단계를 정하겠습니다.\",\"occurrenceIndex\":0},{\"sourceId\":\"b09ea115-34eb-380a-9042-498e1ef9668a\",\"textVersion\":1,\"page\":null,\"quote\":\"[092] 의사: 지원팀에 꼭 전화해서 예약하세요.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":true}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "evidence", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "evidence" : {
+            "$ref" : "#/$defs/evidenceList"
+          },
+          "summary" : {
+            "type" : [ "string", "null" ]
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "evidence" : {
+                  "$ref" : "#/$defs/evidenceList"
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "text", "evidenceIndexes" ],
+              "properties" : {
+                "text" : {
+                  "type" : [ "string", "null" ]
+                },
+                "evidenceIndexes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "integer"
+                  }
+                }
+              }
+            }
+          },
+          "evidenceList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/evidence"
+            }
+          },
+          "evidence" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "sourceId", "textVersion", "page", "quote", "occurrenceIndex" ],
+            "properties" : {
+              "sourceId" : {
+                "type" : "string"
+              },
+              "textVersion" : {
+                "type" : "integer"
+              },
+              "page" : {
+                "type" : [ "integer", "null" ]
+              },
+              "quote" : {
+                "type" : "string"
+              },
+              "occurrenceIndex" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 4787,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2304
+    },
+    "output_tokens" : 2258,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7045
+  },
+  "user" : null,
+  "metadata" : { }
+}

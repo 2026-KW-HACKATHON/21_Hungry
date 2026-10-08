@@ -1,0 +1,287 @@
+{
+  "id" : "resp_01542038ff185fa7016ac7ee3ffeac87d0a1fc3eef34c3a1aa",
+  "object" : "response",
+  "created_at" : 1791487552,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791487561,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_01542038ff185fa7016ac7ee409cc887d09c6fc8b3bc9723c3",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0013\"],\"questionIds\":[\"sb1239e6cbbc5v1u0012\"],\"answerIds\":[\"sb1239e6cbbc5v1u0013\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"지난 4일간 두통이 아주 심함\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0013\",\"sb1239e6cbbc5v1u0015\",\"sb1239e6cbbc5v1u0017\"],\"questionIds\":[\"sb1239e6cbbc5v1u0016\"],\"answerIds\":[\"sb1239e6cbbc5v1u0017\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"열이 있는 것 같고, 두통 뒤에 시작했으며, 재보지는 않았음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"UNCERTAIN\"]},{\"factId\":\"f3\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0019\"],\"questionIds\":[\"sb1239e6cbbc5v1u0018\"],\"answerIds\":[\"sb1239e6cbbc5v1u0019\"],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"두통 때문에 paracetamol과 ibuprofen을 복용했지만 별로 도움이 안 됨\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"HISTORICAL\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"paracetamol\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"ibuprofen과 함께 복용했지만 별로 도움이 안 됨\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f4\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0021\",\"sb1239e6cbbc5v1u0022\"],\"questionIds\":[\"sb1239e6cbbc5v1u0020\"],\"answerIds\":[\"sb1239e6cbbc5v1u0021\",\"sb1239e6cbbc5v1u0022\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"빛을 보기 어렵지 않음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f5\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0024\",\"sb1239e6cbbc5v1u0036\"],\"questionIds\":[\"sb1239e6cbbc5v1u0023\",\"sb1239e6cbbc5v1u0035\"],\"answerIds\":[\"sb1239e6cbbc5v1u0024\",\"sb1239e6cbbc5v1u0036\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"온몸의 근육이 쑤시고 아픔\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f6\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0026\",\"sb1239e6cbbc5v1u0028\",\"sb1239e6cbbc5v1u0030\",\"sb1239e6cbbc5v1u0032\",\"sb1239e6cbbc5v1u0034\",\"sb1239e6cbbc5v1u0038\"],\"questionIds\":[\"sb1239e6cbbc5v1u0025\",\"sb1239e6cbbc5v1u0027\",\"sb1239e6cbbc5v1u0029\",\"sb1239e6cbbc5v1u0031\",\"sb1239e6cbbc5v1u0033\",\"sb1239e6cbbc5v1u0037\"],\"answerIds\":[\"sb1239e6cbbc5v1u0026\",\"sb1239e6cbbc5v1u0028\",\"sb1239e6cbbc5v1u0030\",\"sb1239e6cbbc5v1u0032\",\"sb1239e6cbbc5v1u0034\",\"sb1239e6cbbc5v1u0038\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"구토, 기침, 감기, 귀 통증, 얼굴/팔다리 저림, 컵을 못 들 정도의 힘 빠짐은 없음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f7\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0041\",\"sb1239e6cbbc5v1u0043\"],\"questionIds\":[\"sb1239e6cbbc5v1u0040\",\"sb1239e6cbbc5v1u0042\"],\"answerIds\":[\"sb1239e6cbbc5v1u0041\",\"sb1239e6cbbc5v1u0043\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"기저질환이나 수술력은 없음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f8\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0043\",\"sb1239e6cbbc5v1u0045\"],\"questionIds\":[\"sb1239e6cbbc5v1u0042\",\"sb1239e6cbbc5v1u0044\"],\"answerIds\":[\"sb1239e6cbbc5v1u0043\",\"sb1239e6cbbc5v1u0045\"],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"일주일쯤 전에 태국에 다녀왔고 여행 중 모기에 물렸으며 친구도 몸이 좋지 않았음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f9\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0047\"],\"questionIds\":[\"sb1239e6cbbc5v1u0046\"],\"answerIds\":[\"sb1239e6cbbc5v1u0047\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"열이 있을 때 추운 느낌은 자주 있지만 떨리지는 않음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f10\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0049\",\"sb1239e6cbbc5v1u0050\"],\"questionIds\":[\"sb1239e6cbbc5v1u0048\"],\"answerIds\":[\"sb1239e6cbbc5v1u0049\",\"sb1239e6cbbc5v1u0050\"],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"paracetamol 외에 평소 쓰는 약은 없음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"HISTORICAL\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":null,\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"paracetamol 외에 평소 쓰는 약 없음\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f11\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0052\"],\"questionIds\":[\"sb1239e6cbbc5v1u0051\"],\"answerIds\":[\"sb1239e6cbbc5v1u0052\"],\"correctionIds\":[]},\"kind\":\"PRECAUTION\",\"text\":\"알레르기 없음\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f12\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0055\",\"sb1239e6cbbc5v1u0068\",\"sb1239e6cbbc5v1u0071\",\"sb1239e6cbbc5v1u0078\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"가능한 빨리 진료소에서 급히 진찰받고, 자리가 없으면 몇 시간 안에 GP를 보며, 필요하면 혈액검사와 병원 이송이 고려됨\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"HOSPITAL\",\"title\":\"긴급 진찰\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[\"UNCERTAIN\"]},{\"factId\":\"f13\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0055\",\"sb1239e6cbbc5v1u0077\",\"sb1239e6cbbc5v1u0078\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"모기나 해외여행과 관련된 바이러스 질환 가능성을 생각하고 있으며, 수막염도 배제해야 함\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"UNCERTAIN\"]},{\"factId\":\"f14\",\"support\":{\"statementIds\":[\"sb1239e6cbbc5v1u0057\",\"sb1239e6cbbc5v1u0059\",\"sb1239e6cbbc5v1u0061\",\"sb1239e6cbbc5v1u0063\",\"sb1239e6cbbc5v1u0065\",\"sb1239e6cbbc5v1u0067\"],\"questionIds\":[\"sb1239e6cbbc5v1u0057\",\"sb1239e6cbbc5v1u0060\",\"sb1239e6cbbc5v1u0062\",\"sb1239e6cbbc5v1u0064\"],\"answerIds\":[\"sb1239e6cbbc5v1u0058\",\"sb1239e6cbbc5v1u0059\",\"sb1239e6cbbc5v1u0061\",\"sb1239e6cbbc5v1u0063\",\"sb1239e6cbbc5v1u0065\",\"sb1239e6cbbc5v1u0066\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"태국 여행 후 전신 발진이 있고, 빨갛고 가렵지만, 출혈은 없으며 유리컵으로 누르면 사라짐\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]}],\"summaryFactIds\":[\"f12\",\"f13\",\"f1\",\"f2\",\"f14\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "sb1239e6cbbc5v1u0001", "sb1239e6cbbc5v1u0002", "sb1239e6cbbc5v1u0003", "sb1239e6cbbc5v1u0004", "sb1239e6cbbc5v1u0005", "sb1239e6cbbc5v1u0006", "sb1239e6cbbc5v1u0007", "sb1239e6cbbc5v1u0008", "sb1239e6cbbc5v1u0009", "sb1239e6cbbc5v1u0010", "sb1239e6cbbc5v1u0011", "sb1239e6cbbc5v1u0012", "sb1239e6cbbc5v1u0013", "sb1239e6cbbc5v1u0014", "sb1239e6cbbc5v1u0015", "sb1239e6cbbc5v1u0016", "sb1239e6cbbc5v1u0017", "sb1239e6cbbc5v1u0018", "sb1239e6cbbc5v1u0019", "sb1239e6cbbc5v1u0020", "sb1239e6cbbc5v1u0021", "sb1239e6cbbc5v1u0022", "sb1239e6cbbc5v1u0023", "sb1239e6cbbc5v1u0024", "sb1239e6cbbc5v1u0025", "sb1239e6cbbc5v1u0026", "sb1239e6cbbc5v1u0027", "sb1239e6cbbc5v1u0028", "sb1239e6cbbc5v1u0029", "sb1239e6cbbc5v1u0030", "sb1239e6cbbc5v1u0031", "sb1239e6cbbc5v1u0032", "sb1239e6cbbc5v1u0033", "sb1239e6cbbc5v1u0034", "sb1239e6cbbc5v1u0035", "sb1239e6cbbc5v1u0036", "sb1239e6cbbc5v1u0037", "sb1239e6cbbc5v1u0038", "sb1239e6cbbc5v1u0039", "sb1239e6cbbc5v1u0040", "sb1239e6cbbc5v1u0041", "sb1239e6cbbc5v1u0042", "sb1239e6cbbc5v1u0043", "sb1239e6cbbc5v1u0044", "sb1239e6cbbc5v1u0045", "sb1239e6cbbc5v1u0046", "sb1239e6cbbc5v1u0047", "sb1239e6cbbc5v1u0048", "sb1239e6cbbc5v1u0049", "sb1239e6cbbc5v1u0050", "sb1239e6cbbc5v1u0051", "sb1239e6cbbc5v1u0052", "sb1239e6cbbc5v1u0053", "sb1239e6cbbc5v1u0054", "sb1239e6cbbc5v1u0055", "sb1239e6cbbc5v1u0056", "sb1239e6cbbc5v1u0057", "sb1239e6cbbc5v1u0058", "sb1239e6cbbc5v1u0059", "sb1239e6cbbc5v1u0060", "sb1239e6cbbc5v1u0061", "sb1239e6cbbc5v1u0062", "sb1239e6cbbc5v1u0063", "sb1239e6cbbc5v1u0064", "sb1239e6cbbc5v1u0065", "sb1239e6cbbc5v1u0066", "sb1239e6cbbc5v1u0067", "sb1239e6cbbc5v1u0068", "sb1239e6cbbc5v1u0069", "sb1239e6cbbc5v1u0070", "sb1239e6cbbc5v1u0071", "sb1239e6cbbc5v1u0072", "sb1239e6cbbc5v1u0073", "sb1239e6cbbc5v1u0074", "sb1239e6cbbc5v1u0075", "sb1239e6cbbc5v1u0076", "sb1239e6cbbc5v1u0077", "sb1239e6cbbc5v1u0078", "sb1239e6cbbc5v1u0079", "sb1239e6cbbc5v1u0080", "sb1239e6cbbc5v1u0081" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 10592,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 2777,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 13369
+  },
+  "user" : null,
+  "metadata" : { }
+}

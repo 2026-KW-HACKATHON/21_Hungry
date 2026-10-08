@@ -1,0 +1,202 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "sb31ffd444135v1u0006", "sb31ffd444135v1u0009", "sb31ffd444135v1u0010", "sb31ffd444135v1u0027", "sb31ffd444135v1u0031", "sb31ffd444135v1u0033", "sb31ffd444135v1u0049", "sb31ffd444135v1u0051", "sb31ffd444135v1u0056", "sb31ffd444135v1u0058" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "나흘 전부터 가슴, 손, 팔꿈치 안쪽에 피부가 아주 가렵고 아프며 빨개졌고, 피부가 건조하고 일부 갈라져 있다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "sb31ffd444135v1u0014", "sb31ffd444135v1u0019", "sb31ffd444135v1u0068", "sb31ffd444135v1u0074" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "과거 습진 병력이 있으며, 이번 증상은 습진 재악화로 보인다고 의사가 판단했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCERTAIN_ASSESSMENT" ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "sb31ffd444135v1u0104", "sb31ffd444135v1u0105", "sb31ffd444135v1u0108", "sb31ffd444135v1u0110", "sb31ffd444135v1u0124", "sb31ffd444135v1u0125" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "더 강한 스테로이드 크림을 처방받아 7~10일 동안 규칙적으로 사용한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : "규칙적으로",
+        "courseDurationText" : "처음 7~10일",
+        "instructions" : "목욕이나 샤워할 때 사용하는 약이며, 효과를 판단하기 전에 7~10일 사용한다.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "sb31ffd444135v1u0105", "sb31ffd444135v1u0108", "sb31ffd444135v1u0124", "sb31ffd444135v1u0125" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "보습제를 처방받아 7~10일 동안 규칙적으로 사용한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : "규칙적으로",
+        "courseDurationText" : "처음 7~10일",
+        "instructions" : "피부 보습을 돕기 위한 약이며, 스테로이드와 함께 사용한다.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f5",
+      "support" : {
+        "statementIds" : [ "sb31ffd444135v1u0112", "sb31ffd444135v1u0113", "sb31ffd444135v1u0121", "sb31ffd444135v1u0122" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "필요하면 로라타딘 또는 피리톤 같은 처방 없이 살 수 있는 항히스타민제를 써 볼 수 있으며, 의사는 오늘 더 강한 펙소페나딘을 줄 수도 있다고 했다.",
+      "condition" : {
+        "operator" : "ANY",
+        "clauses" : [ "Loratadine이나 Piriton 같은 처방 없이 살 수 있는 항히스타민제를 써 보는 경우", "오늘 더 강한 것으로 펙소페나딘을 받는 경우" ]
+      },
+      "medicationRole" : "ALTERNATIVE",
+      "alternativeGroup" : "antihistamine_choice",
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "가려움에 도움이 될 수 있는 항히스타민제 선택지로 로라타딘이나 피리톤이 언급되었고, 오늘 펙소페나딘을 줄 수도 있다고 했다.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f6",
+      "support" : {
+        "statementIds" : [ "sb31ffd444135v1u0115", "sb31ffd444135v1u0116" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "입는 옷, 샤워 젤, 비누 같은 유발 요인을 일기로 남겨 보라고 권고했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "유발 요인 기록",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f7",
+      "support" : {
+        "statementIds" : [ "sb31ffd444135v1u0125" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "증상이 좋아지지 않으면 다음 주에 다시 오라고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "HOSPITAL",
+        "title" : "다음 주 재내원",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2", "f3", "f4", "f5", "f7" ]
+  },
+  "failures" : [ {
+    "factId" : "f7",
+    "path" : "/facts/6",
+    "code" : "AI_CONDITION_MISSING"
+  } ],
+  "repairs" : [ ]
+}

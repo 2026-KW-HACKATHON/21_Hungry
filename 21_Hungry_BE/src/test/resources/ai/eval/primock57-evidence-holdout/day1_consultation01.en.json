@@ -1,0 +1,882 @@
+﻿{
+    "id":  "day1_consultation01",
+    "set":  "new-holdout",
+    "dataset":  "PriMock57",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "license":  "CC-BY-4.0",
+    "mockConsultation":  true,
+    "turns":  [
+                  {
+                      "speaker":  "doctor",
+                      "start":  2.5334561157322537,
+                      "end":  12.499861706065632,
+                      "interval":  2,
+                      "en":  "Hello? Hi. Um, should we start? Yeah, okay. \u003cUNSURE\u003eHello how\u003c/UNSURE\u003e um. Good morning sir, how can I help you this morning?",
+                      "id":  "001"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  3.9071713687564986,
+                      "end":  4.9071713687564982,
+                      "interval":  2,
+                      "en":  "Hello, how are you?",
+                      "id":  "002"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  12.596346060508189,
+                      "end":  25.63359731435061,
+                      "interval":  4,
+                      "en":  "\u003cUNSURE\u003eOh\u003c/UNSURE\u003e \u003cUNSURE\u003ehey\u003c/UNSURE\u003e, um, I\u0027ve just had some diarrhea for the last three days, um, and it\u0027s been affecting me I need to stay close to the toilet. And, um, yeah, it\u0027s been affecting my day-to-day activities.",
+                      "id":  "003"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  25.665919347794443,
+                      "end":  34.965677682340953,
+                      "interval":  4,
+                      "en":  "\u003cUNIN/\u003e Sorry to hear that. Um, and and when you say diarrhea, what\u0027d you mean by diarrhea? Do you mean you\u0027re going to the toilet more often? Or are your stools more loose?",
+                      "id":  "004"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  34.357914684786451,
+                      "end":  44.283999460712671,
+                      "interval":  6,
+                      "en":  "Yeah, so it\u0027s like loose and watery stool, going to the toilet quite often, uh and like some pain in my, like, lower stomach?",
+                      "id":  "005"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  39.36552045421459,
+                      "end":  40.150083791752067,
+                      "interval":  6,
+                      "en":  "\u003cUNIN/\u003e",
+                      "id":  "006"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  43.698727616829238,
+                      "end":  48.01698848639446,
+                      "interval":  8,
+                      "en":  "Okay. And how many times a day are you going, let\u0027s say, in the last couple of days?",
+                      "id":  "007"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  47.760109205630158,
+                      "end":  52.667586151108232,
+                      "interval":  8,
+                      "en":  "\u003cUNSURE\u003eUm\u003c/UNSURE\u003e, probably like six or seven times a day? Yeah.",
+                      "id":  "008"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  50.512527066069218,
+                      "end":  56.357559401584048,
+                      "interval":  10,
+                      "en":  "Six, seven times a day. And you \u003cUNIN/\u003e mention it\u0027s mainly watery. Have you noticed any other things, like blood in your stools?",
+                      "id":  "009"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  56.260260475651194,
+                      "end":  59.575116486005506,
+                      "interval":  10,
+                      "en":  "No, no blood, yeah, just watery and loose stool.",
+                      "id":  "010"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  59.372437665004405,
+                      "end":  65.596256966852465,
+                      "interval":  12,
+                      "en":  "Okay. And you mentioned you\u0027ve had some pain in your tummy as well. \u003cUNIN/\u003e Whereabouts is the pain, exactly?",
+                      "id":  "011"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  62.519631127649255,
+                      "end":  63.519631127649255,
+                      "interval":  12,
+                      "en":  "Yep.",
+                      "id":  "012"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  64.737884378489724,
+                      "end":  71.371622714771078,
+                      "interval":  14,
+                      "en":  "So \u003cUNIN/\u003e in my lower abdomen, so, uh, like, um...yeah, just to one side.",
+                      "id":  "013"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  71.2398761609907,
+                      "end":  73.189234851835465,
+                      "interval":  14,
+                      "en":  "One side. \u003cUNSURE\u003eAnd\u003c/UNSURE\u003e what side is that?",
+                      "id":  "014"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  72.964261446367942,
+                      "end":  74.575383433101479,
+                      "interval":  16,
+                      "en":  "Uh, on the left side.",
+                      "id":  "015"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  74.357454766258357,
+                      "end":  78.064555068068586,
+                      "interval":  16,
+                      "en":  "Left side. Okay, and can you describe the pain to me?",
+                      "id":  "016"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  78.186576605727254,
+                      "end":  86.908936256269229,
+                      "interval":  18,
+                      "en":  "Yeah, it feels, um, like a cramp, like a muscular cramp, and, um, yeah i feel a bit uh weak and shaky.",
+                      "id":  "017"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  86.803273099102356,
+                      "end":  91.15847202728304,
+                      "interval":  18,
+                      "en":  "Okay. And is the pain, is that, is it there all the time, or does it come and go?",
+                      "id":  "018"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  90.685220978533366,
+                      "end":  92.417445068723239,
+                      "interval":  20,
+                      "en":  "Uh, it comes and goes.",
+                      "id":  "019"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  92.177571173997734,
+                      "end":  95.884397962112445,
+                      "interval":  20,
+                      "en":  "\u003cUNSURE\u003eCome\u003c/UNSURE\u003e and go. Does the pain move anywhere else, for example towards your back?",
+                      "id":  "020"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  95.798001132502833,
+                      "end":  99.02026290244298,
+                      "interval":  22,
+                      "en":  "Uh...no, just maybe my stomach.",
+                      "id":  "021"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  99.045972121738629,
+                      "end":  106.85720856656965,
+                      "interval":  22,
+                      "en":  "Okay, fine. And you mentioned you\u0027ve been feeling quite weak and shaky as well. What do you mean by shaky? Do you mean you\u0027ve been having, uh have you been feeling feverish, for example?",
+                      "id":  "022"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  99.909185406892092,
+                      "end":  100.77955347031225,
+                      "interval":  24,
+                      "en":  "\u003cUNSURE\u003eYeah\u003c/UNSURE\u003e.",
+                      "id":  "023"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  106.61282999806697,
+                      "end":  121.05810372146804,
+                      "interval":  26,
+                      "en":  "Um, yeah, it doesn\u0027t feel like -- yeah, it just \u003cUNSURE\u003emakes\u003c/UNSURE\u003e me feel weak. I haven\u0027t had a fever, um, at the moment, but I did notice um a temperature when the symptoms started, so, um, yeah around about three or four days ago.",
+                      "id":  "024"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  117.9139283065513,
+                      "end":  118.67732514230903,
+                      "interval":  24,
+                      "en":  "\u003cUNIN/\u003e",
+                      "id":  "025"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  120.88559703337457,
+                      "end":  122.9233226205192,
+                      "interval":  26,
+                      "en":  "\u003cUNSURE\u003eYou\u003c/UNSURE\u003e measure your temperature then?",
+                      "id":  "026"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  122.56411225704262,
+                      "end":  128.86197850199136,
+                      "interval":  28,
+                      "en":  "Yeah, I \u003cUNSURE\u003euh\u003c/UNSURE\u003e I didn\u0027t mention my temperature, no, but I felt, um, just a bit hot. \u003cUNSURE\u003eAnd\u003c/UNSURE\u003e, \u003cUNSURE\u003ey\u0027know\u003c/UNSURE\u003e.",
+                      "id":  "027"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  127.21612607357031,
+                      "end":  135.70621508034611,
+                      "interval":  28,
+                      "en":  "Okay. Okay. Any other symptoms like sweating, or um, night \u003cUNSURE\u003esweats\u003c/UNSURE\u003e? No? And, uh, any vomiting at all?",
+                      "id":  "028"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  131.60914160741811,
+                      "end":  132.88849665442109,
+                      "interval":  30,
+                      "en":  "Uh, no.",
+                      "id":  "029"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  135.56781465461864,
+                      "end":  142.646209584172,
+                      "interval":  32,
+                      "en":  "Yeah, so um, I vomited at the start of the symptoms but now um I\u0027ve stopped vomiting.",
+                      "id":  "030"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  142.83821736165859,
+                      "end":  154.22489987639068,
+                      "interval":  30,
+                      "en":  "\u003cUNSURE\u003eYou\u003c/UNSURE\u003e stopped vomiting, okay. And was your vomit, I know it\u0027s not \u003cUNSURE\u003ea nice thing\u003c/UNSURE\u003e to talk about, but was it just normal food colour \u003cUNIN/\u003e Yeah. And there was no blood in your vomit, is that right?",
+                      "id":  "031"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  149.27361483448246,
+                      "end":  156.56769474540704,
+                      "interval":  34,
+                      "en":  "Yeah, yeah, just normal vomit, yeah. No no \u003cUNSURE\u003eblood\u003c/UNSURE\u003e, no. Yeah.",
+                      "id":  "032"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  154.22489987639068,
+                      "end":  164.32857354758966,
+                      "interval":  31,
+                      "en":  "No, okay. Um, and um, any any other symptoms at all? So you mentioned tummy pain, you mentioned diarrhea, you mentioned your vomiting, uh, anything else that comes to mind?",
+                      "id":  "033"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  161.99902873538608,
+                      "end":  172.78328379940905,
+                      "interval":  36,
+                      "en":  "Yep. Um, I had a loss of appetite, um, so I haven\u0027t been eating as much, but I\u0027ve been able to hold down fluids.",
+                      "id":  "034"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  167.13985661310261,
+                      "end":  169.76248207663784,
+                      "interval":  33,
+                      "en":  "\u003cUNIN/\u003e Okay.",
+                      "id":  "035"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  173.20583436341158,
+                      "end":  178.20579480840539,
+                      "interval":  35,
+                      "en":  "Okay, so you\u0027re drinking fluids. Um, what kind of foods have you managed to eat, \u003cUNSURE\u003eif\u003c/UNSURE\u003e anything?",
+                      "id":  "036"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  174.8616967153441,
+                      "end":  175.8616967153441,
+                      "interval":  38,
+                      "en":  "Yep.",
+                      "id":  "037"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  178.78324183118497,
+                      "end":  187.46947025823306,
+                      "interval":  40,
+                      "en":  "Um, just soups, and, uh, yeah, light foods. Like smoothies and, yeah, liquid foods mainly.",
+                      "id":  "038"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  186.81297457876749,
+                      "end":  202.00284047104563,
+                      "interval":  37,
+                      "en":  "Okay. Fine. Um, and sir \u003cUNIN/\u003e \u003cUNSURE\u003ethese\u003c/UNSURE\u003e started three days ago the symptoms. \u003cUNSURE\u003eAre you\u003c/UNSURE\u003e aware of any triggers which may have caused the \u003cUNSURE\u003esymptoms\u003c/UNSURE\u003e uh to kick on. So \u003cUNSURE\u003efor\u003c/UNSURE\u003e example, \u003cUNSURE\u003ethink like\u003c/UNSURE\u003e takeaway foods or eating out or \u003cUNSURE\u003ebeing\u003c/UNSURE\u003e around other people \u003cUNSURE\u003ewith\u003c/UNSURE\u003e similar symptoms.",
+                      "id":  "039"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  196.41058712688962,
+                      "end":  197.41058712688962,
+                      "interval":  42,
+                      "en":  "\u003cUNIN/\u003e",
+                      "id":  "040"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  201.96748978209564,
+                      "end":  213.88107661342127,
+                      "interval":  44,
+                      "en":  "Yeah, so I had takeaway about four days ago, um, \u003cUNSURE\u003euh\u003c/UNSURE\u003e, but other than that I\u0027ve, yeah, been, uh, eating normally. Nothing unusual here.",
+                      "id":  "041"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  211.55214527900696,
+                      "end":  212.55214527900696,
+                      "interval":  39,
+                      "en":  "\u003cUNSURE\u003eOkay\u003c/UNSURE\u003e.",
+                      "id":  "042"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  213.78898224239987,
+                      "end":  215.07845526119192,
+                      "interval":  41,
+                      "en":  "Do you remember \u003cUNSURE\u003ewhere\u003c/UNSURE\u003e you ate?",
+                      "id":  "043"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  215.43931402962303,
+                      "end":  221.13593507772688,
+                      "interval":  46,
+                      "en":  "Um, yeah, I \u003cUNIN/\u003e ate at a Chinese restaurant with friends. Yeah.",
+                      "id":  "044"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  219.55212688925926,
+                      "end":  223.05212114246308,
+                      "interval":  43,
+                      "en":  "Okay. Anyone else unwell with similar \u003cUNSURE\u003esymptoms\u003c/UNSURE\u003e?",
+                      "id":  "045"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  223.05748618902834,
+                      "end":  233.95938760652652,
+                      "interval":  48,
+                      "en":  "Um, so no one else in the family, so \u003cUNIN/\u003e a wife and two kids and one, um, child was vomiting, but they haven\u0027t got diarrhea. There\u0027s no one with the same symptoms.",
+                      "id":  "046"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  233.7973058355966,
+                      "end":  244.74050867052296,
+                      "interval":  45,
+                      "en":  "Okay, okay. Fine. Um, alright. And uh, in terms of your \u003cUNIN/\u003e, your overall health, are you normally \u003cUNSURE\u003efit and\u003c/UNSURE\u003e well? Or, uh",
+                      "id":  "047"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  243.01815082865832,
+                      "end":  250.1749766605285,
+                      "interval":  50,
+                      "en":  "Um, yeah, I mean, other than um athsma, um I use an inhaler, everything uh else is fine.",
+                      "id":  "048"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  250.65377530067468,
+                      "end":  253.10151950718688,
+                      "interval":  47,
+                      "en":  "Okay. And, is your asthma well-controlled?",
+                      "id":  "049"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  253.50828401353263,
+                      "end":  258.959237720012,
+                      "interval":  52,
+                      "en":  "Uh, yeah, that\u0027s fine. I just, yeah, use an inhaler, and uh that\u0027s under control.",
+                      "id":  "050"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  258.773611811871,
+                      "end":  262.99745458101148,
+                      "interval":  49,
+                      "en":  "Fine. And you don\u0027t have any other tummy problem, bowel problems I should be aware of?",
+                      "id":  "051"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  262.91999229155067,
+                      "end":  263.91999229155067,
+                      "interval":  54,
+                      "en":  "No.",
+                      "id":  "052"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  263.832725139337,
+                      "end":  268.44462305661483,
+                      "interval":  51,
+                      "en":  "No, okay. Um, and \u003cUNIN/\u003e apart from the inhalers, do you take any other medications?",
+                      "id":  "053"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  268.900348593208,
+                      "end":  271.58661299301957,
+                      "interval":  56,
+                      "en":  "Uh, no, no other medications.",
+                      "id":  "054"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  271.0117453798768,
+                      "end":  279.23554121443237,
+                      "interval":  53,
+                      "en":  "\u003cUNSURE\u003eOkay\u003c/UNSURE\u003e, fine. And in terms of just your day to day life, you said it\u0027s been affecting your life, um, in what way has it been affecting your life?",
+                      "id":  "055"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  276.06987772115417,
+                      "end":  277.06987772115417,
+                      "interval":  58,
+                      "en":  "Yeah.",
+                      "id":  "056"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  279.13558134555268,
+                      "end":  290.17473684210535,
+                      "interval":  60,
+                      "en":  "Uh, so, I need to stay close to the toilet \u0027cause I go quite frequently during the these past three days. Um, yeah, other than that, it\u0027s uh, yeah, the main concern.",
+                      "id":  "057"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  285.07128190085069,
+                      "end":  286.07128190085069,
+                      "interval":  55,
+                      "en":  "Okay.",
+                      "id":  "058"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  288.56377823408627,
+                      "end":  289.56377823408627,
+                      "interval":  57,
+                      "en":  "Yeah.",
+                      "id":  "059"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  290.36972719272512,
+                      "end":  293.33985332942211,
+                      "interval":  59,
+                      "en":  "And have you, are you currently working at the moment? \u003cUNIN/\u003e",
+                      "id":  "060"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  292.76295062309964,
+                      "end":  298.39037385979185,
+                      "interval":  62,
+                      "en":  "Uh, \u003cUNSURE\u003eyes\u003c/UNSURE\u003e, yeah. I I work, er. Um, I\u0027m an accountant.",
+                      "id":  "061"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  295.22041654444121,
+                      "end":  296.35908744703221,
+                      "interval":  61,
+                      "en":  "\u003cUNSURE\u003eWould, would\u003c/UNSURE\u003e work.",
+                      "id":  "062"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  298.30993253153417,
+                      "end":  301.19050748019947,
+                      "interval":  63,
+                      "en":  "Okay. Have you been going into work the last three days, or \u003cUNSURE\u003ehave you\u003c/UNSURE\u003e been at home?",
+                      "id":  "063"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  301.35113442679119,
+                      "end":  307.52757397970117,
+                      "interval":  64,
+                      "en":  "Uh, yeah, I\u0027ve been going to work. Yeah. Yeah, it\u0027s been quite difficult.",
+                      "id":  "064"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  303.26509826928719,
+                      "end":  305.6232912877677,
+                      "interval":  65,
+                      "en":  "\u003cUNIN/\u003e \u003cUNSURE\u003eokay\u003c/UNSURE\u003e. That must be difficult for you then.",
+                      "id":  "065"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  307.10087415664424,
+                      "end":  311.1903901437372,
+                      "interval":  67,
+                      "en":  "\u003cUNIN/\u003e \u003cUNSURE\u003efine\u003c/UNSURE\u003e. And you said, you mentioned you live with your wife and two children, is that right?",
+                      "id":  "066"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  311.2138203931309,
+                      "end":  312.2138203931309,
+                      "interval":  66,
+                      "en":  "Yes, yeah.",
+                      "id":  "067"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  311.75753593429147,
+                      "end":  316.32539518367417,
+                      "interval":  69,
+                      "en":  "\u003cUNSURE\u003eRight\u003c/UNSURE\u003e, alright. Um, just \u003cUNSURE\u003ea\u003c/UNSURE\u003e couple of other question we need to ask, \u003cUNSURE\u003esir\u003c/UNSURE\u003e. Um, do you smoke at all?",
+                      "id":  "068"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  316.66476810414974,
+                      "end":  318.15496124362988,
+                      "interval":  68,
+                      "en":  "Uh, no, I don\u0027t smoke.",
+                      "id":  "069"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  318.011193898504,
+                      "end":  319.98133176884721,
+                      "interval":  71,
+                      "en":  "And do you drink much in the way of alcohol?",
+                      "id":  "070"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  320.29219733630254,
+                      "end":  324.35100252665836,
+                      "interval":  70,
+                      "en":  "Uh, no, I I don\u0027t drink alcohol, no. \u003cUNIN/\u003e",
+                      "id":  "071"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  322.64977326979613,
+                      "end":  348.91381813487487,
+                      "interval":  73,
+                      "en":  "Okay. \u003cUNIN/\u003e so um, er normally at this stage I like to um, examine you if that\u0027s okay, but um, um, but but having listened to your story, sir, I think uh, um, just to recap \u003cUNIN/\u003e for the last three days you\u0027ve been having loose stool, diarrhea, a bit of tummy pain uh mainly on the left-hand side, um and \u003cUNIN/\u003e vomiting and \u003cUNSURE\u003efever and\u003c/UNSURE\u003e you\u0027re quite weak and lethargic um, you mentioned you had this Chinese takeaway as \u003cUNSURE\u003elittle as\u003c/UNSURE\u003e three days ago and I wondered whether that might be the cause of your problems.",
+                      "id":  "072"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  330.07645240032548,
+                      "end":  331.07645240032548,
+                      "interval":  72,
+                      "en":  "Yeah.",
+                      "id":  "073"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  343.07637445933796,
+                      "end":  344.07637445933796,
+                      "interval":  74,
+                      "en":  "\u003cUNIN/\u003e",
+                      "id":  "074"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  348.42928354246072,
+                      "end":  349.42928354246072,
+                      "interval":  76,
+                      "en":  "Okay.",
+                      "id":  "075"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  348.91381813487487,
+                      "end":  358.64794276456081,
+                      "interval":  74,
+                      "en":  "Um, it seems like you may have something, uh, called gastroenteritis, which essentially just a tummy bug or infection of your \u003cUNSURE\u003euh\u003c/UNSURE\u003e of your tummy.",
+                      "id":  "076"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  352.93906042567767,
+                      "end":  353.93906042567767,
+                      "interval":  78,
+                      "en":  "\u003cUNIN/\u003e",
+                      "id":  "077"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  358.64794276456081,
+                      "end":  367.96927297920485,
+                      "interval":  75,
+                      "en":  "Uh, mainly caused by viruses but there can be a possibility of bacteria uh causing \u003cUNSURE\u003eits\u003c/UNSURE\u003e symptoms. Um.",
+                      "id":  "078"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  358.66451629480537,
+                      "end":  359.66451629480537,
+                      "interval":  80,
+                      "en":  "Yeah.",
+                      "id":  "079"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  366.70368378227914,
+                      "end":  367.70368378227914,
+                      "interval":  82,
+                      "en":  "Yeah.",
+                      "id":  "080"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  368.83739023329008,
+                      "end":  381.08066002022275,
+                      "interval":  77,
+                      "en":  "At this stage, uh, what, what we\u0027d recommend is just what we \u003cUNSURE\u003esay\u003c/UNSURE\u003e conservative management. So, um, I don\u0027t think you need anything like antibiotics. It\u0027s really just, um, making sure you\u0027re well hydrated, so drinking fluids.",
+                      "id":  "081"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  373.507564558263,
+                      "end":  374.507564558263,
+                      "interval":  84,
+                      "en":  "\u003cUNIN/\u003e",
+                      "id":  "082"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  379.70360584129162,
+                      "end":  380.70360584129162,
+                      "interval":  86,
+                      "en":  "Mm-hmm.",
+                      "id":  "083"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  381.581981939444,
+                      "end":  392.06134677571544,
+                      "interval":  79,
+                      "en":  "Um, \u003cUNIN/\u003e there are things like Dioralyte you can get from the pharmacy, which uh it\u0027s um it helps helps replenish your minerals and vitamins.",
+                      "id":  "084"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  391.76235707250225,
+                      "end":  392.76235707250225,
+                      "interval":  88,
+                      "en":  "Okay.",
+                      "id":  "085"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  392.06134677571544,
+                      "end":  397.34647031661291,
+                      "interval":  80,
+                      "en":  "Um, and if you are having vomiting diarrhea I \u003cUNSURE\u003ewould say\u003c/UNSURE\u003e recommend \u003cUNSURE\u003ethat\u003c/UNSURE\u003e in the first, you know, first couple of days.",
+                      "id":  "086"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  397.15448160678346,
+                      "end":  398.15448160678346,
+                      "interval":  90,
+                      "en":  "Yep.",
+                      "id":  "087"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  397.34647031661291,
+                      "end":  406.3272214740295,
+                      "interval":  81,
+                      "en":  "\u003cUNIN/\u003e If you are feeling feverish and weak, \u003cUNSURE\u003eeh\u003c/UNSURE\u003e taking some paracetamol, uh, \u003cUNIN/\u003e two tablets up to four times a day for the first few days can also help.",
+                      "id":  "088"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  402.38974433643097,
+                      "end":  403.38974433643097,
+                      "interval":  92,
+                      "en":  "\u003cUNSURE\u003eYep\u003c/UNSURE\u003e.",
+                      "id":  "089"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  406.3272214740295,
+                      "end":  417.7795397398599,
+                      "interval":  82,
+                      "en":  "I \u003cUNSURE\u003ewill\u003c/UNSURE\u003e certainly advise you to take some time \u003cUNSURE\u003eoff\u003c/UNSURE\u003e work, \u003cUNSURE\u003eactually\u003c/UNSURE\u003e I know you\u0027re quite keen to work but I would say the next two, two to three days as \u003cUNSURE\u003ethe infection\u003c/UNSURE\u003e clears from your system to take some time off and rest.",
+                      "id":  "090"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  409.50734872168215,
+                      "end":  410.50734872168215,
+                      "interval":  94,
+                      "en":  "Okay.",
+                      "id":  "091"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  413.58575564215664,
+                      "end":  414.58575564215664,
+                      "interval":  96,
+                      "en":  "Yeah.",
+                      "id":  "092"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  417.7795397398599,
+                      "end":  425.30126165068225,
+                      "interval":  83,
+                      "en":  "Um, \u003cUNSURE\u003eI\u0027ll admit\u003c/UNSURE\u003e if your symptoms haven\u0027t got better, you know, in in three to four days, \u003cUNSURE\u003eI\u0027d\u003c/UNSURE\u003e like to come and see you again. \u003cUNIN/\u003e",
+                      "id":  "093"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  424.70333604556549,
+                      "end":  425.70333604556549,
+                      "interval":  98,
+                      "en":  "Okay, \u003cUNSURE\u003esure\u003c/UNSURE\u003e.",
+                      "id":  "094"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  425.30126165068225,
+                      "end":  429.27090446464018,
+                      "interval":  84,
+                      "en":  "Because if it is ongoing then we have to wonder whether something else \u003cUNSURE\u003ecaused\u003c/UNSURE\u003e your symptoms.",
+                      "id":  "095"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  429.1935052032033,
+                      "end":  430.1935052032033,
+                      "interval":  100,
+                      "en":  "Yep.",
+                      "id":  "096"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  429.27090446464018,
+                      "end":  435.38875873377657,
+                      "interval":  85,
+                      "en":  "\u003cUNSURE\u003eUh\u003c/UNSURE\u003e, and we may need to do further \u003cUNSURE\u003etests\u003c/UNSURE\u003e like um taking a sample of your stool so we can test that.",
+                      "id":  "097"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  434.42876793285086,
+                      "end":  435.42876793285086,
+                      "interval":  102,
+                      "en":  "\u003cUNIN/\u003e",
+                      "id":  "098"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  435.38875873377657,
+                      "end":  437.80648385789539,
+                      "interval":  86,
+                      "en":  "Um, etcetera etcetera.",
+                      "id":  "099"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  437.87972763479081,
+                      "end":  438.87972763479081,
+                      "interval":  104,
+                      "en":  "Yep, sure, yep.",
+                      "id":  "100"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  439.12608401999188,
+                      "end":  440.12608401999188,
+                      "interval":  88,
+                      "en":  "How\u0027s that sound?",
+                      "id":  "101"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  440.36990878334973,
+                      "end":  442.09539462978029,
+                      "interval":  106,
+                      "en":  "That sounds great, yeah. Yeah.",
+                      "id":  "102"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  441.56939619073341,
+                      "end":  443.38383358098059,
+                      "interval":  90,
+                      "en":  "\u003cUNIN/\u003e Do you have any questions for me?",
+                      "id":  "103"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  443.80126075971049,
+                      "end":  446.82085649436851,
+                      "interval":  108,
+                      "en":  "Um, no, no further questions, \u003cUNSURE\u003eno\u003c/UNSURE\u003e.",
+                      "id":  "104"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  446.45244958532959,
+                      "end":  448.981285466398,
+                      "interval":  92,
+                      "en":  "Okay, and is uh is the treatment plan clear?",
+                      "id":  "105"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  449.39453854697064,
+                      "end":  452.07572694959538,
+                      "interval":  110,
+                      "en":  "Uh, \u003cUNSURE\u003eyes\u003c/UNSURE\u003e, yeah, that\u0027s that\u0027s very clear. Thank you.",
+                      "id":  "106"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  452.0642701159079,
+                      "end":  453.52580547623035,
+                      "interval":  94,
+                      "en":  "Great. Well, I wish you all the best.",
+                      "id":  "107"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  453.46786947025822,
+                      "end":  456.173741595649,
+                      "interval":  112,
+                      "en":  "Okay, thank you. Bye.",
+                      "id":  "108"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  454.25656307744003,
+                      "end":  456.8911674785823,
+                      "interval":  96,
+                      "en":  "\u003cUNIN/\u003e Thank you. \u003cUNSURE\u003eBye bye\u003c/UNSURE\u003e.",
+                      "id":  "109"
+                  }
+              ]
+}

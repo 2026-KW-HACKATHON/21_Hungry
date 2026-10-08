@@ -1,0 +1,287 @@
+{
+  "id" : "resp_095583002f4fb687016ac7f2467e9487d0973af19b1dd466fa",
+  "object" : "response",
+  "created_at" : 1791488582,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791488613,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-2026-03-05",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_095583002f4fb687016ac7f24736c087d0b75d9f1925c2af64",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0006\",\"sb31ffd444135v1u0009\",\"sb31ffd444135v1u0033\",\"sb31ffd444135v1u0034\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"피부가 아프고 빨갛고 매우 가렵다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0010\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"가려움 때문에 밤에 잠을 못 자고 업무 집중이 어렵다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f3\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0043\",\"sb31ffd444135v1u0049\",\"sb31ffd444135v1u0051\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"증상은 나흘 전 시작했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f4\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0051\"],\"questionIds\":[\"sb31ffd444135v1u0049\"],\"answerIds\":[\"sb31ffd444135v1u0050\",\"sb31ffd444135v1u0051\"],\"correctionIds\":[\"sb31ffd444135v1u0051\"]},\"kind\":\"SYMPTOM\",\"text\":\"증상 부위는 가슴, 손, 팔꿈치 안쪽이다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f5\",\"support\":{\"statementIds\":[],\"questionIds\":[\"sb31ffd444135v1u0053\",\"sb31ffd444135v1u0055\"],\"answerIds\":[\"sb31ffd444135v1u0056\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"얼굴에는 증상이 없다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f6\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0037\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"피부 일부가 갈라져 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f7\",\"support\":{\"statementIds\":[],\"questionIds\":[\"sb31ffd444135v1u0035\",\"sb31ffd444135v1u0039\"],\"answerIds\":[\"sb31ffd444135v1u0037\",\"sb31ffd444135v1u0040\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"피부의 피나 분비물, 고름은 보지 못했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f8\",\"support\":{\"statementIds\":[],\"questionIds\":[\"sb31ffd444135v1u0057\"],\"answerIds\":[\"sb31ffd444135v1u0058\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"열은 없고, 다른 증상 없이 가려움이 주된 증상이다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f9\",\"support\":{\"statementIds\":[],\"questionIds\":[\"sb31ffd444135v1u0060\"],\"answerIds\":[\"sb31ffd444135v1u0061\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"기침이나 호흡 곤란은 없다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f10\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0014\"],\"questionIds\":[\"sb31ffd444135v1u0013\"],\"answerIds\":[\"sb31ffd444135v1u0014\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"예전에 습진으로 처방받은 병력이 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f11\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0016\",\"sb31ffd444135v1u0019\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"예전에 크림과 샤워할 때 바르는 약을 받았고 그때는 도움이 됐다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"HISTORICAL\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":null,\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"예전 습진 치료로 사용, 샤워할 때 바르는 약 포함\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f12\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0019\",\"sb31ffd444135v1u0020\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"이번 증상 재발 후 예전에 쓰던 치료와 약국에서 산 스테로이드 크림을 써 봤지만 별로 듣지 않았다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"HISTORICAL\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"스테로이드 크림\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"약국에서 구입, 어젯밤 사용\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f13\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0027\"],\"questionIds\":[\"sb31ffd444135v1u0025\"],\"answerIds\":[\"sb31ffd444135v1u0027\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"이번 증상은 예전 습진보다 훨씬 더 가렵고, 예전에는 팔에만 있었지만 지금은 가슴과 손에도 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f14\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0031\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"통증과 가려움 때문에 등산을 못 할 정도로 일상생활에 지장이 있고, 샤워로 가려움을 가라앉혀야 할 정도로 불편하다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f15\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0046\"],\"questionIds\":[\"sb31ffd444135v1u0044\",\"sb31ffd444135v1u0045\"],\"answerIds\":[\"sb31ffd444135v1u0046\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"증상 시작의 계기로 생각나는 바뀐 샤워 젤이나 옷은 없다고 한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f16\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0077\"],\"questionIds\":[\"sb31ffd444135v1u0076\"],\"answerIds\":[\"sb31ffd444135v1u0077\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"과거 천식이 있었지만 현재는 없다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f17\",\"support\":{\"statementIds\":[],\"questionIds\":[\"sb31ffd444135v1u0078\"],\"answerIds\":[\"sb31ffd444135v1u0079\"],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"현재 정기적으로 복용하는 약은 없다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f18\",\"support\":{\"statementIds\":[],\"questionIds\":[\"sb31ffd444135v1u0080\",\"sb31ffd444135v1u0082\",\"sb31ffd444135v1u0086\"],\"answerIds\":[\"sb31ffd444135v1u0087\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"알레르기는 없다고 한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f19\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0099\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"습진이 다시 심해진 것일 가능성이 있다고 판단했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f20\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0104\",\"sb31ffd444135v1u0105\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"더 강한 스테로이드 처방을 오늘 처방한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"PRESCRIBED\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":null,\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":\"7~10일\",\"instructions\":\"더 강한 스테로이드; 규칙적으로 사용\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f21\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0105\",\"sb31ffd444135v1u0108\",\"sb31ffd444135v1u0124\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"보습제를 처방하며, 목욕이나 샤워할 때 사용하고 처음 7~10일 동안 규칙적으로 써 본다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"PRESCRIBED\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"보습제\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":\"7~10일\",\"instructions\":\"목욕이나 샤워할 때 사용, 규칙적으로 사용\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f22\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0112\",\"sb31ffd444135v1u0113\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"처방 없이 살 수 있는 항히스타민제를 써 보는 것도 좋다고 했고, 예로 Loratadine이나 Piriton을 제시했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"ALTERNATIVE\",\"alternativeGroup\":\"ag1\",\"actionStatus\":\"NONE\",\"medication\":{\"name\":null,\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"처방 없이 살 수 있는 항히스타민제 선택지: Loratadine 또는 Piriton; 피부 가려움 완화 목적\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f23\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0117\",\"sb31ffd444135v1u0119\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[\"sb31ffd444135v1u0119\"]},\"kind\":\"MEDICATION\",\"text\":\"최근 항히스타민제를 써 봤지만 별로 도움이 되지 않았다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"HISTORICAL\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"항히스타민제\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"최근 사용, 효과 미미\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f24\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0121\",\"sb31ffd444135v1u0122\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"오늘 더 강한 항히스타민제로 Fexofenadine 같은 약을 줄 수 있다고 했다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"PRESCRIBED\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"Fexofenadine\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"더 강한 항히스타민제로 제안\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f25\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0115\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"PRECAUTION\",\"text\":\"증상에 영향을 주는 계기를 일기로 남긴다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"증상 유발 요인 일기 작성\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f26\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0115\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"PRECAUTION\",\"text\":\"일기에는 입는 옷, 사용하는 샤워 젤, 비누 같은 요인을 기록한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"유발 요인 기록\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f27\",\"support\":{\"statementIds\":[\"sb31ffd444135v1u0125\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"다음 주에 다시 온다.\",\"condition\":{\"operator\":\"ALL\",\"clauses\":[\"좋아지지 않으면\"]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"HOSPITAL\",\"title\":\"다음 주 재내원\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]}],\"summaryFactIds\":[\"f19\",\"f20\",\"f21\",\"f24\",\"f27\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "sb31ffd444135v1u0001", "sb31ffd444135v1u0002", "sb31ffd444135v1u0003", "sb31ffd444135v1u0004", "sb31ffd444135v1u0005", "sb31ffd444135v1u0006", "sb31ffd444135v1u0007", "sb31ffd444135v1u0008", "sb31ffd444135v1u0009", "sb31ffd444135v1u0010", "sb31ffd444135v1u0011", "sb31ffd444135v1u0012", "sb31ffd444135v1u0013", "sb31ffd444135v1u0014", "sb31ffd444135v1u0015", "sb31ffd444135v1u0016", "sb31ffd444135v1u0017", "sb31ffd444135v1u0018", "sb31ffd444135v1u0019", "sb31ffd444135v1u0020", "sb31ffd444135v1u0021", "sb31ffd444135v1u0022", "sb31ffd444135v1u0023", "sb31ffd444135v1u0024", "sb31ffd444135v1u0025", "sb31ffd444135v1u0026", "sb31ffd444135v1u0027", "sb31ffd444135v1u0028", "sb31ffd444135v1u0029", "sb31ffd444135v1u0030", "sb31ffd444135v1u0031", "sb31ffd444135v1u0032", "sb31ffd444135v1u0033", "sb31ffd444135v1u0034", "sb31ffd444135v1u0035", "sb31ffd444135v1u0036", "sb31ffd444135v1u0037", "sb31ffd444135v1u0038", "sb31ffd444135v1u0039", "sb31ffd444135v1u0040", "sb31ffd444135v1u0041", "sb31ffd444135v1u0042", "sb31ffd444135v1u0043", "sb31ffd444135v1u0044", "sb31ffd444135v1u0045", "sb31ffd444135v1u0046", "sb31ffd444135v1u0047", "sb31ffd444135v1u0048", "sb31ffd444135v1u0049", "sb31ffd444135v1u0050", "sb31ffd444135v1u0051", "sb31ffd444135v1u0052", "sb31ffd444135v1u0053", "sb31ffd444135v1u0054", "sb31ffd444135v1u0055", "sb31ffd444135v1u0056", "sb31ffd444135v1u0057", "sb31ffd444135v1u0058", "sb31ffd444135v1u0059", "sb31ffd444135v1u0060", "sb31ffd444135v1u0061", "sb31ffd444135v1u0062", "sb31ffd444135v1u0063", "sb31ffd444135v1u0064", "sb31ffd444135v1u0065", "sb31ffd444135v1u0066", "sb31ffd444135v1u0067", "sb31ffd444135v1u0068", "sb31ffd444135v1u0069", "sb31ffd444135v1u0070", "sb31ffd444135v1u0071", "sb31ffd444135v1u0072", "sb31ffd444135v1u0073", "sb31ffd444135v1u0074", "sb31ffd444135v1u0075", "sb31ffd444135v1u0076", "sb31ffd444135v1u0077", "sb31ffd444135v1u0078", "sb31ffd444135v1u0079", "sb31ffd444135v1u0080", "sb31ffd444135v1u0081", "sb31ffd444135v1u0082", "sb31ffd444135v1u0083", "sb31ffd444135v1u0084", "sb31ffd444135v1u0085", "sb31ffd444135v1u0086", "sb31ffd444135v1u0087", "sb31ffd444135v1u0088", "sb31ffd444135v1u0089", "sb31ffd444135v1u0090", "sb31ffd444135v1u0091", "sb31ffd444135v1u0092", "sb31ffd444135v1u0093", "sb31ffd444135v1u0094", "sb31ffd444135v1u0095", "sb31ffd444135v1u0096", "sb31ffd444135v1u0097", "sb31ffd444135v1u0098", "sb31ffd444135v1u0099", "sb31ffd444135v1u0100", "sb31ffd444135v1u0101", "sb31ffd444135v1u0102", "sb31ffd444135v1u0103", "sb31ffd444135v1u0104", "sb31ffd444135v1u0105", "sb31ffd444135v1u0106", "sb31ffd444135v1u0107", "sb31ffd444135v1u0108", "sb31ffd444135v1u0109", "sb31ffd444135v1u0110", "sb31ffd444135v1u0111", "sb31ffd444135v1u0112", "sb31ffd444135v1u0113", "sb31ffd444135v1u0114", "sb31ffd444135v1u0115", "sb31ffd444135v1u0116", "sb31ffd444135v1u0117", "sb31ffd444135v1u0118", "sb31ffd444135v1u0119", "sb31ffd444135v1u0120", "sb31ffd444135v1u0121", "sb31ffd444135v1u0122", "sb31ffd444135v1u0123", "sb31ffd444135v1u0124", "sb31ffd444135v1u0125", "sb31ffd444135v1u0126", "sb31ffd444135v1u0127", "sb31ffd444135v1u0128", "sb31ffd444135v1u0129", "sb31ffd444135v1u0130" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 14949,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 3893,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 18842
+  },
+  "user" : null,
+  "metadata" : { }
+}

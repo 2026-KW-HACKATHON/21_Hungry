@@ -1,0 +1,76 @@
+{
+  "source": "https://github.com/babylonhealth/primock57",
+  "commit": "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+  "license": "CC-BY-4.0",
+  "attribution": "Babylon Health, PriMock57 creators; see original/README.md and LICENSE.md",
+  "mockConsultation": true,
+  "audioDownloaded": false,
+  "translation": "Codex AI translation and source comparison; not clinician validated; source speaker/order preserved",
+  "modifications": "TextGrid parsed into EN turn IDs, full KO translation with marked uncertainty; notes not supplied to model; originals retained",
+  "files": [
+    {
+      "sha256": "247f1db2018ae86840691c5f05eba062f798521b9dd7412c02240f70f34edee7",
+      "file": "day4_consultation02.en.json"
+    },
+    {
+      "sha256": "4ef2f22aad082c0b8795507746c823d90cdeeca492514511a64fe4bdd68ee4f4",
+      "file": "day4_consultation02.ko.json"
+    },
+    {
+      "sha256": "9c7224d0f79eaabcc0a0146fc735f0d99e63528c0c0e2936b43e724ebdb2505d",
+      "file": "day5_consultation02.en.json"
+    },
+    {
+      "sha256": "d410f3b9d075092e0480e870bb726027c4dcbfad6467f59e8f2f95ae83f12490",
+      "file": "day5_consultation02.ko.json"
+    },
+    {
+      "sha256": "be24d063bb3a3c29fde84022c875cdf5d1b72119d1fe3c5f057494273279fc41",
+      "file": "manifest.json"
+    },
+    {
+      "sha256": "477e13bb9527bb298a8b64a2e0ea86ecb83556121908963dde6411e32eedc919",
+      "file": "README.md"
+    },
+    {
+      "sha256": "69e2cdf9bca99f43a1274baffc7f2410f13a9d0cad6609f1efe71cc77a222d11",
+      "file": "original/day4_consultation02.note.json"
+    },
+    {
+      "sha256": "a88e821730345c165fe55d7ad8900dfc6175c841b3dea7800a4ad1a50ac65b9d",
+      "file": "original/day4_consultation02_doctor.TextGrid"
+    },
+    {
+      "sha256": "2b96d4fefd39e3ceaaa981aec8bbc82af2ca09b7afc311d00d84c8014d3b11c7",
+      "file": "original/day4_consultation02_patient.TextGrid"
+    },
+    {
+      "sha256": "6451037e9d78568a16ddf0a65e90ffe90452cf4696778307ba051d2338d63fb8",
+      "file": "original/day5_consultation02.note.json"
+    },
+    {
+      "sha256": "9679f24dfe3102cdb11c237e65b368d8cdad4de06043f5c1ff5c6bc087ed35b6",
+      "file": "original/day5_consultation02_doctor.TextGrid"
+    },
+    {
+      "sha256": "a2bcb5cfa2f00045190d442580417cc47e80c78f3476424f6db995ae79177862",
+      "file": "original/day5_consultation02_patient.TextGrid"
+    },
+    {
+      "sha256": "c4077139f0479418e8ce544f45f409fd3192a315f23071b4d41083e4a28357a1",
+      "file": "original/LICENSE.md"
+    },
+    {
+      "sha256": "469b6568e6f492e8f147ae6a042883775d7b6bb393cf2028891f155a24833413",
+      "file": "original/notes-README.md"
+    },
+    {
+      "sha256": "531d01051c5efe52aea2cf68432478bc73cf8b4e57041fc2a871fb4551808941",
+      "file": "original/README.md"
+    },
+    {
+      "sha256": "41d059c4562bfa4629edbfac5e9c7befe3f664d7e0017e69491a74dbd1a89604",
+      "file": "original/transcripts-README.md"
+    }
+  ]
+}

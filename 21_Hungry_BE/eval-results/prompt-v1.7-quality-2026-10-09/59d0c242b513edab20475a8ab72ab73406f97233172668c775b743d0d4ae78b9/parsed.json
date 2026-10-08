@@ -1,0 +1,18 @@
+{
+  "summary" : "다음 조건 모두에 해당하면: 사흘이 지남; 통증이 남음 → 사흘이 지나도 통증이 남으면 다시 오세요. 지금 재방문 날짜나 시간은 정하지 않겠습니다.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[{\"text\":\"다음 조건 모두에 해당하면: 사흘이 지남; 통증이 남음 → 사흘이 지나도 통증이 남으면 다시 오세요. 지금 재방문 날짜나 시간은 정하지 않겠습니다.\",\"evidenceIndexes\":[0]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"1aae5077-ca73-3621-8142-51720d4e57f0\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 사흘이 지나도 통증이 남으면 다시 오세요. 지금 재방문 날짜나 시간은 정하지 않겠습니다.\",\"occurrenceIndex\":0,\"start\":0,\"end\":53}]",
+  "items" : [ {
+    "itemKey" : "f1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"다시 내원\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"weekdays\":[],\"lastDate\":null,\"description\":\"다음 조건 모두에 해당하면: 사흘이 지남; 통증이 남음 → 사흘이 지나도 통증이 남으면 다시 오세요. 지금 재방문 날짜나 시간은 정하지 않겠습니다.\",\"durationMinutes\":null,\"durationSource\":null}",
+    "evidenceJson" : "[{\"sourceId\":\"1aae5077-ca73-3621-8142-51720d4e57f0\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 사흘이 지나도 통증이 남으면 다시 오세요. 지금 재방문 날짜나 시간은 정하지 않겠습니다.\",\"occurrenceIndex\":0,\"start\":0,\"end\":53}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2484,
+  "outputTokens" : 199
+}
