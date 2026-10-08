@@ -91,8 +91,13 @@ function VisitRecord({ encounterId, accessToken }) {
   )
   const progress = detail ? recordProgress(detail) : null
   const showStatus = !detail || !progress.done || detail.processingState !== 'READY' || isStale
-  const points = summarySections.flatMap((section) => summary?.details?.[section] || [])
-  const displayedPoints = points.length ? points : Array.from({ length: 6 }, () => ({ text: '-' }))
+  const points = summarySections
+    .flatMap((section) => summary?.details?.[section] || [])
+    .filter((point) => typeof point?.text === 'string' && point.text.trim())
+  const statusMessage =
+    detail?.processingState === 'NEEDS_REVIEW' && !isStale
+      ? '분석이 완료됐어요. 확인이 필요한 항목이 있어요.'
+      : message
   const audioSources = (detail?.sources || []).filter(
     (source) => source.sourceType === 'AUDIO' && !source.removedAt,
   )
@@ -115,7 +120,7 @@ function VisitRecord({ encounterId, accessToken }) {
     >
       {showStatus && (
         <div className='docRecord__status'>
-          <p role={stopped && !detail ? 'alert' : 'status'}>{message}</p>
+          <p role={stopped && !detail ? 'alert' : 'status'}>{statusMessage}</p>
           {!accessToken && (
             <PopupButton
               content='로그인하기'
@@ -144,27 +149,6 @@ function VisitRecord({ encounterId, accessToken }) {
               value3={detail.createdBy?.displayName || '-'}
             />
           </div>
-          <dl className='docRecord__basic'>
-            <div className='docRecord__basicRow'>
-              <dt>병원</dt>
-              <dd>{detail.hospitalName || '-'}</dd>
-            </div>
-            <div className='docRecord__basicRow'>
-              <dt>진료과목</dt>
-              <dd>-</dd>
-            </div>
-            <div className='docRecord__basicRow'>
-              <dt>방문 일시</dt>
-              <dd>{detail.occurredOn ? formatDate(detail.occurredOn) : '--:--'}</dd>
-            </div>
-            <div className='docRecord__basicRow'>
-              <dt>동행한 자녀</dt>
-              <dd>-</dd>
-            </div>
-          </dl>
-          <div className='docRecord__duration' aria-label='녹음 길이 정보 없음'>
-            --:--:--
-          </div>
           <section className='docRecord__summary'>
             <h2>쉬운 요약</h2>
             {isStale && (
@@ -172,19 +156,21 @@ function VisitRecord({ encounterId, accessToken }) {
             )}
             <p>{summary?.text || '-'}</p>
           </section>
-          <section className='docRecord__keyPoints'>
-            <h2>진료 핵심</h2>
-            <ol>
-              {displayedPoints.map((point, index) => (
-                <li key={index}>
-                  <span className='docRecord__number' aria-hidden='true'>
-                    {index + 1}
-                  </span>
-                  <p>{point.text || '-'}</p>
-                </li>
-              ))}
-            </ol>
-          </section>
+          {points.length > 0 && (
+            <section className='docRecord__keyPoints'>
+              <h2>진료 핵심</h2>
+              <ol>
+                {points.map((point, index) => (
+                  <li key={index}>
+                    <span className='docRecord__number' aria-hidden='true'>
+                      {index + 1}
+                    </span>
+                    <p>{point.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
           <section className='docRecord__transcript'>
             <h2>녹음 원문</h2>
             {audioSources.length ? (
