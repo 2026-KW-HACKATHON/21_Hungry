@@ -15,6 +15,10 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: 'autoUpdate',
 
+        workbox: {
+          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        },
+
         manifest: {
           name: 'KnowONE',
           short_name: 'KnowONE',
@@ -44,13 +48,15 @@ export default defineConfig(({ mode }) => {
     ],
 
     server: {
-      proxy: apiUrl ? {
-        '/api': {
-          target: new URL(apiUrl).origin,
-          changeOrigin: true,
-          secure: true,
-        },
-      } : {},
+      proxy: apiUrl
+        ? {
+            '/api': {
+              target: new URL(apiUrl).origin,
+              changeOrigin: true,
+              secure: true,
+            },
+          }
+        : {},
     },
   }
 })
