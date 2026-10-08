@@ -186,3 +186,20 @@
 .todayAdd__family--icon {
   flex-shrink: 0;
 }
+
+.todayAdd__category:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.todayAdd__status {
+  padding: 0 10px;
+  color: #666666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.todayAdd__status button {
+  margin-top: 10px;
+  color: var(--color-blue);
+}
