@@ -9,14 +9,14 @@ function Navigation() {
 
   const navigationItems = [
     { key: 'Doc', path: '/doc', defaultIcon: 'save-default', activeIcon: 'save-active' },
+    { key: 'Family', path: '/family', defaultIcon: 'family-default', activeIcon: 'family-active' },
+    { key: 'Today', path: '/today', defaultIcon: 'today-default', activeIcon: 'today-active' },
     {
       key: 'Schedule',
       path: '/schedule',
       defaultIcon: 'calendar-default',
       activeIcon: 'calendar-active',
     },
-    { key: 'Today', path: '/today', defaultIcon: 'today-default', activeIcon: 'today-active' },
-    { key: 'Family', path: '/family', defaultIcon: 'family-default', activeIcon: 'family-active' },
     { key: 'Record', path: '/record', defaultIcon: 'doctor-default', activeIcon: 'doctor-active' },
   ]
 
