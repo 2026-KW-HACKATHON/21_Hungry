@@ -25,8 +25,17 @@ function formatSelectedDate(fromDate, toDate) {
   const [year, month, day] = fromDate.split('-').map(Number)
   const start = `${year}년 ${month}월 ${day}일`
   if (fromDate === toDate) return start
+
   const [endYear, endMonth, endDay] = toDate.split('-').map(Number)
   return `${start} ~ ${year === endYear ? '' : `${endYear}년 `}${endMonth}월 ${endDay}일`
+}
+
+function openNativePicker(event) {
+  try {
+    event.currentTarget.showPicker?.()
+  } catch {
+    event.currentTarget.focus()
+  }
 }
 
 function ScheduleEditPage() {
@@ -101,6 +110,7 @@ function ScheduleEditPage() {
     if (isSaving) return
     setError('')
     setIsSaving(true)
+
     try {
       const request = createPersonalAvailabilityRequest({
         mode: selectedMode,
@@ -110,11 +120,13 @@ function ScheduleEditPage() {
         endTime,
       })
       const preview = await previewPersonalAvailability(request)
+
       if (preview.releasedOccurrenceIds.length > 0) {
         const retained =
           preview.retainedPastOccurrenceCount > 0
             ? '\n지난 돌봄 일정과 진행 중인 일정은 유지돼요.'
             : ''
+
         if (
           !window.confirm(
             `저장하면 앞으로 담당한 돌봄 일정 ${preview.releasedOccurrenceIds.length}개의 담당이 해제돼요.${retained}\n저장할까요?`,
@@ -122,6 +134,7 @@ function ScheduleEditPage() {
         )
           return
       }
+
       await savePersonalAvailability({ ...request, previewToken: preview.previewToken })
       navigate('/schedule')
     } catch (error) {
@@ -174,6 +187,7 @@ function ScheduleEditPage() {
               </div>
             ))}
           </div>
+
           {weeks.map((week, weekIndex) => (
             <div className='scheduleEdit__week' role='row' key={weekIndex}>
               <div className='scheduleEdit__ranges' aria-hidden='true'>
@@ -191,11 +205,13 @@ function ScheduleEditPage() {
                   </div>
                 ))}
               </div>
+
               {week.map((day, column) => {
                 if (!day)
                   return (
                     <div className='scheduleEdit__day' aria-hidden='true' key={`empty-${column}`} />
                   )
+
                 const mode = days[day.date] ?? null
                 const endpoint = ranges.some(
                   (range) =>
@@ -204,6 +220,7 @@ function ScheduleEditPage() {
                 )
                 const label =
                   availabilityOptions.find((item) => item.mode === mode)?.label ?? '미등록'
+
                 return (
                   <div
                     className='scheduleEdit__day'
@@ -221,6 +238,7 @@ function ScheduleEditPage() {
                         />
                       </span>
                     )}
+
                     {selectedMode === null ? (
                       <span
                         className={`scheduleEdit__day--number${mode ? ` scheduleEdit__day--${mode.toLowerCase()}` : ''}${endpoint ? ' scheduleEdit__day--endpoint' : ''}`}
@@ -274,44 +292,55 @@ function ScheduleEditPage() {
         {option && (
           <div className='scheduleEdit__panel' aria-busy={isSaving}>
             <p className='scheduleEdit__panel--title'>돌봄 {option.label}</p>
+
             {selection && (
               <div className='scheduleEdit__draft'>
                 <div className='scheduleEdit__draft--fields'>
                   <div className='scheduleEdit__date'>
                     <p>{formatSelectedDate(selection.fromDate, selection.toDate)}</p>
                   </div>
+
                   {selectedMode === 'PARTIAL' && (
                     <div className='scheduleEdit__times'>
-                      <input
-                        type='text'
-                        aria-label='돌봄 가능한 시작 시각'
-                        placeholder='00:00'
-                        maxLength={5}
-                        autoComplete='off'
-                        value={startTime}
-                        disabled={isSaving}
-                        onChange={(event) => {
-                          setStartTime(event.target.value)
-                          setError('')
-                        }}
-                      />
+                      <div className='scheduleEdit__timeField' data-value={startTime || '00:00'}>
+                        <input
+                          type='time'
+                          step={60}
+                          onClick={openNativePicker}
+                          aria-label='돌봄 가능한 시작 시각'
+                          placeholder='00:00'
+                          autoComplete='off'
+                          value={startTime}
+                          disabled={isSaving}
+                          onChange={(event) => {
+                            setStartTime(event.target.value)
+                            setError('')
+                          }}
+                        />
+                      </div>
+
                       <span>부터</span>
-                      <input
-                        type='text'
-                        aria-label='돌봄 가능한 종료 시각'
-                        placeholder='00:00'
-                        maxLength={5}
-                        autoComplete='off'
-                        value={endTime}
-                        disabled={isSaving}
-                        onChange={(event) => {
-                          setEndTime(event.target.value)
-                          setError('')
-                        }}
-                      />
+
+                      <div className='scheduleEdit__timeField' data-value={endTime || '00:00'}>
+                        <input
+                          type='time'
+                          step={60}
+                          onClick={openNativePicker}
+                          aria-label='돌봄 가능한 종료 시각'
+                          placeholder='00:00'
+                          autoComplete='off'
+                          value={endTime}
+                          disabled={isSaving}
+                          onChange={(event) => {
+                            setEndTime(event.target.value)
+                            setError('')
+                          }}
+                        />
+                      </div>
                     </div>
                   )}
                 </div>
+
                 <button
                   type='button'
                   className='scheduleEdit__remove'
@@ -323,6 +352,7 @@ function ScheduleEditPage() {
                 </button>
               </div>
             )}
+
             <div className='scheduleEdit__save'>
               <PopupButton
                 content={isSaving ? '저장 중...' : `돌봄 ${option.label}한 날 추가하기`}
@@ -338,6 +368,7 @@ function ScheduleEditPage() {
             {error}
           </p>
         )}
+
         {selectedMode === 'PARTIAL' && (
           <div className='scheduleEdit__help'>
             <p>시간은 24시간제로 작성해주세요</p>
