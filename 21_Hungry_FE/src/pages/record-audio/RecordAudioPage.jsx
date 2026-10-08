@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Icon } from '../../components/icon/Icon'
@@ -259,7 +260,7 @@ function RecordAudioPage() {
         if (busy) { setMessage('녹음을 정지한 뒤 기록을 마쳐 주세요.'); return }
         if (!audioBlobRef.current) { setMessage('먼저 진료 내용을 녹음해 주세요.'); return }
 
-        const accessToken = sessionStorage.getItem('accessToken')
+        const accessToken = sessionStorage.getItem('knowone_access_token')
 
         if (!accessToken) {
           setMessage('로그인이 필요해요.')
