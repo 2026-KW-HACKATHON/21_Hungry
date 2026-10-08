@@ -32,6 +32,7 @@
 }
 
 .family__card--parent {
+  min-height: 90px;
   margin-bottom: 5px;
   box-shadow: 0px 5px 0px var(--color-gray-button);
 }
@@ -68,9 +69,49 @@
   padding-bottom: 5px;
 }
 
-.family__card--button > .popupButton--gray {
+.family__priorities {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.family__priorities > .popupButton {
+  flex: 1;
+  min-width: 0;
   height: 45px;
   background-color: #fff;
   color: #4d4d4d;
   box-shadow: 0px 5px 0px var(--color-gray-button);
+}
+
+.family__priorities > .popupButton[aria-pressed='true'] {
+  background-color: #d2ffb2;
+  border-color: #a8f075;
+  color: #4d9900;
+  box-shadow: 0px 5px 0px #a8f075;
+}
+
+.family__priorities > .popupButton:disabled {
+  cursor: wait;
+}
+
+.family__guide {
+  margin: 0 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #d9d9d9;
+}
+
+.family__status {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666666;
+}
+
+.family__error > p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #ff6666;
 }

@@ -62,6 +62,8 @@
 }
 
 .familyReq__card--button {
+  display: flex;
+  gap: 10px;
   width: 100%;
   min-width: 0;
   margin: 0;
@@ -71,6 +73,18 @@
 
 .familyReq__card--button .popupButton:disabled {
   cursor: default;
+}
+
+.familyReq__card--button > .popupButton {
+  flex: 1;
+  min-width: 0;
+  height: 45px;
+}
+
+.familyReq__card--button > .popupButton--gray {
+  background-color: #fff;
+  color: #4d4d4d;
+  box-shadow: 0px 5px 0px var(--color-gray-button);
 }
 
 .familyReq__notices {
@@ -89,4 +103,17 @@
 
 .familyReq__empty {
   padding: 0px 10px;
+}
+
+.familyReq__status {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666666;
+}
+
+.familyReq__error > p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #ff6666;
 }
