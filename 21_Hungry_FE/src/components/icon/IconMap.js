@@ -39,6 +39,8 @@ import availabilityRemove from '../../assets/icon/calendar/availability-remove.s
 import docDiagnosis from '../../assets/icon/doc/doc-diagnosis.svg?react'
 import docOther from '../../assets/icon/doc/doc-other.svg?react'
 import docSearch from '../../assets/icon/doc/doc-search.svg?react'
+import docCamera from '../../assets/icon/doc/doc-camera.svg?react'
+import docFile from '../../assets/icon/doc/doc-file.svg?react'
 
 export const iconMap = {
   'checkbox-checked': checkboxChecked,
@@ -81,4 +83,6 @@ export const iconMap = {
   'doc-diagnosis': docDiagnosis,
   'doc-other': docOther,
   'doc-search': docSearch,
+  'doc-camera': docCamera,
+  'doc-file': docFile,
 }
