@@ -1,23 +1,24 @@
 import './ScheduleEditPage.css'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import BackHeader from '../../components/back-header/BackHeader'
 import PopupButton from '../../components/popup-button/PopupButton'
 import { Icon } from '../../components/icon/Icon'
-import { formatDate, getTodayDate } from '../../mocks/todayAddMock'
+
+import { formatDate, getKstDate } from '../today/todayUtils'
+import { messageOf } from '../../api/http'
+import { getAvailabilityDays, previewAvailability, saveAvailability } from '../../api/scheduleApi'
+import { useScheduleAvailability } from '../schedule/useScheduleAvailability'
 import {
   availabilityOptions,
   getCalendarWeeks,
   getVisibleRangeSegments,
-} from '../../mocks/familyScheduleMock'
-import {
-  createPersonalAvailabilityRequest,
-  getPersonalAvailability,
-  previewPersonalAvailability,
-  savePersonalAvailability,
-} from '../../mocks/scheduleMock'
+  toAvailabilityCalendar,
+  shiftAvailabilityDate,
+  buildAvailabilityRequest,
+} from '../schedule/scheduleUtils'
 
 const weekdays = ['일', '월', '화', '수', '목', '금', '토']
 
@@ -27,6 +28,7 @@ function formatSelectedDate(fromDate, toDate) {
   if (fromDate === toDate) return start
 
   const [endYear, endMonth, endDay] = toDate.split('-').map(Number)
+
   return `${start} ~ ${year === endYear ? '' : `${endYear}년 `}${endMonth}월 ${endDay}일`
 }
 
@@ -40,8 +42,9 @@ function openNativePicker(event) {
 
 function ScheduleEditPage() {
   const navigate = useNavigate()
+
   const [monthIndex, setMonthIndex] = useState(() => {
-    const [year, month] = getTodayDate().split('-').map(Number)
+    const [year, month] = getKstDate().split('-').map(Number)
     return year * 12 + month - 1
   })
   const [selectedMode, setSelectedMode] = useState(null)
@@ -51,16 +54,40 @@ function ScheduleEditPage() {
   const [error, setError] = useState('')
   const [isSaving, setIsSaving] = useState(false)
 
+  const savingRef = useRef(false)
+  const mounted = useRef(false)
+  const pendingCommit = useRef(null)
+  const previewKeys = useRef(new Map())
+
+  useEffect(() => {
+    mounted.current = true
+
+    return () => {
+      mounted.current = false
+    }
+  }, [])
+
   const year = Math.floor(monthIndex / 12)
   const month = monthIndex % 12
   const weeks = getCalendarWeeks(year, month)
-  const saved = getPersonalAvailability(year, month)
+
+  const { items, error: loadError, isLoading, reload } = useScheduleAvailability(year, month)
+
+  const saved = toAvailabilityCalendar(items)
+
   const ranges =
     selectedMode === null
       ? saved.ranges
       : selection && selectedMode !== 'PARTIAL'
-        ? [{ mode: selectedMode, fromDate: selection.fromDate, toDate: selection.toDate }]
+        ? [
+            {
+              mode: selectedMode,
+              fromDate: selection.fromDate,
+              toDate: selection.toDate,
+            },
+          ]
         : []
+
   const days =
     selectedMode === null
       ? saved.days
@@ -75,6 +102,7 @@ function ScheduleEditPage() {
                 : null,
             ]),
         )
+
   const option = availabilityOptions.find((item) => item.mode === selectedMode)
 
   const clearSelection = () => {
@@ -91,12 +119,21 @@ function ScheduleEditPage() {
 
   const handleDate = (date) => {
     setError('')
+
     if (selectedMode === 'PARTIAL') {
-      setSelection({ fromDate: date, toDate: date, awaitingEnd: false })
+      setSelection({
+        fromDate: date,
+        toDate: date,
+        awaitingEnd: false,
+      })
       setStartTime('')
       setEndTime('')
     } else if (!selection || !selection.awaitingEnd) {
-      setSelection({ fromDate: date, toDate: date, awaitingEnd: true })
+      setSelection({
+        fromDate: date,
+        toDate: date,
+        awaitingEnd: true,
+      })
     } else {
       setSelection({
         fromDate: date < selection.fromDate ? date : selection.fromDate,
@@ -107,40 +144,115 @@ function ScheduleEditPage() {
   }
 
   const handleSave = async () => {
-    if (isSaving) return
+    if (savingRef.current || isLoading || loadError) return
+
+    if (!selection || !selectedMode) {
+      setError('돌봄 가능 상태와 날짜를 선택해 주세요.')
+      return
+    }
+
+    if (selectedMode === 'PARTIAL' && (!startTime || !endTime)) {
+      setError('시작 시각과 종료 시각을 입력해 주세요.')
+      return
+    }
+
+    const draft = {
+      mode: selectedMode,
+      fromDate: selection.fromDate,
+      toDate: selection.toDate,
+      startTime,
+      endTime,
+    }
+    const signature = JSON.stringify(draft)
+
+    savingRef.current = true
     setError('')
     setIsSaving(true)
 
     try {
-      const request = createPersonalAvailabilityRequest({
-        mode: selectedMode,
-        fromDate: selection?.fromDate,
-        toDate: selection?.toDate,
-        startTime,
-        endTime,
-      })
-      const preview = await previewPersonalAvailability(request)
+      let commit = pendingCommit.current
 
-      if (preview.releasedOccurrenceIds.length > 0) {
-        const retained =
-          preview.retainedPastOccurrenceCount > 0
-            ? '\n지난 돌봄 일정과 진행 중인 일정은 유지돼요.'
-            : ''
-
-        if (
-          !window.confirm(
-            `저장하면 앞으로 담당한 돌봄 일정 ${preview.releasedOccurrenceIds.length}개의 담당이 해제돼요.${retained}\n저장할까요?`,
-          )
+      if (commit?.signature !== signature) {
+        const latest = await getAvailabilityDays(
+          draft.fromDate,
+          shiftAvailabilityDate(draft.toDate, 1),
         )
-          return
+
+        if (!mounted.current) return
+
+        const request = buildAvailabilityRequest(draft, latest.items)
+        const requestSignature = JSON.stringify(request)
+
+        if (!previewKeys.current.has(requestSignature)) {
+          previewKeys.current.set(requestSignature, crypto.randomUUID())
+        }
+
+        const preview = await previewAvailability(
+          request,
+          previewKeys.current.get(requestSignature),
+        )
+
+        if (!mounted.current) return
+
+        if (preview.releasedOccurrenceIds.length > 0) {
+          const retained =
+            preview.retainedPastOccurrenceCount > 0
+              ? '\n지난 돌봄 일정과 진행 중인 일정은 유지돼요.'
+              : ''
+
+          if (
+            !window.confirm(
+              `저장하면 앞으로 담당한 돌봄 일정 ${preview.releasedOccurrenceIds.length}개의 담당이 해제돼요.${retained}\n저장할까요?`,
+            )
+          ) {
+            return
+          }
+        }
+
+        commit = {
+          signature,
+          payload: {
+            ...request,
+            previewToken: preview.previewToken,
+          },
+          key: crypto.randomUUID(),
+        }
+
+        pendingCommit.current = commit
       }
 
-      await savePersonalAvailability({ ...request, previewToken: preview.previewToken })
-      navigate('/schedule')
+      await saveAvailability(commit.payload, commit.key)
+      pendingCommit.current = null
+
+      if (mounted.current) {
+        navigate('/schedule', { replace: true })
+      }
     } catch (error) {
-      setError(error.message || '저장하지 못했어요. 다시 시도해 주세요.')
+      const status = error.status ?? error.response?.status
+
+      if (
+        status &&
+        status < 500 &&
+        ![408, 429].includes(status) &&
+        error.apiCode !== 'REQUEST_IN_PROGRESS'
+      ) {
+        pendingCommit.current = null
+        previewKeys.current.clear()
+      }
+
+      if (mounted.current) {
+        setError(error.message || messageOf(error))
+
+        if (status === 409) {
+          reload()
+        }
+      }
     } finally {
-      setIsSaving(false)
+      savingRef.current = false
+
+      if (mounted.current) {
+        setIsSaving(false)
+      }
     }
   }
 
@@ -153,27 +265,50 @@ function ScheduleEditPage() {
           <div className='scheduleEdit__month--title' aria-live='polite'>
             {year}년 {month + 1}월
           </div>
+
           <div className='scheduleEdit__month--buttons'>
             <button
               type='button'
               className='scheduleEdit__month--previous'
               aria-label='이전 달'
-              disabled={isSaving}
+              disabled={isSaving || isLoading}
               onClick={() => setMonthIndex((previous) => previous - 1)}
             >
               <Icon name='month-prev' width={9} height={15} aria-hidden='true' />
             </button>
+
             <button
               type='button'
               className='scheduleEdit__month--next'
               aria-label='다음 달'
-              disabled={isSaving}
+              disabled={isSaving || isLoading}
               onClick={() => setMonthIndex((previous) => previous + 1)}
             >
               <Icon name='month-next' width={9} height={15} aria-hidden='true' />
             </button>
           </div>
         </div>
+
+        {isLoading && (
+          <p role='status' style={{ color: '#666666' }}>
+            일정을 불러오고 있어요.
+          </p>
+        )}
+
+        {loadError && (
+          <div role='alert'>
+            <p className='scheduleEdit__error' style={{ marginBottom: 10 }}>
+              {loadError}
+            </p>
+
+            <PopupButton
+              content='다시 불러오기'
+              color='gray'
+              disabled={isSaving || isLoading}
+              onClick={reload}
+            />
+          </div>
+        )}
 
         <div
           className={`scheduleEdit__calendar${selectedMode === 'PARTIAL' ? ' scheduleEdit__calendar--partial' : ''}`}
@@ -207,10 +342,11 @@ function ScheduleEditPage() {
               </div>
 
               {week.map((day, column) => {
-                if (!day)
+                if (!day) {
                   return (
                     <div className='scheduleEdit__day' aria-hidden='true' key={`empty-${column}`} />
                   )
+                }
 
                 const mode = days[day.date] ?? null
                 const endpoint = ranges.some(
@@ -251,7 +387,7 @@ function ScheduleEditPage() {
                         className={`scheduleEdit__day--number${mode ? ` scheduleEdit__day--${mode.toLowerCase()}` : ''}${endpoint ? ' scheduleEdit__day--endpoint' : ''}`}
                         aria-label={formatDate(day.date)}
                         aria-pressed={mode !== null}
-                        disabled={isSaving}
+                        disabled={isSaving || isLoading}
                         onClick={() => handleDate(day.date)}
                       >
                         {day.day}
@@ -271,7 +407,7 @@ function ScheduleEditPage() {
               key={item.mode}
               className={`scheduleEdit__filter${selectedMode === item.mode ? ' scheduleEdit__filter--selected' : ''}`}
               aria-pressed={selectedMode === item.mode}
-              disabled={isSaving}
+              disabled={isSaving || isLoading}
               onClick={() => handleMode(item.mode)}
             >
               <span
@@ -284,6 +420,7 @@ function ScheduleEditPage() {
                   aria-hidden='true'
                 />
               </span>
+
               <span className='scheduleEdit__filter--label'>{item.label}</span>
             </button>
           ))}
@@ -311,7 +448,7 @@ function ScheduleEditPage() {
                           placeholder='00:00'
                           autoComplete='off'
                           value={startTime}
-                          disabled={isSaving}
+                          disabled={isSaving || isLoading}
                           onChange={(event) => {
                             setStartTime(event.target.value)
                             setError('')
@@ -330,7 +467,7 @@ function ScheduleEditPage() {
                           placeholder='00:00'
                           autoComplete='off'
                           value={endTime}
-                          disabled={isSaving}
+                          disabled={isSaving || isLoading}
                           onChange={(event) => {
                             setEndTime(event.target.value)
                             setError('')
@@ -345,7 +482,7 @@ function ScheduleEditPage() {
                   type='button'
                   className='scheduleEdit__remove'
                   aria-label='선택한 날짜 지우기'
-                  disabled={isSaving}
+                  disabled={isSaving || isLoading}
                   onClick={clearSelection}
                 >
                   <Icon name='availability-remove' width={50} height={50} aria-hidden='true' />
@@ -357,6 +494,7 @@ function ScheduleEditPage() {
               <PopupButton
                 content={isSaving ? '저장 중...' : `돌봄 ${option.label}한 날 추가하기`}
                 color='blue'
+                disabled={isSaving || isLoading || Boolean(loadError) || !selection}
                 onClick={handleSave}
               />
             </div>

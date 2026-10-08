@@ -1,41 +1,43 @@
 import './SchedulePage.css'
 
 import { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import TitleHeader from '../../components/title-header/TitleHeader'
 import BottomButton from '../../components/bottom-button/BottomButton'
+import PopupButton from '../../components/popup-button/PopupButton'
 import { Icon } from '../../components/icon/Icon'
-import { currentUserId, getFamilyMembers } from '../../mocks/familyMock'
-import { formatDate, getTodayDate } from '../../mocks/todayAddMock'
+
+import { formatDate, getKstDate } from '../today/todayUtils'
 import {
   availabilityOptions,
   getCalendarWeeks,
   getVisibleRangeSegments,
   isAvailabilityVisible,
-} from '../../mocks/familyScheduleMock'
-
-import { getPersonalAvailability } from '../../mocks/scheduleMock'
+  toAvailabilityCalendar,
+} from './scheduleUtils'
+import { useScheduleAvailability } from './useScheduleAvailability'
 
 const weekdays = ['일', '월', '화', '수', '목', '금', '토']
 
 function SchedulePage() {
   const navigate = useNavigate()
-  const member = getFamilyMembers().find((item) => item.userId === currentUserId)
+
   const [initialMonth] = useState(() => {
-    const [year, month] = getTodayDate().split('-').map(Number)
+    const [year, month] = getKstDate().split('-').map(Number)
     return year * 12 + month - 1
   })
   const [monthOffset, setMonthOffset] = useState(0)
   const [selectedModes, setSelectedModes] = useState([])
 
-  if (!member) return <Navigate to='/family' replace />
-
   const monthIndex = initialMonth + monthOffset
   const year = Math.floor(monthIndex / 12)
   const month = monthIndex % 12
   const weeks = getCalendarWeeks(year, month)
-  const { ranges, days } = getPersonalAvailability(year, month)
+
+  const { items, user, error, isLoading, reload } = useScheduleAvailability(year, month, true)
+
+  const { ranges, days } = toAvailabilityCalendar(items)
 
   const handleFilter = (mode) => {
     setSelectedModes((previous) =>
@@ -45,13 +47,17 @@ function SchedulePage() {
 
   return (
     <div className='schedule__page'>
-      <TitleHeader content={`${member.name}(나) 님의 개인 일정`} subcontent='' />
+      <TitleHeader
+        content={user?.displayName ? `${user.displayName}(나) 님의 개인 일정` : '나의 개인 일정'}
+        subcontent=''
+      />
 
       <div className='schedule__content'>
         <div className='schedule__month'>
           <div className='schedule__month--title' aria-live='polite'>
             {year}년 {month + 1}월
           </div>
+
           <div className='schedule__month--buttons'>
             <button
               type='button'
@@ -62,6 +68,7 @@ function SchedulePage() {
             >
               <Icon name='month-prev' width={9} height={15} aria-hidden='true' />
             </button>
+
             <button
               type='button'
               className='schedule__month--next'
@@ -74,9 +81,23 @@ function SchedulePage() {
           </div>
         </div>
 
+        {isLoading && (
+          <p role='status' style={{ color: '#666666' }}>
+            일정을 불러오고 있어요.
+          </p>
+        )}
+
+        {error && (
+          <div role='alert'>
+            <p style={{ color: '#ff6666', marginBottom: 10 }}>{error}</p>
+            <PopupButton content='다시 불러오기' color='gray' onClick={reload} />
+          </div>
+        )}
+
         <div className='schedule__filters' role='group' aria-label='돌봄 가능 상태 필터'>
           {availabilityOptions.map((option) => {
             const selected = selectedModes.includes(option.mode)
+
             return (
               <button
                 type='button'
@@ -95,6 +116,7 @@ function SchedulePage() {
                     aria-hidden='true'
                   />
                 </span>
+
                 <span className='schedule__filter--label'>{option.label}</span>
               </button>
             )
@@ -135,10 +157,11 @@ function SchedulePage() {
               </div>
 
               {week.map((day, column) => {
-                if (!day)
+                if (!day) {
                   return (
                     <div className='schedule__day' aria-hidden='true' key={`empty-${column}`} />
                   )
+                }
 
                 const mode = days[day.date] ?? null
                 const visible = isAvailabilityVisible(mode, selectedModes)
@@ -149,6 +172,7 @@ function SchedulePage() {
                       range.mode === mode &&
                       (range.fromDate === day.date || range.toDate === day.date),
                   )
+
                 const label =
                   availabilityOptions.find((option) => option.mode === mode)?.label ?? '미등록'
 
@@ -169,6 +193,7 @@ function SchedulePage() {
                         />
                       </span>
                     )}
+
                     <span
                       className={`schedule__day--number${visible ? ` schedule__day--${mode.toLowerCase()}` : ''}${endpoint ? ' schedule__day--endpoint' : ''}`}
                     >
@@ -182,7 +207,11 @@ function SchedulePage() {
         </div>
       </div>
 
-      <BottomButton content='일정 수정하기' onClick={() => navigate('/scheduleedit')} />
+      <BottomButton
+        content='일정 수정하기'
+        disabled={isLoading || Boolean(error)}
+        onClick={() => navigate('/scheduleedit')}
+      />
     </div>
   )
 }
