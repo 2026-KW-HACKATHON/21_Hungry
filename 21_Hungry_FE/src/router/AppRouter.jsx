@@ -23,6 +23,11 @@ import TodayEditPage from '../pages/today-edit/TodayEditPage'
 import TodayAddPage from '../pages/today-add/TodayAddPage'
 
 import DocPage from '../pages/doc/DocPage'
+import DocRecordPage from '../pages/doc-record/DocRecordPage'
+import DocWritePage from '../pages/doc-write/DocWritePage'
+import DocSearchPage from '../pages/doc-search/DocSearchPage'
+import DocEditPage from '../pages/doc-edit/DocEditPage'
+import DocSelectPage from '../pages/doc-select/DocSelectPage'
 import SchdulePage from '../pages/schedule/SchedulePage'
 import ScheduleEditPage from '../pages/schedule-edit/ScheduleEditPage'
 import FamilyPage from '../pages/family/FamilyPage'
@@ -111,6 +116,11 @@ export const AppRouter = createBrowserRouter([
       { path: 'todayedit', element: <TodayEditPage /> },
       { path: 'todayadd', element: <TodayAddPage /> },
       { path: 'doc', element: <DocPage /> },
+      { path: 'doc-record', element: <DocRecordPage /> },
+      { path: 'doc-write', element: <DocWritePage /> },
+      { path: 'doc-search', element: <DocSearchPage /> },
+      { path: 'doc-edit', element: <DocEditPage /> },
+      { path: 'doc-select', element: <DocSelectPage /> },
       { path: 'schedule', element: <SchdulePage /> },
       { path: 'scheduleedit', element: <ScheduleEditPage /> },
       { path: 'family', element: <FamilyPage /> },
