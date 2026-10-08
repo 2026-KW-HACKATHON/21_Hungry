@@ -17,8 +17,7 @@
 }
 .recordAudioAnalysisPage__header h1 { margin: 0; color: #000; font-size: 24px; }
 .recordAudioAnalysisPage__content { padding: 0 16px; }
-.recordAudioAnalysisPage__details,
-.recordAudioAnalysisPage__sharing {
+.recordAudioAnalysisPage__details {
   margin: 0;
   padding: 22px 20px;
   border: 2px solid #F2F2F2;
@@ -29,15 +28,8 @@
 .recordAudioAnalysisPage__details dt { flex-shrink: 0; color: #B3B3B3; font-size: 16px; }
 .recordAudioAnalysisPage__details dd { margin: 0; color: #666; font-size: 16px; text-align: right; overflow-wrap: anywhere; }
 .recordAudioAnalysisPage__memo { margin: 16px 0; padding: 24px; border-radius: 20px; background-color: #F7F7F7; }
-.recordAudioAnalysisPage__memo h2,
-.recordAudioAnalysisPage__sharing h2 { margin: 0 0 16px; color: #404040; font-size: 16px; }
+.recordAudioAnalysisPage__memo h2 { margin: 0 0 16px; color: #404040; font-size: 16px; }
 .recordAudioAnalysisPage__memo p { color: #999; font-size: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
-.recordAudioAnalysisPage__member { position: relative; display: flex; align-items: center; gap: 14px; color: #B3B3B3; font-size: 16px; cursor: pointer; }
-.recordAudioAnalysisPage__member + .recordAudioAnalysisPage__member { margin-top: 12px; }
-.recordAudioAnalysisPage__member svg { flex-shrink: 0; }
-.recordAudioAnalysisPage__member input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.recordAudioAnalysisPage__member input:focus-visible + svg { outline: 2px solid var(--color-blue); outline-offset: 3px; border-radius: 6px; }
-.recordAudioAnalysisPage__dot { margin: 0 10px; color: #D5D5D5; }
 .recordAudioAnalysisPage__notice { margin: 16px 10px 0; color: #D5D5D5; font-size: 14px; }
 .recordAudioAnalysisPage__message { margin: 12px 10px 0; color: #666; font-size: 14px; }
 .recordAudioAnalysisPage .bottomButton__container { border-top: 2px solid var(--color-border); }
@@ -70,3 +62,5 @@
 .recordAudioAnalysisPage__highlights li > span { display: flex; justify-content: center; align-items: center; width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: #CCEFFF; color: #00ADFF; font-size: 14px; }
 .recordAudioAnalysisPage__highlights li > p { padding-top: 3px; color: #999; font-size: 16px; white-space: pre-wrap; overflow-wrap: anywhere; min-width: 0; }
 .recordAudioAnalysisPage__legal { margin-bottom: 20px; }
+
+.recordAudioAnalysisPage__refresh { margin: 12px 10px; padding: 10px 16px; border: 1px solid var(--color-border); border-radius: 12px; color: #404040; background: #fff; cursor: pointer; }

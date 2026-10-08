@@ -1,85 +1,198 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import { Icon } from '../../components/icon/Icon'
 import './RecordAudioAnalysisPage.css'
 
-// 시안용 가족 목록. 가족 조회 API 연결 시 실제 구성원으로 교체합니다.
-const previewMembers = [
-  { id: 'child2', name: '자녀2', role: '공동돌봄자녀' },
-  { id: 'child3', name: '자녀3', role: '공동돌봄자녀' },
-]
 const companionLabels = { self: '본인', other: '다른 자녀', none: '동행 없음' }
+const detailSections = [
+  ['symptoms', '증상'],
+  ['tests', '검사'],
+  ['medicationMentions', '약 관련 내용'],
+  ['precautions', '주의 사항'],
+  ['followUps', '추후 진료'],
+]
+
+async function getData(path, accessToken, signal) {
+  const response = await fetch(`/api/v1${path}`, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+    cache: 'no-store',
+    signal,
+  })
+  const body = await response.json().catch(() => null)
+  if (!response.ok) {
+    const messages = {
+      401: '로그인이 만료됐어요. 다시 로그인해 주세요.',
+      403: '이 기록을 볼 수 있는 권한이 없어요.',
+      404: '기록을 찾을 수 없거나 삭제된 기록이에요.',
+    }
+    throw new Error(messages[response.status] || body?.error?.message || '기록을 불러오지 못했어요.')
+  }
+  if (!body?.data) throw new Error('서버 응답을 확인할 수 없어요.')
+  return body.data
+}
+
+function getProgress(record) {
+  const jobs = (record.jobs ?? []).filter((job) => job.inputVersion === record.inputVersion)
+  const failed = jobs.find((job) => job.status === 'FAILED')
+  if (record.processingState === 'FAILED' || failed) {
+    return { done: true, message: failed?.error?.message || '녹음 처리에 실패했어요. 잠시 후 상태를 다시 확인해 주세요.' }
+  }
+  if (['READY', 'NEEDS_REVIEW'].includes(record.processingState)) {
+    if (record.isSummaryStale || record.summary?.inputVersion !== record.inputVersion) {
+      return { done: true, message: '최신 분석 결과가 아직 없어요. 잠시 후 다시 조회해 주세요.' }
+    }
+    return {
+      done: true,
+      message: record.processingState === 'NEEDS_REVIEW'
+        ? '분석이 완료됐어요. 약·일정 등 확인이 필요한 항목이 있어요.'
+        : '분석이 완료됐어요. 기록은 서버에 저장되어 있어요.',
+    }
+  }
+  if (record.processingState === 'EMPTY') {
+    return { done: true, message: '이 기록에 업로드된 자료가 없어요.' }
+  }
+  if (jobs.length && jobs.every((job) => job.status === 'OBSOLETE')) {
+    return { done: true, message: '입력이 변경되어 이전 작업이 종료됐어요. 최신 상태를 다시 조회해 주세요.' }
+  }
+  const messages = {
+    TRANSCRIBING: '녹음을 글로 변환하고 있어요.',
+    OCR_PROCESSING: '첨부 자료를 읽고 있어요.',
+    ANALYZING: '진료 내용을 분석하고 있어요.',
+  }
+  return { done: false, message: messages[record.processingState] || '분석 작업을 기다리고 있어요.' }
+}
 
 function RecordAudioAnalysisPage() {
   const navigate = useNavigate()
   const { state } = useLocation()
   const record = state ?? {}
+  const encounterId = record.encounterId
+  const accessToken = sessionStorage.getItem('accessToken')
+  const [result, setResult] = useState(null)
+  const [refresh, setRefresh] = useState(0)
+  const [message, setMessage] = useState('')
   const seconds = Math.max(0, Math.floor(Number(record.seconds) || 0))
   const duration = [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
     .map((value) => String(value).padStart(2, '0')).join(':')
-  const [sharedWith, setSharedWith] = useState(record.sharedWith ?? previewMembers.map((member) => member.id))
-  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    if (!encounterId || !accessToken) return
+    const controller = new AbortController()
+    const { signal } = controller
+    const textCache = new Map()
+    const startedAt = Date.now()
+    let timer
+
+    async function poll() {
+      try {
+        const detail = await getData(`/encounters/${encodeURIComponent(encounterId)}`, accessToken, signal)
+        const sources = (detail.sources ?? []).filter((source) => source.sourceType === 'AUDIO' && !source.removedAt)
+        const texts = await Promise.all(sources.map(async (source) => {
+          if (source.status !== 'READY') return ''
+          const cacheKey = `${source.id}:${source.textVersion}`
+          if (!textCache.has(cacheKey)) {
+            const text = await getData(`/sources/${encodeURIComponent(source.id)}/text`, accessToken, signal)
+            if (text.status === 'READY') textCache.set(cacheKey, text.text ?? '')
+          }
+          return textCache.get(cacheKey) ?? ''
+        }))
+        if (signal.aborted) return
+        const progress = getProgress(detail)
+        const timedOut = Date.now() - startedAt >= 10 * 60 * 1000
+        setResult({
+          encounterId,
+          accessToken,
+          refresh,
+          detail,
+          transcript: texts.filter(Boolean).join('\n\n'),
+          message: timedOut && !progress.done
+            ? '처리가 오래 걸리고 있어요. 서버 처리는 계속되며 다시 조회할 수 있어요.'
+            : progress.message,
+          stopped: progress.done || timedOut,
+        })
+        if (!progress.done && !timedOut) {
+          timer = setTimeout(poll, Date.now() - startedAt > 60000 ? 5000 : 2000)
+        }
+      } catch (error) {
+        if (signal.aborted) return
+        setResult({
+          encounterId,
+          accessToken,
+          refresh,
+          detail: null,
+          transcript: '',
+          message: error instanceof Error ? error.message : '기록 조회에 실패했어요.',
+          stopped: true,
+        })
+      }
+    }
+
+    timer = setTimeout(poll, 0)
+    return () => {
+      controller.abort()
+      clearTimeout(timer)
+    }
+  }, [encounterId, accessToken, refresh])
+
+  const current = result?.encounterId === encounterId && result?.accessToken === accessToken && result?.refresh === refresh ? result : null
+  const detail = current?.detail
+  const summary = detail && !detail.isSummaryStale && detail.summary?.inputVersion === detail.inputVersion
+    ? detail.summary : null
+  const highlights = detailSections.flatMap(([key, label]) =>
+    (summary?.details?.[key] ?? []).filter((item) => item.text).map((item) => `${label}: ${item.text}`)
+  )
+  const feedback = !encounterId ? '기록 ID가 없어요. 녹음 업로드 후 이 화면으로 이동해 주세요.'
+    : !accessToken ? '로그인이 필요해요.' : current?.message || '기록을 불러오고 있어요.'
 
   return (
     <main className="recordAudioAnalysisPage">
       <header className="recordAudioAnalysisPage__header">
-        <button
-          type="button"
-          className="recordAudioAnalysisPage__back"
-          aria-label="진료 녹음하기로 돌아가기"
-          onClick={() => navigate('/record/audio', { state: { ...record, sharedWith } })}
-        >
+        <button type="button" className="recordAudioAnalysisPage__back" aria-label="진료 녹음하기로 돌아가기"
+          onClick={() => navigate('/record/audio', { state: record })}>
           <Icon name="back-button" width={11} height={19} aria-hidden="true" />
         </button>
         <h1>진료 기록 분석</h1>
       </header>
       <div className="recordAudioAnalysisPage__content">
         <dl className="recordAudioAnalysisPage__details">
-          <div><dt>병원</dt><dd>{record.hospital || '-'}</dd></div>
+          <div><dt>병원</dt><dd>{detail ? detail.hospitalName || '-' : record.hospital || '-'}</dd></div>
           <div><dt>진료 과목</dt><dd>{record.department || '-'}</dd></div>
           <div><dt>동행한 자녀</dt><dd>{companionLabels[record.companion] || '-'}</dd></div>
         </dl>
         <div className="recordAudioAnalysisPage__duration" aria-label="녹음 시간">{duration}</div>
         <section className="recordAudioAnalysisPage__summary" aria-labelledby="audio-summary-title">
           <h2 id="audio-summary-title">쉬운 요약</h2>
-          <p>{record.summary || '-'}</p>
+          <p>{summary?.text || '-'}</p>
         </section>
         <section className="recordAudioAnalysisPage__highlights" aria-labelledby="audio-highlights-title">
           <h2 id="audio-highlights-title">진료 핵심</h2>
           <ol>
-            {Array.from({ length: 6 }, (_, index) => (
-              <li key={index}><span aria-hidden="true">{index + 1}</span><p>{record.highlights?.[index] || '-'}</p></li>
+            {(highlights.length ? highlights : ['-']).map((text, index) => (
+              <li key={index}><span aria-hidden="true">{index + 1}</span><p>{text}</p></li>
             ))}
           </ol>
         </section>
         <section className="recordAudioAnalysisPage__memo" aria-labelledby="audio-transcript-title">
           <h2 id="audio-transcript-title">녹음 원문</h2>
-          <p>{record.transcript || '-'}</p>
+          <p>{current?.transcript || '-'}</p>
         </section>
         <p className="recordAudioAnalysisPage__notice recordAudioAnalysisPage__legal">
           내가 직접 참여한 진료 대화만 녹음할 수 있어요. 공개되지 않은 다른 사람들 사이의 대화를 몰래 녹음하는 건 통신비밀보호법 제14조로 금지되어 있어요.
         </p>
-        <section className="recordAudioAnalysisPage__sharing" aria-labelledby="analysis-sharing-title">
-          <h2 id="analysis-sharing-title">이 문서를 공유할 가족 구성원</h2>
-          {previewMembers.map((member) => (
-            <label className="recordAudioAnalysisPage__member" key={member.id}>
-              <input
-                type="checkbox"
-                checked={sharedWith.includes(member.id)}
-                onChange={(event) => setSharedWith((previous) => event.target.checked
-                  ? [...previous, member.id]
-                  : previous.filter((id) => id !== member.id))}
-              />
-              <Icon name={sharedWith.includes(member.id) ? 'checkbox-checked' : 'checkbox-default'} width={26} height={28} aria-hidden="true" />
-              <span>{member.name}<span className="recordAudioAnalysisPage__dot">·</span>{member.role}</span>
-            </label>
-          ))}
-        </section>
-        <p className="recordAudioAnalysisPage__notice">저장된 기록은 의료 문서 보관함 탭에서 조회할 수 있어요</p>
-        <p className="recordAudioAnalysisPage__message" role="status">{message}</p>
+        <p className="recordAudioAnalysisPage__notice">업로드한 기록은 서버에 저장되어 있어요.</p>
+        <p className="recordAudioAnalysisPage__message" role="status">{message || feedback}</p>
+        {current?.stopped && (
+          <button type="button" className="recordAudioAnalysisPage__refresh" onClick={() => {
+            setMessage('')
+            setRefresh((value) => value + 1)
+          }}>상태 다시 조회</button>
+        )}
       </div>
-      <BottomButton content="저장하기" onClick={() => setMessage('기록 저장 기능은 준비 중이에요.')} />
+      <BottomButton content="저장하기" onClick={() => {
+        if (!detail) { setMessage('기록 조회가 완료된 뒤 다시 눌러 주세요.'); return }
+        navigate('/doc', { state: { encounterId } })
+      }} />
     </main>
   )
 }
