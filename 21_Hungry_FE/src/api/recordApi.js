@@ -1,5 +1,5 @@
 const serverBaseUrl = (import.meta.env?.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '')
-const apiBaseUrl = import.meta.env?.DEV || !serverBaseUrl
+export const apiBaseUrl = import.meta.env?.DEV || !serverBaseUrl
   ? '/api/v1'
   : serverBaseUrl.endsWith('/api/v1') ? serverBaseUrl
     : serverBaseUrl.endsWith('/api') ? `${serverBaseUrl}/v1` : `${serverBaseUrl}/api/v1`

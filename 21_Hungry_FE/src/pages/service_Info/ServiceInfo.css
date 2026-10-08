@@ -2,7 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: left;
-    height: 100%;
+    min-height: 100dvh;
+    max-width: 450px;
+    margin: 0 auto;
     width: 100%;
 }
 
@@ -35,3 +37,10 @@
     color: #BFBFBF;
     text-align: center;
 }
+
+.ServiceInfoPage__footer { margin-top: auto; padding: 24px 4% max(16px, env(safe-area-inset-bottom)); }
+.ServiceInfoPage__footer .bottomButton__container {
+  position: static; left: auto; bottom: auto; transform: none;
+  width: 100%; max-width: none; height: auto; padding: 0 0 5px; border-top: 0;
+}
+.ServiceInfoPage__footer .ServiceInfoPage__description { width: 100%; height: auto; margin: 20px 0 0; }

@@ -22,23 +22,9 @@
   color: #BFBFBF;
 }
 
-.SignupServiceStartPage__footer {
-  flex-shrink: 0;
-  width: 100%;
-  margin-top: auto;
-  padding: 24px 4% max(28px, env(safe-area-inset-bottom));
-}
 
-.SignupServiceStartPage__footer .bottomButton__container {
-  position: static;
-  bottom: auto;
-  left: auto;
-  transform: none;
-  width: 100%;
-  max-width: none;
-  height: auto;
-  padding: 0;
-}
+
+
 
 .SignupServiceStartPage__bottomsubtitle {
   font-family: var(--font-extrabold);

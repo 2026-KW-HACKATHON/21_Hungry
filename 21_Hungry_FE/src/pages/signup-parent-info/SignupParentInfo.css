@@ -77,23 +77,9 @@
   opacity: 1;
 }
 
-.SignupParentInfo__footer {
-  flex-shrink: 0;
-  width: 100%;
-  margin-top: auto;
-  padding: 24px 4% max(64px, env(safe-area-inset-bottom));
-}
 
-.SignupParentInfo__footer .bottomButton__container {
-  position: static;
-  bottom: auto;
-  left: auto;
-  transform: none;
-  width: 100%;
-  max-width: none;
-  height: auto;
-  padding: 0;
-}
+
+
 
 .SignupParentInfo__footer[data-complete='false'] .bottomButton__button {
   opacity: 0.5;
