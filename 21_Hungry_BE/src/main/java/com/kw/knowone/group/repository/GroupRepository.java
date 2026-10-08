@@ -129,14 +129,14 @@ public class GroupRepository {
     }
 
     public void completeParentProfile(CareGroup group, UUID childUserId, String relation, String name, int birthYear, Instant now) {
+        jdbcTemplate.update("UPDATE app_user SET display_name=?,updated_at=?,version=version+1 WHERE id=?",
+                name,Timestamp.from(now),group.recipientUserId());
         int changed=jdbcTemplate.update("""
                 UPDATE care_group SET parent_relation=?,parent_birth_year=?,parent_profile_completed_at=?,
                   parent_profile_completed_by=?,updated_at=?,version=version+1
                 WHERE id=? AND version=? AND parent_profile_completed_at IS NULL
                 """,relation,birthYear,Timestamp.from(now),childUserId,Timestamp.from(now),group.id(),group.version());
         if(changed!=1) throw new IllegalStateException("Concurrent parent profile update");
-        jdbcTemplate.update("UPDATE app_user SET display_name=?,updated_at=?,version=version+1 WHERE id=?",
-                name,Timestamp.from(now),group.recipientUserId());
     }
 
     public JoinRow insertJoinRequest(UUID id, UUID groupId, UUID userId, String status, String decisionKind,

@@ -42,6 +42,28 @@ class ApiV12IntegrationTests {
         assertEquals("PARENT_PROFILE_PENDING",data(send("GET","/api/v1/me",null,token,null)).get("onboardingState").asText());
     }
 
+    @Test void firstChildJoinCompletesParentProfileWithoutTriggerFailure()throws Exception{
+        JsonNode parent=data(send("POST","/api/v1/auth/signup",
+                "{\"phoneNumber\":\"010-9999-0011\",\"accountRole\":\"PARENT\"}",null,null));
+        UUID parentId=UUID.fromString(parent.get("user").get("id").asText());
+        UUID groupId=UUID.fromString(parent.get("groupId").asText());
+        assertEquals(201,send("POST","/api/v1/auth/signup",
+                "{\"phoneNumber\":\"010-9999-0012\",\"accountRole\":\"CHILD\",\"displayName\":\"테스트 자녀\"}",null,null).statusCode());
+        String childToken=data(send("POST","/api/v1/auth/login",
+                "{\"phoneNumber\":\"01099990012\"}",null,null)).get("accessToken").asText();
+
+        String body="{\"recipientUserId\":\""+parentId+"\",\"parentProfile\":{"+
+                "\"relation\":\"MOTHER\",\"name\":\"테스트 부모\",\"birthYear\":1960}}";
+        HttpResponse<String> response=send("POST","/api/v1/care-groups/"+groupId+"/join",body,childToken,"first-child-join");
+
+        assertEquals(201,response.statusCode(),response.body());
+        JsonNode joined=data(response);
+        assertEquals("ACTIVE",joined.get("membership").get("status").asText());
+        assertEquals("READY",joined.get("nextAction").asText());
+        assertEquals("테스트 부모",jdbc.queryForObject("SELECT display_name FROM app_user WHERE id=?",String.class,parentId));
+        assertNotNull(jdbc.queryForObject("SELECT parent_profile_completed_at FROM care_group WHERE id=?",java.sql.Timestamp.class,groupId));
+    }
+
     @Test void manualOutsideHorizonCreatesOneTaskWithoutImmediateNoCandidatePushAndCalendarIsComplete()throws Exception{
         String token=login("01000000002");LocalDate date=LocalDate.now(KST).plusDays(20);
         String body="{\"kind\":\"OTHER\",\"title\":\"원거리 단건\",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\"10:00\",\"durationMinutes\":30}}";
