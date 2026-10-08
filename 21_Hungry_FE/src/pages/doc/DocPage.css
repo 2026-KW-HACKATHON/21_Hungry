@@ -2,14 +2,15 @@
   width: 100%;
   height: 100%;
   min-height: 0;
-  padding-bottom: 178px;
+  padding-bottom: 182px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
 }
 
 .doc__header {
   width: 100%;
-  padding: 50px 16px 15px;
+  padding: 50px 16px 25px;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -31,7 +32,7 @@
 
 .doc__search {
   height: 50px;
-  padding: 0 13px;
+  padding: 0 13px 0 15px;
   border: 2px solid var(--color-gray-button);
   border-radius: 15px;
   background-color: #f7f7f7;
@@ -40,12 +41,14 @@
   gap: 12px;
 }
 
-.doc__search > svg {
+.doc__search > svg,
+.doc__search > button {
   flex-shrink: 0;
 }
 
 .doc__search > input {
   width: 100%;
+  flex: 1;
   min-width: 0;
   font-size: 16px;
   color: #666666;
@@ -62,6 +65,7 @@
   display: flex;
   gap: 10px;
   overflow-x: auto;
+  overflow-y: hidden;
   overscroll-behavior-x: contain;
 }
 
@@ -186,19 +190,7 @@
 .doc__card .cardIcon__container > svg {
   position: absolute;
   top: 16px;
-  left: 29.5px;
-}
-
-.doc__card--prescription .cardIcon__container > svg {
-  left: 28.5px;
-}
-
-.doc__card--other .cardIcon__container > svg {
   left: 29px;
-}
-
-.doc__card--visit .cardIcon__container > svg {
-  left: 31px;
 }
 
 .doc__card .cardIcon__content {
@@ -239,14 +231,6 @@
   overflow-wrap: anywhere;
 }
 
-.doc__card .cardInfo__info--detail:first-child .cardInfo__info--label {
-  width: 50px;
-}
-
-.doc__card .cardInfo__info--detail:first-child .cardInfo__info--value {
-  white-space: nowrap;
-}
-
 .doc__card--buttons {
   display: flex;
   flex-direction: column;
@@ -276,14 +260,40 @@
   line-height: 1.4;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 360px) {
   .doc__card .cardInfo__info {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+    gap: 12px;
   }
 
-  .doc__card .cardInfo__info--details {
-    flex-basis: 100%;
+  .doc__card .cardInfo__info--label {
+    width: 52px;
   }
+
+  .doc__card .cardInfo__info--detail {
+    font-size: 14px;
+  }
+}
+
+.doc__search > input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.doc__page .bottomButton__container {
+  height: 92px;
+  bottom: 90px;
+  padding-top: 16px;
+}
+
+.doc__status,
+.doc__notice {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.doc__feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 5px;
 }

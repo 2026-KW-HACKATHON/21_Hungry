@@ -25,7 +25,7 @@
 
 .docRecord__card {
   width: 100%;
-  padding: 18px;
+  padding: 20px;
   border: 2px solid #f2f2f2;
   border-radius: 20px;
 }
@@ -142,7 +142,7 @@
 
 .docRecord__summary,
 .docRecord__keyPoints {
-  padding: 23px;
+  padding: 25px;
   border: 2px solid #f2f2f2;
 }
 
@@ -219,7 +219,7 @@
 }
 
 .docRecord__notice {
-  width: calc(100% - 20px);
+  width: 100%;
   color: #d9d9d9;
   font-size: 14px;
   line-height: 1.4;
@@ -230,5 +230,35 @@
 .docRecord__error {
   color: var(--color-red);
   font-size: 14px;
+  line-height: 1.4;
+}
+
+.docRecord__status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #666666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.docRecord__duration {
+  font-variant-numeric: tabular-nums;
+}
+
+.docRecord__summary > p,
+.docRecord__transcript > p,
+.docRecord__keyPoints li > p {
+  white-space: pre-wrap;
+}
+
+.docRecord__page .backHeader__button {
+  align-self: flex-start;
+  height: 19px;
+  display: flex;
+  align-items: center;
+}
+
+.docRecord__page .backHeader__title {
   line-height: 1.4;
 }
