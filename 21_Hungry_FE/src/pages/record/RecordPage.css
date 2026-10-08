@@ -62,32 +62,8 @@
   color: #B3B3B3;
 }
 
-.recordPage__modes {
-  display: flex;
-  gap: 10px;
-  margin: 14px 0 18px;
-}
-
-.recordPage__modes button {
-  flex: 1;
-  min-width: 0;
-  height: 46px;
-  border: 2px solid #E5E5E5;
-  border-radius: 16px;
-  box-shadow: 0 4px 0 #E5E5E5;
-  background-color: #fff;
-  color: #4D4D4D;
-  font-size: 16px;
-}
-
-.recordPage__modes button[aria-pressed='true'] {
-  border-color: #A7EF73;
-  box-shadow: 0 4px 0 #A7EF73;
-  background-color: #D5FFB5;
-  color: #58A700;
-}
-
 .recordPage__checklist {
+  margin-top: 16px;
   padding: 22px 20px;
   border: 2px solid #F2F2F2;
   border-radius: 22px;
@@ -161,8 +137,4 @@
 @media (max-width: 360px) {
   .recordPage__checklist { padding: 20px 16px; }
   .recordPage__check { gap: 10px; font-size: 14px; }
-}
-
-.recordPage__checklist--manual .recordPage__check input:checked ~ span {
-  color: #B3B3B3;
 }

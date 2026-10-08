@@ -31,8 +31,6 @@ import FamilySchedulePage from '../pages/family-schedule/FamilySchedulePage'
 import RecordPage from '../pages/record/RecordPage'
 import RecordAudioPage from '../pages/record-audio/RecordAudioPage'
 import RecordAudioAnalysisPage from '../pages/record-audio-analysis/RecordAudioAnalysisPage'
-import RecordWritePage from '../pages/record-write/RecordWritePage'
-import RecordAnalysisPage from '../pages/record-analysis/RecordAnalysisPage'
 
 export const AppRouter = createBrowserRouter([
   {
@@ -121,8 +119,6 @@ export const AppRouter = createBrowserRouter([
       { path: 'record', element: <RecordPage /> },
       { path: 'record/audio', element: <RecordAudioPage /> },
       { path: 'record/audio/analysis', element: <RecordAudioAnalysisPage /> },
-      { path: 'record/write', element: <RecordWritePage /> },
-      { path: 'record/analysis', element: <RecordAnalysisPage /> },
     ],
   },
 ])
