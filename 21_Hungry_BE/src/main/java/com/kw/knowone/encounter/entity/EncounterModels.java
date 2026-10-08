@@ -10,7 +10,7 @@ public final class EncounterModels {
             String hospitalName,String title,int inputVersion,Instant deletedAt,Instant createdAt,long version){ }
     public record Asset(UUID id,UUID groupId,UUID uploadedBy,String purpose,String objectKey,String originalName,
             String mediaType,long byteSize,byte[] sha256,String state,Instant expiresAt,Instant deletedAt,int deleteAttempts){ }
-    public record Source(UUID id,UUID groupId,UUID encounterId,UUID assetId,String sourceType,String extractedText,
+    public record Source(UUID id,UUID groupId,UUID encounterId,UUID assetId,String sourceType,String documentType,String extractedText,
             int textVersion,String status,Instant removedAt,Instant createdAt,Asset asset){ }
     public record Job(UUID id,UUID groupId,UUID encounterId,UUID sourceId,String jobType,int inputVersion,String dedupKey,
             String status,int attemptCount,Instant availableAt,UUID leaseToken,Instant leaseUntil,String provider,String model,

@@ -48,7 +48,8 @@ public class TaskGenerationService {
         List<Occurrence> created=new ArrayList<>();
         for(Series series:seriesValues){
             LocalDate from=series.firstDate().isAfter(today)?series.firstDate():today;
-            LocalDate until=series.lastDate()==null?horizon:series.lastDate().plusDays(1).isBefore(horizon)?series.lastDate().plusDays(1):horizon;
+            LocalDate until="ONCE".equals(series.recurrence())?series.firstDate().plusDays(1):
+                    series.lastDate()==null?horizon:series.lastDate().plusDays(1).isBefore(horizon)?series.lastDate().plusDays(1):horizon;
             for(LocalDate date=from;date.isBefore(until);date=date.plusDays(1)){
                 if(series.stopFromDate()!=null&&!date.isBefore(series.stopFromDate()))break;
                 if(!occurs(series,date))continue;

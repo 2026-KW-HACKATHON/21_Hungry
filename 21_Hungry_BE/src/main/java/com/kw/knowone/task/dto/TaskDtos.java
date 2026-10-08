@@ -29,7 +29,8 @@ public final class TaskDtos {
             OffsetDateTime endsAt, OffsetDateTime dueAt, String executionStatus, UserRef assignee,
             String assignmentOrigin, Handoff openHandoff, boolean isOverdue, boolean isOverride,
             List<Medication> medications, Completion completion, Cancellation cancellation,
-            List<UUID> sourceEncounterIds, long version) { }
+            List<UUID> sourceEncounterIds, long version, String myUnassignedState,
+            boolean canAccept, boolean canDecline, boolean canRelease) { }
     public record Page<T>(List<T> items, String nextCursor, boolean hasMore) { }
     public record Rule(@NotNull String recurrence, @NotNull LocalDate firstDate, LocalDate lastDate,
             @NotNull List<@Min(1) @Max(7) Integer> weekdays, @NotNull LocalTime localTime,
@@ -67,6 +68,8 @@ public final class TaskDtos {
     public record HandoffAcceptRequest(@Min(0) long expectedVersion,
             @Min(0) long expectedOccurrenceVersion) { }
     public record HandoffResponse(Task occurrence, Handoff handoff) { }
+    public record HandoffDeclineRequest(@Min(0) long expectedVersion,@Min(0) long expectedTaskVersion) { }
+    public record HandoffDeclineResponse(Task occurrence,UUID handoffId,String response,OffsetDateTime respondedAt) { }
     public record HandoffItem(UUID id, UUID occurrenceId, String reason, UserRef previousAssignee,
             UserRef requestedBy, String status, UserRef acceptedBy, OffsetDateTime closedAt,
             String closeReason, long version, Task occurrence) { }

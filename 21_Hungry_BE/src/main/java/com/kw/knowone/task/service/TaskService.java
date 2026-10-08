@@ -40,7 +40,7 @@ import tools.jackson.databind.ObjectMapper;
 @Service
 public class TaskService {
     private static final ZoneId KST = ZoneId.of("Asia/Seoul");
-    private static final Set<String> GENERAL_KINDS = Set.of("HOSPITAL", "EXAM", "PICKUP", "OTHER");
+    private static final Set<String> GENERAL_KINDS = Set.of("HOSPITAL", "EXAM", "OTHER");
     private final TaskRepository repository;
     private final GroupRepository groups;
     private final GroupEventRepository events;
@@ -274,6 +274,7 @@ public class TaskService {
         return mutations.execute(userId,"T10:"+occurrenceId,key,request,()->authorizeOccurrence(occurrenceId,userId),()->{
             Occurrence before=requireOccurrence(occurrenceId);requireMutablePending(before,request.expectedVersion(),true);
             if(before.assigneeUserId()==null)throw invalidState("담당자가 있는 일정만 인계를 요청할 수 있습니다.");
+            if(!before.assigneeUserId().equals(userId))throw new ApiException(HttpStatus.FORBIDDEN,"NOT_ASSIGNEE","현재 담당자만 인계할 수 있습니다.");
             if(repository.findOpenHandoff(before.id()).isPresent())throw invalidState("이미 열린 인계 요청이 있습니다.");
             if(repository.releaseAssignee(before.id(),before.version())!=1)throw versionConflict(before.version());
             Instant now=clock.instant();UUID id=repository.openHandoff(before.groupId(),before.id(),"USER_REQUEST",before.assigneeUserId(),userId);
@@ -298,6 +299,7 @@ public class TaskService {
             if(!"PENDING".equals(occurrence.status())||occurrence.assigneeUserId()!=null)throw new ApiException(HttpStatus.CONFLICT,"ALREADY_ASSIGNED","이미 담당자가 정해졌습니다.");
             if(!occurrence.endsAt().isAfter(clock.instant()))throw new ApiException(HttpStatus.CONFLICT,"TASK_OVERDUE","기한이 지난 일정입니다.");
             GroupMember member=groups.findActiveMembership(occurrence.groupId(),userId).orElseThrow(()->new ApiException(HttpStatus.FORBIDDEN,"NOT_MEMBER","ACTIVE 구성원이 아닙니다."));
+            if(repository.hasDeclined(before.id(),userId))throw new ApiException(HttpStatus.CONFLICT,"RESPONSE_ALREADY_DECLINED","이미 거절한 미지정 사건입니다.");
             if(!assignments.isAvailable(member.userId(),occurrence.startsAt(),occurrence.endsAt()))throw new ApiException(HttpStatus.CONFLICT,"NOT_AVAILABLE","가능 시간에 포함되지 않습니다.");
             if(assignments.hasConflict(member.userId(),occurrence.startsAt(),occurrence.endsAt(),occurrence.id()))throw new ApiException(HttpStatus.CONFLICT,"TIME_CONFLICT","다른 일정과 충돌합니다.");
             Instant now=clock.instant();if(repository.acceptHandoff(before.id(),before.version(),occurrence.id(),occurrence.version(),userId,now)!=1)throw new ApiException(HttpStatus.CONFLICT,"ALREADY_ASSIGNED","이미 담당자가 정해졌습니다.");
@@ -306,6 +308,18 @@ public class TaskService {
             events.audit(occurrence.groupId(),userId,"HANDOFF_ACCEPTED","TASK_OCCURRENCE",occurrence.id(),event(occurrence),event(after),requestId);
             events.taskNotification(occurrence.groupId(),"HANDOFF_ACCEPTED","handoff:"+before.id()+":accepted",occurrence.id(),before.id(),null,after.version(),Map.of("schemaVersion",1,"acceptedBy",userId),now);events.syncOccurrenceNotifications(after.id(),now);
             return new MutationResponse(200,DataResponse.of(new TaskDtos.HandoffResponse(dto(after),handoffDto(afterHandoff))));});
+    }
+
+    public IdempotentResult declineHandoff(UUID handoffId,UUID userId,TaskDtos.HandoffDeclineRequest request,String key,UUID requestId){
+        return mutations.execute(userId,"T16:"+handoffId,key,request,()->authorizeHandoff(handoffId,userId),()->{
+            Handoff handoff=repository.findHandoff(handoffId).orElseThrow(this::notFound);
+            Occurrence occurrence=requireOccurrence(handoff.occurrenceId());requireMutablePending(occurrence,request.expectedTaskVersion(),true);
+            if(handoff.version()!=request.expectedVersion())throw versionConflict(handoff.version());
+            if(!"OPEN".equals(handoff.status())||occurrence.assigneeUserId()!=null)throw invalidState("현재 미지정 사건만 거절할 수 있습니다.");
+            Instant responded=repository.declineHandoff(occurrence.groupId(),handoffId,userId,clock.instant());
+            repository.cancelPendingNotificationsForUser(occurrence.id(),userId);
+            return new MutationResponse(200,DataResponse.of(new TaskDtos.HandoffDeclineResponse(
+                    dto(occurrence,userId),handoffId,"DECLINED",atKst(responded))));});
     }
 
     public TaskDtos.Page<TaskDtos.HandoffItem> handoffs(UUID groupId,UUID userId,String status,Integer requestedLimit,String cursor){
@@ -422,12 +436,11 @@ public class TaskService {
     private record DeletePlan(List<Occurrence> cancel,int preservedCompleted,int movedOverrides,boolean affectsUnmaterialized){}
 
     private void validateCreate(TaskDtos.CreateRequest request){
-        if(!GENERAL_KINDS.contains(request.kind())&&!"MEDICATION".equals(request.kind()))throw validation("kind가 올바르지 않습니다.");
+        if("MEDICATION".equals(request.kind()))throw new ApiException(HttpStatus.UNPROCESSABLE_ENTITY,"MANUAL_MEDICATION_NOT_ALLOWED","복약 일정은 처방 확인 흐름에서만 생성할 수 있습니다.");
+        if(!GENERAL_KINDS.contains(request.kind()))throw validation("kind가 올바르지 않습니다.");
         validateRule(request.rule());
-        if("MEDICATION".equals(request.kind())){
-            if(request.medicationIds()==null||request.medicationIds().isEmpty())throw validation("MEDICATION에는 확정 처방이 필요합니다.");
-            if(request.rule().lastDate()==null)throw validation("MEDICATION 일정에는 종료일이 필요합니다.");
-        }else if(request.medicationIds()!=null&&!request.medicationIds().isEmpty())throw validation("일반 일정에는 medicationIds를 지정할 수 없습니다.");
+        if(!"ONCE".equals(request.rule().recurrence()))throw new ApiException(HttpStatus.UNPROCESSABLE_ENTITY,"MANUAL_REPEAT_NOT_ALLOWED","직접 추가는 단건 일정만 허용합니다.");
+        if(request.medicationIds()!=null)throw validation("직접 추가에는 medicationIds를 보내지 않습니다.");
     }
     private void validateRule(TaskDtos.Rule rule){
         if(!Set.of("ONCE","DAILY","WEEKLY").contains(rule.recurrence()))throw validation("recurrence가 올바르지 않습니다.");
@@ -453,7 +466,8 @@ public class TaskService {
     private Occurrence requireOccurrence(UUID id){return repository.findOccurrence(id).orElseThrow(this::notFound);}
     private int limit(Integer value){int result=value==null?20:value;if(result<1||result>100)throw validation("limit은 1~100이어야 합니다.");return result;}
 
-    private TaskDtos.Task dto(Occurrence value){Handoff open=repository.findOpenHandoff(value.id()).orElse(null);return new TaskDtos.Task(value.id(),value.groupId(),value.seriesId(),value.seriesVersion(),value.revisionNo(),value.anchorDate(),value.kind(),value.title(),value.description(),atKst(value.startsAt()),atKst(value.endsAt()),atKst(value.endsAt()),value.status(),ref(value.assigneeUserId(),value.assigneeName()),value.assigneeUserId()==null?null:value.assignmentOrigin(),handoffDto(open),"PENDING".equals(value.status())&&!value.endsAt().isAfter(clock.instant()),value.override(),repository.occurrenceMedications(value.id()),value.completedAt()==null?null:new TaskDtos.Completion(ref(value.performedBy(),value.performedByName()),ref(value.completedBy(),value.completedByName()),atKst(value.completedAt())),value.canceledAt()==null?null:new TaskDtos.Cancellation(value.cancelReason(),atKst(value.canceledAt())),repository.sourceEncounterIds(value.seriesId(),value.id()),value.version());}
+    private TaskDtos.Task dto(Occurrence value){return dto(value,null);}
+    private TaskDtos.Task dto(Occurrence value,UUID viewer){Handoff open=repository.findOpenHandoff(value.id()).orElse(null);boolean eligible=viewer!=null&&open!=null&&"PENDING".equals(value.status())&&value.assigneeUserId()==null&&value.endsAt().isAfter(clock.instant());boolean declined=eligible&&repository.hasDeclined(open.id(),viewer);String state=!eligible?"NOT_APPLICABLE":declined?"RESOLVED":"UNRESOLVED";return new TaskDtos.Task(value.id(),value.groupId(),value.seriesId(),value.seriesVersion(),value.revisionNo(),value.anchorDate(),value.kind(),value.title(),value.description(),atKst(value.startsAt()),atKst(value.endsAt()),atKst(value.endsAt()),value.status(),ref(value.assigneeUserId(),value.assigneeName()),value.assigneeUserId()==null?null:value.assignmentOrigin(),handoffDto(open),"PENDING".equals(value.status())&&!value.endsAt().isAfter(clock.instant()),value.override(),repository.occurrenceMedications(value.id()),value.completedAt()==null?null:new TaskDtos.Completion(ref(value.performedBy(),value.performedByName()),ref(value.completedBy(),value.completedByName()),atKst(value.completedAt())),value.canceledAt()==null?null:new TaskDtos.Cancellation(value.cancelReason(),atKst(value.canceledAt())),repository.sourceEncounterIds(value.seriesId(),value.id()),value.version(),state,eligible&&!declined&&assignments.canAssign(viewer,value.startsAt(),value.endsAt(),value.id()),eligible&&!declined,viewer!=null&&viewer.equals(value.assigneeUserId())&&"PENDING".equals(value.status())&&value.endsAt().isAfter(clock.instant()));}
     private TaskDtos.Handoff handoffDto(Handoff value){return value==null?null:new TaskDtos.Handoff(value.id(),value.occurrenceId(),value.reason(),ref(value.previousId(),value.previousName()),ref(value.requestedBy(),value.requestedName()),value.status(),ref(value.acceptedBy(),value.acceptedName()),value.closedAt()==null?null:atKst(value.closedAt()),value.closeReason(),value.version());}
     private TaskDtos.UserRef ref(UUID id,String name){return id==null?null:new TaskDtos.UserRef(id,name);}
     private TaskDtos.Rule rule(Series value){return new TaskDtos.Rule(value.recurrence(),value.firstDate(),value.lastDate(),value.weekdays(),value.localTime(),value.durationMinutes());}

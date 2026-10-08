@@ -26,7 +26,8 @@ public class GroupRepository {
 
     public Optional<CareGroup> findGroup(UUID groupId) {
         return jdbcTemplate.query("""
-                SELECT g.id, g.recipient_user_id, u.display_name, g.name, g.status, g.version
+                SELECT g.id, g.recipient_user_id, u.display_name, g.name, g.status, g.version,
+                       g.parent_relation,g.parent_birth_year,g.parent_profile_completed_at
                 FROM care_group g JOIN app_user u ON u.id = g.recipient_user_id
                 WHERE g.id = ?
                 """, this::mapGroup, groupId).stream().findFirst();
@@ -34,7 +35,8 @@ public class GroupRepository {
 
     public List<CareGroup> findGroupsForActiveMember(UUID userId) {
         return jdbcTemplate.query("""
-                SELECT g.id, g.recipient_user_id, recipient.display_name, g.name, g.status, g.version
+                SELECT g.id, g.recipient_user_id, recipient.display_name, g.name, g.status, g.version,
+                       g.parent_relation,g.parent_birth_year,g.parent_profile_completed_at
                 FROM care_group g
                 JOIN app_user recipient ON recipient.id = g.recipient_user_id
                 JOIN group_member mine ON mine.group_id = g.id
@@ -66,9 +68,10 @@ public class GroupRepository {
 
     public Optional<CareGroup> findDemoRecipientByPhone(String phoneNumber) {
         return jdbcTemplate.query("""
-                SELECT g.id, g.recipient_user_id, u.display_name, g.name, g.status, g.version
+                SELECT g.id, g.recipient_user_id, u.display_name, g.name, g.status, g.version,
+                       g.parent_relation,g.parent_birth_year,g.parent_profile_completed_at
                 FROM care_group g JOIN app_user u ON u.id = g.recipient_user_id
-                WHERE u.phone_number = ? AND u.account_type = 'DEMO' AND u.status = 'ACTIVE'
+                WHERE u.phone_number = ? AND u.account_role = 'PARENT' AND u.status = 'ACTIVE'
                 """, this::mapGroup, phoneNumber).stream().findFirst();
     }
 
@@ -99,6 +102,94 @@ public class GroupRepository {
         return findMemberById(member.id()).orElseThrow();
     }
 
+    public GroupMember insertPendingCaregiver(UUID id, UUID groupId, UUID userId) {
+        jdbcTemplate.update("""
+                INSERT INTO group_member(id,group_id,user_id,role,priority,status,joined_at)
+                VALUES (?,?,?,'CAREGIVER',2,'PENDING',NULL)
+                """, id, groupId, userId);
+        return findMembership(groupId,userId).orElseThrow();
+    }
+
+    public int activeCaregiverCount(UUID groupId) {
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM group_member WHERE group_id=? AND role='CAREGIVER' AND status='ACTIVE'", Integer.class, groupId);
+    }
+
+    public boolean hasCurrentMembership(UUID userId) {
+        return Boolean.TRUE.equals(jdbcTemplate.queryForObject("SELECT EXISTS(SELECT 1 FROM group_member WHERE user_id=? AND status IN ('ACTIVE','PENDING'))", Boolean.class, userId));
+    }
+
+    public void completeParentProfile(CareGroup group, UUID childUserId, String relation, String name, int birthYear, Instant now) {
+        int changed=jdbcTemplate.update("""
+                UPDATE care_group SET parent_relation=?,parent_birth_year=?,parent_profile_completed_at=?,
+                  parent_profile_completed_by=?,updated_at=?,version=version+1
+                WHERE id=? AND version=? AND parent_profile_completed_at IS NULL
+                """,relation,birthYear,Timestamp.from(now),childUserId,Timestamp.from(now),group.id(),group.version());
+        if(changed!=1) throw new IllegalStateException("Concurrent parent profile update");
+        jdbcTemplate.update("UPDATE app_user SET display_name=?,updated_at=?,version=version+1 WHERE id=?",
+                name,Timestamp.from(now),group.recipientUserId());
+    }
+
+    public JoinRow insertJoinRequest(UUID id, UUID groupId, UUID userId, String status, String decisionKind,
+            UUID decidedBy, Instant now) {
+        jdbcTemplate.update("""
+                INSERT INTO group_join_request(id,group_id,user_id,status,decision_kind,decided_by,decided_at,created_at)
+                VALUES (?,?,?,?,?,?,?,?)
+                """,id,groupId,userId,status,decisionKind,decidedBy,
+                decidedBy==null?null:Timestamp.from(now),Timestamp.from(now));
+        return findJoinRequest(id).orElseThrow();
+    }
+
+    public Optional<JoinRow> findJoinRequest(UUID id) {
+        return jdbcTemplate.query("""
+                SELECT r.id,r.group_id,r.user_id,r.status,r.version,r.created_at,r.decided_at,m.status membership_status,m.priority
+                FROM group_join_request r JOIN group_member m ON m.group_id=r.group_id AND m.user_id=r.user_id
+                WHERE r.id=?
+                """,this::mapJoin,id).stream().findFirst();
+    }
+
+    public Optional<JoinRow> findLatestJoinForUser(UUID userId) {
+        return jdbcTemplate.query("""
+                SELECT r.id,r.group_id,r.user_id,r.status,r.version,r.created_at,r.decided_at,m.status membership_status,m.priority
+                FROM group_join_request r JOIN group_member m ON m.group_id=r.group_id AND m.user_id=r.user_id
+                WHERE r.user_id=? ORDER BY r.created_at DESC,r.id DESC LIMIT 1
+                """,this::mapJoin,userId).stream().findFirst();
+    }
+
+    public List<JoinRow> findPendingJoins(UUID groupId) {
+        return jdbcTemplate.query("""
+                SELECT r.id,r.group_id,r.user_id,r.status,r.version,r.created_at,r.decided_at,m.status membership_status,m.priority
+                FROM group_join_request r JOIN group_member m ON m.group_id=r.group_id AND m.user_id=r.user_id
+                WHERE r.group_id=? AND r.status='PENDING' ORDER BY r.created_at,r.id
+                """,this::mapJoin,groupId);
+    }
+
+    public JoinRow decideJoin(JoinRow row, UUID actor, String decision, Instant now) {
+        String status="APPROVE".equals(decision)?"APPROVED":"REJECTED";
+        int changed=jdbcTemplate.update("""
+                UPDATE group_join_request SET status=?,decision_kind='REVIEW',decided_by=?,decided_at=?,version=version+1
+                WHERE id=? AND version=? AND status='PENDING'
+                """,status,actor,Timestamp.from(now),row.id(),row.version());
+        if(changed!=1) return null;
+        jdbcTemplate.update("""
+                UPDATE group_member SET status=?,joined_at=?,left_at=?,version=version+1
+                WHERE group_id=? AND user_id=? AND status='PENDING'
+                ""","APPROVE".equals(decision)?"ACTIVE":"LEFT",
+                "APPROVE".equals(decision)?Timestamp.from(now):null,
+                "APPROVE".equals(decision)?null:Timestamp.from(now),row.groupId(),row.userId());
+        return findJoinRequest(row.id()).orElseThrow();
+    }
+
+    public JoinRow cancelJoin(JoinRow row, Instant now) {
+        int changed=jdbcTemplate.update("""
+                UPDATE group_join_request SET status='CANCELED',decision_kind='REVIEW',decided_by=?,decided_at=?,version=version+1
+                WHERE id=? AND version=? AND status='PENDING'
+                """,row.userId(),Timestamp.from(now),row.id(),row.version());
+        if(changed!=1)return null;
+        jdbcTemplate.update("UPDATE group_member SET status='LEFT',left_at=?,version=version+1 WHERE group_id=? AND user_id=? AND status='PENDING'",
+                Timestamp.from(now),row.groupId(),row.userId());
+        return findJoinRequest(row.id()).orElseThrow();
+    }
+
     public GroupMember leave(GroupMember member, Instant now) {
         int changed=jdbcTemplate.update("""
                 UPDATE group_member SET status='LEFT',left_at=?,version=version+1
@@ -122,7 +213,8 @@ public class GroupRepository {
 
     private CareGroup mapGroup(ResultSet rs, int rowNum) throws SQLException {
         return new CareGroup(rs.getObject(1, UUID.class), rs.getObject(2, UUID.class), rs.getString(3),
-                rs.getString(4), rs.getString(5), rs.getLong(6));
+                rs.getString(4), rs.getString(5), rs.getLong(6),rs.getString(7),rs.getObject(8,Integer.class),
+                rs.getTimestamp(9)==null?null:rs.getTimestamp(9).toInstant());
     }
 
     private GroupMember mapMember(ResultSet rs, int rowNum) throws SQLException {
@@ -130,4 +222,14 @@ public class GroupRepository {
                 rs.getObject("user_id", UUID.class), rs.getString("display_name"), rs.getString("role"),
                 rs.getObject("priority", Integer.class), rs.getString("status"), rs.getLong("version"));
     }
+
+    private JoinRow mapJoin(ResultSet rs,int n)throws SQLException{
+        return new JoinRow(rs.getObject("id",UUID.class),rs.getObject("group_id",UUID.class),
+                rs.getObject("user_id",UUID.class),rs.getString("status"),rs.getLong("version"),
+                rs.getTimestamp("created_at").toInstant(),rs.getTimestamp("decided_at")==null?null:rs.getTimestamp("decided_at").toInstant(),
+                rs.getString("membership_status"),rs.getObject("priority",Integer.class));
+    }
+
+    public record JoinRow(UUID id,UUID groupId,UUID userId,String status,long version,Instant createdAt,
+            Instant decidedAt,String membershipStatus,Integer priority){}
 }

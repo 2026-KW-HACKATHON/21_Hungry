@@ -1,0 +1,74 @@
+{
+  "engine": "PGlite embedded PostgreSQL (not EC2 PostgreSQL or Spring)",
+  "count": 17,
+  "results": [
+    {
+      "name": "target DDL execution",
+      "result": "PASS"
+    },
+    {
+      "name": "30 tables",
+      "result": "PASS"
+    },
+    {
+      "name": "parent signup nullable name and deferred recipient relation",
+      "result": "PASS"
+    },
+    {
+      "name": "duplicate normalized phone denied",
+      "result": "PASS"
+    },
+    {
+      "name": "child missing name denied",
+      "result": "PASS"
+    },
+    {
+      "name": "priority3 denied",
+      "result": "PASS"
+    },
+    {
+      "name": "one ACTIVE or PENDING group per user",
+      "result": "PASS"
+    },
+    {
+      "name": "pending request inserted",
+      "result": "PASS"
+    },
+    {
+      "name": "one pending request per user",
+      "result": "PASS"
+    },
+    {
+      "name": "initial parent profile transaction",
+      "result": "PASS"
+    },
+    {
+      "name": "parent name immutable",
+      "result": "PASS"
+    },
+    {
+      "name": "parent profile immutable",
+      "result": "PASS"
+    },
+    {
+      "name": "only one open episode",
+      "result": "PASS"
+    },
+    {
+      "name": "decline is personal, task remains unassigned PENDING",
+      "result": "PASS"
+    },
+    {
+      "name": "decline FK rejects cross group",
+      "result": "PASS"
+    },
+    {
+      "name": "new episode has no prior decline",
+      "result": "PASS"
+    },
+    {
+      "name": "old PICKUP kind rejected",
+      "result": "PASS"
+    }
+  ]
+}

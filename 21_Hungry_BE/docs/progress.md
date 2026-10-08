@@ -4,6 +4,12 @@
 
 ## 현재 단계
 
+API 명세 기준을 v1.2로 올렸다. v1.1 대비 변경은 E06 녹음 업로드 정정이며, AUDIO metadata에는 `expectedVersion`과 `expectedInputVersion`만 보내고 문서 분류를 보내지 않는다. 현재 구현은 두 버전을 encounter 잠금 후 검사하고, 불일치 시 등록 없이 409를 반환하며, 실제 RIFF/WAVE PCM과 `audio/wav`·`audio/x-wav`, 25,000,000 bytes, 1,200초 제한을 이미 적용하고 있다. 따라서 이 개정에는 애플리케이션 동작 변경이 필요하지 않았고 기준 문서·지침만 v1.2로 전환했다.
+
+PRD v0.15 / DB v1.3 / API v1.1 전환을 시작했다. 제공된 새 기준 문서와 검증 산출물을 보존했고, 기존 V1 및 demo V2를 수정하지 않는 V3 추가 migration을 작성했다. 전화번호 가입·로그인, A03 온보딩 상태, 부모 공동체 원자 생성, 첫 자녀 즉시 연결/후속 승인 대기, 신청 조회·승인·거절·취소, 단일 현재 공동체, priority 1/2, 부모 정보 불변 DB 방어, 개인 미지정 거절과 담당자 본인 인계를 1차 반영했다. 직접 일정은 EXAM/HOSPITAL/OTHER 단건만 허용하고 레거시 PICKUP은 migration에서 OTHER로 이관한다. E05는 파일별 PRESCRIPTION/DIAGNOSIS/MEDICINE_BAG 분류를 검증·저장·응답하며 기존 문서는 LEGACY_UNCLASSIFIED로 이관한다.
+
+`gradlew.bat classes testClasses --no-daemon`은 통과했다. Docker Desktop이 실행 중이 아니어서 V3의 실제 PostgreSQL 적용, 기존 데이터 사전 조회, 전체 통합 테스트는 아직 실행하지 못했다. 전체 테스트 실행은 26개 비DB 테스트 통과 후 DB 연결 불가로 76개 통합 테스트가 시작 단계에서 실패했다. T01 날짜/cursor 정렬, T17 월 캘린더, 09시 개인 digest, 알림 재검증 등은 계속 남아 있으며 이전 102개 성공을 신규 계약 완료로 간주하지 않는다.
+
 중단 당시 저장돼 있던 5단계 전체와 6단계 OpenAI/R01~R04/MEDICATION 골격을 복구해 계약 누락을 완성했다. Docker Desktop의 기존 PostgreSQL 18.6 볼륨을 초기화하지 않고 재사용했다. 8단계에서 worker 경합을 수정하고 배포·복원 리허설을 완료했으며, Git 제외 로컬 키로 완전 합성 OpenAI 전사/OCR/분석/R02/TASK 자동 적용까지 실호출했다.
 
 복구 당시 문서에는 실제 코드보다 뒤처진 “5단계/fake AI/R01~R04 미구현” 상태가 남아 있었고 README도 2단계까지만 구현됐다고 적혀 있었다. 코드·테스트를 기준으로 재분류해 이 문서와 README를 갱신했다. 요청에 적힌 `AGENTS.md`와 `docs/ai/processing-contract-v1.0.md`의 실제 위치는 각각 `docs/AGENTS.md`, `docs/processing-contract-v1.0.md`였다. 중단 세션의 미커밋 파일을 재사용했으며 적용된 migration은 변경하지 않았다.

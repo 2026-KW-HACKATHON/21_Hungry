@@ -25,7 +25,8 @@ public class AutoTaskApplicationService {
     public void applyReadyLocked(Encounter encounter){for(ReviewItem item:encounters.currentReviewItems(encounter.id())){
         if(!"TASK".equals(item.itemType())||!"READY".equals(item.reviewState()))continue;JsonNode p=json.readTree(item.payload());
             String kind=text(p,"kind"),title=text(p,"title"),recurrence=text(p,"recurrence");LocalDate first=LocalDate.parse(text(p,"date"));LocalTime time=LocalTime.parse(text(p,"time"));int duration=p.path("durationMinutes").asInt();
-            String durationSource=text(p,"durationSource");if(!Set.of("HOSPITAL","EXAM","PICKUP","OTHER").contains(kind)||title==null||title.isBlank()||!Set.of("ONCE","DAILY","WEEKLY").contains(recurrence)||duration<1||duration>1440||durationSource==null)throw new IllegalStateException("READY task failed deterministic validation");
+            if("PICKUP".equals(kind))kind="OTHER";
+            String durationSource=text(p,"durationSource");if(!Set.of("HOSPITAL","EXAM","OTHER").contains(kind)||title==null||title.isBlank()||!Set.of("ONCE","DAILY","WEEKLY").contains(recurrence)||duration<1||duration>1440||durationSource==null)throw new IllegalStateException("READY task failed deterministic validation");
             if(!first.atTime(time).atZone(KST).toInstant().isAfter(clock.instant()))throw new IllegalStateException("READY task is no longer future-facing");List<Integer> weekdays=new ArrayList<>();JsonNode days=p.get("weekdays");if(days!=null&&days.isArray())for(JsonNode day:days)weekdays.add(day.asInt());
             LocalDate last="ONCE".equals(recurrence)?first:p.has("lastDate")&&!p.get("lastDate").isNull()?LocalDate.parse(p.get("lastDate").asText()):null;
             if("WEEKLY".equals(recurrence)&&weekdays.isEmpty()||!"WEEKLY".equals(recurrence)&&!weekdays.isEmpty())throw new IllegalStateException("READY task recurrence is invalid");

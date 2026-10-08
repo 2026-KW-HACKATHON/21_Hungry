@@ -74,6 +74,26 @@ public class GroupController {
                 UUID.fromString(RequestIdFilter.current(request))));
     }
 
+    @PostMapping("/{groupId}/join")
+    ResponseEntity<String> joinV11(@PathVariable UUID groupId,@Valid @RequestBody GroupDtos.JoinV11Request body,
+            @RequestHeader(value="Idempotency-Key",required=false)String key,
+            @AuthenticationPrincipal AuthenticatedUser principal,HttpServletRequest request){
+        return response(groupService.joinV11(groupId,principal.userId(),body,key,
+                UUID.fromString(RequestIdFilter.current(request))));
+    }
+
+    @GetMapping("/{groupId}/join-requests")
+    DataResponse<GroupDtos.Items<GroupDtos.PendingJoin>> joinRequests(@PathVariable UUID groupId,
+            @AuthenticationPrincipal AuthenticatedUser principal){
+        return DataResponse.of(groupService.pendingJoins(groupId,principal.userId()));
+    }
+
+    @PostMapping("/{groupId}/join-requests/{joinRequestId}/decision")
+    DataResponse<GroupDtos.JoinRequestView> decideJoin(@PathVariable UUID groupId,@PathVariable UUID joinRequestId,
+            @Valid @RequestBody GroupDtos.JoinDecisionRequest body,@AuthenticationPrincipal AuthenticatedUser principal){
+        return DataResponse.of(groupService.decideJoin(groupId,joinRequestId,principal.userId(),body));
+    }
+
     @GetMapping("/{groupId}/members")
     DataResponse<GroupDtos.Items<GroupDtos.Member>> members(@PathVariable UUID groupId,
             @AuthenticationPrincipal AuthenticatedUser principal) {
