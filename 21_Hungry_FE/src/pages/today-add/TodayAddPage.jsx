@@ -6,13 +6,15 @@ import { useNavigate } from 'react-router-dom'
 import BackHeader from '../../components/back-header/BackHeader'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import { Icon } from '../../components/icon/Icon'
-import {
-  categoryData,
-  familyData,
-  isValidTime,
-  parseDateInput,
-  saveTodaySchedule,
-} from '../../mocks/todayAddMock'
+import { categoryData, familyData, isValidTime, saveTodaySchedule } from '../../mocks/todayAddMock'
+
+function openNativePicker(event) {
+  try {
+    event.currentTarget.showPicker?.()
+  } catch {
+    event.currentTarget.focus()
+  }
+}
 
 function TodayAddPage() {
   const navigate = useNavigate()
@@ -36,13 +38,9 @@ function TodayAddPage() {
     event.preventDefault()
     if (savingRef.current) return
 
-    const parsedDate = parseDateInput(date)
-    dateRef.current.setCustomValidity(
-      parsedDate ? '' : '실제 날짜를 2026년 10월 08일 형식으로 입력해 주세요.',
-    )
-    timeRef.current.setCustomValidity(
-      isValidTime(time) ? '' : '시간을 00:00부터 23:59 사이의 24시간제로 입력해 주세요.',
-    )
+    const parsedDate = date
+    dateRef.current.setCustomValidity(parsedDate ? '' : '날짜를 선택해 주세요.')
+    timeRef.current.setCustomValidity(isValidTime(time) ? '' : '시간을 선택해 주세요.')
 
     if (!formRef.current.reportValidity()) return
 
@@ -113,10 +111,12 @@ function TodayAddPage() {
             <input
               ref={dateRef}
               className='todayAdd__input--input'
-              type='text'
+              type='date'
+              min='0001-01-01'
+              max='9999-12-31'
+              onClick={openNativePicker}
               aria-label='날짜'
               placeholder='날짜'
-              title='0000년 00월 00일'
               required
               value={date}
               onChange={(event) => {
@@ -143,8 +143,9 @@ function TodayAddPage() {
             <input
               ref={timeRef}
               className='todayAdd__input--input'
-              type='text'
-              inputMode='text'
+              type='time'
+              step={60}
+              onClick={openNativePicker}
               aria-label='시간'
               placeholder='시간'
               title='23:00'

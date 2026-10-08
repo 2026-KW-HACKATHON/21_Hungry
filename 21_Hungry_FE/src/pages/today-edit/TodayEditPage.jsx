@@ -10,20 +10,26 @@ import CardInfo from '../../components/card-info/CardInfo'
 import { Icon } from '../../components/icon/Icon'
 import {
   familyData,
-  formatDate,
   getTodaySchedule,
   isValidTime,
-  parseDateInput,
   toScheduleCard,
   updateTodaySchedule,
 } from '../../mocks/todayAddMock'
+
+function openNativePicker(event) {
+  try {
+    event.currentTarget.showPicker?.()
+  } catch {
+    event.currentTarget.focus()
+  }
+}
 
 function TodayEditPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [schedule] = useState(() => getTodaySchedule(searchParams.get('id')))
   const [selectedFamilyId, setSelectedFamilyId] = useState(null)
-  const [date, setDate] = useState(() => (schedule ? formatDate(schedule.date) : ''))
+  const [date, setDate] = useState(() => schedule?.date ?? '')
   const [time, setTime] = useState(() => schedule?.localTime ?? '')
   const [isSaving, setIsSaving] = useState(false)
   const dateRef = useRef(null)
@@ -37,17 +43,14 @@ function TodayEditPage() {
   const handleSave = async () => {
     if (savingRef.current) return
 
-    const parsedDate = parseDateInput(date)
-    dateRef.current.setCustomValidity(
-      parsedDate ? '' : '실제 날짜를 2026년 10월 08일 형식으로 입력해 주세요.',
-    )
-    timeRef.current.setCustomValidity(
-      isValidTime(time) ? '' : '시간을 00:00부터 23:59 사이의 24시간제로 입력해 주세요.',
-    )
+    const parsedDate = date
+    dateRef.current.setCustomValidity(parsedDate ? '' : '날짜를 선택해 주세요.')
+    timeRef.current.setCustomValidity(isValidTime(time) ? '' : '시간을 선택해 주세요.')
     if (!dateRef.current.reportValidity() || !timeRef.current.reportValidity()) return
 
     savingRef.current = true
     setIsSaving(true)
+
     try {
       await updateTodaySchedule(schedule.id, {
         date: parsedDate,
@@ -98,7 +101,10 @@ function TodayEditPage() {
             <input
               ref={dateRef}
               className='todayEdit__input--input'
-              placeholder='날짜'
+              type='date'
+              min='0001-01-01'
+              max='9999-12-31'
+              onClick={openNativePicker}
               aria-label='날짜'
               required
               value={date}
@@ -125,7 +131,9 @@ function TodayEditPage() {
             <input
               ref={timeRef}
               className='todayEdit__input--input'
-              placeholder='시간'
+              type='time'
+              step={60}
+              onClick={openNativePicker}
               aria-label='시간'
               required
               value={time}

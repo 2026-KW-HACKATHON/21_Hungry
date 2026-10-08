@@ -1,4 +1,6 @@
-import { familyData, getTodayDate } from './todayAddMock'
+import { familyData, formatDate, getTodayDate, parseDateInput } from './todayAddMock'
+import { currentUserId } from './familyMock'
+import { removeMedicalDocumentFile, saveMedicalDocumentFile } from './docFileMock'
 
 export const documentTypeData = [
   { type: 'VISIT', label: '진료 기록', category: '진료 기록' },
@@ -44,8 +46,11 @@ const seedDocuments = [
     memberIndex: 0,
   },
 ].map(({ memberIndex, ...document }, index) => {
-  const date = `${currentYear}-${currentMonth}-${String(Math.max(1, Number(currentDay) - index)).padStart(2, '0')}`
+  const date = `${currentYear}-${currentMonth}-${String(
+    Math.max(1, Number(currentDay) - index),
+  ).padStart(2, '0')}`
   const member = familyData[memberIndex]
+
   return {
     ...document,
     id: `88888888-8888-4888-8888-88888888888${index + 1}`,
@@ -65,7 +70,10 @@ const seedDocuments = [
 export function getMedicalDocuments() {
   const stored = sessionStorage.getItem(medicalDocumentsStorageKey)
   const documents = stored === null ? seedDocuments : JSON.parse(stored)
-  if (!Array.isArray(documents)) throw new Error('더미 의료 문서 저장 데이터를 확인해 주세요.')
+
+  if (!Array.isArray(documents)) {
+    throw new Error('더미 의료 문서 저장 데이터를 확인해 주세요.')
+  }
   return documents
 }
 
@@ -74,12 +82,94 @@ export function getMedicalDocument(id) {
 }
 
 export function getDocumentRegisteredDate(document) {
+  if (document.registeredOn) return document.registeredOn
   return new Date(Date.parse(document.createdAt) + 9 * 60 * 60 * 1000).toISOString().slice(0, 10)
+}
+
+export async function saveMedicalDocument({
+  documentType,
+  registeredOn,
+  hospitalName,
+  file,
+  source,
+}) {
+  if (!documentTypeData.some((type) => type.type === documentType && type.type !== 'VISIT')) {
+    throw new Error('문서 종류를 다시 선택해 주세요.')
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(registeredOn) || !parseDateInput(formatDate(registeredOn))) {
+    throw new Error('등록일을 선택해 주세요.')
+  }
+  if (!hospitalName.trim() || hospitalName.trim().length > 150) {
+    throw new Error('발급기관을 1자부터 150자 사이로 입력해 주세요.')
+  }
+  if (!(file instanceof File) || file.size === 0 || file.size > 10000000) {
+    throw new Error('첨부 파일을 확인해 주세요.')
+  }
+
+  const documents = getMedicalDocuments()
+  const member = familyData.find((family) => family.userId === currentUserId)
+  const id = crypto.randomUUID()
+  const sourceId = crypto.randomUUID()
+  const isPdf = file.type === 'application/pdf' || (!file.type && /\.pdf$/i.test(file.name))
+
+  const document = {
+    id,
+    groupId: '99999999-9999-4999-8999-999999999999',
+    recordType: 'DOCUMENT',
+    documentType,
+    title: file.name.trim().slice(0, 150) || '의료 문서',
+    registeredOn,
+    occurredOn: null,
+    hospitalName: hospitalName.trim(),
+    createdAt: new Date().toISOString(),
+    createdBy: { id: currentUserId, displayName: member.name },
+    inputVersion: 2,
+    version: 1,
+    processingState: 'OCR_PROCESSING',
+    hasReviewItems: false,
+    isSummaryStale: false,
+    source,
+    sources: [
+      {
+        id: sourceId,
+        encounterId: id,
+        sourceType: 'DOCUMENT',
+        status: 'PENDING',
+        textVersion: 0,
+        removedAt: null,
+        file: {
+          id: crypto.randomUUID(),
+          originalName: file.name,
+          mediaType:
+            file.type ||
+            (isPdf
+              ? 'application/pdf'
+              : `image/${
+                  /\.jpe?g$/i.test(file.name) ? 'jpeg' : file.name.split('.').pop().toLowerCase()
+                }`),
+          byteSize: file.size,
+          state: 'AVAILABLE',
+        },
+        contentPath: null,
+      },
+    ],
+    activeImageCount: isPdf ? 0 : 1,
+  }
+
+  await saveMedicalDocumentFile(id, file)
+  try {
+    sessionStorage.setItem(medicalDocumentsStorageKey, JSON.stringify([document, ...documents]))
+  } catch (error) {
+    await removeMedicalDocumentFile(id).catch(() => {})
+    throw error
+  }
+  return document
 }
 
 export function filterMedicalDocuments(documents, { year, month, query, selectedTypes }) {
   const monthPrefix = `${year}-${String(month + 1).padStart(2, '0')}-`
   const keyword = query.trim().toLocaleLowerCase('ko-KR')
+
   return documents
     .filter(
       (document) =>

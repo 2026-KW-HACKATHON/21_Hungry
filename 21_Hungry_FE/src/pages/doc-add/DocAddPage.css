@@ -1,0 +1,171 @@
+.docAdd__page {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding-bottom: 178px;
+  display: flex;
+  flex-direction: column;
+}
+
+.docAdd__content {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  padding: 0 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+.docAdd__content > * {
+  flex-shrink: 0;
+}
+
+.docAdd__card,
+.docAdd__preview {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid #f2f2f2;
+  border-radius: 20px;
+}
+
+.docAdd__card .cardInfo__info {
+  min-height: 118px;
+  align-items: center;
+}
+
+.docAdd__card .cardIcon__container {
+  width: 115px;
+  height: 115px;
+  flex-shrink: 0;
+  padding: 0;
+  position: relative;
+  display: block;
+}
+
+.docAdd__card .cardIcon__container > svg {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.docAdd__card .cardIcon__content {
+  position: absolute;
+  top: 78px;
+  left: 5px;
+  right: 6px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+
+.docAdd__card .cardInfo__info--details {
+  min-width: 0;
+  min-height: 100px;
+}
+
+.docAdd__card .cardInfo__info--detail {
+  min-height: 30px;
+  align-items: center;
+  gap: 8px;
+}
+
+.docAdd__card .cardInfo__info--label {
+  flex-shrink: 0;
+}
+
+.docAdd__card .cardInfo__info--value {
+  min-width: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.docAdd__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.docAdd__input {
+  position: relative;
+  height: 50px;
+  padding: 0 13px 0 20px;
+  border: 2px solid #e5e5e5;
+  border-radius: 15px;
+  background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docAdd__input > input {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  color: #666666;
+  font-size: 16px;
+  user-select: text;
+}
+
+.docAdd__input > input::placeholder {
+  color: #b3b3b3;
+}
+
+.docAdd__inputPlaceholder {
+  position: absolute;
+  left: 20px;
+  color: #b3b3b3;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.docAdd__input > input[data-empty='true'] {
+  opacity: 0;
+}
+
+.docAdd__input > button {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.docAdd__previewArea {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+
+.docAdd__previewArea > img,
+.docAdd__previewArea > canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.docAdd__previewArea > p {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #999999;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.docAdd__error {
+  color: var(--color-red);
+  font-size: 14px;
+  line-height: 1.4;
+}
