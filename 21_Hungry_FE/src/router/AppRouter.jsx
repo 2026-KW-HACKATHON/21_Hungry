@@ -24,6 +24,7 @@ import TodayAddPage from '../pages/today-add/TodayAddPage'
 
 import DocPage from '../pages/doc/DocPage'
 import SchdulePage from '../pages/schedule/SchedulePage'
+import ScheduleEditPage from '../pages/schedule-edit/ScheduleEditPage'
 import FamilyPage from '../pages/family/FamilyPage'
 import FamilyReqPage from '../pages/family-req/FamilyReqPage'
 import FamilySchedulePage from '../pages/family-schedule/FamilySchedulePage'
@@ -113,6 +114,7 @@ export const AppRouter = createBrowserRouter([
       { path: 'todayadd', element: <TodayAddPage /> },
       { path: 'doc', element: <DocPage /> },
       { path: 'schedule', element: <SchdulePage /> },
+      { path: 'scheduleedit', element: <ScheduleEditPage /> },
       { path: 'family', element: <FamilyPage /> },
       { path: 'familyreq', element: <FamilyReqPage /> },
       { path: 'familyschedule', element: <FamilySchedulePage /> },
