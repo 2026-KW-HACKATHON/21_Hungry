@@ -1,0 +1,18 @@
+{
+  "summary" : "가상 약 N을 아침저녁으로 반 정씩 닷새 복용.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"가상 약 N을 아침저녁으로 반 정씩 닷새 복용하고, 정확한 복용 시각은 아직 정하지 않음.\",\"evidenceIndexes\":[0]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"a04b697b-7955-37e8-a353-86fb714e975f\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가상 약 N을 아침저녁으로 반 정씩 닷새 복용하세요. 정확한 복용 시각은 아직 정하지 않았어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":57}]",
+  "items" : [ {
+    "itemKey" : "med1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"가상 약 N\",\"doseText\":\"반 정\",\"frequencyText\":\"아침저녁\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"정확한 복용 시각은 아직 정하지 않음\",\"supersedesMedicationId\":null,\"schedulePlans\":[{\"recurrence\":\"DAILY\",\"firstDate\":null,\"lastDate\":null,\"weekdays\":[],\"localTime\":null,\"durationMinutes\":1440}]}",
+    "evidenceJson" : "[{\"sourceId\":\"a04b697b-7955-37e8-a353-86fb714e975f\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가상 약 N을 아침저녁으로 반 정씩 닷새 복용하세요. 정확한 복용 시각은 아직 정하지 않았어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":57}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.7",
+  "inputTokens" : 2374,
+  "outputTokens" : 285
+}

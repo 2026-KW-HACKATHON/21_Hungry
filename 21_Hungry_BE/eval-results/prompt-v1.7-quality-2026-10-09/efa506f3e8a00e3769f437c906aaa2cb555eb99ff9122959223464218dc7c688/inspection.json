@@ -1,0 +1,234 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0015", "s246c8d9f5bb8v1u0017" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "며칠째 기침과 콧물이 있으며, 증상은 약 5일쯤 되었고 주말 시작 무렵부터였다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0020", "s246c8d9f5bb8v1u0026" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "기침, 콧물, 근육통이 있고 가끔 두통과 추위·오한 같은 느낌이 있다. 기침은 마른기침이며 거칠게 콜록거리는 기침이다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0031", "s246c8d9f5bb8v1u0033" ],
+        "questionIds" : [ "s246c8d9f5bb8v1u0032" ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "숨은 잘 쉬고 있으며 숨참은 없고, 가슴에서 쌕쌕거리거나 그렁거리는 소리도 없다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0061", "s246c8d9f5bb8v1u0063" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "목 뒤가 약간 빨갛지만 편도는 커져 있지 않고, 목 주변에 만져지는 멍울은 없다고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f5",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0064" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "의사는 감기와 기침으로 보아 단순한 바이러스 감염 같다고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f6",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0066", "s246c8d9f5bb8v1u0073" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "Night Nurse, Day Nurse를 사용할 수 있다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "Night Nurse, Day Nurse",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "현재 약과 함께 써도 된다.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f7",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0068", "s246c8d9f5bb8v1u0069", "s246c8d9f5bb8v1u0073" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "숨이 차거나 쌕쌕거림이 생기거나, 증상이 3주 넘게 지속되거나, 상태가 안 좋아지면 연락하라.",
+      "condition" : {
+        "operator" : "ANY",
+        "clauses" : [ "숨이 차거나 쌕쌕거림이 생기면", "증상이 3주 넘게 지속되면", "상태가 안 좋아지면" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "연락",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f8",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0035", "s246c8d9f5bb8v1u0038", "s246c8d9f5bb8v1u0039" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "진통제를 복용했고, paracetamol을 먹었으며 ibuprofen은 먹지 않았다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "paracetamol",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "진통제로 복용함. ibuprofen은 복용하지 않음.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f9",
+      "support" : {
+        "statementIds" : [ "s246c8d9f5bb8v1u0041", "s246c8d9f5bb8v1u0043", "s246c8d9f5bb8v1u0045" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "metformin을 복용하고 있으며 당뇨가 있고, lisinopril도 복용하며 혈압이 조금 높다고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "metformin",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "당뇨 때문에 복용함.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "MED_NAME_UNCERTAIN" ]
+    } ],
+    "summaryFactIds" : [ "f5", "f6", "f7" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ {
+    "factId" : "f3",
+    "code" : "ADJACENT_QUESTION_CONTEXT",
+    "utteranceId" : "s246c8d9f5bb8v1u0032"
+  } ]
+}

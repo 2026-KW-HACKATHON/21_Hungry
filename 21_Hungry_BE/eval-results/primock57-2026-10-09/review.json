@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "reviewer": "Codex AI, source-compared; NOT human developer approved or clinician validated",
+  "decision": "REJECT_ALL_CANDIDATES_FOR_PRODUCTION",
+  "baseline": {"promptVersion":"1.1","layout":"evidence-first-v1"},
+  "candidate": {"promptVersion":"1.3","layout":"evidence-first-v1","promptSha256":"59581cbe3287482fa7d98ab4f28a23a7408ea191fa7dbdfc6ea382a8bcf48db8"},
+  "resultLookup": "Match caseId, set, promptVersion and layout to audit.json, then open requestSha256/{record,request,response,parsed}.json. raw response text is evaluated even when parsing fails; it is NOT a deliverable service result.",
+  "factStatusMeaning": "R=retained in summary/details; P=partially retained, ambiguity or missing qualifier; M=missing; C=contradicted. Fact status does NOT assert evidence correctness. Facts correspond to .ko.json facts, not clinician notes. Composite facts use conservative whole-group assessment.",
+  "scores": "readability/reportFit: 0 poor, 1 partial/repetitive/technical, 2 clear and direct. These are AI judgments, not clinical grades. No aggregate safety score masks individual errors.",
+  "categories": ["facts_missing","facts_added","speaker","negation_condition","medication_date","style","dialogue_retelling","evidence","format"],
+  "excludedFromPairedComparison": [
+    {"requestSha256":"d35663e1f3ee38e7ac4ee50129be214a012b0de4b9e0bf1beea9e472ac8cc921","reason":"day3_consultation06 translation 046 ambiguously assigned antihistamine to wife. Translation error corrected; this response and its $0.00871575 cost retained. Not attributed solely to summarizer."}
+  ],
+  "development": [
+    {
+      "caseId":"day3_consultation06",
+      "baselineFacts":{"F1":"R","F2":"R","F3":"P","F4":"R","F5":"M"},
+      "candidateFacts":{"F1":"R","F2":"R","F3":"P","F4":"R","F5":"M"},
+      "baselineScores":{"readability":1,"reportFit":1},"candidateScores":{"readability":1,"reportFit":1},
+      "candidateErrors":[
+        {"category":"facts_missing","detail":"penicillin allergy omitted; wife's call already in progress not distinguished from new call task","turnIds":["030","045","050"]},
+        {"category":"evidence","detail":"rapid worsening precaution cites 043 instead of 041; lip tingling cites answer without question 021","turnIds":["021","041","043"]},
+        {"category":"medication_date","detail":"antihistamine not represented in medicationMentions/MEDICATION candidate despite appearing in summary; no dose invented"},
+        {"category":"style","detail":"symptom-led summary and duplicated urgent actions remain"}
+      ],"qualityApproved":false
+    },
+    {
+      "caseId":"day3_consultation08",
+      "baselineFacts":{"F1":"P","F2":"R","F3":"R","F4":"R","F5":"P"},
+      "candidateFacts":{"F1":"R","F2":"R","F3":"R","F4":"R","F5":"P"},
+      "baselineScores":{"readability":2,"reportFit":2},"candidateScores":{"readability":2,"reportFit":2},
+      "candidateErrors":[
+        {"category":"format","detail":"four out-of-range detail indexes: server rejects response"},
+        {"category":"evidence","detail":"dry cough references 031 (breathing), throat finding references 050 (usual glucose); medication indexes likewise shifted","turnIds":["026","031","050","061"]},
+        {"category":"facts_added","detail":"summary widens current chest examination not needed to additional examination not needed","turnIds":["069"]},
+        {"category":"medication_date","detail":"source medicines described in details but no MEDICATION candidates"}
+      ],"improvementObserved":"The first original-layout baseline and v1.2 wrongly retained phlegm after correction; v1.3 says dry cough. v1.4 reintroduced phlegm. This local improvement does not offset failures.","qualityApproved":false
+    },
+    {
+      "caseId":"day3_consultation02",
+      "baselineFacts":{"F1":"P","F2":"P","F3":"P","F4":"P"},
+      "candidateFacts":{"F1":"P","F2":"R","F3":"P","F4":"R"},
+      "baselineScores":{"readability":1,"reportFit":1},"candidateScores":{"readability":1,"reportFit":1},
+      "candidateErrors":[
+        {"category":"facts_added","detail":"adds worsening-triggered urgent advice and special warning about non-blanching rash; these were diagnostic discussion, not stated action conditions","turnIds":["077","078"]},
+        {"category":"evidence","detail":"blood test claim references red itchy rash 063; urgent follow-up references rash location 061; many further shifted indexes","turnIds":["061","063","068","078"]},
+        {"category":"facts_missing","detail":"unmeasured temperature and named dengue possibility omitted; 4-day symptoms and analgesic nonresponse retained"},
+        {"category":"negation_condition","detail":"unheard fallback destination remains unresolved; do not restore from the note"}
+      ],"qualityApproved":false
+    },
+    {
+      "caseId":"day2_consultation09",
+      "baselineFacts":{"F1":"R","F2":"P","F3":"P","F4":"P"},
+      "candidateFacts":{"F1":"R","F2":"P","F3":"P","F4":"P"},
+      "baselineScores":{"readability":1,"reportFit":1},"candidateScores":{"readability":1,"reportFit":1},
+      "candidateErrors":[
+        {"category":"facts_missing","detail":"speech worsening, call kept open until arrival and penicillin allergy not all retained","turnIds":["066","085","087"]},
+        {"category":"evidence","detail":"speech change cites stroke possibility 051; open-door waiting cites diabetes/hypertension 062; swallowing claim lacks its question","turnIds":["043","044","046","051","062","090"]},
+        {"category":"style","detail":"삼킴 곤란 and symptom-first narration remain"}
+      ],"qualityApproved":false
+    },
+    {
+      "caseId":"day3_consultation04",
+      "baselineFacts":{"F1":"R","F2":"R","F3":"P","F4":"P","F5":"P","F6":"M"},
+      "candidateFacts":{"F1":"R","F2":"R","F3":"R","F4":"R","F5":"R","F6":"P"},
+      "baselineScores":{"readability":1,"reportFit":1},"candidateScores":{"readability":2,"reportFit":2},
+      "candidateErrors":[
+        {"category":"evidence","detail":"Salbutamol every 2 hours cites potential antibiotics/steroids 087; emergency precaution cites dose change and future tests instead of 084","turnIds":["079","084","087","094"]},
+        {"category":"facts_missing","detail":"hay fever correction omitted; usual 380 and no measurement since onset retained","turnIds":["054","059","064","066"]},
+        {"category":"style","detail":"usual peak flow duplicated in symptoms/tests; typo 주주치의"}
+      ],"improvementObserved":"summary reorganized around assessment, inhaler change, urgent condition and next visit; exact root quotations now pass. Semantic citation alignment still fails.","qualityApproved":false
+    },
+    {
+      "caseId":"day3_consultation05",
+      "baselineFacts":{"F1":"R","F2":"P","F3":"R","F4":"R","F5":"P"},
+      "candidateFacts":{"F1":"P","F2":"P","F3":"R","F4":"P","F5":"P"},
+      "baselineScores":{"readability":1,"reportFit":1},"candidateScores":{"readability":1,"reportFit":1},
+      "candidateErrors":[
+        {"category":"format","detail":"out-of-range detail index; server rejects response"},
+        {"category":"facts_missing","detail":"next-few-days deadline and previous 5-10 minute duration not in report text","turnIds":["055","085"]},
+        {"category":"evidence","detail":"medication dose references booking instruction 092; booking references medication 084","turnIds":["084","092"]},
+        {"category":"style","detail":"설명됨 and many duplicate symptom entries; possible diagnosis not clearly signposted in overview"}
+      ],"qualityApproved":false
+    }
+  ],
+  "syntheticRegression": [
+    {"caseId":"D01_DOCTOR_CONDITIONAL_RETURN","baseline":"core facts/condition retained","candidate":"core facts/condition retained, medicationMentions omitted despite source medication wording","qualityApproved":false},
+    {"caseId":"D02_PATIENT_CLINICIAN_MIX","baseline":"no clinician pneumonia diagnosis; symptoms empty","candidate":"same essential facts and source identity retained","qualityApproved":true},
+    {"caseId":"D10_EXPLICIT_CORRECTION","baseline":"1 pill once daily, no invented clock time","candidate":"same correction/dose retained, medication review required","qualityApproved":true},
+    {"caseId":"D04_D14_UNCERTAIN_CONDITIONAL","baseline":"uncertainty and conditional test retained","candidate":"adds unsupported '확정된 치료나 약 처방은 없음'","category":"facts_added","qualityApproved":false},
+    {"caseId":"D07_MULTIPLE_MEDICATIONS","baseline":"A 1 pill BID 5 days; B half pill PRN; old drugs continue","candidate":"dose/period preserved, but B item isConditional=false despite PRN. MEDICATION still NEEDS_REVIEW so no auto-application","category":"negation_condition","qualityApproved":false},
+    {"caseId":"D11_DOCUMENT_CONFLICT","baseline":"2/day vs 3/day conflict preserved","candidate":"conflict retained; verification language from application policy, not clinician speech; candidates require review","qualityApproved":true},
+    {"caseId":"H01_NOVEL_MIXED_CORRECTION","baseline":"parsed with correction/conditional result contact retained","candidate":"FAILED: inserted nonexistent speaker prefix in medication quote; previously correct case regressed","category":"evidence","qualityApproved":false},
+    {"caseId":"H02_NOVEL_PLAIN_NEGATION","baseline":"summary correct but unnecessary date-undecided TASK, actual conditional return TASK missing","candidate":"same unresolved item-extraction problem","category":"facts_added","qualityApproved":false}
+  ],
+  "holdout": [
+    {"caseId":"day2_consultation01","facts":{"F1":"R","F2":"P","F3":"P","F4":"R","F5":"M"},"readability":1,"reportFit":1,"errors":[{"category":"format","detail":"root quote removes a transcription marker"},{"category":"evidence","detail":"problem-before-visit warning references leaflet link 065 instead of 076"},{"category":"facts_missing","detail":"wax-first examination rationale, no cotton buds, 5-minute wait absent from report"}],"qualityApproved":false},
+    {"caseId":"day2_consultation03","facts":{"F1":"R","F2":"R","F3":"R","F4":"R","F5":"P"},"readability":1,"reportFit":1,"errors":[{"category":"format","detail":"wrong/truncated sourceId, rejected by server"},{"category":"facts_added","detail":"broad 'other neurological symptoms absent' exceeds specific negative answers"},{"category":"evidence","detail":"Bell palsy possibility cites patient training impact 068, neurological exam cites brother's illness 065"}],"qualityApproved":false},
+    {"caseId":"day5_consultation12","facts":{"F1":"P","F2":"R","F3":"R","F4":"R"},"readability":1,"reportFit":1,"errors":[{"category":"evidence","detail":"new painkiller/no ibuprofen combination cites old medication/family migraine 060/064; follow-up cites medication advice 084/086"},{"category":"facts_added","detail":"overview adds PRN qualifier to Paracetamol; tests filled with 'no tests mentioned' rather than empty"},{"category":"medication_date","detail":"new medication facts retained in details but MEDICATION candidate omitted"}],"qualityApproved":false},
+    {"caseId":"day1_consultation12","facts":{"F1":"P","F2":"P","F3":"R","F4":"R","F5":"R"},"readability":1,"reportFit":1,"errors":[{"category":"format","detail":"wrong sourceId on several later evidence entries; server rejects"},{"category":"evidence","detail":"Paracetamol points to Dioralyte, return to work points to rest advice, next-week return points to work-return condition"},{"category":"facts_missing","detail":"usual 3-5 day course and no visible blood omitted"}],"qualityApproved":false}
+  ],
+  "iterationLog": [
+    {"version":"1.2","basis":["day3_consultation06","day3_consultation08","day3_consultation02","day2_consultation09","day3_consultation04","day3_consultation05"],"change":"explicit question-answer/correction, role, no-action-task, stable evidence indexes and literal tags rules","result":"1/6 parsed; extra guidance did not solve tagging/indexing. Rejected."},
+    {"version":"1.3","basis":["day3_consultation06","day3_consultation08","day3_consultation04","day3_consultation05"],"change":"evidence-first property order experiment, full-turn quotes, explicit correction reminder; reran baseline on identical order","result":"4/6 parsed vs matched baseline 2/6, but semantic mismatches and synthetic regression; final diagnostic candidate only, frozen before holdout."},
+    {"version":"1.4","basis":["day3_consultation02","day3_consultation04","day3_consultation05","day3_consultation08"],"change":"shorter Korean instructions, grouped details and fewer redundant evidence spans; extraction contract preserved","result":"1/6 parsed and phlegm correction wrong again. Rejected. No further prompt iterations."}
+  ],
+  "limitations": ["One recorded sample per exact request; no repeated-run stability claim", "No clinical validation, audio check, database/UI E2E or deployment", "Public source notes and raw transcripts may themselves be medically or transcriptionally imperfect", "No automatic exact-match audit can establish semantic entailment", "All public development and holdout candidate reports have observed unresolved issues; none marked quality approved"]
+}

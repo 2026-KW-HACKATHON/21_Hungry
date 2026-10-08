@@ -1,0 +1,25 @@
+{
+  "summary" : "속 쓰림은 있으나 위염으로 단정할 단계는 아님. 가상 C약 저녁 1정씩 4일 복용. 검사 양성이면 예약일 전에 연락 예정.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"어제부터 속이 쓰림\",\"evidenceIndexes\":[0]}],\"tests\":[{\"text\":\"위염이라고 단정할 단계는 아님\",\"evidenceIndexes\":[1]},{\"text\":\"검사 양성이면 예약일 전에 연락 예정\",\"evidenceIndexes\":[3]}],\"medicationMentions\":[{\"text\":\"가상 C약 저녁 1정씩 4일 복용\",\"evidenceIndexes\":[2]}],\"precautions\":[],\"followUps\":[{\"text\":\"검사가 양성이면 예약일 전에 연락\",\"evidenceIndexes\":[3]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"어제부터 속이 쓰리고\",\"occurrenceIndex\":0,\"start\":4,\"end\":15},{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"위염이라고 단정할 단계는 아닙니다.\",\"occurrenceIndex\":0,\"start\":35,\"end\":54},{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"가상 C약은 저녁에 2정, 정정해서 1정만 4일 드세요.\",\"occurrenceIndex\":0,\"start\":58,\"end\":89},{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"검사가 양성이면 예약일 전에 연락드리겠습니다.\",\"occurrenceIndex\":0,\"start\":90,\"end\":115}]",
+  "items" : [ {
+    "itemKey" : "medication-1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"가상 C약\",\"doseText\":\"1정\",\"frequencyText\":\"저녁에 1정, 4일\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"정정해서 1정만 4일 드세요.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"가상 C약은 저녁에 2정, 정정해서 1정만 4일 드세요.\",\"occurrenceIndex\":0,\"start\":58,\"end\":89}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  }, {
+    "itemKey" : "task-1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"검사 양성 시 예약일 전 연락\",\"description\":\"검사가 양성이면 예약일 전에 연락드리겠습니다.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"검사가 양성이면 예약일 전에 연락드리겠습니다.\",\"occurrenceIndex\":0,\"start\":90,\"end\":115}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.1",
+  "inputTokens" : 2450,
+  "outputTokens" : 751
+}

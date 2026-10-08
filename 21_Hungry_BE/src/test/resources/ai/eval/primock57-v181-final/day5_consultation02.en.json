@@ -1,0 +1,1058 @@
+﻿{
+    "id":  "day5_consultation02",
+    "set":  "v181-final",
+    "dataset":  "PriMock57",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "license":  "CC-BY-4.0",
+    "mockConsultation":  true,
+    "turns":  [
+                  {
+                      "speaker":  "doctor",
+                      "start":  1.58751672088172,
+                      "end":  8.36042070494908,
+                      "interval":  2,
+                      "en":  "Good morning. I\u0027m Doctor Smith from Babylon. Can you just confirm your name, date of birth, and the first line of your address please?",
+                      "id":  "001"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  9.55646028451375,
+                      "end":  19.6768349111527,
+                      "interval":  2,
+                      "en":  "Hi. My name is Susan. Um, thirty, \u003cUNSURE\u003eRedbridge\u003c/UNSURE\u003e Street, SW two two HZ.",
+                      "id":  "002"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  11.8550465244851,
+                      "end":  12.6414869494183,
+                      "interval":  4,
+                      "en":  "\u003cUNSURE\u003eHello\u003c/UNSURE\u003e.",
+                      "id":  "003"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  20.395042627558,
+                      "end":  21.7585932059119,
+                      "interval":  6,
+                      "en":  "And your date of birth?",
+                      "id":  "004"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  22.5339928112186,
+                      "end":  25.4513015744444,
+                      "interval":  4,
+                      "en":  "\u003cUNSURE\u003eforty\u003c/UNSURE\u003e, oh two, \u003cUNSURE\u003enineteen seventy\u003c/UNSURE\u003e four.",
+                      "id":  "005"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  25.6608824980206,
+                      "end":  29.482644157476,
+                      "interval":  8,
+                      "en":  "OK. Are you in a private place \u003cUNSURE\u003eso\u003c/UNSURE\u003e you can have a consultation today?",
+                      "id":  "006"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  29.7144859008758,
+                      "end":  30.7144859008758,
+                      "interval":  6,
+                      "en":  "Yes I am.",
+                      "id":  "007"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  30.6965931713176,
+                      "end":  32.5804267954871,
+                      "interval":  10,
+                      "en":  "OK. What can I do for you?",
+                      "id":  "008"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  33.5190117956766,
+                      "end":  35.1581147167519,
+                      "interval":  8,
+                      "en":  "It hurts when I pee.",
+                      "id":  "009"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  35.5906751908151,
+                      "end":  38.8023425295285,
+                      "interval":  12,
+                      "en":  "OK, and how long has that been going on for?",
+                      "id":  "010"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  38.9701675694831,
+                      "end":  40.2182898800182,
+                      "interval":  10,
+                      "en":  "It stays now.",
+                      "id":  "011"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  40.2470761063159,
+                      "end":  41.2689202197632,
+                      "interval":  14,
+                      "en":  "Pardon?",
+                      "id":  "012"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  41.3009973168633,
+                      "end":  42.6092704905584,
+                      "interval":  12,
+                      "en":  "\u003cUNSURE\u003eUh\u003c/UNSURE\u003e, six days.",
+                      "id":  "013"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  42.3066016332855,
+                      "end":  47.8689131006732,
+                      "interval":  16,
+                      "en":  "Six days, OK. And just tell me a bit more about that. How did it start?",
+                      "id":  "014"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  48.7596881486357,
+                      "end":  56.1657550751785,
+                      "interval":  14,
+                      "en":  "Um, I\u0027ve got this thing when I pee, and it hurts when I go to the loo, and I\u0027ve got this very unpleasant smell that comes out.",
+                      "id":  "015"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  53.4112684313214,
+                      "end":  53.9723550259228,
+                      "interval":  18,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "016"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  55.8170098630261,
+                      "end":  64.5496859958267,
+                      "interval":  20,
+                      "en":  "OK. And, have you had any other symptoms along with that? Have you had any abdominal pain, or back, lower back pain at all?",
+                      "id":  "017"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  65.5868759175821,
+                      "end":  68.2259869386929,
+                      "interval":  16,
+                      "en":  "I\u0027ve got, pain in my tummy.",
+                      "id":  "018"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  68.3516477598081,
+                      "end":  69.6481990249942,
+                      "interval":  22,
+                      "en":  "Uh, whereabouts?",
+                      "id":  "019"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  69.7673447071331,
+                      "end":  71.1056933124083,
+                      "interval":  18,
+                      "en":  "In my lower tummy.",
+                      "id":  "020"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  71.1661730902201,
+                      "end":  74.0550137311045,
+                      "interval":  24,
+                      "en":  "OK. Is it one-sided, or in \u003cUNSURE\u003ethe\u003c/UNSURE\u003e middle?",
+                      "id":  "021"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  74.1057095124791,
+                      "end":  75.3162375335392,
+                      "interval":  20,
+                      "en":  "In the middle.",
+                      "id":  "022"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  75.1548421347171,
+                      "end":  81.1860402729291,
+                      "interval":  26,
+                      "en":  "And how bad would you say that is on a scale of one to ten? With ten being \u003cUNSURE\u003ethe\u003c/UNSURE\u003e worst pain.",
+                      "id":  "023"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  79.6846858705007,
+                      "end":  80.3989692704906,
+                      "interval":  22,
+                      "en":  "\u003cUNSURE\u003eSeven\u003c/UNSURE\u003e.",
+                      "id":  "024"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  81.4591201336506,
+                      "end":  82.3087429757505,
+                      "interval":  24,
+                      "en":  "Seven.",
+                      "id":  "025"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  82.1053259982923,
+                      "end":  85.3220019013488,
+                      "interval":  28,
+                      "en":  "And is it, constant, or does it come and go?",
+                      "id":  "026"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  85.9403432390017,
+                      "end":  87.3162861337519,
+                      "interval":  26,
+                      "en":  "Comes and goes.",
+                      "id":  "027"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  87.2652525311372,
+                      "end":  91.6110731898237,
+                      "interval":  30,
+                      "en":  "OK. And have you actually been able to pass water OK?",
+                      "id":  "028"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  91.9328567812485,
+                      "end":  96.7900308813852,
+                      "interval":  28,
+                      "en":  "Yes, but I\u0027ve had \u003cUNSURE\u003espotted\u003c/UNSURE\u003e, uh, blood in my urine. Spots.",
+                      "id":  "029"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  95.7185269780153,
+                      "end":  100.122063307596,
+                      "interval":  32,
+                      "en":  "OK. And is that just over the last, six days?",
+                      "id":  "030"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  100.083282539361,
+                      "end":  100.962980813041,
+                      "interval":  30,
+                      "en":  "Yes.",
+                      "id":  "031"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  101.152349055553,
+                      "end":  104.180353128382,
+                      "interval":  34,
+                      "en":  "Right. And have you been able to eat and drink OK?",
+                      "id":  "032"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  104.496835923657,
+                      "end":  105.376534197337,
+                      "interval":  32,
+                      "en":  "Yes.",
+                      "id":  "033"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  106.320326619744,
+                      "end":  113.061946606825,
+                      "interval":  36,
+                      "en":  "Um, and, have you had a temperature? Do you feel like you\u0027ve been feverish, or had a temperature with this?",
+                      "id":  "034"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  113.226213739685,
+                      "end":  115.090882397611,
+                      "interval":  34,
+                      "en":  "No, not at all.",
+                      "id":  "035"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  115.713418626244,
+                      "end":  119.820559931904,
+                      "interval":  38,
+                      "en":  "Um, and any, did you \u003cUNIN/\u003e, you said you didn\u0027t have any lower back pain?",
+                      "id":  "036"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  120.211216524072,
+                      "end":  122.113479471473,
+                      "interval":  36,
+                      "en":  "No, I\u0027ve got.",
+                      "id":  "037"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  123.000696603048,
+                      "end":  125.827779071533,
+                      "interval":  38,
+                      "en":  "Um, and no loin pain as well.",
+                      "id":  "038"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  125.658233916811,
+                      "end":  129.895098770877,
+                      "interval":  40,
+                      "en":  "OK. And, have you had these symptoms before?",
+                      "id":  "039"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  130.26389712955,
+                      "end":  131.26389712955,
+                      "interval":  40,
+                      "en":  "No.",
+                      "id":  "040"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  131.227443472878,
+                      "end":  132.075719569759,
+                      "interval":  42,
+                      "en":  "Never.",
+                      "id":  "041"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  132.692472029565,
+                      "end":  133.41427428745,
+                      "interval":  42,
+                      "en":  "No.",
+                      "id":  "042"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  133.32530577915,
+                      "end":  145.703287781475,
+                      "interval":  44,
+                      "en":  "And was there anything you were doing recently, which you think may have contributed to it? Have you \u003cUNIN/\u003e, have you been doing lots of exercise, been dehydrated, um, been having regular sexual intercourse or anything?",
+                      "id":  "043"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  147.053474408951,
+                      "end":  148.053474408951,
+                      "interval":  44,
+                      "en":  "No.",
+                      "id":  "044"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  147.66510569581,
+                      "end":  155.557137306821,
+                      "interval":  46,
+                      "en":  "No, OK. And, any, any other symptoms, any vaginal discharge or, anything like that?",
+                      "id":  "045"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  156.331728851314,
+                      "end":  160.053555409305,
+                      "interval":  46,
+                      "en":  "No, just the blood spot, in my.",
+                      "id":  "046"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  159.586107680333,
+                      "end":  161.671251726537,
+                      "interval":  48,
+                      "en":  "\u003cUNSURE\u003eNo\u003c/UNSURE\u003e. Do you have regular periods?",
+                      "id":  "047"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  161.925742925125,
+                      "end":  163.09867665671,
+                      "interval":  48,
+                      "en":  "Yes I do.",
+                      "id":  "048"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  163.137751296139,
+                      "end":  163.889475818309,
+                      "interval":  50,
+                      "en":  "OK.",
+                      "id":  "049"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  166.010569542593,
+                      "end":  170.712623234701,
+                      "interval":  52,
+                      "en":  "Um, and \u003cUNIN/\u003e, in the past, have you had any medical problems at all?",
+                      "id":  "050"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  171.203997367488,
+                      "end":  173.091222599099,
+                      "interval":  50,
+                      "en":  "No medical, no.",
+                      "id":  "051"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  172.825010561859,
+                      "end":  176.910151512807,
+                      "interval":  54,
+                      "en":  "Have you had any problems with your kidneys, or any urine infections?",
+                      "id":  "052"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  177.53485951501,
+                      "end":  179.549905330836,
+                      "interval":  52,
+                      "en":  "I had IBS before.",
+                      "id":  "053"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  179.57911444711,
+                      "end":  180.475666331347,
+                      "interval":  56,
+                      "en":  "OK.",
+                      "id":  "054"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  181.027469283676,
+                      "end":  186.546357286785,
+                      "interval":  58,
+                      "en":  "And how\u0027s that been recently? Any change in your bowel habit? Any blood when you pass stool?",
+                      "id":  "055"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  187.647707183719,
+                      "end":  189.700347289019,
+                      "interval":  54,
+                      "en":  "Yeah, I\u0027ve had spotting in my urine.",
+                      "id":  "056"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  189.583536480536,
+                      "end":  195.779097113673,
+                      "interval":  60,
+                      "en":  "In \u003cUNSURE\u003eyour\u003c/UNSURE\u003e, OK. Um, any change in your bowel habit? Any weight loss or anything?",
+                      "id":  "057"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  193.241721257531,
+                      "end":  194.023674378575,
+                      "interval":  56,
+                      "en":  "No.",
+                      "id":  "058"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  196.076314483876,
+                      "end":  196.971050473346,
+                      "interval":  58,
+                      "en":  "No.",
+                      "id":  "059"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  196.679503071959,
+                      "end":  199.854955969976,
+                      "interval":  62,
+                      "en":  "Any other medical problems, or surgery in the past?",
+                      "id":  "060"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  200.940999341872,
+                      "end":  201.940999341872,
+                      "interval":  60,
+                      "en":  "No.",
+                      "id":  "061"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  201.758402847636,
+                      "end":  203.903228662075,
+                      "interval":  64,
+                      "en":  "Do you take regular medications?",
+                      "id":  "062"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  204.738006378778,
+                      "end":  209.82826507366,
+                      "interval":  62,
+                      "en":  "I\u0027ve had \u003cUNSURE\u003eMebeverine\u003c/UNSURE\u003e, Mebeverine. I\u0027ve had \u003cUNSURE\u003eMebeverine\u003c/UNSURE\u003e.",
+                      "id":  "063"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  206.696329335294,
+                      "end":  208.81356898553,
+                      "interval":  66,
+                      "en":  "Pardon? No \u003cUNSURE\u003ebirth\u003c/UNSURE\u003e \u003cUNIN/\u003e.",
+                      "id":  "064"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  209.691974589103,
+                      "end":  211.250516293588,
+                      "interval":  68,
+                      "en":  "Do you take that regularly?",
+                      "id":  "065"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  211.482405710525,
+                      "end":  212.437292563155,
+                      "interval":  64,
+                      "en":  "Yes.",
+                      "id":  "066"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  212.396077142068,
+                      "end":  215.30314218425,
+                      "interval":  70,
+                      "en":  "OK. And it, do you take it three times a day?",
+                      "id":  "067"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  215.482421910596,
+                      "end":  216.482421910596,
+                      "interval":  66,
+                      "en":  "Yes I do.",
+                      "id":  "068"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  216.765288555289,
+                      "end":  218.241149887797,
+                      "interval":  72,
+                      "en":  "Two hundred milligrams?",
+                      "id":  "069"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  218.685439173796,
+                      "end":  219.565137447476,
+                      "interval":  68,
+                      "en":  "Yes.",
+                      "id":  "070"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  220.431786267737,
+                      "end":  221.765285460033,
+                      "interval":  74,
+                      "en":  "Any allergies?",
+                      "id":  "071"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  226.696313859011,
+                      "end":  227.985968583146,
+                      "interval":  76,
+                      "en":  "Any allergies?",
+                      "id":  "072"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  228.482494810915,
+                      "end":  229.94114514251,
+                      "interval":  70,
+                      "en":  "Clindamycin.",
+                      "id":  "073"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  230.041139363925,
+                      "end":  232.749515447193,
+                      "interval":  78,
+                      "en":  "You\u0027re allergic to Clindamycin, OK.",
+                      "id":  "074"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  233.478818610768,
+                      "end":  236.710099202972,
+                      "interval":  80,
+                      "en":  "And anyone in your family had any medical problems?",
+                      "id":  "075"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  237.031420037463,
+                      "end":  237.881042879563,
+                      "interval":  72,
+                      "en":  "No.",
+                      "id":  "076"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  238.838089468307,
+                      "end":  243.558944806859,
+                      "interval":  82,
+                      "en":  "That\u0027s fine. And whereabouts, do you live? Do you live with friends, family?",
+                      "id":  "077"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  243.98634739027,
+                      "end":  245.43747886397,
+                      "interval":  74,
+                      "en":  "I live with friends.",
+                      "id":  "078"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  245.302694870688,
+                      "end":  249.481765933227,
+                      "interval":  84,
+                      "en":  "OK. And where do you work? What\u0027s your job?",
+                      "id":  "079"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  252.174367437858,
+                      "end":  253.602942337873,
+                      "interval":  76,
+                      "en":  "\u003cUNSURE\u003eI\u0027m\u003c/UNSURE\u003e a support worker.",
+                      "id":  "080"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  254.751458330109,
+                      "end":  257.144559622379,
+                      "interval":  86,
+                      "en":  "OK. Do you drink alcohol at all?",
+                      "id":  "081"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  257.866126664304,
+                      "end":  259.242069559054,
+                      "interval":  78,
+                      "en":  "Occasionally.",
+                      "id":  "082"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  259.337661224174,
+                      "end":  261.344556217597,
+                      "interval":  88,
+                      "en":  "So how much in a average week?",
+                      "id":  "083"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  262.121784032805,
+                      "end":  263.775924669671,
+                      "interval":  80,
+                      "en":  "One glass of wine a week.",
+                      "id":  "084"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  263.529606788046,
+                      "end":  265.110070726612,
+                      "interval":  90,
+                      "en":  "OK. And do you smoke?",
+                      "id":  "085"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  265.354876727586,
+                      "end":  266.242093859161,
+                      "interval":  82,
+                      "en":  "No.",
+                      "id":  "086"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  267.33075849261,
+                      "end":  276.13764296216,
+                      "interval":  92,
+                      "en":  "OK. Um, it sounds very much like you, might have an infection in your urine. Did you say, you haven\u0027t felt feverish?",
+                      "id":  "087"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  276.189534754215,
+                      "end":  277.72337366476,
+                      "interval":  84,
+                      "en":  "No fever at all.",
+                      "id":  "088"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  277.392814981042,
+                      "end":  279.53074425443,
+                      "interval":  94,
+                      "en":  "Have you got a thermometer at home?",
+                      "id":  "089"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  280.339928112186,
+                      "end":  281.339928112186,
+                      "interval":  86,
+                      "en":  "No.",
+                      "id":  "090"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  281.247984523717,
+                      "end":  290.948992365152,
+                      "interval":  96,
+                      "en":  "OK. It would be helpful if you could get a thermometer from the pharmacy and, do check your temperature, just to make sure that it isn\u0027t, going up and down.",
+                      "id":  "091"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  290.723454665114,
+                      "end":  291.625709512479,
+                      "interval":  88,
+                      "en":  "OK.",
+                      "id":  "092"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  290.948992365152,
+                      "end":  298.645993045273,
+                      "interval":  97,
+                      "en":  "Um, normally we can treat this infection without having to test your urine. Uh, with, with a course of antibiotics.",
+                      "id":  "093"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  299.189672454817,
+                      "end":  300.497945628512,
+                      "interval":  90,
+                      "en":  "OK.",
+                      "id":  "094"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  300.33079482728,
+                      "end":  304.55829791844,
+                      "interval":  99,
+                      "en":  "Um, how do you feel about that? Are you happy to take a course of antibiotics?",
+                      "id":  "095"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  304.535564218094,
+                      "end":  305.979176833899,
+                      "interval":  92,
+                      "en":  "Yes I would be.",
+                      "id":  "096"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  305.742039304957,
+                      "end":  307.910019964404,
+                      "interval":  101,
+                      "en":  "It would just be for three days.",
+                      "id":  "097"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  308.294976965524,
+                      "end":  309.182194097099,
+                      "interval":  94,
+                      "en":  "OK.",
+                      "id":  "098"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  309.792777218912,
+                      "end":  310.792777218912,
+                      "interval":  103,
+                      "en":  "Um.",
+                      "id":  "099"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  310.112426363919,
+                      "end":  312.15964562345,
+                      "interval":  96,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e, get my prescription.",
+                      "id":  "100"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  312.261742010369,
+                      "end":  323.269741946061,
+                      "interval":  105,
+                      "en":  "Yes, so I can send a prescription through to your requested pharmacy for that. If you take them, as soon as you can, get them, pick them up as soon as you can, and start taking them.",
+                      "id":  "101"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  323.269741946061,
+                      "end":  330.144474502824,
+                      "interval":  106,
+                      "en":  "The other thing which is important to do is to drink, lots of water. So, two and a half to three litres a day.",
+                      "id":  "102"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  327.866531666076,
+                      "end":  328.543220776591,
+                      "interval":  98,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "103"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  330.144474502824,
+                      "end":  346.79962268823,
+                      "interval":  107,
+                      "en":  "Um, you can get some cranberry juice and take, drink that as well, that sometimes helps. And also some, sachets um, which you can get from the chemist, some sachets which just help change the acidity of your urine. So I, I can put the details of that on your notes.",
+                      "id":  "104"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  330.144729408192,
+                      "end":  330.791343087126,
+                      "interval":  100,
+                      "en":  "Yeah.",
+                      "id":  "105"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  346.836577735028,
+                      "end":  347.911766313978,
+                      "interval":  102,
+                      "en":  "OK then.",
+                      "id":  "106"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  347.830485681334,
+                      "end":  363.558797782174,
+                      "interval":  109,
+                      "en":  "Um, if you feel like your pain is getting worse or not settling, you get lower back pain, um, or you\u0027re getting a high temperature, or you have any problems actually passing urine. Then it\u0027s very important that we speak to you again.",
+                      "id":  "107"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  363.723916367135,
+                      "end":  364.723916367135,
+                      "interval":  104,
+                      "en":  "OK.",
+                      "id":  "108"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  364.6027984916,
+                      "end":  371.33752193763,
+                      "interval":  111,
+                      "en":  "Um, the other thing is that if it becomes a, common, thing or a recurrent problem. Then we need to talk to you again about it.",
+                      "id":  "109"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  371.979606135777,
+                      "end":  375.536017820078,
+                      "interval":  106,
+                      "en":  "So, do I have to call after I finish my course of antibiotics.",
+                      "id":  "110"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  374.889242126441,
+                      "end":  395.834041940726,
+                      "interval":  113,
+                      "en":  "No, not if you\u0027re better. If you\u0027re, if you feel like your symptoms get worse at any point, or they\u0027re not resolving with the treatment. Or you keep getting a similar, um, you keep getting a similar, problem, reccurently. Then it\u0027s important for us to talk, talk to you in more detail about that.",
+                      "id":  "111"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  376.701432693768,
+                      "end":  377.618725256923,
+                      "interval":  108,
+                      "en":  "OK.",
+                      "id":  "112"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  390.175209841544,
+                      "end":  390.919568673113,
+                      "interval":  110,
+                      "en":  "Yeah.",
+                      "id":  "113"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  396.069978231155,
+                      "end":  397.069978231155,
+                      "interval":  112,
+                      "en":  "OK then.",
+                      "id":  "114"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  397.413351388996,
+                      "end":  400.075417782248,
+                      "interval":  115,
+                      "en":  "Um, have you got any other questions?",
+                      "id":  "115"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  400.844436794411,
+                      "end":  405.851988052448,
+                      "interval":  114,
+                      "en":  "Uh, no. Uh, \u003cUNSURE\u003ewhere will\u003c/UNSURE\u003e be the pharmacy I\u0027ll be picking up, my medication from?",
+                      "id":  "116"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  405.627134875803,
+                      "end":  409.289199721427,
+                      "interval":  117,
+                      "en":  "Um, so have you already requested a pharmacy through Babylon?",
+                      "id":  "117"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  409.506144889384,
+                      "end":  410.656522047284,
+                      "interval":  116,
+                      "en":  "Yes I did.",
+                      "id":  "118"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  410.771957594985,
+                      "end":  412.585749438984,
+                      "interval":  119,
+                      "en":  "Can I just check that with you?",
+                      "id":  "119"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  413.716689110515,
+                      "end":  415.964819521086,
+                      "interval":  118,
+                      "en":  "Knightsbridge, Practice.",
+                      "id":  "120"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  416.406434728778,
+                      "end":  424.447803141685,
+                      "interval":  121,
+                      "en":  "OK, that\u0027s fine. So the antibiotics, that I\u0027m gonna prescribe, um, will go through to that, pharmacy.",
+                      "id":  "121"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  425.35586493191,
+                      "end":  426.35586493191,
+                      "interval":  120,
+                      "en":  "How soon?",
+                      "id":  "122"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  425.447803141685,
+                      "end":  428.434006964327,
+                      "interval":  123,
+                      "en":  "And \u003cUNSURE\u003ethen\u003c/UNSURE\u003e \u003cUNIN/\u003e, you\u0027ll be able to pick them up from there.",
+                      "id":  "123"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  428.69422163722,
+                      "end":  432.025067584671,
+                      "interval":  122,
+                      "en":  "How soon is that gonna be, at the practice? In five minutes?",
+                      "id":  "124"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  432.50296773195,
+                      "end":  436.585721581676,
+                      "interval":  125,
+                      "en":  "Um, I would give it longer than that. Give it a, an hour or so.",
+                      "id":  "125"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  434.814555763682,
+                      "end":  435.619065458412,
+                      "interval":  124,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "126"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  436.822074621577,
+                      "end":  439.243138763732,
+                      "interval":  126,
+                      "en":  "All right then. Thank you, I\u0027ll pick that at lunchtime.",
+                      "id":  "127"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  439.137443318115,
+                      "end":  443.206404085738,
+                      "interval":  127,
+                      "en":  "OK. All right then. Take care. Bye.",
+                      "id":  "128"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  440.949911405863,
+                      "end":  441.882241684808,
+                      "interval":  128,
+                      "en":  "Thank you.",
+                      "id":  "129"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  442.671713663748,
+                      "end":  444.137882853238,
+                      "interval":  130,
+                      "en":  "\u003cUNIN/\u003e. Bye.",
+                      "id":  "130"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  444.827092780314,
+                      "end":  445.62,
+                      "interval":  129,
+                      "en":  "Sorry, I \u003cINAUDIBLE_SPEECH/\u003e.",
+                      "id":  "131"
+                  }
+              ]
+}

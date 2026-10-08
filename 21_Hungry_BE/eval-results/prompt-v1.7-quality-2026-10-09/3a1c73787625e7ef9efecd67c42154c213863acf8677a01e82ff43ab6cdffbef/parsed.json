@@ -1,0 +1,11 @@
+{
+  "summary" : "가래는 없고 마른기침만 있음",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"가래는 없고 마른기침만 있음\",\"evidenceIndexes\":[0]},{\"text\":\"가래가 있는 기침은 아님\",\"evidenceIndexes\":[1,0]}],\"tests\":[],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"d4f175c9-448e-3161-a3bd-c510591197b0\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 네. 아니, 잘못 답했어요. 가래는 없고 마른기침만 있어요.\",\"occurrenceIndex\":0,\"start\":18,\"end\":55},{\"sourceId\":\"d4f175c9-448e-3161-a3bd-c510591197b0\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 가래가 있는 기침인가요?\",\"occurrenceIndex\":0,\"start\":0,\"end\":17}]",
+  "items" : [ ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2565,
+  "outputTokens" : 255
+}

@@ -1,0 +1,13 @@
+{
+  "occurredOn" : "2026-10-07",
+  "analyzedAt" : "2026-10-09T00:00:00Z",
+  "timezone" : "Asia/Seoul",
+  "sources" : [ {
+    "sourceId" : "5cac8780-b804-39c6-9ef6-5741b9b7f8b1",
+    "textVersion" : 1,
+    "sourceType" : "AUDIO",
+    "mediaType" : "audio/wav",
+    "text" : "의사: 염증일 가능성이 있지만 결과를 더 봐야 합니다. 계속 불편하면 검사를 고려합시다."
+  } ],
+  "knownMedications" : [ ]
+}

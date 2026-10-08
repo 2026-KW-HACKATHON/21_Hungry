@@ -1,0 +1,311 @@
+{
+  "id" : "resp_059d744bb1cc76ad016ac7cf623ebc87d0a5815083d965edf3",
+  "object" : "response",
+  "created_at" : 1791479650,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791479653,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_059d744bb1cc76ad016ac7cf62d59c87d085165df482ddd46a",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"summary\":[{\"text\":\"위염이라고 단정할 단계는 아니라고 판단함.\",\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]},{\"text\":\"가상 C약을 저녁에 2정에서 1정으로 정정해 4일 복용하도록 안내함.\",\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]},{\"text\":\"검사가 양성이면 예약일 전에 연락하기로 함.\",\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]}],\"details\":{\"symptoms\":[{\"text\":\"어제부터 속이 쓰림.\",\"utteranceIds\":[\"s12c0e16a47b1v1u0001\"]}],\"tests\":[{\"text\":\"검사가 양성이면 예약일 전에 연락드리기로 함.\",\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]}],\"medicationMentions\":[{\"text\":\"가상 C약을 저녁에 1정으로 4일 복용하도록 정정함.\",\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]}],\"precautions\":[],\"followUps\":[{\"text\":\"검사가 양성이면 예약일 전에 연락하기로 함.\",\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]}]},\"items\":[{\"itemKey\":\"med1\",\"itemType\":\"MEDICATION\",\"payload\":{\"schemaVersion\":1,\"name\":\"가상 C약\",\"doseText\":\"1정\",\"frequencyText\":\"저녁에 1정\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"처음 안내는 저녁에 2정이었으나 정정하여 1정만 4일 복용\",\"supersedesMedicationId\":null,\"schedulePlans\":[{\"recurrence\":\"DAILY\",\"firstDate\":null,\"lastDate\":null,\"weekdays\":[],\"localTime\":null,\"durationMinutes\":0}]},\"uncertaintyCodes\":[],\"isConditional\":false,\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]},{\"itemKey\":\"task1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"검사 결과에 따른 연락\",\"description\":\"검사가 양성이면 예약일 전에 연락드리기\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[],\"isConditional\":true,\"utteranceIds\":[\"s12c0e16a47b1v1u0002\"]}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_utterance_ids",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "summary" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "utteranceIds", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                },
+                "utteranceIds" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/$defs/utteranceId"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s12c0e16a47b1v1u0001", "s12c0e16a47b1v1u0002" ]
+          },
+          "claim" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "text", "utteranceIds" ],
+            "properties" : {
+              "text" : {
+                "type" : "string"
+              },
+              "utteranceIds" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/$defs/utteranceId"
+                }
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 1978,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 597,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 2575
+  },
+  "user" : null,
+  "metadata" : { }
+}

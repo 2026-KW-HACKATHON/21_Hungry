@@ -1,0 +1,13 @@
+{
+  "occurredOn" : "2026-10-07",
+  "analyzedAt" : "2026-10-09T00:00:00Z",
+  "timezone" : "Asia/Seoul",
+  "sources" : [ {
+    "sourceId" : "f1ad8f1a-dae3-3363-b6fc-c55cca59883d",
+    "textVersion" : 1,
+    "sourceType" : "AUDIO",
+    "mediaType" : "audio/wav",
+    "text" : "의사: 원인은 아직 확실하지 않아요. 처방약 드시고 쉬세요. 사흘 뒤에도 아프면 다시 오세요."
+  } ],
+  "knownMedications" : [ ]
+}

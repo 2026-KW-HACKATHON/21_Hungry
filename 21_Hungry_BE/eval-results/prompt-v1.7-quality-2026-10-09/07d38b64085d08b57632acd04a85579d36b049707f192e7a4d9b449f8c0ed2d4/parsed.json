@@ -1,0 +1,18 @@
+{
+  "summary" : "이번 치료는 이름이 확인되지 않은 약을 1정씩 하루 2번, 6일 사용하는 내용. 설명상 증상을 줄이기 위한 치료로 제시됨.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"이름이 들리지 않은 약을 1정씩 하루 2번, 6일 사용.\",\"evidenceIndexes\":[0]},{\"text\":\"지난달의 가상 약 M은 지난 치료로 언급됨.\",\"evidenceIndexes\":[1,0]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"a6cb712e-0320-38ff-9987-0bab6dba9740\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 그건 지난 치료이고요. 열이 있을 때 해열제를 쓰는 것처럼 증상을 줄이자는 설명입니다. 이번에는 이름이 안 들린 이 약을 1정씩 하루 2번, 6일 쓰세요.\",\"occurrenceIndex\":0,\"start\":24,\"end\":114},{\"sourceId\":\"a6cb712e-0320-38ff-9987-0bab6dba9740\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 지난달에는 가상 약 M을 먹었어요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":23}]",
+  "items" : [ {
+    "itemKey" : "med1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":null,\"doseText\":\"1정\",\"frequencyText\":\"하루 2번\",\"startsOn\":null,\"endsOn\":null,\"instructions\":null,\"supersedesMedicationId\":null,\"schedulePlans\":[{\"recurrence\":\"DAILY\",\"firstDate\":null,\"lastDate\":null,\"weekdays\":[],\"localTime\":null,\"durationMinutes\":6}]}",
+    "evidenceJson" : "[{\"sourceId\":\"a6cb712e-0320-38ff-9987-0bab6dba9740\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 그건 지난 치료이고요. 열이 있을 때 해열제를 쓰는 것처럼 증상을 줄이자는 설명입니다. 이번에는 이름이 안 들린 이 약을 1정씩 하루 2번, 6일 쓰세요.\",\"occurrenceIndex\":0,\"start\":24,\"end\":114}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_ENDSON", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME", "NAME_UNCERTAIN" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.7",
+  "inputTokens" : 2494,
+  "outputTokens" : 369
+}

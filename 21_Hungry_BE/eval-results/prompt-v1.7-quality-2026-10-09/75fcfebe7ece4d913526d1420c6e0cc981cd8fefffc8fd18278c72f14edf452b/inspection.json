@@ -1,0 +1,116 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s754bd4c3edb4v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "원인은 아직 확실하지 않음.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s754bd4c3edb4v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "처방약을 복용하세요. 약 이름과 용량, 복용 빈도 및 기간은 명시되지 않음.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "처방약을 복용하세요.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s754bd4c3edb4v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "PRECAUTION",
+      "text" : "쉬세요.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "휴식하기",
+        "date" : null,
+        "time" : null,
+        "recurrence" : null,
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "s754bd4c3edb4v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "다시 내원하세요.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "사흘 뒤에도 아프면" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "HOSPITAL",
+        "title" : "통증 지속 시 재내원",
+        "date" : "2026-10-10",
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2", "f3", "f4" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

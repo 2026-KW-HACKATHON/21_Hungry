@@ -1,0 +1,16 @@
+{
+  "candidatePlanSha256" : "5de1e67e46d2dd5bd68f497b6d702a14261505ef5f5caa9911d4dda52379de73",
+  "inputs" : [ {
+    "caseId" : "day4_consultation02",
+    "inputSha256" : "f3727925b5ca665bf150b3d74b14040a55b3cd2737508970ce8c6adbe6eabdda"
+  }, {
+    "caseId" : "day5_consultation02",
+    "inputSha256" : "f02fd8b9f48469d97dd2bbeb5470ea4e8f71828474edaede65b173b0924bac94"
+  }, {
+    "caseId" : "F181_01_CORRECTION_AND_CHOICE",
+    "inputSha256" : "60cc970b38a381cd5c987de23b18a1250787c20c9b897dbae5b982ba3f033bdc"
+  }, {
+    "caseId" : "F181_02_QA_NEGATION_AND_ACTOR",
+    "inputSha256" : "1a21116c2447f6cfa41f9dd173bcdcaec68e11642502b26f06d75191974d839e"
+  } ]
+}

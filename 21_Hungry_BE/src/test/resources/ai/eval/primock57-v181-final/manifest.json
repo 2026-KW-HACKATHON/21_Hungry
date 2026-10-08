@@ -1,0 +1,23 @@
+﻿{
+    "version":  "1.0.0",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "selectedBeforeEvaluation":  true,
+    "cases":  [
+                  {
+                      "id":  "day4_consultation02",
+                      "set":  "v181-final",
+                      "utterances":  166,
+                      "englishFile":  "day4_consultation02.en.json",
+                      "translationFile":  "day4_consultation02.ko.json",
+                      "note":  "original/day4_consultation02.note.json"
+                  },
+                  {
+                      "id":  "day5_consultation02",
+                      "set":  "v181-final",
+                      "utterances":  131,
+                      "englishFile":  "day5_consultation02.en.json",
+                      "translationFile":  "day5_consultation02.ko.json",
+                      "note":  "original/day5_consultation02.note.json"
+                  }
+              ]
+}

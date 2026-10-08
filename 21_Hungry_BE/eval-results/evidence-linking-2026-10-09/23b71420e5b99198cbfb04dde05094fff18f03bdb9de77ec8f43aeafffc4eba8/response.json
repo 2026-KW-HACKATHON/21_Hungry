@@ -1,0 +1,311 @@
+{
+  "id" : "resp_01bc3d2ead669d88016ac7d0098d4487d0996bd37ee72aabc7",
+  "object" : "response",
+  "created_at" : 1791479817,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791479826,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_01bc3d2ead669d88016ac7d00a455487d0be977c10d9cc8354",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"summary\":[{\"text\":\"어제 시작한 왼쪽 뒤쪽의 새 두통이 있으며 강도는 8/10이고, 평소 두통은 거의 없었다.\",\"utteranceIds\":[\"s3013ca528b16v1u0011\",\"s3013ca528b16v1u0013\",\"s3013ca528b16v1u0014\",\"s3013ca528b16v1u0016\",\"s3013ca528b16v1u0044\"]},{\"text\":\"메스꺼움, 구토, 시야 이상, 발열, 발진, 목 뻣뻣함, 자세·기침에 따른 변화는 없다고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0024\",\"s3013ca528b16v1u0025\",\"s3013ca528b16v1u0027\",\"s3013ca528b16v1u0029\",\"s3013ca528b16v1u0030\",\"s3013ca528b16v1u0031\",\"s3013ca528b16v1u0032\",\"s3013ca528b16v1u0035\",\"s3013ca528b16v1u0036\",\"s3013ca528b16v1u0037\",\"s3013ca528b16v1u0038\",\"s3013ca528b16v1u0039\",\"s3013ca528b16v1u0040\",\"s3013ca528b16v1u0053\",\"s3013ca528b16v1u0054\",\"s3013ca528b16v1u0088\"]},{\"text\":\"최근 복용한 약은 Nurofen/Ibuprofen이며 효과는 별로였다고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0046\",\"s3013ca528b16v1u0048\",\"s3013ca528b16v1u0060\"]},{\"text\":\"진통제를 바꾸어 음식과 함께 규칙적으로 복용하고, Paracetamol은 함께 복용할 수 있다고 안내했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0083\",\"s3013ca528b16v1u0084\",\"s3013ca528b16v1u0086\"]},{\"text\":\"통증이 심해지거나 열·발진·구토·목 뻣뻣함 같은 새 증상이 생기거나 같은 증상이 반복되면 다시 상담하고, 하루 이틀 안에 더 심해지거나 가라앉지 않으면 약국에서 처방약을 받아 쓴 뒤 다시 전화하라고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0088\",\"s3013ca528b16v1u0089\",\"s3013ca528b16v1u0094\",\"s3013ca528b16v1u0095\"]}],\"details\":{\"symptoms\":[{\"text\":\"어제 오전 중간쯤 시작한 왼쪽 뒤쪽의 계속되는 두통.\",\"utteranceIds\":[\"s3013ca528b16v1u0011\",\"s3013ca528b16v1u0013\",\"s3013ca528b16v1u0016\",\"s3013ca528b16v1u0020\"]},{\"text\":\"시작 시 꽤 세게 욱신거렸고 짧은 시간 동안 점점 심해졌다.\",\"utteranceIds\":[\"s3013ca528b16v1u0022\",\"s3013ca528b16v1u0023\"]},{\"text\":\"메스꺼움, 구토, 시야 흐림, 눈 주변 통증, 이상한 빛, 열, 발진은 없다고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0024\",\"s3013ca528b16v1u0025\",\"s3013ca528b16v1u0027\",\"s3013ca528b16v1u0029\",\"s3013ca528b16v1u0030\",\"s3013ca528b16v1u0031\",\"s3013ca528b16v1u0032\",\"s3013ca528b16v1u0035\",\"s3013ca528b16v1u0036\",\"s3013ca528b16v1u0037\",\"s3013ca528b16v1u0038\",\"s3013ca528b16v1u0039\",\"s3013ca528b16v1u0040\"]},{\"text\":\"평소 두통이 거의 없고, 하루 중 시간이나 눕기·서기·숙이기·기침·재채기와는 관련이 없었다.\",\"utteranceIds\":[\"s3013ca528b16v1u0014\",\"s3013ca528b16v1u0051\",\"s3013ca528b16v1u0052\",\"s3013ca528b16v1u0053\",\"s3013ca528b16v1u0054\"]},{\"text\":\"일이나 평소 하던 활동을 하기 힘들다고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0074\"]}],\"tests\":[{\"text\":\"별도 검사 결과는 언급되지 않았다.\",\"utteranceIds\":[\"s3013ca528b16v1u0001\"]}],\"medicationMentions\":[{\"text\":\"어제 Nurofen을 복용했고, Ibuprofen으로도 언급했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0046\",\"s3013ca528b16v1u0060\"]},{\"text\":\"Nurofen/Ibuprofen의 효과는 별로였다고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0048\"]},{\"text\":\"더 강한 진통제를 써 보라고 권했고, Ibuprofen 대신 복용하되 같이 먹지 말고 음식과 함께 규칙적으로 복용하라고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0083\",\"s3013ca528b16v1u0084\"]},{\"text\":\"Paracetamol은 함께 복용할 수 있다고 안내했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0086\"]}],\"precautions\":[{\"text\":\"쉬고 물을 충분히 마시라고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0088\"]},{\"text\":\"통증이 심해지거나 열, 발진, 구토, 목이 뻣뻣함 같은 새 증상이 생기면 다시 상담하라고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0088\",\"s3013ca528b16v1u0089\"]}],\"followUps\":[{\"text\":\"같은 증상이 반복되면 다시 상담해 다음 계획을 정하라고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0089\"]},{\"text\":\"하루 이틀 안에 더 심해지거나 가라앉지 않으면 약국에서 처방약을 받아 쓴 뒤 다시 전화하라고 했다.\",\"utteranceIds\":[\"s3013ca528b16v1u0094\",\"s3013ca528b16v1u0095\"]}]},\"items\":[{\"itemKey\":\"med1\",\"itemType\":\"MEDICATION\",\"payload\":{\"schemaVersion\":1,\"name\":\"ibuprofen\",\"doseText\":null,\"frequencyText\":\"규칙적으로\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"Nurofen/Ibuprofen 대신 복용, 같이 복용하지 말고 음식과 함께 복용\",\"supersedesMedicationId\":null,\"schedulePlans\":[]},\"uncertaintyCodes\":[],\"isConditional\":false,\"utteranceIds\":[\"s3013ca528b16v1u0084\",\"s3013ca528b16v1u0060\",\"s3013ca528b16v1u0046\"]},{\"itemKey\":\"med2\",\"itemType\":\"MEDICATION\",\"payload\":{\"schemaVersion\":1,\"name\":\"paracetamol\",\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"함께 복용 가능\",\"supersedesMedicationId\":null,\"schedulePlans\":[]},\"uncertaintyCodes\":[],\"isConditional\":false,\"utteranceIds\":[\"s3013ca528b16v1u0086\"]}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_utterance_ids",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "summary" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "utteranceIds", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                },
+                "utteranceIds" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/$defs/utteranceId"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/claim"
+            }
+          },
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s3013ca528b16v1u0001", "s3013ca528b16v1u0002", "s3013ca528b16v1u0003", "s3013ca528b16v1u0004", "s3013ca528b16v1u0005", "s3013ca528b16v1u0006", "s3013ca528b16v1u0007", "s3013ca528b16v1u0008", "s3013ca528b16v1u0009", "s3013ca528b16v1u0010", "s3013ca528b16v1u0011", "s3013ca528b16v1u0012", "s3013ca528b16v1u0013", "s3013ca528b16v1u0014", "s3013ca528b16v1u0015", "s3013ca528b16v1u0016", "s3013ca528b16v1u0017", "s3013ca528b16v1u0018", "s3013ca528b16v1u0019", "s3013ca528b16v1u0020", "s3013ca528b16v1u0021", "s3013ca528b16v1u0022", "s3013ca528b16v1u0023", "s3013ca528b16v1u0024", "s3013ca528b16v1u0025", "s3013ca528b16v1u0026", "s3013ca528b16v1u0027", "s3013ca528b16v1u0028", "s3013ca528b16v1u0029", "s3013ca528b16v1u0030", "s3013ca528b16v1u0031", "s3013ca528b16v1u0032", "s3013ca528b16v1u0033", "s3013ca528b16v1u0034", "s3013ca528b16v1u0035", "s3013ca528b16v1u0036", "s3013ca528b16v1u0037", "s3013ca528b16v1u0038", "s3013ca528b16v1u0039", "s3013ca528b16v1u0040", "s3013ca528b16v1u0041", "s3013ca528b16v1u0042", "s3013ca528b16v1u0043", "s3013ca528b16v1u0044", "s3013ca528b16v1u0045", "s3013ca528b16v1u0046", "s3013ca528b16v1u0047", "s3013ca528b16v1u0048", "s3013ca528b16v1u0049", "s3013ca528b16v1u0050", "s3013ca528b16v1u0051", "s3013ca528b16v1u0052", "s3013ca528b16v1u0053", "s3013ca528b16v1u0054", "s3013ca528b16v1u0055", "s3013ca528b16v1u0056", "s3013ca528b16v1u0057", "s3013ca528b16v1u0058", "s3013ca528b16v1u0059", "s3013ca528b16v1u0060", "s3013ca528b16v1u0061", "s3013ca528b16v1u0062", "s3013ca528b16v1u0063", "s3013ca528b16v1u0064", "s3013ca528b16v1u0065", "s3013ca528b16v1u0066", "s3013ca528b16v1u0067", "s3013ca528b16v1u0068", "s3013ca528b16v1u0069", "s3013ca528b16v1u0070", "s3013ca528b16v1u0071", "s3013ca528b16v1u0072", "s3013ca528b16v1u0073", "s3013ca528b16v1u0074", "s3013ca528b16v1u0075", "s3013ca528b16v1u0076", "s3013ca528b16v1u0077", "s3013ca528b16v1u0078", "s3013ca528b16v1u0079", "s3013ca528b16v1u0080", "s3013ca528b16v1u0081", "s3013ca528b16v1u0082", "s3013ca528b16v1u0083", "s3013ca528b16v1u0084", "s3013ca528b16v1u0085", "s3013ca528b16v1u0086", "s3013ca528b16v1u0087", "s3013ca528b16v1u0088", "s3013ca528b16v1u0089", "s3013ca528b16v1u0090", "s3013ca528b16v1u0091", "s3013ca528b16v1u0092", "s3013ca528b16v1u0093", "s3013ca528b16v1u0094", "s3013ca528b16v1u0095", "s3013ca528b16v1u0096", "s3013ca528b16v1u0097", "s3013ca528b16v1u0098", "s3013ca528b16v1u0099", "s3013ca528b16v1u0100", "s3013ca528b16v1u0101" ]
+          },
+          "claim" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "text", "utteranceIds" ],
+            "properties" : {
+              "text" : {
+                "type" : "string"
+              },
+              "utteranceIds" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/$defs/utteranceId"
+                }
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 11318,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1839,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 13157
+  },
+  "user" : null,
+  "metadata" : { }
+}

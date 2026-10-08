@@ -1,0 +1,329 @@
+{
+  "id" : "resp_02e38b0bd0a2a7fe016ac7c0bee66087d0a4471e646f27f2d9",
+  "object" : "response",
+  "created_at" : 1791475902,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791475911,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_02e38b0bd0a2a7fe016ac7c0c056f887d088c8eaa3d1e3be48",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"evidence\":[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[015] 환자: 네, 며칠 됐어요. 기침하고 <INAUDIBLE_SPEECH/> 콧물도 나고요. <INAUDIBLE_SPEECH/>\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[017] 환자: 조금 더 됐고 5일쯤이에요. 오늘이 무슨 요일이죠? <UNIN/> 주말 시작 무렵부터였어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[020] 환자: 기침, 콧물, 근육통이 있고 가끔 <UNIN/> 두통과 추위, 오한 같은 느낌도 있어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[025] 환자: 네.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[026] 환자: 아니요, 마른기침이에요. <UNIN/> 거의 거칠게 콜록거리는 기침이에요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[031] 환자: 아니요. 숨은 잘 쉬어요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[033] 환자: 네, 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[041] 환자: <UNSURE>metformin</UNSURE>을 먹어요. 당뇨가 있고요. <UNSURE>lisinopril</UNSURE>도 먹어요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[043] 환자: 네, <UNIN/> 혈압이 <UNSURE>조금</UNSURE> 높아서요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[045] 환자: 몇 년 됐어요. 아마 5~6년이요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[047] 의사: 집에서 혈당을 확인하나요?\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[048] 환자: 네.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[050] 환자: 문제 없어요. <UNIN/> 평소와 다르지 않아요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[052] 환자: 오늘 아침이요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[054] 환자: 정확히는 기억 안 나지만 <UNIN/> 정상 범위였어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[061] 의사: 목 뒤가 약간 빨갛고 편도는 커져 있지 않네요. 목 주변에 만져지는 멍울이 있나요?\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[062] 의사: <UNSURE>아니요, 아니요</UNSURE>.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[064] 의사: 감기와 기침으로 보아 단순한 바이러스 감염 같아요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[066] 의사: Night Nurse, Day Nurse를 쓰셔도 됩니다. 현재 약과 함께 써도 괜찮아요. 걱정되실 수 있지만 지금 약과 같이 써도 됩니다. 조금 더 빨리 편해질 수도 있어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[069] 의사: 상태가 <UNSURE>안 좋아지면</UNSURE> 연락 주세요. 그때는 특히 가슴을 진찰해야 할 수도 있지만 지금은 필요해 보이지 않아요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[073] 의사: 정리하면 Night Nurse, Day Nurse를 쓰시고, 숨참·쌕쌕거림·3주 넘는 증상 등 변화가 있으면 연락 주세요.\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[075] 의사: <UNSURE>네, 필요 없어요</UNSURE>. 지금은 필요 없습니다. 조심하세요. 안녕히 계세요. <INAUDIBLE_SPEECH/>\",\"occurrenceIndex\":0}],\"summary\":\"감기와 기침으로 보아 단순한 바이러스 감염으로 보임. 현재 복용 중인 약과 함께 Night Nurse, Day Nurse 사용 가능. 숨참, 쌕쌕거림, 3주 넘는 증상, 상태 악화가 있으면 연락. 지금은 처방전이나 추가 진찰이 필요 없어 보임.\",\"details\":{\"symptoms\":[{\"text\":\"5일쯤 된 기침과 콧물.\",\"evidenceIndexes\":[0,1]},{\"text\":\"근육통, 가끔 두통, 추위·오한 느낌.\",\"evidenceIndexes\":[2]},{\"text\":\"마른기침, 거의 거칠게 콜록거리는 기침.\",\"evidenceIndexes\":[5]},{\"text\":\"숨은 잘 쉬고, 쌕쌕거림이나 그렁거리는 소리 없음.\",\"evidenceIndexes\":[6,7]}],\"tests\":[{\"text\":\"목 뒤가 약간 빨갛고 편도는 커져 있지 않음.\",\"evidenceIndexes\":[12]},{\"text\":\"목 주변에 만져지는 멍울 없음.\",\"evidenceIndexes\":[13]},{\"text\":\"집에서 혈당 확인함. 최근 수치는 문제 없고 평소와 다르지 않음.\",\"evidenceIndexes\":[16,17,18]},{\"text\":\"오늘 아침 혈압은 정확한 수치는 기억나지 않지만 정상 범위였음.\",\"evidenceIndexes\":[19,20]}],\"medicationMentions\":[{\"text\":\"metformin 복용. 당뇨가 있음.\",\"evidenceIndexes\":[8]},{\"text\":\"lisinopril 복용. 혈압이 조금 높음.\",\"evidenceIndexes\":[8,9]},{\"text\":\"paracetamol 같은 진통제 복용.\",\"evidenceIndexes\":[7]},{\"text\":\"Night Nurse, Day Nurse 사용 가능. 현재 약과 함께 복용해도 됨.\",\"evidenceIndexes\":[14]},{\"text\":\"처방전은 필요 없음.\",\"evidenceIndexes\":[23]}],\"precautions\":[{\"text\":\"숨참, 쌕쌕거림, 3주 넘는 증상 등 변화가 있으면 연락.\",\"evidenceIndexes\":[15,22]},{\"text\":\"상태가 안 좋아지면 연락.\",\"evidenceIndexes\":[15]}],\"followUps\":[{\"text\":\"증상이 3주 넘게 지속되거나 상태가 악화되면 연락. 그때는 가슴 진찰이 필요할 수 있음.\",\"evidenceIndexes\":[15,21,22]},{\"text\":\"현재는 처방전이 필요 없음.\",\"evidenceIndexes\":[23]}]},\"items\":[{\"itemKey\":\"followup-1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"증상 악화 또는 3주 이상 지속 시 연락\",\"description\":\"숨참, 쌕쌕거림, 3주 넘는 증상 등 변화가 있거나 상태가 안 좋아지면 연락. 그때는 가슴 진찰이 필요할 수 있음.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[069] 의사: 상태가 <UNSURE>안 좋아지면</UNSURE> 연락 주세요. 그때는 특히 가슴을 진찰해야 할 수도 있지만 지금은 필요해 보이지 않아요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"d18102e5-9a83-30f8-addd-e400f6952180\",\"textVersion\":1,\"page\":null,\"quote\":\"[073] 의사: 정리하면 Night Nurse, Day Nurse를 쓰시고, 숨참·쌕쌕거림·3주 넘는 증상 등 변화가 있으면 연락 주세요.\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[],\"isConditional\":true}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "evidence", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "evidence" : {
+            "$ref" : "#/$defs/evidenceList"
+          },
+          "summary" : {
+            "type" : [ "string", "null" ]
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "evidence" : {
+                  "$ref" : "#/$defs/evidenceList"
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "text", "evidenceIndexes" ],
+              "properties" : {
+                "text" : {
+                  "type" : [ "string", "null" ]
+                },
+                "evidenceIndexes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "integer"
+                  }
+                }
+              }
+            }
+          },
+          "evidenceList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/evidence"
+            }
+          },
+          "evidence" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "sourceId", "textVersion", "page", "quote", "occurrenceIndex" ],
+            "properties" : {
+              "sourceId" : {
+                "type" : "string"
+              },
+              "textVersion" : {
+                "type" : "integer"
+              },
+              "page" : {
+                "type" : [ "integer", "null" ]
+              },
+              "quote" : {
+                "type" : "string"
+              },
+              "occurrenceIndex" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 4839,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 2506,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7345
+  },
+  "user" : null,
+  "metadata" : { }
+}

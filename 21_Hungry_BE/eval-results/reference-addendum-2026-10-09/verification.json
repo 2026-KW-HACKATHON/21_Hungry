@@ -1,0 +1,117 @@
+{
+  "scope": "Reference addendum merge; offline tests and request dry-run, NOT model quality validation",
+  "guidelineVersion": "0.5.0",
+  "promptVersion": "1.7",
+  "checkedAt": "2026-10-08T18:22:15.6586251Z",
+  "suites": [
+    {
+      "name": "com.kw.knowone.AiContractResourceTests",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.AnalysisOutputValidatorTests",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.OpenAiProcessingAdapterTests",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.ReviewedPromptExamplesTests",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.SummaryEvaluationTests",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.encounter.processing.UtteranceEvidenceTests",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.FileValidationServiceTests",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.notification.push.WebPushAdapterTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.kw.knowone.PreviewTokenServiceTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/AI-SUMMARY-GUIDELINES.md",
+      "sha256": "07efcc9bf3c251552a112c1b40bb8184f06135297f5c7cff9a629a3cab46bc03"
+    },
+    {
+      "path": "src/main/resources/ai/analysis-prompt-v1.7.txt",
+      "sha256": "59344f18ad2056e0ba427032ae719a2ee59c4d9277131a84d1fa30b705cee68a"
+    },
+    {
+      "path": "src/main/java/com/kw/knowone/encounter/processing/OpenAiProcessingAdapter.java",
+      "sha256": "e3994c167f996cda55335166d64777f9677f3ecff77561cef7075df8f5edccc1"
+    },
+    {
+      "path": "src/main/resources/application.yaml",
+      "sha256": "d1419dd5b547417cf1f99abe3fe49d86f5c5ddb3c59a4468d1e707ae12faa445"
+    },
+    {
+      "path": "src/test/resources/ai/eval/reviewed-prompt-examples-v1.0.0.json",
+      "sha256": "810251b80b6ecdc03b5ddebf5efdc611ecc232648a1258b305e806c80f7a2564"
+    },
+    {
+      "path": "src/test/java/com/kw/knowone/encounter/processing/ReviewedPromptExamplesTests.java",
+      "sha256": "13039a0685cf96ead98cb2f086fad1a36a4b6cd3ef692c725826d018475393c6"
+    }
+  ],
+  "existingLiveCalls": 38,
+  "newCandidateLiveCalls": 0,
+  "existingChargedUsd": 0.3883905,
+  "bootJar": "PASS; v1.1/v1.6/v1.7 entries inspected",
+  "dryRun": {
+    "synthetic": 8,
+    "reviewedDevelopment": 12,
+    "externalRequests": 0
+  },
+  "newExternalApiCostUsd": 0,
+  "budgetUsd": 1,
+  "promotion": "BLOCKED; production legacy/v1.1 unchanged; no deploy",
+  "reviewStatus": "AI source comparison; not clinician validated",
+  "unexecuted": [
+    "v1.7 model output evaluation",
+    "fresh independent held-out evaluation",
+    "DB integration",
+    "production/UI E2E"
+  ],
+  "initialLocalIssue": "Raw-file provenance SHA includes UTF-8 BOM. Test corrected to hash raw UTF-8 file, not the BOM-stripped JSON read helper; final suite rerun."
+}

@@ -1,0 +1,25 @@
+{
+  "summary" : "위염이라고 단정할 단계는 아니라고 설명함. 가상 C약을 저녁에 1정씩 4일 복용하도록 정정함. 검사가 양성이면 예약일 전에 연락하겠다고 안내함.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"어제부터 속이 쓰림.\",\"evidenceIndexes\":[1]}],\"tests\":[{\"text\":\"검사 결과가 양성이면 예약일 전에 연락하겠다고 함.\",\"evidenceIndexes\":[0]}],\"medicationMentions\":[{\"text\":\"가상 C약 저녁 1정, 4일 복용.\",\"evidenceIndexes\":[0]}],\"precautions\":[],\"followUps\":[{\"text\":\"검사가 양성이면 예약일 전에 연락받게 됨.\",\"evidenceIndexes\":[0]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 위염이라고 단정할 단계는 아닙니다. 우선 가상 C약은 저녁에 2정, 정정해서 1정만 4일 드세요. 검사가 양성이면 예약일 전에 연락드리겠습니다.\",\"occurrenceIndex\":0,\"start\":31,\"end\":115},{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 어제부터 속이 쓰리고 제가 보기엔 위염 같아요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":30}]",
+  "items" : [ {
+    "itemKey" : "med1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"가상 C약\",\"doseText\":\"1정\",\"frequencyText\":\"저녁에\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"4일 복용\",\"supersedesMedicationId\":null,\"schedulePlans\":[{\"recurrence\":\"DAILY\",\"firstDate\":null,\"lastDate\":null,\"weekdays\":[],\"localTime\":null,\"durationMinutes\":1440}]}",
+    "evidenceJson" : "[{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 위염이라고 단정할 단계는 아닙니다. 우선 가상 C약은 저녁에 2정, 정정해서 1정만 4일 드세요. 검사가 양성이면 예약일 전에 연락드리겠습니다.\",\"occurrenceIndex\":0,\"start\":31,\"end\":115}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  }, {
+    "itemKey" : "task1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"검사 양성 시 예약일 전에 연락\",\"description\":\"검사가 양성이면 예약일 전에 연락드림\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"b073f189-214a-321a-8032-67aabd11f7cb\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 위염이라고 단정할 단계는 아닙니다. 우선 가상 C약은 저녁에 2정, 정정해서 1정만 4일 드세요. 검사가 양성이면 예약일 전에 연락드리겠습니다.\",\"occurrenceIndex\":0,\"start\":31,\"end\":115}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.6",
+  "inputTokens" : 1990,
+  "outputTokens" : 575
+}

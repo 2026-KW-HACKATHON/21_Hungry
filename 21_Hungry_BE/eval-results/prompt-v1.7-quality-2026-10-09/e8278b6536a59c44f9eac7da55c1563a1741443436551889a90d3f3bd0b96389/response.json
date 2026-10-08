@@ -1,0 +1,287 @@
+{
+  "id" : "resp_0c86485ff32334a6016ac7f299e44487d084191197fa692126",
+  "object" : "response",
+  "created_at" : 1791488665,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791488670,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_0c86485ff32334a6016ac7f29a77b887d0b16b77cfb81b2fec",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"s84ad34cdc495v1u0015\",\"s84ad34cdc495v1u0016\",\"s84ad34cdc495v1u0018\"],\"questionIds\":[\"s84ad34cdc495v1u0014\",\"s84ad34cdc495v1u0017\"],\"answerIds\":[\"s84ad34cdc495v1u0015\",\"s84ad34cdc495v1u0016\",\"s84ad34cdc495v1u0018\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"최근부터 숨이 많이 차고, 깊게 숨을 들이쉴 때 오른쪽 등이 걸리는 것처럼 아프다. 통증은 오늘부터 시작되었다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[\"s84ad34cdc495v1u0020\",\"s84ad34cdc495v1u0037\"],\"questionIds\":[\"s84ad34cdc495v1u0019\"],\"answerIds\":[\"s84ad34cdc495v1u0020\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"약간의 열감이 있고, 기침을 두 번 정도 하면서 피가 조금 나왔다. 이는 하루 정도 지속되었다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f3\",\"support\":{\"statementIds\":[\"s84ad34cdc495v1u0030\",\"s84ad34cdc495v1u0032\",\"s84ad34cdc495v1u0033\",\"s84ad34cdc495v1u0036\"],\"questionIds\":[\"s84ad34cdc495v1u0035\"],\"answerIds\":[\"s84ad34cdc495v1u0036\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"피곤해서 운동하기도 어렵고 일상적인 일을 하는 것도 평소보다 힘들었으며, 이런 피로감과 운동하기 싫은 증상은 약 2주 되었다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f4\",\"support\":{\"statementIds\":[\"s84ad34cdc495v1u0052\",\"s84ad34cdc495v1u0054\",\"s84ad34cdc495v1u0062\"],\"questionIds\":[\"s84ad34cdc495v1u0053\",\"s84ad34cdc495v1u0061\"],\"answerIds\":[\"s84ad34cdc495v1u0052\",\"s84ad34cdc495v1u0054\",\"s84ad34cdc495v1u0062\"],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"Methotrexate를 복용 중이며 SLE 때문에 복용한다. 마지막 복용은 오늘 아침이었다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"CONTINUE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"Methotrexate\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":\"SLE 때문에 복용 중. 마지막 복용은 오늘 아침.\",\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f5\",\"support\":{\"statementIds\":[\"s84ad34cdc495v1u0041\",\"s84ad34cdc495v1u0056\",\"s84ad34cdc495v1u0058\",\"s84ad34cdc495v1u0060\",\"s84ad34cdc495v1u0130\"],\"questionIds\":[\"s84ad34cdc495v1u0040\",\"s84ad34cdc495v1u0055\",\"s84ad34cdc495v1u0057\",\"s84ad34cdc495v1u0059\",\"s84ad34cdc495v1u0129\"],\"answerIds\":[\"s84ad34cdc495v1u0041\",\"s84ad34cdc495v1u0056\",\"s84ad34cdc495v1u0058\",\"s84ad34cdc495v1u0060\",\"s84ad34cdc495v1u0130\"],\"correctionIds\":[]},\"kind\":\"PRECAUTION\",\"text\":\"흡연은 하지 않고, 다른 진단은 없으며, 약 알레르기와 다른 알레르기도 없다. 항생제 알레르기도 없다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f6\",\"support\":{\"statementIds\":[\"s84ad34cdc495v1u0112\",\"s84ad34cdc495v1u0113\",\"s84ad34cdc495v1u0114\",\"s84ad34cdc495v1u0115\",\"s84ad34cdc495v1u0118\",\"s84ad34cdc495v1u0119\",\"s84ad34cdc495v1u0126\",\"s84ad34cdc495v1u0127\",\"s84ad34cdc495v1u0128\",\"s84ad34cdc495v1u0131\",\"s84ad34cdc495v1u0133\",\"s84ad34cdc495v1u0134\",\"s84ad34cdc495v1u0145\",\"s84ad34cdc495v1u0147\",\"s84ad34cdc495v1u0148\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"흉부 감염 가능성이 있으며, 폐렴 여부와 항생제 필요성을 포함해 오늘 진료소에서 대면 진찰과 청진, 혈압·맥박·체온 재확인이 필요하다. 온라인 진찰만으로는 제한이 있어, 현재는 아무 약도 처방하지 않기로 했다. 호전되지 않으면 추후 흉부 X-ray가 필요할 수 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f7\",\"support\":{\"statementIds\":[\"s84ad34cdc495v1u0133\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"지원팀 전화번호를 이용해 전화하면 오늘 의사와 대면 진료를 예약해 준다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"오늘 의사와 대면 진료 예약\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]}],\"summaryFactIds\":[\"f6\",\"f7\",\"f4\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s84ad34cdc495v1u0001", "s84ad34cdc495v1u0002", "s84ad34cdc495v1u0003", "s84ad34cdc495v1u0004", "s84ad34cdc495v1u0005", "s84ad34cdc495v1u0006", "s84ad34cdc495v1u0007", "s84ad34cdc495v1u0008", "s84ad34cdc495v1u0009", "s84ad34cdc495v1u0010", "s84ad34cdc495v1u0011", "s84ad34cdc495v1u0012", "s84ad34cdc495v1u0013", "s84ad34cdc495v1u0014", "s84ad34cdc495v1u0015", "s84ad34cdc495v1u0016", "s84ad34cdc495v1u0017", "s84ad34cdc495v1u0018", "s84ad34cdc495v1u0019", "s84ad34cdc495v1u0020", "s84ad34cdc495v1u0021", "s84ad34cdc495v1u0022", "s84ad34cdc495v1u0023", "s84ad34cdc495v1u0024", "s84ad34cdc495v1u0025", "s84ad34cdc495v1u0026", "s84ad34cdc495v1u0027", "s84ad34cdc495v1u0028", "s84ad34cdc495v1u0029", "s84ad34cdc495v1u0030", "s84ad34cdc495v1u0031", "s84ad34cdc495v1u0032", "s84ad34cdc495v1u0033", "s84ad34cdc495v1u0034", "s84ad34cdc495v1u0035", "s84ad34cdc495v1u0036", "s84ad34cdc495v1u0037", "s84ad34cdc495v1u0038", "s84ad34cdc495v1u0039", "s84ad34cdc495v1u0040", "s84ad34cdc495v1u0041", "s84ad34cdc495v1u0042", "s84ad34cdc495v1u0043", "s84ad34cdc495v1u0044", "s84ad34cdc495v1u0045", "s84ad34cdc495v1u0046", "s84ad34cdc495v1u0047", "s84ad34cdc495v1u0048", "s84ad34cdc495v1u0049", "s84ad34cdc495v1u0050", "s84ad34cdc495v1u0051", "s84ad34cdc495v1u0052", "s84ad34cdc495v1u0053", "s84ad34cdc495v1u0054", "s84ad34cdc495v1u0055", "s84ad34cdc495v1u0056", "s84ad34cdc495v1u0057", "s84ad34cdc495v1u0058", "s84ad34cdc495v1u0059", "s84ad34cdc495v1u0060", "s84ad34cdc495v1u0061", "s84ad34cdc495v1u0062", "s84ad34cdc495v1u0063", "s84ad34cdc495v1u0064", "s84ad34cdc495v1u0065", "s84ad34cdc495v1u0066", "s84ad34cdc495v1u0067", "s84ad34cdc495v1u0068", "s84ad34cdc495v1u0069", "s84ad34cdc495v1u0070", "s84ad34cdc495v1u0071", "s84ad34cdc495v1u0072", "s84ad34cdc495v1u0073", "s84ad34cdc495v1u0074", "s84ad34cdc495v1u0075", "s84ad34cdc495v1u0076", "s84ad34cdc495v1u0077", "s84ad34cdc495v1u0078", "s84ad34cdc495v1u0079", "s84ad34cdc495v1u0080", "s84ad34cdc495v1u0081", "s84ad34cdc495v1u0082", "s84ad34cdc495v1u0083", "s84ad34cdc495v1u0084", "s84ad34cdc495v1u0085", "s84ad34cdc495v1u0086", "s84ad34cdc495v1u0087", "s84ad34cdc495v1u0088", "s84ad34cdc495v1u0089", "s84ad34cdc495v1u0090", "s84ad34cdc495v1u0091", "s84ad34cdc495v1u0092", "s84ad34cdc495v1u0093", "s84ad34cdc495v1u0094", "s84ad34cdc495v1u0095", "s84ad34cdc495v1u0096", "s84ad34cdc495v1u0097", "s84ad34cdc495v1u0098", "s84ad34cdc495v1u0099", "s84ad34cdc495v1u0100", "s84ad34cdc495v1u0101", "s84ad34cdc495v1u0102", "s84ad34cdc495v1u0103", "s84ad34cdc495v1u0104", "s84ad34cdc495v1u0105", "s84ad34cdc495v1u0106", "s84ad34cdc495v1u0107", "s84ad34cdc495v1u0108", "s84ad34cdc495v1u0109", "s84ad34cdc495v1u0110", "s84ad34cdc495v1u0111", "s84ad34cdc495v1u0112", "s84ad34cdc495v1u0113", "s84ad34cdc495v1u0114", "s84ad34cdc495v1u0115", "s84ad34cdc495v1u0116", "s84ad34cdc495v1u0117", "s84ad34cdc495v1u0118", "s84ad34cdc495v1u0119", "s84ad34cdc495v1u0120", "s84ad34cdc495v1u0121", "s84ad34cdc495v1u0122", "s84ad34cdc495v1u0123", "s84ad34cdc495v1u0124", "s84ad34cdc495v1u0125", "s84ad34cdc495v1u0126", "s84ad34cdc495v1u0127", "s84ad34cdc495v1u0128", "s84ad34cdc495v1u0129", "s84ad34cdc495v1u0130", "s84ad34cdc495v1u0131", "s84ad34cdc495v1u0132", "s84ad34cdc495v1u0133", "s84ad34cdc495v1u0134", "s84ad34cdc495v1u0135", "s84ad34cdc495v1u0136", "s84ad34cdc495v1u0137", "s84ad34cdc495v1u0138", "s84ad34cdc495v1u0139", "s84ad34cdc495v1u0140", "s84ad34cdc495v1u0141", "s84ad34cdc495v1u0142", "s84ad34cdc495v1u0143", "s84ad34cdc495v1u0144", "s84ad34cdc495v1u0145", "s84ad34cdc495v1u0146", "s84ad34cdc495v1u0147", "s84ad34cdc495v1u0148", "s84ad34cdc495v1u0149", "s84ad34cdc495v1u0150", "s84ad34cdc495v1u0151", "s84ad34cdc495v1u0152", "s84ad34cdc495v1u0153" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 17133,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1635,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 18768
+  },
+  "user" : null,
+  "metadata" : { }
+}

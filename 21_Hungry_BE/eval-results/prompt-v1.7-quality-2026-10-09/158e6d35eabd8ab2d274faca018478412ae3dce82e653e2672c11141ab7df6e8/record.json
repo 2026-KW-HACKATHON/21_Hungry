@@ -1,0 +1,40 @@
+{
+  "caseId" : "day4_consultation02",
+  "set" : "fresh",
+  "candidate" : "B",
+  "promptVersion" : "1.8.1",
+  "model" : "gpt-6.1-sol",
+  "requestSha256" : "158e6d35eabd8ab2d274faca018478412ae3dce82e653e2672c11141ab7df6e8",
+  "inputSha256" : "f3727925b5ca665bf150b3d74b14040a55b3cd2737508970ce8c6adbe6eabdda",
+  "requestLayout" : "semantic-facts-v2",
+  "startedAt" : "2026-10-08T20:54:05.434378Z",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "reservedUsd" : 0.2698975,
+  "chargedUsd" : 0.0911475,
+  "campaignBudgetUsd" : 3.0,
+  "retries" : 0,
+  "reservationPolicy" : "v2: explicit default tier; UTF8 bytes+4096 at max input/cache-write rate plus full 12000 output tokens",
+  "rateSource" : "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+  "costMethod" : "conservative: all uncached input at cache-write rate",
+  "reviewStatus" : "UNREVIEWED; not clinician validated",
+  "pricingCheckedOn" : "2026-10-09",
+  "parserRevision" : "r2",
+  "parserSha256" : "a1e244f59abc559a414df1eae8f645558d2462350c0d54df02deedf7b93497ae",
+  "usage" : {
+    "input_tokens" : 17571,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 17568,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 4722,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 44
+    },
+    "total_tokens" : 22293
+  },
+  "providerStatus" : "completed",
+  "responseModel" : "gpt-6.1-sol",
+  "serviceTier" : "default",
+  "estimatedUsd" : 0.0911475,
+  "elapsedMillis" : 60660
+}

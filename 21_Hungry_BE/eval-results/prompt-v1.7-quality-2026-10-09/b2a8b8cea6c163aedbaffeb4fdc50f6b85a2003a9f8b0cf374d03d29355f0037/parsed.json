@@ -1,0 +1,11 @@
+{
+  "summary" : "기침은 3일째이다. 열은 없었다.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"기침은 3일째이다.\",\"evidenceIndexes\":[0,1]},{\"text\":\"열은 없었다.\",\"evidenceIndexes\":[2,3]}],\"tests\":[],\"medicationMentions\":[],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"2878460d-4c50-3bb4-9917-2f3b1617fa27\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 사흘이요.\",\"occurrenceIndex\":0,\"start\":22,\"end\":31},{\"sourceId\":\"2878460d-4c50-3bb4-9917-2f3b1617fa27\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 기침을 시작한 지 며칠 됐나요?\",\"occurrenceIndex\":0,\"start\":0,\"end\":21},{\"sourceId\":\"2878460d-4c50-3bb4-9917-2f3b1617fa27\",\"textVersion\":1,\"page\":null,\"quote\":\"환자: 그런 적은 없어요.\",\"occurrenceIndex\":0,\"start\":45,\"end\":59},{\"sourceId\":\"2878460d-4c50-3bb4-9917-2f3b1617fa27\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 열도 있었나요?\",\"occurrenceIndex\":0,\"start\":32,\"end\":44}]",
+  "items" : [ ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8",
+  "inputTokens" : 2738,
+  "outputTokens" : 286
+}

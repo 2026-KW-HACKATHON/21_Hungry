@@ -1,0 +1,14 @@
+{
+  "promptVersion" : "1.6",
+  "promptSha256" : "d5d4d3d04b3df0ed9a92e5f1c1758f2452132528425a356afcdfd140c2dc7419",
+  "resolverSha256" : "cd93fadeffc4a26586b6c26cb4c9dcfaae4c077fff1e472a69d2e33bf2e65d91",
+  "frozenAt" : "2026-10-08T17:29:46.099073Z",
+  "promotion" : "BLOCKED; semantic regressions in development; held-out diagnostic evaluation only",
+  "newHoldout" : [ {
+    "caseId" : "day1_consultation01",
+    "inputSha256" : "f437ba4a811f150fdeb8717d3a48d2807e20681694cd45b881c17ff216622d11"
+  }, {
+    "caseId" : "day1_consultation02",
+    "inputSha256" : "c813c2fbb9f3031e419e51e039df7d278f15781be929c8b2461adf7f44330c3f"
+  } ]
+}

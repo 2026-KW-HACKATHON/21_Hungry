@@ -1,0 +1,29 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s4fab68aa35d8v1u0001", "s4fab68aa35d8v1u0002" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "환자는 폐렴 같다고 생각하지만, 의사는 검사 전에는 폐렴 여부를 알 수 없다고 설명함.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

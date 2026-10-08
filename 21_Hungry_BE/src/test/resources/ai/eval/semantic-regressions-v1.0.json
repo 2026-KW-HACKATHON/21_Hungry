@@ -1,0 +1,140 @@
+{
+  "version": "1.0.0",
+  "createdOn": "2026-10-09",
+  "scope": "development-regression, not holdout; entirely synthetic; no clinical advice",
+  "occurredOn": "2026-10-07",
+  "cases": [
+    {
+      "id": "Q01_SHORT_NEGATIVE",
+      "type": "질문–답변",
+      "transcript": "의사: 오른쪽 손목도 아픈가요?\n환자: 아니요.\n의사: 왼쪽은요?\n환자: 왼쪽만 아파요.",
+      "required": [
+        "오른쪽 부정은 질문과 답변 연결",
+        "왼쪽 통증",
+        "TASK 없음"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "Q02_SHORT_NUMERIC",
+      "type": "질문–답변 변형",
+      "transcript": "의사: 기침을 시작한 지 며칠 됐나요?\n환자: 사흘이요.\n의사: 열도 있었나요?\n환자: 그런 적은 없어요.",
+      "required": [
+        "사흘 기침",
+        "열 없음은 질문+답변",
+        "검사 정상 추론 금지"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "A01_UNSELECTED_CHOICE",
+      "type": "대안 약",
+      "transcript": "의사: 가려우면 가상 약 K 또는 가상 약 L 중 하나를 고르세요. 둘 다 쓰라는 뜻은 아닙니다. 아직 어떤 약으로 할지는 정하지 않았어요.",
+      "required": [
+        "하나의 미선택 조건부 후보",
+        "두 약 병렬 처방 금지",
+        "약 이름 미선택 null"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "A02_EXAMPLE_AND_HISTORY",
+      "type": "약 역할 변형",
+      "transcript": "환자: 지난달에는 가상 약 M을 먹었어요.\n의사: 그건 지난 치료이고요. 열이 있을 때 해열제를 쓰는 것처럼 증상을 줄이자는 설명입니다. 이번에는 이름이 안 들린 이 약을 1정씩 하루 2번, 6일 쓰세요.",
+      "required": [
+        "과거M/해열제 비유 신규처방 금지",
+        "새 약 null 1정 2번 6일",
+        "알림 없음"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "T01_COURSE_NOT_SLOT",
+      "type": "기간–시각",
+      "transcript": "의사: 가상 약 N을 아침저녁으로 반 정씩 닷새 복용하세요. 정확한 복용 시각은 아직 정하지 않았어요.",
+      "required": [
+        "반 정 아침저녁 닷새",
+        "schedulePlans 빈 배열",
+        "시작일 종료일 추론 금지"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "T02_EXPLICIT_CLOCK",
+      "type": "시각 변형/계획 기본값",
+      "transcript": "의사: 가상 약 P는 2026년 10월 10일부터 10월 12일까지 매일 오후 8시에 한 알씩 드세요.",
+      "required": [
+        "20:00 DAILY 명시",
+        "2026-10-10~12",
+        "30분은 계획 기본값, 의료지시 아님"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "C01_UNKNOWN_RETURN",
+      "type": "조건부 행동",
+      "transcript": "의사: 사흘이 지나도 통증이 남으면 다시 오세요. 지금 재방문 날짜나 시간은 정하지 않겠습니다.",
+      "required": [
+        "사흘후 지속 조건과 재방문 TASK",
+        "시각null",
+        "날짜정하기TASK 금지"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "C02_ACTOR_DISTINCTION",
+      "type": "조건부 행동 변형",
+      "transcript": "의사: 결과가 양성이면 제가 연락드릴게요. 그 전에 입술이 붓는다면 가족분이 바로 병원에 전화해 주세요.",
+      "required": [
+        "의료진 연락 약속은 보고서만",
+        "입술부음시 가족연락 TASK",
+        "자동예약 금지"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "R01_CORRECTED_DOSE",
+      "type": "정정",
+      "transcript": "의사: 가상 약 Q는 두 알씩, 아니 제가 잘못 말했네요. 한 번에 반 알씩 하루 한 번입니다. 나흘 동안만 드세요.",
+      "required": [
+        "최종반알 하루1회 나흘",
+        "2알후보없음",
+        "알림없음"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "R02_CORRECTED_NEGATION",
+      "type": "정정 변형",
+      "transcript": "의사: 가래가 있는 기침인가요?\n환자: 네. 아니, 잘못 답했어요. 가래는 없고 마른기침만 있어요.",
+      "required": [
+        "가래없음 마른기침",
+        "질문과 최종정정 근거",
+        "가래있음 금지"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "B01_AND_TRIGGER",
+      "type": "AND/OR",
+      "transcript": "의사: 열이 나고 기운도 없을 때만 가상 약 R을 반 정 드세요. 둘 중 하나만 있을 때 먹으라는 뜻은 아닙니다.",
+      "required": [
+        "두조건AND",
+        "반 정 조건부후보",
+        "상시복약/OR변경금지"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    },
+    {
+      "id": "B02_OR_AND_NEGATION",
+      "type": "AND/OR 변형",
+      "transcript": "의사: 숨이 차거나 손끝이 파래지면 바로 오세요. 둘 다 생길 때까지 기다리지는 마세요. 그런 증상이 없으면 예정된 진료를 기다리세요.",
+      "required": [
+        "둘중하나OR 재방문 TASK",
+        "증상없으면예정진료",
+        "확정날짜창작금지"
+      ],
+      "reviewStatus": "AI-authored synthetic regression; not clinician validated"
+    }
+  ]
+}

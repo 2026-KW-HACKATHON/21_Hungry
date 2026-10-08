@@ -1,0 +1,48 @@
+{
+  "verifiedOn": "2026-10-09",
+  "campaign": "v1.7-quality",
+  "offlineTests": {
+    "tests": 58,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source": "build/test-results/test/TEST-*.xml",
+    "scope": "Ten selected non-database suites; not full integration or clinical validation",
+    "bootJar": "PASSED",
+    "gitDiffCheck": "PASSED; CRLF conversion warnings only"
+  },
+  "requestComparison": {
+    "pairs": 20,
+    "sameInputModelAndGenerationSettings": true,
+    "onlyDeveloperPromptDiffers": true,
+    "comparisonPlanFrozenArtifactHashesStillMatch": true
+  },
+  "actualEvaluation": {
+    "newApiCalls": 20,
+    "apiRetries": 0,
+    "exactStoredResponsesReused": 20,
+    "estimatedNewCostUsd": 0.21034575,
+    "additionalBudgetUsd": 3.0,
+    "parserAndEvidencePositionAccepted": 40,
+    "contractIssues": 0,
+    "semanticApproval": false,
+    "semanticReview": "semantic-review.json",
+    "reviewer": "Codex AI, not clinician validated"
+  },
+  "newFourCaseHoldout": {
+    "executed": false,
+    "reason": "Development gate failed: important semantic errors and within-case regressions remain"
+  },
+  "evaluatedGuidelineVersion": "0.5.0",
+  "postEvaluationGuidelineStatusVersion": "0.5.1",
+  "runtimePromptOrModelChangedThisEvaluation": false,
+  "productionDataCreated": false,
+  "commitPushOrDeploymentPerformed": false,
+  "notExecuted": [
+    "PostgreSQL integration tests",
+    "UI E2E",
+    "Audio transcription",
+    "New held-out four-case evaluation",
+    "Server deployment"
+  ]
+}

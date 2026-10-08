@@ -1,0 +1,329 @@
+{
+  "id" : "resp_08312f6a247c872c016ac7bf9499c887d097ee96868ae52a19",
+  "object" : "response",
+  "created_at" : 1791475604,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791475614,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_08312f6a247c872c016ac7bf9518d887d08a1c04d1978bff8c",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.0\",\"summary\":\"두통 4일째, 발열감과 전신 근육통, 온몸 발진이 있어 해외여행 후 바이러스 질환 가능성 및 수막염도 배제 필요. 빛은 크게 불편하지 않고 구토·기침·감각저하·근력저하는 없음. 가능한 빨리 진료소에서 급히 진찰받고, 자리 없으면 병원/응급진료로 이동. 필요 시 진찰 후 혈액검사 가능.\",\"details\":{\"symptoms\":[{\"text\":\"지난 4일간 아주 심한 두통\",\"evidenceIndexes\":[0]},{\"text\":\"몸이 뜨거운 느낌과 열이 있는 것 같음\",\"evidenceIndexes\":[1,2]},{\"text\":\"전신 근육통과 쑤시는 느낌\",\"evidenceIndexes\":[3]},{\"text\":\"온몸에 빨갛고 가려운 발진\",\"evidenceIndexes\":[4,5]},{\"text\":\"추운 느낌이 자주 있음\",\"evidenceIndexes\":[6]},{\"text\":\"빛은 별로 불편하지 않음\",\"evidenceIndexes\":[7]},{\"text\":\"토하지 않음\",\"evidenceIndexes\":[8]},{\"text\":\"기침 없음\",\"evidenceIndexes\":[9]},{\"text\":\"얼굴이나 팔다리 저림 없음\",\"evidenceIndexes\":[10]},{\"text\":\"컵을 못 들 정도의 근력저하는 없음\",\"evidenceIndexes\":[11]}],\"tests\":[{\"text\":\"유리컵을 발진에 대어 눌렀을 때 사라짐\",\"evidenceIndexes\":[12]},{\"text\":\"필요하면 진찰 후 혈액검사 가능\",\"evidenceIndexes\":[13]}],\"medicationMentions\":[],\"precautions\":[{\"text\":\"모기나 해외여행과 관련된 바이러스 질환 가능성을 생각함\",\"evidenceIndexes\":[14]},{\"text\":\"수막염 같은 질환도 배제해야 함\",\"evidenceIndexes\":[15]},{\"text\":\"눌러도 사라지지 않는 발진은 수막염에서 보일 수 있음\",\"evidenceIndexes\":[16]}],\"followUps\":[{\"text\":\"직접 진찰이 필요함\",\"evidenceIndexes\":[17]},{\"text\":\"가능한 빨리 진료소에서 급히 진찰받기\",\"evidenceIndexes\":[18]},{\"text\":\"가능하면 몇 시간 안에 의사를 급히 보기\",\"evidenceIndexes\":[19]},{\"text\":\"자리가 없으면 병원으로 가기\",\"evidenceIndexes\":[20]},{\"text\":\"자리가 없어도 진찰과 혈액검사가 필요할 수 있음\",\"evidenceIndexes\":[21]}]},\"evidence\":[{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[013] 환자: 네. 지난 4일간 두통이 아주 심했고 몸이 좀 뜨거웠어요. 열이 있는 것 같아요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[015] 환자: 재보지는 않았지만 열이 있는 것 같아요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[024] 환자: 근육이 전반적으로 쑤셔요. 목에만 그런 건 아니고 온몸이요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[059] 환자: <UNIN/> 발진은 조금 있지만 출혈은 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[061] 환자: 한 군데가 아니라 온몸에 있어요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[063] 환자: 빨갛고 가려워요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[047] 환자: 추운 느낌은 자주 있지만 떨리지는 않아요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[022] 환자: 아니요. <INAUDIBLE_SPEECH/> 빛은 별로 불편하지 않아요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[026] 환자: 아니요, 토하지 않았어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[028] 환자: 기침도 없어요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[034] 환자: 아니요.\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[038] 환자: 아니요, 그런 건 괜찮아요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[055] 의사: 온라인으로는 제대로 진찰할 수 없어요. 진료소에 와서 급히 진찰받아야 할 것 같습니다. 모기나 해외여행과 관련된 바이러스 질환 가능성을 생각하고 있어요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[068] 의사: 오늘 급히 진찰해야 합니다. 진찰 후 병원으로 보내야 할 가능성도 있지만 아직 확실하지 않아요. 가능한 빨리 저희 진료소에서 보셨으면 해요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[071] 의사: 가능하면 몇 시간 안에 의사를 급히 보세요. 자리가 없으면 <INAUDIBLE_SPEECH/>로 가셨으면 합니다. 질문 있으세요?\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[078] 의사: 수막염에서는 눌러도 사라지지 않는 발진이 있고 바이러스 질환에서는 보통 사라지지만, 초기 단계인지 아직 모르겠어요. 가능한 빨리 GP를 보세요. 자리가 없어도 진찰과 혈액검사가 필요할 수 있어요. <UNIN/>\",\"occurrenceIndex\":0}],\"items\":[{\"itemKey\":\"item-1\",\"itemType\":\"TASK\",\"payload\":{\"schemaVersion\":1,\"kind\":\"OTHER\",\"title\":\"진료소에서 가능한 빨리 급히 진찰받기\",\"description\":\"온라인으로는 제대로 진찰할 수 없어 직접 진찰이 필요함. 가능하면 몇 시간 안에 의사를 보고, 자리가 없으면 병원으로 이동. 진찰 후 병원으로 보내거나 혈액검사가 필요할 수 있음.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]},\"evidence\":[{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[055] 의사: 온라인으로는 제대로 진찰할 수 없어요. 진료소에 와서 급히 진찰받아야 할 것 같습니다. 모기나 해외여행과 관련된 바이러스 질환 가능성을 생각하고 있어요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[068] 의사: 오늘 급히 진찰해야 합니다. 진찰 후 병원으로 보내야 할 가능성도 있지만 아직 확실하지 않아요. 가능한 빨리 저희 진료소에서 보셨으면 해요. <UNIN/>\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[071] 의사: 가능하면 몇 시간 안에 의사를 급히 보세요. 자리가 없으면 <INAUDIBLE_SPEECH/>로 가셨으면 합니다. 질문 있으세요?\",\"occurrenceIndex\":0},{\"sourceId\":\"3e2e0138-7046-360a-ae98-0e4f78a16577\",\"textVersion\":1,\"page\":null,\"quote\":\"[078] 의사: 수막염에서는 눌러도 사라지지 않는 발진이 있고 바이러스 질환에서는 보통 사라지지만, 초기 단계인지 아직 모르겠어요. 가능한 빨리 GP를 보세요. 자리가 없어도 진찰과 혈액검사가 필요할 수 있어요. <UNIN/>\",\"occurrenceIndex\":0}],\"uncertaintyCodes\":[\"cause-uncertain\"],\"isConditional\":false}]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "summary", "details", "evidence", "items" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.0"
+          },
+          "summary" : {
+            "type" : [ "string", "null" ]
+          },
+          "details" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "symptoms", "tests", "medicationMentions", "precautions", "followUps" ],
+            "properties" : {
+              "symptoms" : {
+                "$ref" : "#/$defs/details"
+              },
+              "tests" : {
+                "$ref" : "#/$defs/details"
+              },
+              "medicationMentions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "precautions" : {
+                "$ref" : "#/$defs/details"
+              },
+              "followUps" : {
+                "$ref" : "#/$defs/details"
+              }
+            }
+          },
+          "evidence" : {
+            "$ref" : "#/$defs/evidenceList"
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "itemKey", "itemType", "payload", "evidence", "uncertaintyCodes", "isConditional" ],
+              "properties" : {
+                "itemKey" : {
+                  "type" : "string"
+                },
+                "itemType" : {
+                  "type" : "string",
+                  "enum" : [ "TASK", "MEDICATION" ]
+                },
+                "payload" : {
+                  "anyOf" : [ {
+                    "$ref" : "#/$defs/taskPayload"
+                  }, {
+                    "$ref" : "#/$defs/medicationPayload"
+                  } ]
+                },
+                "evidence" : {
+                  "$ref" : "#/$defs/evidenceList"
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                },
+                "isConditional" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        },
+        "$defs" : {
+          "taskPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "kind", "title", "description", "date", "time", "durationMinutes", "durationSource", "recurrence", "lastDate", "weekdays" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "kind" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "HOSPITAL", "EXAM", "PICKUP", "OTHER", null ]
+              },
+              "title" : {
+                "type" : [ "string", "null" ]
+              },
+              "description" : {
+                "type" : [ "string", "null" ]
+              },
+              "date" : {
+                "type" : [ "string", "null" ]
+              },
+              "time" : {
+                "type" : [ "string", "null" ]
+              },
+              "durationMinutes" : {
+                "type" : [ "integer", "null" ]
+              },
+              "durationSource" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "PLANNING_DEFAULT", "USER_INPUT", "SOURCE", null ]
+              },
+              "recurrence" : {
+                "type" : [ "string", "null" ],
+                "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+              },
+              "lastDate" : {
+                "type" : [ "string", "null" ]
+              },
+              "weekdays" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          },
+          "medicationPayload" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "schemaVersion", "name", "doseText", "frequencyText", "startsOn", "endsOn", "instructions", "supersedesMedicationId", "schedulePlans" ],
+            "properties" : {
+              "schemaVersion" : {
+                "type" : "integer",
+                "const" : 1
+              },
+              "name" : {
+                "type" : [ "string", "null" ]
+              },
+              "doseText" : {
+                "type" : [ "string", "null" ]
+              },
+              "frequencyText" : {
+                "type" : [ "string", "null" ]
+              },
+              "startsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "endsOn" : {
+                "type" : [ "string", "null" ]
+              },
+              "instructions" : {
+                "type" : [ "string", "null" ]
+              },
+              "supersedesMedicationId" : {
+                "type" : "null"
+              },
+              "schedulePlans" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "recurrence", "firstDate", "lastDate", "weekdays", "localTime", "durationMinutes" ],
+                  "properties" : {
+                    "recurrence" : {
+                      "type" : "string",
+                      "enum" : [ "ONCE", "DAILY", "WEEKLY" ]
+                    },
+                    "firstDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "lastDate" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "weekdays" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "integer"
+                      }
+                    },
+                    "localTime" : {
+                      "type" : [ "string", "null" ]
+                    },
+                    "durationMinutes" : {
+                      "type" : "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "details" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "text", "evidenceIndexes" ],
+              "properties" : {
+                "text" : {
+                  "type" : [ "string", "null" ]
+                },
+                "evidenceIndexes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "integer"
+                  }
+                }
+              }
+            }
+          },
+          "evidenceList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/$defs/evidence"
+            }
+          },
+          "evidence" : {
+            "type" : "object",
+            "additionalProperties" : false,
+            "required" : [ "sourceId", "textVersion", "page", "quote", "occurrenceIndex" ],
+            "properties" : {
+              "sourceId" : {
+                "type" : "string"
+              },
+              "textVersion" : {
+                "type" : "integer"
+              },
+              "page" : {
+                "type" : [ "integer", "null" ]
+              },
+              "quote" : {
+                "type" : "string"
+              },
+              "occurrenceIndex" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 4713,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 2332,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7045
+  },
+  "user" : null,
+  "metadata" : { }
+}

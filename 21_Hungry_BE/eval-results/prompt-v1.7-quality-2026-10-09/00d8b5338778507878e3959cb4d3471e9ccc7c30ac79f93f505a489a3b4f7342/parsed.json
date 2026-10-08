@@ -1,0 +1,25 @@
+{
+  "summary" : "원인은 아직 확실하지 않음. 처방약을 복용하고 쉬라고 안내함. 사흘 뒤에도 아프면 다시 오라고 함.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"처방약 복용 안내.\",\"evidenceIndexes\":[0]}],\"precautions\":[{\"text\":\"쉬라고 안내함.\",\"evidenceIndexes\":[0]}],\"followUps\":[{\"text\":\"사흘 뒤에도 아프면 다시 오라고 함.\",\"evidenceIndexes\":[0]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 원인은 아직 확실하지 않아요. 처방약 드시고 쉬세요. 사흘 뒤에도 아프면 다시 오세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":52}]",
+  "items" : [ {
+    "itemKey" : "followup-1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"다시 오기\",\"description\":\"사흘 뒤에도 아프면 다시 오기\",\"date\":null,\"time\":null,\"durationMinutes\":120,\"durationSource\":\"PLANNING_DEFAULT\",\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 원인은 아직 확실하지 않아요. 처방약 드시고 쉬세요. 사흘 뒤에도 아프면 다시 오세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":52}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONDITIONAL_PLAN", "MISSING_SCHEDULE" ]
+  }, {
+    "itemKey" : "med-1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":null,\"doseText\":null,\"frequencyText\":null,\"startsOn\":null,\"endsOn\":null,\"instructions\":\"처방약 복용\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 원인은 아직 확실하지 않아요. 처방약 드시고 쉬세요. 사흘 뒤에도 아프면 다시 오세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":52}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.8-prompt",
+  "inputTokens" : 1768,
+  "outputTokens" : 418
+}

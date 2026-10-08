@@ -1,0 +1,293 @@
+{
+  "id" : "resp_0907bd5faec631ce016ac8057f366887d0b8fff56cb84d3740",
+  "object" : "response",
+  "created_at" : 1791493503,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791493525,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-6.1-sol",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "rs_0907bd5faec631ce016ac8058052ec87d0a0f080d1e47d7e17",
+    "type" : "reasoning",
+    "content" : [ ],
+    "encrypted_content" : "gAAAAABqyAWVGwj21CcjI7n_ZBtbaRx5NBidyCzpn9oI9N1XIxM9ugCV0hIQGk-A1cRXVv6Dt7TWnGgu2lXMIe-ybjiQIS9PT8QA8RoN7W67G416WFwwCLRsEPLnxbBAOh7bWOj9N94FsslyyyureKO-38XHkMg4zQm7Fso13cZjAauj7MVQSs8D8vHbGXHuTJDsOU-JfDy2nIbLsxU4_0K2nOdKvW8QGzWjijl_EA6UKy-jxZNpyS5-897PgKE7QfjlfkALakP-zGt9uJcjR2yBVev3_DCKxRu76BVfVdCXPw58XWZJyUbJLIlVKUy_dD4RZRPjHXeKzwcvjsSKLJKSPrwcuRDoDVW279KVWea8mSUHuE2t07qeQh24z8AwA9l9FQdh86hTYtiKNoFRwgZhRc5dmK8FN69zkO0Ze4i4gRr5SNloyQGX8W6lUFFCe_s31f78OM7BeaidUwRL5N7jtYQxPXREFC7WssFuMLHPZKwDDtY0x21yZsXldrmPAkyBRgRXu3IQLxv14MNg5xoEDXnplpYVG1_101TNZneE8RhPMJIZz9x04lZ4aXCvuVPZMq5fr8gFy694pf_EqnsoRDIDy-8Nm2pfed3AlzntiGPomsDclM3F7kGt89scluYo_rL2S3OmUOXmGaHquAWoVOxkEiWUA6MJa4RpSdtqMNqRAweR5RwR8fcVbfxehQn7ovtMhI3sC3BZdnFsM1zlD961JouSJW5L7cpsN5BhmM_azrcj-WYywS8E_hTbEE1BH5PUL3EBM7MdG6_0jzl7s3mAeNIMIq3_uadjqeg3pq1dn3AD3_QuDqZkDJIokLkbnuLxqsJpC7mIJIkACTukiAbU2IfYayH3PuiKqVwOwr_-2AUqIUf19TlZ4Oco8Vb50JZ6PMcld5Z3eGXfMN7uWGyxVFFjoSoPikGFakzeQ8OlZo5CD_1QMud1qcd4jdbUbziPjFkxFc5L9Dg0BAjazhWNgcvPj1CBxF06_d8fpW6dHXfNyIBQsLK9rvVgDrDrSkDpv7Cmx5ofxdrPBhI_amgl3P8IWneXBCzUOsBA9I9TdUWDzYwVYiaLwNeyRcFXianG2dnet1mMjFRUG4CkD8E8cn1sIuCOOKOsKe9ihIh4eV25CjXdSVNC0_jM7KAW0dMMLrrcH7ubocC6cHNN8zq7Td2yUNK6H8z7sZos3BLJhrmzsQmqLA16TcJ0UvIIVBFEigQJZeT3tRJUVgHxcoul4EzVDzsNwPmhp30As--RSrhsqBhlqiEiNBSjX4yrZykCy8ODAOROppJY1q-VLaWPeAtSPdcv1TkTBFt-zyo_g-LHD8VnpWRie5B--OJxpS9eVl2jVBTwZiFkl0oPSX-P3j40RKtnELsGxVwc2HNxJv6_u2XUfQfGGUV-esGF7P39k2YPleruzDQjz_HINfoemfULx8klJylPmIuUYFm76lUzxeWj8vFJ1X9vQo3Oryfa_RXwl4r-5gG1D9ZDXjHlhpEEDYeG62Qw38j8RQwQx3m-6IfB047ijJuAtfQjQDE02fL59fvAa0MHtrLNlm-L40CMXuqlq1G794pdjAmMXcG6kJSbAbNsJmC5oCWdLuttQnfB_X11id9tklfb3ytDsA_ncML3sTbjFTEzpZ6QTCX5HadkONPsfP5yoyDhILQsaKOeBUj_wQvqbK-PY4-S6khxtfqvJnGfeqGhMsjsZTBJ780etJe74VAlw3GoAC3_3fPrWZY3vNqRdRmp6UrNC0hQGDgkGog9hbDeWsTvnSAMS0yczVHqe-ghhJWzosF8qH0ui7QzCbU8AoK_KkwlH2OIG3IIycU0_V_kv8YNv2ek0wHB9nWMdWrLQJDhRkbnCqJ7Z7lSp4Xp3HckGVtKFBKgMRZjcevSDCnFKaQ_nsHAgjB0uMTZaNdcZeSucptBmeZA",
+    "summary" : [ ]
+  }, {
+    "id" : "msg_0907bd5faec631ce016ac805837c5887d0bc871b50b6c7ba8c",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\n  \"schemaVersion\": \"1.8.1\",\n  \"facts\": [\n    {\n      \"factId\": \"f1\",\n      \"support\": {\n        \"statementIds\": [\"s359969f02aafv1u0001\"],\n        \"questionIds\": [],\n        \"answerIds\": [],\n        \"correctionIds\": []\n      },\n      \"kind\": \"MEDICATION\",\n      \"text\": \"환자는 예전에 가상 U약을 복용한 적이 있다고 말했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\n        \"name\": \"가상 U약\",\n        \"doseText\": null,\n        \"frequencyText\": null,\n        \"courseDurationText\": null,\n        \"instructions\": null,\n        \"startsOn\": null,\n        \"endsOn\": null,\n        \"clockTimes\": [],\n        \"scheduleRecurrence\": null,\n        \"weekdays\": []\n      },\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f2\",\n      \"support\": {\n        \"statementIds\": [],\n        \"questionIds\": [\"s359969f02aafv1u0001\"],\n        \"answerIds\": [\"s359969f02aafv1u0002\"],\n        \"correctionIds\": []\n      },\n      \"kind\": \"MEDICATION\",\n      \"text\": \"의사는 예전에 복용한 가상 U약을 다시 복용하라는 뜻은 아니라고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f3\",\n      \"support\": {\n        \"statementIds\": [\"s359969f02aafv1u0002\"],\n        \"questionIds\": [],\n        \"answerIds\": [],\n        \"correctionIds\": [\"s359969f02aafv1u0002\"]\n      },\n      \"kind\": \"MEDICATION\",\n      \"text\": \"가상 V약은 1회 0.5정씩 하루 한 번, 엿새 동안 복용한다. 의사가 1회 2정을 0.5정으로 정정했으며, 복용 시각은 아직 정하지 않았다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"PRESCRIBED\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": {\n        \"name\": \"가상 V약\",\n        \"doseText\": \"1회 0.5정\",\n        \"frequencyText\": \"하루 한 번\",\n        \"courseDurationText\": \"엿새\",\n        \"instructions\": \"복용 시각은 아직 정하지 않음.\",\n        \"startsOn\": null,\n        \"endsOn\": null,\n        \"clockTimes\": [],\n        \"scheduleRecurrence\": null,\n        \"weekdays\": []\n      },\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f4\",\n      \"support\": {\n        \"statementIds\": [\"s359969f02aafv1u0002\", \"s359969f02aafv1u0003\"],\n        \"questionIds\": [],\n        \"answerIds\": [],\n        \"correctionIds\": []\n      },\n      \"kind\": \"MEDICATION\",\n      \"text\": \"나중에 가상 W약 또는 가상 X약 중 하나로 바꾸는 방법을 검토할 수 있다. 현재 함께 처방하는 것은 아니다.\",\n      \"condition\": {\n        \"operator\": \"ALL\",\n        \"clauses\": [\"가상 V약이 맞지 않는 경우\"]\n      },\n      \"medicationRole\": \"ALTERNATIVE\",\n      \"alternativeGroup\": \"a1\",\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\n        \"name\": null,\n        \"doseText\": null,\n        \"frequencyText\": null,\n        \"courseDurationText\": null,\n        \"instructions\": \"가상 V약이 맞지 않으면 나중에 가상 W약 또는 가상 X약 중 하나로 변경하는 방법을 검토할 수 있음. 선택된 약은 없으며 현재 함께 처방하는 것은 아님.\",\n        \"startsOn\": null,\n        \"endsOn\": null,\n        \"clockTimes\": [],\n        \"scheduleRecurrence\": null,\n        \"weekdays\": []\n      },\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f5\",\n      \"support\": {\n        \"statementIds\": [\"s359969f02aafv1u0005\"],\n        \"questionIds\": [],\n        \"answerIds\": [],\n        \"correctionIds\": []\n      },\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"즉시 병원에 온다.\",\n      \"condition\": {\n        \"operator\": \"ALL\",\n        \"clauses\": [\"숨이 차는 증상이 생김\", \"입술이 붓는 증상도 함께 생김\"]\n      },\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\n        \"kind\": \"HOSPITAL\",\n        \"title\": \"숨참과 입술 부종이 함께 생기면 즉시 내원\",\n        \"date\": null,\n        \"time\": null,\n        \"recurrence\": \"ONCE\",\n        \"lastDate\": null,\n        \"weekdays\": []\n      },\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f6\",\n      \"support\": {\n        \"statementIds\": [],\n        \"questionIds\": [\"s359969f02aafv1u0004\"],\n        \"answerIds\": [\"s359969f02aafv1u0005\"],\n        \"correctionIds\": []\n      },\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"다음 주 수요일에 무조건 재방문해야 하는 것은 아니며, 날짜를 정해 예약한 것도 아니다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    }\n  ],\n  \"summaryFactIds\": [\"f2\", \"f3\", \"f4\", \"f5\", \"f6\"]\n}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "all_turns",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s359969f02aafv1u0001", "s359969f02aafv1u0002", "s359969f02aafv1u0003", "s359969f02aafv1u0004", "s359969f02aafv1u0005" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 2983,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 2980,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1572,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 101
+    },
+    "total_tokens" : 4555
+  },
+  "user" : null,
+  "metadata" : { }
+}

@@ -1,0 +1,550 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0018" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "방이 빙빙 도는 듯한 어지럼과 심한 메스꺼움이 있다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0020" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "걸을 수는 있지만 똑바로 걷기 어렵다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0021" ],
+        "questionIds" : [ "s16d1fd758b58v1u0023" ],
+        "answerIds" : [ "s16d1fd758b58v1u0024" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "귀에서 윙윙 소리가 조금 나며, 시작 시점은 아마 약 두 시간 전이라고 말했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0030" ],
+        "questionIds" : [ "s16d1fd758b58v1u0027" ],
+        "answerIds" : [ "s16d1fd758b58v1u0029" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "남편의 아침을 준비하던 중 갑자기 머리가 멍하고 어지러우며 조금 떨렸다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f5",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0018" ],
+        "questionIds" : [ "s16d1fd758b58v1u0034", "s16d1fd758b58v1u0036" ],
+        "answerIds" : [ "s16d1fd758b58v1u0035", "s16d1fd758b58v1u0037" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "회전하는 듯한 어지럼이 지난 두 시간 동안 계속되고 있다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f6",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s16d1fd758b58v1u0054" ],
+        "answerIds" : [ "s16d1fd758b58v1u0055" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "한 달 전에도 비슷한 증상이 있었으며, 당시에는 약 5~10분 지속된 것 같다고 말했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f7",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s16d1fd758b58v1u0038", "s16d1fd758b58v1u0041" ],
+        "answerIds" : [ "s16d1fd758b58v1u0040", "s16d1fd758b58v1u0042" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "최근 몇 주 사이 바이러스성으로 아픈 적이 없고 감기나 기침도 없었다고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f8",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s16d1fd758b58v1u0043" ],
+        "answerIds" : [ "s16d1fd758b58v1u0044" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "귀 통증이나 진물은 없다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f9",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s16d1fd758b58v1u0045" ],
+        "answerIds" : [ "s16d1fd758b58v1u0046" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "열은 없는 것 같다고 말했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f10",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0051" ],
+        "questionIds" : [ "s16d1fd758b58v1u0052" ],
+        "answerIds" : [ "s16d1fd758b58v1u0053" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "팔다리는 잘 움직이며 팔다리에 힘이 빠지는 것은 아니라고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f11",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0058" ],
+        "questionIds" : [ "s16d1fd758b58v1u0056" ],
+        "answerIds" : [ "s16d1fd758b58v1u0057" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "귀에서 윙윙 소리는 조금 나지만 다른 소리는 들리며, 청력 저하나 먹먹함은 없다고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f12",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s16d1fd758b58v1u0060" ],
+        "answerIds" : [ "s16d1fd758b58v1u0061" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "실제 구토는 없지만 현재 많이 메스껍다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f13",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0064" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "환자는 조기 난소 기능 부전 병력이 있다고 말했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "CONFLICT" ]
+    }, {
+      "factId" : "f14",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0065" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "의사의 병력 기록 발화는 '조기 청력 부전'으로 불명확하게 전사되어 있으며, 환자가 말한 조기 난소 기능 부전과 상충하므로 확인이 필요하다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "CONFLICT", "UNCLEAR_SOURCE" ]
+    }, {
+      "factId" : "f15",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0064" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "조기 난소 기능 부전으로 호르몬 대체요법을 받은 이력이 있다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "호르몬 대체요법",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : null,
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f16",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s16d1fd758b58v1u0065" ],
+        "answerIds" : [ "s16d1fd758b58v1u0066" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "다른 약은 사용하지 않는다고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f17",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s16d1fd758b58v1u0067" ],
+        "answerIds" : [ "s16d1fd758b58v1u0068" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "알레르기는 없다고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f18",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0071" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "의사는 현재 증상에서 생각할 수 있는 가장 흔한 진단으로 미로염을 제시했다. 확진된 것은 아니다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f19",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0084" ],
+        "questionIds" : [ "s16d1fd758b58v1u0088" ],
+        "answerIds" : [ "s16d1fd758b58v1u0089" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "이름이 들리지 않는 약을 1회 1알씩 하루 세 번 복용하도록 처방하며, 약 열흘 분량을 제공할 예정이다. 음식과 함께 먹는지는 크게 상관없으며 식사 없이 복용해도 된다고 안내했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : null,
+        "doseText" : "1회 1알",
+        "frequencyText" : "하루 세 번",
+        "courseDurationText" : "약 열흘 분량",
+        "instructions" : "음식 동반 여부는 크게 상관없음. 아침에 일어나자마자 증상이 생겨 메스꺼워 식사하기 힘들면 식사 없이 약을 복용해도 됨.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "MEDICATION_NAME_UNKNOWN" ]
+    }, {
+      "factId" : "f20",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0075" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "Paracetamol은 열이 날 때 증상을 완화하는 치료의 비유로 언급했으며, 이번 복용 처방으로 제시한 것은 아니다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "EXAMPLE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "Paracetamol",
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "증상 완화 치료의 비유로 언급됨.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f21",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0075", "s16d1fd758b58v1u0076", "s16d1fd758b58v1u0077", "s16d1fd758b58v1u0079", "s16d1fd758b58v1u0081", "s16d1fd758b58v1u0085" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "앞으로 며칠 안에 대면 진료를 받아 귀 안, 혈압과 걷는 모습을 확인하고 이후 계획을 정한다.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "진료를 기다리는 동안 팔다리 힘 빠짐, 갑작스러운 두통 또는 심한 구토가 발생하지 않는 경우" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "HOSPITAL",
+        "title" : "며칠 안에 대면 진료 받기",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f22",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0077", "s16d1fd758b58v1u0079" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "PRECAUTION",
+      "text" : "응급실에 간다.",
+      "condition" : {
+        "operator" : "ANY",
+        "clauses" : [ "진료를 기다리는 동안 팔다리에 힘이 빠짐", "진료를 기다리는 동안 갑자기 두통이 생김", "진료를 기다리는 동안 심하게 토하기 시작함" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "HOSPITAL",
+        "title" : "경고 증상 발생 시 응급실 방문",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f23",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0084" ],
+        "questionIds" : [ "s16d1fd758b58v1u0082" ],
+        "answerIds" : [ "s16d1fd758b58v1u0083" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "의사는 환자가 확인한 Lloyd 약국으로 처방전을 보내겠다고 말했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "CLINICIAN_ONLY",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f24",
+      "support" : {
+        "statementIds" : [ "s16d1fd758b58v1u0092" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "지원팀에 전화해 진료를 예약한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "지원팀에 전화해 진료 예약",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2", "f5", "f3", "f18", "f19", "f21", "f22", "f24" ]
+  },
+  "failures" : [ {
+    "factId" : "f14",
+    "path" : "/facts/13/support",
+    "code" : "AI_ANSWER_CONTEXT_MISSING"
+  } ],
+  "repairs" : [ ]
+}

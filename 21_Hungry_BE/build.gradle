@@ -52,3 +52,38 @@ tasks.named('test') {
 tasks.named('bootJar') {
     archiveFileName = '21-hungry-be.jar'
 }
+
+// Explicit opt-in; not part of test/check and never starts Spring, a database or a worker.
+tasks.register('summaryEval', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.kw.knowone.encounter.processing.SummaryEvaluationMain'
+    args providers.gradleProperty('evalSet').getOrElse('development'),
+         providers.gradleProperty('evalPrompt').getOrElse('1.1'),
+         providers.gradleProperty('evalLive').getOrElse('false')
+}
+
+tasks.register('summaryEvidenceAudit', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.kw.knowone.encounter.processing.SavedEvidenceAuditMain'
+}
+
+tasks.register('summaryEvidenceEval', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.kw.knowone.encounter.processing.SummaryEvidenceEvaluationMain'
+    args providers.gradleProperty('evalSet').getOrElse('public-development'),
+         providers.gradleProperty('evalPrompt').getOrElse('1.5'),
+         providers.gradleProperty('evalLive').getOrElse('false'),
+         providers.gradleProperty('evalCampaign').getOrElse('evidence-linking'),
+         providers.gradleProperty('evalModel').getOrElse('mini'),
+         providers.gradleProperty('evalCase').getOrElse('')
+}
+
+tasks.register('summaryEvidenceReport', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.kw.knowone.encounter.processing.EvidenceEvaluationReportMain'
+    args providers.gradleProperty('evalCampaign').getOrElse('evidence-linking')
+}

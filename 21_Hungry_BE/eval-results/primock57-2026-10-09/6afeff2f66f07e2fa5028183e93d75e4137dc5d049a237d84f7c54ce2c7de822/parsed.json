@@ -1,0 +1,32 @@
+{
+  "summary" : "말벌 쏘인 뒤 숨이 얕고 답답하며 입술 이상감과 발진이 있어 즉시 병원 진료가 필요함. 아나필락시스 가능성을 걱정해 구급차를 부르도록 안내함. 구급차 오는 동안 집에 있는 항히스타민제 복용. 아내가 직접 데려가지 말고 구급차 이용.",
+  "detailsJson" : "{\"symptoms\":[{\"text\":\"약 15분 전 말벌에 쏘임.\",\"evidenceIndexes\":[0]},{\"text\":\"숨을 상당히 얕게 쉼.\",\"evidenceIndexes\":[1]},{\"text\":\"입술에 따끔거리는 느낌.\",\"evidenceIndexes\":[2]},{\"text\":\"조금 답답함.\",\"evidenceIndexes\":[3]},{\"text\":\"얼룩처럼 발진이 조금 생김.\",\"evidenceIndexes\":[4]}],\"tests\":[],\"medicationMentions\":[],\"precautions\":[{\"text\":\"즉시 진료 필요.\",\"evidenceIndexes\":[5]},{\"text\":\"아내가 직접 데려가지 말고 구급차를 부르기.\",\"evidenceIndexes\":[6,7]},{\"text\":\"호흡 문제가 아주 빠르게 악화될 수 있음.\",\"evidenceIndexes\":[7]},{\"text\":\"구급차가 오는 동안 집에 있는 항히스타민제 복용.\",\"evidenceIndexes\":[9]}],\"followUps\":[{\"text\":\"빨리 처치받을 수 있도록 구급차를 부름.\",\"evidenceIndexes\":[7,8]},{\"text\":\"병원에 가기.\",\"evidenceIndexes\":[6,7]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"약 15분 전에 정원을 가꾸다가 말벌에 쏘여서\",\"occurrenceIndex\":0,\"start\":458,\"end\":483},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"숨을 상당히 얕게 쉬고 있어요.\",\"occurrenceIndex\":0,\"start\":536,\"end\":553},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"입술에는 확실히 뭔가 느껴져요.\",\"occurrenceIndex\":0,\"start\":674,\"end\":691},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"조금 답답해요. 네, 조금요.\",\"occurrenceIndex\":0,\"start\":898,\"end\":914},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"네, 얼룩처럼 조금 생겼어요.\",\"occurrenceIndex\":0,\"start\":1143,\"end\":1159},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"즉시\",\"occurrenceIndex\":0,\"start\":1280,\"end\":1282},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아내분이 직접 데려가시는 대신\",\"occurrenceIndex\":0,\"start\":1480,\"end\":1496},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차를 불러 주세요.\",\"occurrenceIndex\":0,\"start\":1505,\"end\":1517},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아나필락시스 반응이 생길 가능성을 걱정하는 겁니다.\",\"occurrenceIndex\":0,\"start\":1547,\"end\":1575},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차가 오는 동안 아내분이 환자분께 항히스타민제를 주시도록 부탁하겠습니다.\",\"occurrenceIndex\":0,\"start\":1652,\"end\":1694}]",
+  "items" : [ {
+    "itemKey" : "task-1",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"즉시 병원 진료\",\"description\":\"숨쉬기 어렵고 발진이 있어 아나필락시스 가능성을 고려해 즉시 진료가 필요함.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"즉시\",\"occurrenceIndex\":0,\"start\":1280,\"end\":1282},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아나필락시스 반응이 생길 가능성을 걱정하는 겁니다.\",\"occurrenceIndex\":0,\"start\":1547,\"end\":1575}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ]
+  }, {
+    "itemKey" : "task-2",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"구급차 이용\",\"description\":\"아내가 직접 데려가지 말고 구급차를 부르기.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"아내분이 직접 데려가시는 대신\",\"occurrenceIndex\":0,\"start\":1480,\"end\":1496},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차를 불러 주세요.\",\"occurrenceIndex\":0,\"start\":1505,\"end\":1517}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ]
+  }, {
+    "itemKey" : "task-3",
+    "itemType" : "TASK",
+    "payloadJson" : "{\"schemaVersion\":1,\"kind\":\"HOSPITAL\",\"title\":\"병원으로 이동\",\"description\":\"빨리 처치받기 위해 병원에 가기.\",\"date\":null,\"time\":null,\"durationMinutes\":null,\"durationSource\":null,\"recurrence\":null,\"lastDate\":null,\"weekdays\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"구급차가 오는 동안 아내분이 환자분께 항히스타민제를 주시도록 부탁하겠습니다.\",\"occurrenceIndex\":0,\"start\":1652,\"end\":1694},{\"sourceId\":\"9aeb83b0-41d5-3f13-94e0-dbeb94b6089c\",\"textVersion\":1,\"page\":null,\"quote\":\"병원에 가세요.\",\"occurrenceIndex\":0,\"start\":1699,\"end\":1707}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.1",
+  "inputTokens" : 3598,
+  "outputTokens" : 1633
+}

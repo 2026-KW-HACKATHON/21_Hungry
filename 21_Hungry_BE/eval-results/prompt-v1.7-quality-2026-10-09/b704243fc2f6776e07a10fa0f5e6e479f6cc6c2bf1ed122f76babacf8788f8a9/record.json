@@ -1,0 +1,38 @@
+{
+  "caseId" : "day1_consultation02",
+  "set" : "screen",
+  "candidate" : "A",
+  "promptVersion" : "1.8.1",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "requestSha256" : "b704243fc2f6776e07a10fa0f5e6e479f6cc6c2bf1ed122f76babacf8788f8a9",
+  "inputSha256" : "c813c2fbb9f3031e419e51e039df7d278f15781be929c8b2461adf7f44330c3f",
+  "requestLayout" : "semantic-facts-v2",
+  "startedAt" : "2026-10-08T20:32:05.999225Z",
+  "status" : "FAILED",
+  "reservedUsd" : 0.18873,
+  "chargedUsd" : 0.0182895,
+  "campaignBudgetUsd" : 3.0,
+  "retries" : 0,
+  "rateSource" : "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+  "costMethod" : "standard usage estimate",
+  "reviewStatus" : "UNREVIEWED; not clinician validated",
+  "pricingCheckedOn" : "2026-10-09",
+  "usage" : {
+    "input_tokens" : 15002,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1564,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 52
+    },
+    "total_tokens" : 16566
+  },
+  "providerStatus" : "completed",
+  "responseModel" : "gpt-5.4-mini-2026-03-17",
+  "serviceTier" : "default",
+  "estimatedUsd" : 0.0182895,
+  "errorCode" : "AI_CONDITION_MISSING",
+  "elapsedMillis" : 8547
+}

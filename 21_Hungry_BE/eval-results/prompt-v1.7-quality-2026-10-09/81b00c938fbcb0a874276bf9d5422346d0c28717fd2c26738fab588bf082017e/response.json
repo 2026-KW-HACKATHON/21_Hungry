@@ -1,0 +1,287 @@
+{
+  "id" : "resp_0e8931e896cd3291016ac7ee4a439487d08d4adf3c6ca14c7b",
+  "object" : "response",
+  "created_at" : 1791487562,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791487570,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "msg_0e8931e896cd3291016ac7ee4acb7887d0a2518c89666a8723",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\"schemaVersion\":\"1.8\",\"facts\":[{\"factId\":\"f1\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0018\",\"s7121299c0f76v1u0022\",\"s7121299c0f76v1u0085\"],\"questionIds\":[\"s7121299c0f76v1u0020\",\"s7121299c0f76v1u0034\",\"s7121299c0f76v1u0045\",\"s7121299c0f76v1u0084\"],\"answerIds\":[\"s7121299c0f76v1u0021\",\"s7121299c0f76v1u0024\",\"s7121299c0f76v1u0027\",\"s7121299c0f76v1u0035\",\"s7121299c0f76v1u0037\",\"s7121299c0f76v1u0044\",\"s7121299c0f76v1u0046\",\"s7121299c0f76v1u0085\"],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"왼팔을 움직일 수 없고, 아프지는 않으며, 말하기가 더 힘들어졌다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f2\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0035\",\"s7121299c0f76v1u0037\",\"s7121299c0f76v1u0042\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"SYMPTOM\",\"text\":\"왼쪽 얼굴이 따끔거린다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"UNCERTAIN_SOURCE\"]},{\"factId\":\"f3\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0062\"],\"questionIds\":[\"s7121299c0f76v1u0060\"],\"answerIds\":[\"s7121299c0f76v1u0061\",\"s7121299c0f76v1u0062\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"제2형 당뇨병과 고혈압이 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f4\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0064\"],\"questionIds\":[\"s7121299c0f76v1u0063\"],\"answerIds\":[\"s7121299c0f76v1u0064\"],\"correctionIds\":[]},\"kind\":\"MEDICATION\",\"text\":\"Metformin, losartan, Amlodipine을 복용한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"CONTINUE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":{\"name\":\"Metformin\",\"doseText\":null,\"frequencyText\":null,\"courseDurationText\":null,\"instructions\":null,\"startsOn\":null,\"endsOn\":null,\"clockTimes\":[],\"scheduleRecurrence\":null,\"weekdays\":[]},\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f5\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0066\"],\"questionIds\":[\"s7121299c0f76v1u0065\"],\"answerIds\":[\"s7121299c0f76v1u0066\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"페니실린 알레르기가 있는 것으로 안다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[\"UNCERTAIN_SOURCE\"]},{\"factId\":\"f6\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0069\"],\"questionIds\":[\"s7121299c0f76v1u0068\"],\"answerIds\":[\"s7121299c0f76v1u0069\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"아버지에게 심장병이 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f7\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0074\"],\"questionIds\":[\"s7121299c0f76v1u0073\"],\"answerIds\":[\"s7121299c0f76v1u0074\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"혼자 산다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f8\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0076\"],\"questionIds\":[\"s7121299c0f76v1u0075\"],\"answerIds\":[\"s7121299c0f76v1u0076\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"전에는 담배를 피웠다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f9\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0078\",\"s7121299c0f76v1u0080\"],\"questionIds\":[\"s7121299c0f76v1u0077\",\"s7121299c0f76v1u0079\"],\"answerIds\":[\"s7121299c0f76v1u0078\",\"s7121299c0f76v1u0080\"],\"correctionIds\":[]},\"kind\":\"ASSESSMENT\",\"text\":\"주말에 몇 잔, 주중에 두어 잔 더 마시기도 하며, 맥주를 파인트로 마신다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"NONE\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f10\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0053\",\"s7121299c0f76v1u0055\",\"s7121299c0f76v1u0086\",\"s7121299c0f76v1u0090\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"응급으로 병원에 가야 한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"HOSPITAL\",\"title\":\"응급실로 이동\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]},{\"factId\":\"f11\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0055\",\"s7121299c0f76v1u0087\",\"s7121299c0f76v1u0090\",\"s7121299c0f76v1u0092\"],\"questionIds\":[],\"answerIds\":[],\"correctionIds\":[]},\"kind\":\"FOLLOW_UP\",\"text\":\"구급차가 집 주소로 오고 있으며, 도착할 때까지 통화하고 있다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"CLINICIAN_ONLY\",\"medication\":null,\"task\":null,\"uncertaintyCodes\":[]},{\"factId\":\"f12\",\"support\":{\"statementIds\":[\"s7121299c0f76v1u0055\",\"s7121299c0f76v1u0090\"],\"questionIds\":[\"s7121299c0f76v1u0054\",\"s7121299c0f76v1u0089\"],\"answerIds\":[\"s7121299c0f76v1u0055\",\"s7121299c0f76v1u0090\",\"s7121299c0f76v1u0093\"],\"correctionIds\":[]},\"kind\":\"PRECAUTION\",\"text\":\"현관문 잠금을 풀어 두고 복도에 앉아 구급대원이 쉽게 들어올 수 있게 기다려야 한다.\",\"condition\":{\"operator\":\"NONE\",\"clauses\":[]},\"medicationRole\":\"NONE\",\"alternativeGroup\":null,\"actionStatus\":\"FUTURE\",\"medication\":null,\"task\":{\"kind\":\"OTHER\",\"title\":\"구급대원 대기\",\"date\":null,\"time\":null,\"recurrence\":\"ONCE\",\"lastDate\":null,\"weekdays\":[]},\"uncertaintyCodes\":[]}],\"summaryFactIds\":[\"f10\",\"f1\",\"f12\",\"f3\"]}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "current_turn",
+    "effort" : "none",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s7121299c0f76v1u0001", "s7121299c0f76v1u0002", "s7121299c0f76v1u0003", "s7121299c0f76v1u0004", "s7121299c0f76v1u0005", "s7121299c0f76v1u0006", "s7121299c0f76v1u0007", "s7121299c0f76v1u0008", "s7121299c0f76v1u0009", "s7121299c0f76v1u0010", "s7121299c0f76v1u0011", "s7121299c0f76v1u0012", "s7121299c0f76v1u0013", "s7121299c0f76v1u0014", "s7121299c0f76v1u0015", "s7121299c0f76v1u0016", "s7121299c0f76v1u0017", "s7121299c0f76v1u0018", "s7121299c0f76v1u0019", "s7121299c0f76v1u0020", "s7121299c0f76v1u0021", "s7121299c0f76v1u0022", "s7121299c0f76v1u0023", "s7121299c0f76v1u0024", "s7121299c0f76v1u0025", "s7121299c0f76v1u0026", "s7121299c0f76v1u0027", "s7121299c0f76v1u0028", "s7121299c0f76v1u0029", "s7121299c0f76v1u0030", "s7121299c0f76v1u0031", "s7121299c0f76v1u0032", "s7121299c0f76v1u0033", "s7121299c0f76v1u0034", "s7121299c0f76v1u0035", "s7121299c0f76v1u0036", "s7121299c0f76v1u0037", "s7121299c0f76v1u0038", "s7121299c0f76v1u0039", "s7121299c0f76v1u0040", "s7121299c0f76v1u0041", "s7121299c0f76v1u0042", "s7121299c0f76v1u0043", "s7121299c0f76v1u0044", "s7121299c0f76v1u0045", "s7121299c0f76v1u0046", "s7121299c0f76v1u0047", "s7121299c0f76v1u0048", "s7121299c0f76v1u0049", "s7121299c0f76v1u0050", "s7121299c0f76v1u0051", "s7121299c0f76v1u0052", "s7121299c0f76v1u0053", "s7121299c0f76v1u0054", "s7121299c0f76v1u0055", "s7121299c0f76v1u0056", "s7121299c0f76v1u0057", "s7121299c0f76v1u0058", "s7121299c0f76v1u0059", "s7121299c0f76v1u0060", "s7121299c0f76v1u0061", "s7121299c0f76v1u0062", "s7121299c0f76v1u0063", "s7121299c0f76v1u0064", "s7121299c0f76v1u0065", "s7121299c0f76v1u0066", "s7121299c0f76v1u0067", "s7121299c0f76v1u0068", "s7121299c0f76v1u0069", "s7121299c0f76v1u0070", "s7121299c0f76v1u0071", "s7121299c0f76v1u0072", "s7121299c0f76v1u0073", "s7121299c0f76v1u0074", "s7121299c0f76v1u0075", "s7121299c0f76v1u0076", "s7121299c0f76v1u0077", "s7121299c0f76v1u0078", "s7121299c0f76v1u0079", "s7121299c0f76v1u0080", "s7121299c0f76v1u0081", "s7121299c0f76v1u0082", "s7121299c0f76v1u0083", "s7121299c0f76v1u0084", "s7121299c0f76v1u0085", "s7121299c0f76v1u0086", "s7121299c0f76v1u0087", "s7121299c0f76v1u0088", "s7121299c0f76v1u0089", "s7121299c0f76v1u0090", "s7121299c0f76v1u0091", "s7121299c0f76v1u0092", "s7121299c0f76v1u0093", "s7121299c0f76v1u0094", "s7121299c0f76v1u0095", "s7121299c0f76v1u0096", "s7121299c0f76v1u0097" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 11481,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 2097,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 13578
+  },
+  "user" : null,
+  "metadata" : { }
+}

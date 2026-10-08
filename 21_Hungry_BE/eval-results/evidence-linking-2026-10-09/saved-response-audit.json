@@ -1,0 +1,1340 @@
+[ {
+  "requestSha256" : "036bba533987ea334e3dad57a49be251128e5ac7002e764dc7b0572ee52099df",
+  "caseId" : "day2_consultation03",
+  "set" : "holdout",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "59b804735d7d13fe1b81afe1fddfe4b11779d93cd1751e45528282fee3631446",
+  "issues" : [ {
+    "path" : "/evidence/0/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/1/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/2/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/3/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/4/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/5/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/6/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/7/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/8/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/9/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/10/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/11/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/12/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/13/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/14/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/15/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/16/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/17/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/18/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/19/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/20/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/21/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/22/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/23/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/24/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/25/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/26/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/27/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/28/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/29/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/items/0/evidence/0/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/items/0/evidence/1/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 5693,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 3178,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 8871
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "044831dfce7cce41f62cc6155e149322c72a4d4d76b8df8a8c16ec3c9054a956",
+  "caseId" : "day3_consultation02",
+  "set" : "development",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "ad28149552d4d3845d0d1912372f2c703f6e77b1a28ba6eb3eb007e1c4ad19d2",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4824,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 2908,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7732
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW", "speaker_ambiguity" ], [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "conditional", "speaker_ambiguity" ] ]
+}, {
+  "requestSha256" : "08549fbcd35cd4f5d66c944d5dcf1060cd22781e491288585024178d8a68f680",
+  "caseId" : "H01_NOVEL_MIXED_CORRECTION",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "0f75021ad97979ed6748ba1fd251ed5798c8f2e616e177308099954177e82d62",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2450,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 751,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3201
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ], [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "185895fe3b09f8e1ef1db037dc789972984459139ba3e509d8db28cc5f0734bb",
+  "caseId" : "day3_consultation05",
+  "set" : "development",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "8e9c07163915de8acdcc595e25e887d1abbd384636013d6343137e03ee0ec930",
+  "issues" : [ {
+    "path" : "/details/medicationMentions/1/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "28; evidenceCount=28"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 5253,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 3499,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 8752
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "19379aecdbe65ff9aa7a303d69119ddde6aee7a52260524eb02bba5698ba5946",
+  "caseId" : "day2_consultation09",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : null,
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "aae4c1a04cbd999008ff18ab1293ac3cfd7bb2d7a813324e42f70681b116df30",
+  "issues" : [ {
+    "path" : "/details/followUps/2/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "13; evidenceCount=13"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3990,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 1674,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5664
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "1a7440a8ae4027c85c2fc1629e5db380b748132e097d95af9dcc8dbd6222ccf3",
+  "caseId" : "H01_NOVEL_MIXED_CORRECTION",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "0f75021ad97979ed6748ba1fd251ed5798c8f2e616e177308099954177e82d62",
+  "issues" : [ {
+    "path" : "/evidence/2/quote",
+    "reason" : "SPEAKER_PREFIX_FABRICATED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/items/0/evidence/0/quote",
+    "reason" : "SPEAKER_PREFIX_FABRICATED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3169,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 754,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3923
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "1aacb35ac33a75116641e0dbd06b189bbecbf6b75417230dbc3226d9870d8559",
+  "caseId" : "day3_consultation06",
+  "set" : "development",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "b5637d05f7b2c1ab77e3c1fdf2d83f1a9438a60323885ef1eb2c9eb8f813fb4d",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4317,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1632,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5949
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ], [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "22598f781473cf5d6b664f44668cf2d2eddb87a0b2717281aca7145e9c757f39",
+  "caseId" : "day3_consultation04",
+  "set" : "development",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "c73b235dd7c85cb471909cdf922cdd68b8118b64fc378e8a4773ffcdbb3a3cf7",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 5482,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 3160,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 8642
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "UNCLEAR_WORDING" ], [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ], [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "2d52a8572dc8b9172d81d11e8ad4349e12dafec0f05230684d635d4e7f61aa35",
+  "caseId" : "D01_DOCTOR_CONDITIONAL_RETURN",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "8e8df036b52515a23ce4c43bdf01f724f2e027035eaaed0946e1afbd8d826b04",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2411,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 442,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 2853
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONDITIONAL", "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "2fc0f58414fc44324069066c710fa3aa13f5dd9fa1be9777289eee289ed8001b",
+  "caseId" : "day2_consultation09",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "aae4c1a04cbd999008ff18ab1293ac3cfd7bb2d7a813324e42f70681b116df30",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3990,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 1476,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5466
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "NO_EXPLICIT_TIME" ] ]
+}, {
+  "requestSha256" : "30ad7c005412378175481c871ceaea1ca89ce7b3f4fe9c41fd592c6ac102af7e",
+  "caseId" : "D11_DOCUMENT_CONFLICT",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "9976c4ff5bf0c50b54e805aa9db1d137c039fa8999fce77c0ff44c71b3e262e3",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2449,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 469,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 2918
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONFLICTING_SOURCE", "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "3cd4ead3f58153654a3588f7bb3dbef01acca8f5efe8aabd0937e6ddc3af4725",
+  "caseId" : "day3_consultation04",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : null,
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "c73b235dd7c85cb471909cdf922cdd68b8118b64fc378e8a4773ffcdbb3a3cf7",
+  "issues" : [ {
+    "path" : "/evidence/16/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/details/followUps/2/evidenceIndexes/1",
+    "reason" : "INDEX_INVALID",
+    "detail" : "17; evidenceCount=17"
+  }, {
+    "path" : "/items/1/evidence/1/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4763,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 2041,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6804
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "3fd1364c40129fc421aaf383fad2a6e9c332ce41a9d0d8a6db7b8c01ed5947ad",
+  "caseId" : "D01_DOCTOR_CONDITIONAL_RETURN",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "8e8df036b52515a23ce4c43bdf01f724f2e027035eaaed0946e1afbd8d826b04",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3130,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 433,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3563
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "4e10d25e32850ba45c228af260b96b04e4cd83b5f15a55f1c64c1af198ceea89",
+  "caseId" : "D02_PATIENT_CLINICIAN_MIX",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "480f948bf2b439f33168235603ea48f514cbbcc8b0052b6ba00611847ecc64c4",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3112,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 143,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3255
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ ]
+}, {
+  "requestSha256" : "4fcbba455532d04971b3d19a92ec26579a6db863bf008c8dabff1c6facfacddc",
+  "caseId" : "D11_DOCUMENT_CONFLICT",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "9976c4ff5bf0c50b54e805aa9db1d137c039fa8999fce77c0ff44c71b3e262e3",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3168,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 468,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3636
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "5b8c6d66e0d8af22f7ccd53d4d8da0115965dfa9a9483ad908e5894b05101e8d",
+  "caseId" : "D10_EXPLICIT_CORRECTION",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "0a4b0e7955ae56b01c7238e2357f3e90e7e6d9938429e84bd680afef4da6cf9a",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2398,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 384,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 2782
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_ENDSON", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "6138022c4abe5d64780a094e6c9572409cfe7abfb0a54112bd7236a68189de3b",
+  "caseId" : "day2_consultation09",
+  "set" : "development",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "aae4c1a04cbd999008ff18ab1293ac3cfd7bb2d7a813324e42f70681b116df30",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4709,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 1770,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6479
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ] ]
+}, {
+  "requestSha256" : "647815f407b5e41ef2153a0d10297922669580c4ae8a2bd049a6f7159ef8b878",
+  "caseId" : "day3_consultation06",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : null,
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "b5637d05f7b2c1ab77e3c1fdf2d83f1a9438a60323885ef1eb2c9eb8f813fb4d",
+  "issues" : [ {
+    "path" : "/evidence/11/quote",
+    "reason" : "TRANSCRIPTION_TAG_REMOVED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3598,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 1600,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5198
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "65f67e1623de3c39251fee21dad54d044f871a3c168057fc2553c7c6798a9b8b",
+  "caseId" : "day3_consultation08",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "0e2ccbae2ad7757c13e5708eec9ea18a2cb0c8ef89b0b666668d2dce893afe66",
+  "issues" : [ {
+    "path" : "/evidence/0/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/1/quote",
+    "reason" : "TRANSCRIPTION_TAG_REMOVED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/6/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/7/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/13/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/details/followUps/1/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "16; evidenceCount=16"
+  }, {
+    "path" : "/items/0/evidence/1/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4120,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 1591,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5711
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "6afeff2f66f07e2fa5028183e93d75e4137dc5d049a237d84f7c54ce2c7de822",
+  "caseId" : "day3_consultation06",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "b5637d05f7b2c1ab77e3c1fdf2d83f1a9438a60323885ef1eb2c9eb8f813fb4d",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3598,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1633,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 5231
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ], [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ], [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ] ]
+}, {
+  "requestSha256" : "74deec3f6752476b47e2fc505745ac710e81f55edcdb366e959b7972ea2bb230",
+  "caseId" : "day3_consultation02",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : null,
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "ad28149552d4d3845d0d1912372f2c703f6e77b1a28ba6eb3eb007e1c4ad19d2",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4105,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 2396,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6501
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ], [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ], [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ] ]
+}, {
+  "requestSha256" : "88f1387989f0e5b66ee41a831fd11042cee9a9abfff24bb604fa0c31663045ce",
+  "caseId" : "day3_consultation05",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "8e9c07163915de8acdcc595e25e887d1abbd384636013d6343137e03ee0ec930",
+  "issues" : [ {
+    "path" : "/details/symptoms/0/evidenceIndexes/7",
+    "reason" : "INDEX_INVALID",
+    "detail" : "8; evidenceCount=8"
+  }, {
+    "path" : "/details/symptoms/0/evidenceIndexes/8",
+    "reason" : "INDEX_INVALID",
+    "detail" : "9; evidenceCount=8"
+  }, {
+    "path" : "/details/symptoms/0/evidenceIndexes/9",
+    "reason" : "INDEX_INVALID",
+    "detail" : "10; evidenceCount=8"
+  }, {
+    "path" : "/details/symptoms/0/evidenceIndexes/10",
+    "reason" : "INDEX_INVALID",
+    "detail" : "11; evidenceCount=8"
+  }, {
+    "path" : "/details/symptoms/0/evidenceIndexes/11",
+    "reason" : "INDEX_INVALID",
+    "detail" : "12; evidenceCount=8"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4534,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 1816,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6350
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "8aa159034f460e27cb2ea9d573a4143c496818f4ca8408e15b9e41255c7a56f6",
+  "caseId" : "H02_NOVEL_PLAIN_NEGATION",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "dbef3c75a002d1dd760e8c807572e7119ac91857d0baa88e73b81fd40d4f77f1",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3163,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 584,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3747
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "8dda08cb2cd921470f6cc65521577f9a330d99fb795511cd3ceccdab4578fd78",
+  "caseId" : "D04_D14_UNCERTAIN_CONDITIONAL",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "178926e723920f4da0a55769cd903dc0c976a94f21e22bf83fb0539877fe9897",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3129,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 366,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3495
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ] ]
+}, {
+  "requestSha256" : "9012a216483a558835a6a8813b75dbe0f232fb7a11815e3b016f65d6cf068f69",
+  "caseId" : "D07_MULTIPLE_MEDICATIONS",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "c6980df7eabf55207c908d988c7c460b78eb877ab9921fb233d703e5e31770da",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2420,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 619,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3039
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ], [ "CONDITIONAL_PLAN", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "9132226d10e5f7c197bef68b17a095c418e643460c6292bad7c5bff18e78ebcc",
+  "caseId" : "day3_consultation05",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : null,
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "8e9c07163915de8acdcc595e25e887d1abbd384636013d6343137e03ee0ec930",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4534,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 2227,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6761
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "DATE_UNSPECIFIED", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ], [ "DATE_UNSPECIFIED", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ], [ "MEDICATION_NAME_UNCLEAR", "MISSING_ENDSON", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "9b59040c4e2fae1315cc66f46cad84c9c5f2ef5a3d021a7ed577e090e13d5b4f",
+  "caseId" : "day3_consultation04",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "c73b235dd7c85cb471909cdf922cdd68b8118b64fc378e8a4773ffcdbb3a3cf7",
+  "issues" : [ {
+    "path" : "/evidence/4/quote",
+    "reason" : "TRANSCRIPTION_TAG_REMOVED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/14/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/16/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/20/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/items/1/evidence/0/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/items/1/evidence/1/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4763,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 2219,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6982
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "aae7435b074d3d968d4b43ed9d650c76f40efcb91037ebc50374ca90693510c7",
+  "caseId" : "D07_MULTIPLE_MEDICATIONS",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "c6980df7eabf55207c908d988c7c460b78eb877ab9921fb233d703e5e31770da",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3139,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 640,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3779
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ], [ "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "ad569be77b9da80d03ce45e390556a214f4cc8571a112cecd947753c82791cb0",
+  "caseId" : "D04_D14_UNCERTAIN_CONDITIONAL",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "178926e723920f4da0a55769cd903dc0c976a94f21e22bf83fb0539877fe9897",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2410,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 357,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 2767
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE" ] ]
+}, {
+  "requestSha256" : "adf7ac9b2da7b581d3799663837fd48e70af8a081558ac4e607d76da2b1e6f7f",
+  "caseId" : "day2_consultation01",
+  "set" : "holdout",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "13b69e1bf719f6c67df47c4782f1dd4aa4ef6249456b9a43f44af6ebd1321ce9",
+  "issues" : [ {
+    "path" : "/evidence/8/quote",
+    "reason" : "TRANSCRIPTION_TAG_REMOVED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4983,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 2270,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7253
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "b54e9e44c4eb01108169b368acb1e9be0f18d24feaffb18791715ee423be22b0",
+  "caseId" : "day1_consultation12",
+  "set" : "holdout",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "dfdba9159840f7d6518a724c1dce1af5c1a67c39c7677746831919033df85dcb",
+  "issues" : [ {
+    "path" : "/evidence/13/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/14/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/15/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/16/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  }, {
+    "path" : "/evidence/17/sourceId",
+    "reason" : "UNKNOWN_SOURCE_ID",
+    "detail" : "not in request.sources"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 5240,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 1970,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7210
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "bb5c50ae961377033e7d53599e1889bf6fff7ac01c8ad79a15bcadb4e55ec359",
+  "caseId" : "day3_consultation08",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : null,
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "0e2ccbae2ad7757c13e5708eec9ea18a2cb0c8ef89b0b666668d2dce893afe66",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4120,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 2481,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6601
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME", "NAME_FROM_CONTEXT" ], [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME", "NO_DOSE_OR_FREQ" ], [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_FREQUENCYTEXT", "MISSING_STARTSON", "MISSING_TIME", "NO_DOSE_OR_FREQ" ], [ "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ], [ "CONDITIONAL_PLAN", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "NO_EXACT_DATE_TIME", "OTHER_DURATION_REQUIRES_REVIEW" ], [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ], [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "d35663e1f3ee38e7ac4ee50129be214a012b0de4b9e0bf1beea9e472ac8cc921",
+  "caseId" : "day3_consultation06",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : null,
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "5cf2d457f5ee281d1b363f426de2a81082305dcb02f3615bd264ece3a701c8ce",
+  "issues" : [ {
+    "path" : "/evidence/6/quote",
+    "reason" : "TRANSCRIPTION_TAG_REMOVED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/evidence/7/quote",
+    "reason" : "TRANSCRIPTION_TAG_REMOVED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/items/0/evidence/0/quote",
+    "reason" : "TRANSCRIPTION_TAG_REMOVED",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3593,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 1338,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 4931
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "d79bf8818d40fcdeb38cdeac6e9664f2ab5d71d55e0832da0af4712cfc99b0aa",
+  "caseId" : "day5_consultation12",
+  "set" : "holdout",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "cd23355b40a64e5cee41901d997743149c266d21964a30cad8751a318d7900f9",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4965,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 2630,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7595
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "CONDITIONAL_PLAN", "DATE_UNSPECIFIED", "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "e3d7548610a7fe15e4ab08c7240e283b8872c8ba410a52e1f21c14f4bd9429e9",
+  "caseId" : "H02_NOVEL_PLAIN_NEGATION",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "dbef3c75a002d1dd760e8c807572e7119ac91857d0baa88e73b81fd40d4f77f1",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2444,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 578,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3022
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_DURATION_SOURCE", "MISSING_SCHEDULE", "OTHER_DURATION_REQUIRES_REVIEW" ] ]
+}, {
+  "requestSha256" : "e57aad9d663a599d92b2b452c3d9248dcf17a7ccee724dec5d16a01a2294509b",
+  "caseId" : "day3_consultation02",
+  "set" : "development",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "ad28149552d4d3845d0d1912372f2c703f6e77b1a28ba6eb3eb007e1c4ad19d2",
+  "issues" : [ {
+    "path" : "/evidence/3/quote",
+    "reason" : "QUOTE_NOT_CONTIGUOUS",
+    "detail" : "exact nth substring lookup failed; occurrence=0"
+  }, {
+    "path" : "/details/tests/0/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "24; evidenceCount=24"
+  }, {
+    "path" : "/details/tests/1/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "25; evidenceCount=24"
+  }, {
+    "path" : "/details/precautions/2/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "24; evidenceCount=24"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4105,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 2422,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 6527
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+}, {
+  "requestSha256" : "eb2770fb8e50be8d06aa80aea7fde11212e3f21614847405ea8467c80f07b565",
+  "caseId" : "D10_EXPLICIT_CORRECTION",
+  "set" : "synthetic",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "0a4b0e7955ae56b01c7238e2357f3e90e7e6d9938429e84bd680afef4da6cf9a",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 3117,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 300,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 3417
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ [ "MISSING_ENDSON", "MISSING_NAME", "MISSING_STARTSON", "MISSING_TIME" ] ]
+}, {
+  "requestSha256" : "f3e841cbb12c04415f175509d30e86cfe3d85d1cfa3d205514585d7f3e74c352",
+  "caseId" : "D02_PATIENT_CLINICIAN_MIX",
+  "set" : "synthetic",
+  "promptVersion" : "1.1",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "PARSED_NOT_QUALITY_APPROVED",
+  "errorCode" : null,
+  "inputSha256" : "480f948bf2b439f33168235603ea48f514cbbcc8b0052b6ba00611847ecc64c4",
+  "issues" : [ ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 2393,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 1792
+    },
+    "output_tokens" : 131,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 2524
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "ACCEPTED",
+  "classification" : "FORMAT_ACCEPTED_NOT_SEMANTICALLY_VERIFIED",
+  "itemReviewReasons" : [ ]
+}, {
+  "requestSha256" : "fa1e5036bd557c605388ae382df759c1007ece76f2b9a167c4ebfad9ba635d5b",
+  "caseId" : "day3_consultation08",
+  "set" : "development",
+  "promptVersion" : "1.3",
+  "requestLayout" : "evidence-first-v1",
+  "status" : "FAILED",
+  "errorCode" : "AI_EVIDENCE_INVALID",
+  "inputSha256" : "0e2ccbae2ad7757c13e5708eec9ea18a2cb0c8ef89b0b666668d2dce893afe66",
+  "issues" : [ {
+    "path" : "/details/medicationMentions/4/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "23; evidenceCount=22"
+  }, {
+    "path" : "/details/precautions/0/evidenceIndexes/1",
+    "reason" : "INDEX_INVALID",
+    "detail" : "22; evidenceCount=22"
+  }, {
+    "path" : "/details/followUps/0/evidenceIndexes/2",
+    "reason" : "INDEX_INVALID",
+    "detail" : "22; evidenceCount=22"
+  }, {
+    "path" : "/details/followUps/1/evidenceIndexes/0",
+    "reason" : "INDEX_INVALID",
+    "detail" : "23; evidenceCount=22"
+  } ],
+  "providerStatus" : "completed",
+  "usage" : {
+    "input_tokens" : 4839,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 0,
+      "cached_tokens" : 2816
+    },
+    "output_tokens" : 2506,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 0
+    },
+    "total_tokens" : 7345
+  },
+  "hasSummary" : true,
+  "replayedStatus" : "AI_EVIDENCE_INVALID",
+  "classification" : "EVIDENCE_VALIDATION"
+} ]

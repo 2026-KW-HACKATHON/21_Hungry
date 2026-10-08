@@ -1,0 +1,293 @@
+{
+  "id" : "resp_06eb2034f0ad8d5d016ac804d354e087d0bc4104b7e8118e59",
+  "object" : "response",
+  "created_at" : 1791493331,
+  "status" : "completed",
+  "access_programs" : null,
+  "background" : false,
+  "billing" : {
+    "payer" : "developer"
+  },
+  "completed_at" : 1791493390,
+  "error" : null,
+  "frequency_penalty" : 0.0,
+  "incomplete_details" : null,
+  "instructions" : null,
+  "max_output_tokens" : 12000,
+  "max_tool_calls" : null,
+  "model" : "gpt-6.1-sol",
+  "moderation" : null,
+  "output" : [ {
+    "id" : "rs_06eb2034f0ad8d5d016ac804d5828c87d0a991b76afba6e3b4",
+    "type" : "reasoning",
+    "content" : [ ],
+    "encrypted_content" : "gAAAAABqyAUO5iybDf0MyINHuJZt3p2EulKymR-2SlKKxyYVgKY3ePgmaX6r3vhh2bpuvaduSoOD7F0PYYScsm0BDyGb_d14dfMkbpTphJftlOm9nsQGd0KZpv4J9Pv02KUIUU0XB2R9CBOnMEaRBVwDIqIqTA1kqZ_6OuhqtHgStj2KnfeVASZq6AQ17uVmN4O9bzK-MS7wNVnc3zfMlu8d3ZLCJL5zU56V90qurv5jqHJ8z4z7Z5hcFta7e43IjfoCVI1RpNFL5it1Mh45RaedmecboCMn5KS8Do-BLNpujJYxmEN-lIAPDgMH846buB5tjyBbanqBwHuB5SoMs79aqHhoK4yfF8aiFo2hWo3dT3NtrqCzB4Qhfj6T9gSx90MclIWb4GSJJgMk-qT5rSewXO06ygglkrsFep8LSnkQNErgi4KFIiFvprzgNz3W47E_kGUVRenGkh0zQy1Qp6ugoWh3JGO-CGcsPbw8TMqWeUW9_eV7qFTsP6UqBS85abSnqX8R7z_uk5AFeNxJTWt3-tR_iI2NVaRfpxKg0SiBsF1o_S4nKf2BzEO_eP9XPWIs1ZzyINFGd87QBUQdZALAa1XZ8YWVbYxGVF1gdKy8oAoLhnADXeNeal2MGrykxzKLOLVtCg2VKKBsSj1J5yfDMGPwwtURh1prsMYiJVvCUrgfrwcb4HXcf0wQ6dmAgBvcMOHJy9wVhAwbL2AuYTN4cTJqNJN0HXeD70E_0cSUWCW1_OBokrM4tII01LRZW7XJ5uqANF0nQHs5DI639FM6ryGbMR00mw0M1wds-kv4zG4JdGJaqQRB2_Ucb5d0ofEnw5JdB2YnFvKxM_KdUxxY6zFCkgPnqrHJ9ZXehz6GrJJQWJDWeZRC9BWbYHLI0SxqsrIO5cjUPnIPW0vyLIdAHx8myh1NUf6nTIcOKnIPJTJejOkDwMSK_ExPg0dK9KS29FoS5dOrWWDzZtmM8LjqUWRWXRQBU-TgoWUiuRlyBgrvDS2wWBMD9_v-bGXPD7w5SB7CEpSWDGMpsb6AyhG8M7YUoLrZIAyOo2I23F6-8dD7vQa4xKGJMY7klEJRPGudvOvvsKHwIxxPYuuC_qtHqJuKzCQkb4TeSDFWSxIoZt-DTfoTOXB8hgQTJnVaOCwsZmqoUBqdzXEDVU-BG8sYJx3u2OQMWAfO3f5TqhqpHGd7SvnUYax7Xw2Jgjbm9siWjwuLphsQX20-rma8ucwWKI8nTU_Jfpaq52H8HdvJCh9Mfhe04uHrm0CxKY28uzv_iKMG5XwpYZqq1ZiMGt3YSvFXXJaNHUKaL5GLLnIr_r0jJV7k8Tv5oiFzZHJ9TuBWog8rEuTABuldD5iCmlx5M8SgP12qixKjLUVKyMkPScsDKWIgUU1FcXdNZcpqc2HXuTVbCMbeV48uM0RHkYP19lkfNmZSHv1ejWP4qF19mxR5rctmg7CVkH6dcRcdsebiRWpPR_LMFJZoVfAE1bXtNcKyCWWyXfNchjUiaNoMZgHbZhGoRhYNJ881QaUuUjpOdXA6NZab0xeoSQsOWA9lWwP35XVyQP5aQU5aVjEiHGAR2032dtY=",
+    "summary" : [ ]
+  }, {
+    "id" : "msg_06eb2034f0ad8d5d016ac804d7d91887d0ac611efeb8c2605a",
+    "type" : "message",
+    "status" : "completed",
+    "content" : [ {
+      "type" : "output_text",
+      "annotations" : [ ],
+      "logprobs" : [ ],
+      "text" : "{\n  \"schemaVersion\": \"1.8.1\",\n  \"facts\": [\n    {\n      \"factId\": \"f1\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0009\"], \"questionIds\": [\"s7bfce2870503v1u0010\", \"s7bfce2870503v1u0012\"], \"answerIds\": [\"s7bfce2870503v1u0013\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"배뇨 시 통증이 6일 동안 있었다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f2\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0015\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"소변을 볼 때 아주 불쾌한 냄새가 난다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f3\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0018\"], \"questionIds\": [\"s7bfce2870503v1u0019\", \"s7bfce2870503v1u0021\", \"s7bfce2870503v1u0023\", \"s7bfce2870503v1u0026\"], \"answerIds\": [\"s7bfce2870503v1u0020\", \"s7bfce2870503v1u0022\", \"s7bfce2870503v1u0025\", \"s7bfce2870503v1u0027\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"가운데 아랫배에 간헐적인 통증이 있으며 강도는 10점 중 7점이라고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f4\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0056\"], \"questionIds\": [\"s7bfce2870503v1u0028\", \"s7bfce2870503v1u0030\"], \"answerIds\": [\"s7bfce2870503v1u0029\", \"s7bfce2870503v1u0031\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"소변을 볼 수는 있으며, 지난 6일 동안 소변에 피가 조금씩 보였다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f5\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0038\", \"s7bfce2870503v1u0088\"], \"questionIds\": [\"s7bfce2870503v1u0032\"], \"answerIds\": [\"s7bfce2870503v1u0033\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"열과 옆구리 통증은 없고, 먹고 마시는 데 문제는 없다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f6\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s7bfce2870503v1u0039\", \"s7bfce2870503v1u0045\", \"s7bfce2870503v1u0047\", \"s7bfce2870503v1u0057\"], \"answerIds\": [\"s7bfce2870503v1u0040\", \"s7bfce2870503v1u0046\", \"s7bfce2870503v1u0048\", \"s7bfce2870503v1u0058\"], \"correctionIds\": []},\n      \"kind\": \"SYMPTOM\",\n      \"text\": \"이런 증상은 이전에 없었으며, 질 분비물·배변 습관 변화·체중 감소는 없고 생리는 규칙적이라고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f7\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0053\"], \"questionIds\": [\"s7bfce2870503v1u0060\"], \"answerIds\": [\"s7bfce2870503v1u0061\"], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"IBS 병력이 있으며, 다른 건강 문제나 과거 수술은 없다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f8\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0063\"], \"questionIds\": [\"s7bfce2870503v1u0065\", \"s7bfce2870503v1u0067\", \"s7bfce2870503v1u0069\"], \"answerIds\": [\"s7bfce2870503v1u0066\", \"s7bfce2870503v1u0068\", \"s7bfce2870503v1u0070\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"Mebeverine 200mg을 하루 세 번 정기적으로 복용하고 있다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"HISTORICAL\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": \"Mebeverine\", \"doseText\": \"200mg\", \"frequencyText\": \"하루 세 번\", \"courseDurationText\": null, \"instructions\": null, \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f9\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0074\"], \"questionIds\": [\"s7bfce2870503v1u0072\"], \"answerIds\": [\"s7bfce2870503v1u0073\"], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"Clindamycin 알레르기가 있다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f10\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0087\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"ASSESSMENT\",\n      \"text\": \"의사는 소변 감염 가능성이 높아 보인다고 평가했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f11\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0093\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"TEST\",\n      \"text\": \"의사는 보통 소변 검사 없이도 항생제로 이런 감염을 치료할 수 있다고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f12\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0097\", \"s7bfce2870503v1u0101\", \"s7bfce2870503v1u0121\"], \"questionIds\": [\"s7bfce2870503v1u0095\"], \"answerIds\": [\"s7bfce2870503v1u0096\"], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"이름이 명시되지 않은 항생제를 가능한 빨리 받아 복용을 시작하고, 3일 동안만 복용하도록 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"PRESCRIBED\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": {\"name\": null, \"doseText\": null, \"frequencyText\": null, \"courseDurationText\": \"3일\", \"instructions\": \"가능한 빨리 약을 받아 복용을 시작한다. 3일 동안만 복용한다.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f13\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0091\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"약국에서 체온계를 구해 체온이 오르내리는지 확인한다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"OTHER\", \"title\": \"체온계 구입 및 체온 확인\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f14\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0102\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"물을 하루 2.5~3리터 마신다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"OTHER\", \"title\": \"하루 2.5~3리터 수분 섭취\", \"date\": null, \"time\": null, \"recurrence\": \"DAILY\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f15\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0104\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"MEDICATION\",\n      \"text\": \"소변 산도를 바꾸는 데 도움이 되는 소포장 가루약을 약국에서 구할 수 있다고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"EXAMPLE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": {\"name\": null, \"doseText\": null, \"frequencyText\": null, \"courseDurationText\": null, \"instructions\": \"약국에서 구할 수 있는 소변 산도 변경용 소포장 가루약을 설명했다.\", \"startsOn\": null, \"endsOn\": null, \"clockTimes\": [], \"scheduleRecurrence\": null, \"weekdays\": []},\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f16\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0107\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"반드시 다시 의료진과 상담한다.\",\n      \"condition\": {\"operator\": \"ANY\", \"clauses\": [\"통증이 심해진다\", \"통증이 가라앉지 않는다\", \"허리 아래쪽이 아프다\", \"열이 높아진다\", \"소변을 보는 데 문제가 생긴다\"]},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"OTHER\", \"title\": \"경고 증상 발생 시 재상담\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f17\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0109\", \"s7bfce2870503v1u0111\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"다시 자세히 상담한다.\",\n      \"condition\": {\"operator\": \"ANY\", \"clauses\": [\"어느 때든 증상이 심해진다\", \"치료해도 낫지 않는다\", \"비슷한 문제가 자주 생기거나 반복된다\"]},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"OTHER\", \"title\": \"치료 불응 또는 반복 증상 재상담\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f18\",\n      \"support\": {\"statementIds\": [], \"questionIds\": [\"s7bfce2870503v1u0110\"], \"answerIds\": [\"s7bfce2870503v1u0111\"], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"항생제 복용을 마친 뒤 별도로 전화할 필요는 없다.\",\n      \"condition\": {\"operator\": \"ALL\", \"clauses\": [\"증상이 좋아졌다\"]},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f19\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0121\"], \"questionIds\": [\"s7bfce2870503v1u0117\", \"s7bfce2870503v1u0119\"], \"answerIds\": [\"s7bfce2870503v1u0118\", \"s7bfce2870503v1u0120\"], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"의사는 처방할 항생제를 환자가 지정한 Knightsbridge, Practice 약국으로 보내겠다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"CLINICIAN_ONLY\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f20\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0101\", \"s7bfce2870503v1u0121\", \"s7bfce2870503v1u0127\"], \"questionIds\": [\"s7bfce2870503v1u0117\", \"s7bfce2870503v1u0119\", \"s7bfce2870503v1u0124\"], \"answerIds\": [\"s7bfce2870503v1u0118\", \"s7bfce2870503v1u0120\", \"s7bfce2870503v1u0125\"], \"correctionIds\": []},\n      \"kind\": \"FOLLOW_UP\",\n      \"text\": \"약 한 시간을 기다린 후 지정한 Knightsbridge, Practice 약국에서 항생제를 수령한다. 환자는 점심때 받아 오겠다고 했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"FUTURE\",\n      \"medication\": null,\n      \"task\": {\"kind\": \"OTHER\", \"title\": \"지정 약국에서 항생제 수령\", \"date\": null, \"time\": null, \"recurrence\": \"ONCE\", \"lastDate\": null, \"weekdays\": []},\n      \"uncertaintyCodes\": []\n    },\n    {\n      \"factId\": \"f21\",\n      \"support\": {\"statementIds\": [\"s7bfce2870503v1u0104\"], \"questionIds\": [], \"answerIds\": [], \"correctionIds\": []},\n      \"kind\": \"PRECAUTION\",\n      \"text\": \"의사는 크랜베리 주스를 마시는 것이 가끔 도움이 될 수 있다고 설명했다.\",\n      \"condition\": {\"operator\": \"NONE\", \"clauses\": []},\n      \"medicationRole\": \"NONE\",\n      \"alternativeGroup\": null,\n      \"actionStatus\": \"NONE\",\n      \"medication\": null,\n      \"task\": null,\n      \"uncertaintyCodes\": []\n    }\n  ],\n  \"summaryFactIds\": [\"f1\", \"f3\", \"f4\", \"f5\", \"f9\", \"f10\", \"f12\", \"f13\", \"f14\", \"f16\", \"f17\", \"f18\", \"f20\"]\n}"
+    } ],
+    "phase" : "final_answer",
+    "role" : "assistant"
+  } ],
+  "parallel_tool_calls" : true,
+  "presence_penalty" : 0.0,
+  "previous_response_id" : null,
+  "prompt_cache_key" : null,
+  "prompt_cache_retention" : "24h",
+  "reasoning" : {
+    "context" : "all_turns",
+    "effort" : "low",
+    "mode" : "standard",
+    "summary" : null
+  },
+  "safety_identifier" : null,
+  "service_tier" : "default",
+  "store" : false,
+  "temperature" : 1.0,
+  "text" : {
+    "format" : {
+      "type" : "json_schema",
+      "description" : null,
+      "name" : "encounter_analysis_semantic_facts",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties" : false,
+        "required" : [ "schemaVersion", "facts", "summaryFactIds" ],
+        "properties" : {
+          "schemaVersion" : {
+            "type" : "string",
+            "const" : "1.8.1"
+          },
+          "facts" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : false,
+              "required" : [ "factId", "support", "kind", "text", "condition", "medicationRole", "alternativeGroup", "actionStatus", "medication", "task", "uncertaintyCodes" ],
+              "properties" : {
+                "factId" : {
+                  "type" : "string"
+                },
+                "support" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "statementIds", "questionIds", "answerIds", "correctionIds" ],
+                  "properties" : {
+                    "statementIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "questionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "answerIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    },
+                    "correctionIds" : {
+                      "type" : "array",
+                      "items" : {
+                        "$ref" : "#/$defs/utteranceId"
+                      }
+                    }
+                  }
+                },
+                "kind" : {
+                  "type" : "string",
+                  "enum" : [ "SYMPTOM", "ASSESSMENT", "TEST", "MEDICATION", "PRECAUTION", "FOLLOW_UP" ]
+                },
+                "text" : {
+                  "type" : "string"
+                },
+                "condition" : {
+                  "type" : "object",
+                  "additionalProperties" : false,
+                  "required" : [ "operator", "clauses" ],
+                  "properties" : {
+                    "operator" : {
+                      "type" : "string",
+                      "enum" : [ "NONE", "ALL", "ANY", "COMPLEX" ]
+                    },
+                    "clauses" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "medicationRole" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "PRESCRIBED", "CONDITIONAL", "ALTERNATIVE", "EXAMPLE", "HISTORICAL", "CONTINUE", "STOP", "SUPERSEDED" ]
+                },
+                "alternativeGroup" : {
+                  "type" : [ "string", "null" ]
+                },
+                "actionStatus" : {
+                  "type" : "string",
+                  "enum" : [ "NONE", "FUTURE", "IN_PROGRESS", "COMPLETED", "CLINICIAN_ONLY" ]
+                },
+                "medication" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "name", "doseText", "frequencyText", "courseDurationText", "instructions", "startsOn", "endsOn", "clockTimes", "scheduleRecurrence", "weekdays" ],
+                    "properties" : {
+                      "name" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "doseText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "frequencyText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "courseDurationText" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "instructions" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "startsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "endsOn" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "clockTimes" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "scheduleRecurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "task" : {
+                  "anyOf" : [ {
+                    "type" : "object",
+                    "additionalProperties" : false,
+                    "required" : [ "kind", "title", "date", "time", "recurrence", "lastDate", "weekdays" ],
+                    "properties" : {
+                      "kind" : {
+                        "type" : "string",
+                        "enum" : [ "HOSPITAL", "EXAM", "OTHER" ]
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "date" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "time" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "recurrence" : {
+                        "type" : [ "string", "null" ],
+                        "enum" : [ "ONCE", "DAILY", "WEEKLY", null ]
+                      },
+                      "lastDate" : {
+                        "type" : [ "string", "null" ]
+                      },
+                      "weekdays" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "integer"
+                        }
+                      }
+                    }
+                  }, {
+                    "type" : "null"
+                  } ]
+                },
+                "uncertaintyCodes" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "summaryFactIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "$defs" : {
+          "utteranceId" : {
+            "type" : "string",
+            "enum" : [ "s7bfce2870503v1u0001", "s7bfce2870503v1u0002", "s7bfce2870503v1u0003", "s7bfce2870503v1u0004", "s7bfce2870503v1u0005", "s7bfce2870503v1u0006", "s7bfce2870503v1u0007", "s7bfce2870503v1u0008", "s7bfce2870503v1u0009", "s7bfce2870503v1u0010", "s7bfce2870503v1u0011", "s7bfce2870503v1u0012", "s7bfce2870503v1u0013", "s7bfce2870503v1u0014", "s7bfce2870503v1u0015", "s7bfce2870503v1u0016", "s7bfce2870503v1u0017", "s7bfce2870503v1u0018", "s7bfce2870503v1u0019", "s7bfce2870503v1u0020", "s7bfce2870503v1u0021", "s7bfce2870503v1u0022", "s7bfce2870503v1u0023", "s7bfce2870503v1u0024", "s7bfce2870503v1u0025", "s7bfce2870503v1u0026", "s7bfce2870503v1u0027", "s7bfce2870503v1u0028", "s7bfce2870503v1u0029", "s7bfce2870503v1u0030", "s7bfce2870503v1u0031", "s7bfce2870503v1u0032", "s7bfce2870503v1u0033", "s7bfce2870503v1u0034", "s7bfce2870503v1u0035", "s7bfce2870503v1u0036", "s7bfce2870503v1u0037", "s7bfce2870503v1u0038", "s7bfce2870503v1u0039", "s7bfce2870503v1u0040", "s7bfce2870503v1u0041", "s7bfce2870503v1u0042", "s7bfce2870503v1u0043", "s7bfce2870503v1u0044", "s7bfce2870503v1u0045", "s7bfce2870503v1u0046", "s7bfce2870503v1u0047", "s7bfce2870503v1u0048", "s7bfce2870503v1u0049", "s7bfce2870503v1u0050", "s7bfce2870503v1u0051", "s7bfce2870503v1u0052", "s7bfce2870503v1u0053", "s7bfce2870503v1u0054", "s7bfce2870503v1u0055", "s7bfce2870503v1u0056", "s7bfce2870503v1u0057", "s7bfce2870503v1u0058", "s7bfce2870503v1u0059", "s7bfce2870503v1u0060", "s7bfce2870503v1u0061", "s7bfce2870503v1u0062", "s7bfce2870503v1u0063", "s7bfce2870503v1u0064", "s7bfce2870503v1u0065", "s7bfce2870503v1u0066", "s7bfce2870503v1u0067", "s7bfce2870503v1u0068", "s7bfce2870503v1u0069", "s7bfce2870503v1u0070", "s7bfce2870503v1u0071", "s7bfce2870503v1u0072", "s7bfce2870503v1u0073", "s7bfce2870503v1u0074", "s7bfce2870503v1u0075", "s7bfce2870503v1u0076", "s7bfce2870503v1u0077", "s7bfce2870503v1u0078", "s7bfce2870503v1u0079", "s7bfce2870503v1u0080", "s7bfce2870503v1u0081", "s7bfce2870503v1u0082", "s7bfce2870503v1u0083", "s7bfce2870503v1u0084", "s7bfce2870503v1u0085", "s7bfce2870503v1u0086", "s7bfce2870503v1u0087", "s7bfce2870503v1u0088", "s7bfce2870503v1u0089", "s7bfce2870503v1u0090", "s7bfce2870503v1u0091", "s7bfce2870503v1u0092", "s7bfce2870503v1u0093", "s7bfce2870503v1u0094", "s7bfce2870503v1u0095", "s7bfce2870503v1u0096", "s7bfce2870503v1u0097", "s7bfce2870503v1u0098", "s7bfce2870503v1u0099", "s7bfce2870503v1u0100", "s7bfce2870503v1u0101", "s7bfce2870503v1u0102", "s7bfce2870503v1u0103", "s7bfce2870503v1u0104", "s7bfce2870503v1u0105", "s7bfce2870503v1u0106", "s7bfce2870503v1u0107", "s7bfce2870503v1u0108", "s7bfce2870503v1u0109", "s7bfce2870503v1u0110", "s7bfce2870503v1u0111", "s7bfce2870503v1u0112", "s7bfce2870503v1u0113", "s7bfce2870503v1u0114", "s7bfce2870503v1u0115", "s7bfce2870503v1u0116", "s7bfce2870503v1u0117", "s7bfce2870503v1u0118", "s7bfce2870503v1u0119", "s7bfce2870503v1u0120", "s7bfce2870503v1u0121", "s7bfce2870503v1u0122", "s7bfce2870503v1u0123", "s7bfce2870503v1u0124", "s7bfce2870503v1u0125", "s7bfce2870503v1u0126", "s7bfce2870503v1u0127", "s7bfce2870503v1u0128", "s7bfce2870503v1u0129", "s7bfce2870503v1u0130", "s7bfce2870503v1u0131" ]
+          }
+        }
+      },
+      "strict" : true
+    },
+    "verbosity" : "medium"
+  },
+  "tool_choice" : "auto",
+  "tool_usage" : {
+    "image_gen" : {
+      "input_tokens" : 0,
+      "input_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "output_tokens" : 0,
+      "output_tokens_details" : {
+        "image_tokens" : 0,
+        "text_tokens" : 0
+      },
+      "total_tokens" : 0
+    },
+    "web_search" : {
+      "num_requests" : 0
+    }
+  },
+  "tools" : [ ],
+  "top_logprobs" : 0,
+  "top_p" : 0.98,
+  "truncation" : "disabled",
+  "usage" : {
+    "input_tokens" : 19314,
+    "input_tokens_details" : {
+      "cache_write_tokens" : 19311,
+      "cached_tokens" : 0
+    },
+    "output_tokens" : 4553,
+    "output_tokens_details" : {
+      "reasoning_tokens" : 65
+    },
+    "total_tokens" : 23867
+  },
+  "user" : null,
+  "metadata" : { }
+}

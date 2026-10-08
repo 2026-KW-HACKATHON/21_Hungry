@@ -1,0 +1,96 @@
+{
+  "campaign" : "v1.7-quality",
+  "budgetUsd" : 3.0,
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "maxOutputTokens" : 12000,
+  "reasoning" : "unchanged provider default; no explicit reasoning parameter",
+  "selectionRule" : "Only proceed to four fresh held-out cases after development has no important errors or regressions",
+  "review" : "Codex AI source comparison, not clinician validation",
+  "frozenArtifacts" : {
+    "src/main/resources/ai/analysis-prompt-v1.6.txt" : "d5d4d3d04b3df0ed9a92e5f1c1758f2452132528425a356afcdfd140c2dc7419",
+    "src/main/resources/ai/analysis-prompt-v1.7.txt" : "59344f18ad2056e0ba427032ae719a2ee59c4d9277131a84d1fa30b705cee68a",
+    "src/main/java/com/kw/knowone/encounter/processing/UtteranceEvidence.java" : "cd93fadeffc4a26586b6c26cb4c9dcfaae4c077fff1e472a69d2e33bf2e65d91",
+    "src/main/java/com/kw/knowone/encounter/processing/OpenAiProcessingAdapter.java" : "e3994c167f996cda55335166d64777f9677f3ecff77561cef7075df8f5edccc1"
+  },
+  "developmentInputs" : [ {
+    "caseId" : "D01_DOCTOR_CONDITIONAL_RETURN",
+    "set" : "synthetic",
+    "inputSha256" : "8e8df036b52515a23ce4c43bdf01f724f2e027035eaaed0946e1afbd8d826b04"
+  }, {
+    "caseId" : "D02_PATIENT_CLINICIAN_MIX",
+    "set" : "synthetic",
+    "inputSha256" : "480f948bf2b439f33168235603ea48f514cbbcc8b0052b6ba00611847ecc64c4"
+  }, {
+    "caseId" : "D10_EXPLICIT_CORRECTION",
+    "set" : "synthetic",
+    "inputSha256" : "0a4b0e7955ae56b01c7238e2357f3e90e7e6d9938429e84bd680afef4da6cf9a"
+  }, {
+    "caseId" : "D04_D14_UNCERTAIN_CONDITIONAL",
+    "set" : "synthetic",
+    "inputSha256" : "178926e723920f4da0a55769cd903dc0c976a94f21e22bf83fb0539877fe9897"
+  }, {
+    "caseId" : "D07_MULTIPLE_MEDICATIONS",
+    "set" : "synthetic",
+    "inputSha256" : "c6980df7eabf55207c908d988c7c460b78eb877ab9921fb233d703e5e31770da"
+  }, {
+    "caseId" : "D11_DOCUMENT_CONFLICT",
+    "set" : "synthetic",
+    "inputSha256" : "9976c4ff5bf0c50b54e805aa9db1d137c039fa8999fce77c0ff44c71b3e262e3"
+  }, {
+    "caseId" : "H01_NOVEL_MIXED_CORRECTION",
+    "set" : "synthetic",
+    "inputSha256" : "0f75021ad97979ed6748ba1fd251ed5798c8f2e616e177308099954177e82d62"
+  }, {
+    "caseId" : "H02_NOVEL_PLAIN_NEGATION",
+    "set" : "synthetic",
+    "inputSha256" : "dbef3c75a002d1dd760e8c807572e7119ac91857d0baa88e73b81fd40d4f77f1"
+  }, {
+    "caseId" : "day3_consultation06",
+    "set" : "reviewed-development",
+    "inputSha256" : "b5637d05f7b2c1ab77e3c1fdf2d83f1a9438a60323885ef1eb2c9eb8f813fb4d"
+  }, {
+    "caseId" : "day3_consultation08",
+    "set" : "reviewed-development",
+    "inputSha256" : "0e2ccbae2ad7757c13e5708eec9ea18a2cb0c8ef89b0b666668d2dce893afe66"
+  }, {
+    "caseId" : "day3_consultation02",
+    "set" : "reviewed-development",
+    "inputSha256" : "ad28149552d4d3845d0d1912372f2c703f6e77b1a28ba6eb3eb007e1c4ad19d2"
+  }, {
+    "caseId" : "day2_consultation09",
+    "set" : "reviewed-development",
+    "inputSha256" : "aae4c1a04cbd999008ff18ab1293ac3cfd7bb2d7a813324e42f70681b116df30"
+  }, {
+    "caseId" : "day3_consultation04",
+    "set" : "reviewed-development",
+    "inputSha256" : "c73b235dd7c85cb471909cdf922cdd68b8118b64fc378e8a4773ffcdbb3a3cf7"
+  }, {
+    "caseId" : "day3_consultation05",
+    "set" : "reviewed-development",
+    "inputSha256" : "8e9c07163915de8acdcc595e25e887d1abbd384636013d6343137e03ee0ec930"
+  }, {
+    "caseId" : "day2_consultation01",
+    "set" : "reviewed-development",
+    "inputSha256" : "13b69e1bf719f6c67df47c4782f1dd4aa4ef6249456b9a43f44af6ebd1321ce9"
+  }, {
+    "caseId" : "day2_consultation03",
+    "set" : "reviewed-development",
+    "inputSha256" : "59b804735d7d13fe1b81afe1fddfe4b11779d93cd1751e45528282fee3631446"
+  }, {
+    "caseId" : "day5_consultation12",
+    "set" : "reviewed-development",
+    "inputSha256" : "cd23355b40a64e5cee41901d997743149c266d21964a30cad8751a318d7900f9"
+  }, {
+    "caseId" : "day1_consultation12",
+    "set" : "reviewed-development",
+    "inputSha256" : "dfdba9159840f7d6518a724c1dce1af5c1a67c39c7677746831919033df85dcb"
+  }, {
+    "caseId" : "day1_consultation01",
+    "set" : "reviewed-development",
+    "inputSha256" : "f437ba4a811f150fdeb8717d3a48d2807e20681694cd45b881c17ff216622d11"
+  }, {
+    "caseId" : "day1_consultation02",
+    "set" : "reviewed-development",
+    "inputSha256" : "c813c2fbb9f3031e419e51e039df7d278f15781be929c8b2461adf7f44330c3f"
+  } ]
+}

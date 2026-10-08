@@ -1,0 +1,842 @@
+﻿{
+    "id":  "day1_consultation12",
+    "set":  "holdout",
+    "dataset":  "PriMock57",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "license":  "CC-BY-4.0",
+    "mockConsultation":  true,
+    "turns":  [
+                  {
+                      "speaker":  "doctor",
+                      "start":  0,
+                      "end":  1,
+                      "interval":  1,
+                      "en":  "Uh no, \u003cUNSURE\u003eit is\u003c/UNSURE\u003e, yes.",
+                      "id":  "001"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  2.47312127499926,
+                      "end":  3.20967874687467,
+                      "interval":  3,
+                      "en":  "Hello?",
+                      "id":  "002"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  3.71830161538823,
+                      "end":  4.39435893583419,
+                      "interval":  2,
+                      "en":  "Hi.",
+                      "id":  "003"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  4.85484412187367,
+                      "end":  11.0699309031155,
+                      "interval":  5,
+                      "en":  "Can you hear me OK? Great. Hello there. Um, before I go any further, can I confirm you name and your age please?",
+                      "id":  "004"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  11.3558361596931,
+                      "end":  14.1825082212677,
+                      "interval":  4,
+                      "en":  "Yes. So, my name is Robert.",
+                      "id":  "005"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  14.7468560401809,
+                      "end":  15.2848244555634,
+                      "interval":  7,
+                      "en":  "Robert?",
+                      "id":  "006"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  15.7463618069409,
+                      "end":  16.3686690548074,
+                      "interval":  6,
+                      "en":  "Yep.",
+                      "id":  "007"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  16.4237891310567,
+                      "end":  16.9678050437344,
+                      "interval":  9,
+                      "en":  "OK.",
+                      "id":  "008"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  17.322971750194,
+                      "end":  19.8478447943803,
+                      "interval":  8,
+                      "en":  "Um, I\u0027m forty eight.",
+                      "id":  "009"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  20.199001965606,
+                      "end":  21.7688980468551,
+                      "interval":  11,
+                      "en":  "OK. Great.",
+                      "id":  "010"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  21.5938211085176,
+                      "end":  22.4271529782543,
+                      "interval":  10,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "011"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  22.811909071855,
+                      "end":  25.736652440602,
+                      "interval":  13,
+                      "en":  "Excellent. And how can I help you this afternoon, sir?",
+                      "id":  "012"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  25.9896754810526,
+                      "end":  34.1886629248109,
+                      "interval":  12,
+                      "en":  "Right, so, uh, I\u0027ve been having, uh, diarrhoea, for like, \u003cUNSURE\u003elet\u0027s\u003c/UNSURE\u003e say past three days, more or less.",
+                      "id":  "013"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  34.6087424742677,
+                      "end":  40.1256883920062,
+                      "interval":  15,
+                      "en":  "OK, well I\u0027m sorry to hear that. Uh can you tell me a bit more about your diarrhoea?",
+                      "id":  "014"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  40.2135745375545,
+                      "end":  49.9781688507098,
+                      "interval":  14,
+                      "en":  "Yeah, so it\u0027s been a, very bad diarrhoea, so it keeps me like, I keep going back and forth, to, to the toilet very often.",
+                      "id":  "015"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  49.7499813210926,
+                      "end":  50.2844878008309,
+                      "interval":  17,
+                      "en":  "Right.",
+                      "id":  "016"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  49.9781688507098,
+                      "end":  54.4129067061972,
+                      "interval":  15,
+                      "en":  "\u003cUNSURE\u003eUm\u003c/UNSURE\u003e, yeah it started like three days ago.",
+                      "id":  "017"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  53.9120539152204,
+                      "end":  54.3847852761496,
+                      "interval":  20,
+                      "en":  "Mm-hmm.",
+                      "id":  "018"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  54.4129067061972,
+                      "end":  66.0733169014782,
+                      "interval":  16,
+                      "en":  "And uh, uh, so it started with vomiting, so I vomited a couple of times. Uh, but then, that went away, and, uh, yeah it\u0027s just diarrhoea now.",
+                      "id":  "019"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  66.5473110968319,
+                      "end":  73.265341296167,
+                      "interval":  22,
+                      "en":  "OK. And you mentioned you\u0027ve been um going to the toilet very often. How many times are you going a day?",
+                      "id":  "020"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  73.4067058514837,
+                      "end":  76.8868862278309,
+                      "interval":  18,
+                      "en":  "Yeah, around, five to six times a day.",
+                      "id":  "021"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  77.0379828655391,
+                      "end":  85.081038209278,
+                      "interval":  24,
+                      "en":  "OK. And uh uh can you tell me, I know it\u0027s not nice to talk about, but is it quite watery, your stools, loose?",
+                      "id":  "022"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  85.156791471887,
+                      "end":  91.5496956721219,
+                      "interval":  20,
+                      "en":  "Yes, it\u0027s definitely, definitely watery, uh, loose stools, yeah.",
+                      "id":  "023"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  86.2423295530278,
+                      "end":  87.129425612403,
+                      "interval":  26,
+                      "en":  "OK.",
+                      "id":  "024"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  91.2746068155231,
+                      "end":  93.1646565009831,
+                      "interval":  28,
+                      "en":  "K. Any blood in your stools?",
+                      "id":  "025"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  93.6985155847217,
+                      "end":  95.594356784887,
+                      "interval":  22,
+                      "en":  "No, not that I could see.",
+                      "id":  "026"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  95.6695382491677,
+                      "end":  101.473577124887,
+                      "interval":  30,
+                      "en":  "OK. And uh uh uh with the diarrhea have you noticed any other symptoms, like tummy pain?",
+                      "id":  "027"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  102.038849507487,
+                      "end":  113.098461004595,
+                      "interval":  24,
+                      "en":  "Uh, not, not really, no. Uh, but I, I, I feel like, um, I can\u0027t, really drink too much, so I feel very dehydrated.",
+                      "id":  "028"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  105.183271699883,
+                      "end":  105.60702619872,
+                      "interval":  32,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "029"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  113.511268752998,
+                      "end":  116.500528659245,
+                      "interval":  34,
+                      "en":  "OK. When you say you can\u0027t drink too much, why is that?",
+                      "id":  "030"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  116.907017597567,
+                      "end":  133.661124012671,
+                      "interval":  26,
+                      "en":  "Uh, yeah because, really I, uh I, um, I\u0027m like, \u003cUNIN/\u003e I feel like I don\u0027t drink enough, like I\u0027m, I\u0027m drink, I\u0027m trying to drink, but then I just go to the loo, and I like, I, uh I, I, I do everything and I feel dehydrated again.",
+                      "id":  "031"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  133.936116587344,
+                      "end":  139.710340362337,
+                      "interval":  36,
+                      "en":  "OK, alright. Um have you managed to eat anything, solids?",
+                      "id":  "032"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  140.615541564363,
+                      "end":  151.698963445293,
+                      "interval":  28,
+                      "en":  "Uh, \u003cUNIN/\u003e not much, not much. So just a little bit, but I don\u0027t feel, um, I don\u0027t really feel like, uh, I have appetite.",
+                      "id":  "033"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  151.527023690852,
+                      "end":  160.672237261334,
+                      "interval":  38,
+                      "en":  "OK. You \u003cINAUDIBLE_SPEECH/\u003e. OK. Um with your um, \u003cINAUDIBLE_SPEECH/\u003e the vomiting has now stopped. Is that right? You said",
+                      "id":  "034"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  160.449031502536,
+                      "end":  161.844868311912,
+                      "interval":  30,
+                      "en":  "\u003cUNSURE\u003eYes\u003c/UNSURE\u003e, yes.",
+                      "id":  "035"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  160.672237261334,
+                      "end":  160.722237261334,
+                      "interval":  39,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "036"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  161.662977020542,
+                      "end":  165.661509829878,
+                      "interval":  41,
+                      "en":  "OK, alright. Have you had any other symptoms, like fever or temperature?",
+                      "id":  "037"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  166.657401791685,
+                      "end":  181.666345049709,
+                      "interval":  32,
+                      "en":  "Uh, so, not, really I \u003cUNIN/\u003e, I feel a little bit warm, um, probably at, at the beginning I was feeling I had a bit of temperature, but now I feel, I feel kind of fine.",
+                      "id":  "038"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  181.722009208268,
+                      "end":  182.947161,
+                      "interval":  43,
+                      "en":  "OK. \u003cUNIN/\u003e",
+                      "id":  "039"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  182.293335231744,
+                      "end":  184.157546687752,
+                      "interval":  34,
+                      "en":  "I feel very weak though.",
+                      "id":  "040"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  184.059396223917,
+                      "end":  187.496531233928,
+                      "interval":  45,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e OK. Alright. Any headaches or muscle pains?",
+                      "id":  "041"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  188.053405451077,
+                      "end":  190.657586204861,
+                      "interval":  36,
+                      "en":  "Not, not really, no.",
+                      "id":  "042"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  190.646102399768,
+                      "end":  196.661190731707,
+                      "interval":  47,
+                      "en":  "OK, alright. And you mentioned three days ago. What were you doing when the symptoms started? Are you aware of any triggers?",
+                      "id":  "043"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  197.845140540886,
+                      "end":  205.943247489478,
+                      "interval":  38,
+                      "en":  "\u003cUNIN/\u003e, not that I, I remember, what was I doing, I, I was at home I was working, on my computer and.",
+                      "id":  "044"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  205.943247489478,
+                      "end":  213.78773175974,
+                      "interval":  39,
+                      "en":  "Yeah, just felt, like some nausea and I had to, to vomit, and then I had some diarrhoea, straight after that.",
+                      "id":  "045"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  213.800779612265,
+                      "end":  217.830812540515,
+                      "interval":  49,
+                      "en":  "Yeah. Did you have any takeaway food, or any dodgy restaurant food?",
+                      "id":  "046"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  218.220301902416,
+                      "end":  222.473306258592,
+                      "interval":  41,
+                      "en":  "Uh, not that I remember, no.",
+                      "id":  "047"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  221.710299838898,
+                      "end":  227.31561155777,
+                      "interval":  51,
+                      "en":  "OK. Have you been around anyone unwell, with diarrhea recently, last week or so?",
+                      "id":  "048"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  228.157871606206,
+                      "end":  230.637051262292,
+                      "interval":  43,
+                      "en":  "\u003cUNSURE\u003eHmm\u003c/UNSURE\u003e, not that I know, \u003cUNSURE\u003enot that I\u003c/UNSURE\u003e.",
+                      "id":  "049"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  230.027054093684,
+                      "end":  237.280761937206,
+                      "interval":  53,
+                      "en":  "OK. OK. Um, right. So moving on, um are you otherwise fit and well?",
+                      "id":  "050"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  237.532936370357,
+                      "end":  239.262109440259,
+                      "interval":  45,
+                      "en":  "Yeah, yeah, \u003cUNIN/\u003e.",
+                      "id":  "051"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  239.678620249704,
+                      "end":  242.92594630595,
+                      "interval":  55,
+                      "en":  "Uh OK. And do you take any regular medications?",
+                      "id":  "052"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  242.84844197638,
+                      "end":  257.760270108466,
+                      "interval":  47,
+                      "en":  "Um, so I, I do suffer of asthma. So, I do have my inhalers, uh, that I you know, I \u003cUNSURE\u003eneed\u003c/UNSURE\u003e, I use infrequently, let\u0027s say only when I have, uh, a bit of \u003cUNIN/\u003e.",
+                      "id":  "053"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  256.479789227806,
+                      "end":  258.538935718429,
+                      "interval":  57,
+                      "en":  "Is that, is that \u003cUNIN/\u003e inhaler?",
+                      "id":  "054"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  259.283092243399,
+                      "end":  259.887255434023,
+                      "interval":  49,
+                      "en":  "\u003cUNSURE\u003eSorry\u003c/UNSURE\u003e?",
+                      "id":  "055"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  259.920658565303,
+                      "end":  266.565855596545,
+                      "interval":  59,
+                      "en":  "Is that the blue inhaler? Blue inhaler. OK, alright. Any other medications that you take?",
+                      "id":  "056"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  261.574761471359,
+                      "end":  262.574761471359,
+                      "interval":  51,
+                      "en":  "Yes it is, yeah.",
+                      "id":  "057"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  267.303960886001,
+                      "end":  268.825790731754,
+                      "interval":  53,
+                      "en":  "Uh, no, nothing.",
+                      "id":  "058"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  268.732529649668,
+                      "end":  271.67340215279,
+                      "interval":  61,
+                      "en":  "OK. Do you have any allergies to medications?",
+                      "id":  "059"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  271.969659031533,
+                      "end":  274.267289023656,
+                      "interval":  55,
+                      "en":  "Um, not that I know of.",
+                      "id":  "060"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  274.361584884037,
+                      "end":  279.017522009032,
+                      "interval":  63,
+                      "en":  "OK. And any family history of any medical problems?",
+                      "id":  "061"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  279.533199817752,
+                      "end":  291.866632675656,
+                      "interval":  57,
+                      "en":  "Um, so, my father has, high uh, well used to have high blood pressure. He actually, so he actually died, of, bowel cancer, like ten years ago.",
+                      "id":  "062"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  292.312318696731,
+                      "end":  298.361717840254,
+                      "interval":  65,
+                      "en":  "OK. Sorry to hear that. Um, OK. And uh what about your mother?",
+                      "id":  "063"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  297.450006257897,
+                      "end":  304.310176315978,
+                      "interval":  59,
+                      "en":  "Ohh yes, so uh, probably is worth mentioning uh, she has diabetes.",
+                      "id":  "064"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  304.485406193371,
+                      "end":  308.162842499617,
+                      "interval":  67,
+                      "en":  "Diabetes. Do you know if that\u0027s type one or type two?",
+                      "id":  "065"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  308.075081999023,
+                      "end":  309.845922101491,
+                      "interval":  61,
+                      "en":  "Uh, it\u0027s type two.",
+                      "id":  "066"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  310.38328033399,
+                      "end":  311.55532443399,
+                      "interval":  69,
+                      "en":  "OK. Alright.",
+                      "id":  "067"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  312.825705840996,
+                      "end":  321.81636811283,
+                      "interval":  71,
+                      "en":  "Fine. And um, just a little bit more about your life in general, sir. Um who, who\u0027s at home with you? Who lives at home with you?",
+                      "id":  "068"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  322.426659,
+                      "end":  323.014163573739,
+                      "interval":  64,
+                      "en":  "Sorry?",
+                      "id":  "069"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  323.137189465795,
+                      "end":  324.46114286264,
+                      "interval":  73,
+                      "en":  "Who lives at home with you, sir?",
+                      "id":  "070"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  325.054371424858,
+                      "end":  326.575209331931,
+                      "interval":  66,
+                      "en":  "Ohh I, I live alone.",
+                      "id":  "071"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  326.571801757901,
+                      "end":  329.446794056545,
+                      "interval":  75,
+                      "en":  "You live alone, OK. Are you currently working at the moment?",
+                      "id":  "072"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  330.231978977841,
+                      "end":  337.533621333583,
+                      "interval":  68,
+                      "en":  "Uh, well I haven\u0027t been able to work in the past few days, but yes \u003cUNIN/\u003e, like given, uh, my uh.",
+                      "id":  "073"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  336.657583249588,
+                      "end":  338.990925024586,
+                      "interval":  77,
+                      "en":  "What\u0027s your employment? What do you do for work?",
+                      "id":  "074"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  339.346128468617,
+                      "end":  340.762798794275,
+                      "interval":  70,
+                      "en":  "I\u0027m a software engineer.",
+                      "id":  "075"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  340.74899434021,
+                      "end":  342.947926662083,
+                      "interval":  79,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e. OK, alright.",
+                      "id":  "076"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  343.947926662083,
+                      "end":  345.785867441571,
+                      "interval":  81,
+                      "en":  "Have you taken time off work recently?",
+                      "id":  "077"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  347.054511930135,
+                      "end":  355.108145099922,
+                      "interval":  72,
+                      "en":  "Uh, yes, yes I have, uh. Uh, these last three days I\u0027ve been feeling, really unwell, so I couldn\u0027t work.",
+                      "id":  "078"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  355.204679083973,
+                      "end":  362.028667302685,
+                      "interval":  83,
+                      "en":  "OK, alright. And just the last couple of questions with, regarding your smoking and alcohol. Do you do either of those?",
+                      "id":  "079"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  362.867133225706,
+                      "end":  369.221346910415,
+                      "interval":  74,
+                      "en":  "Uh, not really, I drink infrequently, like socially let\u0027s say, and I don\u0027t smoke.",
+                      "id":  "080"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  369.216388482472,
+                      "end":  374.472949,
+                      "interval":  85,
+                      "en":  "OK, alright. Um fine. \u003cUNIN/\u003e uh Robert um",
+                      "id":  "081"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  375.516841579397,
+                      "end":  392.501941238766,
+                      "interval":  87,
+                      "en":  "\u003cUNIN/\u003e having listened to your story, I think you\u0027re probably suffering from what we call gastroenteritis, uh which essentially is just a, a tummy bug. It\u0027s an infection of your, your tummy. Um and normally lasts about three to five days, and gets better.",
+                      "id":  "082"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  382.575622066182,
+                      "end":  383.325619870787,
+                      "interval":  76,
+                      "en":  "OK.",
+                      "id":  "083"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  393.304865388723,
+                      "end":  394.304865388723,
+                      "interval":  78,
+                      "en":  "All right.",
+                      "id":  "084"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  393.568255098058,
+                      "end":  402.989772171737,
+                      "interval":  89,
+                      "en":  "\u003cUNIN/\u003e the things you can do to really help yourself get better soon, um are you can drink plenty of fluids. Really try and flush the toxins out of your body.",
+                      "id":  "085"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  403.450770255342,
+                      "end":  404.242435092513,
+                      "interval":  80,
+                      "en":  "OK.",
+                      "id":  "086"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  403.548288073917,
+                      "end":  420.383799496362,
+                      "interval":  91,
+                      "en":  "Uh you can get things from the pharmacy, which is called Dioralyte, which can help replenish any \u003cUNIN/\u003e uh minerals and vitamins you may have lost. Uh, it\u0027s called \u003cUNIN/\u003e Dioralyte. Um it\u0027s, it\u0027s a, it\u0027s a type of fluid replacement drink.",
+                      "id":  "087"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  411.825826237913,
+                      "end":  413.471665242684,
+                      "interval":  82,
+                      "en":  "I\u0027m sorry, what\u0027s the name of that?",
+                      "id":  "088"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  416.930020164067,
+                      "end":  417.409182256995,
+                      "interval":  84,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "089"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  420.383799496362,
+                      "end":  424.803175983857,
+                      "interval":  92,
+                      "en":  "Um, you can take some Paracetamol if you\u0027re feeling feverish and weak.",
+                      "id":  "090"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  420.825870145813,
+                      "end":  421.346699271306,
+                      "interval":  86,
+                      "en":  "All right.",
+                      "id":  "091"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  424.803175983857,
+                      "end":  430.3515918776,
+                      "interval":  93,
+                      "en":  "I would probably advise you to continue taking time off work for next day or two, until you get better.",
+                      "id":  "092"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  430.3515918776,
+                      "end":  436.679582599467,
+                      "interval":  94,
+                      "en":  "\u003cUNIN/\u003e normally you have to be diarrhea-free for about twenty four to forty eight hours, before you return back to work.",
+                      "id":  "093"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  430.492604137925,
+                      "end":  431.492604137925,
+                      "interval":  88,
+                      "en":  "OK.",
+                      "id":  "094"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  436.679582599467,
+                      "end":  443.276392227583,
+                      "interval":  95,
+                      "en":  "Um, let\u0027s see how the next few \u003cUNIN/\u003e days go. And if you\u0027re still not better next week, I want you to come back and see me.",
+                      "id":  "095"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  443.276392227583,
+                      "end":  445.92156393383,
+                      "interval":  96,
+                      "en":  "And we can have another look at your symptoms, OK?",
+                      "id":  "096"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  446.534394112608,
+                      "end":  449.869731813655,
+                      "interval":  90,
+                      "en":  "That sounds good, that sounds good. Uh, thanks so much.",
+                      "id":  "097"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  448.314045868203,
+                      "end":  451.426962471325,
+                      "interval":  98,
+                      "en":  "Thanks. \u003cUNIN/\u003e do you have any questions for me, or?",
+                      "id":  "098"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  451.576087489913,
+                      "end":  463.810312810305,
+                      "interval":  92,
+                      "en":  "Um, no I think that\u0027s fine. Uh, yeah I\u0027ll, I\u0027ll try to \u003cUNIN/\u003e, and drink \u003cUNIN/\u003e, drink plenty of fluid and I hope it \u003cUNSURE\u003ego away\u003c/UNSURE\u003e. Uh, if it doesn\u0027t I\u0027ll uh, I\u0027ll call, I\u0027ll call back. Is that OK?",
+                      "id":  "099"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  460.453895011937,
+                      "end":  460.980773736938,
+                      "interval":  100,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "100"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  462.975403690062,
+                      "end":  465.206594280685,
+                      "interval":  102,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e I really hope you get better soon.",
+                      "id":  "101"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  465.867862096832,
+                      "end":  468.013705492392,
+                      "interval":  94,
+                      "en":  "Thanks a lot. Thanks so much, for your time.",
+                      "id":  "102"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  466.722726580684,
+                      "end":  469.018433708807,
+                      "interval":  104,
+                      "en":  "\u003cUNIN/\u003e \u003cUNSURE\u003eOK\u003c/UNSURE\u003e. Bye bye.",
+                      "id":  "103"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  469.326208236636,
+                      "end":  470.326208236636,
+                      "interval":  96,
+                      "en":  "OK. Bye.",
+                      "id":  "104"
+                  }
+              ]
+}

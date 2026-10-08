@@ -1,0 +1,786 @@
+﻿{
+    "id":  "day2_consultation09",
+    "set":  "development",
+    "dataset":  "PriMock57",
+    "commit":  "cd2ac707ad03cb4d2531f4ec6b90c659bf4357c5",
+    "license":  "CC-BY-4.0",
+    "mockConsultation":  true,
+    "turns":  [
+                  {
+                      "speaker":  "doctor",
+                      "start":  1.57265047852567,
+                      "end":  5.9059890848691,
+                      "interval":  2,
+                      "en":  "Hi there, good morning. Or good afternoon, sorry. \u003cUNIN/\u003e Hi.",
+                      "id":  "001"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  4.27067214027275,
+                      "end":  7.95487893125522,
+                      "interval":  2,
+                      "en":  "Hello there. Uh, good afternoon. This is Jack.",
+                      "id":  "002"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  6.82906588626117,
+                      "end":  7.435902871154,
+                      "interval":  4,
+                      "en":  "\u003cUNSURE\u003eGood afternoon\u003c/UNSURE\u003e.",
+                      "id":  "003"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  8.38462073874872,
+                      "end":  11.6239405204461,
+                      "interval":  6,
+                      "en":  "Hi. This, this is Doctor Deen Mirza from GP at Hand.",
+                      "id":  "004"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  12.2481074311161,
+                      "end":  13.2481074311161,
+                      "interval":  4,
+                      "en":  "I do.",
+                      "id":  "005"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  13.0769326900261,
+                      "end":  17.4786474729099,
+                      "interval":  8,
+                      "en":  "All right. So before we start your appointment, could I please confirm your full name and date of birth?",
+                      "id":  "006"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  18.165395212914,
+                      "end":  21.9323086557195,
+                      "interval":  6,
+                      "en":  "Yes, uh, my name is Jack Armani.",
+                      "id":  "007"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  22.9401929921696,
+                      "end":  24.0171161907775,
+                      "interval":  10,
+                      "en":  "That\u0027s great, thank you.",
+                      "id":  "008"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  23.3759170609518,
+                      "end":  26.3383203451155,
+                      "interval":  8,
+                      "en":  "And my date of birth is",
+                      "id":  "009"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  27.4586209295853,
+                      "end":  29.9999721681046,
+                      "interval":  10,
+                      "en":  "twelve August nineteen fifty eight.",
+                      "id":  "010"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  30.5983216008859,
+                      "end":  35.4188404650795,
+                      "interval":  12,
+                      "en":  "That\u0027s great, thank you for that. Um, are you in a private place where you\u0027re OK to speak at the moment?",
+                      "id":  "011"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  35.3984622877818,
+                      "end":  36.3307932090175,
+                      "interval":  12,
+                      "en":  "Yes, I am.",
+                      "id":  "012"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  36.4188404650795,
+                      "end":  38.8461931503599,
+                      "interval":  14,
+                      "en":  "OK. So, how can I help you today?",
+                      "id":  "013"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  39.3683843584748,
+                      "end":  46.8345407737267,
+                      "interval":  14,
+                      "en":  "I am. So, I woke up, um, this morning, and, um.",
+                      "id":  "014"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  48.1653673810186,
+                      "end":  49.4586000556638,
+                      "interval":  16,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "015"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  51.977394934595,
+                      "end":  52.7743876983022,
+                      "interval":  18,
+                      "en":  "Hello?",
+                      "id":  "016"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  52.4615977220596,
+                      "end":  55.0257027604208,
+                      "interval":  16,
+                      "en":  "Yeah I\u0027m still here, you\u0027ll tell \u003cINAUDIBLE_SPEECH/\u003e. Yeah.",
+                      "id":  "017"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  53.5638616754801,
+                      "end":  62.9698650153075,
+                      "interval":  20,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e Uh so \u003cUNIN/\u003e I\u0027m a bit worried \u0027cause I woke up this morning, about an hour ago, and I couldn\u0027t move my left arm any more.",
+                      "id":  "018"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  62.8462263703235,
+                      "end":  63.8462263703235,
+                      "interval":  18,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "019"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  64.8462263703235,
+                      "end":  67.743665269319,
+                      "interval":  20,
+                      "en":  "OK. Uh, and how\u0027s your arm right now?",
+                      "id":  "020"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  67.8420400779293,
+                      "end":  69.4360242137489,
+                      "interval":  22,
+                      "en":  "Um.",
+                      "id":  "021"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  70.8270011132758,
+                      "end":  76.3833857500696,
+                      "interval":  24,
+                      "en":  "Well like, I feel no pain but just, uh, can\u0027t move it.",
+                      "id":  "022"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  76.5300023728545,
+                      "end":  80.9659052440085,
+                      "interval":  22,
+                      "en":  "That you still can\u0027t move. And, and what time did you wake up? You said it was an hour, you\u0027re sure about that?",
+                      "id":  "023"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  82.1127024770387,
+                      "end":  82.932251600334,
+                      "interval":  26,
+                      "en":  "Yes.",
+                      "id":  "024"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  84.1453958712331,
+                      "end":  85.7607814600965,
+                      "interval":  24,
+                      "en":  "OK, um.",
+                      "id":  "025"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  86.5471059084078,
+                      "end":  89.4018096970656,
+                      "interval":  26,
+                      "en":  "Now, can I just double check? Has this ever happened before?",
+                      "id":  "026"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  89.7217172279432,
+                      "end":  93.9397578625104,
+                      "interval":  28,
+                      "en":  "No. No, uh, it\u0027s really the first time.",
+                      "id":  "027"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  94.4018160246777,
+                      "end":  100.931739302381,
+                      "interval":  28,
+                      "en":  "OK. And, did you sleep, anything, \u003cUNIN/\u003e in an awkward position, or in a different bed, or anything like that last night?",
+                      "id":  "028"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  101.127719176176,
+                      "end":  104.278092123574,
+                      "interval":  30,
+                      "en":  "Uh no, uhf, everything as usual.",
+                      "id":  "029"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  105.196701732184,
+                      "end":  110.04286166258,
+                      "interval":  30,
+                      "en":  "OK. Um, and um, is there any discoloration in your hand?",
+                      "id":  "030"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  110.503648761481,
+                      "end":  111.729212357361,
+                      "interval":  32,
+                      "en":  "Um, no.",
+                      "id":  "031"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  112.743719054022,
+                      "end":  115.675346041288,
+                      "interval":  32,
+                      "en":  "K, um, does your hand feel cold?",
+                      "id":  "032"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  116.766800723629,
+                      "end":  125.488594489285,
+                      "interval":  34,
+                      "en":  "Mmm, no, really the, mmm, the arm feels fine, apart from me not being able to move it.",
+                      "id":  "033"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  125.735189432888,
+                      "end":  131.18818793008,
+                      "interval":  34,
+                      "en":  "OK. And it\u0027s to your \u003cUNIN/\u003e on your left side. Have you had any symptoms in your left leg at all?",
+                      "id":  "034"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  131.999865015308,
+                      "end":  138.390834956861,
+                      "interval":  36,
+                      "en":  "No, but um, I feel a bit of tingling on the left side of my face.",
+                      "id":  "035"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  140.154012497034,
+                      "end":  145.162565846714,
+                      "interval":  36,
+                      "en":  "Right, OK. Um, and how long has that tingling been there for?",
+                      "id":  "036"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  145.338195101586,
+                      "end":  155.247957138881,
+                      "interval":  38,
+                      "en":  "Uh, since I woke up. Um, since I started to feel the \u003cINAUDIBLE_SPEECH/\u003e , since, since the the arm really it stopped moving, so an hour ago.",
+                      "id":  "037"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  156.128393577474,
+                      "end":  157.726685122202,
+                      "interval":  38,
+                      "en":  "OK, um.",
+                      "id":  "038"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  158.726685122202,
+                      "end":  170.760890611405,
+                      "interval":  40,
+                      "en":  "Now, um, I can\u0027t see you. \u003cUNIN/\u003e It\u0027s, it\u0027s telephone appointment. Have you noticed any kind of, um, asymmetry in your face, or did your face expression look different on one side compared to the other, or anything different at all?",
+                      "id":  "039"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  171.849439187309,
+                      "end":  173.398310603952,
+                      "interval":  40,
+                      "en":  "Um.",
+                      "id":  "040"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  175.059963818536,
+                      "end":  178.48853186752,
+                      "interval":  42,
+                      "en":  "Mmm, no, not really, it\u0027s just.",
+                      "id":  "041"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  180.353192318397,
+                      "end":  193.217837461731,
+                      "interval":  44,
+                      "en":  "Uh, having like \u003cUNIN/\u003e a bit of issues like, uh, I was trying to drink earlier and \u003cUNSURE\u003eI\u0027d be bold\u003c/UNSURE\u003e a bit and and the tingling on, on the left side.",
+                      "id":  "042"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  194.077165229771,
+                      "end":  198.470332990588,
+                      "interval":  42,
+                      "en":  "OK. So, um, you have some difficulties swallowing, is that right?",
+                      "id":  "043"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  199.744145560813,
+                      "end":  202.78173671027,
+                      "interval":  46,
+                      "en":  "Um, yeah.",
+                      "id":  "044"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  202.98315906035,
+                      "end":  208.188293917583,
+                      "interval":  44,
+                      "en":  "OK. Any problems with your speech? Is your, is your, is your speech different to how it, um, sounds normally?",
+                      "id":  "045"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  208.729098246591,
+                      "end":  219.465926802115,
+                      "interval":  48,
+                      "en":  "Um, yeah it feels a, a bit harder \u003cUNIN/\u003e. It\u0027s more complicated maybr, maybe um, be more slow.  I need to think more about it.",
+                      "id":  "046"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  219.803695325477,
+                      "end":  223.692588784308,
+                      "interval":  46,
+                      "en":  "OK. Is there anyone at home with you? \u003cUNIN/\u003e",
+                      "id":  "047"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  223.089983300863,
+                      "end":  223.969682716393,
+                      "interval":  50,
+                      "en":  "Uh, no.",
+                      "id":  "048"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  225.62421418967,
+                      "end":  227.333617021277,
+                      "interval":  48,
+                      "en":  "OK. \u003cUNIN/\u003e",
+                      "id":  "049"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  226.526071527971,
+                      "end":  228.992234901197,
+                      "interval":  52,
+                      "en":  "Is this something I should be worried about?",
+                      "id":  "050"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  229.82079886103,
+                      "end":  237.393458830974,
+                      "interval":  50,
+                      "en":  "Um, well, um, I\u0027m \u003cUNIN/\u003e I\u0027m concerned that some of the symptoms you\u0027ve got may be, um, symptoms of a stroke.",
+                      "id":  "051"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  237.781697745616,
+                      "end":  239.578689117729,
+                      "interval":  54,
+                      "en":  "Hmm, wow.",
+                      "id":  "052"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  238.496023095784,
+                      "end":  245.615690896148,
+                      "interval":  52,
+                      "en":  "OK? So, um, that\u0027s something that can be dealt with, but it needs to be dealt with as an emergency in a hospital.",
+                      "id":  "053"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  246.187703868633,
+                      "end":  251.262886167548,
+                      "interval":  56,
+                      "en":  "\u003cUNIN/\u003e Would, should I call \u003cUNIN/\u003e, would you be able to call the ambulance for me?",
+                      "id":  "054"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  250.658432334098,
+                      "end":  267.718286799019,
+                      "interval":  54,
+                      "en":  "Yeah I\u0027m, I\u0027m happy to do that. Um, what we need to do is to make sure that they\u0027ve got access to you when you come. So, um, maybe you could, uh, leave the front door, um, unlocked, sit in the hallway. But I\u0027m gonna arrange one of my colleagues next to me to, um, call an ambulance to your home address now.",
+                      "id":  "055"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  257.172653771222,
+                      "end":  257.84182716393,
+                      "interval":  58,
+                      "en":  "OK.",
+                      "id":  "056"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  267.706476482048,
+                      "end":  269.774144169218,
+                      "interval":  60,
+                      "en":  "OK.  OK.  Thank you.",
+                      "id":  "057"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  268.92341532864,
+                      "end":  276.000348018666,
+                      "interval":  56,
+                      "en":  "So \u003cUNIN/\u003e that\u0027s being done right now, as we speak. Uh, while we\u0027re waiting for that, I\u0027m just gonna ask you a few more questions. Is that OK?",
+                      "id":  "058"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  276.082407458948,
+                      "end":  276.856843863067,
+                      "interval":  62,
+                      "en":  "\u003cUNSURE\u003eSure\u003c/UNSURE\u003e.",
+                      "id":  "059"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  277.000348018666,
+                      "end":  279.427700703947,
+                      "interval":  58,
+                      "en":  "OK. Do you have any other illnesses at all?",
+                      "id":  "060"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  280.390674923462,
+                      "end":  281.841802115224,
+                      "interval":  64,
+                      "en":  "Um.",
+                      "id":  "061"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  282.879396047871,
+                      "end":  287.864352908433,
+                      "interval":  66,
+                      "en":  "I have, uh, type two diabetes and, uh, high blood pressure.",
+                      "id":  "062"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  288.615747844657,
+                      "end":  292.479000237285,
+                      "interval":  60,
+                      "en":  "OK. And, um, are you on any medication for that?",
+                      "id":  "063"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  293.345549679933,
+                      "end":  300.706443083774,
+                      "interval":  68,
+                      "en":  "Um, I\u0027m taking \u003cUNIN/\u003e Metformin losartan and Amlodipine.",
+                      "id":  "064"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  301.256790318753,
+                      "end":  306.120044293285,
+                      "interval":  62,
+                      "en":  "OK. Do you have any, um, uh, allergies to any medication?",
+                      "id":  "065"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  306.495910102978,
+                      "end":  310.435755635959,
+                      "interval":  70,
+                      "en":  "Um, only penicillin, I believe.",
+                      "id":  "066"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  310.855092936803,
+                      "end":  311.72688760579,
+                      "interval":  64,
+                      "en":  "OK.",
+                      "id":  "067"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  313.538854702206,
+                      "end":  315.803813968203,
+                      "interval":  66,
+                      "en":  "Um, are there any illnesses in your family at all?",
+                      "id":  "068"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  316.751537712218,
+                      "end":  320.428225716671,
+                      "interval":  72,
+                      "en":  "Uh, my dad has got, um, heart disease.",
+                      "id":  "069"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  321.428225716671,
+                      "end":  324.240253270248,
+                      "interval":  74,
+                      "en":  "But, uh, but don\u0027t, I don\u0027t know more detail.",
+                      "id":  "070"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  324.889296844103,
+                      "end":  326.752546072926,
+                      "interval":  68,
+                      "en":  "OK, anyone else?",
+                      "id":  "071"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  327.503408015586,
+                      "end":  328.353032284999,
+                      "interval":  76,
+                      "en":  "Not really.",
+                      "id":  "072"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  328.521778059005,
+                      "end":  331.726909752432,
+                      "interval":  70,
+                      "en":  "And um, \u003cUNIN/\u003e are you normally living alone?",
+                      "id":  "073"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  332.556035346507,
+                      "end":  333.556035346507,
+                      "interval":  78,
+                      "en":  "Uh, yes.",
+                      "id":  "074"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  334.214091592185,
+                      "end":  336.043152732737,
+                      "interval":  72,
+                      "en":  "\u003cUNSURE\u003eK\u003c/UNSURE\u003e. Do you smoke at all?",
+                      "id":  "075"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  336.593626495964,
+                      "end":  337.834227664904,
+                      "interval":  80,
+                      "en":  "Uh, I used to.",
+                      "id":  "076"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  339.145720161354,
+                      "end":  341.20555089773,
+                      "interval":  74,
+                      "en":  "OK. How much alcohol do you drink?",
+                      "id":  "077"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  343.262792930698,
+                      "end":  351.285340940718,
+                      "interval":  82,
+                      "en":  "Uh, I will have a few drinks over the weekend. Um, maybe a, a couple more during the week.",
+                      "id":  "078"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  352.068814363679,
+                      "end":  354.46197896069,
+                      "interval":  76,
+                      "en":  "So, \u003cUNIN/\u003e what, what drinks are we talking about?",
+                      "id":  "079"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  355.292855552463,
+                      "end":  358.525935151684,
+                      "interval":  84,
+                      "en":  "Uh, uh, beers, uh, like pints.",
+                      "id":  "080"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  355.299585541406,
+                      "end":  355.897875504232,
+                      "interval":  78,
+                      "en":  "\u003cUNSURE\u003eOK\u003c/UNSURE\u003e.",
+                      "id":  "081"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  359.479076168631,
+                      "end":  360.282494661077,
+                      "interval":  80,
+                      "en":  "OK.",
+                      "id":  "082"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  361.675657676184,
+                      "end":  363.026085580954,
+                      "interval":  82,
+                      "en":  "All right, um.",
+                      "id":  "083"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  364.367966463656,
+                      "end":  367.291046428854,
+                      "interval":  84,
+                      "en":  "How are you feeling now? Have you got the symptoms right now still, that, um",
+                      "id":  "084"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  367.638705816866,
+                      "end":  375.503357918174,
+                      "interval":  86,
+                      "en":  "Yes, yes. The the arm still can\u0027t move and I think the speech is getting a bit harder.",
+                      "id":  "085"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  375.419262833188,
+                      "end":  394.29108597643,
+                      "interval":  86,
+                      "en":  "OK, all right. So, the ambulance is on it\u0027s way, all right? Um, and what they\u0027re going to do is, they\u0027ll probably take you down to, um, the local hospital, A and E. And then, they\u0027ll they will ring through for the, um, the stroke doctor to assess you, to see whether they can give you any kind of, um",
+                      "id":  "086"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  394.29108597643,
+                      "end":  404.231271059084,
+                      "interval":  87,
+                      "en":  "Treatment for that OK? So no worry. They\u0027re they\u0027re on their way, um, and what I\u0027m gonna do is, I\u0027m gonna stay on the line until they reach there. Just to make sure that you\u0027re OK.",
+                      "id":  "087"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  395.713857500696,
+                      "end":  396.458218758697,
+                      "interval":  88,
+                      "en":  "OK.",
+                      "id":  "088"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  404.495802950181,
+                      "end":  406.931891177289,
+                      "interval":  90,
+                      "en":  "OK. Is there anything I should be doing now?",
+                      "id":  "089"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  407.333838487701,
+                      "end":  419.376590998972,
+                      "interval":  89,
+                      "en":  "Um, not at the moment, no, not at the moment, Just, uh, make sure the \u003cUNIN/\u003e the front door\u0027s open. Sit in the hallway, by the front door so that they\u0027ve got access if needs be, if for any reason you can\u0027t open the front door. OK, um.",
+                      "id":  "090"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  418.443157528528,
+                      "end":  419.18,
+                      "interval":  92,
+                      "en":  "OK.",
+                      "id":  "091"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  419.376590998972,
+                      "end":  423.846680376493,
+                      "interval":  90,
+                      "en":  "All right, then so \u003cUNIN/\u003e I\u0027ll be \u003cUNIN/\u003e staying on the line and we\u0027ll and \u003cUNIN/\u003e we\u0027ll wait until the ambulance comes.",
+                      "id":  "092"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  424.443151962148,
+                      "end":  426.277737266908,
+                      "interval":  94,
+                      "en":  "OK, I\u0027m gonna go to the door.",
+                      "id":  "093"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  426.333862216246,
+                      "end":  428.43642806296,
+                      "interval":  92,
+                      "en":  "OK then, all right. Thank you.",
+                      "id":  "094"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  428.758938213192,
+                      "end":  429.518337044253,
+                      "interval":  96,
+                      "en":  "Thank you.",
+                      "id":  "095"
+                  },
+                  {
+                      "speaker":  "doctor",
+                      "start":  429.43642806296,
+                      "end":  430.180017400933,
+                      "interval":  94,
+                      "en":  "K, bye bye.",
+                      "id":  "096"
+                  },
+                  {
+                      "speaker":  "patient",
+                      "start":  430.623600055664,
+                      "end":  431.097284998608,
+                      "interval":  98,
+                      "en":  "\u003cINAUDIBLE_SPEECH/\u003e",
+                      "id":  "097"
+                  }
+              ]
+}

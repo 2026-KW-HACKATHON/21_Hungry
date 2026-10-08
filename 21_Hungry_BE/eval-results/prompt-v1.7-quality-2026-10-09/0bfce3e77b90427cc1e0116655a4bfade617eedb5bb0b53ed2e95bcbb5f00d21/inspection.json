@@ -1,0 +1,77 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s754bd4c3edb4v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "원인은 아직 확실하지 않아요.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s754bd4c3edb4v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "PRECAUTION",
+      "text" : "쉬세요.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s754bd4c3edb4v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "사흘 뒤에도 아프면 다시 오세요.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "사흘 뒤에도 아프면" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "다시 오기",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1", "f3" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

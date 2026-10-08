@@ -1,0 +1,794 @@
+{
+  "rubric": "docs/ai-summary-evals/v1.8.1-rubric.md",
+  "reviewer": "Codex AI full source comparison; not clinician validated",
+  "policy": "Observed atomic errors/omissions with source turns; no scalar weighting, CRITICAL separate. Delivery blocks not expanded into fictitious all-fact omissions. Not exhaustive clinical recall.",
+  "rows": [
+    {
+      "candidate": "A",
+      "caseId": "D01_DOCTOR_CONDITIONAL_RETURN",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "medication-advice",
+          "category": "MF",
+          "severity": "MAJOR",
+          "reason": "처방약 복용 지시가 facts 전체에서 빠짐",
+          "sourceTurns": [
+            "001"
+          ],
+          "paths": []
+        },
+        {
+          "id": "medication-candidate",
+          "category": "MC",
+          "severity": "MAJOR",
+          "reason": "이름 미상 처방약 확인 후보 누락",
+          "sourceTurns": [
+            "001"
+          ],
+          "paths": []
+        },
+        {
+          "id": "visit-kind",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "의료기관 재방문이 OTHER로 분류됨",
+          "sourceTurns": [
+            "001"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "A",
+      "caseId": "D11_DOCUMENT_CONFLICT",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "document-current-order",
+          "category": "MC",
+          "severity": "MAJOR",
+          "reason": "현재 문서 처방을 HISTORICAL로 처리하여 하루3회 후보 누락",
+          "sourceTurns": [
+            "document001"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "A",
+      "caseId": "H01_NOVEL_MIXED_CORRECTION",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "A",
+      "caseId": "day3_consultation08",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "two-medications-one-name",
+          "category": "UC",
+          "severity": "CRITICAL",
+          "reason": "Night Nurse, Day Nurse 두 제품을 한 약명으로 합친 후보",
+          "sourceTurns": [
+            "066",
+            "073"
+          ],
+          "paths": []
+        },
+        {
+          "id": "no-prescription-required",
+          "category": "MF",
+          "severity": "MAJOR",
+          "reason": "현재 처방전이 필요없다는 안내 누락",
+          "sourceTurns": [
+            "074",
+            "075"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "A",
+      "caseId": "day3_consultation05",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "fever-uncertainty",
+          "category": "FF",
+          "severity": "MAJOR",
+          "reason": "없는 것 같다는 발열 불확실성을 발열 없음으로 확정",
+          "sourceTurns": [
+            "045",
+            "046"
+          ],
+          "paths": []
+        },
+        {
+          "id": "continuous-duration-support",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "지속 여부에 필요한 질문034/036 없이 답035를 연결",
+          "sourceTurns": [
+            "034",
+            "035",
+            "036",
+            "037"
+          ],
+          "paths": []
+        },
+        {
+          "id": "food-instruction-support",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "음식 동반 여부를 묻는088 없이 문맥 의존 답089만 연결",
+          "sourceTurns": [
+            "088",
+            "089"
+          ],
+          "paths": []
+        },
+        {
+          "id": "emergency-candidate",
+          "category": "MC",
+          "severity": "MAJOR",
+          "reason": "완전한 OR 응급 행동을 actionStatus=NONE으로 분류해 후보 누락",
+          "sourceTurns": [
+            "077",
+            "079"
+          ],
+          "paths": []
+        },
+        {
+          "id": "visit-delay",
+          "category": "MF",
+          "severity": "MAJOR",
+          "reason": "대면 진료의 앞으로 며칠 안이라는 안내 누락",
+          "sourceTurns": [
+            "085"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "A",
+      "caseId": "day1_consultation02",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "dry-cracked-evidence",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "건조함/갈라짐을 주장하지만037/071 근거가 없음",
+          "sourceTurns": [
+            "037",
+            "071"
+          ],
+          "paths": []
+        },
+        {
+          "id": "assessment-speaker-evidence",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "의사 재악화 판단을 환자 추측/병력014/019/068/074로만 지지",
+          "sourceTurns": [
+            "099"
+          ],
+          "paths": []
+        },
+        {
+          "id": "steroid-bath",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "보습제의 목욕/샤워 사용법을 스테로이드 후보에 붙임",
+          "sourceTurns": [
+            "105",
+            "108"
+          ],
+          "paths": []
+        },
+        {
+          "id": "return-condition",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "미호전 재진인데 condition=NONE; 파서가 차단",
+          "sourceTurns": [
+            "125"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "D02_PATIENT_CLINICIAN_MIX",
+      "reviewed": true,
+      "issues": [],
+      "note": "환자 추측임을 명시하며 의사 미확정 판단과 같이 연결. 과거 symptoms 오분류와 다름."
+    },
+    {
+      "candidate": "B",
+      "caseId": "D10_EXPLICIT_CORRECTION",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "D04_D14_UNCERTAIN_CONDITIONAL",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "D07_MULTIPLE_MEDICATIONS",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "H01_NOVEL_MIXED_CORRECTION",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "H02_NOVEL_PLAIN_NEGATION",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day3_consultation06",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day2_consultation09",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day2_consultation03",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "D01_DOCTOR_CONDITIONAL_RETURN",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "rest-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "일반 휴식 조언을 별도 TASK로 생성",
+          "sourceTurns": [
+            "001"
+          ],
+          "paths": []
+        }
+      ],
+      "note": "날짜10/10은 occurredOn+명시사흘의 조건 평가일로 해석 가능; 확정 예약 주장 없음. 날짜 자체를 오류로 세지 않음."
+    },
+    {
+      "candidate": "B",
+      "caseId": "D11_DOCUMENT_CONFLICT",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "cross-source-conflict",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "각 fact에 반대편 횟수와 충돌을 쓰면서 상대 소스 ID가 없음. 중복 두 문장은 한 관계 오류로 집계",
+          "sourceTurns": [
+            "audio001",
+            "document001"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day3_consultation08",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "unasserted-exclusive-choice",
+          "category": "UC",
+          "severity": "CRITICAL",
+          "reason": "원문에 배타 선택이 없는 Night/Day Nurse를 ALTERNATIVE 그룹으로 만들었음",
+          "sourceTurns": [
+            "066",
+            "073"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day3_consultation05",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "history-conflict-support",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "난소/청력 전사 불일치를 주장하면서 환자 발화064 없이065만 인용",
+          "sourceTurns": [
+            "064",
+            "065"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day1_consultation02",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "location-conflict-support",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "환자 정정 부위와 의사 부위를 비교하지만051 없이101만 인용",
+          "sourceTurns": [
+            "051",
+            "101"
+          ],
+          "paths": []
+        }
+      ],
+      "note": "Fexofenadine은 확정 여부 확인 사유를 둔 제안 후보. 기존 일반약 두 개를 병렬 처방으로 만들지 않음. eczema CU 의미 불명확은 평가 유보."
+    },
+    {
+      "candidate": "B",
+      "caseId": "day3_consultation02",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "blood-test-candidate",
+          "category": "MC",
+          "severity": "MAJOR",
+          "reason": "확정되지 않은 실제 혈액검사 고려를 TEST/NONE으로만 보존, 확인 후보 없음",
+          "sourceTurns": [
+            "078"
+          ],
+          "paths": []
+        }
+      ],
+      "note": "f15 질문048+답049/정정050 모두 존재하나 파서가 혼합 발화048을 질문으로 인정하지 않아 거절. 의미 오류와 분리."
+    },
+    {
+      "candidate": "B",
+      "caseId": "day2_consultation01",
+      "reviewed": true,
+      "issues": [],
+      "note": "f7 발화030에는 진물 질문 뒤 '없군요' 확인도 있어 정상 근거. 후처리가 짧은 확인을 제외해 질문만으로 오인한 과잉 거절. 중요한 사실 오류로 집계하지 않음."
+    },
+    {
+      "candidate": "B",
+      "caseId": "day3_consultation04",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "duplicate-emergency",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "같은 호흡 악화 응급실 행동을 중첩 조건의 두 TASK로 중복 생성",
+          "sourceTurns": [
+            "082",
+            "084",
+            "094"
+          ],
+          "paths": []
+        },
+        {
+          "id": "frequency-conflict-review",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "2~4시간/2시간 양쪽은 보존했지만 충돌 확인 이유가 없어 선택 확정 위험",
+          "sourceTurns": [
+            "075",
+            "094"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day5_consultation12",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "rest-hydration-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "휴식/수분 일반 조언의 TASK 생성",
+          "sourceTurns": [
+            "088"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day1_consultation12",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "hydration-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "수분 유지 일반 조언의 TASK 생성",
+          "sourceTurns": [
+            "085"
+          ],
+          "paths": []
+        },
+        {
+          "id": "rest-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "휴식 조언의 별도 TASK 생성",
+          "sourceTurns": [
+            "092"
+          ],
+          "paths": []
+        },
+        {
+          "id": "duplicate-contact",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "같은 미호전 후속 연락을 환자 의향으로 다시 TASK 생성",
+          "sourceTurns": [
+            "095",
+            "099"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "B",
+      "caseId": "day1_consultation01",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "food-timing-conflict-support",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "사흘/나흘 섭취시점 비교에서044 없이072만 인용",
+          "sourceTurns": [
+            "044",
+            "072"
+          ],
+          "paths": []
+        },
+        {
+          "id": "hydration-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "수분 유지 일반 조언 TASK 생성",
+          "sourceTurns": [
+            "081"
+          ],
+          "paths": []
+        },
+        {
+          "id": "rest-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "휴식 일반 조언 TASK 생성",
+          "sourceTurns": [
+            "090"
+          ],
+          "paths": []
+        },
+        {
+          "id": "stool-test-candidate",
+          "category": "MC",
+          "severity": "MAJOR",
+          "reason": "증상 지속 시 실제 추가 대변 검사 고려 후보 누락",
+          "sourceTurns": [
+            "095",
+            "097"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "C",
+      "caseId": "D01_DOCTOR_CONDITIONAL_RETURN",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "rest-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "일반 휴식 조언을 별도 TASK로 생성",
+          "sourceTurns": [
+            "001"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "C",
+      "caseId": "D11_DOCUMENT_CONFLICT",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "C",
+      "caseId": "H01_NOVEL_MIXED_CORRECTION",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "C",
+      "caseId": "day3_consultation05",
+      "reviewed": true,
+      "issues": [],
+      "note": ""
+    },
+    {
+      "candidate": "C",
+      "caseId": "day3_consultation08",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "unasserted-exclusive-choice",
+          "category": "UC",
+          "severity": "CRITICAL",
+          "reason": "원문에 배타 선택이 없는 Night/Day Nurse를 ALTERNATIVE 그룹으로 만들었음",
+          "sourceTurns": [
+            "066",
+            "073"
+          ],
+          "paths": []
+        }
+      ],
+      "note": ""
+    },
+    {
+      "candidate": "C",
+      "caseId": "day1_consultation02",
+      "reviewed": true,
+      "issues": [],
+      "note": "명시 확정되지 않은 Fexofenadine 이름을 null로 바꾸되 옵션명·제안·확인 사유를 instructions에 보존. 의미있는 약 후보 삭제로 세지 않음. eczema CU 상담 추가는 불명확 표시 있어 허위 확정으로 세지 않음."
+    },
+    {
+      "candidate": "B",
+      "caseId": "day4_consultation02",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "heat-uncertainty",
+          "category": "MF",
+          "severity": "MAJOR",
+          "reason": "초반 동의만 보존하고 105~111의 열감 재확인 불명확/숨참 정정 맥락을 누락",
+          "sourceTurns": [
+            "017",
+            "018",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "111"
+          ],
+          "paths": [
+            "f1"
+          ]
+        },
+        {
+          "id": "leg-tingling-context",
+          "category": "EV",
+          "severity": "MAJOR",
+          "reason": "다리에도 그런 느낌이 있나요의 지시 대상(손 따끔거림094/095)이 근거에 없음",
+          "sourceTurns": [
+            "094",
+            "095",
+            "098",
+            "099"
+          ],
+          "paths": [
+            "f14"
+          ]
+        },
+        {
+          "id": "blood-test-candidate",
+          "category": "MC",
+          "severity": "MAJOR",
+          "reason": "실제 고려된 혈액검사를 TEST/NONE 보고 문장으로만 남기고 미정 확인 후보는 누락",
+          "sourceTurns": [
+            "150",
+            "152"
+          ],
+          "paths": [
+            "f24"
+          ]
+        }
+      ],
+      "note": "대면 방문 후보, 미정 날짜, Thyroxine 병력, 의사 인계 약속 구분은 보존. C는 열감 불확실성과 다리 증상의 질문 맥락을 보완. 원문 자체의 hyperthyroidism/note hypothyroid 충돌은 모델 진단 오류로 세지 않음."
+    },
+    {
+      "candidate": "B",
+      "caseId": "day5_consultation02",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "hydration-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "일일 수분량 조언을 별도 DAILY TASK로 생성. 하루라는 주기는 원문에 있지만 돌봄 일정 지시는 아님",
+          "sourceTurns": [
+            "102"
+          ],
+          "paths": [
+            "f14"
+          ]
+        },
+        {
+          "id": "duplicate-contact",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "같은 악화/미호전 재상담을 중첩 조건의 두 후보로 생성",
+          "sourceTurns": [
+            "107",
+            "109",
+            "111"
+          ],
+          "paths": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "note": "양쪽 파서 f2 거절은 원문 냄새가 나요 평서문을 질문으로 오인한 과잉 거절. 약명미상 항생제3일·Clindamycin 알레르기·Mebeverine 약력·전체 OR 조건·1시간 후 수령은 보존. 체온은 환자 보고이며 측정값 정상으로 주장하지 않음. C 크랜베리 분리는 삭제/누락 아님. 선택 가루약은 명시적 처방이 불확실해 후보 누락 확정 오류로 세지 않음."
+    },
+    {
+      "candidate": "C",
+      "caseId": "day4_consultation02",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "blood-test-candidate",
+          "category": "MC",
+          "severity": "MAJOR",
+          "reason": "실제 고려된 혈액검사를 TEST/NONE 보고 문장으로만 남기고 미정 확인 후보는 누락",
+          "sourceTurns": [
+            "150",
+            "152"
+          ],
+          "paths": [
+            "f24"
+          ]
+        }
+      ],
+      "note": "대면 방문 후보, 미정 날짜, Thyroxine 병력, 의사 인계 약속 구분은 보존. C는 열감 불확실성과 다리 증상의 질문 맥락을 보완. 원문 자체의 hyperthyroidism/note hypothyroid 충돌은 모델 진단 오류로 세지 않음."
+    },
+    {
+      "candidate": "C",
+      "caseId": "day5_consultation02",
+      "reviewed": true,
+      "issues": [
+        {
+          "id": "hydration-task",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "일일 수분량 조언을 별도 DAILY TASK로 생성. 하루라는 주기는 원문에 있지만 돌봄 일정 지시는 아님",
+          "sourceTurns": [
+            "102"
+          ],
+          "paths": [
+            "f14"
+          ]
+        },
+        {
+          "id": "duplicate-contact",
+          "category": "UC",
+          "severity": "MAJOR",
+          "reason": "같은 악화/미호전 재상담을 중첩 조건의 두 후보로 생성",
+          "sourceTurns": [
+            "107",
+            "109",
+            "111"
+          ],
+          "paths": [
+            "f16",
+            "f17"
+          ]
+        }
+      ],
+      "note": "양쪽 파서 f2 거절은 원문 냄새가 나요 평서문을 질문으로 오인한 과잉 거절. 약명미상 항생제3일·Clindamycin 알레르기·Mebeverine 약력·전체 OR 조건·1시간 후 수령은 보존. 체온은 환자 보고이며 측정값 정상으로 주장하지 않음. C 크랜베리 분리는 삭제/누락 아님. 선택 가루약은 명시적 처방이 불확실해 후보 누락 확정 오류로 세지 않음."
+    },
+    {
+      "candidate": "B",
+      "caseId": "F181_01_CORRECTION_AND_CHOICE",
+      "reviewed": true,
+      "issues": [],
+      "note": "0.5정·하루1회·엿새·시각미정, W/X 미선택 대안과 AND 응급 방문, 예약 부정 모두 보존. f1 환자 질문 속 본인 과거 U약 복용 서술을 질문만이라는 이유로 파서가 거절. 내용 통과와 전달 실패 분리."
+    },
+    {
+      "candidate": "B",
+      "caseId": "F181_02_QA_NEGATION_AND_ACTOR",
+      "reviewed": true,
+      "issues": [],
+      "note": "질문+답/결과미정/출혈없음으로 오인 금지, Y약 지속, 의사 연락 약속, OR 연락, DAILY 부정 모두 보존."
+    }
+  ],
+  "verificationChanges": [
+    {
+      "set": "screen6",
+      "fixed": [
+        "D11:cross-source-conflict",
+        "day3_consultation05:history-conflict-support",
+        "day1_consultation02:location-conflict-support"
+      ],
+      "persisted": [
+        "D01:rest-task",
+        "day3_consultation08:unasserted-exclusive-choice"
+      ],
+      "newImportantErrors": [],
+      "newRequiredOmissions": []
+    },
+    {
+      "set": "fresh-public2",
+      "fixed": [
+        "day4_consultation02:heat-uncertainty",
+        "day4_consultation02:leg-tingling-context"
+      ],
+      "persisted": [
+        "day4_consultation02:blood-test-candidate",
+        "day5_consultation02:hydration-task",
+        "day5_consultation02:duplicate-contact"
+      ],
+      "newImportantErrors": [],
+      "newRequiredOmissions": []
+    }
+  ],
+  "readability": {
+    "status": "qualitative observation, not scored as medical accuracy",
+    "finding": "A/B/C 모두 ~라고 했다 전달형 문장·긴 사실 나열이 남음. C는 원문 대조 정보가 늘어 더 길어지기도 함. 의미 오류와 별도, 가독성 승격 근거 없음."
+  },
+  "severityReview": "약 두 제품을 하나의 복약 후보 identity로 합치거나 원문 없는 배타 선택을 후보에 부과하는 오류는 동일 기준 CRITICAL. 그 외 검토된 중요 누락/근거/불필요 TASK는 MAJOR. 임상 위험 점수 추정이 아닌 사전에 고정한 오류 종류별 우선순위."
+}

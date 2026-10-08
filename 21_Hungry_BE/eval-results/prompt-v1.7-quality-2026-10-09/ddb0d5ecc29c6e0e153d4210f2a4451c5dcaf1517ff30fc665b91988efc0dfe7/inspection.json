@@ -1,0 +1,100 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s12c0e16a47b1v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "어제부터 속이 쓰림.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s12c0e16a47b1v1u0002" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "현재 위염이라고 단정할 단계는 아님.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s12c0e16a47b1v1u0002" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ "s12c0e16a47b1v1u0002" ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "가상 C약을 저녁에 1정씩 4일 복용하도록 지시함. 처음 말한 2정은 1정으로 정정됨.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : "가상 C약",
+        "doseText" : "1정",
+        "frequencyText" : "저녁에",
+        "courseDurationText" : "4일",
+        "instructions" : "저녁에 1정만 4일 복용.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "s12c0e16a47b1v1u0002" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "의사가 예약일 전에 연락하겠다고 함.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "검사가 양성이면" ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "CLINICIAN_ONLY",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2", "f3", "f4" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

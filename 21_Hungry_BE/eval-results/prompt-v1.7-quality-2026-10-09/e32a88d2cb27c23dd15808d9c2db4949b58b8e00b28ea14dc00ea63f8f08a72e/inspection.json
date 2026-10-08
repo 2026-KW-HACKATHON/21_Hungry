@@ -1,0 +1,102 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s9e1f666d62f9v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "약 A는 한 번에 한 정씩 하루 두 번, 5일간 복용하세요.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "PRESCRIBED",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : "약 A",
+        "doseText" : "한 번에 한 정",
+        "frequencyText" : "하루 두 번",
+        "courseDurationText" : "5일",
+        "instructions" : null,
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s9e1f666d62f9v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "약 B는 반 정 복용하세요.",
+      "condition" : {
+        "operator" : "ALL",
+        "clauses" : [ "통증이 있을 때만" ]
+      },
+      "medicationRole" : "CONDITIONAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : "약 B",
+        "doseText" : "반 정",
+        "frequencyText" : "통증이 있을 때만",
+        "courseDurationText" : null,
+        "instructions" : "통증이 있을 때만 복용",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s9e1f666d62f9v1u0001" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "기존 약은 끊지 말고 계속 복용하세요.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "CONTINUE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : null,
+        "courseDurationText" : null,
+        "instructions" : "기존 약은 끊지 마세요.",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2", "f3" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

@@ -1,0 +1,12 @@
+{
+  "candidate" : "1.8",
+  "beforeHoldoutSourceInspection" : true,
+  "holdoutPolicy" : "Run all four even if development fails; never tune after inspection; not promotion approval",
+  "artifacts" : {
+    "src/main/resources/ai/analysis-prompt-v1.8.txt" : "5d0d4e267c14d5ff00dc4aaf4596de0e6ce3c77ae746baa7e713fcc2cee76177",
+    "src/main/resources/ai/analysis-semantic-facts.schema.json" : "676522aaccb91115bf6d04759c76857931bf937eafc4d41348c6d7904511cad2",
+    "src/main/java/com/kw/knowone/encounter/processing/SemanticAnalysis.java" : "714f2a6b8810a38ce26ffdc6c56b8f41da2c58aabc4357814b7a052fe85adefb",
+    "src/main/java/com/kw/knowone/encounter/processing/UtteranceEvidence.java" : "cd93fadeffc4a26586b6c26cb4c9dcfaae4c077fff1e472a69d2e33bf2e65d91"
+  },
+  "unseenCaseIds" : [ "day1_consultation03", "day2_consultation04", "day4_consultation01", "day5_consultation01" ]
+}

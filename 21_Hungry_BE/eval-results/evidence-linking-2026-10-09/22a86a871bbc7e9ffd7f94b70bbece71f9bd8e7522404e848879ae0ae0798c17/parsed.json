@@ -1,0 +1,11 @@
+{
+  "summary" : "원인은 아직 확실하지 않음. 처방약을 복용하고 쉬라고 안내함. 사흘 뒤에도 아프면 다시 내원하라고 함.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[],\"precautions\":[{\"text\":\"쉬라고 안내함.\",\"evidenceIndexes\":[0]}],\"followUps\":[{\"text\":\"사흘 뒤에도 아프면 다시 오라고 안내함.\",\"evidenceIndexes\":[0]}]}",
+  "evidenceJson" : "[{\"sourceId\":\"f1ad8f1a-dae3-3363-b6fc-c55cca59883d\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 원인은 아직 확실하지 않아요. 처방약 드시고 쉬세요. 사흘 뒤에도 아프면 다시 오세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":52}]",
+  "items" : [ ],
+  "provider" : "OPENAI",
+  "model" : "gpt-5.4-mini-2026-03-17",
+  "promptVersion" : "1.5",
+  "inputTokens" : 1856,
+  "outputTokens" : 219
+}

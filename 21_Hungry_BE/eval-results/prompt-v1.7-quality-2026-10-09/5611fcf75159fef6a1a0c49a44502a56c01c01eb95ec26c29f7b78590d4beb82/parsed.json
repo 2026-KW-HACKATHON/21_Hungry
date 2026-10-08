@@ -1,0 +1,25 @@
+{
+  "summary" : "의사의 구두 지시는 약 A를 하루 두 번 복용하는 것이며, 처방전의 하루 3회와 달라 확인이 필요하다. 처방전에는 약 A 하루 3회로 기재되어 있으며, 의사의 구두 지시인 하루 두 번과 달라 확인이 필요하다.",
+  "detailsJson" : "{\"symptoms\":[],\"tests\":[],\"medicationMentions\":[{\"text\":\"의사의 구두 지시는 약 A를 하루 두 번 복용하는 것이며, 처방전의 하루 3회와 달라 확인이 필요하다.\",\"evidenceIndexes\":[0]},{\"text\":\"처방전에는 약 A 하루 3회로 기재되어 있으며, 의사의 구두 지시인 하루 두 번과 달라 확인이 필요하다.\",\"evidenceIndexes\":[1]}],\"precautions\":[],\"followUps\":[]}",
+  "evidenceJson" : "[{\"sourceId\":\"01ba934e-c31b-3ef3-b7ce-46f9afc18092\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 약 A는 하루 두 번 드세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":20},{\"sourceId\":\"c1c1a72f-1b00-3154-a298-1e10df18c6d7\",\"textVersion\":1,\"page\":1,\"quote\":\"처방전: 약 A 하루 3회\",\"occurrenceIndex\":0,\"start\":0,\"end\":14}]",
+  "items" : [ {
+    "itemKey" : "f1",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"약 A\",\"doseText\":null,\"frequencyText\":\"하루 두 번\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"의사의 구두 지시는 약 A를 하루 두 번 복용하는 것이며, 처방전의 하루 3회와 달라 확인이 필요하다. / 구두 지시와 처방전의 복용 횟수가 상충함.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"01ba934e-c31b-3ef3-b7ce-46f9afc18092\",\"textVersion\":1,\"page\":null,\"quote\":\"의사: 약 A는 하루 두 번 드세요.\",\"occurrenceIndex\":0,\"start\":0,\"end\":20}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONFLICT", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  }, {
+    "itemKey" : "f2",
+    "itemType" : "MEDICATION",
+    "payloadJson" : "{\"schemaVersion\":1,\"name\":\"약 A\",\"doseText\":null,\"frequencyText\":\"하루 3회\",\"startsOn\":null,\"endsOn\":null,\"instructions\":\"처방전에는 약 A 하루 3회로 기재되어 있으며, 의사의 구두 지시인 하루 두 번과 달라 확인이 필요하다. / 처방전과 구두 지시의 복용 횟수가 상충함.\",\"supersedesMedicationId\":null,\"schedulePlans\":[]}",
+    "evidenceJson" : "[{\"sourceId\":\"c1c1a72f-1b00-3154-a298-1e10df18c6d7\",\"textVersion\":1,\"page\":1,\"quote\":\"처방전: 약 A 하루 3회\",\"occurrenceIndex\":0,\"start\":0,\"end\":14}]",
+    "reviewState" : "NEEDS_REVIEW",
+    "reviewReasons" : [ "CONFLICT", "EXPERIMENTAL_SEMANTIC_REVIEW", "MISSING_DOSETEXT", "MISSING_ENDSON", "MISSING_STARTSON", "MISSING_TIME" ]
+  } ],
+  "provider" : "OPENAI",
+  "model" : "gpt-6.1-sol",
+  "promptVersion" : "1.8.1",
+  "inputTokens" : 2608,
+  "outputTokens" : 438
+}

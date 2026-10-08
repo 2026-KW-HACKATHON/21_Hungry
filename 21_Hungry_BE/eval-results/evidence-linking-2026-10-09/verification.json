@@ -1,0 +1,15 @@
+{
+  "campaign": "evidence-linking-2026-10-09",
+  "status": "STRUCTURAL_IMPROVEMENT_OBSERVED_NOT_QUALITY_APPROVED",
+  "production": {"protocol":"legacy", "promptVersion":"1.1", "promoted":false, "deployed":false},
+  "candidateVersions": ["1.5", "1.6"],
+  "guidelineVersionDuringCalls": "0.3.1",
+  "guidelineVersionAfterReview": "0.4.0",
+  "savedBaselineReplayed": {"responses":39,"accepted":25,"evidenceRejected":14,"jsonSyntaxRejected":0,"schemaRejectedByRuntimeParser":0,"truncated":0,"transportFailed":0},
+  "additionalLive": {"calls":38,"retries":0,"runtimeParserAccepted":38,"observedNumericContractViolations":1,"chargedUsd":0.38839050,"budgetUsd":1.0,"inputTokens":273582,"outputTokens":40712,"cachedInputTokens":0,"reasoningTokens":0},
+  "numericViolation": "v1.5 H01 durationMinutes=0; runtime parser accepted, diagnostic flagged. v1.6 enforces bounds, but unsupported 1440-minute reminder remains a semantic failure.",
+  "local": {"suites":8,"tests":48,"failures":0,"errors":0,"skipped":0,"bootJar":"PASS","gitDiffCheck":"PASS"},
+  "notExecuted": ["PostgreSQL integration tests this turn","real audio transcription this turn","frontend E2E","production deployment","clinical validation"],
+  "stopReason": "One bounded structural iteration did not consistently improve semantics and introduced regressions. Stop before production promotion, not because of budget or credits.",
+  "protectedState": "Pre-existing worktree edits/deletions preserved; no commit/push/deployment, no production records/prescriptions/schedules created."
+}

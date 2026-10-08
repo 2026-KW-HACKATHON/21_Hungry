@@ -1,0 +1,495 @@
+{
+  "normalized" : {
+    "schemaVersion" : "1.8.1",
+    "facts" : [ {
+      "factId" : "f1",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0012", "s340d128d5e7dv1u0016" ],
+        "questionIds" : [ "s340d128d5e7dv1u0013" ],
+        "answerIds" : [ "s340d128d5e7dv1u0014" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "왼쪽 청력 저하와 최근 얼굴 감각 둔화를 호소하며, 증상은 약 3주 된 것 같다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f2",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0019" ],
+        "questionIds" : [ "s340d128d5e7dv1u0035" ],
+        "answerIds" : [ "s340d128d5e7dv1u0036" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "왼쪽 귀 주변과 턱선을 따라 감각이 둔하며, 지금도 만지면 감각이 다르다. 자주 또는 계속 그렇다고 표현했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCLEAR_CONTINUITY" ]
+    }, {
+      "factId" : "f3",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0024", "s340d128d5e7dv1u0076" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "가끔 귀에서 삐 소리가 나는 것 같고, 소리가 날 때 조금 어지럽기도 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f4",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0068", "s340d128d5e7dv1u0069" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "기수로 일하며, 증상 때문에 훈련을 훨씬 줄였고 일에도 영향을 받기 시작했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f5",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s340d128d5e7dv1u0027" ],
+        "answerIds" : [ "s340d128d5e7dv1u0028" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "나머지 몸에는 힘이 빠지거나 감각이 둔한 곳이 없다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f6",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s340d128d5e7dv1u0029", "s340d128d5e7dv1u0031", "s340d128d5e7dv1u0033" ],
+        "answerIds" : [ "s340d128d5e7dv1u0030", "s340d128d5e7dv1u0032", "s340d128d5e7dv1u0034" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "삼키기 어려움, 말하기 어려움, 시력 문제는 없다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f7",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s340d128d5e7dv1u0037", "s340d128d5e7dv1u0041" ],
+        "answerIds" : [ "s340d128d5e7dv1u0038", "s340d128d5e7dv1u0042" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "귀에서 진물이 나오지 않으며 열도 없었다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f8",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s340d128d5e7dv1u0039" ],
+        "answerIds" : [ "s340d128d5e7dv1u0040" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "귀 통증은 없는 것 같다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f9",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0049" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "과거 코에 폴립이 있다고 들었다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f10",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0052" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "오래전 미로염 같은 질환이 있다고 들었으나 이름은 확실히 기억하지 못하며, 현재 계속되는 문제는 없다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCERTAIN_HISTORY" ]
+    }, {
+      "factId" : "f11",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0050", "s340d128d5e7dv1u0055" ],
+        "questionIds" : [ "s340d128d5e7dv1u0056", "s340d128d5e7dv1u0058" ],
+        "answerIds" : [ "s340d128d5e7dv1u0057", "s340d128d5e7dv1u0059" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "코 폴립이 말썽일 때만 오래전에 처방받은 코 스프레이를 사용하며, 이름은 기억하지 못한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : null,
+        "doseText" : null,
+        "frequencyText" : "필요할 때만",
+        "courseDurationText" : null,
+        "instructions" : "코 폴립이 말썽일 때 사용하는 기존 코 스프레이",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "UNKNOWN_MEDICATION_NAME" ]
+    }, {
+      "factId" : "f12",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0055" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "약국에서 구입한 Rennies 같은 약을 가끔 복용한다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "HISTORICAL",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : {
+        "name" : "Rennies",
+        "doseText" : null,
+        "frequencyText" : "가끔",
+        "courseDurationText" : null,
+        "instructions" : "약국에서 구입해 복용하는 기존 약",
+        "startsOn" : null,
+        "endsOn" : null,
+        "clockTimes" : [ ],
+        "scheduleRecurrence" : null,
+        "weekdays" : [ ]
+      },
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCERTAIN_MEDICATION_NAME" ]
+    }, {
+      "factId" : "f13",
+      "support" : {
+        "statementIds" : [ ],
+        "questionIds" : [ "s340d128d5e7dv1u0054", "s340d128d5e7dv1u0060" ],
+        "answerIds" : [ "s340d128d5e7dv1u0055", "s340d128d5e7dv1u0061" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "MEDICATION",
+      "text" : "정기적으로 사용하는 약이나 언급한 약 외의 다른 약은 없다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f14",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0064" ],
+        "questionIds" : [ "s340d128d5e7dv1u0062" ],
+        "answerIds" : [ "s340d128d5e7dv1u0063" ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "PRECAUTION",
+      "text" : "약 알레르기는 없고 라텍스 알레르기만 있다고 답했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f15",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0065" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "남자 형제에게 신경섬유종증이 있었던 것 같다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ "UNCERTAIN_FAMILY_HISTORY" ]
+    }, {
+      "factId" : "f16",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0080", "s340d128d5e7dv1u0083" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "SYMPTOM",
+      "text" : "인터넷 정보를 보면서 심각한 질환일까 불안해지고 걱정이 커졌다고 한다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f17",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0085", "s340d128d5e7dv1u0089", "s340d128d5e7dv1u0092" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "의사는 벨 마비일 가능성을 언급했으나, 화상 평가에는 한계가 있어 직접 진찰로 확인해야 한다고 설명했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f18",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0087", "s340d128d5e7dv1u0099" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "ASSESSMENT",
+      "text" : "의사는 말로 들은 내용만으로는 생명을 잃을 문제 같지 않다고 잠정적으로 설명했지만, 확실히 안심하려면 오늘 직접 진찰해야 한다고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "NONE",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f19",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0087", "s340d128d5e7dv1u0107" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "오늘 꼭 진료소에서 대면 진찰을 받도록 권고했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "HOSPITAL",
+        "title" : "진료소 대면 진찰 받기",
+        "date" : "2026-10-07",
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f20",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0089", "s340d128d5e7dv1u0094" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "TEST",
+      "text" : "대면 진찰에서 다른 문제가 없는지 신경계를 진찰하여 벨 마비 가능성을 확인하고, 귀 안도 살펴 이상 여부를 확인해야 한다고 했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "EXAM",
+        "title" : "신경계 및 귀 안 진찰 받기",
+        "date" : null,
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f21",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0099", "s340d128d5e7dv1u0103" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "의사는 행정팀에 대면 진료를 잡아 달라는 메시지를 보내고 지원팀 번호를 기록에 남기겠다고 했다. 예약 완료가 확인된 것은 아니다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "CLINICIAN_ONLY",
+      "medication" : null,
+      "task" : null,
+      "uncertaintyCodes" : [ ]
+    }, {
+      "factId" : "f22",
+      "support" : {
+        "statementIds" : [ "s340d128d5e7dv1u0103" ],
+        "questionIds" : [ ],
+        "answerIds" : [ ],
+        "correctionIds" : [ ]
+      },
+      "kind" : "FOLLOW_UP",
+      "text" : "5분 뒤 지원팀에 전화하여 편한 장소의 대면 진료 예약을 잡도록 안내했다. 런던 중심부 진료소를 언급했다.",
+      "condition" : {
+        "operator" : "NONE",
+        "clauses" : [ ]
+      },
+      "medicationRole" : "NONE",
+      "alternativeGroup" : null,
+      "actionStatus" : "FUTURE",
+      "medication" : null,
+      "task" : {
+        "kind" : "OTHER",
+        "title" : "5분 뒤 지원팀에 전화해 대면 진료 예약하기",
+        "date" : "2026-10-07",
+        "time" : null,
+        "recurrence" : "ONCE",
+        "lastDate" : null,
+        "weekdays" : [ ]
+      },
+      "uncertaintyCodes" : [ ]
+    } ],
+    "summaryFactIds" : [ "f1", "f2", "f3", "f14", "f17", "f19", "f20", "f22" ]
+  },
+  "failures" : [ ],
+  "repairs" : [ ]
+}

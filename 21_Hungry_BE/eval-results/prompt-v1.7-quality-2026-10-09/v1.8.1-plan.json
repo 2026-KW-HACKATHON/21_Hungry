@@ -1,0 +1,83 @@
+{
+  "version" : "1.8.1",
+  "rubric" : "v1.8.1-rubric.md",
+  "budgetUsd" : 3.0,
+  "initialChargedUsd" : 1.11464775,
+  "upperModel" : "gpt-6.1-sol",
+  "reasoningEffort" : "low",
+  "maxOutputTokens" : 12000,
+  "selection" : "same six failure cases as prior comparison; old v18-holdout is now development, not fresh",
+  "costPolicy" : "Sol uncached input conservatively charged at cache-write rate $2.50/M; output $10/M; cached $.10/M; reservation 2x byte upper bound",
+  "accountModelsCheckedOn" : "2026-10-09",
+  "availableUpperModels" : "gpt-6.1-sol, gpt-6-astra, gpt-6-sol, gpt-5.6-sol, gpt-5.4; GET /models",
+  "modelSelectionReason" : "6.1 Sol is available and substantially cheaper than Astra; no claim it is clinically validated",
+  "artifacts" : {
+    "src/main/resources/ai/analysis-prompt-v1.8.1.txt" : "b8977cdf70467526caa81d3857ca8cf56accb6cc44e140316140a075a604360a",
+    "src/main/resources/ai/analysis-verifier-v1.8.1.txt" : "d2e1b9ad38afa10df5abc39672cd4baeecab2d03b86597e7eb4273515389cb14",
+    "src/main/resources/ai/analysis-semantic-facts.schema.json" : "676522aaccb91115bf6d04759c76857931bf937eafc4d41348c6d7904511cad2",
+    "src/main/java/com/kw/knowone/encounter/processing/SemanticAnalysisV2.java" : "4fe1e7465a2721315aceacda91bea3eac3c215472e6b99902611ea5034cf2d7c",
+    "docs/ai-summary-evals/v1.8.1-rubric.md" : "be15bf8a13e23ae437d3a2510aa4443cb9c3ab3f8e20703eaa6905d74b880566"
+  },
+  "screen" : [ "D01_DOCTOR_CONDITIONAL_RETURN", "D11_DOCUMENT_CONFLICT", "H01_NOVEL_MIXED_CORRECTION", "day1_consultation02", "day3_consultation05", "day3_consultation08" ],
+  "original20" : [ {
+    "caseId" : "D01_DOCTOR_CONDITIONAL_RETURN",
+    "inputSha256" : "8e8df036b52515a23ce4c43bdf01f724f2e027035eaaed0946e1afbd8d826b04"
+  }, {
+    "caseId" : "D02_PATIENT_CLINICIAN_MIX",
+    "inputSha256" : "480f948bf2b439f33168235603ea48f514cbbcc8b0052b6ba00611847ecc64c4"
+  }, {
+    "caseId" : "D10_EXPLICIT_CORRECTION",
+    "inputSha256" : "0a4b0e7955ae56b01c7238e2357f3e90e7e6d9938429e84bd680afef4da6cf9a"
+  }, {
+    "caseId" : "D04_D14_UNCERTAIN_CONDITIONAL",
+    "inputSha256" : "178926e723920f4da0a55769cd903dc0c976a94f21e22bf83fb0539877fe9897"
+  }, {
+    "caseId" : "D07_MULTIPLE_MEDICATIONS",
+    "inputSha256" : "c6980df7eabf55207c908d988c7c460b78eb877ab9921fb233d703e5e31770da"
+  }, {
+    "caseId" : "D11_DOCUMENT_CONFLICT",
+    "inputSha256" : "9976c4ff5bf0c50b54e805aa9db1d137c039fa8999fce77c0ff44c71b3e262e3"
+  }, {
+    "caseId" : "H01_NOVEL_MIXED_CORRECTION",
+    "inputSha256" : "0f75021ad97979ed6748ba1fd251ed5798c8f2e616e177308099954177e82d62"
+  }, {
+    "caseId" : "H02_NOVEL_PLAIN_NEGATION",
+    "inputSha256" : "dbef3c75a002d1dd760e8c807572e7119ac91857d0baa88e73b81fd40d4f77f1"
+  }, {
+    "caseId" : "day3_consultation06",
+    "inputSha256" : "b5637d05f7b2c1ab77e3c1fdf2d83f1a9438a60323885ef1eb2c9eb8f813fb4d"
+  }, {
+    "caseId" : "day3_consultation08",
+    "inputSha256" : "0e2ccbae2ad7757c13e5708eec9ea18a2cb0c8ef89b0b666668d2dce893afe66"
+  }, {
+    "caseId" : "day3_consultation02",
+    "inputSha256" : "ad28149552d4d3845d0d1912372f2c703f6e77b1a28ba6eb3eb007e1c4ad19d2"
+  }, {
+    "caseId" : "day2_consultation09",
+    "inputSha256" : "aae4c1a04cbd999008ff18ab1293ac3cfd7bb2d7a813324e42f70681b116df30"
+  }, {
+    "caseId" : "day3_consultation04",
+    "inputSha256" : "c73b235dd7c85cb471909cdf922cdd68b8118b64fc378e8a4773ffcdbb3a3cf7"
+  }, {
+    "caseId" : "day3_consultation05",
+    "inputSha256" : "8e9c07163915de8acdcc595e25e887d1abbd384636013d6343137e03ee0ec930"
+  }, {
+    "caseId" : "day2_consultation01",
+    "inputSha256" : "13b69e1bf719f6c67df47c4782f1dd4aa4ef6249456b9a43f44af6ebd1321ce9"
+  }, {
+    "caseId" : "day2_consultation03",
+    "inputSha256" : "59b804735d7d13fe1b81afe1fddfe4b11779d93cd1751e45528282fee3631446"
+  }, {
+    "caseId" : "day5_consultation12",
+    "inputSha256" : "cd23355b40a64e5cee41901d997743149c266d21964a30cad8751a318d7900f9"
+  }, {
+    "caseId" : "day1_consultation12",
+    "inputSha256" : "dfdba9159840f7d6518a724c1dce1af5c1a67c39c7677746831919033df85dcb"
+  }, {
+    "caseId" : "day1_consultation01",
+    "inputSha256" : "f437ba4a811f150fdeb8717d3a48d2807e20681694cd45b881c17ff216622d11"
+  }, {
+    "caseId" : "day1_consultation02",
+    "inputSha256" : "c813c2fbb9f3031e419e51e039df7d278f15781be929c8b2461adf7f44330c3f"
+  } ]
+}
