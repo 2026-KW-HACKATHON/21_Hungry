@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Icon } from '../../components/icon/Icon'
 import BottomButton from '../../components/bottom-button/BottomButton'
+import { requestRecordApi, createAudioUploadAttempt, uploadAudioAttempt } from '../../api/recordApi'
 import './RecordAudioPage.css'
 
 
@@ -16,7 +17,13 @@ async function convertToWav(recordedBlob) {
     const decoded = await audioContext.decodeAudioData(buffer)
 
     // 용량을 줄이기 위해 16kHz 모노로 변환
+    if (decoded.duration <= 0 || decoded.duration > 1200) {
+      throw new Error('녹음 길이는 0초 초과, 20분 이하여야 해요.')
+    }
     const sampleRate = 16000
+    if (44 + Math.ceil(decoded.duration * sampleRate) * 2 > 25_000_000) {
+      throw new Error('WAV 변환 후 파일이 25MB를 넘어요. 더 짧게 녹음해 주세요.')
+    }
     const offline = new OfflineAudioContext(
       1,
       Math.ceil(decoded.duration * sampleRate),
@@ -77,6 +84,7 @@ function RecordAudioPage() {
   const [seconds, setSeconds] = useState(state?.seconds ?? 0)
   const [audioUrl, setAudioUrl] = useState(() => state?.audioBlob ? URL.createObjectURL(state.audioBlob) : '')
   const [message, setMessage] = useState('')
+  const [isUploading, setIsUploading] = useState(false)
   const audioBlobRef = useRef(state?.audioBlob ?? null)
   const recorderRef = useRef(null)
   const streamRef = useRef(null)
@@ -85,87 +93,30 @@ function RecordAudioPage() {
   const requestingRef = useRef(false)
   const uploadingRef = useRef(false)
   const startedRef = useRef(0)
+  const uploadAttemptRef = useRef(null)
   
-  async function uploadRecording(accessToken, groupId, wavBlob) {
-  // 1. 진료 기록 생성
-  const recordResponse = await fetch(
-    `/api/v1/care-groups/${groupId}/encounters`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-        'Idempotency-Key': crypto.randomUUID(),
-      },
-      body: JSON.stringify({
-        recordType: 'VISIT',
-        title: '진료 기록',
-        hospitalName: state?.hospital || null,
-      }),
-    }
-  )
-
-  if (!recordResponse.ok) {
-    throw new Error('진료 기록을 생성하지 못했어요.')
-  }
-
-  // 2. 서버가 만든 기록을 encounter에 저장
-  const recordResult = await recordResponse.json()
-  const encounter = recordResult.data
-
-  // 3. 응답에 들어 있던 버전을 그대로 사용
-  const metadata = {
-    expectedVersion: encounter.version,
-    expectedInputVersion: encounter.inputVersion,
-  }
-
-  const formData = new FormData()
-
-  formData.append(
-    'metadata',
-    new Blob(
-      [JSON.stringify(metadata)],
-      { type: 'application/json' }
-    )
-  )
-
-  formData.append('file', wavBlob, 'recording.wav')
-
-  // 4. 방금 만든 기록에 녹음 파일 업로드
-  const uploadResponse = await fetch(
-    `/api/v1/encounters/${encounter.id}/audio`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Idempotency-Key': crypto.randomUUID(),
-      },
-      body: formData,
-    }
-  )
-
-  if (!uploadResponse.ok) {
-    throw new Error('녹음 파일을 업로드하지 못했어요.')
-  }
-
-  return {
-    encounterId: encounter.id,
-    upload: (await uploadResponse.json()).data,
-  }
-}
-
   useEffect(() => {
     mountedRef.current = true
     return () => {
       mountedRef.current = false
       if (recorderRef.current?.state === 'recording') recorderRef.current.stop()
       streamRef.current?.getTracks().forEach((track) => track.stop())
+      audioBlobRef.current = null
+      uploadAttemptRef.current = null
     }
   }, [])
 
   useEffect(() => {
     if (status !== 'recording') return
-    const timer = setInterval(() => setSeconds(Math.floor((Date.now() - startedRef.current) / 1000)), 250)
+    const timer = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - startedRef.current) / 1000)
+      setSeconds(elapsed)
+      if (elapsed >= 1200 && recorderRef.current?.state === 'recording') {
+        setStatus('stopping')
+        recorderRef.current.stop()
+        setMessage('20분이 되어 녹음을 종료했어요. 파일 용량도 확인한 뒤 업로드해요.')
+      }
+    }, 250)
     return () => clearInterval(timer)
   }, [status])
 
@@ -201,7 +152,9 @@ function RecordAudioPage() {
         stream.getTracks().forEach((track) => track.stop())
         if (mountedRef.current) { setStatus('idle'); setMessage('녹음 중 문제가 발생했어요. 다시 시도해 주세요.') }
       }
-      recorder.start()
+      recorder.start(1000)
+      audioBlobRef.current = null
+      uploadAttemptRef.current = null
       setAudioUrl('')
       startedRef.current = Date.now()
       setSeconds(0)
@@ -213,6 +166,7 @@ function RecordAudioPage() {
   }
 
   function stopRecording() {
+    if (uploadingRef.current) return
     if (recorderRef.current?.state === 'recording') {
       setStatus('stopping')
       recorderRef.current.stop()
@@ -224,6 +178,7 @@ function RecordAudioPage() {
   }
 
   async function playRecording() {
+    if (uploadingRef.current) return
     try {
       await playerRef.current.play()
       setStatus('playing')
@@ -232,12 +187,15 @@ function RecordAudioPage() {
 
   const time = [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
     .map((value) => String(value).padStart(2, '0')).join(':')
-  const busy = ['recording', 'requesting', 'stopping'].includes(status)
+  const busy = isUploading || ['recording', 'requesting', 'stopping'].includes(status)
 
   return (
     <main className="recordAudioPage">
       <header className="recordAudioPage__header">
-        <button type="button" className="recordAudioPage__back" aria-label="진료 기록으로 돌아가기" onClick={() => navigate('/record')}>
+        <button type="button" className="recordAudioPage__back" aria-label="진료 기록으로 돌아가기" disabled={isUploading} onClick={() => {
+          if ((audioBlobRef.current || recorderRef.current?.state === 'recording') && !window.confirm('화면을 나가면 업로드하지 않은 녹음이 사라져요. 나갈까요?')) return
+          navigate('/record')
+        }}>
           <Icon name="back-button" width={11} height={19} aria-hidden="true" />
         </button>
         <h1>진료 녹음하기</h1>
@@ -245,11 +203,26 @@ function RecordAudioPage() {
       <div className="recordAudioPage__content">
         <div className="recordAudioPage__controls" role="group" aria-label="녹음 제어">
           <button type="button" aria-label="녹음 시작" disabled={busy} onClick={startRecording}><span className="recordAudioPage__recordIcon" /></button>
-          <button type="button" aria-label="정지" disabled={!['recording', 'playing'].includes(status)} onClick={stopRecording}><span className="recordAudioPage__stopIcon" /></button>
+          <button type="button" aria-label="정지" disabled={isUploading || !['recording', 'playing'].includes(status)} onClick={stopRecording}><span className="recordAudioPage__stopIcon" /></button>
           <button type="button" aria-label="녹음 재생" disabled={!audioUrl || busy || status === 'playing'} onClick={playRecording}><span className="recordAudioPage__playIcon" /></button>
         </div>
         <div className="recordAudioPage__timer" role="timer" aria-label="녹음 시간">{time}</div>
         <audio ref={playerRef} src={audioUrl || undefined} onEnded={() => setStatus('stopped')} />
+        {audioUrl && !busy && (
+          <section className="recordAudioPage__useConfirmation" aria-label="녹음 사용 확인">
+            <p>이 녹음을 사용할까요?</p>
+            <button type="button" onClick={() => {
+              playerRef.current?.pause()
+              audioBlobRef.current = null
+              uploadAttemptRef.current = null
+              URL.revokeObjectURL(audioUrl)
+              setAudioUrl('')
+              setSeconds(0)
+              setStatus('idle')
+              setMessage('기기에 있는 녹음을 삭제했어요. 서버 요청은 보내지 않았어요.')
+            }}>녹음 삭제</button>
+          </section>
+        )}
         <dl className="recordAudioPage__details">
           <div><dt>병원</dt><dd>{state?.hospital || '-'}</dd></div>
           <div><dt>진료과목</dt><dd>{state?.department || '-'}</dd></div>
@@ -257,41 +230,55 @@ function RecordAudioPage() {
         </dl>
         <section className="recordAudioPage__transcript">
           <h2>녹음 원문</h2>
-          <p>이곳에 녹음이 전사돼요</p>
+          <p>녹음 사용을 선택하면 업로드 후 원문과 요약을 확인할 수 있어요.</p>
         </section>
         <p className="recordAudioPage__notice">이 기록은 가족과 공유할 수 있어요</p>
         <p className="recordAudioPage__notice">내가 직접 참여한 진료 대화만 녹음할 수 있어요. 공개되지 않은 다른 사람들 사이의 대화를 몰래 녹음하는 건 통신비밀보호법 제14조로 금지되어 있어요.</p>
         <p className="recordAudioPage__message" role="status">{message || (status === 'recording' ? '녹음 중이에요.' : '')}</p>
       </div>
-      <BottomButton content="기록 마치기" onClick={async () => {
+      <BottomButton content={isUploading ? "업로드 중..." : "이 녹음 사용하기"} onClick={async () => {
         if (uploadingRef.current) return
         if (busy) { setMessage('녹음을 정지한 뒤 기록을 마쳐 주세요.'); return }
         if (!audioBlobRef.current) { setMessage('먼저 진료 내용을 녹음해 주세요.'); return }
 
         const accessToken = sessionStorage.getItem('accessToken')
-        const groupId = sessionStorage.getItem('groupId')
 
         if (!accessToken) {
           setMessage('로그인이 필요해요.')
           return
         }
-        if (!groupId) {
-          setMessage('가족을 먼저 선택해 주세요.')
-          return
-        }
 
         uploadingRef.current = true
+        setIsUploading(true)
         setMessage('녹음 파일을 업로드하고 있어요.')
 
         try {
           playerRef.current?.pause()
-          const wavBlob = await convertToWav(audioBlobRef.current)
-          const result = await uploadRecording(accessToken, groupId, wavBlob)
+          const groups = await requestRecordApi('/me/care-groups', accessToken)
+          if (!mountedRef.current) return
+          if (groups.items?.length !== 1) {
+            throw new Error('연결된 가족이 없어요. 가족 연결과 가입 승인을 확인해 주세요.')
+          }
+          const groupId = groups.items[0].id
+          sessionStorage.setItem('groupId', groupId)
+          let attempt = uploadAttemptRef.current
+          if (attempt && (attempt.accessToken !== accessToken || attempt.groupId !== groupId)) {
+            throw new Error('로그인 계정이나 가족이 변경됐어요. 현재 녹음을 삭제하고 다시 녹음해 주세요.')
+          }
+          if (!attempt) {
+            const wavBlob = await convertToWav(audioBlobRef.current)
+            if (!mountedRef.current) return
+            attempt = createAudioUploadAttempt(accessToken, groupId, wavBlob, state?.hospital)
+            uploadAttemptRef.current = attempt
+          }
+          const result = await uploadAudioAttempt(attempt)
 
           if (!mountedRef.current) return
           navigate('/record/audio/analysis', {
             state: {
-              ...state,
+              hospital: state?.hospital,
+              department: state?.department,
+              companion: state?.companion,
               seconds,
               encounterId: result.encounterId,
             },
@@ -304,6 +291,7 @@ function RecordAudioPage() {
           }
         } finally {
           uploadingRef.current = false
+          if (mountedRef.current) setIsUploading(false)
         }
       }} />
     </main>

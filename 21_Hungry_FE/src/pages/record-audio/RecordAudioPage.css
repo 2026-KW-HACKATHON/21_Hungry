@@ -22,3 +22,6 @@
 .recordAudioPage__notice { margin: 14px 10px 0; font-size: 14px; color: #D5D5D5; }
 .recordAudioPage__message { margin: 12px 10px 0; font-size: 14px; color: #666; }
 .recordAudioPage .bottomButton__container { border-top: 2px solid var(--color-border); }
+
+.recordAudioPage__useConfirmation { margin: 20px 0; padding: 16px; border: 2px solid #E5E5E5; border-radius: 16px; }
+.recordAudioPage__useConfirmation button { margin-top: 12px; padding: 8px 14px; border: 1px solid #E5E5E5; border-radius: 10px; }

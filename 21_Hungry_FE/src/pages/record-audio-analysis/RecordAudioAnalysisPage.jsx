@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import { Icon } from '../../components/icon/Icon'
+import { requestRecordApi } from '../../api/recordApi'
 import './RecordAudioAnalysisPage.css'
 
 const companionLabels = { self: '본인', other: '다른 자녀', none: '동행 없음' }
@@ -13,30 +14,15 @@ const detailSections = [
   ['followUps', '추후 진료'],
 ]
 
-async function getData(path, accessToken, signal) {
-  const response = await fetch(`/api/v1${path}`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-    cache: 'no-store',
-    signal,
-  })
-  const body = await response.json().catch(() => null)
-  if (!response.ok) {
-    const messages = {
-      401: '로그인이 만료됐어요. 다시 로그인해 주세요.',
-      403: '이 기록을 볼 수 있는 권한이 없어요.',
-      404: '기록을 찾을 수 없거나 삭제된 기록이에요.',
-    }
-    throw new Error(messages[response.status] || body?.error?.message || '기록을 불러오지 못했어요.')
-  }
-  if (!body?.data) throw new Error('서버 응답을 확인할 수 없어요.')
-  return body.data
+function getData(path, accessToken, signal) {
+  return requestRecordApi(path, accessToken, { signal })
 }
 
 function getProgress(record) {
   const jobs = (record.jobs ?? []).filter((job) => job.inputVersion === record.inputVersion)
   const failed = jobs.find((job) => job.status === 'FAILED')
   if (record.processingState === 'FAILED' || failed) {
-    return { done: true, message: failed?.error?.message || '녹음 처리에 실패했어요. 잠시 후 상태를 다시 확인해 주세요.' }
+    return { done: true, message: [failed?.error?.message, failed?.error?.userAction].filter(Boolean).join(' ') || '녹음 처리에 실패했어요. 잠시 후 상태를 다시 확인해 주세요.' }
   }
   if (['READY', 'NEEDS_REVIEW'].includes(record.processingState)) {
     if (record.isSummaryStale || record.summary?.inputVersion !== record.inputVersion) {
@@ -72,6 +58,9 @@ function RecordAudioAnalysisPage() {
   const [result, setResult] = useState(null)
   const [refresh, setRefresh] = useState(0)
   const [message, setMessage] = useState('')
+  const [retrying, setRetrying] = useState(false)
+  const retryLock = useRef(false)
+  const retryKeys = useRef(new Map())
   const seconds = Math.max(0, Math.floor(Number(record.seconds) || 0))
   const duration = [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
     .map((value) => String(value).padStart(2, '0')).join(':')
@@ -137,14 +126,39 @@ function RecordAudioAnalysisPage() {
 
   const current = result?.encounterId === encounterId && result?.accessToken === accessToken && result?.refresh === refresh ? result : null
   const detail = current?.detail
-  const summary = detail && !detail.isSummaryStale && detail.summary?.inputVersion === detail.inputVersion
-    ? detail.summary : null
+  const summary = detail?.summary
+  const summaryStale = Boolean(summary && (detail.isSummaryStale || summary.inputVersion !== detail.inputVersion))
+  const retryableJobs = (detail?.jobs ?? []).filter((job) => job.inputVersion === detail.inputVersion && job.status === 'FAILED' && job.canRetry)
   const highlights = detailSections.flatMap(([key, label]) =>
     (summary?.details?.[key] ?? []).filter((item) => item.text).map((item) => `${label}: ${item.text}`)
   )
   const feedback = !encounterId ? '기록 ID가 없어요. 녹음 업로드 후 이 화면으로 이동해 주세요.'
     : !accessToken ? '로그인이 필요해요.' : current?.message || '기록을 불러오고 있어요.'
 
+  async function retryJob(job) {
+    if (retryLock.current) return
+    retryLock.current = true
+    setRetrying(true)
+    setMessage('실패한 작업을 다시 요청하고 있어요.')
+    const operation = `${accessToken}:${job.id}:${job.inputVersion}:${job.attemptCount}`
+    if (!retryKeys.current.has(operation)) retryKeys.current.set(operation, crypto.randomUUID())
+    try {
+      await requestRecordApi(`/processing-jobs/${encodeURIComponent(job.id)}/retry`, accessToken, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Idempotency-Key': retryKeys.current.get(operation) },
+        body: JSON.stringify({ expectedInputVersion: detail.inputVersion }),
+      })
+      retryKeys.current.delete(operation)
+      setMessage('')
+      setRefresh((value) => value + 1)
+    } catch (error) {
+      setMessage(error.message || '작업 재시도에 실패했어요.')
+      if ([403, 404, 409].includes(error.status)) setRefresh((value) => value + 1)
+    } finally {
+      retryLock.current = false
+      setRetrying(false)
+    }
+  }
   return (
     <main className="recordAudioAnalysisPage">
       <header className="recordAudioAnalysisPage__header">
@@ -163,6 +177,7 @@ function RecordAudioAnalysisPage() {
         <div className="recordAudioAnalysisPage__duration" aria-label="녹음 시간">{duration}</div>
         <section className="recordAudioAnalysisPage__summary" aria-labelledby="audio-summary-title">
           <h2 id="audio-summary-title">쉬운 요약</h2>
+          {summaryStale && <p role="status">이전 입력 기준의 요약과 진료 핵심이에요. 최신 분석 결과는 아직 준비되지 않았어요.</p>}
           <p>{summary?.text || '-'}</p>
         </section>
         <section className="recordAudioAnalysisPage__highlights" aria-labelledby="audio-highlights-title">
@@ -182,8 +197,12 @@ function RecordAudioAnalysisPage() {
         </p>
         <p className="recordAudioAnalysisPage__notice">업로드한 기록은 서버에 저장되어 있어요.</p>
         <p className="recordAudioAnalysisPage__message" role="status">{message || feedback}</p>
+        {retryableJobs.map((job) => (
+          <button key={job.id} type="button" className="recordAudioAnalysisPage__refresh" disabled={retrying}
+            onClick={() => retryJob(job)}>{job.jobType === 'TRANSCRIBE' ? '전사' : job.jobType === 'ANALYZE' ? '분석' : '문서 추출'} 다시 시도</button>
+        ))}
         {current?.stopped && (
-          <button type="button" className="recordAudioAnalysisPage__refresh" onClick={() => {
+          <button type="button" className="recordAudioAnalysisPage__refresh" disabled={retrying} onClick={() => {
             setMessage('')
             setRefresh((value) => value + 1)
           }}>상태 다시 조회</button>
