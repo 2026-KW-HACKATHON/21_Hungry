@@ -25,6 +25,10 @@ function Navigation() {
       {navigationItems.map((item) => (
         <button key={item.key} onClick={() => navigate(item.path)} className='nav__item'>
           {location.pathname === item.path ||
+          (item.key === 'Doc' &&
+            ['/doc-record', '/doc-write', '/doc-search', '/doc-edit', '/doc-select'].includes(
+              location.pathname,
+            )) ||
           (item.key === 'Record' && location.pathname.startsWith('/record/')) ||
           (item.key === 'Schedule' && location.pathname === '/scheduleedit') ||
           (item.key === 'Today' && ['/todayadd', '/todayedit'].includes(location.pathname)) ||

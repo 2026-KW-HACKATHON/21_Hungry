@@ -7,6 +7,11 @@ function CardIcon({ name, content }) {
     '약 복용': 'card-drug',
     '병원 내원': 'card-hospital',
     건강검진: 'card-doctor',
+    '진료 기록': 'doctor-default',
+    처방전: 'card-doctor',
+    진단서: 'doc-diagnosis',
+    '약 봉투': 'card-drug',
+    '기타 문서': 'doc-other',
   }
 
   return (
