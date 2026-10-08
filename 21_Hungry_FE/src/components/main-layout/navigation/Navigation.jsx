@@ -26,6 +26,7 @@ function Navigation() {
         <button key={item.key} onClick={() => navigate(item.path)} className='nav__item'>
           {location.pathname === item.path ||
           (item.key === 'Record' && location.pathname.startsWith('/record/')) ||
+          (item.key === 'Schedule' && location.pathname === '/scheduleedit') ||
           (item.key === 'Today' && ['/todayadd', '/todayedit'].includes(location.pathname)) ||
           (item.key === 'Family' &&
             ['/familyreq', '/familyschedule'].includes(location.pathname)) ? (

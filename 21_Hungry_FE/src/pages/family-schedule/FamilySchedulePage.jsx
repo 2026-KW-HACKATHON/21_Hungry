@@ -58,7 +58,7 @@ function FamilySchedulePage() {
               disabled={monthOffset === -12}
               onClick={() => setMonthOffset((previous) => Math.max(-12, previous - 1))}
             >
-              <Icon name='month-prev' aria-hidden='true' />
+              <Icon name='month-prev' width={9} height={15} aria-hidden='true' />
             </button>
             <button
               type='button'
@@ -67,7 +67,7 @@ function FamilySchedulePage() {
               disabled={monthOffset === 12}
               onClick={() => setMonthOffset((previous) => Math.min(12, previous + 1))}
             >
-              <Icon name='month-next' aria-hidden='true' />
+              <Icon name='month-next' width={9} height={15} aria-hidden='true' />
             </button>
           </div>
         </div>
@@ -84,9 +84,14 @@ function FamilySchedulePage() {
                 onClick={() => handleFilter(option.mode)}
               >
                 <span
-                  className={`familySchedule__filter--icon${option.mode === 'PARTIAL' ? ' familySchedule__filter--partial' : ''}`}
+                  className={`familySchedule__filter--icon familySchedule__filter--${option.mode.toLowerCase()}`}
                 >
-                  <Icon name={`${option.icon}${selected ? '-selected' : ''}`} aria-hidden='true' />
+                  <Icon
+                    name={option.icon}
+                    width={option.mode === 'PARTIAL' ? 32 : 85}
+                    height={option.mode === 'PARTIAL' ? 34 : 28}
+                    aria-hidden='true'
+                  />
                 </span>
                 <span className='familySchedule__filter--label'>{option.label}</span>
               </button>
@@ -158,7 +163,12 @@ function FamilySchedulePage() {
                   >
                     {visible && mode === 'PARTIAL' && (
                       <span className='familySchedule__day--partial-icon'>
-                        <Icon name='availability-partial-day' aria-hidden='true' />
+                        <Icon
+                          name='availability-partial-day'
+                          width={38}
+                          height={40}
+                          aria-hidden='true'
+                        />
                       </span>
                     )}
                     <span
