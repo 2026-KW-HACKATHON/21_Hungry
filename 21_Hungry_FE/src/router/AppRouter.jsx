@@ -4,6 +4,7 @@ import MainLayout from '../components/main-layout/MainLayout'
 import LoginLayout from '../components/login-layout/LoginLayout'
 
 import LoginSelect from '../pages/login-select/LoginSelect'
+import SplashPage from '../pages/splash/SplashPage'
 import SignupRole from '../pages/signup-role/SignupRole'
 import ServiceInfo from '../pages/service_Info/ServiceInfo'
 import SignupSelect from '../pages/signup-select/SiginSelect'
@@ -40,8 +41,7 @@ import RecordAudioAnalysisPage from '../pages/record-audio-analysis/RecordAudioA
 export const AppRouter = createBrowserRouter([
   {
     path: '/',
-    element: <LoginLayout />,
-    children: [{ path: '', element: <LoginSelect /> }],
+    element: <SplashPage />,
   },
   {
     path: '/signupparentinfo',

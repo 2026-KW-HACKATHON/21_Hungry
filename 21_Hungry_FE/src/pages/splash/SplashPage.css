@@ -1,0 +1,309 @@
+.splash {
+  --splash-duration: 4s;
+  --splash-easing: cubic-bezier(0.45, 0, 0.25, 1);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #ffeecc 0%, #ffffff 50%);
+  font-family: var(--font-extrabold);
+}
+
+.splash__art-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 402px;
+  height: 874px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.splash__art {
+  width: 402px;
+  height: 874px;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.splash--ready .splash__art {
+  opacity: 1;
+}
+
+.splash__body,
+.splash__eye,
+.splash__mouth {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+
+.splash__body {
+  width: 300px;
+  height: 252px;
+  transform: translate(-889px, -563px) scale(7.93650794);
+}
+
+.splash__eye {
+  width: 80px;
+  height: 80px;
+}
+
+.splash__eye--left {
+  transform: translate(71px, 397px);
+}
+
+.splash__eye--right {
+  transform: translate(251px, 397px);
+}
+
+.splash__gaze {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.splash__gaze--up-left,
+.splash__gaze--down-right {
+  opacity: 0;
+}
+
+.splash__mouth {
+  width: 58px;
+  height: 22px;
+  transform: translate(171.999px, 440.0005px);
+}
+
+.splash__title {
+  position: absolute;
+  top: max(50px, env(safe-area-inset-top));
+  left: 21px;
+  right: 16px;
+  z-index: 1;
+  color: #000000;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.4;
+  opacity: 0;
+}
+
+.splash__footer {
+  position: absolute;
+  right: 16px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  left: 16px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.splash__footer .popupButton {
+  height: 55px;
+  border-radius: 20px;
+  font-size: 18px;
+  background: var(--color-blue);
+  box-shadow: 0 5px 0 var(--color-blue-shadow);
+}
+
+.splash__privacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  color: rgb(0 0 0 / 25%);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.splash__error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: #ffffff;
+}
+
+.splash--ready .splash__body {
+  animation: splash-body var(--splash-duration) var(--splash-easing) both;
+}
+
+.splash--ready .splash__eye--left {
+  animation: splash-left-eye var(--splash-duration) var(--splash-easing) both;
+}
+
+.splash--ready .splash__eye--right {
+  animation: splash-right-eye var(--splash-duration) var(--splash-easing) both;
+}
+
+.splash--ready .splash__mouth {
+  animation: splash-mouth var(--splash-duration) var(--splash-easing) both;
+}
+
+.splash--ready .splash__gaze--front {
+  animation: splash-front var(--splash-duration) var(--splash-easing) both;
+}
+
+.splash--ready .splash__gaze--up-left {
+  animation: splash-up-left var(--splash-duration) var(--splash-easing) both;
+}
+
+.splash--ready .splash__gaze--down-right {
+  animation: splash-down-right var(--splash-duration) var(--splash-easing) both;
+}
+
+.splash--ready .splash__title,
+.splash--ready .splash__footer {
+  animation: splash-reveal var(--splash-duration) ease-out both;
+}
+
+@keyframes splash-body {
+  0%,
+  15% {
+    transform: translate(-889px, -563px) scale(7.93650794);
+  }
+  28%,
+  38% {
+    transform: translate(-909px, -583px) scale(7.93650794);
+  }
+  51%,
+  61% {
+    transform: translate(-869px, -543px) scale(7.93650794);
+  }
+  88%,
+  100% {
+    transform: translate(51px, 311px) scale(1);
+  }
+}
+
+@keyframes splash-left-eye {
+  0%,
+  15% {
+    transform: translate(71px, 397px) scale(1);
+  }
+  28%,
+  38% {
+    transform: translate(51px, 387px) scale(1);
+  }
+  51%,
+  61% {
+    transform: translate(91px, 407px) scale(1);
+  }
+  88%,
+  100% {
+    transform: translate(123px, 383px) scale(0.6);
+  }
+}
+
+@keyframes splash-right-eye {
+  0%,
+  15% {
+    transform: translate(251px, 397px) scale(1);
+  }
+  28%,
+  38% {
+    transform: translate(231px, 387px) scale(1);
+  }
+  51%,
+  61% {
+    transform: translate(271px, 407px) scale(1);
+  }
+  88%,
+  100% {
+    transform: translate(231px, 383px) scale(0.6);
+  }
+}
+
+@keyframes splash-mouth {
+  0%,
+  15% {
+    transform: translate(171.999px, 440.0005px) scale(1);
+  }
+  28%,
+  38% {
+    transform: translate(151.999px, 430.0005px) scale(1);
+  }
+  51%,
+  61% {
+    transform: translate(191.999px, 450.0005px) scale(1);
+  }
+  88%,
+  100% {
+    transform: translate(183.5994px, 408.8003px) scale(0.6);
+  }
+}
+
+@keyframes splash-front {
+  0%,
+  15% {
+    opacity: 1;
+  }
+  28%,
+  61% {
+    opacity: 0;
+  }
+  88%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes splash-up-left {
+  0%,
+  15% {
+    opacity: 0;
+  }
+  28%,
+  38% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes splash-down-right {
+  0%,
+  38% {
+    opacity: 0;
+  }
+  51%,
+  61% {
+    opacity: 1;
+  }
+  88%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes splash-reveal {
+  0%,
+  88% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash {
+    --splash-duration: 1ms;
+  }
+}
