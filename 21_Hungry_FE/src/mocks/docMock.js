@@ -1,6 +1,10 @@
 import { familyData, formatDate, getTodayDate, parseDateInput } from './todayAddMock'
 import { currentUserId } from './familyMock'
-import { removeMedicalDocumentFile, saveMedicalDocumentFile } from './docFileMock'
+import {
+  getMedicalDocumentFile,
+  removeMedicalDocumentFile,
+  saveMedicalDocumentFile,
+} from './docFileMock'
 
 export const documentTypeData = [
   { type: 'VISIT', label: '진료 기록', category: '진료 기록' },
@@ -151,6 +155,97 @@ export async function saveMedicalDocument({
     sessionStorage.setItem(medicalDocumentsStorageKey, JSON.stringify([document, ...documents]))
   } catch (error) {
     await removeMedicalDocumentFile(id).catch(() => {})
+    throw error
+  }
+  return document
+}
+
+export async function updateMedicalDocument({
+  id,
+  expectedVersion,
+  registeredOn,
+  hospitalName,
+  file,
+}) {
+  const documents = getMedicalDocuments()
+  const index = documents.findIndex((document) => document.id === id)
+  const original = documents[index]
+  if (!original || original.recordType !== 'DOCUMENT') {
+    throw new Error('문서를 찾을 수 없어요. 보관함에서 다시 선택해 주세요.')
+  }
+  if (original.version !== expectedVersion) {
+    throw new Error('문서 정보가 변경됐어요. 보관함에서 다시 열어 주세요.')
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(registeredOn) || !parseDateInput(formatDate(registeredOn))) {
+    throw new Error('등록일을 선택해 주세요.')
+  }
+  const issuer = hospitalName.trim()
+  if (!issuer || issuer.length > 150) {
+    throw new Error('발급기관을 1자부터 150자 사이로 입력해 주세요.')
+  }
+  if (file && (!(file instanceof File) || file.size === 0 || file.size > 10000000)) {
+    throw new Error('첨부 파일을 확인해 주세요.')
+  }
+  const changed =
+    registeredOn !== getDocumentRegisteredDate(original) ||
+    issuer !== (original.hospitalName || '') ||
+    Boolean(file)
+  if (!changed) return original
+
+  const document = {
+    ...original,
+    registeredOn,
+    hospitalName: issuer,
+    version: original.version + 1,
+  }
+  let previousFile = null
+  if (file) {
+    const isPdf = file.type === 'application/pdf' || (!file.type && /\.pdf$/i.test(file.name))
+    const mediaType =
+      file.type ||
+      (isPdf
+        ? 'application/pdf'
+        : /\.jpe?g$/i.test(file.name)
+          ? 'image/jpeg'
+          : `image/${file.name.split('.').pop().toLowerCase()}`)
+    if (!['image/jpeg', 'image/png', 'image/webp', 'application/pdf'].includes(mediaType)) {
+      throw new Error('JPG, PNG, WEBP 이미지 또는 PDF 파일을 선택해 주세요.')
+    }
+    previousFile = await getMedicalDocumentFile(id)
+    document.source = 'FILE'
+    document.inputVersion = original.inputVersion + 1
+    document.processingState = 'OCR_PROCESSING'
+    document.isSummaryStale = Boolean(original.summary)
+    document.activeImageCount = isPdf ? 0 : 1
+    document.sources = [
+      {
+        id: crypto.randomUUID(),
+        encounterId: id,
+        sourceType: 'DOCUMENT',
+        status: 'PENDING',
+        textVersion: 0,
+        removedAt: null,
+        file: {
+          id: crypto.randomUUID(),
+          originalName: file.name,
+          mediaType,
+          byteSize: file.size,
+          state: 'AVAILABLE',
+        },
+        contentPath: null,
+      },
+    ]
+    await saveMedicalDocumentFile(id, file)
+  }
+
+  try {
+    documents[index] = document
+    sessionStorage.setItem(medicalDocumentsStorageKey, JSON.stringify(documents))
+  } catch (error) {
+    if (file) {
+      if (previousFile instanceof File) await saveMedicalDocumentFile(id, previousFile)
+      else await removeMedicalDocumentFile(id)
+    }
     throw error
   }
   return document
