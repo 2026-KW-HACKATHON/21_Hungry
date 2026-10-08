@@ -1,7 +1,7 @@
 import './DocEditPage.css'
 
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 import { Document, Page, pdfjs } from 'react-pdf'
 
 import BackHeader from '../../components/back-header/BackHeader'
@@ -9,14 +9,21 @@ import BottomButton from '../../components/bottom-button/BottomButton'
 import CardInfo from '../../components/card-info/CardInfo'
 import PopupButton from '../../components/popup-button/PopupButton'
 import { Icon } from '../../components/icon/Icon'
-import { formatDate } from '../../mocks/todayAddMock'
+import { getAccessToken, messageOf } from '../../api/http'
+import { getDocumentDetail, getDocumentFile } from '../../api/docSearchApi'
 import {
-  documentTypeData,
-  getDocumentRegisteredDate,
-  getMedicalDocument,
-  updateMedicalDocument,
-} from '../../mocks/docMock'
-import { getMedicalDocumentFile } from '../../mocks/docFileMock'
+  createDocumentEditAttempt,
+  editableDocumentTypes,
+  saveDocumentEditAttempt,
+} from '../../api/docEditApi'
+
+const documentCategories = {
+  PRESCRIPTION: '처방전',
+  DIAGNOSIS: '진단서',
+  MEDICINE_BAG: '약 봉투',
+  LEGACY_UNCLASSIFIED: '기타 문서',
+}
+const formatDate = (date) => date.split('-').join('.')
 
 const pdfAssetUrl = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/`
 
@@ -141,90 +148,96 @@ function DocumentPreview({ file, onReady }) {
   )
 }
 
-function StoredDocumentPreview({ encounterId }) {
-  const [loaded, setLoaded] = useState({ file: null, status: 'LOADING' })
+function StoredDocumentPreview({ source, accessToken }) {
+  const [loaded, setLoaded] = useState(null)
+  const [retry, setRetry] = useState(0)
+  const canLoad = Boolean(source?.contentPath && source.file?.state === 'AVAILABLE')
 
   useEffect(() => {
-    let active = true
-    getMedicalDocumentFile(encounterId)
-      .then((file) => {
-        if (active) setLoaded({ file, status: file instanceof File ? 'READY' : 'MISSING' })
-      })
-      .catch(() => {
-        if (active) setLoaded({ file: null, status: 'FAILED' })
-      })
-    return () => {
-      active = false
-    }
-  }, [encounterId])
+    if (!canLoad) return undefined
+    const controller = new AbortController()
+    const isActive = () => !controller.signal.aborted && getAccessToken() === accessToken
 
-  if (loaded.file instanceof File) return <DocumentPreview file={loaded.file} />
+    getDocumentFile(source, accessToken, controller.signal)
+      .then((file) => {
+        if (isActive()) setLoaded({ retry, file, error: '' })
+      })
+      .catch((error) => {
+        if (isActive()) setLoaded({ retry, file: null, error: error.message || messageOf(error) })
+      })
+
+    return () => controller.abort()
+  }, [source, accessToken, retry, canLoad])
+
+  const current = loaded?.retry === retry ? loaded : null
+  if (current?.file) return <DocumentPreview file={current.file} />
+
   return (
-    <div className='docEdit__preview'>
-      <div className='docEdit__previewArea' aria-busy={loaded.status === 'LOADING'}>
-        <p role={loaded.status === 'FAILED' ? 'alert' : 'status'}>
-          {loaded.status === 'LOADING'
-            ? '문서를 불러오는 중이에요.'
-            : loaded.status === 'MISSING'
+    <>
+      <div className='docEdit__preview'>
+        <div className='docEdit__previewArea' aria-busy={canLoad && !current}>
+          <p role={current?.error || (source && !canLoad) ? 'alert' : 'status'}>
+            {!source
               ? '첨부된 문서가 없어요.'
-              : '첨부 문서를 불러오지 못했어요.'}
-        </p>
+              : !canLoad
+                ? '첨부 문서의 원본을 열람할 수 없어요.'
+                : current?.error || '문서를 불러오는 중이에요.'}
+          </p>
+        </div>
       </div>
-    </div>
+      {current?.error && (
+        <PopupButton
+          content='다시 불러오기'
+          color='gray'
+          onClick={() => setRetry((value) => value + 1)}
+        />
+      )}
+    </>
   )
 }
 
-function DocumentEdit({ encounterId }) {
+function DocumentForm({ initialDocument, source, accessToken }) {
   const navigate = useNavigate()
   const formRef = useRef(null)
   const dateRef = useRef(null)
   const hospitalRef = useRef(null)
   const fileRef = useRef(null)
   const savingRef = useRef(false)
-  const [loaded] = useState(() => {
-    try {
-      const document = encounterId ? getMedicalDocument(encounterId) : null
-      if (!document || document.recordType !== 'DOCUMENT') {
-        return {
-          document: null,
-          error: '수정할 문서를 찾을 수 없어요. 보관함에서 다시 선택해 주세요.',
-        }
-      }
-      return { document, error: '' }
-    } catch {
-      return { document: null, error: '문서를 불러오지 못했어요. 보관함에서 다시 선택해 주세요.' }
-    }
-  })
-  const document = loaded.document
-  const [registeredOn, setRegisteredOn] = useState(() =>
-    document ? getDocumentRegisteredDate(document) : '',
-  )
-  const [hospitalName, setHospitalName] = useState(() => document?.hospitalName || '')
+  const attemptRef = useRef(null)
+  const activeRef = useRef(false)
+  const readControllerRef = useRef(null)
+  const [document, setDocument] = useState(initialDocument)
+  const [registeredOn, setRegisteredOn] = useState(initialDocument.occurredOn || '')
+  const [hospitalName, setHospitalName] = useState(initialDocument.hospitalName || '')
   const [replacement, setReplacement] = useState(null)
   const [isPreviewReady, setIsPreviewReady] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
+  const [locked, setLocked] = useState(false)
+  const [progress, setProgress] = useState('')
   const [error, setError] = useState('')
 
-  if (!document)
-    return (
-      <p className='docEdit__error' role='alert'>
-        {loaded.error}
-      </p>
-    )
+  useEffect(() => {
+    activeRef.current = true
+    return () => {
+      activeRef.current = false
+      readControllerRef.current?.abort()
+    }
+  }, [])
 
-  const type = documentTypeData.find((item) => item.type === document.documentType)
+  const canReplace = Boolean(source && editableDocumentTypes.includes(source.documentType))
   const hasChanges =
-    registeredOn !== getDocumentRegisteredDate(document) ||
+    registeredOn !== (document.occurredOn || '') ||
     hospitalName.trim() !== (document.hospitalName || '') ||
     Boolean(replacement)
   const canSave =
-    hasChanges &&
+    (locked || hasChanges) &&
     registeredOn &&
     hospitalName.trim() &&
     (!replacement || isPreviewReady) &&
     !isSaving
 
   const handleFile = (event) => {
+    if (savingRef.current || locked || !canReplace) return
     const files = Array.from(event.target.files ?? [])
     event.target.value = ''
     if (files.length === 0) return
@@ -253,25 +266,66 @@ function DocumentEdit({ encounterId }) {
   const handleSave = async (event) => {
     event.preventDefault()
     if (savingRef.current || !canSave) return
+    if (getAccessToken() !== accessToken) {
+      setError('로그인 상태를 확인해 주세요.')
+      return
+    }
     hospitalRef.current.setCustomValidity(hospitalName.trim() ? '' : '발급기관을 입력해 주세요.')
     if (!formRef.current.reportValidity()) return
 
     savingRef.current = true
     setIsSaving(true)
     setError('')
+    const controller = new AbortController()
+    readControllerRef.current = controller
+    const isActive = () => activeRef.current && getAccessToken() === accessToken
+
     try {
-      await updateMedicalDocument({
-        id: document.id,
-        expectedVersion: document.version,
-        registeredOn,
-        hospitalName,
-        file: replacement?.file,
+      const previous = attemptRef.current
+      const file = replacement?.file || null
+      if (
+        !previous ||
+        previous.values.registeredOn !== registeredOn ||
+        previous.values.hospitalName !== hospitalName.trim() ||
+        previous.file !== file
+      ) {
+        attemptRef.current = createDocumentEditAttempt(
+          document,
+          source,
+          { registeredOn, hospitalName, file },
+          accessToken,
+        )
+      }
+      setLocked(true)
+      await saveDocumentEditAttempt(attemptRef.current, {
+        signal: controller.signal,
+        onProgress: (message) => {
+          if (isActive()) setProgress(message)
+        },
       })
-      navigate('/doc')
-    } catch (error) {
-      setError(error.message || '변경사항을 저장하지 못했어요. 다시 시도해 주세요.')
+      if (isActive()) navigate('/doc', { replace: true })
+    } catch (saveError) {
+      if (!isActive()) return
+      const attempt = attemptRef.current
+      const completed = attempt?.uploaded
+        ? '새 파일은 업로드됐어요. 기존 파일 정리 단계부터 재시도해요. '
+        : attempt?.metadataSaved && Object.keys(attempt.changes).length
+          ? '문서 정보 변경은 저장됐어요. '
+          : ''
+      const reason = attempt?.needsRefresh
+        ? '문서 상태가 변경됐어요. 다시 저장하면 최신 상태를 조회하고 남은 단계를 재시도해요.'
+        : saveError.message || messageOf(saveError)
+      setError(completed + reason)
+      if (attempt && !attempt.uploaded && [400, 413, 415, 422].includes(saveError.status)) {
+        setDocument(attempt.current)
+        setLocked(false)
+      }
+    } finally {
       savingRef.current = false
-      setIsSaving(false)
+      if (isActive()) {
+        setIsSaving(false)
+        setProgress('')
+      }
     }
   }
 
@@ -280,15 +334,15 @@ function DocumentEdit({ encounterId }) {
       <form className='docEdit__content' ref={formRef} onSubmit={handleSave}>
         <div className='docEdit__card'>
           <CardInfo
-            category={type?.category ?? '기타 문서'}
+            category={documentCategories[source?.documentType] || '기타 문서'}
             label1='등록일'
             value1={registeredOn ? formatDate(registeredOn) : '--년 --월 --일'}
             label2='발급기관'
             value2={hospitalName.trim() || '-'}
             label3='등록인'
-            value3={document.createdBy.displayName}
+            value3={document.createdBy?.displayName || '-'}
           />
-          <fieldset className='docEdit__fileButton' disabled={isSaving}>
+          <fieldset className='docEdit__fileButton' disabled={isSaving || locked || !canReplace}>
             <PopupButton
               content='파일 변경하기'
               color='green'
@@ -303,11 +357,13 @@ function DocumentEdit({ encounterId }) {
             type='file'
             aria-label='변경할 의료 문서 선택'
             accept='image/jpeg,image/png,image/webp,application/pdf,.jpg,.jpeg,.png,.webp,.pdf'
-            disabled={isSaving}
+            disabled={isSaving || locked || !canReplace}
             hidden
             onChange={handleFile}
           />
         </div>
+
+        {!canReplace && <p role='status'>이 문서는 등록일과 발급기관만 수정할 수 있어요.</p>}
 
         <div className='docEdit__notice'>
           <p>문서에 불필요한 주민등록번호나 계좌번호가 보이면 가린 뒤 올려 주세요.</p>
@@ -331,7 +387,7 @@ function DocumentEdit({ encounterId }) {
               min='0001-01-01'
               max='9999-12-31'
               required
-              disabled={isSaving}
+              disabled={isSaving || locked}
               data-empty={!registeredOn}
               value={registeredOn}
               onClick={openNativePicker}
@@ -341,7 +397,7 @@ function DocumentEdit({ encounterId }) {
               <button
                 type='button'
                 aria-label='등록일 지우기'
-                disabled={isSaving}
+                disabled={isSaving || locked}
                 onClick={() => {
                   setRegisteredOn('')
                   dateRef.current.focus()
@@ -359,7 +415,7 @@ function DocumentEdit({ encounterId }) {
               placeholder='발급기관'
               maxLength={150}
               required
-              disabled={isSaving}
+              disabled={isSaving || locked}
               value={hospitalName}
               onChange={(event) => {
                 event.target.setCustomValidity('')
@@ -370,7 +426,7 @@ function DocumentEdit({ encounterId }) {
               <button
                 type='button'
                 aria-label='발급기관 지우기'
-                disabled={isSaving}
+                disabled={isSaving || locked}
                 onClick={() => {
                   setHospitalName('')
                   hospitalRef.current.setCustomValidity('')
@@ -390,8 +446,9 @@ function DocumentEdit({ encounterId }) {
             onReady={setIsPreviewReady}
           />
         ) : (
-          <StoredDocumentPreview encounterId={document.id} />
+          <StoredDocumentPreview source={source} accessToken={accessToken} />
         )}
+        {progress && <p role='status'>{progress}</p>}
         {error && (
           <p className='docEdit__error' role='alert'>
             {error}
@@ -407,14 +464,74 @@ function DocumentEdit({ encounterId }) {
   )
 }
 
+function DocumentEdit({ encounterId, accessToken }) {
+  const [loaded, setLoaded] = useState(null)
+  const [retry, setRetry] = useState(0)
+
+  useEffect(() => {
+    if (!encounterId) return undefined
+    const controller = new AbortController()
+    const isActive = () => !controller.signal.aborted && getAccessToken() === accessToken
+
+    getDocumentDetail(encounterId, accessToken, controller.signal)
+      .then((result) => {
+        if (isActive()) setLoaded({ retry, ...result, error: '' })
+      })
+      .catch((error) => {
+        if (isActive())
+          setLoaded({ retry, document: null, error: error.message || messageOf(error) })
+      })
+
+    return () => controller.abort()
+  }, [encounterId, accessToken, retry])
+
+  const current = loaded?.retry === retry ? loaded : null
+  if (current?.document) {
+    return (
+      <DocumentForm
+        initialDocument={current.document}
+        source={current.source}
+        accessToken={accessToken}
+      />
+    )
+  }
+
+  return (
+    <div className='docEdit__content'>
+      <p
+        className={current?.error || !encounterId ? 'docEdit__error' : ''}
+        role={current?.error || !encounterId ? 'alert' : 'status'}
+      >
+        {!encounterId
+          ? '수정할 문서를 찾을 수 없어요. 보관함에서 다시 선택해 주세요.'
+          : current?.error || '문서 정보를 불러오는 중이에요.'}
+      </p>
+      {current?.error && (
+        <PopupButton
+          content='다시 불러오기'
+          color='gray'
+          onClick={() => setRetry((value) => value + 1)}
+        />
+      )}
+    </div>
+  )
+}
+
 function DocEditPage() {
   const [searchParams] = useSearchParams()
   const encounterId = searchParams.get('encounterId') || ''
+  const accessToken = getAccessToken()
+
+  if (!accessToken) return <Navigate to='/loginselect' replace />
 
   return (
     <div className='docEdit__page'>
       <BackHeader content='문서 수정' />
-      <DocumentEdit key={encounterId} encounterId={encounterId} />
+      <DocumentEdit
+        key={`${encounterId}:${accessToken}`}
+        encounterId={encounterId}
+        accessToken={accessToken}
+      />
     </div>
   )
 }

@@ -39,6 +39,11 @@ import RecordAudioAnalysisPage from '../pages/record-audio-analysis/RecordAudioA
 
 export const AppRouter = createBrowserRouter([
   {
+    path: '/',
+    element: <LoginLayout />,
+    children: [{ path: '', element: <LoginSelect /> }],
+  },
+  {
     path: '/signupparentinfo',
     element: <LoginLayout />,
     children: [{ path: '', element: <SignupParentInfo /> }],
