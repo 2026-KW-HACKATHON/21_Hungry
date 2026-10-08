@@ -2,19 +2,18 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-
   width: 100%;
   padding: 20px;
-
   border: 2px solid #f2f2f2;
   border-radius: 20px;
 }
 
 .reqCard__title {
-  padding: 5px 5px 0px;
+  padding: 5px 5px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  line-height: 1.4;
 }
 
 .reqCard__title--title {
@@ -27,42 +26,19 @@
   font-size: 16px;
 }
 
-.reqCard__info {
-  display: flex;
-  width: 100%;
-  gap: 20px;
-}
-
-.reqCard__info--details {
-  justify-content: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.reqCard__info--detail {
-  display: flex;
-  justify-content: space-between;
-  font-size: 16px;
-}
-
-.reqCard__info--label {
-  color: #b3b3b3;
-}
-
-.reqCard__info--value {
-  color: #666666;
-}
-
 .reqCard__description {
+  width: 100%;
   color: #999999;
   border-radius: 20px;
   background-color: #f7f7f7;
   padding: 25px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .reqCard__buttons {
   display: flex;
   gap: 10px;
+  padding-bottom: 5px;
 }

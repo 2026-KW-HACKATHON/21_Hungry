@@ -1,0 +1,109 @@
+.todayCalendar {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #f2f2f2;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.todayCalendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #666666;
+  font-size: 16px;
+}
+
+.todayCalendar__header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.todayCalendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-auto-rows: 50px;
+  justify-items: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.todayCalendar__weekday {
+  color: #bfbfbf;
+}
+
+.todayCalendar__day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  color: #666666;
+}
+
+.todayCalendar__day--outside {
+  color: #bfbfbf;
+}
+
+.todayCalendar__day--today {
+  border-color: var(--color-blue);
+}
+
+.todayCalendar__day--selected {
+  border-color: #a8f075;
+  background: #d2ffb2;
+  color: #4d9900;
+}
+
+.todayCalendar__dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-blue);
+}
+
+.todayCalendar__day > .todayCalendar__dot {
+  position: absolute;
+  bottom: 2px;
+  left: calc(50% - 2.5px);
+}
+
+.todayCalendar__dot--attention {
+  background: var(--color-red);
+}
+
+.todayCalendar__legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+  color: #999999;
+  font-size: 12px;
+}
+
+.todayCalendar__legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.todayCalendar__loading {
+  margin-top: 10px;
+  color: #999999;
+  font-size: 12px;
+  text-align: center;
+}
+
+.todayCalendar button:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
