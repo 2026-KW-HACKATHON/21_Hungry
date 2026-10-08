@@ -1,8 +1,10 @@
 # 구현 진행표
 
-갱신: 2026-10-08, Asia/Seoul
+갱신: 2026-10-09, Asia/Seoul
 
 ## 현재 단계
+
+2026-10-09: PRD v0.16 / API v1.3의 V07을 구현했다. 같은 공동체 ACTIVE 구성원끼리 날짜별 가능 시간을 조회하며, 원본 설정과 건강 일정은 반환하지 않는다. 기존 V04 계산과 DTO를 재사용하고 수정 경로는 /me만 유지한다. PostgreSQL 통합 회귀를 포함한 gradlew.bat test bootJar --no-daemon에서 16 suites / 109 tests / 실패·오류 0 및 bootJar 생성을 확인했다.
 
 API 명세 기준을 v1.2로 올렸다. v1.1 대비 변경은 E06 녹음 업로드 정정이며, AUDIO metadata에는 `expectedVersion`과 `expectedInputVersion`만 보내고 문서 분류를 보내지 않는다. 현재 구현은 두 버전을 encounter 잠금 후 검사하고, 불일치 시 등록 없이 409를 반환하며, 실제 RIFF/WAVE PCM과 `audio/wav`·`audio/x-wav`, 25,000,000 bytes, 1,200초 제한을 이미 적용하고 있다. 따라서 이 개정에는 애플리케이션 동작 변경이 필요하지 않았고 기준 문서·지침만 v1.2로 전환했다.
 
@@ -26,7 +28,7 @@ PRD v0.15 / DB v1.3 / API v1.1 전환을 시작했다. 제공된 새 기준 문�
 | 인증 A01~A04 | DONE | opaque token, 사용자별 복수 세션, 현재 세션 로그아웃, ACTIVE 계정 검사 |
 | 공동체 G01~G06 | DONE | 실제 group_id ACTIVE 멤버십, 가입 예외 조건, 우선순위 버전 검사 |
 | 공통 멱등·preview 기반 | DONE | guard → 최신 인가 → replay 순서, HMAC preview의 사용자·operation·payload·state·만료 검증 |
-| 가능 시간 V01~V06 | DONE | FULL/PARTIAL/custom/미등록, 근무 제외·자정 분할·병합, preview/save·미래 담당 해제 |
+| 가능 시간 V01~V07 | DONE | 본인 조회·수정과 같은 공동체 ACTIVE 구성원 날짜별 가능 시간 조회; FULL/PARTIAL/UNAVAILABLE/미등록, 근무 제외·자정 분할·병합 |
 | 일반·복약 일정 조회·생성 | DONE | T01~T04 일반 반복과 확정 처방만 사용하는 MEDICATION 생성·조회·동일 패턴 병합·날짜별 snapshot 검증 |
 | 배정·완료·이력 | DONE | T09/T12/T13/T15, 전 공동체 충돌, 대리 완료, 재열기, audit/outbox |
 | 4단계 일정 기능 | DONE | 일반 일정 T05~T08, 4시간 묶음, T10/T11/T14, G07과 실제 current revision 기반 G08 집계 검증 |
@@ -122,6 +124,7 @@ PRD v0.15 / DB v1.3 / API v1.1 전환을 시작했다. 제공된 새 기준 문�
 | V04 | DONE | 반열린 날짜 범위의 등록·미등록 날짜 전체 반환 |
 | V05 | DONE | expectedDays 정확성·최종 구간·영향 preview |
 | V06 | DONE | null version 경쟁·전체 원자 저장·담당 해제·멱등성 |
+| V07 | DONE | G05 Member.id로 대상 조회, 양쪽 ACTIVE 검증, V04 응답 재사용, 타인 수정 경로 없음 |
 | T01 | DONE | 범위·상태·담당·미배정·경과·기록 필터, 안정 커서 페이지네이션 |
 | T02 | DONE | 권한 검사 후 Task DTO 상세와 파생 overdue 반환 |
 | T03 | DONE | 일반 ONCE/DAILY/WEEKLY와 같은 공동체 확정 처방 기반 MEDICATION 생성, 동일 시각/패턴 병합, 중복·기간 snapshot 검증 |
@@ -207,7 +210,7 @@ N01~N08은 모두 코드 및 PostgreSQL 자동 테스트 완료다. 실제 push 
 
 ## 8단계 통합 검증·배포 준비
 
-갱신: 2026-10-08, Asia/Seoul.
+갱신: 2026-10-09, Asia/Seoul.
 
 | 영역 | 상태 | 근거 |
 |---|---|---|
@@ -250,7 +253,7 @@ N01~N08은 모두 코드 및 PostgreSQL 자동 테스트 완료다. 실제 push 
 
 ## API v1.2 전체 계약 전환
 
-갱신: 2026-10-08, Asia/Seoul.
+갱신: 2026-10-09, Asia/Seoul.
 
 - A01/A02, G08, N03/N04 폐기 경로는 `410 ENDPOINT_RETIRED`로 전환했고 A05/A06 전화번호 가입·로그인에는 `PHONE_AUTH_ENABLED` 설정을 연결했다.
 - G01~G12의 단일 공동체, 첫 자녀/승인 대기, 재가입, 역할 1/2, 탈퇴, 승인 목록 페이지네이션, 승인·거절·취소 멱등 응답과 audit를 반영했다.
