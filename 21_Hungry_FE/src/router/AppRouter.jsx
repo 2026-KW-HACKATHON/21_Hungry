@@ -24,7 +24,6 @@ import TodayAddPage from '../pages/today-add/TodayAddPage'
 
 import DocPage from '../pages/doc/DocPage'
 import DocRecordPage from '../pages/doc-record/DocRecordPage'
-import DocWritePage from '../pages/doc-write/DocWritePage'
 import DocSearchPage from '../pages/doc-search/DocSearchPage'
 import DocEditPage from '../pages/doc-edit/DocEditPage'
 import DocSelectPage from '../pages/doc-select/DocSelectPage'
@@ -118,7 +117,6 @@ export const AppRouter = createBrowserRouter([
       { path: 'todayadd', element: <TodayAddPage /> },
       { path: 'doc', element: <DocPage /> },
       { path: 'doc-record', element: <DocRecordPage /> },
-      { path: 'doc-write', element: <DocWritePage /> },
       { path: 'doc-search', element: <DocSearchPage /> },
       { path: 'doc-edit', element: <DocEditPage /> },
       { path: 'doc-select', element: <DocSelectPage /> },

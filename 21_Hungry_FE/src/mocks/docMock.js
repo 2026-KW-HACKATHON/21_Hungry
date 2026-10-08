@@ -25,7 +25,6 @@ const seedDocuments = [
     title: '가상 정기 진료 기록',
     hospitalName: '가상 노원병원',
     memberIndex: 2,
-    visitInputMethod: 'AUDIO',
   },
   {
     documentType: 'PRESCRIPTION',
@@ -46,11 +45,8 @@ const seedDocuments = [
     memberIndex: 0,
   },
 ].map(({ memberIndex, ...document }, index) => {
-  const date = `${currentYear}-${currentMonth}-${String(
-    Math.max(1, Number(currentDay) - index),
-  ).padStart(2, '0')}`
+  const date = `${currentYear}-${currentMonth}-${String(Math.max(1, Number(currentDay) - index)).padStart(2, '0')}`
   const member = familyData[memberIndex]
-
   return {
     ...document,
     id: `88888888-8888-4888-8888-88888888888${index + 1}`,
@@ -70,10 +66,7 @@ const seedDocuments = [
 export function getMedicalDocuments() {
   const stored = sessionStorage.getItem(medicalDocumentsStorageKey)
   const documents = stored === null ? seedDocuments : JSON.parse(stored)
-
-  if (!Array.isArray(documents)) {
-    throw new Error('더미 의료 문서 저장 데이터를 확인해 주세요.')
-  }
+  if (!Array.isArray(documents)) throw new Error('더미 의료 문서 저장 데이터를 확인해 주세요.')
   return documents
 }
 
@@ -111,7 +104,6 @@ export async function saveMedicalDocument({
   const id = crypto.randomUUID()
   const sourceId = crypto.randomUUID()
   const isPdf = file.type === 'application/pdf' || (!file.type && /\.pdf$/i.test(file.name))
-
   const document = {
     id,
     groupId: '99999999-9999-4999-8999-999999999999',
@@ -144,9 +136,7 @@ export async function saveMedicalDocument({
             file.type ||
             (isPdf
               ? 'application/pdf'
-              : `image/${
-                  /\.jpe?g$/i.test(file.name) ? 'jpeg' : file.name.split('.').pop().toLowerCase()
-                }`),
+              : `image/${/\.jpe?g$/i.test(file.name) ? 'jpeg' : file.name.split('.').pop().toLowerCase()}`),
           byteSize: file.size,
           state: 'AVAILABLE',
         },
@@ -169,7 +159,6 @@ export async function saveMedicalDocument({
 export function filterMedicalDocuments(documents, { year, month, query, selectedTypes }) {
   const monthPrefix = `${year}-${String(month + 1).padStart(2, '0')}-`
   const keyword = query.trim().toLocaleLowerCase('ko-KR')
-
   return documents
     .filter(
       (document) =>
@@ -189,7 +178,5 @@ export function filterMedicalDocuments(documents, { year, month, query, selected
 
 export function getDocumentReadPath(document) {
   if (document.recordType !== 'VISIT') return '/doc-search'
-  if (document.visitInputMethod === 'AUDIO') return '/doc-record'
-  if (document.visitInputMethod === 'TEXT') return '/doc-write'
-  throw new Error('진료 기록의 녹음/직접 기록 구분을 확인해 주세요.')
+  return '/doc-record'
 }
