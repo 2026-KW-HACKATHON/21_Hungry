@@ -60,7 +60,7 @@ export const requestData = [
   },
 ]
 
-const storageKey = 'family-care:mock:today-schedules'
+export const todaySchedulesStorageKey = 'family-care:mock:today-schedules'
 export const durationMinutes = 60
 
 export function getTodayDate() {
@@ -120,7 +120,7 @@ function normalizeSchedule(schedule) {
 }
 
 export function getTodaySchedules() {
-  const stored = sessionStorage.getItem(storageKey)
+  const stored = sessionStorage.getItem(todaySchedulesStorageKey)
   const schedules = stored === null ? [] : JSON.parse(stored)
   if (!Array.isArray(schedules)) throw new Error('더미 일정 저장 데이터를 확인해 주세요.')
 
@@ -149,7 +149,10 @@ export function toScheduleCard(schedule) {
 
 export async function saveTodaySchedule(draft) {
   const schedule = normalizeSchedule({ ...draft, id: crypto.randomUUID(), version: 0 })
-  sessionStorage.setItem(storageKey, JSON.stringify([...getTodaySchedules(), schedule]))
+  sessionStorage.setItem(
+    todaySchedulesStorageKey,
+    JSON.stringify([...getTodaySchedules(), schedule]),
+  )
   return schedule
 }
 
@@ -161,6 +164,6 @@ export async function updateTodaySchedule(id, changes) {
   const previous = schedules[index]
   const schedule = normalizeSchedule({ ...previous, ...changes, id, version: previous.version + 1 })
   schedules[index] = schedule
-  sessionStorage.setItem(storageKey, JSON.stringify(schedules))
+  sessionStorage.setItem(todaySchedulesStorageKey, JSON.stringify(schedules))
   return schedule
 }
