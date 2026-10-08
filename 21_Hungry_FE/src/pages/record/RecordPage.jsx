@@ -35,8 +35,8 @@ function RecordPage() {
       />
       <form className="recordPage__form" onSubmit={startRecord}>
         <div className="recordPage__fields">
-          <input className="recordPage__input" name="hospital" aria-label="병원" placeholder="병원" required />
-          <input className="recordPage__input" name="department" aria-label="진료 과목" placeholder="진료 과목" required />
+          <input className="recordPage__input" name="hospital" aria-label="병원" placeholder="병원 (미상인 경우 생략 가능)" />
+          <input className="recordPage__input" name="department" aria-label="진료 과목" placeholder="진료 과목" />
           <div className="recordPage__selectWrap">
             <select className="recordPage__input recordPage__select" name="companion" aria-label="동행한 자녀" defaultValue="">
               <option value="" disabled>동행한 자녀</option>
