@@ -3,7 +3,7 @@ import axios from 'axios'
 const TOKEN_KEY = 'knowone_access_token'
 const EXPIRES_AT_KEY = 'knowone_expires_at'
 
-const baseURL = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/, '')
+const baseURL = (import.meta.env?.VITE_API_BASE_URL || 'https://api.gaebalmani.shop').trim().replace(/\/+$/, '')
 
 if (!baseURL) {
   throw new Error('VITE_API_BASE_URL 환경변수를 설정해 주세요.')

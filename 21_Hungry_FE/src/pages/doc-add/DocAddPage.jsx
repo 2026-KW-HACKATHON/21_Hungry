@@ -8,9 +8,15 @@ import BackHeader from '../../components/back-header/BackHeader'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import CardInfo from '../../components/card-info/CardInfo'
 import { Icon } from '../../components/icon/Icon'
-import { currentUserId } from '../../mocks/familyMock'
-import { familyData, formatDate } from '../../mocks/todayAddMock'
-import { documentTypeData, saveMedicalDocument } from '../../mocks/docMock'
+import { getAccessToken } from '../../api/http'
+import { getRecordGroup, requestRecordApi, createDocumentUploadAttempt, uploadDocumentAttempt } from '../../api/recordApi'
+
+const documentTypeData = [
+  { type: 'PRESCRIPTION', category: '처방전' },
+  { type: 'DIAGNOSIS', category: '진단서' },
+  { type: 'MEDICINE_BAG', category: '약 봉투' },
+]
+const formatDate = (date) => date.split('-').join('.')
 
 const pdfAssetUrl = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/`
 
@@ -142,6 +148,10 @@ function DocAddPage() {
   const dateRef = useRef(null)
   const hospitalRef = useRef(null)
   const savingRef = useRef(false)
+  const attemptRef = useRef(null)
+  const [context, setContext] = useState(null)
+  const [locked, setLocked] = useState(false)
+  const [createdEncounterId, setCreatedEncounterId] = useState(null)
   const [registeredOn, setRegisteredOn] = useState('')
   const [hospitalName, setHospitalName] = useState('')
   const [isPreviewReady, setIsPreviewReady] = useState(false)
@@ -152,30 +162,35 @@ function DocAddPage() {
   const type = documentTypeData.find(
     (item) => item.type === state?.documentType && item.type !== 'VISIT',
   )
-  const member = familyData.find((family) => family.userId === currentUserId)
+  const accessToken = getAccessToken()
+  useEffect(() => {
+    if (!accessToken) return
+    const controller = new AbortController()
+    Promise.all([getRecordGroup(accessToken, controller.signal), requestRecordApi('/me', accessToken, { signal: controller.signal })])
+      .then(([group, user]) => { if (!controller.signal.aborted) setContext({ group, user }) })
+      .catch((error) => { if (!controller.signal.aborted) setError(error.message) })
+    return () => controller.abort()
+  }, [accessToken])
 
   if (!(file instanceof File) || !type) return <Navigate to='/doc-select' replace />
 
   const handleSave = async (event) => {
     event.preventDefault()
     if (savingRef.current || !isPreviewReady) return
-    hospitalRef.current.setCustomValidity(hospitalName.trim() ? '' : '발급기관을 입력해 주세요.')
+    if (!accessToken || !context) { setError('로그인과 가족 연결 상태를 확인해 주세요.'); return }
     if (!formRef.current.reportValidity()) return
 
     savingRef.current = true
     setIsSaving(true)
     setError('')
     try {
-      await saveMedicalDocument({
-        documentType: type.type,
-        registeredOn,
-        hospitalName,
-        file,
-        source: state.source,
-      })
-      navigate('/doc')
-    } catch {
-      setError('문서를 저장하지 못했어요. 다시 시도해 주세요.')
+      if (!attemptRef.current) attemptRef.current = createDocumentUploadAttempt(accessToken, context.group.id, file, type.type, registeredOn, hospitalName)
+      setLocked(true)
+      const result = await uploadDocumentAttempt(attemptRef.current)
+      navigate(`/doc-record?encounterId=${encodeURIComponent(result.encounterId)}`, { replace: true })
+    } catch (error) {
+      setCreatedEncounterId(attemptRef.current?.encounter?.id || null)
+      setError(error.message || '문서를 저장하지 못했어요. 다시 시도해 주세요.')
       savingRef.current = false
       setIsSaving(false)
     }
@@ -196,7 +211,7 @@ function DocAddPage() {
             label2='발급기관'
             value2={hospitalName.trim() || '-'}
             label3='등록인'
-            value3={member.name}
+            value3={context?.user.displayName || '부모 정보 입력 전'}
           />
         </div>
         <div className='docAdd__inputs'>
@@ -213,7 +228,7 @@ function DocAddPage() {
               min='0001-01-01'
               max='9999-12-31'
               required
-              disabled={isSaving}
+              disabled={isSaving || locked}
               data-empty={!registeredOn}
               value={registeredOn}
               onClick={openNativePicker}
@@ -223,7 +238,7 @@ function DocAddPage() {
               <button
                 type='button'
                 aria-label='등록일 지우기'
-                disabled={isSaving}
+                disabled={isSaving || locked}
                 onClick={() => {
                   setRegisteredOn('')
                   dateRef.current.focus()
@@ -240,8 +255,7 @@ function DocAddPage() {
               aria-label='발급기관'
               placeholder='발급기관'
               maxLength={150}
-              required
-              disabled={isSaving}
+              disabled={isSaving || locked}
               value={hospitalName}
               onChange={(event) => {
                 event.target.setCustomValidity('')
@@ -252,7 +266,7 @@ function DocAddPage() {
               <button
                 type='button'
                 aria-label='발급기관 지우기'
-                disabled={isSaving}
+                disabled={isSaving || locked}
                 onClick={() => {
                   setHospitalName('')
                   hospitalRef.current.setCustomValidity('')
@@ -274,10 +288,12 @@ function DocAddPage() {
             {error}
           </p>
         )}
+        {createdEncounterId && error && <button type="button" onClick={() => navigate(`/doc-record?encounterId=${encodeURIComponent(createdEncounterId)}`)}>생성된 기록에서 상태 확인·삭제</button>}
+        {!accessToken && <button type="button" onClick={() => navigate('/loginselect')}>로그인하기</button>}
       </form>
       <BottomButton
         content={isSaving ? '저장 중...' : '의료 문서 저장하기'}
-        disabled={isSaving || !isPreviewReady || !registeredOn || !hospitalName.trim()}
+        disabled={isSaving || !isPreviewReady || !registeredOn || !context}
         onClick={() => formRef.current.requestSubmit()}
       />
     </div>

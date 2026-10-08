@@ -1,14 +1,15 @@
 
 import { useEffect, useRef, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { Icon } from '../../components/icon/Icon'
 import BottomButton from '../../components/bottom-button/BottomButton'
 import PopupButton from '../../components/popup-button/PopupButton'
-import { requestRecordApi, createAudioUploadAttempt, uploadAudioAttempt } from '../../api/recordApi'
+import { getRecordGroup, requestRecordApi, createAudioUploadAttempt, uploadAudioAttempt } from '../../api/recordApi'
+import { getAccessToken } from '../../api/http'
 import './RecordAudioPage.css'
 
 
-const companionLabels = { self: '본인', other: '다른 자녀', none: '동행 없음' }
+const maxRecordingSeconds = Math.min(1200, Math.floor((25_000_000 - 44) / 32000) - 1)
 
 async function convertToWav(recordedBlob) {
   const audioContext = new AudioContext()
@@ -83,11 +84,11 @@ function RecordAudioPage() {
   const navigate = useNavigate()
   const { state } = useLocation()
   const [status, setStatus] = useState('idle')
-  const [seconds, setSeconds] = useState(state?.seconds ?? 0)
-  const [audioUrl, setAudioUrl] = useState(() => state?.audioBlob ? URL.createObjectURL(state.audioBlob) : '')
+  const [seconds, setSeconds] = useState(0)
+  const [audioUrl, setAudioUrl] = useState('')
   const [message, setMessage] = useState('')
   const [isUploading, setIsUploading] = useState(false)
-  const audioBlobRef = useRef(state?.audioBlob ?? null)
+  const audioBlobRef = useRef(null)
   const recorderRef = useRef(null)
   const streamRef = useRef(null)
   const playerRef = useRef(null)
@@ -115,16 +116,31 @@ function RecordAudioPage() {
     const timer = setInterval(() => {
       const elapsed = Math.floor((Date.now() - startedRef.current) / 1000)
       setSeconds(elapsed)
-      if (elapsed >= 1200 && recorderRef.current?.state === 'recording') {
+      if (elapsed >= maxRecordingSeconds && recorderRef.current?.state === 'recording') {
         setStatus('stopping')
         recorderRef.current.stop()
-        setMessage('20분이 되어 녹음을 종료했어요. 파일 용량도 확인한 뒤 업로드해요.')
+        setMessage('업로드 가능한 WAV 용량에 도달해 녹음을 종료했어요.')
       }
     }, 250)
     return () => clearInterval(timer)
   }, [status])
 
   useEffect(() => () => { if (audioUrl) URL.revokeObjectURL(audioUrl) }, [audioUrl])
+
+  useEffect(() => {
+    function interrupt() {
+      if (document.hidden && recorderRef.current?.state === 'recording') {
+        recorderRef.current.stop()
+        setMessage('화면이 가려져 녹음을 종료했어요. 저장된 분량을 확인해 주세요.')
+      }
+    }
+    function beforeUnload(event) {
+      if (audioBlobRef.current || recorderRef.current?.state === 'recording' || uploadingRef.current) { event.preventDefault(); event.returnValue = '' }
+    }
+    document.addEventListener('visibilitychange', interrupt)
+    window.addEventListener('beforeunload', beforeUnload)
+    return () => { document.removeEventListener('visibilitychange', interrupt); window.removeEventListener('beforeunload', beforeUnload) }
+  }, [])
 
 
 
@@ -143,6 +159,12 @@ function RecordAudioPage() {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       if (!mountedRef.current) { stream.getTracks().forEach((track) => track.stop()); return }
       streamRef.current = stream
+      stream.getAudioTracks().forEach((track) => track.addEventListener('ended', () => {
+        if (mountedRef.current && recorderRef.current?.state === 'recording') {
+          recorderRef.current.stop()
+          setMessage('마이크 연결이 중단됐어요. 녹음된 분량을 확인해 주세요.')
+        }
+      }))
       const recorder = new MediaRecorder(stream)
       recorderRef.current = recorder
       const chunks = []
@@ -245,13 +267,14 @@ function RecordAudioPage() {
   function discardRecording() {
     if (uploadingRef.current) return
     playerRef.current?.pause()
+    const hadUploadAttempt = Boolean(uploadAttemptRef.current)
     audioBlobRef.current = null
     uploadAttemptRef.current = null
     finishAfterStopRef.current = false
     setAudioUrl('')
     setSeconds(0)
     setStatus('idle')
-    setMessage('녹음을 삭제했어요. 다시 녹음해 주세요.')
+    setMessage(hadUploadAttempt ? '기기에 남은 녹음을 삭제했어요. 이미 접수된 기록은 보관함에서 확인해 주세요.' : '녹음을 삭제했어요. 다시 녹음해 주세요.')
     confirmationRef.current?.close()
   }
 
@@ -260,7 +283,7 @@ function RecordAudioPage() {
         if (busy) { setMessage('녹음을 정지한 뒤 기록을 마쳐 주세요.'); return }
         if (!audioBlobRef.current) { setMessage('먼저 진료 내용을 녹음해 주세요.'); return }
 
-        const accessToken = sessionStorage.getItem('knowone_access_token')
+        const accessToken = getAccessToken()
 
         if (!accessToken) {
           setMessage('로그인이 필요해요.')
@@ -273,13 +296,12 @@ function RecordAudioPage() {
 
         try {
           playerRef.current?.pause()
-          const groups = await requestRecordApi('/me/care-groups', accessToken)
+          const group = await getRecordGroup(accessToken)
           if (!mountedRef.current) return
-          if (groups.items?.length !== 1) {
-            throw new Error('연결된 가족이 없어요. 가족 연결과 가입 승인을 확인해 주세요.')
+          if (group.id !== state?.groupId) {
+            throw new Error('돌봄 대상이 변경됐어요. 기록 시작 화면에서 대상을 다시 확인해 주세요.')
           }
-          const groupId = groups.items[0].id
-          sessionStorage.setItem('groupId', groupId)
+          const groupId = group.id
           let attempt = uploadAttemptRef.current
           if (attempt && (attempt.accessToken !== accessToken || attempt.groupId !== groupId)) {
             throw new Error('로그인 계정이나 가족이 변경됐어요. 현재 녹음을 삭제하고 다시 녹음해 주세요.')
@@ -287,22 +309,24 @@ function RecordAudioPage() {
           if (!attempt) {
             const wavBlob = await convertToWav(audioBlobRef.current)
             if (!mountedRef.current) return
-            attempt = createAudioUploadAttempt(accessToken, groupId, wavBlob, state?.hospital)
+            attempt = createAudioUploadAttempt(accessToken, groupId, wavBlob, state?.hospital, state?.occurredOn || null)
             uploadAttemptRef.current = attempt
           }
           const result = await uploadAudioAttempt(attempt)
 
           if (!mountedRef.current) return
-          navigate('/record/audio/analysis', {
-            state: {
-              hospital: state?.hospital,
-              department: state?.department,
-              companion: state?.companion,
-              seconds,
-              encounterId: result.encounterId,
-            },
-          })
+          navigate(`/record/audio/analysis?encounterId=${encodeURIComponent(result.encounterId)}`, { replace: true })
         } catch (error) {
+          if (error.status === 409 && error.apiCode === 'VERSION_CONFLICT' && uploadAttemptRef.current?.encounter) {
+            try {
+              const attempt = uploadAttemptRef.current
+              attempt.encounter = await requestRecordApi(`/encounters/${encodeURIComponent(attempt.encounter.id)}`, accessToken)
+              attempt.formData = null
+              attempt.uploadKey = crypto.randomUUID()
+            } catch {
+              // Keep the local audio and original attempt until the latest version can be read.
+            }
+          }
           if (mountedRef.current) {
             setMessage(
               error instanceof Error ? error.message : '업로드에 실패했어요.'
@@ -317,6 +341,8 @@ function RecordAudioPage() {
   const time = [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
     .map((value) => String(value).padStart(2, '0')).join(':')
   const busy = isUploading || ['recording', 'requesting', 'stopping'].includes(status)
+
+  if (!state?.groupId) return <Navigate to="/record" replace />
 
   return (
     <main className="recordAudioPage">
@@ -348,14 +374,15 @@ function RecordAudioPage() {
         />
         <dl className="recordAudioPage__details">
           <div><dt>병원</dt><dd>{state?.hospital || '-'}</dd></div>
-          <div><dt>진료과목</dt><dd>{state?.department || '-'}</dd></div>
-          <div><dt>동행한 자녀</dt><dd>{companionLabels[state?.companion] || '-'}</dd></div>
+          <div><dt>진료일</dt><dd>{state?.occurredOn || '미상'}</dd></div>
+          <div><dt>돌봄 대상</dt><dd>{state?.recipientName}</dd></div>
         </dl>
         <section className="recordAudioPage__transcript">
           <h2>녹음 원문</h2>
           <p>녹음 사용을 선택하면 업로드 후 원문과 요약을 확인할 수 있어요.</p>
         </section>
         <p className="recordAudioPage__notice">이 기록은 가족과 공유할 수 있어요</p>
+        <p className="recordAudioPage__notice">파일은 최대 25MB예요. 현재 녹음 방식에서는 약 13분에 자동 종료돼요.</p>
         <p className="recordAudioPage__notice">내가 직접 참여한 진료 대화만 녹음할 수 있어요. 공개되지 않은 다른 사람들 사이의 대화를 몰래 녹음하는 건 통신비밀보호법 제14조로 금지되어 있어요.</p>
         <p className="recordAudioPage__message" role="status">{message || (status === 'recording' ? '녹음 중이에요.' : '')}</p>
       </div>

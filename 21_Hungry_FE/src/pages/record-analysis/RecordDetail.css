@@ -1,0 +1,19 @@
+.recordDetail { color: #404040; }
+.recordDetail__panel { padding: 20px; border: 2px solid #eee; border-radius: 20px; margin: 16px 0; }
+.recordDetail h2 { font-size: 18px; margin-bottom: 12px; }
+.recordDetail h3 { font-size: 16px; margin: 12px 0 8px; }
+.recordDetail p { line-height: 1.6; overflow-wrap: anywhere; }
+.recordDetail button:not(.bottomButton__button):not(.recordAudioAnalysisPage__back), .recordDetail a { display: inline-block; padding: 10px 14px; margin: 6px 6px 6px 0; border: 1px solid #d7d7d7; border-radius: 10px; background: #fff; color: #404040; font-size: 14px; }
+.recordDetail button:disabled { opacity: .45; cursor: default; }
+.recordDetail label { display: block; font-size: 14px; margin: 12px 0; }
+.recordDetail input:not([type=checkbox]), .recordDetail select, .recordDetail textarea { display: block; width: 100%; box-sizing: border-box; padding: 12px; margin-top: 6px; border: 1px solid #ccc; border-radius: 8px; font: inherit; background: #fff; color: #333; }
+.recordDetail textarea { min-height: 160px; }
+.recordDetail fieldset { border: 0; padding: 0; min-width: 0; }
+.recordDetail__reviewItem, .recordDetail__source { padding: 12px 0; border-bottom: 1px solid #eee; }
+.recordDetail__plan, .recordDetail__deletion { border-radius: 12px; padding: 12px; background: #f7f7f7; margin-top: 12px; }
+.recordDetail__weekdays { display: flex; flex-wrap: wrap; gap: 12px; }
+.recordDetail__evidence { margin: 10px 0; padding: 10px; border-radius: 8px; background: #f5f5f5; color: #444; }
+.recordDetail__evidence summary { cursor: pointer; font-size: 14px; }
+.recordDetail__text { white-space: pre-wrap; max-height: 450px; overflow-y: auto; }
+.recordDetail .recordAudioAnalysisPage__summary p { color: #795194; }
+.recordDetail .recordAudioAnalysisPage__summary { margin-top: 16px; }

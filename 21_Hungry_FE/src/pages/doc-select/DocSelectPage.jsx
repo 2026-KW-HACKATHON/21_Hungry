@@ -277,14 +277,6 @@ function DocSelectPage() {
               </button>
             ))}
           </div>
-          <button
-            type='button'
-            className={`docSelect__other${selectedType === 'OTHER' ? ' docSelect__other--selected' : ''}`}
-            aria-pressed={selectedType === 'OTHER'}
-            onClick={() => handleType('OTHER')}
-          >
-            기타 문서
-          </button>
         </div>
 
         <div className='docSelect__import'>
