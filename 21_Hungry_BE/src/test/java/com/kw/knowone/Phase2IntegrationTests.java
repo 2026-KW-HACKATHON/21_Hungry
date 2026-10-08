@@ -49,10 +49,11 @@ class Phase2IntegrationTests {
     private final HttpClient client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5)).build();
 
     @Test
-    void fourDemoAccountsCanLoginAndOnlyTokenHashIsStored() throws Exception {
+    void retiredDemoEndpointsReturn410AndPhoneLoginsStoreOnlyTokenHashes() throws Exception {
         HttpResponse<String> accounts = get("/api/v1/auth/demo-accounts", null);
-        assertEquals(200, accounts.statusCode());
-        assertTrue(accounts.body().contains("demo-recipient"));
+        assertEquals(410, accounts.statusCode());
+        assertTrue(accounts.body().contains("ENDPOINT_RETIRED"));
+        assertEquals(410,post("/api/v1/auth/demo-login","{\"loginKey\":\"demo-caregiver-1\"}",null,null).statusCode());
 
         for (String key : List.of("demo-recipient", "demo-caregiver-1", "demo-caregiver-2", "demo-caregiver-3")) {
             Login login = login(key);
@@ -104,7 +105,7 @@ class Phase2IntegrationTests {
     @Test
     void groupReadsUseActualGroupAndActiveMembership() throws Exception {
         String active = login("demo-caregiver-1").token();
-        HttpResponse<String> list = get("/api/v1/care-groups", active);
+        HttpResponse<String> list = get("/api/v1/me/care-groups", active);
         assertEquals(200, list.statusCode());
         assertTrue(list.body().contains(GROUP_1.toString()));
         assertEquals(200, get("/api/v1/care-groups/" + GROUP_1, active).statusCode());
@@ -126,39 +127,25 @@ class Phase2IntegrationTests {
         assertEquals(200, lookup.statusCode());
         assertTrue(lookup.body().contains(GROUP_1.toString()));
 
-        String joinBody = "{\"recipientUserId\":\"00000000-0000-4000-8000-000000000001\",\"confirmedName\":\"돌봄 대상\"}";
-        HttpResponse<String> missingKey = post("/api/v1/care-groups/" + GROUP_1 + "/memberships", joinBody,
+        String joinBody = "{\"recipientUserId\":\"00000000-0000-4000-8000-000000000001\"}";
+        HttpResponse<String> missingKey = post("/api/v1/care-groups/" + GROUP_1 + "/join", joinBody,
                 caregiver3, null);
         assertEquals(400, missingKey.statusCode());
-        HttpResponse<String> joined = post("/api/v1/care-groups/" + GROUP_1 + "/memberships", joinBody,
+        HttpResponse<String> joined = post("/api/v1/care-groups/" + GROUP_1 + "/join", joinBody,
                 caregiver3, "join-new");
-        assertEquals(201, joined.statusCode());
-        HttpResponse<String> joinReplay = post("/api/v1/care-groups/" + GROUP_1 + "/memberships", joinBody,
+        assertEquals(202, joined.statusCode(),joined.body());
+        assertEquals("PENDING",objectMapper.readTree(joined.body()).get("data").get("membership").get("status").asText());
+        HttpResponse<String> joinReplay = post("/api/v1/care-groups/" + GROUP_1 + "/join", joinBody,
                 caregiver3, "join-new");
         assertEquals(joined.body(), joinReplay.body());
-        String caregiver1 = login("demo-caregiver-1").token();
-        assertEquals(200, post("/api/v1/care-groups/" + GROUP_1 + "/memberships", joinBody,
-                caregiver1, "join-existing").statusCode());
-        String caregiver2 = login("demo-caregiver-2").token();
-        assertEquals(201, post("/api/v1/care-groups/" + GROUP_1 + "/memberships", joinBody,
-                caregiver2, "join-again").statusCode());
-        assertEquals(2, jdbcTemplate.queryForObject("SELECT count(*) FROM audit_event", Integer.class));
-        assertEquals(2, jdbcTemplate.queryForObject("SELECT count(*) FROM notification_event", Integer.class));
-
-        for (int count = 1; count < 10; count++) {
-            assertEquals(200, post("/api/v1/care-groups/recipient-lookup",
-                    "{\"phoneNumber\":\"010-0000-0001\"}", caregiver3, null).statusCode());
-        }
-        HttpResponse<String> rateLimited = post("/api/v1/care-groups/recipient-lookup",
-                "{\"phoneNumber\":\"010-0000-0001\"}", caregiver3, null);
-        assertEquals(429, rateLimited.statusCode());
-        assertTrue(rateLimited.body().contains("RATE_LIMITED"));
+        assertEquals(1, jdbcTemplate.queryForObject("SELECT count(*) FROM audit_event", Integer.class));
     }
 
     @Test
     void priorityUpdateValidatesAuthorityMembershipVersionAndInput() throws Exception {
+        jdbcTemplate.update("INSERT INTO group_member(id,group_id,user_id,role,priority) VALUES (gen_random_uuid(),?,?,'CAREGIVER',1)",GROUP_1,UUID.fromString("00000000-0000-4000-8000-000000000004"));
         String token = login("demo-caregiver-1").token();
-        String body = priorityBody(MEMBER_1, 3, 0);
+        String body = priorityBody(MEMBER_1, 2, 0);
         HttpResponse<String> missingKey = put("/api/v1/care-groups/" + GROUP_1 + "/member-priorities",
                 body, token, null);
         assertEquals(400, missingKey.statusCode());
@@ -174,22 +161,22 @@ class Phase2IntegrationTests {
                 UUID.class));
 
         HttpResponse<String> conflict = put("/api/v1/care-groups/" + GROUP_1 + "/member-priorities",
-                priorityBody(MEMBER_1, 4, 0), token, "priority-version");
+                priorityBody(MEMBER_1, 1, 0), token, "priority-version");
         assertEquals(409, conflict.statusCode());
         assertTrue(conflict.body().contains("VERSION_CONFLICT"));
 
-        String partlyInvalid = "{\"members\":[{\"memberId\":\"" + MEMBER_1
-                + "\",\"priority\":8,\"expectedVersion\":1},{\"memberId\":\"" + OTHER_MEMBER
+        String partlyInvalid = "{\"items\":[{\"memberId\":\"" + MEMBER_1
+                + "\",\"priority\":1,\"expectedVersion\":1},{\"memberId\":\"" + OTHER_MEMBER
                 + "\",\"priority\":2,\"expectedVersion\":0}]}";
         HttpResponse<String> crossGroup = put("/api/v1/care-groups/" + GROUP_1 + "/member-priorities",
                 partlyInvalid, token, "priority-cross");
         assertForbidden(crossGroup, "NOT_MEMBER");
-        assertEquals(3, jdbcTemplate.queryForObject("SELECT priority FROM group_member WHERE id = ?", Integer.class,
+        assertEquals(2, jdbcTemplate.queryForObject("SELECT priority FROM group_member WHERE id = ?", Integer.class,
                 MEMBER_1));
         assertEquals(1L, currentVersion(MEMBER_1));
 
-        String duplicate = "{\"members\":[{\"memberId\":\"" + MEMBER_1 + "\",\"priority\":2,\"expectedVersion\":1},"
-                + "{\"memberId\":\"" + MEMBER_1 + "\",\"priority\":3,\"expectedVersion\":1}]}";
+        String duplicate = "{\"items\":[{\"memberId\":\"" + MEMBER_1 + "\",\"priority\":2,\"expectedVersion\":1},"
+                + "{\"memberId\":\"" + MEMBER_1 + "\",\"priority\":1,\"expectedVersion\":1}]}";
         HttpResponse<String> duplicateResponse = put("/api/v1/care-groups/" + GROUP_1 + "/member-priorities",
                 duplicate, token, "priority-duplicate");
         assertEquals(400, duplicateResponse.statusCode());
@@ -200,13 +187,13 @@ class Phase2IntegrationTests {
     void idempotencyReplaysSuccessAndRejectsDifferentBody() throws Exception {
         String token = login("demo-caregiver-1").token();
         String path = "/api/v1/care-groups/" + GROUP_1 + "/member-priorities";
-        String body = priorityBody(MEMBER_1, 3, 0);
+        String body = priorityBody(MEMBER_1, 1, 0);
         HttpResponse<String> first = put(path, body, token, "same-key");
         HttpResponse<String> replay = put(path, body, token, "same-key");
         assertEquals(200, first.statusCode());
         assertEquals(first.body(), replay.body());
         assertEquals(1L, currentVersion(MEMBER_1));
-        HttpResponse<String> reused = put(path, priorityBody(MEMBER_1, 4, 1), token, "same-key");
+        HttpResponse<String> reused = put(path, priorityBody(MEMBER_1, 2, 1), token, "same-key");
         assertEquals(409, reused.statusCode());
         assertTrue(reused.body().contains("IDEMPOTENCY_KEY_REUSED"));
     }
@@ -215,7 +202,7 @@ class Phase2IntegrationTests {
     void concurrentIdenticalRequestsMutateOnce() throws Exception {
         String token = login("demo-caregiver-1").token();
         String path = "/api/v1/care-groups/" + GROUP_1 + "/member-priorities";
-        HttpRequest request = request(path, "PUT", priorityBody(MEMBER_1, 5, 0), token, "concurrent-key");
+        HttpRequest request = request(path, "PUT", priorityBody(MEMBER_1, 1, 0), token, "concurrent-key");
         CompletableFuture<HttpResponse<String>> first = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
         CompletableFuture<HttpResponse<String>> second = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
         HttpResponse<String> firstResponse = first.join();
@@ -230,12 +217,12 @@ class Phase2IntegrationTests {
     void authorizationIsRecheckedBeforeReplay() throws Exception {
         String token = login("demo-caregiver-1").token();
         String path = "/api/v1/care-groups/" + GROUP_1 + "/member-priorities";
-        String body = priorityBody(MEMBER_1, 3, 0);
+        String body = priorityBody(MEMBER_1, 1, 0);
         assertEquals(200, put(path, body, token, "permission-key").statusCode());
         jdbcTemplate.update("UPDATE group_member SET status = 'LEFT', left_at = now(), version = version + 1 WHERE id = ?",
                 MEMBER_1);
         assertForbidden(put(path, body, token, "permission-key"), "NOT_MEMBER");
-        assertEquals(3, jdbcTemplate.queryForObject("SELECT priority FROM group_member WHERE id = ?", Integer.class, MEMBER_1));
+        assertEquals(1, jdbcTemplate.queryForObject("SELECT priority FROM group_member WHERE id = ?", Integer.class, MEMBER_1));
     }
 
     @Test
@@ -255,12 +242,14 @@ class Phase2IntegrationTests {
     }
 
     private Login login(String loginKey) throws Exception {
-        HttpResponse<String> response = post("/api/v1/auth/demo-login",
-                "{\"loginKey\":\"" + loginKey + "\"}", null, null);
+        HttpResponse<String> response = post("/api/v1/auth/login",
+                "{\"phoneNumber\":\"" + phone(loginKey) + "\"}", null, null);
         assertEquals(200, response.statusCode(), response.body());
         JsonNode data = objectMapper.readTree(response.body()).get("data");
         return new Login(data.get("accessToken").asText(), UUID.fromString(data.get("user").get("id").asText()));
     }
+
+    private String phone(String key){return switch(key){case "demo-recipient"->"01000000001";case "demo-caregiver-1"->"01000000002";case "demo-caregiver-2"->"01000000003";case "demo-caregiver-3"->"01000000004";case "demo-recipient-2"->"01000000005";case "demo-outsider"->"01000000006";case "demo-disabled"->"01000000007";default->throw new IllegalArgumentException(key);};}
 
     private HttpResponse<String> get(String path, String token) throws Exception {
         return send(request(path, "GET", null, token, null));
@@ -288,7 +277,7 @@ class Phase2IntegrationTests {
     }
 
     private String priorityBody(UUID memberId, int priority, long expectedVersion) {
-        return "{\"members\":[{\"memberId\":\"" + memberId + "\",\"priority\":" + priority
+        return "{\"items\":[{\"memberId\":\"" + memberId + "\",\"priority\":" + priority
                 + ",\"expectedVersion\":" + expectedVersion + "}]}";
     }
 

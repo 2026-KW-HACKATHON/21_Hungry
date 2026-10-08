@@ -94,13 +94,13 @@ class Phase3IntegrationTests {
 
     @Test void onceCreationAssignmentCompletionReopenAndHistoryFollowContract()throws Exception{
         String token=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
-        String create="{\"kind\":\"OTHER\",\"title\":\"테스트 일정\",\"description\":null,\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\"10:00\",\"durationMinutes\":30},\"medicationIds\":[]}";
+        String create="{\"kind\":\"OTHER\",\"title\":\"테스트 일정\",\"description\":null,\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\"10:00\",\"durationMinutes\":30}}";
         HttpResponse<String> created=send("POST","/api/v1/care-groups/"+GROUP+"/task-series",create,token,"create-1");assertEquals(201,created.statusCode(),created.body());
         JsonNode task=json.readTree(created.body()).get("data").get("occurrences").get(0);UUID id=UUID.fromString(task.get("id").asText());
         assertEquals(SECOND.toString(),task.get("assignee").get("id").asText());
         assertEquals(created.body(),send("POST","/api/v1/care-groups/"+GROUP+"/task-series",create,token,"create-1").body());
         assertEquals(200,send("GET","/api/v1/tasks/"+id,null,token,null).statusCode());
-        assertEquals(200,send("GET","/api/v1/care-groups/"+GROUP+"/tasks?from="+date+"T00:00:00Z&to="+date.plusDays(2)+"T00:00:00Z",null,token,null).statusCode());
+        assertEquals(200,send("GET","/api/v1/care-groups/"+GROUP+"/tasks?date="+date,null,token,null).statusCode());
 
         String complete="{\"expectedVersion\":0,\"performedByUserId\":\""+RECIPIENT+"\"}";
         HttpResponse<String> completed=send("POST","/api/v1/tasks/"+id+"/complete",complete,token,"complete-1");assertEquals(200,completed.statusCode(),completed.body());
@@ -112,7 +112,7 @@ class Phase3IntegrationTests {
 
     @Test void noCandidateIsSuccessAndManualRecipientAssignmentChecksAvailability()throws Exception{
         String token=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(3);
-        String create="{\"kind\":\"OTHER\",\"title\":\"미배정\",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\"10:00\",\"durationMinutes\":30},\"medicationIds\":[]}";
+        String create="{\"kind\":\"OTHER\",\"title\":\"미배정\",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\"10:00\",\"durationMinutes\":30}}";
         JsonNode task=json.readTree(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",create,token,"no-candidate").body()).get("data").get("occurrences").get(0);
         assertTrue(task.get("assignee").isNull());assertEquals("NO_CANDIDATE",task.get("openHandoff").get("reason").asText());UUID id=UUID.fromString(task.get("id").asText());
         String assignment="{\"expectedVersion\":0,\"assigneeUserId\":\""+RECIPIENT+"\"}";
@@ -123,7 +123,7 @@ class Phase3IntegrationTests {
 
     @Test void concurrentOverlappingCreationsNeverAssignSameCaregiver()throws Exception{
         String token=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
-        String create="{\"kind\":\"OTHER\",\"title\":\"동시 생성\",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\"11:00\",\"durationMinutes\":30},\"medicationIds\":[]}";
+        String create="{\"kind\":\"OTHER\",\"title\":\"동시 생성\",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\"11:00\",\"durationMinutes\":30}}";
         HttpRequest first=request("POST","/api/v1/care-groups/"+GROUP+"/task-series",create,token,"concurrent-create-a");
         HttpRequest second=request("POST","/api/v1/care-groups/"+GROUP+"/task-series",create,token,"concurrent-create-b");
         CompletableFuture<HttpResponse<String>> firstFuture=client.sendAsync(first,HttpResponse.BodyHandlers.ofString());
@@ -135,22 +135,11 @@ class Phase3IntegrationTests {
         assertFalse(aUser.equals(bUser));
     }
 
-    @Test void conflictsAcrossGroupsExcludeCandidateButTouchingBoundaryDoesNot()throws Exception{
+    @Test void activeMemberCannotBelongToTwoGroups()throws Exception{
         UUID group2=UUID.fromString("10000000-0000-4000-8000-000000000002");
-        jdbc.update("INSERT INTO group_member(id,group_id,user_id,role,priority) VALUES (?,?,?,?,?)",
-                UUID.randomUUID(),group2,SECOND,"CAREGIVER",1);
-        String secondToken=login("demo-caregiver-3");String firstToken=login("demo-caregiver-1");
-        LocalDate date=LocalDate.now(KST).plusDays(2);
-        String group2Task=createBody(date,"12:00",30,"다른 공동체");
-        JsonNode occupied=json.readTree(send("POST","/api/v1/care-groups/"+group2+"/task-series",group2Task,secondToken,"cross-source").body()).get("data").get("occurrences").get(0);
-        assertEquals(SECOND.toString(),occupied.get("assignee").get("id").asText());
-
-        JsonNode overlapping=json.readTree(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",
-                createBody(date,"12:15",15,"충돌"),firstToken,"cross-overlap").body()).get("data").get("occurrences").get(0);
-        assertEquals(CAREGIVER.toString(),overlapping.get("assignee").get("id").asText());
-        JsonNode touching=json.readTree(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",
-                createBody(date,"12:30",15,"경계"),firstToken,"cross-touch").body()).get("data").get("occurrences").get(0);
-        assertEquals(SECOND.toString(),touching.get("assignee").get("id").asText());
+        org.junit.jupiter.api.Assertions.assertThrows(org.springframework.dao.DataIntegrityViolationException.class,()->jdbc.update(
+                "INSERT INTO group_member(id,group_id,user_id,role,priority) VALUES (?,?,?,?,?)",
+                UUID.randomUUID(),group2,SECOND,"CAREGIVER",1));
     }
 
     @Test void outsideHorizonKeepsSeriesAndUnsupportedContractsAreRejected()throws Exception{
@@ -158,12 +147,12 @@ class Phase3IntegrationTests {
         HttpResponse<String> outside=send("POST","/api/v1/care-groups/"+GROUP+"/task-series",
                 createBody(date,"10:00",30,"장기 단발"),token,"outside-horizon");
         assertEquals(201,outside.statusCode(),outside.body());JsonNode data=json.readTree(outside.body()).get("data");
-        assertEquals(0,data.get("occurrences").size());
+        assertEquals(1,data.get("occurrences").size());
         assertEquals(200,send("GET","/api/v1/task-series/"+data.get("seriesId").asText(),null,token,null).statusCode());
         String recurring=createBody(date,"10:00",30,"반복").replace("\"ONCE\"","\"DAILY\"");
-        assertEquals(201,send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring,token,"phase4-repeat").statusCode());
+        assertEquals(422,send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring,token,"phase4-repeat").statusCode());
         String medication=createBody(date,"10:00",30,"복약").replace("\"OTHER\"","\"MEDICATION\"");
-        assertEquals(400,send("POST","/api/v1/care-groups/"+GROUP+"/task-series",medication,token,"unsupported-med").statusCode());
+        assertEquals(422,send("POST","/api/v1/care-groups/"+GROUP+"/task-series",medication,token,"unsupported-med").statusCode());
     }
 
     @Test void multiDaySaveRollsBackEveryDayOnDatabaseFailure()throws Exception{
@@ -183,8 +172,9 @@ class Phase3IntegrationTests {
         }
     }
 
-    private String login(String key)throws Exception{JsonNode data=json.readTree(send("POST","/api/v1/auth/demo-login","{\"loginKey\":\""+key+"\"}",null,null).body()).get("data");return data.get("accessToken").asText();}
-    private String createBody(LocalDate date,String time,int duration,String title){return "{\"kind\":\"OTHER\",\"title\":"+quote(title)+",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\""+time+"\",\"durationMinutes\":"+duration+"},\"medicationIds\":[]}";}
+    private String login(String key)throws Exception{JsonNode data=json.readTree(send("POST","/api/v1/auth/login","{\"phoneNumber\":\""+phone(key)+"\"}",null,null).body()).get("data");return data.get("accessToken").asText();}
+    private String phone(String key){return switch(key){case "demo-recipient"->"01000000001";case "demo-caregiver-1"->"01000000002";case "demo-caregiver-2"->"01000000003";case "demo-caregiver-3"->"01000000004";case "demo-recipient-2"->"01000000005";case "demo-outsider"->"01000000006";default->throw new IllegalArgumentException(key);};}
+    private String createBody(LocalDate date,String time,int duration,String title){return "{\"kind\":\"OTHER\",\"title\":"+quote(title)+",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\""+time+"\",\"durationMinutes\":"+duration+"}}";}
     private String quote(String value){try{return json.writeValueAsString(value);}catch(RuntimeException e){throw e;}}
     private HttpResponse<String> send(String method,String path,String body,String token,String key)throws Exception{return client.send(request(method,path,body,token,key),HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));}
     private HttpRequest request(String method,String path,String body,String token,String key){HttpRequest.Builder b=HttpRequest.newBuilder(URI.create("http://localhost:"+port+path)).header("Content-Type","application/json");if(token!=null)b.header(HttpHeaders.AUTHORIZATION,"Bearer "+token);if(key!=null)b.header("Idempotency-Key",key);return b.method(method,body==null?HttpRequest.BodyPublishers.noBody():HttpRequest.BodyPublishers.ofString(body,StandardCharsets.UTF_8)).build();}

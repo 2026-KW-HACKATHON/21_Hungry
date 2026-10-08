@@ -26,15 +26,18 @@ public class AuthService {
     private final AuthRepository repository;
     private final Clock clock;
     private final boolean demoEnabled;
+    private final boolean phoneAuthEnabled;
     private final Duration sessionTtl;
     private final SecureRandom secureRandom = new SecureRandom();
 
     public AuthService(AuthRepository repository, Clock clock,
             @Value("${app.demo.enabled:false}") boolean demoEnabled,
+            @Value("${app.auth.phone-enabled:true}") boolean phoneAuthEnabled,
             @Value("${app.auth.session-ttl:PT24H}") Duration sessionTtl) {
         this.repository = repository;
         this.clock = clock;
         this.demoEnabled = demoEnabled;
+        this.phoneAuthEnabled = phoneAuthEnabled;
         this.sessionTtl = sessionTtl;
     }
 
@@ -60,6 +63,7 @@ public class AuthService {
 
     @Transactional
     public SignupResult signup(String rawPhoneNumber, String accountRole, String rawDisplayName) {
+        requirePhoneAuth();
         String phoneNumber = normalizePhone(rawPhoneNumber);
         if (!"PARENT".equals(accountRole) && !"CHILD".equals(accountRole)) {
             throw validation("accountRole을 확인해 주세요.");
@@ -81,6 +85,7 @@ public class AuthService {
 
     @Transactional
     public LoginResult loginByPhone(String rawPhoneNumber) {
+        requirePhoneAuth();
         AppUser user = repository.findActiveByPhoneNumber(normalizePhone(rawPhoneNumber)).orElseThrow(this::unauthorized);
         byte[] rawToken = new byte[32];
         secureRandom.nextBytes(rawToken);
@@ -119,6 +124,12 @@ public class AuthService {
     public void requireDemoMode() {
         if (!demoEnabled) {
             throw new ApiException(HttpStatus.FORBIDDEN, "DEMO_ONLY", "시연 환경에서만 사용할 수 있습니다.");
+        }
+    }
+
+    private void requirePhoneAuth() {
+        if (!phoneAuthEnabled) {
+            throw new ApiException(HttpStatus.FORBIDDEN, "DEMO_ONLY", "전화번호 인증 생략 모드가 비활성화되어 있습니다.");
         }
     }
 

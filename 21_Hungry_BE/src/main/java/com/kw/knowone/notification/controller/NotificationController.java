@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.kw.knowone.common.web.ApiException;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -38,12 +40,12 @@ public class NotificationController {
 
     @GetMapping("/me/notification-preferences")
     ResponseEntity<DataResponse<NotificationDtos.Preference>> preference(@AuthenticationPrincipal AuthenticatedUser user) {
-        return ok(service.preference(user.userId()));
+        throw retired();
     }
 
     @PutMapping("/me/notification-preferences")
     ResponseEntity<DataResponse<NotificationDtos.Preference>> updatePreference(@Valid @RequestBody NotificationDtos.PreferenceUpdate body,
-            @AuthenticationPrincipal AuthenticatedUser user) { return ok(service.updatePreference(user.userId(), body)); }
+            @AuthenticationPrincipal AuthenticatedUser user) { throw retired(); }
 
     @GetMapping("/push/config")
     ResponseEntity<DataResponse<NotificationDtos.PushConfig>> config() { return ok(service.pushConfig()); }
@@ -70,4 +72,5 @@ public class NotificationController {
     private <T> ResponseEntity<DataResponse<T>> ok(T value) {
         return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(DataResponse.of(value));
     }
+    private ApiException retired(){return new ApiException(HttpStatus.GONE,"ENDPOINT_RETIRED","폐기된 API입니다.");}
 }

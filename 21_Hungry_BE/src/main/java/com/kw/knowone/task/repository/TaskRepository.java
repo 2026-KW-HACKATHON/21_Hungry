@@ -40,14 +40,14 @@ public class TaskRepository {
     }
     public Optional<Series> findSeries(UUID id) {
         return jdbc.query("""
-                SELECT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+                SELECT s.id,s.group_id,s.created_by,s.creation_origin,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
                        r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
                 FROM task_series s JOIN task_series_revision r
                   ON r.series_id=s.id AND r.revision_no=s.current_revision_no WHERE s.id=?
                 """, this::mapSeries, id).stream().findFirst();
     }
     public Optional<Series> findMedicationSeries(UUID groupId,String recurrence,List<Integer> weekdays,LocalTime time,int duration){String array="{"+weekdays.stream().map(String::valueOf).collect(java.util.stream.Collectors.joining(","))+"}";return jdbc.query("""
-            SELECT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+            SELECT s.id,s.group_id,s.created_by,s.creation_origin,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
                    r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
             FROM task_series s JOIN task_series_revision r ON r.series_id=s.id AND r.revision_no=s.current_revision_no
             WHERE s.group_id=? AND s.kind='MEDICATION' AND r.recurrence=? AND r.weekdays=?::smallint[]
@@ -56,7 +56,7 @@ public class TaskRepository {
             """,this::mapSeries,groupId,recurrence,array,time,duration).stream().findFirst();}
     public List<Series> findGeneratableSeries() {
         return jdbc.query("""
-                SELECT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+                SELECT s.id,s.group_id,s.created_by,s.creation_origin,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
                        r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
                 FROM task_series s JOIN care_group g ON g.id=s.group_id AND g.status='ACTIVE'
                 JOIN task_series_revision r ON r.series_id=s.id AND r.revision_no=s.current_revision_no
@@ -120,6 +120,32 @@ public class TaskRepository {
         sql.append(" ORDER BY o.starts_at,o.id LIMIT ?"); args.add(fetch);
         return jdbc.query(sql.toString(), this::mapOccurrence, args.toArray());
     }
+    public List<RankedOccurrence> listDate(UUID groupId,UUID userId,Instant from,Instant to,boolean mineOnly,
+            Integer cursorRank,Instant cursorTime,UUID cursorId,int fetch){
+        String rank="""
+          CASE WHEN o.status='PENDING' AND o.assignee_user_id IS NULL THEN
+            CASE WHEN EXISTS(SELECT 1 FROM handoff_response hr WHERE hr.user_id=? AND hr.handoff_id=(
+              SELECT h.id FROM handoff_request h WHERE h.occurrence_id=o.id ORDER BY h.created_at DESC,h.id DESC LIMIT 1
+            )) THEN 1 ELSE 0 END ELSE 2 END
+          """;
+        String baseRank=rank.replace("o.","base.");
+        StringBuilder sql=new StringBuilder("SELECT base.*, ").append(baseRank).append(" sort_rank FROM (")
+                .append(OCCURRENCE_SELECT).append(" WHERE o.group_id=? AND o.starts_at>=? AND o.starts_at<? AND o.status<>'CANCELED'");
+        List<Object> args=new ArrayList<>();args.add(userId);args.add(groupId);args.add(Timestamp.from(from));args.add(Timestamp.from(to));
+        if(mineOnly){sql.append(" AND o.assignee_user_id=?");args.add(userId);}sql.append(") base");
+        if(cursorRank!=null){sql.append(" WHERE (").append(baseRank).append(",base.starts_at,base.id)>(?,?,?)");args.add(userId);args.add(cursorRank);args.add(Timestamp.from(cursorTime));args.add(cursorId);}
+        sql.append(" ORDER BY sort_rank,base.starts_at,base.id LIMIT ?");args.add(fetch);
+        return jdbc.query(sql.toString(),(rs,n)->new RankedOccurrence(mapOccurrence(rs,n),rs.getInt("sort_rank")),args.toArray());
+    }
+
+    public List<CalendarCount> calendar(UUID groupId,Instant from,Instant to){return jdbc.query("""
+            SELECT (o.starts_at AT TIME ZONE 'Asia/Seoul')::date local_date,count(*) total_count,
+              count(*) FILTER(WHERE o.status='COMPLETED') completed_count,
+              count(*) FILTER(WHERE o.status='PENDING' AND o.assignee_user_id IS NULL) unassigned_count
+            FROM task_occurrence o WHERE o.group_id=? AND o.starts_at>=? AND o.starts_at<? AND o.status<>'CANCELED'
+            GROUP BY local_date ORDER BY local_date
+            """,(rs,n)->new CalendarCount(rs.getObject(1,LocalDate.class),rs.getLong(2),rs.getLong(3),rs.getLong(4)),
+            groupId,Timestamp.from(from),Timestamp.from(to));}
     public List<Occurrence> linkedToEncounter(UUID encounterId,int fetch){return jdbc.query(OCCURRENCE_SELECT+"""
             WHERE EXISTS(SELECT 1 FROM extracted_item x WHERE x.id=s.source_item_id AND x.encounter_id=?)
                OR EXISTS(SELECT 1 FROM occurrence_medication om JOIN medication_order m ON m.id=om.medication_id
@@ -184,7 +210,7 @@ public class TaskRepository {
             WHERE om.medication_id IN (%s) AND o.status='PENDING' AND o.starts_at>=? ORDER BY o.id
             """.formatted(marks),(r,n)->r.getObject(1,UUID.class),args.toArray());}
     public List<Series> seriesForMedication(UUID medicationId){return jdbc.query("""
-            SELECT DISTINCT s.id,s.group_id,s.created_by,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
+            SELECT DISTINCT s.id,s.group_id,s.created_by,s.creation_origin,s.kind,r.title,r.description,r.recurrence,r.first_date,r.last_date,
                    r.weekdays,r.local_time,r.duration_minutes,s.stop_from_date,s.current_revision_no,s.version
             FROM task_series s JOIN task_series_revision r ON r.series_id=s.id AND r.revision_no=s.current_revision_no
             JOIN series_medication sm ON sm.series_id=s.id AND sm.revision_no=s.current_revision_no
@@ -315,6 +341,14 @@ public class TaskRepository {
                 WHERE h.id=?
                 """,this::mapHandoff,id).stream().findFirst();
     }
+    public Optional<Handoff> findLatestHandoff(UUID occurrenceId){return jdbc.query("""
+            SELECT h.id,h.occurrence_id,h.reason,h.previous_assignee_id,prev.display_name,
+                   h.requested_by,req.display_name,h.status,h.accepted_by,acc.display_name,
+                   h.closed_at,h.close_reason,h.created_at,h.version
+            FROM handoff_request h LEFT JOIN app_user prev ON prev.id=h.previous_assignee_id
+            LEFT JOIN app_user req ON req.id=h.requested_by LEFT JOIN app_user acc ON acc.id=h.accepted_by
+            WHERE h.occurrence_id=? ORDER BY h.created_at DESC,h.id DESC LIMIT 1
+            """,this::mapHandoff,occurrenceId).stream().findFirst();}
     public boolean hasDeclined(UUID handoffId,UUID userId){return Boolean.TRUE.equals(jdbc.queryForObject(
             "SELECT EXISTS(SELECT 1 FROM handoff_response WHERE handoff_id=? AND user_id=?)",Boolean.class,handoffId,userId));}
     public Instant declineHandoff(UUID groupId,UUID handoffId,UUID userId,Instant now){
@@ -468,7 +502,7 @@ public class TaskRepository {
             r.getObject("performed_by",UUID.class),r.getString("performed_name"),instant(r,"completed_at"),r.getString("cancel_reason"),
             instant(r,"canceled_at"),r.getLong("version"));}
     private Series mapSeries(ResultSet r,int n)throws SQLException{Array a=r.getArray("weekdays");Object[] raw=a==null?new Object[0]:(Object[])a.getArray();List<Integer> weekdays=java.util.Arrays.stream(raw).map(value->((Number)value).intValue()).toList();return new Series(
-            r.getObject("id",UUID.class),r.getObject("group_id",UUID.class),r.getObject("created_by",UUID.class),r.getString("kind"),r.getString("title"),r.getString("description"),
+            r.getObject("id",UUID.class),r.getObject("group_id",UUID.class),r.getObject("created_by",UUID.class),r.getString("creation_origin"),r.getString("kind"),r.getString("title"),r.getString("description"),
             r.getString("recurrence"),r.getObject("first_date",LocalDate.class),r.getObject("last_date",LocalDate.class),weekdays,
             r.getObject("local_time",LocalTime.class),r.getInt("duration_minutes"),r.getObject("stop_from_date",LocalDate.class),
             r.getInt("current_revision_no"),r.getLong("version"));}
@@ -482,4 +516,6 @@ public class TaskRepository {
             r.getObject(6,LocalDate.class),r.getString(7),new TaskDtos.UserRef(r.getObject(8,UUID.class),r.getString(9)),
             r.getTimestamp(10).toInstant().atZone(java.time.ZoneId.of("Asia/Seoul")).toOffsetDateTime(),r.getObject(11,UUID.class));}
     private Instant instant(ResultSet r,String name)throws SQLException{Timestamp value=r.getTimestamp(name);return value==null?null:value.toInstant();}
+    public record RankedOccurrence(Occurrence occurrence,int rank){}
+    public record CalendarCount(LocalDate date,long total,long completed,long unassigned){}
 }

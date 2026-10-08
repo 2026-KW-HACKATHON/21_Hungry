@@ -33,7 +33,7 @@ class ApplicationTests {
     }
 
     @Test
-    void flywayCreatesTheTwentyEightApplicationTablesAndGuardRow() {
+    void flywayCreatesTheThirtyApplicationTablesAndGuardRow() {
         Integer tableCount = jdbcTemplate.queryForObject("""
                 SELECT count(*)
                 FROM information_schema.tables
@@ -45,7 +45,7 @@ class ApplicationTests {
                 "SELECT count(*) FROM hungry_test.schedule_guard WHERE id = 1",
                 Integer.class);
 
-        assertEquals(28, tableCount);
+        assertEquals(30, tableCount);
         assertEquals(1, guardCount);
     }
 

@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.YearMonth;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -80,7 +83,29 @@ public class TaskService {
         return new TaskDtos.Page<>(rows.stream().map(this::dto).toList(),next,more);
     }
 
-    public TaskDtos.Task detail(UUID occurrenceId,UUID userId){Occurrence value=requireOccurrence(occurrenceId);requireMember(value.groupId(),userId);return dto(value);}
+    public TaskDtos.Page<TaskDtos.Task> listDate(UUID groupId,UUID userId,LocalDate date,boolean mineOnly,Integer requestedLimit,String cursor){
+        requireMember(groupId,userId);if(date==null)throw validation("date가 필요합니다.");int limit=limit(requestedLimit);
+        DateCursor decoded=decodeDateCursor(cursor,groupId,userId,date,mineOnly);
+        Instant from=date.atStartOfDay(KST).toInstant(),to=date.plusDays(1).atStartOfDay(KST).toInstant();
+        List<TaskRepository.RankedOccurrence> rows=repository.listDate(groupId,userId,from,to,mineOnly,
+                decoded==null?null:decoded.rank(),decoded==null?null:decoded.time(),decoded==null?null:decoded.id(),limit+1);
+        boolean more=rows.size()>limit;if(more)rows=rows.subList(0,limit);
+        String next=more?encodeDateCursor(groupId,userId,date,mineOnly,rows.getLast()):null;
+        return new TaskDtos.Page<>(rows.stream().map(v->dto(v.occurrence(),userId)).toList(),next,more);
+    }
+
+    public TaskDtos.Calendar calendar(UUID groupId,UUID userId,YearMonth month){
+        requireMember(groupId,userId);if(month==null)throw validation("month가 필요합니다.");
+        LocalDate first=month.atDay(1),until=month.plusMonths(1).atDay(1);
+        Map<LocalDate,TaskRepository.CalendarCount> counts=repository.calendar(groupId,first.atStartOfDay(KST).toInstant(),until.atStartOfDay(KST).toInstant())
+                .stream().collect(java.util.stream.Collectors.toMap(TaskRepository.CalendarCount::date,v->v));
+        List<TaskDtos.CalendarDay> days=new ArrayList<>();
+        for(LocalDate d=first;d.isBefore(until);d=d.plusDays(1)){var c=counts.get(d);long total=c==null?0:c.total(),completed=c==null?0:c.completed(),unassigned=c==null?0:c.unassigned();
+            days.add(new TaskDtos.CalendarDay(d,total,completed,unassigned,total==0?"NONE":unassigned>0?"ATTENTION":"NORMAL"));}
+        return new TaskDtos.Calendar(month.toString(),days,"Asia/Seoul");
+    }
+
+    public TaskDtos.Task detail(UUID occurrenceId,UUID userId){Occurrence value=requireOccurrence(occurrenceId);requireMember(value.groupId(),userId);return dto(value,userId);}
     public TaskDtos.Series series(UUID seriesId,UUID userId){Series value=repository.findSeries(seriesId).orElseThrow(this::notFound);requireMember(value.groupId(),userId);
         return new TaskDtos.Series(value.id(),value.groupId(),value.kind(),value.title(),value.description(),rule(value),repository.seriesMedications(value.id(),value.currentRevisionNo()),
                 value.stopFromDate(),value.currentRevisionNo(),value.version());}
@@ -94,7 +119,7 @@ public class TaskService {
         return new com.kw.knowone.group.dto.GroupDtos.Home(groupId,target,homeList(mine,limit),homeList(unassigned,limit),
                 homeList(overdue,limit),repository.reviewEncounterCount(groupId));
     }
-    public TaskDtos.Page<TaskDtos.Task> linkedToEncounter(UUID encounterId,UUID userId,int requestedLimit){UUID groupId=repository.findEncounterGroup(encounterId).orElseThrow(this::notFound);requireMember(groupId,userId);int limit=Math.min(Math.max(requestedLimit,1),100);List<Occurrence> rows=repository.linkedToEncounter(encounterId,limit+1);boolean more=rows.size()>limit;if(more)rows=rows.subList(0,limit);return new TaskDtos.Page<>(rows.stream().map(this::dto).toList(),null,more);}
+    public TaskDtos.Page<TaskDtos.Task> linkedToEncounter(UUID encounterId,UUID userId,int requestedLimit){UUID groupId=repository.findEncounterGroup(encounterId).orElseThrow(this::notFound);requireMember(groupId,userId);int limit=Math.min(Math.max(requestedLimit,1),100);List<Occurrence> rows=repository.linkedToEncounter(encounterId,limit+1);boolean more=rows.size()>limit;if(more)rows=rows.subList(0,limit);return new TaskDtos.Page<>(rows.stream().map(v->dto(v,userId)).toList(),null,more);}
 
     public TaskDtos.SeriesEditPreview editPreview(UUID occurrenceId,UUID userId,TaskDtos.SeriesEditPreviewRequest request){
         Occurrence selected=requireOccurrence(occurrenceId);requireMember(selected.groupId(),userId);
@@ -135,9 +160,9 @@ public class TaskService {
         UUID handoff=null;if(!keep&&before.assigneeUserId()!=null)handoff=repository.openHandoff(before.groupId(),before.id(),"AVAILABILITY",before.assigneeUserId(),userId);
         if(before.assigneeUserId()==null&&repository.findOpenHandoff(before.id()).isEmpty())handoff=repository.openNoCandidate(before.groupId(),before.id());
         Occurrence after=requireOccurrence(before.id());events.audit(before.groupId(),userId,"TASK_OCCURRENCE_UPDATED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
-        if(handoff!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+handoff+":open",before.id(),handoff,null,after.version(),Map.of("schemaVersion",1,"reason",!keep?"AVAILABILITY":"NO_CANDIDATE"),now);
+        if(handoff!=null&&!keep)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+handoff+":open",before.id(),handoff,null,after.version(),Map.of("schemaVersion",1,"reason","AVAILABILITY"),now);
         events.syncOccurrenceNotifications(after.id(),now);
-        return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));
+        return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after,userId))));
     }
 
     private MutationResponse updateSeries(UUID occurrenceId,UUID userId,TaskDtos.UpdateRequest request,UUID requestId){
@@ -172,8 +197,7 @@ public class TaskService {
             revivedValues.add(requireOccurrence(before.id()));updated.add(before.id());
         }
         assignments.assignNew(revivedValues);for(Occurrence revived:revivedValues){Occurrence assigned=requireOccurrence(revived.id());UUID h=null;if(assigned.assigneeUserId()==null)h=repository.openNoCandidate(assigned.groupId(),assigned.id());
-            if(h!=null)events.taskNotification(assigned.groupId(),"HANDOFF_OPEN","handoff:"+h+":open",assigned.id(),h,null,assigned.version(),Map.of("schemaVersion",1,"reason","NO_CANDIDATE"),now);
-            else events.taskNotification(assigned.groupId(),"TASK_ASSIGNED","task:"+assigned.id()+":assignment:"+assigned.version(),assigned.id(),null,assigned.assigneeUserId(),assigned.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(assigned.id(),now);}
+            if(h==null)events.taskNotification(assigned.groupId(),"TASK_ASSIGNED","task:"+assigned.id()+":assignment:"+assigned.version(),assigned.id(),null,assigned.assigneeUserId(),assigned.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(assigned.id(),now);}
         List<UUID> created=generator.generateSeriesLocked(series.id(),requestId);
         Series after=repository.findSeries(series.id()).orElseThrow();
         events.audit(series.groupId(),userId,"TASK_SERIES_UPDATED","TASK_SERIES",series.id(),Map.of("version",series.version(),"revisionNo",series.currentRevisionNo()),Map.of("version",after.version(),"revisionNo",after.currentRevisionNo()),requestId);
@@ -208,14 +232,7 @@ public class TaskService {
         return mutations.execute(userId,"T03:"+groupId,key,request,()->requireMember(groupId,userId),()->doCreate(groupId,userId,request,key,requestId));
     }
     private MutationResponse doCreate(UUID groupId,UUID userId,TaskDtos.CreateRequest request,String key,UUID requestId){
-        validateCreate(request); Instant now=clock.instant(); LocalDate today=LocalDate.now(clock); LocalDate horizon=today.plusDays(14);
-        List<UUID> medicationIds=List.of();if("MEDICATION".equals(request.kind())){medicationIds=request.medicationIds().stream().distinct().toList();
-            if(medicationIds.size()!=request.medicationIds().size()||repository.medicationsByIds(groupId,medicationIds).size()!=medicationIds.size())throw validation("같은 공동체의 확정 처방만 사용할 수 있습니다.");
-            var existing=repository.findMedicationSeries(groupId,request.rule().recurrence(),request.rule().weekdays(),request.rule().localTime(),request.rule().durationMinutes());if(existing.isPresent()){Series series=existing.get();List<UUID> linked=repository.seriesMedications(series.id(),series.currentRevisionNo()).stream().map(TaskDtos.Medication::id).toList();
-                if(linked.containsAll(medicationIds))throw new ApiException(HttpStatus.CONFLICT,"DUPLICATE_MEDICATION_CONFLICT","동일 복약 계획에 이미 연결된 처방입니다.");int revision=series.currentRevisionNo()+1;LocalDate first=series.firstDate().isBefore(request.rule().firstDate())?series.firstDate():request.rule().firstDate();LocalDate last=series.lastDate().isAfter(request.rule().lastDate())?series.lastDate():request.rule().lastDate();
-                repository.insertRevision(series.id(),groupId,revision,series.title(),series.description(),series.recurrence(),first,last,series.weekdays(),series.localTime(),series.durationMinutes(),userId,now);repository.copySeriesMedications(groupId,series.id(),series.currentRevisionNo(),revision);for(UUID id:medicationIds)repository.linkSeriesMedication(groupId,series.id(),revision,id);
-                if(repository.advanceSeries(series.id(),series.version(),revision)!=1)throw versionConflict(series.version());repository.refreshFutureMedicationSnapshots(groupId,series.id(),revision,now);generator.generateSeriesLocked(series.id(),requestId);Series after=repository.findSeries(series.id()).orElseThrow();List<TaskDtos.Task> occurrences=repository.pendingOccurrenceIdsForMedications(medicationIds,now).stream().map(this::requireOccurrence).map(this::dto).toList();
-                return new MutationResponse(200,DataResponse.of(new TaskDtos.CreateResponse(series.id(),after.version(),rule(after),occurrences,new TaskDtos.GenerationWindow(today,horizon))));}}
+        validateCreate(request); Instant now=clock.instant();
         LocalDate last=request.rule().lastDate();
         if(last!=null&&!last.atTime(request.rule().localTime()).atZone(KST).toInstant().plus(Duration.ofMinutes(request.rule().durationMinutes())).isAfter(now))
             throw new ApiException(HttpStatus.UNPROCESSABLE_ENTITY,"VALIDATION_ERROR","전체가 과거인 일정은 생성할 수 없습니다.");
@@ -223,12 +240,11 @@ public class TaskService {
         repository.insertRevision(seriesId,groupId,1,request.title().trim(),request.description(),request.rule().recurrence(),
                 request.rule().firstDate(),request.rule().lastDate(),request.rule().weekdays(),request.rule().localTime(),
                 request.rule().durationMinutes(),userId,now);
-        if("MEDICATION".equals(request.kind()))for(UUID medicationId:medicationIds)repository.linkSeriesMedication(groupId,seriesId,1,medicationId);
         events.audit(groupId,userId,"TASK_SERIES_CREATED","TASK_SERIES",seriesId,null,
                 Map.of("kind",request.kind(),"recurrence","ONCE","version",0),requestId);
         List<TaskDtos.Task> occurrences=generator.generateSeriesLocked(seriesId,requestId).stream()
-                .map(this::requireOccurrence).map(this::dto).toList();
-        TaskDtos.CreateResponse result=new TaskDtos.CreateResponse(seriesId,0,request.rule(),occurrences,new TaskDtos.GenerationWindow(today,horizon));
+                .map(this::requireOccurrence).map(v->dto(v,userId)).toList();
+        TaskDtos.CreateResponse result=new TaskDtos.CreateResponse(seriesId,0,request.rule(),occurrences);
         return new MutationResponse(201,DataResponse.of(result));
     }
 
@@ -242,7 +258,7 @@ public class TaskService {
             Instant now=clock.instant();repository.acceptOpenHandoff(before.id(),target.userId(),now);repository.cancelPendingNotifications(before.id());
             Occurrence after=requireOccurrence(before.id());events.audit(before.groupId(),userId,"TASK_ASSIGNED_MANUAL","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
             events.taskNotification(before.groupId(),"TASK_ASSIGNED","task:"+before.id()+":assignment:"+after.version(),before.id(),null,target.userId(),after.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(after.id(),now);
-            return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));});
+            return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after,userId))));});
     }
 
     public IdempotentResult complete(UUID occurrenceId,UUID userId,TaskDtos.CompleteRequest request,String key,UUID requestId){
@@ -253,7 +269,7 @@ public class TaskService {
             repository.closeOpenHandoff(before.id(),"TASK_COMPLETED",now);repository.cancelPendingNotifications(before.id());repository.cancelPendingDeliveries(before.id());Occurrence after=requireOccurrence(before.id());
             events.audit(before.groupId(),userId,"TASK_COMPLETED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
             events.taskNotification(before.groupId(),"TASK_COMPLETED","task-completed:"+before.id()+":"+after.version(),before.id(),null,null,after.version(),Map.of("schemaVersion",1),now);
-            return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));});
+            return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after,userId))));});
     }
 
     public IdempotentResult reopen(UUID occurrenceId,UUID userId,TaskDtos.ReopenRequest request,String key,UUID requestId){
@@ -265,9 +281,8 @@ public class TaskService {
             if(repository.reopen(before.id(),before.version(),keep)!=1)throw versionConflict(before.version());
             Instant now=clock.instant();repository.cancelPendingNotifications(before.id());UUID handoff=null;if(!keep&&before.endsAt().isAfter(now))handoff=repository.openNoCandidate(before.groupId(),before.id());
             Occurrence after=requireOccurrence(before.id());events.audit(before.groupId(),userId,"TASK_REOPENED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
-            if(handoff!=null)events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+handoff+":open",before.id(),handoff,null,after.version(),Map.of("schemaVersion",1,"reason","NO_CANDIDATE"),now);
-            else events.taskNotification(before.groupId(),"TASK_REOPENED","task-reopened:"+before.id()+":"+after.version(),before.id(),null,after.assigneeUserId(),after.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(after.id(),now);
-            return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after))));});
+            if(handoff==null)events.taskNotification(before.groupId(),"TASK_REOPENED","task-reopened:"+before.id()+":"+after.version(),before.id(),null,after.assigneeUserId(),after.version(),Map.of("schemaVersion",1),now);events.syncOccurrenceNotifications(after.id(),now);
+            return new MutationResponse(200,DataResponse.of(new TaskDtos.OccurrenceResponse(dto(after,userId))));});
     }
 
     public IdempotentResult requestHandoff(UUID occurrenceId,UUID userId,TaskDtos.HandoffRequest request,String key,UUID requestId){
@@ -284,7 +299,7 @@ public class TaskService {
             events.audit(before.groupId(),userId,"HANDOFF_REQUESTED","TASK_OCCURRENCE",before.id(),event(before),event(after),requestId);
             events.taskNotification(before.groupId(),"HANDOFF_OPEN","handoff:"+id+":open",before.id(),id,null,after.version(),Map.of("schemaVersion",1,"reason","USER_REQUEST"),now);
             events.syncOccurrenceNotifications(after.id(),now);
-            return new MutationResponse(201,DataResponse.of(new TaskDtos.HandoffResponse(dto(after),handoffDto(handoff))));});
+            return new MutationResponse(201,DataResponse.of(new TaskDtos.HandoffResponse(dto(after,userId),handoffDto(handoff))));});
     }
 
     public IdempotentResult acceptHandoff(UUID handoffId,UUID userId,TaskDtos.HandoffAcceptRequest request,String key,UUID requestId){
@@ -295,7 +310,7 @@ public class TaskService {
             if(!"OPEN".equals(before.status())){
                 if("EXPIRED".equals(before.status()))throw new ApiException(HttpStatus.CONFLICT,"TASK_OVERDUE","기한이 지난 일정입니다.");
                 throw new ApiException(HttpStatus.CONFLICT,"ALREADY_ASSIGNED","이미 종료된 인계 요청입니다.");}
-            if(before.version()!=request.expectedVersion()||occurrence.version()!=request.expectedOccurrenceVersion())throw versionConflict(occurrence.version());
+            if(before.version()!=request.expectedVersion()||occurrence.version()!=request.expectedTaskVersion())throw versionConflict(occurrence.version());
             if(!"PENDING".equals(occurrence.status())||occurrence.assigneeUserId()!=null)throw new ApiException(HttpStatus.CONFLICT,"ALREADY_ASSIGNED","이미 담당자가 정해졌습니다.");
             if(!occurrence.endsAt().isAfter(clock.instant()))throw new ApiException(HttpStatus.CONFLICT,"TASK_OVERDUE","기한이 지난 일정입니다.");
             GroupMember member=groups.findActiveMembership(occurrence.groupId(),userId).orElseThrow(()->new ApiException(HttpStatus.FORBIDDEN,"NOT_MEMBER","ACTIVE 구성원이 아닙니다."));
@@ -307,7 +322,7 @@ public class TaskService {
             Handoff afterHandoff=repository.findHandoff(before.id()).orElseThrow();Occurrence after=requireOccurrence(occurrence.id());
             events.audit(occurrence.groupId(),userId,"HANDOFF_ACCEPTED","TASK_OCCURRENCE",occurrence.id(),event(occurrence),event(after),requestId);
             events.taskNotification(occurrence.groupId(),"HANDOFF_ACCEPTED","handoff:"+before.id()+":accepted",occurrence.id(),before.id(),null,after.version(),Map.of("schemaVersion",1,"acceptedBy",userId),now);events.syncOccurrenceNotifications(after.id(),now);
-            return new MutationResponse(200,DataResponse.of(new TaskDtos.HandoffResponse(dto(after),handoffDto(afterHandoff))));});
+            return new MutationResponse(200,DataResponse.of(new TaskDtos.HandoffResponse(dto(after,userId),handoffDto(afterHandoff))));});
     }
 
     public IdempotentResult declineHandoff(UUID handoffId,UUID userId,TaskDtos.HandoffDeclineRequest request,String key,UUID requestId){
@@ -326,7 +341,7 @@ public class TaskService {
         requireMember(groupId,userId);if("OPEN".equals(status))handoffExpiry.expireGroup(groupId);if(!Set.of("OPEN","ACCEPTED","CLOSED","EXPIRED").contains(status))throw validation("status가 올바르지 않습니다.");
         int limit=limit(requestedLimit);List<Handoff> rows=repository.listHandoffs(groupId,status,limit+1,cursors.decode(cursor));boolean more=rows.size()>limit;if(more)rows=rows.subList(0,limit);
         String next=more?cursors.encode(rows.getLast().createdAt(),rows.getLast().id()):null;
-        return new TaskDtos.Page<>(rows.stream().map(value->new TaskDtos.HandoffItem(value.id(),value.occurrenceId(),value.reason(),ref(value.previousId(),value.previousName()),ref(value.requestedBy(),value.requestedName()),value.status(),ref(value.acceptedBy(),value.acceptedName()),value.closedAt()==null?null:atKst(value.closedAt()),value.closeReason(),value.version(),dto(requireOccurrence(value.occurrenceId())))).toList(),next,more);
+        return new TaskDtos.Page<>(rows.stream().map(value->new TaskDtos.HandoffItem(value.id(),value.occurrenceId(),value.reason(),ref(value.previousId(),value.previousName()),ref(value.requestedBy(),value.requestedName()),value.status(),ref(value.acceptedBy(),value.acceptedName()),value.closedAt()==null?null:atKst(value.closedAt()),value.closeReason(),value.version(),dto(requireOccurrence(value.occurrenceId()),userId))).toList(),next,more);
     }
 
     public TaskDtos.Page<TaskDtos.History> history(UUID occurrenceId,UUID userId,Integer requestedLimit,String cursor){
@@ -467,7 +482,7 @@ public class TaskService {
     private int limit(Integer value){int result=value==null?20:value;if(result<1||result>100)throw validation("limit은 1~100이어야 합니다.");return result;}
 
     private TaskDtos.Task dto(Occurrence value){return dto(value,null);}
-    private TaskDtos.Task dto(Occurrence value,UUID viewer){Handoff open=repository.findOpenHandoff(value.id()).orElse(null);boolean eligible=viewer!=null&&open!=null&&"PENDING".equals(value.status())&&value.assigneeUserId()==null&&value.endsAt().isAfter(clock.instant());boolean declined=eligible&&repository.hasDeclined(open.id(),viewer);String state=!eligible?"NOT_APPLICABLE":declined?"RESOLVED":"UNRESOLVED";return new TaskDtos.Task(value.id(),value.groupId(),value.seriesId(),value.seriesVersion(),value.revisionNo(),value.anchorDate(),value.kind(),value.title(),value.description(),atKst(value.startsAt()),atKst(value.endsAt()),atKst(value.endsAt()),value.status(),ref(value.assigneeUserId(),value.assigneeName()),value.assigneeUserId()==null?null:value.assignmentOrigin(),handoffDto(open),"PENDING".equals(value.status())&&!value.endsAt().isAfter(clock.instant()),value.override(),repository.occurrenceMedications(value.id()),value.completedAt()==null?null:new TaskDtos.Completion(ref(value.performedBy(),value.performedByName()),ref(value.completedBy(),value.completedByName()),atKst(value.completedAt())),value.canceledAt()==null?null:new TaskDtos.Cancellation(value.cancelReason(),atKst(value.canceledAt())),repository.sourceEncounterIds(value.seriesId(),value.id()),value.version(),state,eligible&&!declined&&assignments.canAssign(viewer,value.startsAt(),value.endsAt(),value.id()),eligible&&!declined,viewer!=null&&viewer.equals(value.assigneeUserId())&&"PENDING".equals(value.status())&&value.endsAt().isAfter(clock.instant()));}
+    private TaskDtos.Task dto(Occurrence value,UUID viewer){Handoff open=repository.findOpenHandoff(value.id()).orElse(null);Handoff latest=open!=null?open:repository.findLatestHandoff(value.id()).orElse(null);boolean unassigned=viewer!=null&&latest!=null&&"PENDING".equals(value.status())&&value.assigneeUserId()==null;boolean eligible=unassigned&&open!=null&&value.endsAt().isAfter(clock.instant());boolean declined=unassigned&&repository.hasDeclined(latest.id(),viewer);String state=!unassigned?"NOT_APPLICABLE":declined?"RESOLVED":"UNRESOLVED";return new TaskDtos.Task(value.id(),value.groupId(),value.seriesId(),value.seriesVersion(),value.revisionNo(),value.anchorDate(),value.kind(),value.title(),value.description(),atKst(value.startsAt()),atKst(value.endsAt()),atKst(value.endsAt()),value.status(),ref(value.assigneeUserId(),value.assigneeName()),value.assigneeUserId()==null?null:value.assignmentOrigin(),handoffDto(open),"PENDING".equals(value.status())&&!value.endsAt().isAfter(clock.instant()),value.override(),repository.occurrenceMedications(value.id()),value.completedAt()==null?null:new TaskDtos.Completion(ref(value.performedBy(),value.performedByName()),ref(value.completedBy(),value.completedByName()),atKst(value.completedAt())),value.canceledAt()==null?null:new TaskDtos.Cancellation(value.cancelReason(),atKst(value.canceledAt())),repository.sourceEncounterIds(value.seriesId(),value.id()),value.version(),state,eligible&&!declined&&assignments.canAssign(viewer,value.startsAt(),value.endsAt(),value.id()),eligible&&!declined,viewer!=null&&viewer.equals(value.assigneeUserId())&&"PENDING".equals(value.status())&&value.endsAt().isAfter(clock.instant()));}
     private TaskDtos.Handoff handoffDto(Handoff value){return value==null?null:new TaskDtos.Handoff(value.id(),value.occurrenceId(),value.reason(),ref(value.previousId(),value.previousName()),ref(value.requestedBy(),value.requestedName()),value.status(),ref(value.acceptedBy(),value.acceptedName()),value.closedAt()==null?null:atKst(value.closedAt()),value.closeReason(),value.version());}
     private TaskDtos.UserRef ref(UUID id,String name){return id==null?null:new TaskDtos.UserRef(id,name);}
     private TaskDtos.Rule rule(Series value){return new TaskDtos.Rule(value.recurrence(),value.firstDate(),value.lastDate(),value.weekdays(),value.localTime(),value.durationMinutes());}
@@ -480,4 +495,7 @@ public class TaskService {
     private ApiException versionConflict(long current){return new ApiException(HttpStatus.CONFLICT,"VERSION_CONFLICT","일정이 변경되었습니다.",Map.of("currentVersion",current));}
     private ApiException invalidState(String message){return new ApiException(HttpStatus.CONFLICT,"INVALID_STATE",message);}
     private ApiException notFound(){return new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","일정을 찾을 수 없습니다.");}
+    private String encodeDateCursor(UUID groupId,UUID userId,LocalDate date,boolean mine,TaskRepository.RankedOccurrence row){String raw=groupId+"|"+userId+"|"+date+"|"+mine+"|"+row.rank()+"|"+row.occurrence().startsAt()+"|"+row.occurrence().id();return Base64.getUrlEncoder().withoutPadding().encodeToString(raw.getBytes(StandardCharsets.UTF_8));}
+    private DateCursor decodeDateCursor(String cursor,UUID groupId,UUID userId,LocalDate date,boolean mine){if(cursor==null||cursor.isBlank())return null;try{String[] p=new String(Base64.getUrlDecoder().decode(cursor),StandardCharsets.UTF_8).split("\\|",-1);if(p.length!=7||!p[0].equals(groupId.toString())||!p[1].equals(userId.toString())||!p[2].equals(date.toString())||!p[3].equals(Boolean.toString(mine)))throw new IllegalArgumentException();return new DateCursor(Integer.parseInt(p[4]),Instant.parse(p[5]),UUID.fromString(p[6]));}catch(RuntimeException e){throw new ApiException(HttpStatus.BAD_REQUEST,"INVALID_CURSOR","커서가 올바르지 않습니다.");}}
+    private record DateCursor(int rank,Instant time,UUID id){}
 }

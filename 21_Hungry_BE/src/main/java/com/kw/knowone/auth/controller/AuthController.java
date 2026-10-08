@@ -12,6 +12,8 @@ import com.kw.knowone.auth.security.AuthenticatedUser;
 import com.kw.knowone.auth.service.AuthService;
 import com.kw.knowone.auth.service.AuthService.DemoAccount;
 import com.kw.knowone.common.web.DataResponse;
+import com.kw.knowone.common.web.ApiException;
+import org.springframework.http.HttpStatus;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -27,12 +29,12 @@ public class AuthController {
 
     @GetMapping("/auth/demo-accounts")
     DataResponse<DemoAccountsResponse> demoAccounts() {
-        return DataResponse.of(new DemoAccountsResponse(authService.demoAccounts()));
+        throw retired();
     }
 
     @PostMapping("/auth/demo-login")
     DataResponse<AuthService.LoginResult> login(@Valid @RequestBody DemoLoginRequest request) {
-        return DataResponse.of(authService.login(request.loginKey()));
+        throw retired();
     }
 
     @PostMapping("/auth/signup")
@@ -62,4 +64,5 @@ public class AuthController {
     public record SignupRequest(@NotBlank @Size(max = 20) String phoneNumber, @NotBlank String accountRole,
             @Size(max = 50) String displayName) { }
     public record PhoneLoginRequest(@NotBlank @Size(max = 20) String phoneNumber) { }
+    private ApiException retired(){return new ApiException(HttpStatus.GONE,"ENDPOINT_RETIRED","폐기된 API입니다.");}
 }

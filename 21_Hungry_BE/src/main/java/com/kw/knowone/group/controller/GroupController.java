@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kw.knowone.auth.security.AuthenticatedUser;
 import com.kw.knowone.common.idempotency.IdempotentResult;
 import com.kw.knowone.common.web.DataResponse;
+import com.kw.knowone.common.web.ApiException;
+import org.springframework.http.HttpStatus;
 import com.kw.knowone.common.web.RequestIdFilter;
 import com.kw.knowone.group.dto.GroupDtos;
 import com.kw.knowone.group.service.GroupService;
@@ -46,12 +48,12 @@ public class GroupController {
     @GetMapping("/{groupId}/home")
     DataResponse<GroupDtos.Home> home(@PathVariable UUID groupId,@RequestParam(required=false)LocalDate date,
             @RequestParam(required=false)Integer limit,@AuthenticationPrincipal AuthenticatedUser principal){
-        return DataResponse.of(taskService.home(groupId,principal.userId(),date,limit));
+        throw new ApiException(HttpStatus.GONE,"ENDPOINT_RETIRED","폐기된 API입니다.");
     }
 
     @GetMapping
     DataResponse<GroupDtos.Items<GroupDtos.Group>> groups(@AuthenticationPrincipal AuthenticatedUser principal) {
-        return DataResponse.of(groupService.groups(principal.userId()));
+        throw retired();
     }
 
     @GetMapping("/{groupId}")
@@ -70,8 +72,7 @@ public class GroupController {
     ResponseEntity<String> join(@PathVariable UUID groupId, @Valid @RequestBody GroupDtos.JoinRequest body,
             @RequestHeader(value = "Idempotency-Key", required = false) String idempotencyKey,
             @AuthenticationPrincipal AuthenticatedUser principal, HttpServletRequest request) {
-        return response(groupService.join(groupId, principal.userId(), body, idempotencyKey,
-                UUID.fromString(RequestIdFilter.current(request))));
+        throw retired();
     }
 
     @PostMapping("/{groupId}/join")
@@ -83,15 +84,18 @@ public class GroupController {
     }
 
     @GetMapping("/{groupId}/join-requests")
-    DataResponse<GroupDtos.Items<GroupDtos.PendingJoin>> joinRequests(@PathVariable UUID groupId,
+    DataResponse<GroupDtos.JoinRequestPage> joinRequests(@PathVariable UUID groupId,
+            @RequestParam(required=false)Integer limit,@RequestParam(required=false)String cursor,
             @AuthenticationPrincipal AuthenticatedUser principal){
-        return DataResponse.of(groupService.pendingJoins(groupId,principal.userId()));
+        return DataResponse.of(groupService.pendingJoins(groupId,principal.userId(),limit,cursor));
     }
 
     @PostMapping("/{groupId}/join-requests/{joinRequestId}/decision")
-    DataResponse<GroupDtos.JoinRequestView> decideJoin(@PathVariable UUID groupId,@PathVariable UUID joinRequestId,
-            @Valid @RequestBody GroupDtos.JoinDecisionRequest body,@AuthenticationPrincipal AuthenticatedUser principal){
-        return DataResponse.of(groupService.decideJoin(groupId,joinRequestId,principal.userId(),body));
+    ResponseEntity<String> decideJoin(@PathVariable UUID groupId,@PathVariable UUID joinRequestId,
+            @Valid @RequestBody GroupDtos.JoinDecisionRequest body,@RequestHeader(value="Idempotency-Key",required=false)String key,
+            @AuthenticationPrincipal AuthenticatedUser principal,HttpServletRequest request){
+        return response(groupService.decideJoin(groupId,joinRequestId,principal.userId(),body,key,
+                UUID.fromString(RequestIdFilter.current(request))));
     }
 
     @GetMapping("/{groupId}/members")
@@ -111,4 +115,5 @@ public class GroupController {
     private ResponseEntity<String> response(IdempotentResult result) {
         return ResponseEntity.status(result.status()).contentType(MediaType.APPLICATION_JSON).body(result.body());
     }
+    private ApiException retired(){return new ApiException(HttpStatus.GONE,"ENDPOINT_RETIRED","폐기된 API입니다.");}
 }

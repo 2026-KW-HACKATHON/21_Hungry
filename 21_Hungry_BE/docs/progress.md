@@ -247,3 +247,14 @@ N01~N08은 모두 코드 및 PostgreSQL 자동 테스트 완료다. 실제 push 
 스키마 거절과 근거/시간/반복 계약을 진단하는 합성 재호출이 있었으므로 위 수치는 성공 로그에서 관찰한 개별 호출 값이지 OpenAI 계정 전체 청구량 합계가 아니다. 실패 응답 원문·API 키·실데이터는 로그에 기록하지 않았다. 실제 모델 출력은 매번 서버 검증을 통과해야 하며 이번 성공을 임의 입력의 정확도 보장으로 일반화하지 않는다.
 
 전체 테스트 중 Phase 7의 한 테스트가 DB `now()`로 due_at을 만들고 Java Clock으로 즉시 claim해 한 번 빈 claim이 발생했다. 실제 lease/state 결함이나 background poller 경합은 아니며, 같은 `Instant`를 insert/claim/expand에 전달하도록 수정한 뒤 집중 3회와 전체 회귀를 통과했다. 복원 첫 기동에서는 prod profile의 실제 OpenAI adapter가 다중 생성자 중 주입 생성자를 선택하지 못하는 결함을 발견해 `@Autowired`를 명시하고 prod-context 회귀를 추가했다.
+
+## API v1.2 전체 계약 전환
+
+갱신: 2026-10-08, Asia/Seoul.
+
+- A01/A02, G08, N03/N04 폐기 경로는 `410 ENDPOINT_RETIRED`로 전환했고 A05/A06 전화번호 가입·로그인에는 `PHONE_AUTH_ENABLED` 설정을 연결했다.
+- G01~G12의 단일 공동체, 첫 자녀/승인 대기, 재가입, 역할 1/2, 탈퇴, 승인 목록 페이지네이션, 승인·거절·취소 멱등 응답과 audit를 반영했다.
+- T01 날짜별 개인 rank/cursor, T17 월 전체 캘린더, T03 수동 단건·horizon 밖 즉시 생성, T10 담당자 본인 해제, T11/T16 개인 수락·거절 필드와 capability를 반영했다.
+- 최초 `NO_CANDIDATE`는 즉시 인계 이벤트를 만들지 않고, 09시 digest 및 `HANDOFF_OPEN` 확장/전송 단계에서 사용자별 거절 상태를 재검증한다.
+- E05 파일별 `documentType` 계약과 로컬 Web Push smoke의 A06 로그인 흐름을 회귀 테스트 및 문서에 맞췄다.
+- 격리 PostgreSQL 18.6의 `hungry_test` 스키마에서 `gradlew.bat clean test bootJar`를 실행해 Flyway V1~V3, 15 suites / 105 tests / 실패·오류·skip 0 및 배포 JAR 생성을 확인했다.

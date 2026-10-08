@@ -1,6 +1,7 @@
 package com.kw.knowone.task.controller;
 
-import java.time.Instant;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.UUID;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -34,13 +35,14 @@ public class TaskController {
 
     @GetMapping("/care-groups/{groupId}/tasks")
     DataResponse<TaskDtos.Page<TaskDtos.Task>> list(@PathVariable UUID groupId,
-            @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) Instant from,
-            @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME) Instant to,
-            @RequestParam(required=false) String executionStatus,@RequestParam(required=false) UUID assigneeUserId,
-            @RequestParam(defaultValue="false") boolean unassigned,@RequestParam(defaultValue="false") boolean overdue,
-            @RequestParam(required=false) UUID encounterId,@RequestParam(required=false) Integer limit,
+            @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate date,
+            @RequestParam(defaultValue="false") boolean mineOnly,@RequestParam(required=false) Integer limit,
             @RequestParam(required=false) String cursor,@AuthenticationPrincipal AuthenticatedUser user){
-        return DataResponse.of(service.list(groupId,user.userId(),from,to,executionStatus,assigneeUserId,unassigned,overdue,encounterId,limit,cursor));}
+        return DataResponse.of(service.listDate(groupId,user.userId(),date,mineOnly,limit,cursor));}
+
+    @GetMapping("/care-groups/{groupId}/calendar")
+    DataResponse<TaskDtos.Calendar> calendar(@PathVariable UUID groupId,@RequestParam YearMonth month,
+            @AuthenticationPrincipal AuthenticatedUser user){return DataResponse.of(service.calendar(groupId,user.userId(),month));}
 
     @GetMapping("/tasks/{occurrenceId}")
     DataResponse<TaskDtos.Task> detail(@PathVariable UUID occurrenceId,@AuthenticationPrincipal AuthenticatedUser user){return DataResponse.of(service.detail(occurrenceId,user.userId()));}

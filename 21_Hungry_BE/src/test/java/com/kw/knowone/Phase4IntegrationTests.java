@@ -53,10 +53,10 @@ class Phase4IntegrationTests {
 
     @Test void dailyWeeklyHorizonAndGeneratorRetryAreIdempotent()throws Exception{
         String token=login("demo-caregiver-1");LocalDate first=LocalDate.now(KST).plusDays(1);
-        JsonNode daily=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("DAILY",first,first.plusDays(3),"[]","매일"),token,"daily"));
+        JsonNode daily=createRecurring("DAILY",first,first.plusDays(3),List.of(),"매일");
         assertEquals(4,daily.get("occurrences").size());UUID dailyId=UUID.fromString(daily.get("seriesId").asText());
         int weekday=first.getDayOfWeek().getValue();
-        JsonNode weekly=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("WEEKLY",first,first.plusDays(13),"["+weekday+"]","주간"),token,"weekly"));
+        JsonNode weekly=createRecurring("WEEKLY",first,first.plusDays(13),List.of(weekday),"주간");
         assertEquals(2,weekly.get("occurrences").size());UUID weeklyId=UUID.fromString(weekly.get("seriesId").asText());
         int before=count(dailyId)+count(weeklyId);generator.scheduledGenerate();generator.scheduledGenerate();
         CompletableFuture<Void> firstRun=CompletableFuture.runAsync(generator::scheduledGenerate);
@@ -70,7 +70,7 @@ class Phase4IntegrationTests {
 
     @Test void occurrenceAndSeriesEditKeepAnchorThenDeletionUsesAnchorBoundary()throws Exception{
         String token=login("demo-caregiver-1");LocalDate first=LocalDate.now(KST).plusDays(1);
-        JsonNode created=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("DAILY",first,first.plusDays(3),"[]","수정"),token,"edit-create"));
+        JsonNode created=createRecurring("DAILY",first,first.plusDays(3),List.of(),"수정");
         JsonNode selected=created.get("occurrences").get(0);UUID id=UUID.fromString(selected.get("id").asText());UUID series=UUID.fromString(created.get("seriesId").asText());
         String moved="{\"scope\":\"OCCURRENCE\",\"expectedVersion\":0,\"patch\":{\"startsAt\":\""+first.plusDays(1)+"T18:00:00+09:00\",\"endsAt\":\""+first.plusDays(1)+"T18:30:00+09:00\"}}";
         JsonNode movedTask=data(send("PATCH","/api/v1/tasks/"+id,moved,token,"move-one")).get("occurrence");
@@ -92,20 +92,21 @@ class Phase4IntegrationTests {
     }
 
     @Test void handoffRequestAcceptListAndHomeUseCurrentTaskData()throws Exception{
-        String requester=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
-        JsonNode task=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",once(date,"19:00","인계"),requester,"handoff-create")).get("occurrences").get(0);
+        String creator=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
+        JsonNode task=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",once(date,"19:00","인계"),creator,"handoff-create")).get("occurrences").get(0);
         UUID taskId=UUID.fromString(task.get("id").asText());
+        String requester=task.get("assignee").get("id").asText().equals(CAREGIVER.toString())?creator:login("demo-caregiver-3");
         JsonNode requested=data(send("POST","/api/v1/tasks/"+taskId+"/handoffs","{\"expectedVersion\":0}",requester,"handoff-request"));
         UUID handoffId=UUID.fromString(requested.get("handoff").get("id").asText());
-        String second=login("demo-caregiver-3"),body="{\"expectedVersion\":0,\"expectedOccurrenceVersion\":1}";
+        String second=requester.equals(creator)?login("demo-caregiver-3"):creator,body="{\"expectedVersion\":0,\"expectedTaskVersion\":1}";
         CompletableFuture<HttpResponse<String>> a=client.sendAsync(request("POST","/api/v1/handoffs/"+handoffId+"/accept",body,requester,"handoff-accept-a"),HttpResponse.BodyHandlers.ofString());
         CompletableFuture<HttpResponse<String>> b=client.sendAsync(request("POST","/api/v1/handoffs/"+handoffId+"/accept",body,second,"handoff-accept-b"),HttpResponse.BodyHandlers.ofString());
         HttpResponse<String> ar=a.join(),br=b.join();assertEquals(List.of(200,409),java.util.stream.Stream.of(ar.statusCode(),br.statusCode()).sorted().toList());
         HttpResponse<String> accepted=ar.statusCode()==200?ar:br;String winner=ar.statusCode()==200?requester:second;
         assertEquals("HANDOFF",data(accepted).get("occurrence").get("assignmentOrigin").asText());
         assertEquals(1,data(send("GET","/api/v1/care-groups/"+GROUP+"/handoffs?status=ACCEPTED",null,winner,null)).get("items").size());
-        JsonNode home=data(send("GET","/api/v1/care-groups/"+GROUP+"/home?date="+date,null,winner,null));
-        assertEquals(taskId.toString(),home.get("todayMyTasks").get("items").get(0).get("id").asText());assertEquals(0,home.get("reviewEncounterCount").asInt());
+        JsonNode tasks=data(send("GET","/api/v1/care-groups/"+GROUP+"/tasks?date="+date,null,winner,null));
+        assertEquals(taskId.toString(),tasks.get("items").get(0).get("id").asText());
     }
 
     @Test void fourHourBundleUsesPreAssignmentCountsAndDoesNotChain()throws Exception{
@@ -120,11 +121,11 @@ class Phase4IntegrationTests {
         String token=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
         JsonNode task=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",once(date,"20:00","탈퇴"),token,"leave-create")).get("occurrences").get(0);
         UUID assigned=UUID.fromString(task.get("assignee").get("id").asText());String assignedToken=assigned.equals(CAREGIVER)?token:login("demo-caregiver-3");
-        jdbc.update("INSERT INTO group_member(id,group_id,user_id,role,priority) VALUES (gen_random_uuid(),'10000000-0000-4000-8000-000000000002',?,'CAREGIVER',2)",assigned);
         jdbc.update("INSERT INTO push_subscription(id,user_id,endpoint,endpoint_hash,p256dh,auth_secret) VALUES (gen_random_uuid(),?,'https://push.example/' || ?::text,decode(repeat('00',32),'hex'),'key','secret')",assigned,assigned);
         long version=jdbc.queryForObject("SELECT version FROM group_member WHERE group_id=? AND user_id=?",Long.class,GROUP,assigned);
         HttpResponse<String> left=send("POST","/api/v1/care-groups/"+GROUP+"/memberships/me/leave","{\"expectedVersion\":"+version+"}",assignedToken,"leave");
-        assertEquals(200,left.statusCode(),left.body());assertEquals("LEFT",data(left).get("membershipStatus").asText());
+        assertEquals(200,left.statusCode(),left.body());assertEquals("LEFT",data(left).get("membership").get("status").asText());
+        jdbc.update("INSERT INTO group_member(id,group_id,user_id,role,priority) VALUES (gen_random_uuid(),'10000000-0000-4000-8000-000000000002',?,'CAREGIVER',2)",assigned);
         assertEquals(403,send("GET","/api/v1/care-groups/"+GROUP,null,assignedToken,null).statusCode());
         assertEquals(200,send("GET","/api/v1/care-groups/10000000-0000-4000-8000-000000000002",null,assignedToken,null).statusCode());
         assertEquals(200,send("GET","/api/v1/me",null,assignedToken,null).statusCode());
@@ -134,7 +135,7 @@ class Phase4IntegrationTests {
 
     @Test void userOneTombstoneSurvivesExplicitSeriesRuleEdit()throws Exception{
         String token=login("demo-caregiver-1");LocalDate first=LocalDate.now(KST).plusDays(1);
-        JsonNode created=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("DAILY",first,first.plusDays(2),"[]","취소 보존"),token,"tombstone-create"));
+        JsonNode created=createRecurring("DAILY",first,first.plusDays(2),List.of(),"취소 보존");
         UUID firstId=UUID.fromString(created.get("occurrences").get(0).get("id").asText());UUID secondId=UUID.fromString(created.get("occurrences").get(1).get("id").asText());
         JsonNode deletePreview=data(send("POST","/api/v1/tasks/"+secondId+"/deletion-preview","{\"scope\":\"OCCURRENCE\",\"expectedVersion\":0}",token,null));
         assertEquals(200,send("DELETE","/api/v1/tasks/"+secondId,"{\"scope\":\"OCCURRENCE\",\"expectedVersion\":0,\"previewToken\":"+quote(deletePreview.get("previewToken").asText())+"}",token,"one-delete").statusCode());
@@ -147,7 +148,7 @@ class Phase4IntegrationTests {
 
     @Test void explicitRuleEditRevivesOnlyRuleChangedAndNeverUserFuture()throws Exception{
         String token=login("demo-caregiver-1");LocalDate first=LocalDate.now(KST).plusDays(1);
-        JsonNode created=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("DAILY",first,first.plusDays(4),"[]","규칙 복구"),token,"rule-create"));
+        JsonNode created=createRecurring("DAILY",first,first.plusDays(4),List.of(),"규칙 복구");
         UUID selected=UUID.fromString(created.get("occurrences").get(0).get("id").asText());UUID excluded=UUID.fromString(created.get("occurrences").get(1).get("id").asText());
         int weekday=first.getDayOfWeek().getValue();JsonNode p1=data(send("POST","/api/v1/tasks/"+selected+"/series-edit-preview","{\"expectedVersion\":0,\"expectedSeriesVersion\":0,\"patch\":{\"recurrence\":\"WEEKLY\",\"weekdays\":["+weekday+"]}}",token,null));
         assertEquals(200,send("PATCH","/api/v1/tasks/"+selected,"{\"scope\":\"SERIES_ALL_PENDING\",\"expectedVersion\":0,\"expectedSeriesVersion\":0,\"previewToken\":"+quote(p1.get("previewToken").asText())+",\"patch\":{\"recurrence\":\"WEEKLY\",\"weekdays\":["+weekday+"]}}",token,"weekly-rule").statusCode());
@@ -157,7 +158,7 @@ class Phase4IntegrationTests {
         assertEquals(200,send("PATCH","/api/v1/tasks/"+selected,"{\"scope\":\"SERIES_ALL_PENDING\",\"expectedVersion\":"+occurrenceVersion+",\"expectedSeriesVersion\":"+seriesVersion+",\"previewToken\":"+quote(p2.get("previewToken").asText())+",\"patch\":{\"recurrence\":\"DAILY\",\"weekdays\":[]}}",token,"daily-rule").statusCode());
         assertEquals("PENDING",jdbc.queryForObject("SELECT status FROM task_occurrence WHERE id=?",String.class,excluded));assertNull(jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,excluded));
 
-        JsonNode future=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",recurring("DAILY",first,first.plusDays(3),"[]","사용자 미래 취소"),token,"future-create"));UUID boundary=UUID.fromString(future.get("occurrences").get(1).get("id").asText());UUID keptCanceled=UUID.fromString(future.get("occurrences").get(2).get("id").asText());
+        JsonNode future=createRecurring("DAILY",first,first.plusDays(3),List.of(),"사용자 미래 취소");UUID boundary=UUID.fromString(future.get("occurrences").get(1).get("id").asText());UUID keptCanceled=UUID.fromString(future.get("occurrences").get(2).get("id").asText());
         JsonNode dp=data(send("POST","/api/v1/tasks/"+boundary+"/deletion-preview","{\"scope\":\"SERIES_FROM_SELECTED\",\"expectedVersion\":0,\"expectedSeriesVersion\":0}",token,null));assertEquals(200,send("DELETE","/api/v1/tasks/"+boundary,"{\"scope\":\"SERIES_FROM_SELECTED\",\"expectedVersion\":0,\"expectedSeriesVersion\":0,\"previewToken\":"+quote(dp.get("previewToken").asText())+"}",token,"future-delete").statusCode());
         assertEquals("USER_FUTURE",jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,keptCanceled));generator.scheduledGenerate();assertEquals("CANCELED",jdbc.queryForObject("SELECT status FROM task_occurrence WHERE id=?",String.class,keptCanceled));assertEquals("USER_FUTURE",jdbc.queryForObject("SELECT cancel_reason FROM task_occurrence WHERE id=?",String.class,keptCanceled));
     }
@@ -166,7 +167,7 @@ class Phase4IntegrationTests {
         String token=login("demo-caregiver-1");UUID handoff=UUID.randomUUID();
         jdbc.update("UPDATE task_occurrence SET starts_at=now()-interval '2 hour',ends_at=now()-interval '1 hour',assignee_user_id=NULL,assignment_origin=NULL WHERE id=?",EXISTING);
         jdbc.update("INSERT INTO handoff_request(id,group_id,occurrence_id,reason,status) VALUES (?,?,?,'NO_CANDIDATE','OPEN')",handoff,GROUP,EXISTING);
-        HttpResponse<String> refused=send("POST","/api/v1/handoffs/"+handoff+"/accept","{\"expectedVersion\":0,\"expectedOccurrenceVersion\":0}",token,"expired-accept");
+        HttpResponse<String> refused=send("POST","/api/v1/handoffs/"+handoff+"/accept","{\"expectedVersion\":0,\"expectedTaskVersion\":0}",token,"expired-accept");
         assertEquals(409,refused.statusCode(),refused.body());assertEquals("EXPIRED",jdbc.queryForObject("SELECT status FROM handoff_request WHERE id=?",String.class,handoff));
         LocalDate tomorrow=LocalDate.now(KST).plusDays(1);String move="{\"scope\":\"OCCURRENCE\",\"expectedVersion\":0,\"patch\":{\"startsAt\":\""+tomorrow+"T16:00:00+09:00\",\"endsAt\":\""+tomorrow+"T16:30:00+09:00\"}}";
         assertEquals(200,send("PATCH","/api/v1/tasks/"+EXISTING,move,token,"move-expired").statusCode());
@@ -190,10 +191,11 @@ class Phase4IntegrationTests {
     }
 
     @Test void leaveAndHandoffAcceptanceRaceNeverLeavesInvalidAssignment()throws Exception{
-        String caregiver=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
-        JsonNode task=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",once(date,"20:30","탈퇴 수락 경쟁"),caregiver,"race-create")).get("occurrences").get(0);UUID taskId=UUID.fromString(task.get("id").asText());
+        String creator=login("demo-caregiver-1");LocalDate date=LocalDate.now(KST).plusDays(2);
+        JsonNode task=data(send("POST","/api/v1/care-groups/"+GROUP+"/task-series",once(date,"20:30","탈퇴 수락 경쟁"),creator,"race-create")).get("occurrences").get(0);UUID taskId=UUID.fromString(task.get("id").asText());
+        String caregiver=task.get("assignee").get("id").asText().equals(CAREGIVER.toString())?creator:login("demo-caregiver-3");
         JsonNode opened=data(send("POST","/api/v1/tasks/"+taskId+"/handoffs","{\"expectedVersion\":0}",caregiver,"race-handoff"));UUID handoff=UUID.fromString(opened.get("handoff").get("id").asText());
-        HttpRequest accept=request("POST","/api/v1/handoffs/"+handoff+"/accept","{\"expectedVersion\":0,\"expectedOccurrenceVersion\":1}",caregiver,"race-accept");
+        HttpRequest accept=request("POST","/api/v1/handoffs/"+handoff+"/accept","{\"expectedVersion\":0,\"expectedTaskVersion\":1}",caregiver,"race-accept");
         HttpRequest leave=request("POST","/api/v1/care-groups/"+GROUP+"/memberships/me/leave","{\"expectedVersion\":0}",caregiver,"race-leave");
         CompletableFuture<HttpResponse<String>> accepted=client.sendAsync(accept,HttpResponse.BodyHandlers.ofString());
         CompletableFuture<HttpResponse<String>> left=client.sendAsync(leave,HttpResponse.BodyHandlers.ofString());
@@ -204,12 +206,22 @@ class Phase4IntegrationTests {
     }
 
     private int count(UUID series){return jdbc.queryForObject("SELECT count(*) FROM task_occurrence WHERE series_id=?",Integer.class,series);}
+    private JsonNode createRecurring(String recurrence,LocalDate first,LocalDate last,List<Integer> weekdays,String title)throws Exception{
+        UUID id=UUID.randomUUID();String days="{"+weekdays.stream().map(String::valueOf).collect(java.util.stream.Collectors.joining(","))+"}";
+        transaction.execute(status->{jdbc.execute("SET CONSTRAINTS ALL DEFERRED");
+            jdbc.update("INSERT INTO task_series(id,group_id,kind,created_by,generation_key,creation_origin) VALUES (?,?,'OTHER',?,?,'LEGACY')",id,GROUP,CAREGIVER,"test:"+id);
+            jdbc.update("INSERT INTO task_series_revision(series_id,revision_no,group_id,title,recurrence,first_date,last_date,weekdays,local_time,duration_minutes,effective_at,changed_by) VALUES (?,1,?,?,?,?,?,?::smallint[],'10:00',30,now(),?)",id,GROUP,title,recurrence,first,last,days,CAREGIVER);return null;});
+        scheduleMutations.executeSystem(()->generator.generateSeriesLocked(id,UUID.randomUUID()));
+        List<UUID> occurrences=jdbc.query("SELECT id FROM task_occurrence WHERE series_id=? ORDER BY anchor_date,id",(r,n)->r.getObject(1,UUID.class),id);
+        return json.readTree("{\"seriesId\":\""+id+"\",\"occurrences\":["+occurrences.stream().map(v->"{\"id\":\""+v+"\"}").collect(java.util.stream.Collectors.joining(","))+"]}");
+    }
     private UUID series(LocalDate date,String time,String title){UUID id=UUID.randomUUID();jdbc.update("INSERT INTO task_series(id,group_id,kind,created_by,generation_key) VALUES (?,?, 'OTHER',?,?)",id,GROUP,CAREGIVER,"test:"+id);jdbc.update("INSERT INTO task_series_revision(series_id,revision_no,group_id,title,recurrence,first_date,last_date,weekdays,local_time,duration_minutes,effective_at,changed_by) VALUES (?,1,?,?,'ONCE',?,?,ARRAY[]::smallint[],?::time,30,now(),?)",id,GROUP,title,date,date,time,CAREGIVER);return id;}
     private UUID assignee(UUID series){return jdbc.queryForObject("SELECT assignee_user_id FROM task_occurrence WHERE series_id=?",UUID.class,series);}
     private String recurring(String recurrence,LocalDate first,LocalDate last,String weekdays,String title){return "{\"kind\":\"OTHER\",\"title\":"+quote(title)+",\"rule\":{\"recurrence\":\""+recurrence+"\",\"firstDate\":\""+first+"\",\"lastDate\":\""+last+"\",\"weekdays\":"+weekdays+",\"localTime\":\"10:00\",\"durationMinutes\":30},\"medicationIds\":[]}";}
-    private String once(LocalDate date,String time,String title){return "{\"kind\":\"OTHER\",\"title\":"+quote(title)+",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\""+time+"\",\"durationMinutes\":30},\"medicationIds\":[]}";}
+    private String once(LocalDate date,String time,String title){return "{\"kind\":\"OTHER\",\"title\":"+quote(title)+",\"rule\":{\"recurrence\":\"ONCE\",\"firstDate\":\""+date+"\",\"lastDate\":\""+date+"\",\"weekdays\":[],\"localTime\":\""+time+"\",\"durationMinutes\":30}}";}
     private JsonNode data(HttpResponse<String> response)throws Exception{assertTrue(response.statusCode()>=200&&response.statusCode()<300,response.body());return json.readTree(response.body()).get("data");}
-    private String login(String key)throws Exception{return data(send("POST","/api/v1/auth/demo-login","{\"loginKey\":\""+key+"\"}",null,null)).get("accessToken").asText();}
+    private String login(String key)throws Exception{return data(send("POST","/api/v1/auth/login","{\"phoneNumber\":\""+phone(key)+"\"}",null,null)).get("accessToken").asText();}
+    private String phone(String key){return switch(key){case "demo-recipient"->"01000000001";case "demo-caregiver-1"->"01000000002";case "demo-caregiver-2"->"01000000003";case "demo-caregiver-3"->"01000000004";case "demo-recipient-2"->"01000000005";case "demo-outsider"->"01000000006";default->throw new IllegalArgumentException(key);};}
     private String quote(String value){return json.writeValueAsString(value);}
     private HttpResponse<String> send(String method,String path,String body,String token,String key)throws Exception{return client.send(request(method,path,body,token,key),HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));}
     private HttpRequest request(String method,String path,String body,String token,String key){HttpRequest.Builder b=HttpRequest.newBuilder(URI.create("http://localhost:"+port+path)).header("Content-Type","application/json");if(token!=null)b.header(HttpHeaders.AUTHORIZATION,"Bearer "+token);if(key!=null)b.header("Idempotency-Key",key);return b.method(method,body==null?HttpRequest.BodyPublishers.noBody():HttpRequest.BodyPublishers.ofString(body,StandardCharsets.UTF_8)).build();}

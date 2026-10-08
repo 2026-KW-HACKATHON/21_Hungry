@@ -57,7 +57,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\run-web-push-smoke
 python -m http.server 4173 --directory .\scripts\web-push-smoke
 ```
 
-브라우저에서 `http://localhost:4173`을 연다. API base는 `http://localhost:18082`를 유지하고 `로컬 demo 로그인(A02)`을 누른 뒤 `권한 요청 및 현재 기기 구독(N05/N06)`을 누른다. 브라우저 알림 권한은 사용자가 직접 허용해야 한다. token·endpoint·p256dh·auth는 화면 로그, URL, localStorage에 기록하지 않는다. N05는 Bearer 인증이 필수다.
+브라우저에서 `http://localhost:4173`을 연다. API base는 `http://localhost:18082`를 유지하고 `전화번호 로그인(A06)`을 누른 뒤 `권한 요청 및 현재 기기 구독(N05/N06)`을 누른다. 브라우저 알림 권한은 사용자가 직접 허용해야 한다. token·endpoint·p256dh·auth는 화면 로그, URL, localStorage에 기록하지 않는다. N05는 Bearer 인증이 필수다.
 
 production 값은 frontend `https://knowone-eight.vercel.app`, API `https://api.gaebalmani.shop`, CORS Origin `https://knowone-eight.vercel.app`, VAPID subject `mailto:js48765348@gmail.com`이다. 로컬 smoke의 localhost Origin은 운영 CORS에 추가하지 않는다.
 

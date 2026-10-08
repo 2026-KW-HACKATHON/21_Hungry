@@ -27,11 +27,11 @@ public final class GroupDtos {
     public record RecipientLookup(UUID recipientUserId, UUID groupId, String displayName, String parentRelation,
             boolean parentProfileCompleted, String joinMode, long groupVersion) { }
     public record JoinRequest(@NotNull UUID recipientUserId, @NotBlank @Size(max = 50) String confirmedName) { }
-    public record PriorityRequest(@NotEmpty List<@Valid PriorityItem> members) { }
+    public record PriorityRequest(@NotEmpty List<@Valid PriorityItem> items) { }
     public record PriorityItem(@NotNull UUID memberId, @Min(1) @Max(2) int priority,
             @PositiveOrZero long expectedVersion) { }
     public record LeaveRequest(@PositiveOrZero long expectedVersion) { }
-    public record LeaveResponse(String membershipStatus, List<UUID> releasedOccurrenceIds) { }
+    public record LeaveResponse(Member membership, List<UUID> releasedOccurrenceIds) { }
     public record HomeTaskList(List<TaskDtos.Task> items, boolean hasMore) { }
     public record Home(UUID groupId, LocalDate date, HomeTaskList todayMyTasks,
             HomeTaskList unassignedFutureTasks, HomeTaskList overdueTasks, int reviewEncounterCount) { }
@@ -43,6 +43,8 @@ public final class GroupDtos {
     public record JoinResult(JoinRequestView request, Member membership, String nextAction) { }
     public record CurrentJoin(JoinRequestView request, Member membership) { }
     public record PendingJoin(UUID id, UserRef user, Instant createdAt, long version) { }
+    public record JoinRequestPage(List<PendingJoin> items,String nextCursor,boolean hasMore) { }
     public record JoinDecisionRequest(@PositiveOrZero long expectedVersion, @NotBlank String decision) { }
     public record CancelJoinRequest(@PositiveOrZero long expectedVersion) { }
+    public record JoinMutationResponse(JoinRequestView request) { }
 }

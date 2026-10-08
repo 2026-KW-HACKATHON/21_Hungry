@@ -18,6 +18,7 @@ import com.kw.knowone.common.idempotency.MutationResponse;
 import com.kw.knowone.common.schedule.ScheduleMutationService;
 import com.kw.knowone.common.web.ApiException;
 import com.kw.knowone.common.web.DataResponse;
+import com.kw.knowone.common.web.CursorService;
 import com.kw.knowone.group.dto.GroupDtos;
 import com.kw.knowone.group.dto.GroupDtos.Group;
 import com.kw.knowone.group.dto.GroupDtos.Items;
@@ -44,10 +45,11 @@ public class GroupService {
     private final RecipientLookupRateLimiter rateLimiter;
     private final Clock clock;
     private final TaskRepository tasks;
+    private final CursorService cursors;
 
     public GroupService(GroupRepository repository, GroupEventRepository eventRepository,
             AuthRepository authRepository, AuthService authService, ScheduleMutationService scheduleMutations,
-            RecipientLookupRateLimiter rateLimiter, Clock clock, TaskRepository tasks) {
+            RecipientLookupRateLimiter rateLimiter, Clock clock, TaskRepository tasks,CursorService cursors) {
         this.repository = repository;
         this.eventRepository = eventRepository;
         this.authRepository = authRepository;
@@ -56,6 +58,7 @@ public class GroupService {
         this.rateLimiter = rateLimiter;
         this.clock = clock;
         this.tasks = tasks;
+        this.cursors=cursors;
     }
 
     public IdempotentResult leave(UUID groupId,UUID userId,GroupDtos.LeaveRequest request,String key,UUID requestId){
@@ -89,7 +92,7 @@ public class GroupService {
         eventRepository.audit(groupId,userId,"GROUP_MEMBER_LEFT","GROUP_MEMBER",after.id(),eventMember(before),eventMember(after),requestId);
         eventRepository.notification(groupId,"MEMBER_LEFT","member-left:"+after.id()+":"+after.version(),
                 Map.of("schemaVersion",1,"memberId",after.id(),"releasedOccurrenceIds",released),now);
-        return new MutationResponse(200,DataResponse.of(new GroupDtos.LeaveResponse("LEFT",released)));
+        return new MutationResponse(200,DataResponse.of(new GroupDtos.LeaveResponse(toMember(after),released)));
     }
 
     public Items<Group> groups(UUID userId) {
@@ -109,6 +112,9 @@ public class GroupService {
         if(repository.hasCurrentMembership(userId))throw new ApiException(HttpStatus.CONFLICT,"GROUP_ALREADY_CONNECTED","이미 연결된 공동체가 있습니다.");
         rateLimiter.consume(userId);
         String normalized=phoneNumber.replaceAll("[-\\s]","");
+        AppUser target=authRepository.findActiveByPhoneNumber(normalized).orElse(null);
+        if(target!=null&&"CHILD".equals(target.accountRole()))throw new ApiException(HttpStatus.UNPROCESSABLE_ENTITY,
+                "VALIDATION_ERROR","부모 계정의 전화번호를 입력해 주세요.");
         if(!normalized.matches("^010[0-9]{8}$"))throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","전화번호 형식을 확인해 주세요.");
         CareGroup group = repository.findDemoRecipientByPhone(normalized)
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "RESOURCE_NOT_FOUND",
@@ -146,11 +152,15 @@ public class GroupService {
             if(!Set.of("MOTHER","FATHER").contains(profile.relation())||profile.birthYear()>java.time.Year.now(clock).getValue())
                 throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","부모 정보를 확인해 주세요.");
             repository.completeParentProfile(group,userId,profile.relation(),profile.name().trim(),profile.birthYear(),now);
-        }else if(group.parentProfileCompletedAt()!=null && request.parentProfile()!=null){
+        }else if(group.parentProfileCompletedAt()!=null && request.parentProfile()!=null
+                &&(!group.parentRelation().equals(request.parentProfile().relation())
+                ||!group.recipientDisplayName().equals(request.parentProfile().name().trim())
+                ||!group.parentBirthYear().equals(request.parentProfile().birthYear()))){
             throw new ApiException(HttpStatus.CONFLICT,"PARENT_PROFILE_IMMUTABLE","완료된 부모 정보는 변경할 수 없습니다.");
         }
-        GroupMember member=first?repository.insertCaregiver(UUID.randomUUID(),groupId,userId,1)
-                :repository.insertPendingCaregiver(UUID.randomUUID(),groupId,userId);
+        GroupMember member=existing==null?(first?repository.insertCaregiver(UUID.randomUUID(),groupId,userId,1)
+                :repository.insertPendingCaregiver(UUID.randomUUID(),groupId,userId))
+                :repository.reopenCaregiver(existing,first?1:2,first?"ACTIVE":"PENDING",now);
         var row=repository.insertJoinRequest(UUID.randomUUID(),groupId,userId,first?"APPROVED":"PENDING",
                 first?"FIRST_JOIN":null,first?userId:null,now);
         eventRepository.audit(groupId,userId,first?"GROUP_MEMBER_JOINED":"GROUP_JOIN_REQUESTED","GROUP_MEMBER",member.id(),null,eventMember(member),requestId);
@@ -163,36 +173,51 @@ public class GroupService {
                 repository.findMembership(row.groupId(),userId).map(this::toMember).orElse(null));
     }
 
-    public GroupDtos.Items<GroupDtos.PendingJoin> pendingJoins(UUID groupId,UUID actor){
+    public GroupDtos.JoinRequestPage pendingJoins(UUID groupId,UUID actor,Integer requestedLimit,String cursor){
         requirePrimary(groupId,actor);
-        return new GroupDtos.Items<>(repository.findPendingJoins(groupId).stream().map(r->{
+        int limit=requestedLimit==null?20:requestedLimit;if(limit<1||limit>100)throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","limit은 1~100이어야 합니다.");
+        List<GroupRepository.JoinRow> rows=repository.findPendingJoins(groupId,cursors.decode(cursor),limit+1);boolean more=rows.size()>limit;if(more)rows=rows.subList(0,limit);
+        String next=more?cursors.encode(rows.getLast().createdAt(),rows.getLast().id()):null;
+        return new GroupDtos.JoinRequestPage(rows.stream().map(r->{
             GroupMember m=repository.findMembership(groupId,r.userId()).orElseThrow();
             return new GroupDtos.PendingJoin(r.id(),new UserRef(r.userId(),m.displayName()),r.createdAt(),r.version());
-        }).toList());
+        }).toList(),next,more);
     }
 
-    @Transactional
-    public GroupDtos.JoinRequestView decideJoin(UUID groupId,UUID requestId,UUID actor,GroupDtos.JoinDecisionRequest body){
+    public IdempotentResult decideJoin(UUID groupId,UUID joinRequestId,UUID actor,GroupDtos.JoinDecisionRequest body,String key,UUID requestId){
+        return scheduleMutations.execute(actor,"G11:"+joinRequestId,key,body,()->requirePrimary(groupId,actor),
+                ()->doDecideJoin(groupId,joinRequestId,actor,body,requestId));
+    }
+    private MutationResponse doDecideJoin(UUID groupId,UUID joinRequestId,UUID actor,GroupDtos.JoinDecisionRequest body,UUID requestId){
         requirePrimary(groupId,actor);
         if(!Set.of("APPROVE","REJECT").contains(body.decision()))throw new ApiException(HttpStatus.BAD_REQUEST,"VALIDATION_ERROR","결정을 확인해 주세요.");
-        var row=repository.findJoinRequest(requestId).orElseThrow(()->new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","신청을 찾을 수 없습니다."));
+        var row=repository.findJoinRequest(joinRequestId).orElseThrow(()->new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","신청을 찾을 수 없습니다."));
         if(!row.groupId().equals(groupId))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","다른 공동체의 신청입니다.");
         if(!"PENDING".equals(row.status()))throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
         if(row.version()!=body.expectedVersion())throw new ApiException(HttpStatus.CONFLICT,"VERSION_CONFLICT","신청이 변경되었습니다.");
         var changed=repository.decideJoin(row,actor,body.decision(),clock.instant());
         if(changed==null)throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
-        return toJoin(changed);
+        eventRepository.audit(groupId,actor,"APPROVE".equals(body.decision())?"GROUP_JOIN_APPROVED":"GROUP_JOIN_REJECTED",
+                "GROUP_JOIN_REQUEST",joinRequestId,Map.of("status",row.status(),"version",row.version()),
+                Map.of("status",changed.status(),"version",changed.version()),requestId);
+        return new MutationResponse(200,DataResponse.of(new GroupDtos.JoinMutationResponse(toJoin(changed))));
     }
 
-    @Transactional
-    public GroupDtos.JoinRequestView cancelJoin(UUID requestId,UUID actor,GroupDtos.CancelJoinRequest body){
-        var row=repository.findJoinRequest(requestId).orElseThrow(()->new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","신청을 찾을 수 없습니다."));
+    public IdempotentResult cancelJoin(UUID joinRequestId,UUID actor,GroupDtos.CancelJoinRequest body,String key,UUID requestId){
+        return scheduleMutations.execute(actor,"G12:"+joinRequestId,key,body,()->validateCancel(joinRequestId,actor),
+                ()->doCancelJoin(joinRequestId,actor,body,requestId));
+    }
+    private void validateCancel(UUID requestId,UUID actor){var row=repository.findJoinRequest(requestId).orElseThrow(()->new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","신청을 찾을 수 없습니다."));if(!row.userId().equals(actor))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","본인의 신청만 취소할 수 있습니다.");}
+    private MutationResponse doCancelJoin(UUID joinRequestId,UUID actor,GroupDtos.CancelJoinRequest body,UUID requestId){
+        var row=repository.findJoinRequest(joinRequestId).orElseThrow(()->new ApiException(HttpStatus.NOT_FOUND,"RESOURCE_NOT_FOUND","신청을 찾을 수 없습니다."));
         if(!row.userId().equals(actor))throw new ApiException(HttpStatus.FORBIDDEN,"FORBIDDEN","본인의 신청만 취소할 수 있습니다.");
         if(!"PENDING".equals(row.status()))throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
         if(row.version()!=body.expectedVersion())throw new ApiException(HttpStatus.CONFLICT,"VERSION_CONFLICT","신청이 변경되었습니다.");
         var changed=repository.cancelJoin(row,clock.instant());
         if(changed==null)throw new ApiException(HttpStatus.CONFLICT,"REQUEST_ALREADY_DECIDED","이미 처리된 신청입니다.");
-        return toJoin(changed);
+        eventRepository.audit(row.groupId(),actor,"GROUP_JOIN_CANCELED","GROUP_JOIN_REQUEST",joinRequestId,
+                Map.of("status",row.status(),"version",row.version()),Map.of("status",changed.status(),"version",changed.version()),requestId);
+        return new MutationResponse(200,DataResponse.of(new GroupDtos.JoinMutationResponse(toJoin(changed))));
     }
 
     private void requirePrimary(UUID groupId,UUID actor){
@@ -221,7 +246,7 @@ public class GroupService {
 
     public IdempotentResult updatePriorities(UUID groupId, UUID userId, PriorityRequest request,
             String idempotencyKey, UUID requestId) {
-        validateNoDuplicateMembers(request.members());
+        validateNoDuplicateMembers(request.items());
         return scheduleMutations.execute(userId, "G06:" + groupId, idempotencyKey, request,
                 () -> validateGroupMutationAuthorization(groupId, userId),
                 () -> doUpdatePriorities(groupId, userId, request, requestId));
@@ -271,8 +296,8 @@ public class GroupService {
     }
 
     private MutationResponse doUpdatePriorities(UUID groupId, UUID userId, PriorityRequest request, UUID requestId) {
-        List<GroupMember> targets = request.members().stream().map(item -> validatedTarget(groupId, item)).toList();
-        Map<UUID,Integer> requestedPriorities=request.members().stream().collect(java.util.stream.Collectors.toMap(PriorityItem::memberId,PriorityItem::priority));
+        List<GroupMember> targets = request.items().stream().map(item -> validatedTarget(groupId, item)).toList();
+        Map<UUID,Integer> requestedPriorities=request.items().stream().collect(java.util.stream.Collectors.toMap(PriorityItem::memberId,PriorityItem::priority));
         List<GroupMember> caregivers=repository.findActiveMembers(groupId).stream().filter(m->"CAREGIVER".equals(m.role())).toList();
         if(!caregivers.isEmpty()&&caregivers.stream().noneMatch(m->requestedPriorities.getOrDefault(m.id(),m.priority())==1))
             throw new ApiException(HttpStatus.CONFLICT,"LAST_PRIMARY_CAREGIVER","주돌봄자녀가 최소 한 명 필요합니다.");
@@ -280,7 +305,7 @@ public class GroupService {
         Instant now = clock.instant();
         for (int index = 0; index < targets.size(); index++) {
             GroupMember before = targets.get(index);
-            PriorityItem requested = request.members().get(index);
+            PriorityItem requested = request.items().get(index);
             GroupMember after = repository.updatePriority(before, requested.priority());
             eventRepository.audit(groupId, userId, "MEMBER_PRIORITY_CHANGED", "GROUP_MEMBER", after.id(),
                     eventMember(before), eventMember(after), requestId);
