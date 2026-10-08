@@ -34,6 +34,7 @@ import availabilityUnavailableSelected from '../../assets/icon/calendar/availabi
 import availabilityFullSelected from '../../assets/icon/calendar/availability-full-selected.svg?react'
 import availabilityPartialSelected from '../../assets/icon/calendar/availability-partial-selected.svg?react'
 import availabilityPartialDay from '../../assets/icon/calendar/availability-partial-day.svg?react'
+import availabilityRemove from '../../assets/icon/calendar/availability-remove.svg?react'
 
 export const iconMap = {
   'checkbox-checked': checkboxChecked,
@@ -71,4 +72,5 @@ export const iconMap = {
   'availability-full-selected': availabilityFullSelected,
   'availability-partial-selected': availabilityPartialSelected,
   'availability-partial-day': availabilityPartialDay,
+  'availability-remove': availabilityRemove,
 }
