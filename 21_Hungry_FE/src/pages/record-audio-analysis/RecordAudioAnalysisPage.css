@@ -6,7 +6,7 @@
   background-color: #fff;
 }
 
-.recordAudioAnalysisPage__header { padding: 80px 21px 38px; }
+.recordAudioAnalysisPage__header { padding: 50px 21px 38px; }
 .recordAudioAnalysisPage__back {
   display: flex;
   align-items: center;
