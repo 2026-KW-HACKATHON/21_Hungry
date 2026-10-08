@@ -49,7 +49,7 @@ public class OpenAiProcessingAdapter implements AiProcessingPort {
             @Value("${app.ai.openai.analysis-model:gpt-5.4-mini-2026-03-17}")String analysisModel,
             @Value("${app.ai.openai.timeout:PT90S}")Duration timeout,
             @Value("${app.ai.openai.max-output-tokens:12000}")int maxOutputTokens,
-            @Value("${app.ai.openai.analysis-protocol:legacy}")String analysisProtocol,
+            @Value("${app.ai.openai.analysis-protocol:semantic-facts-v2}")String analysisProtocol,
             @Value("${app.ai.openai.analysis-prompt-version:}")String promptVersion) {
         this(json,validator,baseUrl,key,transcribeModel,ocrModel,analysisModel,timeout,maxOutputTokens,
                 HttpClient.newBuilder().connectTimeout(timeout).build(),analysisProtocol,promptVersion);
@@ -102,7 +102,7 @@ public class OpenAiProcessingAdapter implements AiProcessingPort {
 
     // Shared with the DB-free, test-source evaluation runner. No alternative request/parser implementation.
     Map<String,Object> analysisRequest(AnalysisInput input,String prompt){
-        // Experimental prompts/layouts have NOT passed the quality gate; keep the production layout.
+        // The selected protocol determines the provider schema and the parser used by analyze().
         return analysisRequest(input,prompt,false);
     }
     Map<String,Object> analysisRequest(AnalysisInput input,String prompt,boolean evidenceFirst){
